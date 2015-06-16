@@ -1,0 +1,15 @@
+This is a simple testprogram which shows how 
+ Flash Programming Algorithms can be tested
+
+The project shows how the Flash Programming Algorithms 
+for a ST STM32F103RB device using a Keil Evaluation
+Board MCBSTM32 can be tested.
+
+It uses the STM32F10x Flash Programming Algoritms
+copied from folder .Keil\ARM\Flash\Flash\STM32F10x.
+
+The Flash Programming Algoritms are configured for 
+"STM32F10x Med-density Flash".
+
+The program runs in onChip RAM and calls the lowlevel
+Flash programming functions.
