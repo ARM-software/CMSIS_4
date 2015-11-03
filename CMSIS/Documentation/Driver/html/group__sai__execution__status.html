@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -173,65 +173,41 @@ Macros</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description</h2>
 <p>Negative values indicate errors (SAI has specific codes in addition to common <a class="el" href="group__execution__status.html">Status Error Codes</a>). </p>
-<p>The SAI driver has additional status error codes that are listed below. Note that the SAI driver also returns the common <a class="el" href="group__execution__status.html">Status Error Codes</a>. </p>
+<p>The SAI driver has additional status error codes that are listed below. </p>
+<dl class="section note"><dt>Note</dt><dd><ul>
+<li>In case multiple errors exist, only the first encountered error will be reported.</li>
+<li>errors ARM_SAI_ERROR_BIT_ORDER, ARM_SAI_ERROR_FRAME_SYNC_xxx, ARM_SAI_ERROR_SLOT_xxx will only be reported in <a class="el" href="group__sai__interface__gr.html#Driver_SAI_User">User Defined Protocol</a> mode.</li>
+<li>The SAI driver also returns the common <a class="el" href="group__execution__status.html">Status Error Codes</a>. </li>
+</ul>
+</dd></dl>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="ga5021651816da0aa92561eed634ba7578"></a>
+<a class="anchor" id="ga711cd889b4209df3f8fb01e4f2413c61"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_SAI_ERROR_AUDIO_FREQ&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 8)</td>
+          <td class="memname">#define ARM_SAI_ERROR_SYNCHRONIZATION&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 1)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Specified Audio frequency not supported. </p>
-<p>The <b>audio frequency</b> requested with the function <a class="el" href="group__sai__interface__gr.html#ga405a0769c33da6801055db0fb9b6c869">ARM_SAI_Control</a> is not supported. </p>
+<p>Specified Synchronization not supported. </p>
+<p>The <b>synchronization</b> requested with the function <a class="el" href="group__sai__interface__gr.html#ga405a0769c33da6801055db0fb9b6c869">ARM_SAI_Control</a> is not supported. </p>
 
 </div>
 </div>
-<a class="anchor" id="gadcd0d44f0f6b691c4e84b30960c096e4"></a>
+<a class="anchor" id="gaf4892425930608ad7a41fa5b49603b10"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_SAI_ERROR_BIT_ORDER&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 4)</td>
+          <td class="memname">#define ARM_SAI_ERROR_PROTOCOL&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 2)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Specified Bit order not supported. </p>
-<p>The <b>bit order</b> requested with the function <a class="el" href="group__sai__interface__gr.html#ga405a0769c33da6801055db0fb9b6c869">ARM_SAI_Control</a> is not supported. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga7810e77ec599b0f86073a8711c0655df"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_SAI_ERROR_CLOCK_POLARITY&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 7)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Specified Clock polarity not supported. </p>
-<p>The <b>clock polarity</b> requested with the function <a class="el" href="group__sai__interface__gr.html#ga405a0769c33da6801055db0fb9b6c869">ARM_SAI_Control</a> is not supported. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga4683468c258e1a8706afcce1e81356d1"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_SAI_ERROR_COMPANDING&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 6)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Specified Companding not supported. </p>
-<p>The <b>companding</b> requested with the function <a class="el" href="group__sai__interface__gr.html#ga405a0769c33da6801055db0fb9b6c869">ARM_SAI_Control</a> is not supported. </p>
+<p>Specified Protocol not supported. </p>
+<p>The <b>protocol</b> requested with the function <a class="el" href="group__sai__interface__gr.html#ga405a0769c33da6801055db0fb9b6c869">ARM_SAI_Control</a> is not supported. </p>
 
 </div>
 </div>
@@ -250,63 +226,78 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gaf0448bdd6d1ae33511d170b9ecc1e2d6"></a>
+<a class="anchor" id="gadcd0d44f0f6b691c4e84b30960c096e4"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_SAI_ERROR_FRAME_LENGHT&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 11)</td>
+          <td class="memname">#define ARM_SAI_ERROR_BIT_ORDER&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 4)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Specified Frame length not supported. </p>
-<p>The <b>frame length</b> requested with the function <a class="el" href="group__sai__interface__gr.html#ga405a0769c33da6801055db0fb9b6c869">ARM_SAI_Control</a> is not supported. </p>
+<p>Specified Bit order not supported. </p>
+<p>The <b>bit order</b> requested with the function <a class="el" href="group__sai__interface__gr.html#ga405a0769c33da6801055db0fb9b6c869">ARM_SAI_Control</a> is not supported. </p>
 
 </div>
 </div>
-<a class="anchor" id="ga09fe9b65d2be54ee1441606523291011"></a>
+<a class="anchor" id="ga912bf004fce3a37709bbf69734802b4a"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_SAI_ERROR_FRAME_SYNC_EARLY&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 14)</td>
+          <td class="memname">#define ARM_SAI_ERROR_MONO_MODE&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 5)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Specified Frame Sync early not supported. </p>
-<p>The <b>frame sync early</b> requested with the function <a class="el" href="group__sai__interface__gr.html#ga405a0769c33da6801055db0fb9b6c869">ARM_SAI_Control</a> is not supported. </p>
+<p>Specified Mono mode not supported. </p>
+<p>The <b>mono mode</b> requested with the function <a class="el" href="group__sai__interface__gr.html#ga405a0769c33da6801055db0fb9b6c869">ARM_SAI_Control</a> is not supported. </p>
 
 </div>
 </div>
-<a class="anchor" id="ga0561b0cc9577d944e0d39b582612e061"></a>
+<a class="anchor" id="ga4683468c258e1a8706afcce1e81356d1"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_SAI_ERROR_FRAME_SYNC_POLARITY&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 13)</td>
+          <td class="memname">#define ARM_SAI_ERROR_COMPANDING&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 6)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Specified Frame Sync polarity not supported. </p>
-<p>The <b>frame sync polarity</b> requested with the function <a class="el" href="group__sai__interface__gr.html#ga405a0769c33da6801055db0fb9b6c869">ARM_SAI_Control</a> is not supported. </p>
+<p>Specified Companding not supported. </p>
+<p>The <b>companding</b> requested with the function <a class="el" href="group__sai__interface__gr.html#ga405a0769c33da6801055db0fb9b6c869">ARM_SAI_Control</a> is not supported. </p>
 
 </div>
 </div>
-<a class="anchor" id="ga993da1bc0f6745795b364d84dec24e99"></a>
+<a class="anchor" id="ga7810e77ec599b0f86073a8711c0655df"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_SAI_ERROR_FRAME_SYNC_WIDTH&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 12)</td>
+          <td class="memname">#define ARM_SAI_ERROR_CLOCK_POLARITY&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 7)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Specified Frame Sync width not supported. </p>
-<p>The <b>frame sync width</b> requested with the function <a class="el" href="group__sai__interface__gr.html#ga405a0769c33da6801055db0fb9b6c869">ARM_SAI_Control</a> is not supported. </p>
+<p>Specified Clock polarity not supported. </p>
+<p>The <b>clock polarity</b> requested with the function <a class="el" href="group__sai__interface__gr.html#ga405a0769c33da6801055db0fb9b6c869">ARM_SAI_Control</a> is not supported. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga5021651816da0aa92561eed634ba7578"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_SAI_ERROR_AUDIO_FREQ&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 8)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Specified Audio frequency not supported. </p>
+<p>The <b>audio frequency</b> requested with the function <a class="el" href="group__sai__interface__gr.html#ga405a0769c33da6801055db0fb9b6c869">ARM_SAI_Control</a> is not supported. </p>
 
 </div>
 </div>
@@ -340,33 +331,63 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga912bf004fce3a37709bbf69734802b4a"></a>
+<a class="anchor" id="gaf0448bdd6d1ae33511d170b9ecc1e2d6"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_SAI_ERROR_MONO_MODE&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 5)</td>
+          <td class="memname">#define ARM_SAI_ERROR_FRAME_LENGHT&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 11)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Specified Mono mode not supported. </p>
-<p>The <b>mono mode</b> requested with the function <a class="el" href="group__sai__interface__gr.html#ga405a0769c33da6801055db0fb9b6c869">ARM_SAI_Control</a> is not supported. </p>
+<p>Specified Frame length not supported. </p>
+<p>The <b>frame length</b> requested with the function <a class="el" href="group__sai__interface__gr.html#ga405a0769c33da6801055db0fb9b6c869">ARM_SAI_Control</a> is not supported. </p>
 
 </div>
 </div>
-<a class="anchor" id="gaf4892425930608ad7a41fa5b49603b10"></a>
+<a class="anchor" id="ga993da1bc0f6745795b364d84dec24e99"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_SAI_ERROR_PROTOCOL&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 2)</td>
+          <td class="memname">#define ARM_SAI_ERROR_FRAME_SYNC_WIDTH&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 12)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Specified Protocol not supported. </p>
-<p>The <b>protocol</b> requested with the function <a class="el" href="group__sai__interface__gr.html#ga405a0769c33da6801055db0fb9b6c869">ARM_SAI_Control</a> is not supported. </p>
+<p>Specified Frame Sync width not supported. </p>
+<p>The <b>frame sync width</b> requested with the function <a class="el" href="group__sai__interface__gr.html#ga405a0769c33da6801055db0fb9b6c869">ARM_SAI_Control</a> is not supported. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga0561b0cc9577d944e0d39b582612e061"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_SAI_ERROR_FRAME_SYNC_POLARITY&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 13)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Specified Frame Sync polarity not supported. </p>
+<p>The <b>frame sync polarity</b> requested with the function <a class="el" href="group__sai__interface__gr.html#ga405a0769c33da6801055db0fb9b6c869">ARM_SAI_Control</a> is not supported. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga09fe9b65d2be54ee1441606523291011"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_SAI_ERROR_FRAME_SYNC_EARLY&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 14)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Specified Frame Sync early not supported. </p>
+<p>The <b>frame sync early</b> requested with the function <a class="el" href="group__sai__interface__gr.html#ga405a0769c33da6801055db0fb9b6c869">ARM_SAI_Control</a> is not supported. </p>
 
 </div>
 </div>
@@ -385,21 +406,6 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga4658a3143c891d8972446630b6a978cd"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_SAI_ERROR_SLOT_OFFESET&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 17)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Specified Slot offset not supported. </p>
-<p>The <b>slot offset</b> requested with the function <a class="el" href="group__sai__interface__gr.html#ga405a0769c33da6801055db0fb9b6c869">ARM_SAI_Control</a> is not supported. </p>
-
-</div>
-</div>
 <a class="anchor" id="ga7bf825043ba857950a89817ff9b853d1"></a>
 <div class="memitem">
 <div class="memproto">
@@ -415,18 +421,18 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga711cd889b4209df3f8fb01e4f2413c61"></a>
+<a class="anchor" id="ga4658a3143c891d8972446630b6a978cd"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_SAI_ERROR_SYNCHRONIZATION&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 1)</td>
+          <td class="memname">#define ARM_SAI_ERROR_SLOT_OFFESET&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 17)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Specified Synchronization not supported. </p>
-<p>The <b>synchronization</b> requested with the function <a class="el" href="group__sai__interface__gr.html#ga405a0769c33da6801055db0fb9b6c869">ARM_SAI_Control</a> is not supported. </p>
+<p>Specified Slot offset not supported. </p>
+<p>The <b>slot offset</b> requested with the function <a class="el" href="group__sai__interface__gr.html#ga405a0769c33da6801055db0fb9b6c869">ARM_SAI_Control</a> is not supported. </p>
 
 </div>
 </div>
@@ -435,7 +441,7 @@ Macros</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:42 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:03 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

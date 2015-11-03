@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -139,33 +139,18 @@ Macros</h2></td></tr>
 <p>Negative values indicate errors (SPI has specific codes in addition to common <a class="el" href="group__execution__status.html">Status Error Codes</a>). </p>
 <p>The SPI driver has additional status error codes that are listed below. Note that the SPI driver also returns the comon <a class="el" href="group__execution__status.html">Status Error Codes</a>. </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="ga6b8ac31930ea6ca3a9635f2ac935466d"></a>
+<a class="anchor" id="ga273a55c5d19491c565e5f05d03d66f3f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_SPI_ERROR_BIT_ORDER&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 4)</td>
+          <td class="memname">#define ARM_SPI_ERROR_MODE&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 1)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Specified Bit order not supported. </p>
-<p>The <b>bit order</b> requested with the function <a class="el" href="group__spi__interface__gr.html#gad18d229992598d6677bec250015e5d1a">ARM_SPI_Control</a> is not supported by this driver. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga76f895d3380ca474124f83acbebc5651"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_SPI_ERROR_DATA_BITS&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 3)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Specified number of Data bits not supported. </p>
-<p>The number of <b>data bits</b> requested with the function <a class="el" href="group__spi__interface__gr.html#gad18d229992598d6677bec250015e5d1a">ARM_SPI_Control</a> is not supported by this driver. </p>
+<p>Specified Mode not supported. </p>
+<p>The <b>mode</b> requested with the function <a class="el" href="group__spi__interface__gr.html#gad18d229992598d6677bec250015e5d1a">ARM_SPI_Control</a> is not supported by this driver. </p>
 
 </div>
 </div>
@@ -184,18 +169,33 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga273a55c5d19491c565e5f05d03d66f3f"></a>
+<a class="anchor" id="ga76f895d3380ca474124f83acbebc5651"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_SPI_ERROR_MODE&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 1)</td>
+          <td class="memname">#define ARM_SPI_ERROR_DATA_BITS&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 3)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Specified Mode not supported. </p>
-<p>The <b>mode</b> requested with the function <a class="el" href="group__spi__interface__gr.html#gad18d229992598d6677bec250015e5d1a">ARM_SPI_Control</a> is not supported by this driver. </p>
+<p>Specified number of Data bits not supported. </p>
+<p>The number of <b>data bits</b> requested with the function <a class="el" href="group__spi__interface__gr.html#gad18d229992598d6677bec250015e5d1a">ARM_SPI_Control</a> is not supported by this driver. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga6b8ac31930ea6ca3a9635f2ac935466d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_SPI_ERROR_BIT_ORDER&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 4)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Specified Bit order not supported. </p>
+<p>The <b>bit order</b> requested with the function <a class="el" href="group__spi__interface__gr.html#gad18d229992598d6677bec250015e5d1a">ARM_SPI_Control</a> is not supported by this driver. </p>
 
 </div>
 </div>
@@ -219,7 +219,7 @@ Macros</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:43 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:03 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
-  date: 26.08.2014
+  date: 28.08.2015
 
-  Copyright (C) 2011 - 2014 ARM Limited. All rights reserved.
+  Copyright (C) 2011 - 2015 ARM Limited. All rights reserved.
 
   Redistribution and use in source and binary forms, with or without
   modification, are permitted provided that the following conditions are met:
@@ -27,7 +27,14 @@
   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
 
-  This is CMSIS-SVD 
+  This is CMSIS-SVD
+  Version 1.3:
+  added dim to peripherals to describe an array of peripherals.
+  added nesting of clusters to support hierarchical register structures.
+  added protection element as part of the registerPropertiesGroup indicating
+  special permissions are required for accessing a register.
+  CPU Section extended with description of the Secure Attribution Unit.
+  
   Version 1.2:
   Cortex-M7 support items have been added as optional tags for the device header file generation:
   fpuDP, icachePresent, dcachePresent, itcmPresent, dtcmPresent
@@ -41,7 +48,7 @@
   reuse of descriptions for a series of devices.
  -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.2">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.3">
   <!-- stringType requires a none empty string of a least one character length -->
   <xs:simpleType name="stringType">
     <xs:restriction base="xs:string">
@@ -117,6 +124,22 @@
   <xs:simpleType name="enumerationNameType">
     <xs:restriction base="xs:string">
       <xs:pattern value="[_A-Za-z0-9]*"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!-- V1.3: Protection Access Attribute Strings -->
+  <xs:simpleType name="protectionStringType">
+    <xs:restriction base="xs:string">
+      <!-- s = Secure                      -->
+      <!-- n = Non-secure                  -->
+      <xs:pattern value="[sn]"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!-- V1.3: SAU Access Type -->
+  <xs:simpleType name="sauAccessType">
+    <xs:restriction base="xs:string">
+      <!-- c = non-secure Callable / Secure -->
+      <!-- n = Non-secure                   -->
+      <xs:pattern value="[cn]"/>
     </xs:restriction>
   </xs:simpleType>
 
@@ -230,6 +253,8 @@
     <xs:sequence>
       <xs:element name="size" type="scaledNonNegativeInteger" minOccurs="0"/>
       <xs:element name="access" type="accessType" minOccurs="0"/>
+      <!-- V 1.3: extended register access protection -->
+      <xs:element name="protection" type="protectionStringType" minOccurs="0"/>
       <xs:element name="resetValue" type="scaledNonNegativeInteger" minOccurs="0"/>
       <xs:element name="resetMask" type="scaledNonNegativeInteger" minOccurs="0"/>
     </xs:sequence>
@@ -283,18 +308,44 @@
       <xs:element name="itcmPresent" type="xs:boolean" minOccurs="0"/>
       <!-- V1.2: dtcmPresent specifies that an data tightly coupled memory is physically present-->
       <xs:element name="dtcmPresent" type="xs:boolean" minOccurs="0"/>
-      <!-- V1.1: vtorPresent is used for Cortex-M0+ based devices only. It indicates whether the Vector Table Offset
-                 Register is implemented in the device or not -->
+      <!-- V1.1: vtorPresent is used for Cortex-M0+ based devices only. It indicates whether the Vector -->
+      <!--       Table Offset Register is implemented in the device or not                              -->
       <xs:element name="vtorPresent" type="xs:boolean" minOccurs="0"/>
-      <!-- V1.1: nvicPrioBits specifies the number of bits used by the Nested Vectored Interrupt Controller
-                 for defining the priority level = # priority levels -->
+      <!-- V1.1: nvicPrioBits specifies the number of bits used by the Nested Vectored Interrupt Controller -->
+      <!--       for defining the priority level = # priority levels                                        -->
       <xs:element name="nvicPrioBits" type="scaledNonNegativeInteger"/>
-      <!-- V1.1: vendorSystickConfig is set true if a custom system timer is implemented in the device 
-                   instead of the ARM specified SysTickTimer -->
+      <!-- V1.1: vendorSystickConfig is set true if a custom system timer is implemented in the device -->
+      <!--       instead of the ARM specified SysTickTimer                                             -->
       <xs:element name="vendorSystickConfig" type="xs:boolean"/>
-    </xs:sequence>
+      <!-- V1.3: reports the total number of interrupts implemented by the device (optional) -->
+      <xs:element name="deviceNumInterrupts" type="scaledNonNegativeInteger" minOccurs="0"/>
+      <!-- V1.3: sauRegions specifies the available number of address regions -->
+      <!--       if not specified a value of zero is assumed                  -->
+      <xs:element name="sauNumRegions" type="scaledNonNegativeInteger" minOccurs="0"/>
+      <!-- V1.3: SAU Regions Configuration (if fully or partially predefined) -->
+      <xs:element name="sauRegionsConfig" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="region" minOccurs="0" maxOccurs="unbounded">
+              <!-- addressBlockType specifies the elements to describe an address block -->
+              <xs:complexType>
+                <xs:sequence minOccurs="1"   maxOccurs="unbounded">
+                  <xs:element name="base"    type="scaledNonNegativeInteger"/>
+                  <xs:element name="limit"   type="scaledNonNegativeInteger"/>
+                  <xs:element name="access"  type="sauAccessType"/>
+                </xs:sequence>
+                <xs:attribute name="enabled" type="xs:boolean" use="optional" default="true"/>
+                <xs:attribute name="name"    type="xs:string"  use="optional"/>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+          <xs:attribute name="enabled" type="xs:boolean" use="optional" default="true"/>
+          <xs:attribute name="protectionWhenDisabled" type="protectionStringType" use="optional" default="s"/>
+        </xs:complexType>
+      </xs:element>
+     </xs:sequence>
   </xs:complexType>
-
+  
   <xs:complexType name="enumeratedValuesType">
     <xs:sequence>
       <!-- name specfies a reference to this enumeratedValues section for reuse purposes
@@ -415,7 +466,16 @@
                  used in the device header generation instead of the cluster name -->
       <xs:element name="headerStructName" type="identifierType" minOccurs="0"/>
       <xs:element name="addressOffset" type="scaledNonNegativeInteger"/>
-      <xs:element name="register" type="registerType" minOccurs="1" maxOccurs="unbounded"/>
+      <!-- registerPropertiesGroup elements specify the default values for register size, access permission and
+                 reset value. These default values are inherited to all registers contained in this peripheral -->
+      <xs:group ref="registerPropertiesGroup" minOccurs="0"/>
+      <xs:sequence>
+        <xs:choice minOccurs="1" maxOccurs="unbounded">
+          <xs:element name="register" type="registerType" minOccurs="0" maxOccurs="unbounded"/>
+          <!-- 1.3: nesting of cluster is supported -->
+          <xs:element name="cluster" type="clusterType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:choice>
+      </xs:sequence>
     </xs:sequence>
     <xs:attribute name="derivedFrom" type="identifierType" use="optional"/>
   </xs:complexType>
@@ -430,6 +490,8 @@
 
   <xs:complexType name="peripheralType">
     <xs:sequence>
+      <!-- 1.3: specify uni-dimensional array of peripheral - requires name="<name>[%s]" -->
+      <xs:group    ref="dimElementGroup" minOccurs="0"/>
       <!-- name specifies the name of a peripheral. This name is used for the System View and device header file -->
       <xs:element name="name" type="xs:Name"/>
       <!-- version specifies the version of the peripheral descriptions -->
@@ -533,7 +595,9 @@
           </xs:complexType>
         </xs:element>
       </xs:sequence>
-      <xs:attribute name="schemaVersion" type="xs:decimal" use="required" fixed="1.2"/>
+      <xs:attribute name="schemaVersion" type="xs:decimal" use="required"/>
     </xs:complexType>
   </xs:element>
 </xs:schema>
+
+<!-- END OF FILE -->

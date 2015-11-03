@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>Semaphore Management</title>
-<title>CMSIS-RTOS: Semaphore Management</title>
+<title>Semaphores</title>
+<title>CMSIS-RTOS: Semaphores</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="cmsis.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="jquery.js"></script>
@@ -73,11 +73,11 @@ $(document).ready(function(){initNavTree('group___c_m_s_i_s___r_t_o_s___semaphor
 <a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">Semaphore Management</div>  </div>
-<div class="ingroups"><a class="el" href="group___c_m_s_i_s___r_t_o_s.html">CMSIS-RTOS API</a></div></div><!--header-->
+<div class="title">Semaphores</div>  </div>
+<div class="ingroups"><a class="el" href="group___c_m_s_i_s___r_t_o_s___inter_thread.html">Inter-Thread Communication and Resource Sharing</a></div></div><!--header-->
 <div class="contents">
 
-<p>Control access to shared resources.  
+<p>Access shared resources simultaneously from different threads.  
 <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
@@ -108,13 +108,45 @@ Functions</h2></td></tr>
 <tr class="separator:gabae2801ac2c096f6e8c69a264908f595"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description</h2>
-<p>The Semaphore Management function group is used to manage and protect access to shared resources. The semaphore feature is very similar to <a class="el" href="group___c_m_s_i_s___r_t_o_s___mutex_mgmt.html">Mutex</a>. Whereas a Mutex permits just one thread to access a shared resource at a time, a semaphore can be used to permit a fixed number of threads to access a pool of shared resources. For example, with a semaphore the access to a group of identical peripherals can be managed.</p>
-<p>A semaphore object needs to be initialized to the maximum number of available tokens. This number of available resources is specified as parameter of the <a class="el" href="group___c_m_s_i_s___r_t_o_s___semaphore_mgmt.html#ga97381e8e55cd47cec390bf57c96d6edb">osSemaphoreCreate</a> function. Each time a semaphore token is obtained with <a class="el" href="group___c_m_s_i_s___r_t_o_s___semaphore_mgmt.html#gacc15b0fc8ce1167fe43da33042e62098">osSemaphoreWait</a>, the semaphore count is decremented. When the semaphore count is 0, no semaphore token can be obtained. The thread that tries to obtain the semaphore token needs to wait until the next token is free. Semaphores are released with <a class="el" href="group___c_m_s_i_s___r_t_o_s___semaphore_mgmt.html#gab108914997c49e14d8ff1ae0d1988ca0">osSemaphoreRelease</a>; this function increments the semaphore count.</p>
+<p>Semaphores are used to manage and protect access to shared resources. Semaphores are very similar to <a class="el" href="group___c_m_s_i_s___r_t_o_s___mutex_mgmt.html">Mutexes</a>. Whereas a Mutex permits just one thread to access a shared resource at a time, a semaphore can be used to permit a fixed number of threads to access a pool of shared resources. Using semaphores, access to a group of identical peripherals can be managed (for example multiple DMA channels).</p>
 <div class="image">
 <img src="Semaphore.png" alt="Semaphore.png"/>
 <div class="caption">
 CMSIS-RTOS Semaphore</div></div>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<p> A semaphore object should be initialized to the maximum number of available tokens. This number of available resources is specified as parameter of the <a class="el" href="group___c_m_s_i_s___r_t_o_s___semaphore_mgmt.html#ga97381e8e55cd47cec390bf57c96d6edb">osSemaphoreCreate</a> function. Each time a semaphore token is obtained with <a class="el" href="group___c_m_s_i_s___r_t_o_s___semaphore_mgmt.html#gacc15b0fc8ce1167fe43da33042e62098">osSemaphoreWait</a>, the semaphore count is decremented. When the semaphore count is 0, no semaphore token can be obtained. The thread that tries to obtain the semaphore token needs to wait until the next token is free. Semaphores are released with <a class="el" href="group___c_m_s_i_s___r_t_o_s___semaphore_mgmt.html#gab108914997c49e14d8ff1ae0d1988ca0">osSemaphoreRelease</a> incrementing the semaphore count.</p>
+<dl class="section note"><dt>Note</dt><dd>Semaphore tokens can be acquired from threads and released from threads and ISRs.</dd></dl>
+<h2>Working with Semaphores</h2>
+<p>Follow these steps to create and use a semaphore:</p>
+<ol type="1">
+<li>Declare the semaphore container and initialize the semaphore: <div class="fragment"><div class="line"><a class="code" href="group___c_m_s_i_s___r_t_o_s___semaphore_mgmt.html#ga9e66fe361749071e5ab87826c43c2f1b" title="Define a Semaphore object.">osSemaphoreDef</a> (my_semaphore);    <span class="comment">// Declare semaphore</span></div>
+<div class="line"><a class="code" href="cmsis__os_8h.html#aa8968896c84094aa973683c84fa06f84" title="Semaphore ID identifies the semaphore (pointer to a semaphore control block).">osSemaphoreId</a>  (my_semaphore_id); <span class="comment">// Semaphore ID</span></div>
+</div><!-- fragment --></li>
+<li>Initialize the semaphore container with a number of tokens within a thread: <div class="fragment"><div class="line">my_semaphore_id = <a class="code" href="group___c_m_s_i_s___r_t_o_s___semaphore_mgmt.html#ga97381e8e55cd47cec390bf57c96d6edb" title="Create and Initialize a Semaphore object used for managing resources.">osSemaphoreCreate</a>(<a class="code" href="group___c_m_s_i_s___r_t_o_s___semaphore_mgmt.html#ga03761ee8d2c3cd4544e18364ab301dac" title="Access a Semaphore definition.">osSemaphore</a>(my_semaphore), 4);  <span class="comment">// Create semaphore with 4 tokens</span></div>
+</div><!-- fragment --> <b>Important:</b> semaphore tokens can be created and destroyed as threads run. This means that can initialize a semaphore with zero tokens and then use one thread to add/create tokens to the semaphore while a second thread removes them. In this way you can distinguish between producer and consumer threads.</li>
+<li>Acquire a token from the semaphore container: <div class="fragment"><div class="line"><a class="code" href="group___c_m_s_i_s___r_t_o_s___semaphore_mgmt.html#gacc15b0fc8ce1167fe43da33042e62098" title="Wait until a Semaphore token becomes available.">osSemaphoreWait</a>(my_semaphore_id, <a class="code" href="cmsis__os_8h.html#a9eb9a7a797a42e4b55eb171ecc609ddb" title="Timeout value.">osWaitForever</a>);</div>
+</div><!-- fragment --></li>
+<li>When finished using the semaphore resource, send the token back to the semaphore container: <div class="fragment"><div class="line"><a class="code" href="group___c_m_s_i_s___r_t_o_s___semaphore_mgmt.html#gab108914997c49e14d8ff1ae0d1988ca0" title="Release a Semaphore token.">osSemaphoreRelease</a>(my_semaphore_id);</div>
+</div><!-- fragment --></li>
+</ol>
+<h2>Semaphore Use Cases</h2>
+<p>Due to their flexibility, semaphores cover a wide range of synchronizing applications. At the same time, they are perhaps the most challenging RTOS object to understand. The following explains a use case for semaphores, taken from the book <a href="http://www.greenteapress.com/semaphores/" target="_blank">The Little Book Of Semaphores</a> by Allen B. Downey which is available for free download.</p>
+<p><b>Non-binary Semaphore (Multiplex)</b></p>
+<p>A multiplex limits the number of threads that can access a critical section of code. For example, this could be a function accessing DMA resources which can only support a limited number of calls.</p>
+<p>To allow multiple threads to run the function, initialize a semaphore to the maximum number of threads that can be allowed. The number of tokens in the semaphore represents the number of additional threads that may enter. If this number is zero, then the next thread trying to access the function will have to wait until one of the other threads exits and releases its token. When all threads have exited the token number is back to n. Ths following example shows the code for one of the threads that might access the resource:</p>
+<div class="fragment"><div class="line"><a class="code" href="group___c_m_s_i_s___r_t_o_s___semaphore_mgmt.html#ga9e66fe361749071e5ab87826c43c2f1b" title="Define a Semaphore object.">osSemaphoreDef</a>(multiplex);</div>
+<div class="line"><a class="code" href="cmsis__os_8h.html#aa8968896c84094aa973683c84fa06f84" title="Semaphore ID identifies the semaphore (pointer to a semaphore control block).">osSemaphoreId</a> (multiplex_id);</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> thread_n (<span class="keywordtype">void</span>)</div>
+<div class="line">  {</div>
+<div class="line">    multiplex_id = <a class="code" href="group___c_m_s_i_s___r_t_o_s___semaphore_mgmt.html#ga97381e8e55cd47cec390bf57c96d6edb" title="Create and Initialize a Semaphore object used for managing resources.">osSemaphoreCreate</a>(<a class="code" href="group___c_m_s_i_s___r_t_o_s___semaphore_mgmt.html#ga03761ee8d2c3cd4544e18364ab301dac" title="Access a Semaphore definition.">osSemaphore</a>(multiplex), 3);</div>
+<div class="line">    <span class="keywordflow">while</span>(1)</div>
+<div class="line">      {</div>
+<div class="line">        <a class="code" href="group___c_m_s_i_s___r_t_o_s___semaphore_mgmt.html#gacc15b0fc8ce1167fe43da33042e62098" title="Wait until a Semaphore token becomes available.">osSemaphoreWait</a>(multiplex_id, <a class="code" href="cmsis__os_8h.html#a9eb9a7a797a42e4b55eb171ecc609ddb" title="Timeout value.">osWaitForever</a>);</div>
+<div class="line">        <span class="comment">// do something</span></div>
+<div class="line">        <a class="code" href="group___c_m_s_i_s___r_t_o_s___semaphore_mgmt.html#gab108914997c49e14d8ff1ae0d1988ca0" title="Release a Semaphore token.">osSemaphoreRelease</a>(multiplex_id);</div>
+<div class="line">      }</div>
+<div class="line">  }     </div>
+</div><!-- fragment --> <h2 class="groupheader">Macro Definition Documentation</h2>
 <a class="anchor" id="ga7da4c7bfb340779c9fc7b321f5ab3e3a"></a>
 <div class="memitem">
 <div class="memproto">
@@ -377,7 +409,7 @@ CMSIS-RTOS Semaphore</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:59 for CMSIS-RTOS by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:27 for CMSIS-RTOS by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

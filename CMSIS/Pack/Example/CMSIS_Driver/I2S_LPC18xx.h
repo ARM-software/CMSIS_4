@@ -18,8 +18,8 @@
  * 3. This notice may not be removed or altered from any source distribution.
  *
  *
- * $Date:        11. December 2014
- * $Revision:    V1.00
+ * $Date:        15. June 2015
+ * $Revision:    V1.1
  *
  * Project:      I2S Driver Definitions for NXP LPC18xx
  * -------------------------------------------------------------------------- */
@@ -114,10 +114,18 @@ typedef struct _I2S_STREAM_INFO {
   uint8_t                 residue_cnt;
 } I2S_STREAM_INFO;
 
+typedef struct _I2S_STATUS {
+  uint8_t tx_busy;                       // Transmitter busy flag
+  uint8_t rx_busy;                       // Receiver busy flag
+  uint8_t tx_underflow;                  // Transmit data underflow detected (cleared on start of next send operation)
+  uint8_t rx_overflow;                   // Receive data overflow detected (cleared on start of next receive operation)
+  uint8_t frame_error;                   // Sync Frame error detected (cleared on start of next send/receive operation)
+} I2S_STATUS;
+
 // I2S Information (Run-Time)
 typedef struct _I2S_INFO {
   ARM_SAI_SignalEvent_t   cb_event;      // Event callback
-  ARM_SAI_STATUS          status;        // Status flags
+  I2S_STATUS              status;        // Status flags
   I2S_STREAM_INFO         tx;            // Transmit information
   I2S_STREAM_INFO         rx;            // Receive information
   uint8_t                 flags;         // I2S driver flags

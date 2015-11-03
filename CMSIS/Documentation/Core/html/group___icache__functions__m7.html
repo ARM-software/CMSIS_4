@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-CORE
-   &#160;<span id="projectnumber">Version 4.10</span>
+   &#160;<span id="projectnumber">Version 4.20</span>
    </div>
    <div id="projectbrief">CMSIS-CORE support for Cortex-M processor-based devices</div>
   </td>
@@ -162,15 +162,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>The function turns on the instruction cache. </p>
-<dl class="section note"><dt>Note</dt><dd><ul>
-<li>Before enabling the instruction cache, you must invalidate (<a class="el" href="group___icache__functions__m7.html#ga50d373a785edd782c5de5a3b55e30ff3">SCB_InvalidateICache</a>) the entire instruction cache if external memory might have changed since the cache was disabled. </li>
-</ul>
-</dd>
+<dl class="section note"><dt>Note</dt><dd>Before enabling the instruction cache, you must invalidate (<a class="el" href="group___icache__functions__m7.html#ga50d373a785edd782c5de5a3b55e30ff3">SCB_InvalidateICache</a>) the entire instruction cache if external memory might have changed since the cache was disabled. </dd>
 <dd>
-<ul>
-<li>After reset, you must invalidate (<a class="el" href="group___icache__functions__m7.html#ga50d373a785edd782c5de5a3b55e30ff3">SCB_InvalidateICache</a>) each cache before enabling it. </li>
-</ul>
-</dd></dl>
+After reset, you must invalidate (<a class="el" href="group___icache__functions__m7.html#ga50d373a785edd782c5de5a3b55e30ff3">SCB_InvalidateICache</a>) each cache before enabling it. </dd></dl>
 
 </div>
 </div>
@@ -188,10 +182,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>The function invalidates the instruction cache. The instruction cache is never dirty so cache RAM errors are always recoverable by invalidating the cache and retrying the instruction. </p>
-<dl class="section note"><dt>Note</dt><dd><ul>
-<li>After reset, you must invalidate each cache before enabling (<a class="el" href="group___icache__functions__m7.html#gaf9e7c6c8e16ada1f95e5bf5a03505b68">SCB_EnableICache</a>) it. </li>
-</ul>
-</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>After reset, you must invalidate each cache before enabling (<a class="el" href="group___icache__functions__m7.html#gaf9e7c6c8e16ada1f95e5bf5a03505b68">SCB_EnableICache</a>) it. </dd></dl>
 
 </div>
 </div>
@@ -200,7 +191,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:40 for CMSIS-CORE by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:39:59 for CMSIS-CORE by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

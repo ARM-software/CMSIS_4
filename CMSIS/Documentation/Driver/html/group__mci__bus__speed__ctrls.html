@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -145,7 +145,7 @@ Macros</h2></td></tr>
 <p>Specify the bus speed mode. </p>
 <p>The function <a class="el" href="group__mci__interface__gr.html#gaec0506a2aa4ae75cf6bc02528f36fe30">ARM_MCI_Control</a> with <em>control</em> = <a class="el" href="group__mci__mode__ctrls.html#ga7f982d2e5aec768307d35a83c65fb3ef">ARM_MCI_BUS_SPEED</a> configures the bus speed of the MCI to the requested bits/s specified with <em>arg</em>.</p>
 <p>The function <a class="el" href="group__mci__interface__gr.html#gaec0506a2aa4ae75cf6bc02528f36fe30">ARM_MCI_Control</a> with <em>control</em> = <a class="el" href="group__mci__mode__ctrls.html#gaf7ede525eabc618fbbb9f7a294c8ed96">ARM_MCI_BUS_SPEED_MODE</a> configures the bus speed mode of the MCI as specified with <em>arg</em> listed bellow.</p>
-<p>The function <a class="el" href="group__mci__interface__gr.html#ga7e5a78b6e6409189833a0b72a0a3c48a">ARM_MCI_GetCapabilities</a> lists the supported bus speed modes. Initially, all SD cards use a 3.3 volt electrical interface. Some SD cards can switch to 1.8 volt operation. For example, the use of ultra-high-speed (UHS) SD cards requires 1.8 volt operation and a 4-bit bus data width. The bitfield <a class="el" href="group__mci__interface__gr.html#a084188480d589cdc8d3e164b9f41bea9" title="Supports SD UHS-I (Ultra High Speed) 1.8V signaling.">ARM_MCI_CAPABILITIES.uhs_signaling</a> encodes whether the driver supports 1.8 volt UHS signaling.</p>
+<p>The function <a class="el" href="group__mci__interface__gr.html#ga7e5a78b6e6409189833a0b72a0a3c48a">ARM_MCI_GetCapabilities</a> lists the supported bus speed modes. Initially, all SD cards use a 3.3 volt electrical interface. Some SD cards can switch to 1.8 volt operation. For example, the use of ultra-high-speed (UHS) SD cards requires 1.8 volt operation and a 4-bit bus data width. The data field <em>uhs_signaling</em> of the structure <a class="el" href="group__mci__interface__gr.html#struct_a_r_m___m_c_i___c_a_p_a_b_i_l_i_t_i_e_s" title="MCI Driver Capabilities.">ARM_MCI_CAPABILITIES</a> encodes whether the driver supports 1.8 volt UHS signaling.</p>
 <dl class="section see"><dt>See Also</dt><dd><ul>
 <li><a class="el" href="group__mci__driver__strength__ctrls.html">MCI Driver Strength</a></li>
 </ul>
@@ -177,34 +177,6 @@ Macros</h2></td></tr>
 </div><div class="memdoc">
 
 <p>SD/MMC: High Speed mode up to 50/52MHz. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga04da920a5cac99eab9784527057f1b9c"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_MCI_BUS_UHS_DDR50&#160;&#160;&#160;(0x06)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>SD: DDR50 (Dual Data Rate) up to 50MHz, 50 MB/s: UHS-I (Ultra High Speed) 1.8V signaling. </p>
-
-</div>
-</div>
-<a class="anchor" id="gad2bab563e7bbb4bcf6bdabe6a13dadf4"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_MCI_BUS_UHS_SDR104&#160;&#160;&#160;(0x05)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>SD: SDR104 (Single Data Rate) up to 208MHz, 104 MB/s: UHS-I (Ultra High Speed) 1.8V signaling. </p>
 
 </div>
 </div>
@@ -250,12 +222,40 @@ Macros</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="gad2bab563e7bbb4bcf6bdabe6a13dadf4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_MCI_BUS_UHS_SDR104&#160;&#160;&#160;(0x05)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>SD: SDR104 (Single Data Rate) up to 208MHz, 104 MB/s: UHS-I (Ultra High Speed) 1.8V signaling. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga04da920a5cac99eab9784527057f1b9c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_MCI_BUS_UHS_DDR50&#160;&#160;&#160;(0x06)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>SD: DDR50 (Dual Data Rate) up to 50MHz, 50 MB/s: UHS-I (Ultra High Speed) 1.8V signaling. </p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:42 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:02 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

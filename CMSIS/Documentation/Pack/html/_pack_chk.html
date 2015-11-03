@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.3.3</span>
+   &#160;<span id="projectnumber">Version 1.4.0</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -143,15 +143,16 @@ $(document).ready(function(){initNavTree('_pack_chk.html','');});
 <tr>
 <td>-v  </td><td>Verbose  </td><td>Prints extra process information.   </td></tr>
 <tr>
-<td>&ndash;&ndash;diag-suppress&#160;&lt;msg-list&gt;  </td><td>Suppress  </td><td>Supress all error message for the listed values. You can separate the values with blanks to create a list. Ranges are not allowed. Message values are listed in the tables of <a class="el" href="_pack_chk.html#PackChkMessages">Error and Warning Messages</a>.   </td></tr>
-<tr>
-<td style="white-space:nowrap">&ndash;&ndash;diag-suppress&#160;&lt;!exceptions&gt;  </td><td>Suppress  </td><td>Supress all error messages with the exception of those menitoned in &lt;!exceptions&gt;. Each message value needs the negation sign (!). You can separate values with blanks to create a list. Ranges are not allowed. Message list values are listed in the tables of <a class="el" href="_pack_chk.html#PackChkMessages">Error and Warning Messages</a>.   </td></tr>
+<td>-x&#160;&lt;msg-list&gt;  </td><td>Suppress  </td><td>Supress all listed validation messages. You can separate the values with blanks to create a list or repeat the option. Ranges are not allowed. Suppressing validation messages does not affect error and warning counters. For a list of messages refer to <a href="#packchk_valid_msgs"><b>Validation Messages</b></a>.   </td></tr>
 </table>
 <p><b>Examples</b></p>
 <p>Run <b>PackChk.exe</b> on the package description file called <b>MyVendor.MyPack.pdsc</b>. <b>PackChk.exe</b> verifies the file against the Software Pack that is located in the same directory. </p>
 <pre class="fragment">PackChk.exe MyVendor.MyPack.pdsc
 </pre><p>Run <b>PackChk.exe</b> on the package description file called <b>MyVendor.MVCM3.pdsc</b>, verify SVD files, verify the URL to the Pack Server, and generate a ASCII text file with the standardized name of the Software Pack. </p>
 <pre class="fragment">PackChk.exe "MyVendor.MVCM3.pdsc" -s -u "http://www.myvendor.com/pack" -n packname.txt
+</pre><p>Run <b>PackChk.exe</b> on the package description file called <b>MyVendor.MVCM3.pdsc</b>. Suppress validation messsages M304 and M331. </p>
+<pre class="fragment">PackChk.exe MyVendor.MVCM3.pdsc -x M304 M331           // messages as a list
+PackChk.exe MyVendor.MVCM3.pdsc -x M304 -x M331        // option repeated
 </pre><h1><a class="anchor" id="PackChkMessages"></a>
 Error and Warning Messages</h1>
 <p>The following table shows the errors and warnings issued by PackChk.</p>
@@ -206,7 +207,8 @@ Error and Warning Messages</h1>
 <tr>
 <td>M209 </td><td>ERROR </td><td>Unknown Option: <em>'OPT'</em> </td><td>The command line option entered is not known or invalid.   </td></tr>
 </table>
-<h2>Validation Errors</h2>
+<p><a class="anchor" id="packchk_valid_msgs"></a></p>
+<h2>Validation Messages</h2>
 <table  class="cmtable" summary="PackChk Validation Msgs">
 <tr>
 <th>Message Number </th><th>Type </th><th>Description </th><th>Action  </th></tr>
@@ -359,8 +361,7 @@ Error and Warning Messages</h1>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>M348 </td><td>WARNING </td><td><em>'PATH'</em> (Line <em>'LINE'</em>) <br/>
- Feature redefined for <em>'DEVICE'</em>, see Line <em>'REF_LINE'</em>: <em>'FEATURE'</em>  </td><td><p class="starttd">This feature <em>'FEATURE'</em> has been defined already on the same level in line <em>'REF_LINE'</em>. The feature characteristics defined on line <em>'LINE'</em> overwrite those from <em>'REF_LINE'</em>. Correct the feature (<a class="el" href="pdsc_family_pg.html#element_feature">/package/devices/family/.../feature</a>).  </p>
+<td>M348 </td><td>WARNING </td><td>Feature redefined for <em>'MCU'</em>, see Line <em>'REF_LINE'</em>: <em>'FEATURE'</em>  </td><td><p class="starttd">This feature <em>'FEATURE'</em> has been defined already on the same level in line <em>'REF_LINE'</em>. The feature characteristics defined on line <em>'LINE'</em> overwrite those from <em>'REF_LINE'</em>. Correct the feature (<a class="el" href="pdsc_family_pg.html#element_feature">/package/devices/family/.../feature</a>).  </p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -408,7 +409,7 @@ Error and Warning Messages</h1>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>M360 </td><td>WARNING </td><td>Subfamily has no Device(s): <em>'SUBFAMILY'</em>  </td><td><p class="starttd">Add the missing information. Refer to <a class="el" href="pdsc_family_pg.html#element_subfamily">/package/devices/family/subfamily</a>. </p>
+<td>M360 </td><td>WARNING </td><td>Subfamily has no Device(s): <em>'SUBFAMILY'</em>  </td><td><p class="starttd">Add the missing information. Refer to <a class="el" href="pdsc_family_pg.html#element_subFamily">/package/devices/family/subFamily</a>. </p>
 <p class="endtd"></p>
 </td></tr>
 <tr>
@@ -433,8 +434,27 @@ Error and Warning Messages</h1>
 <p class="endtd"></p>
 </td></tr>
 <tr>
-<td>M369 </td><td>INFO </td><td><em>'PATH'</em> (Line <em>'LINE'</em>) <br/>
- Feature is already defined for <em>'DEVICE'</em> and will be added, see Line <em>'LINE'</em>: <em>'FEATURE'</em>.  </td><td><p class="starttd">This feature <em>'FEATURE'</em> has been defined already on a higher level and as such it gets added to this <em>'DEVICE'</em>. This is usually done when some devices have a higher number of basic features. Correct the feature (<a class="el" href="pdsc_family_pg.html#element_feature">/package/devices/family/.../feature</a>) if this is a typo. </p>
+<td>M369 </td><td>INFO </td><td>Feature is already defined for <em>'DEVICE'</em> and will be added, see Line <em>'LINE'</em>: <em>'FEATURE'</em>.  </td><td><p class="starttd">This feature <em>'FEATURE'</em> has been defined already on a higher level and as such it gets added to this <em>'DEVICE'</em>. This is usually done when some devices have a higher number of basic features. Correct the feature (<a class="el" href="pdsc_family_pg.html#element_feature">/package/devices/family/.../feature</a>) if this is a typo. </p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td>M371 </td><td>ERROR </td><td><em>'SECTION'</em> Feature for <em>'MCU'</em>: <em>'FEATURE'</em> unknown.  </td><td><p class="starttd">This feature <em>'FEATURE'</em> is unknwon to the specified <em>'MCU'</em>. Correct the feature (<a class="el" href="pdsc_family_pg.html#element_feature">/package/devices/family/.../feature</a>) if this is a typo. </p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td>M372 </td><td>ERROR </td><td><em>'SECTION'</em> Feature for <em>'MCU'</em>: <em>'FEATURE'</em> misspelled, did you mean <em>'KNOWNFEATURE'</em> (<em>'DESCR'</em>).  </td><td><p class="starttd">This feature <em>'FEATURE'</em> resembles the feature <em>'KNOWNFEATURE'</em>. Correct the feature (<a class="el" href="pdsc_family_pg.html#element_feature">/package/devices/family/.../feature</a>) if this is a typo. </p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td>M373 </td><td>ERROR </td><td>Unsupported Schema Version: <em>'VER'</em>.  </td><td><p class="starttd">The schema version is not supported. Verify the attribute <span class="XML-Token">schemaVersion</span> of the element <a class="el" href="pdsc_package_pg.html#element_package">/package</a>.  </p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td>M374 </td><td>ERROR </td><td>While checking Feature for <em>'MCU'</em>: Pname <em>'CPU'</em> not found.  </td><td><p class="starttd">The processor could not be found for the specified device. Refer to <a class="el" href="pdsc_family_pg.html#element_device">/package/devices/family/../device</a> and <a class="el" href="pdsc_family_pg.html#element_processor">/package/devices/family/.../processor</a>.  </p>
+<p class="endtd"></p>
+</td></tr>
+<tr>
+<td>M375 </td><td>ERROR </td><td><em>'path/pdsc_file'</em>: No &lt;mountedDevice&gt; for board <em>'BOARD'</em> found.  </td><td><p class="starttd">If a board element does not contain a &lt;mountedDevice&gt; element, then the examples for this board are not shown in the Pack Installer. and example projects may not appear in the development tools. Refer to <a class="el" href="pdsc_boards_pg.html#element_board_mountedDevice">/package/boards/board/mountedDevice</a> of <a class="el" href="pdsc_boards_pg.html#element_boards">/package/boards</a>.  </p>
 <p class="endtd"></p>
 </td></tr>
 </table>
@@ -445,7 +465,7 @@ Error and Warning Messages</h1>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="_create_pack_util.html">Utilities for Creating Packs</a></li>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:58 for CMSIS-Pack by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:26 for CMSIS-Pack by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

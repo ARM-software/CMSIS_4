@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -135,32 +135,17 @@ Macros</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Description</h2>
 <p>Specify operation parameters and various controls. </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="ga661e91aaa642d10ba80e3cc72f263040"></a>
+<a class="anchor" id="ga69d130b9f8aa34d6df5334ab67c74307"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_I2C_ABORT_TRANSFER&#160;&#160;&#160;(0x04)</td>
+          <td class="memname">#define ARM_I2C_OWN_ADDRESS&#160;&#160;&#160;(0x01)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Abort Master/Slave Transmit/Receive. </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__i2c__interface__gr.html#ga828f5fa289d065675ef78a9a73d129dc" title="Control I2C Interface.">ARM_I2C_Control</a> </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="gadacf04578770faca4b3eaae34b2c5f03"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_I2C_BUS_CLEAR&#160;&#160;&#160;(0x03)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Execute Bus clear: send nine clock pulses. </p>
+<p>Set Own Slave Address; arg = address. </p>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__i2c__interface__gr.html#ga828f5fa289d065675ef78a9a73d129dc" title="Control I2C Interface.">ARM_I2C_Control</a> </dd></dl>
 
 </div>
@@ -181,17 +166,32 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga69d130b9f8aa34d6df5334ab67c74307"></a>
+<a class="anchor" id="gadacf04578770faca4b3eaae34b2c5f03"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_I2C_OWN_ADDRESS&#160;&#160;&#160;(0x01)</td>
+          <td class="memname">#define ARM_I2C_BUS_CLEAR&#160;&#160;&#160;(0x03)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Set Own Slave Address; arg = address. </p>
+<p>Execute Bus clear: send nine clock pulses. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__i2c__interface__gr.html#ga828f5fa289d065675ef78a9a73d129dc" title="Control I2C Interface.">ARM_I2C_Control</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga661e91aaa642d10ba80e3cc72f263040"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_I2C_ABORT_TRANSFER&#160;&#160;&#160;(0x04)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Abort Master/Slave Transmit/Receive. </p>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__i2c__interface__gr.html#ga828f5fa289d065675ef78a9a73d129dc" title="Control I2C Interface.">ARM_I2C_Control</a> </dd></dl>
 
 </div>
@@ -201,7 +201,7 @@ Macros</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:42 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:02 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

@@ -19,6 +19,7 @@ var searchData=
   ['deviceremotewakeup',['DeviceRemoteWakeup',['../group__usbd__interface__gr.html#a649343be3fcfc44431d19f51d13e03b3',1,'ARM_DRIVER_USBD']]],
   ['devicesetaddress',['DeviceSetAddress',['../group__usbd__interface__gr.html#a4e927b5593f416a8641e12016208b5d5',1,'ARM_DRIVER_USBD']]],
   ['direction',['direction',['../group__i2c__interface__gr.html#a2148ffb99828aeaced6a5655502434ac',1,'ARM_I2C_STATUS']]],
+  ['dlc',['dlc',['../group__can__interface__gr.html#a811fbb0cb2c2263b1a7440a7e9d78239',1,'ARM_CAN_MSG_INFO']]],
   ['driver_5fstrength_5f18',['driver_strength_18',['../group__nand__interface__gr.html#ae672b2a65dd3d0b93812c088491c4552',1,'ARM_NAND_CAPABILITIES']]],
   ['driver_5fstrength_5f25',['driver_strength_25',['../group__nand__interface__gr.html#ae87c19872b838dac7d3136a3fd466f6a',1,'ARM_NAND_CAPABILITIES']]],
   ['driver_5fstrength_5f50',['driver_strength_50',['../group__nand__interface__gr.html#aef3d6e1522a6cf7fb87fd113dcd43ad5',1,'ARM_NAND_CAPABILITIES']]],

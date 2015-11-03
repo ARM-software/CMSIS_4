@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -208,96 +208,154 @@ Macros</h2></td></tr>
 <tr class="separator:a7c23bf8680f3feaf444d289df3603c38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="afc3be8e98be7a242c81cd677996f21d8"></a>
+<a class="anchor" id="a2cb4a6a3dc939c3b13021be266f23e76"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_USB_ENDPOINT_DIRECTION_MASK&#160;&#160;&#160;0x80</td>
+          <td class="memname">#define ARM_USB_ROLE_NONE&#160;&#160;&#160;0</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a class="anchor" id="acdacc3b2d7854566a90f0fe265a96f9d"></a>
+<a class="anchor" id="ab21de5df4cadf9bc4381c8c1066205d8"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_USB_ENDPOINT_MAX_PACKET_SIZE_MASK&#160;&#160;&#160;0x07FF</td>
+          <td class="memname">#define ARM_USB_ROLE_HOST&#160;&#160;&#160;1</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a class="anchor" id="aff3c2adf06d5dc8ccb3622b5860b380c"></a>
+<a class="anchor" id="ab67eb404d64392b8910d7fdaef01aa0d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_USB_ENDPOINT_MICROFRAME_TRANSACTIONS_1&#160;&#160;&#160;0x0000</td>
+          <td class="memname">#define ARM_USB_ROLE_DEVICE&#160;&#160;&#160;2</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a class="anchor" id="afd061484f2de3a75e89b126f6ed21226"></a>
+<a class="anchor" id="a7f42a0ff2d6e9187428a0126cc140c5b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_USB_ENDPOINT_MICROFRAME_TRANSACTIONS_2&#160;&#160;&#160;0x0800</td>
+          <td class="memname">#define ARM_USB_PIN_DP&#160;&#160;&#160;(1 &lt;&lt; 0)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>USB D+ pin. </p>
+
+</div>
+</div>
+<a class="anchor" id="a5a5348d08c911233e4e9d81d1c42a367"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_USB_PIN_DM&#160;&#160;&#160;(1 &lt;&lt; 1)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>USB D- pin. </p>
+
+</div>
+</div>
+<a class="anchor" id="a390491e93356426de470ae41302dd547"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_USB_PIN_VBUS&#160;&#160;&#160;(1 &lt;&lt; 2)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>USB VBUS pin. </p>
+
+</div>
+</div>
+<a class="anchor" id="a03ae07428733660d5e187fec1aede075"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_USB_PIN_OC&#160;&#160;&#160;(1 &lt;&lt; 3)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>USB OverCurrent pin. </p>
+
+</div>
+</div>
+<a class="anchor" id="a03a103d754d9751485b748cd144cbfd7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_USB_PIN_ID&#160;&#160;&#160;(1 &lt;&lt; 4)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>USB ID pin. </p>
+
+</div>
+</div>
+<a class="anchor" id="a828674d5225de2aadf7fb764a22e74f3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_USB_PID_OUT&#160;&#160;&#160;1</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a class="anchor" id="a7c23bf8680f3feaf444d289df3603c38"></a>
+<a class="anchor" id="adb2459ddd000755c1ea52183bb8c55bb"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_USB_ENDPOINT_MICROFRAME_TRANSACTIONS_3&#160;&#160;&#160;0x1000</td>
+          <td class="memname">#define ARM_USB_PID_IN&#160;&#160;&#160;9</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a class="anchor" id="a72544ba674dc6d32c9caffcf9083fdfd"></a>
+<a class="anchor" id="ab8945ae385d3e7d0da9ba9ff461e09c1"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_USB_ENDPOINT_MICROFRAME_TRANSACTIONS_MASK&#160;&#160;&#160;0x1800</td>
+          <td class="memname">#define ARM_USB_PID_SOF&#160;&#160;&#160;5</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a class="anchor" id="a6ef3e2cf16ee3b1356947a17e5d42a6c"></a>
+<a class="anchor" id="a08d69b2a1e3d5ef4ef1a36f591ea0df6"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_USB_ENDPOINT_NUMBER_MASK&#160;&#160;&#160;0x0F</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a27505b779f79c82f3d7e63f7841b9c98"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_USB_PID_ACK&#160;&#160;&#160;2</td>
+          <td class="memname">#define ARM_USB_PID_SETUP&#160;&#160;&#160;13</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -340,36 +398,24 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a56e57da4c1665866bf48a4bff4fa36b7"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_USB_PID_ERR&#160;&#160;&#160;12</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="adb2459ddd000755c1ea52183bb8c55bb"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_USB_PID_IN&#160;&#160;&#160;9</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a class="anchor" id="ad78b3806a0963b041135a76eaf2fcd73"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">#define ARM_USB_PID_MDATA&#160;&#160;&#160;15</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a27505b779f79c82f3d7e63f7841b9c98"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_USB_PID_ACK&#160;&#160;&#160;2</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -388,36 +434,24 @@ Macros</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ab7f3d6c2acab8b6b607ff7c063c11444"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_USB_PID_STALL&#160;&#160;&#160;14</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="ab4f0fb1af1b2257eef132a684a58b62b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">#define ARM_USB_PID_NYET&#160;&#160;&#160;6</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a828674d5225de2aadf7fb764a22e74f3"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_USB_PID_OUT&#160;&#160;&#160;1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a2249b4907c4e9fa63a9d5685a6525ae6"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_USB_PID_PING&#160;&#160;&#160;4</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -436,36 +470,12 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a8a8e917e48e97820b08e36b3da87f678"></a>
+<a class="anchor" id="a56e57da4c1665866bf48a4bff4fa36b7"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_USB_PID_RESERVED&#160;&#160;&#160;0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a08d69b2a1e3d5ef4ef1a36f591ea0df6"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_USB_PID_SETUP&#160;&#160;&#160;13</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="ab8945ae385d3e7d0da9ba9ff461e09c1"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_USB_PID_SOF&#160;&#160;&#160;5</td>
+          <td class="memname">#define ARM_USB_PID_ERR&#160;&#160;&#160;12</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -484,118 +494,108 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ab7f3d6c2acab8b6b607ff7c063c11444"></a>
+<a class="anchor" id="a2249b4907c4e9fa63a9d5685a6525ae6"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_USB_PID_STALL&#160;&#160;&#160;14</td>
+          <td class="memname">#define ARM_USB_PID_PING&#160;&#160;&#160;4</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a class="anchor" id="a5a5348d08c911233e4e9d81d1c42a367"></a>
+<a class="anchor" id="a8a8e917e48e97820b08e36b3da87f678"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_USB_PIN_DM&#160;&#160;&#160;(1 &lt;&lt; 1)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>USB D- pin. </p>
-
-</div>
-</div>
-<a class="anchor" id="a7f42a0ff2d6e9187428a0126cc140c5b"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_USB_PIN_DP&#160;&#160;&#160;(1 &lt;&lt; 0)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>USB D+ pin. </p>
-
-</div>
-</div>
-<a class="anchor" id="a03a103d754d9751485b748cd144cbfd7"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_USB_PIN_ID&#160;&#160;&#160;(1 &lt;&lt; 4)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>USB ID pin. </p>
-
-</div>
-</div>
-<a class="anchor" id="a03ae07428733660d5e187fec1aede075"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_USB_PIN_OC&#160;&#160;&#160;(1 &lt;&lt; 3)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>USB OverCurrent pin. </p>
-
-</div>
-</div>
-<a class="anchor" id="a390491e93356426de470ae41302dd547"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_USB_PIN_VBUS&#160;&#160;&#160;(1 &lt;&lt; 2)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>USB VBUS pin. </p>
-
-</div>
-</div>
-<a class="anchor" id="ab67eb404d64392b8910d7fdaef01aa0d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_USB_ROLE_DEVICE&#160;&#160;&#160;2</td>
+          <td class="memname">#define ARM_USB_PID_RESERVED&#160;&#160;&#160;0</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a class="anchor" id="ab21de5df4cadf9bc4381c8c1066205d8"></a>
+<a class="anchor" id="a6ef3e2cf16ee3b1356947a17e5d42a6c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_USB_ROLE_HOST&#160;&#160;&#160;1</td>
+          <td class="memname">#define ARM_USB_ENDPOINT_NUMBER_MASK&#160;&#160;&#160;0x0F</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a class="anchor" id="a2cb4a6a3dc939c3b13021be266f23e76"></a>
+<a class="anchor" id="afc3be8e98be7a242c81cd677996f21d8"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_USB_ROLE_NONE&#160;&#160;&#160;0</td>
+          <td class="memname">#define ARM_USB_ENDPOINT_DIRECTION_MASK&#160;&#160;&#160;0x80</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="acdacc3b2d7854566a90f0fe265a96f9d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_USB_ENDPOINT_MAX_PACKET_SIZE_MASK&#160;&#160;&#160;0x07FF</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a72544ba674dc6d32c9caffcf9083fdfd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_USB_ENDPOINT_MICROFRAME_TRANSACTIONS_MASK&#160;&#160;&#160;0x1800</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aff3c2adf06d5dc8ccb3622b5860b380c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_USB_ENDPOINT_MICROFRAME_TRANSACTIONS_1&#160;&#160;&#160;0x0000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="afd061484f2de3a75e89b126f6ed21226"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_USB_ENDPOINT_MICROFRAME_TRANSACTIONS_2&#160;&#160;&#160;0x0800</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a7c23bf8680f3feaf444d289df3603c38"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_USB_ENDPOINT_MICROFRAME_TRANSACTIONS_3&#160;&#160;&#160;0x1000</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -608,7 +608,7 @@ Macros</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_7151b3cc910409bb744bd274374c738d.html">Driver</a></li><li class="navelem"><a class="el" href="dir_9c39448ea46a8e15f1aabc7dec307fcf.html">Include</a></li><li class="navelem"><a class="el" href="_driver___u_s_b_8h.html">Driver_USB.h</a></li>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:42 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:01 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

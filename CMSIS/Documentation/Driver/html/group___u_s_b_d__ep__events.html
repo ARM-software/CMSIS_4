@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -134,17 +134,17 @@ Macros</h2></td></tr>
 <p>This section provides the event values for the <a class="el" href="group__usbd__interface__gr.html#ga9aa5bc5cb45084194a77fae1457f6575">ARM_USBD_SignalEndpointEvent</a> callback function.</p>
 <p>The following call back notification events are generated: </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="ga375d3d8f363a056ff607c5ab3b92a864"></a>
+<a class="anchor" id="gaa0814f6880f4c0ac302ac9ebc8170739"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_USBD_EVENT_IN&#160;&#160;&#160;(1UL &lt;&lt; 2)</td>
+          <td class="memname">#define ARM_USBD_EVENT_SETUP&#160;&#160;&#160;(1UL &lt;&lt; 0)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>IN Packet(s) </p>
+<p>SETUP Packet. </p>
 
 </div>
 </div>
@@ -162,17 +162,17 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gaa0814f6880f4c0ac302ac9ebc8170739"></a>
+<a class="anchor" id="ga375d3d8f363a056ff607c5ab3b92a864"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_USBD_EVENT_SETUP&#160;&#160;&#160;(1UL &lt;&lt; 0)</td>
+          <td class="memname">#define ARM_USBD_EVENT_IN&#160;&#160;&#160;(1UL &lt;&lt; 2)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>SETUP Packet. </p>
+<p>IN Packet(s) </p>
 
 </div>
 </div>
@@ -181,7 +181,7 @@ Macros</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:43 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:03 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

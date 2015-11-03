@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -192,7 +192,7 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Description</h2>
 <p>Driver API for SPI Bus Peripheral (Driver_SPI.h) </p>
 <p>The <b>Serial Peripheral Interface Bus</b> (SPI) implements a synchronous serial bus for data exchange. In microcontroller (MCU) applications, the interface is often used to connect peripheral components at board (PCB) level. SPI devices can operate as Master (SCLK and SS are outputs) or Slave (SCLK and SS are inputs). Wikipedia offers more information about the <a href="http://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus" target="_blank"><b>Serial Peripheral Interface Bus</b></a>.</p>
-<p><b>SPI Structure</b></p>
+<p><b>Block Diagram</b></p>
 <p>The SPI Driver API defines a <b>SPI</b> interface for middleware components. The SPI Driver supports multiple slaves, but if only one slave is connected, then the Slave Select signal can be omitted.</p>
 <div class="image">
 <img src="SPI_Master1Slaves.png" alt="SPI_Master1Slaves.png"/>
@@ -223,7 +223,7 @@ SPI Master connected to 3 slaves</div></div>
 </ul>
 <p>The driver implementation is a typical part of the Device Family Pack (DFP) that supports the peripherals of the microcontroller family.</p>
 <p><b>Driver Functions</b></p>
-<p>The driver functions are published in the access struct as explained in <a class="el" href="_theory_operation.html#DriverFunctions">Driver Functions</a></p>
+<p>The driver functions are published in the access struct as explained in <a class="el" href="_theory_operation.html#DriverFunctions">Common Driver Functions</a></p>
 <ul>
 <li><a class="el" href="group__spi__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___s_p_i">ARM_DRIVER_SPI</a> : access struct for SPI driver functions</li>
 </ul>
@@ -337,7 +337,7 @@ SPI Master connected to 3 slaves</div></div>
       </table>
 </div><div class="memdoc">
 <div class="textblock"><p>Access structure of the SPI Driver. </p>
-<p>The functions of the SPI driver are accessed by function pointers exposed by this structure. Refer to <a class="el" href="_theory_operation.html#DriverFunctions">Driver Functions</a> for overview information.</p>
+<p>The functions of the SPI driver are accessed by function pointers exposed by this structure. Refer to <a class="el" href="_theory_operation.html#DriverFunctions">Common Driver Functions</a> for overview information.</p>
 <p>Each instance of a SPI interface provides such an access structure. The instance is identified by a postfix number in the symbol name of the access structure, for example:</p>
 <ul>
 <li><b>Driver_SPI0</b> is the name of the access struct of the first instance (no. 0).</li>
@@ -381,17 +381,17 @@ SPI Master connected to 3 slaves</div></div>
 <tr class="separator:a7305e7248420cdb4b02ceba87672178d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h4 class="groupheader">Field Documentation</h4>
-<a class="anchor" id="a6e0f47a92f626a971c5197fca6545505"></a>
+<a class="anchor" id="a8834b281da48583845c044a81566c1b3"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int32_t(* Control)(uint32_t control, uint32_t arg)</td>
+          <td class="memname"><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a>(* GetVersion)(void)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Pointer to <a class="el" href="group__spi__interface__gr.html#gad18d229992598d6677bec250015e5d1a">ARM_SPI_Control</a> : Control SPI Interface. </p>
+<p>Pointer to <a class="el" href="group__spi__interface__gr.html#gad5db9209ef1d64a7915a7278d6a402c8">ARM_SPI_GetVersion</a> : Get driver version. </p>
 
 </div>
 </div>
@@ -409,48 +409,6 @@ SPI Master connected to 3 slaves</div></div>
 
 </div>
 </div>
-<a class="anchor" id="ad1d892ab3932f65cd7cdf2d0a91ae5da"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint32_t(* GetDataCount)(void)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__spi__interface__gr.html#gaaaecaaf4ec1922f22e7f9de63af5ccdb">ARM_SPI_GetDataCount</a> : Get transferred data count. </p>
-
-</div>
-</div>
-<a class="anchor" id="a7305e7248420cdb4b02ceba87672178d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__spi__interface__gr.html#struct_a_r_m___s_p_i___s_t_a_t_u_s">ARM_SPI_STATUS</a>(* GetStatus)(void)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__spi__interface__gr.html#ga60d33d8788a76c388cc36e066240b817">ARM_SPI_GetStatus</a> : Get SPI status. </p>
-
-</div>
-</div>
-<a class="anchor" id="a8834b281da48583845c044a81566c1b3"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a>(* GetVersion)(void)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__spi__interface__gr.html#gad5db9209ef1d64a7915a7278d6a402c8">ARM_SPI_GetVersion</a> : Get driver version. </p>
-
-</div>
-</div>
 <a class="anchor" id="afac50d0b28860f7b569293e6b713f8a4"></a>
 <div class="memitem">
 <div class="memproto">
@@ -462,62 +420,6 @@ SPI Master connected to 3 slaves</div></div>
 </div><div class="memdoc">
 
 <p>Pointer to <a class="el" href="group__spi__interface__gr.html#ga1a3c11ed523a4355cd91069527945906">ARM_SPI_Initialize</a> : Initialize SPI Interface. </p>
-
-</div>
-</div>
-<a class="anchor" id="aba8f1c8019af95ffe19c32403e3240ef"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* PowerControl)(<a class="el" href="group__common__drv__gr.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5">ARM_POWER_STATE</a> state)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__spi__interface__gr.html#ga1a1e7e80ea32ae381b75213c32aa8067">ARM_SPI_PowerControl</a> : Control SPI Interface Power. </p>
-
-</div>
-</div>
-<a class="anchor" id="adb9224a35fe16c92eb0dd103638e4cf3"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* Receive)(void *data, uint32_t num)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__spi__interface__gr.html#ga726aff54e782ed9b47f7ba1280a3d8f6">ARM_SPI_Receive</a> : Start receiving data from SPI Interface. </p>
-
-</div>
-</div>
-<a class="anchor" id="a44eedddf4428cf4b98883b6c27d31922"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* Send)(const void *data, uint32_t num)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__spi__interface__gr.html#gab2a303d1071e926280d50682f4808479">ARM_SPI_Send</a> : Start sending data to SPI Interface. </p>
-
-</div>
-</div>
-<a class="anchor" id="ad88b63ed74c03ba06b0599ab06ad4cf7"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* Transfer)(const void *data_out, void *data_in, uint32_t num)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__spi__interface__gr.html#gaa24026b3822c10272e301f1505136ec2">ARM_SPI_Transfer</a> : Start sending/receiving data to/from SPI. </p>
 
 </div>
 </div>
@@ -535,6 +437,104 @@ SPI Master connected to 3 slaves</div></div>
 
 </div>
 </div>
+<a class="anchor" id="aba8f1c8019af95ffe19c32403e3240ef"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* PowerControl)(<a class="el" href="group__common__drv__gr.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5">ARM_POWER_STATE</a> state)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__spi__interface__gr.html#ga1a1e7e80ea32ae381b75213c32aa8067">ARM_SPI_PowerControl</a> : Control SPI Interface Power. </p>
+
+</div>
+</div>
+<a class="anchor" id="a44eedddf4428cf4b98883b6c27d31922"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* Send)(const void *data, uint32_t num)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__spi__interface__gr.html#gab2a303d1071e926280d50682f4808479">ARM_SPI_Send</a> : Start sending data to SPI Interface. </p>
+
+</div>
+</div>
+<a class="anchor" id="adb9224a35fe16c92eb0dd103638e4cf3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* Receive)(void *data, uint32_t num)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__spi__interface__gr.html#ga726aff54e782ed9b47f7ba1280a3d8f6">ARM_SPI_Receive</a> : Start receiving data from SPI Interface. </p>
+
+</div>
+</div>
+<a class="anchor" id="ad88b63ed74c03ba06b0599ab06ad4cf7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* Transfer)(const void *data_out, void *data_in, uint32_t num)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__spi__interface__gr.html#gaa24026b3822c10272e301f1505136ec2">ARM_SPI_Transfer</a> : Start sending/receiving data to/from SPI. </p>
+
+</div>
+</div>
+<a class="anchor" id="ad1d892ab3932f65cd7cdf2d0a91ae5da"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t(* GetDataCount)(void)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__spi__interface__gr.html#gaaaecaaf4ec1922f22e7f9de63af5ccdb">ARM_SPI_GetDataCount</a> : Get transferred data count. </p>
+
+</div>
+</div>
+<a class="anchor" id="a6e0f47a92f626a971c5197fca6545505"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* Control)(uint32_t control, uint32_t arg)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__spi__interface__gr.html#gad18d229992598d6677bec250015e5d1a">ARM_SPI_Control</a> : Control SPI Interface. </p>
+
+</div>
+</div>
+<a class="anchor" id="a7305e7248420cdb4b02ceba87672178d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__spi__interface__gr.html#struct_a_r_m___s_p_i___s_t_a_t_u_s">ARM_SPI_STATUS</a>(* GetStatus)(void)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__spi__interface__gr.html#ga60d33d8788a76c388cc36e066240b817">ARM_SPI_GetStatus</a> : Get SPI status. </p>
+
+</div>
+</div>
 
 </div>
 </div>
@@ -548,25 +548,13 @@ SPI Master connected to 3 slaves</div></div>
       </table>
 </div><div class="memdoc">
 <div class="textblock"><p>SPI Driver Capabilities. </p>
-<p>A SPI driver can be implemented with different capabilities. The bitfield members of this struct encode the capabilities implemented by this driver.</p>
+<p>A SPI driver can be implemented with different capabilities. The data fields of this structure encode the capabilities implemented by this driver.</p>
 <p><b>Returned by:</b></p>
 <ul>
 <li><a class="el" href="group__spi__interface__gr.html#gaf4823a11ab5efcd47c79b13801513ddc">ARM_SPI_GetCapabilities</a> </li>
 </ul>
 </div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
-<tr><td class="fieldtype">
-<a class="anchor" id="a309619714f0c4febaa497ebdb9b7e3ca"></a>uint32_t</td>
-<td class="fieldname">
-event_mode_fault: 1</td>
-<td class="fielddoc">
-Signal Mode Fault event: <a class="el" href="group___s_p_i__events.html#ga7eaa229003689aa18598273490b3e630">ARM_SPI_EVENT_MODE_FAULT</a>. </td></tr>
-<tr><td class="fieldtype">
-<a class="anchor" id="a9b4e858eb1d414128994742bf121f94c"></a>uint32_t</td>
-<td class="fieldname">
-microwire: 1</td>
-<td class="fielddoc">
-supports Microwire Interface </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="af244e2c2facf6414e3886495ee6b40bc"></a>uint32_t</td>
 <td class="fieldname">
@@ -579,6 +567,18 @@ supports Simplex Mode (Master and Slave) </td></tr>
 ti_ssi: 1</td>
 <td class="fielddoc">
 supports TI Synchronous Serial Interface </td></tr>
+<tr><td class="fieldtype">
+<a class="anchor" id="a9b4e858eb1d414128994742bf121f94c"></a>uint32_t</td>
+<td class="fieldname">
+microwire: 1</td>
+<td class="fielddoc">
+supports Microwire Interface </td></tr>
+<tr><td class="fieldtype">
+<a class="anchor" id="a309619714f0c4febaa497ebdb9b7e3ca"></a>uint32_t</td>
+<td class="fieldname">
+event_mode_fault: 1</td>
+<td class="fielddoc">
+Signal Mode Fault event: <a class="el" href="group___s_p_i__events.html#ga7eaa229003689aa18598273490b3e630">ARM_SPI_EVENT_MODE_FAULT</a>. </td></tr>
 </table>
 
 </div>
@@ -593,7 +593,7 @@ supports TI Synchronous Serial Interface </td></tr>
       </table>
 </div><div class="memdoc">
 <div class="textblock"><p>SPI Status. </p>
-<p>Structure with information about the status of the SPI. The bitfields encode busy flag and error flags.</p>
+<p>Structure with information about the status of the SPI. The data fields encode busy flag and error flags.</p>
 <p><b>Returned by:</b></p>
 <ul>
 <li><a class="el" href="group__spi__interface__gr.html#ga60d33d8788a76c388cc36e066240b817">ARM_SPI_GetStatus</a> </li>
@@ -643,129 +643,42 @@ Mode fault detected; optional (cleared on start of transfer operation) </td></tr
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="gad18d229992598d6677bec250015e5d1a"></a>
+<a class="anchor" id="gad5db9209ef1d64a7915a7278d6a402c8"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int32_t ARM_SPI_Control </td>
+          <td class="memname"><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a> ARM_SPI_GetVersion </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>control</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>arg</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Control SPI Interface. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">control</td><td>Operation </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">arg</td><td>Argument of operation (optional) </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>common <a class="el" href="group__execution__status.html">Status Error Codes</a> and driver specific <a class="el" href="group__spi__execution__status.html">Status Error Codes</a></dd></dl>
-<p>Controls the SPI interface settings and executes various operations.</p>
-<p>The parameter <em>control</em> is a bit mask that specifies various operations (see tables below). The control bits of the various groups can be combined to a control code as shown in the following example. Depending on the control bits, the parameter <em>arg</em> provides additional information, for example the baudrate.</p>
-<p><b>Example</b> </p>
+<p>Get driver version. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a></dd></dl>
+<p>The function <b>ARM_SPI_GetVersion</b> returns version information of the driver implementation in <a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a></p>
+<ul>
+<li>API version is the version of the CMSIS-Driver specification used to implement this driver.</li>
+<li>Driver version is source code version of the actual driver implementation.</li>
+</ul>
+<p>Example: </p>
 <div class="fragment"><div class="line"><span class="keyword">extern</span> <a class="code" href="group__spi__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___s_p_i" title="Access structure of the SPI Driver.">ARM_DRIVER_SPI</a> Driver_SPI0;</div>
-<div class="line"></div>
-<div class="line"><span class="comment">// configure: SPI master | clock polarity=1, clock phase=1 | bits per frame=16 | bus speed : 1000000 </span></div>
-<div class="line">status = Driver_SPI0.<a class="code" href="group__spi__interface__gr.html#a6e0f47a92f626a971c5197fca6545505" title="Pointer to ARM_SPI_Control : Control SPI Interface.">Control</a>(<a class="code" href="group__spi__mode__ctrls.html#ga3143ef07c1607b9bc57e29df35cf2fa8" title="SPI Master (Output on MOSI, Input on MISO); arg = Bus Speed in bps.">ARM_SPI_MODE_MASTER</a>   | </div>
-<div class="line">                             <a class="code" href="group__spi__frame__format__ctrls.html#ga7fab572b2fec303e979e47eb2d13ca74" title="Clock Polarity 1, Clock Phase 1.">ARM_SPI_CPOL1_CPHA1</a>   | </div>
-<div class="line">                             <a class="code" href="group__spi__data__bits__ctrls.html#gaf6c099a1d67256a32010120c66c55250" title="Number of Data bits.">ARM_SPI_DATA_BITS</a>(16), 1000000);</div>
-</div><!-- fragment --><p><b>ARM_SPI_MODE_xxx</b> specifies the SPI mode.</p>
-<table class="doxtable">
-<tr>
-<th align="left">Mode Control Bits </th><th align="left">Description</th></tr>
-<tr>
-<td align="left"><a class="el" href="group__spi__mode__ctrls.html#ga974e3d7c178b76b0540d7644b977bff3">ARM_SPI_MODE_INACTIVE</a> </td><td align="left">Set SPI to inactive. </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__spi__mode__ctrls.html#ga3143ef07c1607b9bc57e29df35cf2fa8">ARM_SPI_MODE_MASTER</a> </td><td align="left">Set the SPI Master (Output on MOSI, and the Input on MISO); <em>arg</em> = Bus Speed in <span class="XML-Token">bps</span> </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__spi__mode__ctrls.html#ga382b394c5e68f7d1206b837843732a3e">ARM_SPI_MODE_SLAVE</a> </td><td align="left">Set the SPI Slave (Output on MISO, and the Input on MOSI) </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__spi__mode__ctrls.html#gaf34d849c7cde1151a768887f154e19bd">ARM_SPI_MODE_MASTER_SIMPLEX</a> </td><td align="left">Set the SPI Master (Output and Input on MOSI); <em>arg</em> = Bus Speed in <span class="XML-Token">bps</span> </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__spi__mode__ctrls.html#ga9b113d8b336047e1c22f73ad44851fdf">ARM_SPI_MODE_SLAVE_SIMPLEX</a> </td><td align="left">Set the SPI Slave (Output and Input on MISO) </td></tr>
-</table>
-<p><b>ARM_SPI_CPOLx_CPHAy</b> specifies the clock polarity and clock phase. Additional parameters <b>ARM_SPI_TI_SSI</b> and <b>ARM_SPI_MICROWIRE</b> specify special formats.</p>
-<table class="doxtable">
-<tr>
-<th align="left">Mode Parameters: Frame Format </th><th align="left">Description</th></tr>
-<tr>
-<td align="left"><a class="el" href="group__spi__frame__format__ctrls.html#gab4ac9a609c078d1e8332cf95da34e50e">ARM_SPI_CPOL0_CPHA0</a> </td><td align="left">CPOL=<span class="XML-Token">0</span> and CPHA=<span class="XML-Token">0</span>: Clock Polarity 0, Clock Phase 0 (default) </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__spi__frame__format__ctrls.html#ga5498eb08c2ba8de2e1c2801428e79d71">ARM_SPI_CPOL0_CPHA1</a> </td><td align="left">CPOL=<span class="XML-Token">0</span> and CPHA=<span class="XML-Token">1</span>: Clock Polarity 0, Clock Phase 1 </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__spi__frame__format__ctrls.html#ga67193d9b5af1ec312a66d007c33b597f">ARM_SPI_CPOL1_CPHA0</a> </td><td align="left">CPOL=<span class="XML-Token">1</span> and CPHA=<span class="XML-Token">0</span>: Clock Polarity 1, Clock Phase 0 </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__spi__frame__format__ctrls.html#ga7fab572b2fec303e979e47eb2d13ca74">ARM_SPI_CPOL1_CPHA1</a> </td><td align="left">CPOL=<span class="XML-Token">1</span> and CPHA=<span class="XML-Token">1</span>: Clock Polarity 1, Clock Phase 1 </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__spi__frame__format__ctrls.html#ga225185710ba38848a489013ba4475915">ARM_SPI_TI_SSI</a> </td><td align="left">Specifies that the frame format corresponds to the Texas Instruments Frame Format </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__spi__frame__format__ctrls.html#ga44f481d32b9a9ea93673f05af82ccf86">ARM_SPI_MICROWIRE</a> </td><td align="left">Specifies that the frame format corresponds to the National Microwire Frame Format </td></tr>
-</table>
-<p><b><a class="el" href="group__spi__data__bits__ctrls.html#gaf6c099a1d67256a32010120c66c55250" title="Number of Data bits.">ARM_SPI_DATA_BITS(x)</a></b> specifies the number of bits transferred per SPI frame.</p>
-<table class="doxtable">
-<tr>
-<th align="left">Mode Parameters: Data Bits </th><th align="left">Description</th></tr>
-<tr>
-<td align="left"><a class="el" href="group__spi__data__bits__ctrls.html#gaf6c099a1d67256a32010120c66c55250">ARM_SPI_DATA_BITS(n)</a> </td><td align="left">Set the number of bits per SPI frame; the possible range for <em>n</em> is 1..32. </td></tr>
-</table>
-<p><b>ARM_SPI_MSB_LSB</b> and <b>ARM_SPI_LSB_MSB</b> specify the bit order.</p>
-<table class="doxtable">
-<tr>
-<th align="left">Mode Parameters: Bit order </th><th align="left">Description</th></tr>
-<tr>
-<td align="left"><a class="el" href="group__spi__bit__order__ctrls.html#ga98228a708cbab6e214c7ac696f77dab6">ARM_SPI_MSB_LSB</a> </td><td align="left">Set the bit order from MSB to LSB (default) </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__spi__bit__order__ctrls.html#ga41c53c3b396a89ce78018467e561aaaf">ARM_SPI_LSB_MSB</a> </td><td align="left">Set the bit order from LSB to MSB </td></tr>
-</table>
-<p><b>ARM_SPI_SS_MASTER_xxx</b> and <b>ARM_SPI_SS_SLAVE_xxx</b> specify the Slave Select mode.</p>
-<table class="doxtable">
-<tr>
-<th align="left">Mode Parameters: Slave Select Mode </th><th align="left">Description</th></tr>
-<tr>
-<td align="left"><a class="el" href="group__spi__slave__select__mode__ctrls.html#gae19343adc7bd71408b51733171f99dc7">ARM_SPI_SS_MASTER_UNUSED</a> </td><td align="left">Set the Slave Select mode for the master to <b>Not used</b> (default) </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__spi__slave__select__mode__ctrls.html#gab5e319aa3f9d4d8c9ed92f0fe865f624">ARM_SPI_SS_MASTER_SW</a> </td><td align="left">Set the Slave Select mode for the master to <b>Software controlled</b> </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__spi__slave__select__mode__ctrls.html#ga07762709a40dc90aca85553f500c8761">ARM_SPI_SS_MASTER_HW_OUTPUT</a> </td><td align="left">Set the Slave Select mode for the master to <b>Hardware controlled Output</b> </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__spi__slave__select__mode__ctrls.html#ga8561bd0cc25ab2bb02b138c1c6a586cd">ARM_SPI_SS_MASTER_HW_INPUT</a> </td><td align="left">Set the Slave Select mode for the master to <b>Hardware monitored Input</b> </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__spi__slave__select__mode__ctrls.html#ga2bd0d1f3ade2dc0cc48cc0593336ad70">ARM_SPI_SS_SLAVE_HW</a> </td><td align="left">Set the Slave Select mode for the slave to <b>Hardware monitored</b> (default) </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__spi__slave__select__mode__ctrls.html#gad371f6ba0d12a57bdcc3217c351abfb0">ARM_SPI_SS_SLAVE_SW</a> </td><td align="left">Set the Slave Select mode for the slave to <b>Software controlled</b> </td></tr>
-</table>
-<p><b> Miscellaneous Controls</b> execute various operations.</p>
-<table class="doxtable">
-<tr>
-<th align="left">Miscellaneous&#160;Controls </th><th align="left">Description</th></tr>
-<tr>
-<td align="left"><a class="el" href="group__spi__misc__ctrls.html#ga5ef3d114979f3fd6010d0df16c2bf5c1">ARM_SPI_SET_BUS_SPEED</a> </td><td align="left">Set the bus speed in <span class="XML-Token">bps</span>; the argument <em>arg</em> specifies the speed value </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__spi__misc__ctrls.html#gafc00fe35bb4c89b076d014b43168b2b3">ARM_SPI_GET_BUS_SPEED</a> </td><td align="left">Get the bus speed in <span class="XML-Token">bps</span> </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__spi__misc__ctrls.html#gae9861221dee78d52bd1522b7846535ce">ARM_SPI_SET_DEFAULT_TX_VALUE</a> </td><td align="left">Set the default transmission value; the argument <em>arg</em> sets the value </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__spi__misc__ctrls.html#ga5776272b82decff92da003568540c92f">ARM_SPI_CONTROL_SS</a> </td><td align="left">Control the Slave Select signal; the argument <em>arg:</em> <span class="XML-Token">0=inactive; 1=active</span> </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__spi__misc__ctrls.html#ga44708b80e48984be099cd6eb11780dc3">ARM_SPI_ABORT_TRANSFER</a> </td><td align="left">Abort the current data transfer </td></tr>
-</table>
-
+<div class="line"><a class="code" href="group__spi__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___s_p_i" title="Access structure of the SPI Driver.">ARM_DRIVER_SPI</a> *drv_info;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> setup_spi (<span class="keywordtype">void</span>)  {</div>
+<div class="line">  <a class="code" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n" title="Driver Version.">ARM_DRIVER_VERSION</a>  version;</div>
+<div class="line"> </div>
+<div class="line">  drv_info = &amp;Driver_SPI0;  </div>
+<div class="line">  version = drv_info-&gt;<a class="code" href="group__spi__interface__gr.html#a8834b281da48583845c044a81566c1b3" title="Pointer to ARM_SPI_GetVersion : Get driver version.">GetVersion</a> ();</div>
+<div class="line">  <span class="keywordflow">if</span> (version.<a class="code" href="group__common__drv__gr.html#ad180da20fbde1d3dafc074af87c19540" title="API version.">api</a> &lt; 0x10A)   {      <span class="comment">// requires at minimum API version 1.10 or higher</span></div>
+<div class="line">    <span class="comment">// error handling</span></div>
+<div class="line">    <span class="keywordflow">return</span>;</div>
+<div class="line">  }</div>
+<div class="line">}</div>
+</div><!-- fragment --> 
 </div>
 </div>
 <a class="anchor" id="gaf4823a11ab5efcd47c79b13801513ddc"></a>
@@ -784,7 +697,7 @@ Mode fault detected; optional (cleared on start of transfer operation) </td></tr
 
 <p>Get driver capabilities. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__spi__interface__gr.html#struct_a_r_m___s_p_i___c_a_p_a_b_i_l_i_t_i_e_s">ARM_SPI_CAPABILITIES</a></dd></dl>
-<p>Retrieves information about capabilities in this driver implementation. The bitfield members of the struct <a class="el" href="group__spi__interface__gr.html#struct_a_r_m___s_p_i___c_a_p_a_b_i_l_i_t_i_e_s">ARM_SPI_CAPABILITIES</a> encode various capabilities, for example supported modes.</p>
+<p>The function <b>ARM_SPI_GetCapabilities</b> returns information about the capabilities in this driver implementation. The data fields of the structure <a class="el" href="group__spi__interface__gr.html#struct_a_r_m___s_p_i___c_a_p_a_b_i_l_i_t_i_e_s">ARM_SPI_CAPABILITIES</a> encode various capabilities, for example supported modes.</p>
 <p>Example: </p>
 <div class="fragment"><div class="line"><span class="keyword">extern</span> <a class="code" href="group__spi__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___s_p_i" title="Access structure of the SPI Driver.">ARM_DRIVER_SPI</a> Driver_SPI0;</div>
 <div class="line"><a class="code" href="group__spi__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___s_p_i" title="Access structure of the SPI Driver.">ARM_DRIVER_SPI</a> *drv_info;</div>
@@ -796,84 +709,6 @@ Mode fault detected; optional (cleared on start of transfer operation) </td></tr
 <div class="line">  drv_capabilities = drv_info-&gt;<a class="code" href="group__spi__interface__gr.html#a065b5fc24d0204692f0f95a44351ac1e" title="Pointer to ARM_SPI_GetCapabilities : Get driver capabilities.">GetCapabilities</a> ();</div>
 <div class="line">  <span class="comment">// interrogate capabilities</span></div>
 <div class="line"> </div>
-<div class="line">}</div>
-</div><!-- fragment --> 
-</div>
-</div>
-<a class="anchor" id="gaaaecaaf4ec1922f22e7f9de63af5ccdb"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint32_t ARM_SPI_GetDataCount </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get transferred data count. </p>
-<dl class="section return"><dt>Returns</dt><dd>number of data items transferred</dd></dl>
-<p>Returns the number of currently transferred data items during <a class="el" href="group__spi__interface__gr.html#gab2a303d1071e926280d50682f4808479">ARM_SPI_Send</a>, <a class="el" href="group__spi__interface__gr.html#ga726aff54e782ed9b47f7ba1280a3d8f6">ARM_SPI_Receive</a> and <a class="el" href="group__spi__interface__gr.html#gaa24026b3822c10272e301f1505136ec2">ARM_SPI_Transfer</a> operation. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga60d33d8788a76c388cc36e066240b817"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__spi__interface__gr.html#struct_a_r_m___s_p_i___s_t_a_t_u_s">ARM_SPI_STATUS</a> ARM_SPI_GetStatus </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get SPI status. </p>
-<dl class="section return"><dt>Returns</dt><dd>SPI status <a class="el" href="group__spi__interface__gr.html#struct_a_r_m___s_p_i___s_t_a_t_u_s">ARM_SPI_STATUS</a></dd></dl>
-<p>Retrieves the current SPI interface status. </p>
-
-</div>
-</div>
-<a class="anchor" id="gad5db9209ef1d64a7915a7278d6a402c8"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a> ARM_SPI_GetVersion </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get driver version. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a></dd></dl>
-<p>Returns version information of the driver implementation in <a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a></p>
-<ul>
-<li>API version is the version of the CMSIS-Driver specification used to implement this driver.</li>
-<li>Driver version is source code version of the actual driver implementation.</li>
-</ul>
-<p>Example: </p>
-<div class="fragment"><div class="line"><span class="keyword">extern</span> <a class="code" href="group__spi__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___s_p_i" title="Access structure of the SPI Driver.">ARM_DRIVER_SPI</a> Driver_SPI0;</div>
-<div class="line"><a class="code" href="group__spi__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___s_p_i" title="Access structure of the SPI Driver.">ARM_DRIVER_SPI</a> *drv_info;</div>
-<div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> setup_spi (<span class="keywordtype">void</span>)  {</div>
-<div class="line">  <a class="code" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n" title="Driver Version.">ARM_DRIVER_VERSION</a>  version;</div>
-<div class="line"> </div>
-<div class="line">  drv_info = &amp;Driver_SPI0;  </div>
-<div class="line">  version = drv_info-&gt;<a class="code" href="group__spi__interface__gr.html#a8834b281da48583845c044a81566c1b3" title="Pointer to ARM_SPI_GetVersion : Get driver version.">GetVersion</a> ();</div>
-<div class="line">  <span class="keywordflow">if</span> (version.<a class="code" href="group__common__drv__gr.html#ad180da20fbde1d3dafc074af87c19540" title="API version.">api</a> &lt; 0x10A)   {      <span class="comment">// requires at minimum API version 1.10 or higher</span></div>
-<div class="line">    <span class="comment">// error handling</span></div>
-<div class="line">    <span class="keywordflow">return</span>;</div>
-<div class="line">  }</div>
 <div class="line">}</div>
 </div><!-- fragment --> 
 </div>
@@ -900,17 +735,38 @@ Mode fault detected; optional (cleared on start of transfer operation) </td></tr
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>The function initializes the SPI interface. It is called when the middleware component starts operation.</p>
-<p>The function performs the following operations:</p>
+<p>The function <b>ARM_SPI_Initialize</b> initializes the SPI interface.</p>
+<p>The parameter <em>cb_event</em> is a pointer to the <a class="el" href="group__spi__interface__gr.html#ga505b2d787348d51351d38fee98ccba7e">ARM_SPI_SignalEvent</a> callback function; use a NULL pointer when no callback signals are required.</p>
+<p>The function is called when the middleware component starts operation and performs the following:</p>
 <ul>
 <li>Initializes the resources needed for the SPI interface.</li>
 <li>Registers the <a class="el" href="group__spi__interface__gr.html#ga505b2d787348d51351d38fee98ccba7e">ARM_SPI_SignalEvent</a> callback function.</li>
 </ul>
-<p>The parameter <em>cb_event</em> is a pointer to the <a class="el" href="group__spi__interface__gr.html#ga505b2d787348d51351d38fee98ccba7e">ARM_SPI_SignalEvent</a> callback function; use a NULL pointer when no callback signals are required.</p>
 <p><b>Example:</b> </p>
 <ul>
 <li>see <a class="el" href="group__spi__interface__gr.html">SPI Interface</a> - Driver Functions </li>
 </ul>
+
+</div>
+</div>
+<a class="anchor" id="ga0c480ee3eabb82fc746e89741ed2e03e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ARM_SPI_Uninitialize </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>De-initialize SPI Interface. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
+<p>The function <b>ARM_SPI_Uninitialize</b> de-initializes the resources of SPI interface.</p>
+<p>It is called when the middleware component stops operation and releases the software resources used by the interface. </p>
 
 </div>
 </div>
@@ -936,56 +792,14 @@ Mode fault detected; optional (cleared on start of transfer operation) </td></tr
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>Allows you to control the power modes of the SPI interface. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga726aff54e782ed9b47f7ba1280a3d8f6"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t ARM_SPI_Receive </td>
-          <td>(</td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>data</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>num</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Start receiving data from SPI receiver. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">data</td><td>Pointer to buffer for data to receive from SPI receiver </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">num</td><td>Number of data items to receive </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>This functions is used to only receive data (transmits the default value as specified by <a class="el" href="group__spi__interface__gr.html#gad18d229992598d6677bec250015e5d1a">ARM_SPI_Control</a> with <a class="el" href="group__spi__misc__ctrls.html#gae9861221dee78d52bd1522b7846535ce">ARM_SPI_SET_DEFAULT_TX_VALUE</a> as control parameter).</p>
-<p>The function parameters specify the buffer for data and the number of items to receive. The item size is defined by the data type which depends on the configured number of data bits.</p>
-<p>Data type is:</p>
+<p>The function <b>ARM_SPI_PowerControl</b> controls the power modes of the SPI interface.</p>
+<p>The parameter <em>state</em> sets the operation and can have the following values:</p>
 <ul>
-<li><em>uint8_t</em> when configured for 1..8 data bits</li>
-<li><em>uint16_t</em> when configured for 9..16 data bits</li>
-<li><em>uint32_t</em> when configured for 17..32 data bits</li>
+<li><a class="el" href="_driver___common_8h.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5abed52b77a9ce4775570e44a842b1295e">ARM_POWER_FULL</a> : set-up peripheral for data transfers, enable interrupts (NVIC) and optionally DMA. Can be called multiple times. If the peripheral is already in this mode the function performs no operation and returns with <a class="el" href="group__execution__status.html#ga85752c5de59e8adeb001e35ff5be6be7">ARM_DRIVER_OK</a>.</li>
+<li><a class="el" href="_driver___common_8h.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5a9ef9e57cbcc948d0e22314e73dc8c434">ARM_POWER_LOW</a> : may use power saving. Returns <a class="el" href="group__execution__status.html#ga2efa59e480d82697795439220e6884e4">ARM_DRIVER_ERROR_UNSUPPORTED</a> when not implemented.</li>
+<li><a class="el" href="_driver___common_8h.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5ab6f5becc85ebd51c3dd2524a95d2ca35">ARM_POWER_OFF</a> : terminates any pending data transfers, disables peripheral, disables related interrupts and DMA.</li>
 </ul>
-<p>Calling the function <b>ARM_SPI_Receive</b> only starts the receive operation. The function is non-blocking and returns as soon as the driver has started the operation (driver typically configures DMA or the interrupt system for continuous transfer). When in slave mode the operation is only registered and started when the master starts the transfer. During the operation it is not allowed to call this function or any other data transfer function again. Also the data buffer must stay allocated. When receive operation is completed (requested number of items received) the <a class="el" href="group___s_p_i__events.html#gaabdfc9e17641144cd50d36d15511a1b8">ARM_SPI_EVENT_TRANSFER_COMPLETE</a> event is generated. Progress of receive operation can also be monitored by reading the number of items already received by calling <a class="el" href="group__spi__interface__gr.html#gaaaecaaf4ec1922f22e7f9de63af5ccdb">ARM_SPI_GetDataCount</a>.</p>
-<p>Status of the receiver can also be monitored by calling the <a class="el" href="group__spi__interface__gr.html#ga60d33d8788a76c388cc36e066240b817">ARM_SPI_GetStatus</a> and checking the <em>busy</em> flag which indicates if reception is still in progress or pending.</p>
-<p>When in master mode and configured to monitor slave select and the slave select gets deactivated during transfer then the SPI mode changes to inactive and the <a class="el" href="group___s_p_i__events.html#ga7eaa229003689aa18598273490b3e630">ARM_SPI_EVENT_MODE_FAULT</a> event is generated (instead of <a class="el" href="group___s_p_i__events.html#gaabdfc9e17641144cd50d36d15511a1b8">ARM_SPI_EVENT_TRANSFER_COMPLETE</a>).</p>
-<p>When in slave mode but send/receive/transfer operation is not started and data is sent/requested by the master then the <a class="el" href="group___s_p_i__events.html#ga8e63d99c80ea56de596a8d0a51fd8244">ARM_SPI_EVENT_DATA_LOST</a> event is generated.</p>
-<p>Receive operation can be aborted by calling <a class="el" href="group__spi__interface__gr.html#gad18d229992598d6677bec250015e5d1a">ARM_SPI_Control</a> with <a class="el" href="group__spi__misc__ctrls.html#ga44708b80e48984be099cd6eb11780dc3">ARM_SPI_ABORT_TRANSFER</a> as the control parameter. </p>
+<p>Refer to <a class="el" href="_theory_operation.html#CallSequence">Function Call Sequence</a> for more information. </p>
 
 </div>
 </div>
@@ -1022,56 +836,72 @@ Mode fault detected; optional (cleared on start of transfer operation) </td></tr
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>This functions is used to only send data to the SPI transmitter (received data is ignored).</p>
-<p>The function parameters specify the buffer with data and the number of items to send. The item size is defined by the data type which depends on the configured number of data bits.</p>
+<p>This function <b>ARM_SPI_Send</b> is used to send data to the SPI transmitter (received data is ignored).</p>
+<p>The parameter <em>data</em> specifies the data buffer. <br/>
+ The parameter <em>num</em> specifies the number of items to send. <br/>
+ The item size is defined by the data type, which depends on the configured number of data bits.</p>
 <p>Data type is:</p>
 <ul>
 <li><em>uint8_t</em> when configured for 1..8 data bits</li>
 <li><em>uint16_t</em> when configured for 9..16 data bits</li>
 <li><em>uint32_t</em> when configured for 17..32 data bits</li>
 </ul>
-<p>Calling the function <b>ARM_SPI_Send</b> only starts the send operation. When in slave mode the operation is only registered and started when the master starts the transfer. The function is non-blocking and returns as soon as the driver has started the operation (driver typically configures DMA or the interrupt system for continuous transfer). During the operation it is not allowed to call this function or any other data transfer function again. Also the data buffer must stay allocated and the contents of unsent data must not be modified. When send operation is completed (requested number of items sent) the <a class="el" href="group___s_p_i__events.html#gaabdfc9e17641144cd50d36d15511a1b8">ARM_SPI_EVENT_TRANSFER_COMPLETE</a> event is generated. Progress of send operation can also be monitored by reading the number of items already sent by calling <a class="el" href="group__spi__interface__gr.html#gaaaecaaf4ec1922f22e7f9de63af5ccdb">ARM_SPI_GetDataCount</a>.</p>
-<p>Status of the transmitter can also be monitored by calling the <a class="el" href="group__spi__interface__gr.html#ga60d33d8788a76c388cc36e066240b817">ARM_SPI_GetStatus</a> and checking the <em>busy</em> flag which indicates if transmission is still in progress or pending.</p>
-<p>When in master mode and configured to monitor slave select and the slave select gets deactivated during transfer then the SPI mode changes to inactive and the <a class="el" href="group___s_p_i__events.html#ga7eaa229003689aa18598273490b3e630">ARM_SPI_EVENT_MODE_FAULT</a> event is generated (instead of <a class="el" href="group___s_p_i__events.html#gaabdfc9e17641144cd50d36d15511a1b8">ARM_SPI_EVENT_TRANSFER_COMPLETE</a>).</p>
-<p>When in slave mode but send/receive/transfer operation is not started and data is sent/requested by the master then the <a class="el" href="group___s_p_i__events.html#ga8e63d99c80ea56de596a8d0a51fd8244">ARM_SPI_EVENT_DATA_LOST</a> event is generated.</p>
+<p>Calling the function <b>ARM_SPI_Send</b> only starts the send operation. When in slave mode, the operation is only registered and started when the master starts the transfer. The function is non-blocking and returns as soon as the driver has started the operation (driver typically configures DMA or the interrupt system for continuous transfer). During the operation it is not allowed to call this function or any other data transfer function again. Also the data buffer must stay allocated and the contents of unsent data must not be modified. When send operation is completed (requested number of items sent), the <a class="el" href="group___s_p_i__events.html#gaabdfc9e17641144cd50d36d15511a1b8">ARM_SPI_EVENT_TRANSFER_COMPLETE</a> event is generated. Progress of send operation can also be monitored by reading the number of items already sent by calling <a class="el" href="group__spi__interface__gr.html#gaaaecaaf4ec1922f22e7f9de63af5ccdb">ARM_SPI_GetDataCount</a>.</p>
+<p>Status of the transmitter can also be monitored by calling the <a class="el" href="group__spi__interface__gr.html#ga60d33d8788a76c388cc36e066240b817">ARM_SPI_GetStatus</a> and checking the <em>busy</em> data field, which indicates if transmission is still in progress or pending.</p>
+<p>When in master mode and configured to monitor slave select and the slave select gets deactivated during transfer, then the SPI mode changes to inactive and the <a class="el" href="group___s_p_i__events.html#ga7eaa229003689aa18598273490b3e630">ARM_SPI_EVENT_MODE_FAULT</a> event is generated (instead of <a class="el" href="group___s_p_i__events.html#gaabdfc9e17641144cd50d36d15511a1b8">ARM_SPI_EVENT_TRANSFER_COMPLETE</a>).</p>
+<p>When in slave mode but send/receive/transfer operation is not started and data is sent/requested by the master, then the <a class="el" href="group___s_p_i__events.html#ga8e63d99c80ea56de596a8d0a51fd8244">ARM_SPI_EVENT_DATA_LOST</a> event is generated.</p>
 <p>Send operation can be aborted by calling <a class="el" href="group__spi__interface__gr.html#gad18d229992598d6677bec250015e5d1a">ARM_SPI_Control</a> with <a class="el" href="group__spi__misc__ctrls.html#ga44708b80e48984be099cd6eb11780dc3">ARM_SPI_ABORT_TRANSFER</a> as the control parameter. </p>
 
 </div>
 </div>
-<a class="anchor" id="ga505b2d787348d51351d38fee98ccba7e"></a>
+<a class="anchor" id="ga726aff54e782ed9b47f7ba1280a3d8f6"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void ARM_SPI_SignalEvent </td>
+          <td class="memname">int32_t ARM_SPI_Receive </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>event</em></td><td>)</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>num</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Signal SPI Events. </p>
+<p>Start receiving data from SPI receiver. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">event</td><td><a class="el" href="group___s_p_i__events.html">SPI Events</a> notification mask </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">data</td><td>Pointer to buffer for data to receive from SPI receiver </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">num</td><td>Number of data items to receive </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>none</dd></dl>
-<p>The function <b>ARM_SPI_SignalEvent</b> notifies the application of the <a class="el" href="group___s_p_i__events.html">SPI Events</a> and it is registered by the function <a class="el" href="group__spi__interface__gr.html#ga1a3c11ed523a4355cd91069527945906">ARM_SPI_Initialize</a>. The function <a class="el" href="group__spi__interface__gr.html#gaf4823a11ab5efcd47c79b13801513ddc">ARM_SPI_GetCapabilities</a> returns information about the implemented optional events in a driver.</p>
-<p>The argument <em>event</em> represents the notification mask of the events. Each event is coded in a separate bit and therefore it is possible to signal multiple events in the event call back function. The following call back notifications are generated:</p>
-<table class="doxtable">
-<tr>
-<th>Bit </th><th align="left">Event </th><th align="left">Description</th></tr>
-<tr>
-<td>0 </td><td align="left"><a class="el" href="group___s_p_i__events.html#gaabdfc9e17641144cd50d36d15511a1b8">ARM_SPI_EVENT_TRANSFER_COMPLETE</a> </td><td align="left">Occurs after call to <a class="el" href="group__spi__interface__gr.html#gab2a303d1071e926280d50682f4808479">ARM_SPI_Send</a>, <a class="el" href="group__spi__interface__gr.html#ga726aff54e782ed9b47f7ba1280a3d8f6">ARM_SPI_Receive</a> or <a class="el" href="group__spi__interface__gr.html#gaa24026b3822c10272e301f1505136ec2">ARM_SPI_Transfer</a> to indicate that all the data has been transferred. The driver is ready for the next transfer operation. </td></tr>
-<tr>
-<td>1 </td><td align="left"><a class="el" href="group___s_p_i__events.html#ga8e63d99c80ea56de596a8d0a51fd8244">ARM_SPI_EVENT_DATA_LOST</a> </td><td align="left">Occurs in slave mode when data is requested/sent by master but send/receive/transfer operation has not been started and indicates that data is lost. </td></tr>
-<tr>
-<td>2 </td><td align="left"><a class="el" href="group___s_p_i__events.html#ga7eaa229003689aa18598273490b3e630">ARM_SPI_EVENT_MODE_FAULT</a> </td><td align="left">Occurs in master mode when Slave Select is deactivated and indicates Master Mode Fault. </td></tr>
-</table>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
+<p>The function <b>ARM_SPI_Receive</b> is used to receive data (transmits the default value as specified by <a class="el" href="group__spi__interface__gr.html#gad18d229992598d6677bec250015e5d1a">ARM_SPI_Control</a> with <a class="el" href="group__spi__misc__ctrls.html#gae9861221dee78d52bd1522b7846535ce">ARM_SPI_SET_DEFAULT_TX_VALUE</a> as control parameter).</p>
+<p>The parameter <em>data</em> specifies the data buffer. <br/>
+ The parameter <em>num</em> specifies the number of items to receive. <br/>
+ The item size is defined by the data type, which depends on the configured number of data bits.</p>
+<p>Data type is:</p>
+<ul>
+<li><em>uint8_t</em> when configured for 1..8 data bits</li>
+<li><em>uint16_t</em> when configured for 9..16 data bits</li>
+<li><em>uint32_t</em> when configured for 17..32 data bits</li>
+</ul>
+<p>Calling the function <b>ARM_SPI_Receive</b> only starts the receive operation. The function is non-blocking and returns as soon as the driver has started the operation (driver typically configures DMA or the interrupt system for continuous transfer). When in slave mode, the operation is only registered and started when the master starts the transfer. During the operation it is not allowed to call this function or any other data transfer function again. Also the data buffer must stay allocated. When receive operation is completed (requested number of items received), the <a class="el" href="group___s_p_i__events.html#gaabdfc9e17641144cd50d36d15511a1b8">ARM_SPI_EVENT_TRANSFER_COMPLETE</a> event is generated. Progress of receive operation can also be monitored by reading the number of items already received by calling <a class="el" href="group__spi__interface__gr.html#gaaaecaaf4ec1922f22e7f9de63af5ccdb">ARM_SPI_GetDataCount</a>.</p>
+<p>Status of the receiver can also be monitored by calling the <a class="el" href="group__spi__interface__gr.html#ga60d33d8788a76c388cc36e066240b817">ARM_SPI_GetStatus</a> and checking the <em>busy</em> data field, which indicates if reception is still in progress or pending.</p>
+<p>When in master mode and configured to monitor slave select and the slave select gets deactivated during transfer, then the SPI mode changes to inactive and the <a class="el" href="group___s_p_i__events.html#ga7eaa229003689aa18598273490b3e630">ARM_SPI_EVENT_MODE_FAULT</a> event is generated (instead of <a class="el" href="group___s_p_i__events.html#gaabdfc9e17641144cd50d36d15511a1b8">ARM_SPI_EVENT_TRANSFER_COMPLETE</a>).</p>
+<p>When in slave mode but send/receive/transfer operation is not started and data is sent/requested by the master, then the <a class="el" href="group___s_p_i__events.html#ga8e63d99c80ea56de596a8d0a51fd8244">ARM_SPI_EVENT_DATA_LOST</a> event is generated.</p>
+<p>Receive operation can be aborted by calling <a class="el" href="group__spi__interface__gr.html#gad18d229992598d6677bec250015e5d1a">ARM_SPI_Control</a> with <a class="el" href="group__spi__misc__ctrls.html#ga44708b80e48984be099cd6eb11780dc3">ARM_SPI_ABORT_TRANSFER</a> as the control parameter. </p>
 
 </div>
 </div>
@@ -1115,28 +945,31 @@ Mode fault detected; optional (cleared on start of transfer operation) </td></tr
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>This functions is used to transfer data via SPI. It synchronously sends data to the SPI transmitter and receives data from the SPI receiver.</p>
-<p>The function parameters specify the buffer with data to send, the buffer for data to receive and the number of items to transfer. The item size is defined by the data type which depends on the configured number of data bits.</p>
+<p>The function <b>ARM_SPI_Transfer</b> transfers data via SPI. It synchronously sends data to the SPI transmitter and receives data from the SPI receiver.</p>
+<p>The parameter <em>data_out</em> is a pointer to the buffer with data to send. <br/>
+ The parameter <em>data_in</em> is a pointer to the buffer which receives data. <br/>
+ The parameter <em>num</em> specifies the number of items to transfer. <br/>
+ The item size is defined by the data type which depends on the configured number of data bits.</p>
 <p>Data type is:</p>
 <ul>
 <li><em>uint8_t</em> when configured for 1..8 data bits</li>
 <li><em>uint16_t</em> when configured for 9..16 data bits</li>
 <li><em>uint32_t</em> when configured for 17..32 data bits</li>
 </ul>
-<p>Calling the function <b>ARM_SPI_Transfer</b> only starts the transfer operation. The function is non-blocking and returns as soon as the driver has started the operation (driver typically configures DMA or the interrupt system for continuous transfer). When in slave mode the operation is only registered and started when the master starts the transfer. During the operation it is not allowed to call this function or any other data transfer function again. Also the data buffers must stay allocated and the contents of unsent data must not be modified. When transfer operation is completed (requested number of items transferred) the <a class="el" href="group___s_p_i__events.html#gaabdfc9e17641144cd50d36d15511a1b8">ARM_SPI_EVENT_TRANSFER_COMPLETE</a> event is generated. Progress of transfer operation can also be monitored by reading the number of items already transferred by calling <a class="el" href="group__spi__interface__gr.html#gaaaecaaf4ec1922f22e7f9de63af5ccdb">ARM_SPI_GetDataCount</a>.</p>
+<p>Calling the function <b>ARM_SPI_Transfer</b> only starts the transfer operation. The function is non-blocking and returns as soon as the driver has started the operation (driver typically configures DMA or the interrupt system for continuous transfer). When in slave mode, the operation is only registered and started when the master starts the transfer. During the operation it is not allowed to call this function or any other data transfer function again. Also the data buffers must stay allocated and the contents of unsent data must not be modified. When transfer operation is completed (requested number of items transferred), the <a class="el" href="group___s_p_i__events.html#gaabdfc9e17641144cd50d36d15511a1b8">ARM_SPI_EVENT_TRANSFER_COMPLETE</a> event is generated. Progress of transfer operation can also be monitored by reading the number of items already transferred by calling <a class="el" href="group__spi__interface__gr.html#gaaaecaaf4ec1922f22e7f9de63af5ccdb">ARM_SPI_GetDataCount</a>.</p>
 <p>Status of the transmitter and receiver can also be monitored by calling the <a class="el" href="group__spi__interface__gr.html#ga60d33d8788a76c388cc36e066240b817">ARM_SPI_GetStatus</a> and checking the <em>busy</em> flag.</p>
-<p>When in master mode and configured to monitor slave select and the slave select gets deactivated during transfer then the SPI mode changes to inactive and the <a class="el" href="group___s_p_i__events.html#ga7eaa229003689aa18598273490b3e630">ARM_SPI_EVENT_MODE_FAULT</a> event is generated (instead of <a class="el" href="group___s_p_i__events.html#gaabdfc9e17641144cd50d36d15511a1b8">ARM_SPI_EVENT_TRANSFER_COMPLETE</a>).</p>
-<p>When in slave mode but send/receive/transfer operation is not started and data is sent/requested by the master then the <a class="el" href="group___s_p_i__events.html#ga8e63d99c80ea56de596a8d0a51fd8244">ARM_SPI_EVENT_DATA_LOST</a> event is generated.</p>
+<p>When in master mode and configured to monitor slave select and the slave select gets deactivated during transfer, then the SPI mode changes to inactive and the <a class="el" href="group___s_p_i__events.html#ga7eaa229003689aa18598273490b3e630">ARM_SPI_EVENT_MODE_FAULT</a> event is generated (instead of <a class="el" href="group___s_p_i__events.html#gaabdfc9e17641144cd50d36d15511a1b8">ARM_SPI_EVENT_TRANSFER_COMPLETE</a>).</p>
+<p>When in slave mode but send/receive/transfer operation is not started and data is sent/requested by the master, then the <a class="el" href="group___s_p_i__events.html#ga8e63d99c80ea56de596a8d0a51fd8244">ARM_SPI_EVENT_DATA_LOST</a> event is generated.</p>
 <p>Transfer operation can also be aborted by calling <a class="el" href="group__spi__interface__gr.html#gad18d229992598d6677bec250015e5d1a">ARM_SPI_Control</a> with <a class="el" href="group__spi__misc__ctrls.html#ga44708b80e48984be099cd6eb11780dc3">ARM_SPI_ABORT_TRANSFER</a> as the control parameter. </p>
 
 </div>
 </div>
-<a class="anchor" id="ga0c480ee3eabb82fc746e89741ed2e03e"></a>
+<a class="anchor" id="gaaaecaaf4ec1922f22e7f9de63af5ccdb"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int32_t ARM_SPI_Uninitialize </td>
+          <td class="memname">uint32_t ARM_SPI_GetDataCount </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -1145,10 +978,178 @@ Mode fault detected; optional (cleared on start of transfer operation) </td></tr
       </table>
 </div><div class="memdoc">
 
-<p>De-initialize SPI Interface. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>The function <a class="el" href="group__spi__interface__gr.html#ga0c480ee3eabb82fc746e89741ed2e03e">ARM_SPI_Uninitialize</a> de-initializes the resources of SPI interface.</p>
-<p>It is called when the middleware component stops operation and releases the software resources used by the interface. </p>
+<p>Get transferred data count. </p>
+<dl class="section return"><dt>Returns</dt><dd>number of data items transferred</dd></dl>
+<p>The function <b>ARM_SPI_GetDataCount</b> returns the number of currently transferred data items during <a class="el" href="group__spi__interface__gr.html#gab2a303d1071e926280d50682f4808479">ARM_SPI_Send</a>, <a class="el" href="group__spi__interface__gr.html#ga726aff54e782ed9b47f7ba1280a3d8f6">ARM_SPI_Receive</a> and <a class="el" href="group__spi__interface__gr.html#gaa24026b3822c10272e301f1505136ec2">ARM_SPI_Transfer</a> operation. </p>
+
+</div>
+</div>
+<a class="anchor" id="gad18d229992598d6677bec250015e5d1a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ARM_SPI_Control </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>control</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>arg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Control SPI Interface. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">control</td><td>Operation </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">arg</td><td>Argument of operation (optional) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>common <a class="el" href="group__execution__status.html">Status Error Codes</a> and driver specific <a class="el" href="group__spi__execution__status.html">Status Error Codes</a></dd></dl>
+<p>The function <b>ARM_SPI_Control</b> controls the SPI interface settings and executes various operations.</p>
+<p>The parameter <em>control</em> is a bit mask that specifies various operations.</p>
+<ul>
+<li>Controls form different categories can be ORed.</li>
+<li>If one control is omitted, then the default value of that category is used.</li>
+<li>Miscellaneous controls cannot be combined.</li>
+</ul>
+<p>The parameter <em>arg</em> provides (depending on the parameter <em>control</em>) additional information, for example the Bus Speed.</p>
+<table  class="cmtable">
+<tr>
+<th>Parameter <em>control</em>  </th><th style="text-align:right">Bit  </th><th>Category  </th><th>Description  </th></tr>
+<tr>
+<td><a class="el" href="group__spi__mode__ctrls.html#ga974e3d7c178b76b0540d7644b977bff3">ARM_SPI_MODE_INACTIVE</a>  </td><td rowspan="5" style="text-align:right">0..7  </td><td rowspan="5"><a class="anchor" id="spi_mode_tab"></a>Mode Controls  </td><td>Set SPI to inactive.  </td></tr>
+<tr>
+<td><a class="el" href="group__spi__mode__ctrls.html#ga3143ef07c1607b9bc57e29df35cf2fa8">ARM_SPI_MODE_MASTER</a>  </td><td>Set the SPI Master (Output on MOSI, and the Input on MISO); <em>arg</em> = Bus Speed in <span class="XML-Token">bps</span>  </td></tr>
+<tr>
+<td><a class="el" href="group__spi__mode__ctrls.html#gaf34d849c7cde1151a768887f154e19bd">ARM_SPI_MODE_MASTER_SIMPLEX</a>  </td><td>Set the SPI Master (Output and Input on MOSI); <em>arg</em> = Bus Speed in <span class="XML-Token">bps</span>  </td></tr>
+<tr>
+<td><a class="el" href="group__spi__mode__ctrls.html#ga382b394c5e68f7d1206b837843732a3e">ARM_SPI_MODE_SLAVE</a>  </td><td>Set the SPI Slave (Output on MISO, and the Input on MOSI)  </td></tr>
+<tr>
+<td><a class="el" href="group__spi__mode__ctrls.html#ga9b113d8b336047e1c22f73ad44851fdf">ARM_SPI_MODE_SLAVE_SIMPLEX</a>  </td><td>Set the SPI Slave (Output and Input on MISO)  </td></tr>
+<tr>
+<td><a class="el" href="group__spi__frame__format__ctrls.html#gab4ac9a609c078d1e8332cf95da34e50e">ARM_SPI_CPOL0_CPHA0</a> (default)  </td><td rowspan="6" style="text-align:right">8..11  </td><td rowspan="6">Clock Polarity <br/>
+ (Frame Format) </td><td>CPOL=<span class="XML-Token">0</span> and CPHA=<span class="XML-Token">0</span>: Clock Polarity 0, Clock Phase 0   </td></tr>
+<tr>
+<td><a class="el" href="group__spi__frame__format__ctrls.html#ga5498eb08c2ba8de2e1c2801428e79d71">ARM_SPI_CPOL0_CPHA1</a>  </td><td>CPOL=<span class="XML-Token">0</span> and CPHA=<span class="XML-Token">1</span>: Clock Polarity 0, Clock Phase 1  </td></tr>
+<tr>
+<td><a class="el" href="group__spi__frame__format__ctrls.html#ga67193d9b5af1ec312a66d007c33b597f">ARM_SPI_CPOL1_CPHA0</a>  </td><td>CPOL=<span class="XML-Token">1</span> and CPHA=<span class="XML-Token">0</span>: Clock Polarity 1, Clock Phase 0  </td></tr>
+<tr>
+<td><a class="el" href="group__spi__frame__format__ctrls.html#ga7fab572b2fec303e979e47eb2d13ca74">ARM_SPI_CPOL1_CPHA1</a>  </td><td>CPOL=<span class="XML-Token">1</span> and CPHA=<span class="XML-Token">1</span>: Clock Polarity 1, Clock Phase 1  </td></tr>
+<tr>
+<td><a class="el" href="group__spi__frame__format__ctrls.html#ga225185710ba38848a489013ba4475915">ARM_SPI_TI_SSI</a>  </td><td>Specifies that the frame format corresponds to the Texas Instruments Frame Format  </td></tr>
+<tr>
+<td><a class="el" href="group__spi__frame__format__ctrls.html#ga44f481d32b9a9ea93673f05af82ccf86">ARM_SPI_MICROWIRE</a>  </td><td>Specifies that the frame format corresponds to the National Microwire Frame Format  </td></tr>
+<tr>
+<td><a class="el" href="group__spi__data__bits__ctrls.html#gaf6c099a1d67256a32010120c66c55250">ARM_SPI_DATA_BITS(n)</a>  </td><td style="text-align:right">12..17  </td><td>Data Bits  </td><td>Set the number of bits per SPI frame; range for <em>n</em> = <span class="XML-Token">1..32</span>. This is the minimum required parameter.  </td></tr>
+<tr>
+<td><a class="el" href="group__spi__bit__order__ctrls.html#ga98228a708cbab6e214c7ac696f77dab6">ARM_SPI_MSB_LSB</a> (default)  </td><td rowspan="2" style="text-align:right">18  </td><td rowspan="2">Bit Order  </td><td>Set the bit order from MSB to LSB  </td></tr>
+<tr>
+<td><a class="el" href="group__spi__bit__order__ctrls.html#ga41c53c3b396a89ce78018467e561aaaf">ARM_SPI_LSB_MSB</a>  </td><td>Set the bit order from LSB to MSB  </td></tr>
+<tr>
+<td><a class="el" href="group__spi__slave__select__mode__ctrls.html#gae19343adc7bd71408b51733171f99dc7">ARM_SPI_SS_MASTER_UNUSED</a> (default)  </td><td rowspan="6" style="text-align:right">19..21  </td><td rowspan="6">Slave Select <br/>
+when Master <div style="min-height:200px">&#160;</div> Must be used with the corresponding master or slave controls from category <a href="#spi_mode_tab"><b>Mode Controls</b></a>. <div style="min-height:200px">&#160;</div> Slave Select <br/>
+when Slave  </td><td>Set the Slave Select mode for the master to <b>Not used</b>. Used with Mode Control ARM_SPI_MODE_MASTER. Master does not drive or monitor the SS line. For example, when connecting to a single slave, which has the SS line connected to a fixed low level.  </td></tr>
+<tr>
+<td><a class="el" href="group__spi__slave__select__mode__ctrls.html#gab5e319aa3f9d4d8c9ed92f0fe865f624">ARM_SPI_SS_MASTER_SW</a> </td><td>Set the Slave Select mode for the master to <b>Software controlled</b>. Used with Mode Control ARM_SPI_MODE_MASTER. The Slave Select line is configured as output and controlled via the Miscellaneous Control <a class="el" href="group__spi__misc__ctrls.html#ga5776272b82decff92da003568540c92f">ARM_SPI_CONTROL_SS</a>. By default, the line it is not active (high), and is not affected by transfer-, send-, or receive functions.  </td></tr>
+<tr>
+<td><a class="el" href="group__spi__slave__select__mode__ctrls.html#ga07762709a40dc90aca85553f500c8761">ARM_SPI_SS_MASTER_HW_OUTPUT</a> </td><td>Set the Slave Select mode for the master to <b>Hardware controlled Output</b>. Used with Mode Control ARM_SPI_MODE_MASTER. The Slave Select line is configured as output and controlled by hardware. The line gets activated or deactivated automatically by the hardware for transfers and is not controlled by the Miscellaneous Control <a class="el" href="group__spi__misc__ctrls.html#ga5776272b82decff92da003568540c92f">ARM_SPI_CONTROL_SS</a>. When exactly the line is activated or deactivated is hardware dependent. Typically, the hardware will activate the line before starting the transfer and deactivate it after the transfer completes. Some hardware will leave the line activated until the SPI stays master. <dl class="section note"><dt>Note</dt><dd>Some devices require that the SS signal is strictly defined regarding transfers. Refer to the documentaiton of your device.  </dd></dl>
+</td></tr>
+<tr>
+<td><a class="el" href="group__spi__slave__select__mode__ctrls.html#ga8561bd0cc25ab2bb02b138c1c6a586cd">ARM_SPI_SS_MASTER_HW_INPUT</a> </td><td>Set the Slave Select mode for the master to <b>Hardware monitored Input</b>. Used with Mode Control ARM_SPI_MODE_MASTER. Used in multi-master configuration where a master does not drive the Slave Select when driving the bus, but rather monitors it. When another master activates this line, the active master backs off. This is called Mode Fault. Slave Select is configured as input and hardware only monitors the line. When the line is deactivated externally while we are master, it presents a Mode Fault (<a class="el" href="group___s_p_i__events.html#ga7eaa229003689aa18598273490b3e630">ARM_SPI_EVENT_MODE_FAULT</a>) and the SPI switches to inactive mode.  </td></tr>
+<tr>
+<td><a class="el" href="group__spi__slave__select__mode__ctrls.html#ga2bd0d1f3ade2dc0cc48cc0593336ad70">ARM_SPI_SS_SLAVE_HW</a> (default) </td><td>Set the Slave Select mode for the slave to <b>Hardware monitored</b>. Used with Mode Control ARM_SPI_MODE_SLAVE. Hardware monitors the Slave Select line and accepts transfers only when the line is active. Transfers are ignored while the Slave Select line is inactive.  </td></tr>
+<tr>
+<td><a class="el" href="group__spi__slave__select__mode__ctrls.html#gad371f6ba0d12a57bdcc3217c351abfb0">ARM_SPI_SS_SLAVE_SW</a> </td><td>Set the Slave Select mode for the slave to <b>Software controlled</b>. Used with Mode Control ARM_SPI_MODE_SLAVE. Used only when the Slave Select line is not used. For example, when a single master and slave are connected in the system then the Slave Select line is not needed. Software controls if the slave is responding or not (by default it is not responding). Software enables or disables transfers by using the Miscellaneous Control <a class="el" href="group__spi__misc__ctrls.html#ga5776272b82decff92da003568540c92f">ARM_SPI_CONTROL_SS</a>.  </td></tr>
+<tr>
+<td><a class="el" href="group__spi__misc__ctrls.html#ga5ef3d114979f3fd6010d0df16c2bf5c1">ARM_SPI_SET_BUS_SPEED</a>  </td><td rowspan="5" style="text-align:right">0..21  </td><td rowspan="5">Miscellaneous Controls <br/>
+(cannot be ORed) </td><td>Set the bus speed; <em>arg=</em> Bus Speed in <span class="XML-Token">bps</span>  </td></tr>
+<tr>
+<td><a class="el" href="group__spi__misc__ctrls.html#gafc00fe35bb4c89b076d014b43168b2b3">ARM_SPI_GET_BUS_SPEED</a>  </td><td>Get the bus speed; Retrun values &gt;= <span class="XML-Token">0</span> reperesent the bus speed in <span class="XML-Token">bps</span>. Negative values are <a class="el" href="group__spi__execution__status.html">Status Error Codes</a>.  </td></tr>
+<tr>
+<td><a class="el" href="group__spi__misc__ctrls.html#gae9861221dee78d52bd1522b7846535ce">ARM_SPI_SET_DEFAULT_TX_VALUE</a>  </td><td>Set the default transmission value; the parameter <em>arg</em> sets the value  </td></tr>
+<tr>
+<td><a class="el" href="group__spi__misc__ctrls.html#ga5776272b82decff92da003568540c92f">ARM_SPI_CONTROL_SS</a>  </td><td>Control the Slave Select signal (SS); the values for the parameter <em>arg</em> are: <span class="XML-Token">ARM_SPI_SS_INACTIVE; ARM_SPI_SS_ACTIVE</span>  </td></tr>
+<tr>
+<td><a class="el" href="group__spi__misc__ctrls.html#ga44708b80e48984be099cd6eb11780dc3">ARM_SPI_ABORT_TRANSFER</a>  </td><td>Abort the current data transfer  </td></tr>
+</table>
+<p><b>Example</b> </p>
+<div class="fragment"><div class="line"><span class="keyword">extern</span> <a class="code" href="group__spi__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___s_p_i" title="Access structure of the SPI Driver.">ARM_DRIVER_SPI</a> Driver_SPI0;</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// configure: SPI master | clock polarity=1, clock phase=1 | bits per frame=16 | bus speed : 1000000 </span></div>
+<div class="line">status = Driver_SPI0.<a class="code" href="group__spi__interface__gr.html#a6e0f47a92f626a971c5197fca6545505" title="Pointer to ARM_SPI_Control : Control SPI Interface.">Control</a>(<a class="code" href="group__spi__mode__ctrls.html#ga3143ef07c1607b9bc57e29df35cf2fa8" title="SPI Master (Output on MOSI, Input on MISO); arg = Bus Speed in bps.">ARM_SPI_MODE_MASTER</a>   | </div>
+<div class="line">                             <a class="code" href="group__spi__frame__format__ctrls.html#ga7fab572b2fec303e979e47eb2d13ca74" title="Clock Polarity 1, Clock Phase 1.">ARM_SPI_CPOL1_CPHA1</a>   | </div>
+<div class="line">                             <a class="code" href="group__spi__data__bits__ctrls.html#gaf6c099a1d67256a32010120c66c55250" title="Number of Data bits.">ARM_SPI_DATA_BITS</a>(16), 1000000);</div>
+</div><!-- fragment --> 
+</div>
+</div>
+<a class="anchor" id="ga60d33d8788a76c388cc36e066240b817"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__spi__interface__gr.html#struct_a_r_m___s_p_i___s_t_a_t_u_s">ARM_SPI_STATUS</a> ARM_SPI_GetStatus </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get SPI status. </p>
+<dl class="section return"><dt>Returns</dt><dd>SPI status <a class="el" href="group__spi__interface__gr.html#struct_a_r_m___s_p_i___s_t_a_t_u_s">ARM_SPI_STATUS</a></dd></dl>
+<p>The function <b>ARM_SPI_GetStatus</b> returns the current SPI interface status. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga505b2d787348d51351d38fee98ccba7e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ARM_SPI_SignalEvent </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Signal SPI Events. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">event</td><td><a class="el" href="group___s_p_i__events.html">SPI Events</a> notification mask </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>none</dd></dl>
+<p>The function <b>ARM_SPI_SignalEvent</b> is a callback function registered by the function <a class="el" href="group__spi__interface__gr.html#ga1a3c11ed523a4355cd91069527945906">ARM_SPI_Initialize</a>.</p>
+<p>The parameter <em>event</em> indicates one or more events that occurred during driver operation. Each event is encoded in a separate bit and therefore it is possible to signal multiple events within the same call.</p>
+<p>Not every event is necessarily generated by the driver. This depends on the implemented capabilities stored in the data fields of the structure <a class="el" href="group__spi__interface__gr.html#struct_a_r_m___s_p_i___c_a_p_a_b_i_l_i_t_i_e_s">ARM_SPI_CAPABILITIES</a>, which can be retrieved with the function <a class="el" href="group__spi__interface__gr.html#gaf4823a11ab5efcd47c79b13801513ddc">ARM_SPI_GetCapabilities</a>.</p>
+<p>The following events can be generated:</p>
+<table  class="cmtable">
+<tr>
+<th>Parameter <em>event</em> </th><th>Bit </th><th>Description  </th><th>supported when <a class="el" href="group__spi__interface__gr.html#struct_a_r_m___s_p_i___c_a_p_a_b_i_l_i_t_i_e_s" title="SPI Driver Capabilities.">ARM_SPI_CAPABILITIES</a>   </th></tr>
+<tr>
+<td><a class="el" href="group___s_p_i__events.html#gaabdfc9e17641144cd50d36d15511a1b8">ARM_SPI_EVENT_TRANSFER_COMPLETE</a> </td><td>0 </td><td>Occurs after call to <a class="el" href="group__spi__interface__gr.html#gab2a303d1071e926280d50682f4808479">ARM_SPI_Send</a>, <a class="el" href="group__spi__interface__gr.html#ga726aff54e782ed9b47f7ba1280a3d8f6">ARM_SPI_Receive</a>, or <a class="el" href="group__spi__interface__gr.html#gaa24026b3822c10272e301f1505136ec2">ARM_SPI_Transfer</a> to indicate that all the data has been transferred. The driver is ready for the next transfer operation.  </td><td><em>allways supported</em>   </td></tr>
+<tr>
+<td><a class="el" href="group___s_p_i__events.html#ga8e63d99c80ea56de596a8d0a51fd8244">ARM_SPI_EVENT_DATA_LOST</a> </td><td>1 </td><td>Occurs in slave mode when data is requested/sent by master but send/receive/transfer operation has not been started and indicates that data is lost.  </td><td><em>allways supported</em>   </td></tr>
+<tr>
+<td><a class="el" href="group___s_p_i__events.html#ga7eaa229003689aa18598273490b3e630">ARM_SPI_EVENT_MODE_FAULT</a> </td><td>2 </td><td>Occurs in master mode when Slave Select is deactivated and indicates Master Mode Fault. The driver is ready for the next transfer operation.  </td><td>data field <em>event_mode_fault</em> = <span class="XML-Token">1</span>   </td></tr>
+</table>
 
 </div>
 </div>
@@ -1157,7 +1158,7 @@ Mode fault detected; optional (cleared on start of transfer operation) </td></tr
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:43 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:03 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

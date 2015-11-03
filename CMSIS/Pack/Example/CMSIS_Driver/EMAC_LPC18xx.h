@@ -1,5 +1,5 @@
 /* -----------------------------------------------------------------------------
- * Copyright (c) 2013-2014 ARM Ltd.
+ * Copyright (c) 2013-2015 ARM Ltd.
  *
  * This software is provided 'as-is', without any express or implied warranty.
  * In no event will the authors be held liable for any damages arising from
@@ -18,8 +18,8 @@
  * 3. This notice may not be removed or altered from any source distribution.
  *
  *
- * $Date:        30. May 2014
- * $Revision:    V2.01
+ * $Date:        02. June 2015
+ * $Revision:    V2.6
  *
  * Project:      Ethernet Media Access (MAC) Definitions for NXP LPC18xx
  * -------------------------------------------------------------------------- */
@@ -27,7 +27,25 @@
 #ifndef __EMAC_LPC18XX_H
 #define __EMAC_LPC18XX_H
 
+#include <string.h>
+
 #include "Driver_ETH_MAC.h"
+
+#include "RTE_Device.h"
+#include "RTE_Components.h"
+
+#include "cmsis_os.h"
+#include "LPC18xx.h"
+
+#include "SCU_LPC18xx.h"
+
+#if (defined(RTE_Drivers_ETH_MAC0) && !RTE_ENET)
+#error "Ethernet not configured in RTE_Device.h!"
+#endif
+
+#if (RTE_ENET_MII && RTE_ENET_RMII)
+#error "Ethernet interface configuration in RTE_Device.h is invalid!"
+#endif
 
 #define ENET                LPC_ETHERNET
 

@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -147,33 +147,18 @@ Macros</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Description</h2>
 <p>Specifies controls. </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="ga2b8d3d85c1e60f137f8c433f319244cb"></a>
+<a class="anchor" id="ga14ac7775060e731b26bc5b3acd2f317a"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_SAI_ABORT_RECEIVE&#160;&#160;&#160;(0x08U)</td>
+          <td class="memname">#define ARM_SAI_CONFIGURE_TX&#160;&#160;&#160;(0x01U)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Abort <a class="el" href="group__sai__interface__gr.html#ga2d55f506cef9d2849cbe418146086d98">ARM_SAI_Receive</a>. </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__sai__interface__gr.html#ga405a0769c33da6801055db0fb9b6c869" title="Control SAI Interface.">ARM_SAI_Control</a>; <a class="el" href="group__sai__interface__gr.html#ga2d55f506cef9d2849cbe418146086d98" title="Start receiving data from SAI receiver.">ARM_SAI_Receive</a> </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="gab3ec8ef9e5e5a190bd2131ac8c99a240"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_SAI_ABORT_SEND&#160;&#160;&#160;(0x07U)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Abort <a class="el" href="group__sai__interface__gr.html#ga8bb6866c535adeb930bc4a847d476fcd">ARM_SAI_Send</a>. </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__sai__interface__gr.html#ga405a0769c33da6801055db0fb9b6c869" title="Control SAI Interface.">ARM_SAI_Control</a>; <a class="el" href="group__sai__interface__gr.html#ga8bb6866c535adeb930bc4a847d476fcd" title="Start sending data to SAI transmitter.">ARM_SAI_Send</a> </dd></dl>
+<p>Configure Transmitter; arg1 and arg2 provide additional configuration. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__sai__interface__gr.html#ga405a0769c33da6801055db0fb9b6c869" title="Control SAI Interface.">ARM_SAI_Control</a> </dd></dl>
 
 </div>
 </div>
@@ -192,36 +177,6 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga14ac7775060e731b26bc5b3acd2f317a"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_SAI_CONFIGURE_TX&#160;&#160;&#160;(0x01U)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Configure Transmitter; arg1 and arg2 provide additional configuration. </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__sai__interface__gr.html#ga405a0769c33da6801055db0fb9b6c869" title="Control SAI Interface.">ARM_SAI_Control</a> </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="gaa40390b6dd0df3b140fdc45bb7b1439d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_SAI_CONTROL_RX&#160;&#160;&#160;(0x04U)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Control Receiver; arg1.0: 0=disable (default), 1=enable. </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__sai__interface__gr.html#ga405a0769c33da6801055db0fb9b6c869" title="Control SAI Interface.">ARM_SAI_Control</a>; <a class="el" href="group__sai__interface__gr.html#ga2d55f506cef9d2849cbe418146086d98" title="Start receiving data from SAI receiver.">ARM_SAI_Receive</a> </dd></dl>
-
-</div>
-</div>
 <a class="anchor" id="ga74d7850973c095bb8dbffa880b4af1bc"></a>
 <div class="memitem">
 <div class="memproto">
@@ -237,17 +192,17 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga84302d372185665852c9ed941c6545e0"></a>
+<a class="anchor" id="gaa40390b6dd0df3b140fdc45bb7b1439d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_SAI_MASK_SLOTS_RX&#160;&#160;&#160;(0x06U)</td>
+          <td class="memname">#define ARM_SAI_CONTROL_RX&#160;&#160;&#160;(0x04U)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Mask Receiver slots; arg1 = mask (bit: 0=active, 1=inactive); all configured slots are active by default. </p>
+<p>Control Receiver; arg1.0: 0=disable (default), 1=enable. </p>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__sai__interface__gr.html#ga405a0769c33da6801055db0fb9b6c869" title="Control SAI Interface.">ARM_SAI_Control</a>; <a class="el" href="group__sai__interface__gr.html#ga2d55f506cef9d2849cbe418146086d98" title="Start receiving data from SAI receiver.">ARM_SAI_Receive</a> </dd></dl>
 
 </div>
@@ -267,12 +222,57 @@ Macros</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ga84302d372185665852c9ed941c6545e0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_SAI_MASK_SLOTS_RX&#160;&#160;&#160;(0x06U)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Mask Receiver slots; arg1 = mask (bit: 0=active, 1=inactive); all configured slots are active by default. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__sai__interface__gr.html#ga405a0769c33da6801055db0fb9b6c869" title="Control SAI Interface.">ARM_SAI_Control</a>; <a class="el" href="group__sai__interface__gr.html#ga2d55f506cef9d2849cbe418146086d98" title="Start receiving data from SAI receiver.">ARM_SAI_Receive</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gab3ec8ef9e5e5a190bd2131ac8c99a240"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_SAI_ABORT_SEND&#160;&#160;&#160;(0x07U)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Abort <a class="el" href="group__sai__interface__gr.html#ga8bb6866c535adeb930bc4a847d476fcd">ARM_SAI_Send</a>. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__sai__interface__gr.html#ga405a0769c33da6801055db0fb9b6c869" title="Control SAI Interface.">ARM_SAI_Control</a>; <a class="el" href="group__sai__interface__gr.html#ga8bb6866c535adeb930bc4a847d476fcd" title="Start sending data to SAI transmitter.">ARM_SAI_Send</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga2b8d3d85c1e60f137f8c433f319244cb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_SAI_ABORT_RECEIVE&#160;&#160;&#160;(0x08U)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Abort <a class="el" href="group__sai__interface__gr.html#ga2d55f506cef9d2849cbe418146086d98">ARM_SAI_Receive</a>. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__sai__interface__gr.html#ga405a0769c33da6801055db0fb9b6c869" title="Control SAI Interface.">ARM_SAI_Control</a>; <a class="el" href="group__sai__interface__gr.html#ga2d55f506cef9d2849cbe418146086d98" title="Start receiving data from SAI receiver.">ARM_SAI_Receive</a> </dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:42 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:03 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

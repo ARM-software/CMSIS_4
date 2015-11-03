@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -167,36 +167,8 @@ Macros</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description</h2>
 <p>Configure and control the MCI interface. </p>
-<p>The following codes are used as values for parameter <em>control</em> with the function <a class="el" href="group__mci__interface__gr.html#gaec0506a2aa4ae75cf6bc02528f36fe30">ARM_MCI_Control</a> to setup the MCI interface. </p>
+<p>The following codes are used as values for the parameter <em>control</em> of the function <a class="el" href="group__mci__interface__gr.html#gaec0506a2aa4ae75cf6bc02528f36fe30">ARM_MCI_Control</a> to setup the MCI interface. </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="ga8b7571e37520c07d8ef4f697f3886715"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_MCI_BUS_CMD_MODE&#160;&#160;&#160;(0x03)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Set CMD Line Mode as specified with arg. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga876d964d0eeacdb16e93f7558a544587"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_MCI_BUS_DATA_WIDTH&#160;&#160;&#160;(0x04)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Set Bus Data Width as specified with arg. </p>
-
-</div>
-</div>
 <a class="anchor" id="ga7f982d2e5aec768307d35a83c65fb3ef"></a>
 <div class="memitem">
 <div class="memproto">
@@ -225,73 +197,31 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga889473fbfbdcb89aab4d53cc8a13f615"></a>
+<a class="anchor" id="ga8b7571e37520c07d8ef4f697f3886715"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_MCI_CONTROL_CLOCK_IDLE&#160;&#160;&#160;(0x07)</td>
+          <td class="memname">#define ARM_MCI_BUS_CMD_MODE&#160;&#160;&#160;(0x03)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Control Clock generation on CLK Pin when idle; arg: 0=disabled, 1=enabled. </p>
+<p>Set CMD Line Mode as specified with arg. </p>
 
 </div>
 </div>
-<a class="anchor" id="gaaa10c5aa7a8108aa59c3734b3eec2e3a"></a>
+<a class="anchor" id="ga876d964d0eeacdb16e93f7558a544587"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_MCI_CONTROL_READ_WAIT&#160;&#160;&#160;(0x0D)</td>
+          <td class="memname">#define ARM_MCI_BUS_DATA_WIDTH&#160;&#160;&#160;(0x04)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Control Read/Wait for SD I/O; arg: 0=disabled, 1=enabled. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga21e403e8c3fa8cc75431a513813f0a16"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_MCI_CONTROL_RESET&#160;&#160;&#160;(0x06)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Control optional RST_n Pin (eMMC); arg: 0=inactive, 1=active. </p>
-
-</div>
-</div>
-<a class="anchor" id="gae97b1a819a5d326b1f1009b0d6d48b5a"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_MCI_CSS_TIMEOUT&#160;&#160;&#160;(0x0B)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Set Command Completion Signal (CCS) timeout; arg = timeout in bus cycles. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga09a58821e42595f0c2e55f8cc2d32ceb"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_MCI_DATA_TIMEOUT&#160;&#160;&#160;(0x0A)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Set Data timeout; arg = timeout in bus cycles. </p>
+<p>Set Bus Data Width as specified with arg. </p>
 
 </div>
 </div>
@@ -309,45 +239,31 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga19fd7d3b74ac48ca74a2e138b3ee9963"></a>
+<a class="anchor" id="ga21e403e8c3fa8cc75431a513813f0a16"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_MCI_MONITOR_SDIO_INTERRUPT&#160;&#160;&#160;(0x0C)</td>
+          <td class="memname">#define ARM_MCI_CONTROL_RESET&#160;&#160;&#160;(0x06)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Monitor SD I/O interrupt: arg: 0=disabled, 1=enabled. </p>
+<p>Control optional RST_n Pin (eMMC); arg: 0=inactive, 1=active. </p>
 
 </div>
 </div>
-<a class="anchor" id="gac4907319499072fddf61f2f83b0dd966"></a>
+<a class="anchor" id="ga889473fbfbdcb89aab4d53cc8a13f615"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_MCI_RESUME_TRANSFER&#160;&#160;&#160;(0x0F)</td>
+          <td class="memname">#define ARM_MCI_CONTROL_CLOCK_IDLE&#160;&#160;&#160;(0x07)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Resume Data transfer (SD I/O) </p>
-
-</div>
-</div>
-<a class="anchor" id="ga04cf174b0ef13240f26225bf8e45a4a0"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_MCI_SUSPEND_TRANSFER&#160;&#160;&#160;(0x0E)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Suspend Data transfer (SD I/O); returns number of remaining bytes to transfer. </p>
+<p>Control Clock generation on CLK Pin when idle; arg: 0=disabled, 1=enabled. </p>
 
 </div>
 </div>
@@ -379,12 +295,96 @@ Macros</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ga09a58821e42595f0c2e55f8cc2d32ceb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_MCI_DATA_TIMEOUT&#160;&#160;&#160;(0x0A)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set Data timeout; arg = timeout in bus cycles. </p>
+
+</div>
+</div>
+<a class="anchor" id="gae97b1a819a5d326b1f1009b0d6d48b5a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_MCI_CSS_TIMEOUT&#160;&#160;&#160;(0x0B)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set Command Completion Signal (CCS) timeout; arg = timeout in bus cycles. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga19fd7d3b74ac48ca74a2e138b3ee9963"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_MCI_MONITOR_SDIO_INTERRUPT&#160;&#160;&#160;(0x0C)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Monitor SD I/O interrupt: arg: 0=disabled, 1=enabled. </p>
+
+</div>
+</div>
+<a class="anchor" id="gaaa10c5aa7a8108aa59c3734b3eec2e3a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_MCI_CONTROL_READ_WAIT&#160;&#160;&#160;(0x0D)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Control Read/Wait for SD I/O; arg: 0=disabled, 1=enabled. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga04cf174b0ef13240f26225bf8e45a4a0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_MCI_SUSPEND_TRANSFER&#160;&#160;&#160;(0x0E)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Suspend Data transfer (SD I/O); returns number of remaining bytes to transfer. </p>
+
+</div>
+</div>
+<a class="anchor" id="gac4907319499072fddf61f2f83b0dd966"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_MCI_RESUME_TRANSFER&#160;&#160;&#160;(0x0F)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Resume Data transfer (SD I/O) </p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:42 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:02 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

@@ -19,16 +19,16 @@
  *
  *
  * $Date:        20. January 2015
- * $Revision:    V1.01
+ * $Revision:    V1.1
  *
  * Project:      USB common (Device and Host) module for NXP LPC18xx
  * -------------------------------------------------------------------------- */
 
 /* History:
- *  Version 1.01
- *    - Improved support for Host and Device
- *  Version 1.00
- *    - Initial release
+ *  Version 1.1
+ *    Improved support for Host and Device
+ *  Version 1.0
+ *    Initial release
  */
 
 #include "LPC18xx.h"
@@ -40,7 +40,7 @@
 #include "RTE_Components.h"
 
 volatile uint8_t USB0_role  = ARM_USB_ROLE_NONE;
-volatile uint8_t USB0_state = 0;
+volatile uint8_t USB0_state = 0U;
 
 #ifdef RTE_Drivers_USBH0
 extern void USBH0_IRQ (void);
@@ -112,7 +112,7 @@ void USB0_PinsConfigure (void) {
 
 /**
   \fn          void USB0_PinsUnconfigure (void)
-  \brief       Unconfigure USB pins
+  \brief       De-configure USB pins
 */
 void USB0_PinsUnconfigure (void) {
 

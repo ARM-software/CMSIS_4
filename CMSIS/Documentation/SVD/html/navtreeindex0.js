@@ -6,6 +6,7 @@ var NAVTREEINDEX0 =
 "group__dim_element_group__gr.html":[7,1,0],
 "group__elem__type__gr.html":[7,1],
 "group__peripheral_section_extensions__gr.html":[7,2,2],
+"group__protection_string_type__gr.html":[7,1,2],
 "group__register_properties_group__gr.html":[7,1,1],
 "group__register_section_extensions__gr.html":[7,2,4],
 "group__schema__1__2__gr.html":[7,3],

@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>Signal Management</title>
-<title>CMSIS-RTOS: Signal Management</title>
+<title>Signal Events</title>
+<title>CMSIS-RTOS: Signal Events</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="cmsis.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="jquery.js"></script>
@@ -73,11 +73,11 @@ $(document).ready(function(){initNavTree('group___c_m_s_i_s___r_t_o_s___signal_m
 <a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">Signal Management</div>  </div>
-<div class="ingroups"><a class="el" href="group___c_m_s_i_s___r_t_o_s.html">CMSIS-RTOS API</a></div></div><!--header-->
+<div class="title">Signal Events</div>  </div>
+<div class="ingroups"><a class="el" href="group___c_m_s_i_s___r_t_o_s___inter_thread.html">Inter-Thread Communication and Resource Sharing</a></div></div><!--header-->
 <div class="contents">
 
-<p>Control or wait for signal flags.  
+<p>Synchronize threads using signals.  
 <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
@@ -99,8 +99,28 @@ Functions</h2></td></tr>
 <tr class="separator:ga38860acda96df47da6923348d96fc4c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description</h2>
-<p>Signals are used to trigger execution states between threads. The Signal Management function group allows you to control or wait for signal flags. Each thread has up to 31 assigned signal flags. The maximum number of signal flags is defined in the <a class="el" href="cmsis__os_8h.html">cmsis_os.h</a> file (<b>#define osFeature_Signals</b>).</p>
-<p>A thread can wait for signals to be set (using <a class="el" href="group___c_m_s_i_s___r_t_o_s___signal_mgmt.html#ga38860acda96df47da6923348d96fc4c9">osSignalWait</a>). A thread may set one or more flags in any other given thread (using <a class="el" href="group___c_m_s_i_s___r_t_o_s___signal_mgmt.html#ga3de2730654589d6c3559c4b9e2825553">osSignalSet</a>). Also, a thread may clear its own signals or the signals of other threads (using <a class="el" href="group___c_m_s_i_s___r_t_o_s___signal_mgmt.html#ga87283a6ebc31ce9ed42baf3ea7e4eab6">osSignalClear</a>). When a thread wakes up and resumes execution, its signal flags are automatically cleared. </p>
+<p>Signals are used to trigger execution states between threads. The signal management functions in CMSIS-RTOS allow you to control or wait for signal flags. Each thread has up to 31 assigned signal flags. The maximum number of signal flags is defined in the <a class="el" href="cmsis__os_8h.html">cmsis_os.h</a> file (<b>#define osFeature_Signals</b>).</p>
+<p>A thread</p>
+<ul>
+<li>can wait for signals to be set (using <a class="el" href="group___c_m_s_i_s___r_t_o_s___signal_mgmt.html#ga38860acda96df47da6923348d96fc4c9">osSignalWait</a>). Using this function, it enters the <a class="el" href="group___c_m_s_i_s___r_t_o_s___thread_mgmt.html#ThreadStates">WAITING</a> state. The <a class="el" href="group___c_m_s_i_s___r_t_o_s___signal_mgmt.html#ga38860acda96df47da6923348d96fc4c9">osSignalWait</a> parameter <em>signals</em> defines the signals that are required to put the thread back into <b>READY</b> state.</li>
+<li>may set one or more flags in any other given thread (using <a class="el" href="group___c_m_s_i_s___r_t_o_s___signal_mgmt.html#ga3de2730654589d6c3559c4b9e2825553">osSignalSet</a>).</li>
+<li>may clear its own signals or the signals of other threads (using <a class="el" href="group___c_m_s_i_s___r_t_o_s___signal_mgmt.html#ga87283a6ebc31ce9ed42baf3ea7e4eab6">osSignalClear</a>).</li>
+</ul>
+<p>When a thread wakes up and resumes execution, its signal flags are automatically cleared.</p>
+<h2>Working with Signals</h2>
+<p>Here is a simple example that shows how two thread can communicate with each others using signals:</p>
+<div class="image">
+<img src="simple_signal.png" alt="simple_signal.png"/>
+<div class="caption">
+Simple signal event communication</div></div>
+<p> The following steps are required to use signals:</p>
+<ol type="1">
+<li>In the thread (for example thread ID <code>tid_thread1</code>) that is supposed to wait for a signal, call the wait function: <div class="fragment"><div class="line"><a class="code" href="group___c_m_s_i_s___r_t_o_s___signal_mgmt.html#ga38860acda96df47da6923348d96fc4c9" title="Wait for one or more Signal Flags to become signaled for the current RUNNING thread.">osSignalWait</a> (0x0001, <a class="code" href="cmsis__os_8h.html#a9eb9a7a797a42e4b55eb171ecc609ddb" title="Timeout value.">osWaitForever</a>); <span class="comment">// wait forever for the signal 0x0001</span></div>
+</div><!-- fragment --></li>
+<li>In another thread (or threads) that are supposed to wake the waiting thread up call: <div class="fragment"><div class="line"><a class="code" href="group___c_m_s_i_s___r_t_o_s___signal_mgmt.html#ga3de2730654589d6c3559c4b9e2825553" title="Set the specified Signal Flags of an active thread.">osSignalSet</a> (tid_thread1, 0x0001);    <span class="comment">// set the signal 0x0001 for thread tid_thread1</span></div>
+<div class="line"><a class="code" href="group___c_m_s_i_s___r_t_o_s___wait.html#ga02e19d5e723bfb06ba9324d625162255" title="Wait for Timeout (Time Delay).">osDelay</a> (1000);                       <span class="comment">// wait for 1 second</span></div>
+</div><!-- fragment --> </li>
+</ol>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a class="anchor" id="ga01edde265710d883b6e237d34a6ef4a6"></a>
 <div class="memitem">
@@ -302,7 +322,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:59 for CMSIS-RTOS by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:27 for CMSIS-RTOS by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

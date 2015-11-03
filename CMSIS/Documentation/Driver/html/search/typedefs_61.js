@@ -1,5 +1,7 @@
 var searchData=
 [
+  ['arm_5fcan_5fsignalobjectevent_5ft',['ARM_CAN_SignalObjectEvent_t',['../group__can__interface__gr.html#ga7ceceac3e9aa0981c5cacfab88efb4eb',1,'Driver_CAN.h']]],
+  ['arm_5fcan_5fsignalunitevent_5ft',['ARM_CAN_SignalUnitEvent_t',['../group__can__interface__gr.html#gaac07b9fdf614bf439414f5417aaa376e',1,'Driver_CAN.h']]],
   ['arm_5feth_5fmac_5fsignalevent_5ft',['ARM_ETH_MAC_SignalEvent_t',['../group__eth__mac__interface__gr.html#gadfc95cb09c541a29a72da86963668726',1,'Driver_ETH_MAC.h']]],
   ['arm_5feth_5fphy_5fread_5ft',['ARM_ETH_PHY_Read_t',['../group__eth__phy__interface__gr.html#ga987d5dd36f179192721c03df37d93e87',1,'Driver_ETH_PHY.h']]],
   ['arm_5feth_5fphy_5fwrite_5ft',['ARM_ETH_PHY_Write_t',['../group__eth__phy__interface__gr.html#gaf690fde16281b25f2ffa07f9c4e8e240',1,'Driver_ETH_PHY.h']]],

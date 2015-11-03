@@ -19,10 +19,10 @@
  *
  *
  * $Date:        20. January 2015
- * $Revision:    V2.01
+ * $Revision:    V2.1
  *
  * Project:      USB Driver Definitions for NXP LPC18xx
- * ---------------------------------------------------------------------------*/
+ * -------------------------------------------------------------------------- */
 
 #ifndef __USB_LPC18XX_H
 #define __USB_LPC18XX_H
@@ -328,11 +328,9 @@
 // Device State Flags
 #define USBD_DRIVER_INITIALIZED                (1U           )
 #define USBD_DRIVER_POWERED                    (1U     <<  1U)
-#define USBD_DRIVER_CONNECTED                  (1U     <<  2U)
 
 // Host State Flags
 #define USBH_DRIVER_INITIALIZED                (1U     <<  4U)
 #define USBH_DRIVER_POWERED                    (1U     <<  5U)
-#define USBH_DRIVER_CONNECTED                  (1U     <<  6U)
 
 #endif /* __USB_LPC18XX_H */

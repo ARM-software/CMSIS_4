@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -232,7 +232,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <div class="textblock"><p>Access structure of USB Host Driver. </p>
-<p>The functions of the USB Host driver are accessed by function pointers. Refer to <a class="el" href="_theory_operation.html#DriverFunctions">Driver Functions</a> for overview information.</p>
+<p>The functions of the USB Host driver are accessed by function pointers. Refer to <a class="el" href="_theory_operation.html#DriverFunctions">Common Driver Functions</a> for overview information.</p>
 <p>Each instance of an USBH provides such an access struct. The instance is indicated by a postfix in the symbol name of the access struct, for example:</p>
 <ul>
 <li><b>Driver_USBH0</b> is the name of the access struct of the first instance (no. 0).</li>
@@ -298,34 +298,6 @@ Functions</h2></td></tr>
 <tr class="separator:a31d1785d6d46f75241ebbf6b5a6b4919"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h4 class="groupheader">Field Documentation</h4>
-<a class="anchor" id="aaba1d9458e32389c21c3d899f9cb9313"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__usbh__host__gr.html#struct_a_r_m___u_s_b_h___c_a_p_a_b_i_l_i_t_i_e_s">ARM_USBH_CAPABILITIES</a>(* GetCapabilities)(void)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__usbh__host__gr.html#gadb509db50fdccfc7198dfd7ac54530d7">ARM_USBH_GetCapabilities</a> : Get driver capabilities. </p>
-
-</div>
-</div>
-<a class="anchor" id="a31d1785d6d46f75241ebbf6b5a6b4919"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint16_t(* GetFrameNumber)(void)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__usbh__host__gr.html#ga9dc305fc234c9987b9efd679b5042cc9">ARM_USBH_GetFrameNumber</a> : Get current USB Frame Number. </p>
-
-</div>
-</div>
 <a class="anchor" id="a8834b281da48583845c044a81566c1b3"></a>
 <div class="memitem">
 <div class="memproto">
@@ -337,6 +309,20 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Pointer to <a class="el" href="group__usbh__host__gr.html#gab11e67e11e7a0edbc8a1afa86b971784">ARM_USBH_GetVersion</a> : Get driver version. </p>
+
+</div>
+</div>
+<a class="anchor" id="aaba1d9458e32389c21c3d899f9cb9313"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__usbh__host__gr.html#struct_a_r_m___u_s_b_h___c_a_p_a_b_i_l_i_t_i_e_s">ARM_USBH_CAPABILITIES</a>(* GetCapabilities)(void)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__usbh__host__gr.html#gadb509db50fdccfc7198dfd7ac54530d7">ARM_USBH_GetCapabilities</a> : Get driver capabilities. </p>
 
 </div>
 </div>
@@ -354,6 +340,104 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="adcf20681a1402869ecb5c6447fada17b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* Uninitialize)(void)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__usbh__host__gr.html#gafc2f18bc12bb0019f9cd1836dcca408d">ARM_USBH_Uninitialize</a> : De-initialize USB Host Interface. </p>
+
+</div>
+</div>
+<a class="anchor" id="aba8f1c8019af95ffe19c32403e3240ef"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* PowerControl)(<a class="el" href="group__common__drv__gr.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5">ARM_POWER_STATE</a> state)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__usbh__host__gr.html#ga290a5e2e491da784e63be94699974d4a">ARM_USBH_PowerControl</a> : Control USB Host Interface Power. </p>
+
+</div>
+</div>
+<a class="anchor" id="ab859fb9f73a60ffa1ce71ed961d4744f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* PortVbusOnOff)(uint8_t port, bool vbus)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__usbh__host__gr.html#gaccca5ddd4a9d04388e7678a3aed3f6e4">ARM_USBH_PortVbusOnOff</a> : Root HUB Port VBUS on/off. </p>
+
+</div>
+</div>
+<a class="anchor" id="a95125e80b07640860a7e16f510eca506"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* PortReset)(uint8_t port)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__usbh__host__gr.html#gab99882e11ee03018da9ebe33797cc5ff">ARM_USBH_PortReset</a> : Do Root HUB Port Reset. </p>
+
+</div>
+</div>
+<a class="anchor" id="ab8be30d2d44a6447c8c085439ef117fb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* PortSuspend)(uint8_t port)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__usbh__host__gr.html#ga620f8852a70a47a581001ed3050436d6">ARM_USBH_PortSuspend</a> : Suspend Root HUB Port (stop generating SOFs). </p>
+
+</div>
+</div>
+<a class="anchor" id="a79126109256c1ccef901f22bc36ddc1d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* PortResume)(uint8_t port)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__usbh__host__gr.html#gab438b55ada37e2987e77e105f061f2de">ARM_USBH_PortResume</a> : Resume Root HUB Port (start generating SOFs). </p>
+
+</div>
+</div>
+<a class="anchor" id="a84c391c0db065fa27b672eef6002905b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__usbh__host__gr.html#struct_a_r_m___u_s_b_h___p_o_r_t___s_t_a_t_e">ARM_USBH_PORT_STATE</a>(* PortGetState)(uint8_t port)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__usbh__host__gr.html#gaea4ec5453c1d5fe37a2507d3cb4713bc">ARM_USBH_PortGetState</a> : Get current Root HUB Port State. </p>
+
+</div>
+</div>
 <a class="anchor" id="a7ce5ca579a8c535434187ad05f596fbd"></a>
 <div class="memitem">
 <div class="memproto">
@@ -368,20 +452,6 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ab2f8047e89786bb7a459fb9c6c3f03d5"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* PipeDelete)(<a class="el" href="group__usbh__host__gr.html#ga2e4d0ebd0851ba7bf364ae1d8948672c">ARM_USBH_PIPE_HANDLE</a> pipe_hndl)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__usbh__host__gr.html#gab2135041e6d481f186015f36fa0d0521">ARM_USBH_PipeDelete</a> : Delete Pipe from System. </p>
-
-</div>
-</div>
 <a class="anchor" id="a3efae6fe31a53f7ecd765ba6db99992e"></a>
 <div class="memitem">
 <div class="memproto">
@@ -393,6 +463,20 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Pointer to <a class="el" href="group__usbh__host__gr.html#ga2076a7ae55f603859c726e57b061ac73">ARM_USBH_PipeModify</a> : Modify Pipe in System. </p>
+
+</div>
+</div>
+<a class="anchor" id="ab2f8047e89786bb7a459fb9c6c3f03d5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* PipeDelete)(<a class="el" href="group__usbh__host__gr.html#ga2e4d0ebd0851ba7bf364ae1d8948672c">ARM_USBH_PIPE_HANDLE</a> pipe_hndl)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__usbh__host__gr.html#gab2135041e6d481f186015f36fa0d0521">ARM_USBH_PipeDelete</a> : Delete Pipe from System. </p>
 
 </div>
 </div>
@@ -424,20 +508,6 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ab82fb8b02ff81156098b8210c0344f5e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* PipeTransferAbort)(<a class="el" href="group__usbh__host__gr.html#ga2e4d0ebd0851ba7bf364ae1d8948672c">ARM_USBH_PIPE_HANDLE</a> pipe_hndl)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__usbh__host__gr.html#ga1d4048a076aed71e585cea96a21f0afb">ARM_USBH_PipeTransferAbort</a> : Abort current USB Pipe transfer. </p>
-
-</div>
-</div>
 <a class="anchor" id="a18369bada042ff5557ff919056636a62"></a>
 <div class="memitem">
 <div class="memproto">
@@ -452,101 +522,31 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a84c391c0db065fa27b672eef6002905b"></a>
+<a class="anchor" id="ab82fb8b02ff81156098b8210c0344f5e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group__usbh__host__gr.html#struct_a_r_m___u_s_b_h___p_o_r_t___s_t_a_t_e">ARM_USBH_PORT_STATE</a>(* PortGetState)(uint8_t port)</td>
+          <td class="memname">int32_t(* PipeTransferAbort)(<a class="el" href="group__usbh__host__gr.html#ga2e4d0ebd0851ba7bf364ae1d8948672c">ARM_USBH_PIPE_HANDLE</a> pipe_hndl)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Pointer to <a class="el" href="group__usbh__host__gr.html#gaea4ec5453c1d5fe37a2507d3cb4713bc">ARM_USBH_PortGetState</a> : Get current Root HUB Port State. </p>
+<p>Pointer to <a class="el" href="group__usbh__host__gr.html#ga1d4048a076aed71e585cea96a21f0afb">ARM_USBH_PipeTransferAbort</a> : Abort current USB Pipe transfer. </p>
 
 </div>
 </div>
-<a class="anchor" id="a95125e80b07640860a7e16f510eca506"></a>
+<a class="anchor" id="a31d1785d6d46f75241ebbf6b5a6b4919"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int32_t(* PortReset)(uint8_t port)</td>
+          <td class="memname">uint16_t(* GetFrameNumber)(void)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Pointer to <a class="el" href="group__usbh__host__gr.html#gab99882e11ee03018da9ebe33797cc5ff">ARM_USBH_PortReset</a> : Do Root HUB Port Reset. </p>
-
-</div>
-</div>
-<a class="anchor" id="a79126109256c1ccef901f22bc36ddc1d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* PortResume)(uint8_t port)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__usbh__host__gr.html#gab438b55ada37e2987e77e105f061f2de">ARM_USBH_PortResume</a> : Resume Root HUB Port (start generating SOFs). </p>
-
-</div>
-</div>
-<a class="anchor" id="ab8be30d2d44a6447c8c085439ef117fb"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* PortSuspend)(uint8_t port)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__usbh__host__gr.html#ga620f8852a70a47a581001ed3050436d6">ARM_USBH_PortSuspend</a> : Suspend Root HUB Port (stop generating SOFs). </p>
-
-</div>
-</div>
-<a class="anchor" id="ab859fb9f73a60ffa1ce71ed961d4744f"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* PortVbusOnOff)(uint8_t port, bool vbus)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__usbh__host__gr.html#gaccca5ddd4a9d04388e7678a3aed3f6e4">ARM_USBH_PortVbusOnOff</a> : Root HUB Port VBUS on/off. </p>
-
-</div>
-</div>
-<a class="anchor" id="aba8f1c8019af95ffe19c32403e3240ef"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* PowerControl)(<a class="el" href="group__common__drv__gr.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5">ARM_POWER_STATE</a> state)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__usbh__host__gr.html#ga290a5e2e491da784e63be94699974d4a">ARM_USBH_PowerControl</a> : Control USB Host Interface Power. </p>
-
-</div>
-</div>
-<a class="anchor" id="adcf20681a1402869ecb5c6447fada17b"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* Uninitialize)(void)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__usbh__host__gr.html#gafc2f18bc12bb0019f9cd1836dcca408d">ARM_USBH_Uninitialize</a> : De-initialize USB Host Interface. </p>
+<p>Pointer to <a class="el" href="group__usbh__host__gr.html#ga9dc305fc234c9987b9efd679b5042cc9">ARM_USBH_GetFrameNumber</a> : Get current USB Frame Number. </p>
 
 </div>
 </div>
@@ -563,7 +563,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <div class="textblock"><p>USB Host Driver Capabilities. </p>
-<p>A USB Host driver can be implemented with different capabilities. The bitfield members of this struct encode the capabilities implemented by this driver.</p>
+<p>A USB Host driver can be implemented with different capabilities. The data fields of this structure encode the capabilities implemented by this driver.</p>
 <p><b>Returned by:</b></p>
 <ul>
 <li><a class="el" href="group__usbh__host__gr.html#gadb509db50fdccfc7198dfd7ac54530d7">ARM_USBH_GetCapabilities</a></li>
@@ -571,6 +571,12 @@ Functions</h2></td></tr>
 <dl class="section note"><dt>Note</dt><dd>The struct must remain unchanged. </dd></dl>
 </div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
+<tr><td class="fieldtype">
+<a class="anchor" id="ac37c09b54483c2a1e41fa8a976721fc4"></a>uint32_t</td>
+<td class="fieldname">
+port_mask: 15</td>
+<td class="fielddoc">
+Root HUB available Ports Mask. </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="a37eab684b9a8aa496bfec9fede42fe27"></a>uint32_t</td>
 <td class="fieldname">
@@ -595,12 +601,6 @@ Signal Disconnect event. </td></tr>
 event_overcurrent: 1</td>
 <td class="fielddoc">
 Signal Overcurrent event. </td></tr>
-<tr><td class="fieldtype">
-<a class="anchor" id="ac37c09b54483c2a1e41fa8a976721fc4"></a>uint32_t</td>
-<td class="fieldname">
-port_mask: 15</td>
-<td class="fielddoc">
-Root HUB available Ports Mask. </td></tr>
 </table>
 
 </div>
@@ -615,7 +615,7 @@ Root HUB available Ports Mask. </td></tr>
       </table>
 </div><div class="memdoc">
 <div class="textblock"><p>USB Host Port State. </p>
-<p>This structure stores information about the state of the USB Host Port. The bitfields encode whether a device is connected to the port, if port overcurrent is detected and the port speed.</p>
+<p>This structure stores information about the state of the USB Host Port. The data fields encode whether a device is connected to the port, if port overcurrent is detected, and the port speed.</p>
 <p><b>Returned by:</b></p>
 <ul>
 <li><a class="el" href="group__usbh__host__gr.html#gaea4ec5453c1d5fe37a2507d3cb4713bc">ARM_USBH_PortGetState</a> </li>
@@ -668,25 +668,6 @@ USB Host Port speed setting (ARM_USB_SPEED_xxx) </td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga1a32ebfe0db4a002aae2b0c0f8ece30c"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">ARM_USBH_SignalPipeEvent_t</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__usbh__host__gr.html#gae58d36afd83a0e32b07e89fb7145c9de">ARM_USBH_SignalPipeEvent</a> : Signal Pipe Event. </p>
-<p>Provides the typedef for the callback function <a class="el" href="group__usbh__host__gr.html#gae58d36afd83a0e32b07e89fb7145c9de">ARM_USBH_SignalPipeEvent</a>.</p>
-<p><b>Parameter for:</b></p>
-<ul>
-<li><a class="el" href="group__usbh__host__gr.html#gad1e73f778c95dd46d4396e7741a97f0b">ARM_USBH_Initialize</a> </li>
-</ul>
-
-</div>
-</div>
 <a class="anchor" id="ga61edcbb6ee863fe87abee488d78e1051"></a>
 <div class="memitem">
 <div class="memproto">
@@ -706,59 +687,26 @@ USB Host Port speed setting (ARM_USB_SPEED_xxx) </td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ga1a32ebfe0db4a002aae2b0c0f8ece30c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ARM_USBH_SignalPipeEvent_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__usbh__host__gr.html#gae58d36afd83a0e32b07e89fb7145c9de">ARM_USBH_SignalPipeEvent</a> : Signal Pipe Event. </p>
+<p>Provides the typedef for the callback function <a class="el" href="group__usbh__host__gr.html#gae58d36afd83a0e32b07e89fb7145c9de">ARM_USBH_SignalPipeEvent</a>.</p>
+<p><b>Parameter for:</b></p>
+<ul>
+<li><a class="el" href="group__usbh__host__gr.html#gad1e73f778c95dd46d4396e7741a97f0b">ARM_USBH_Initialize</a> </li>
+</ul>
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="gadb509db50fdccfc7198dfd7ac54530d7"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__usbh__host__gr.html#struct_a_r_m___u_s_b_h___c_a_p_a_b_i_l_i_t_i_e_s">ARM_USBH_CAPABILITIES</a> ARM_USBH_GetCapabilities </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get driver capabilities. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__usbh__host__gr.html#struct_a_r_m___u_s_b_h___c_a_p_a_b_i_l_i_t_i_e_s">ARM_USBH_CAPABILITIES</a></dd></dl>
-<p>Retrieves information about capabilities in this driver implementation. The bitfield members of the struct <a class="el" href="group__usbh__host__gr.html#struct_a_r_m___u_s_b_h___c_a_p_a_b_i_l_i_t_i_e_s">ARM_USBH_CAPABILITIES</a> encode various capabilities, for example available HUB ports or if the hardware can generate signal events using the <a class="el" href="group__usbh__host__gr.html#ga53619da2a3d56934629084b0d5c4700c">ARM_USBH_SignalPortEvent</a> callback function.</p>
-<p>Example: </p>
-<div class="fragment"><div class="line"><span class="keyword">extern</span> <a class="code" href="group__usbh__host__gr.html#struct_a_r_m___d_r_i_v_e_r___u_s_b_h" title="Access structure of USB Host Driver.">ARM_DRIVER_USBH</a> Driver_USBH0;</div>
-<div class="line"><a class="code" href="group__usbh__host__gr.html#struct_a_r_m___d_r_i_v_e_r___u_s_b_h" title="Access structure of USB Host Driver.">ARM_DRIVER_USBH</a> *drv_info;</div>
-<div class="line">  </div>
-<div class="line"><span class="keywordtype">void</span> read_capabilities (<span class="keywordtype">void</span>)  {</div>
-<div class="line">  <a class="code" href="group__usbh__host__gr.html#struct_a_r_m___u_s_b_h___c_a_p_a_b_i_l_i_t_i_e_s" title="USB Host Driver Capabilities.">ARM_USBH_CAPABILITIES</a> drv_capabilities;</div>
-<div class="line"> </div>
-<div class="line">  drv_info = &amp;Driver_USBH0;  </div>
-<div class="line">  drv_capabilities = drv_info-&gt;<a class="code" href="group__usbh__host__gr.html#aaba1d9458e32389c21c3d899f9cb9313" title="Pointer to ARM_USBH_GetCapabilities : Get driver capabilities.">GetCapabilities</a> ();</div>
-<div class="line">  <span class="comment">// interrogate capabilities</span></div>
-<div class="line"> </div>
-<div class="line">}</div>
-</div><!-- fragment --> 
-</div>
-</div>
-<a class="anchor" id="ga9dc305fc234c9987b9efd679b5042cc9"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint16_t ARM_USBH_GetFrameNumber </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get current USB Frame Number. </p>
-<dl class="section return"><dt>Returns</dt><dd>Frame Number</dd></dl>
-<p>Retrieves the sequential 11-bit frame number of the last Start of Frame (SOF) packet. </p>
-
-</div>
-</div>
 <a class="anchor" id="gab11e67e11e7a0edbc8a1afa86b971784"></a>
 <div class="memitem">
 <div class="memproto">
@@ -775,7 +723,7 @@ USB Host Port speed setting (ARM_USB_SPEED_xxx) </td></tr>
 
 <p>Get driver version. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a></dd></dl>
-<p>Returns version information of the driver implementation in <a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a></p>
+<p>The function <b>ARM_USBH_GetVersion</b> returns version information of the driver implementation in <a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a></p>
 <ul>
 <li>API version is the version of the CMSIS-Driver specification used to implement this driver.</li>
 <li>Driver version is source code version of the actual driver implementation.</li>
@@ -793,6 +741,38 @@ USB Host Port speed setting (ARM_USB_SPEED_xxx) </td></tr>
 <div class="line">    <span class="comment">// error handling</span></div>
 <div class="line">    <span class="keywordflow">return</span>;</div>
 <div class="line">  }</div>
+<div class="line">}</div>
+</div><!-- fragment --> 
+</div>
+</div>
+<a class="anchor" id="gadb509db50fdccfc7198dfd7ac54530d7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__usbh__host__gr.html#struct_a_r_m___u_s_b_h___c_a_p_a_b_i_l_i_t_i_e_s">ARM_USBH_CAPABILITIES</a> ARM_USBH_GetCapabilities </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get driver capabilities. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__usbh__host__gr.html#struct_a_r_m___u_s_b_h___c_a_p_a_b_i_l_i_t_i_e_s">ARM_USBH_CAPABILITIES</a></dd></dl>
+<p>The function <b>ARM_USBH_GetCapabilities</b> returns information about capabilities in this driver implementation. The data fields of the structure <a class="el" href="group__usbh__host__gr.html#struct_a_r_m___u_s_b_h___c_a_p_a_b_i_l_i_t_i_e_s">ARM_USBH_CAPABILITIES</a> encode various capabilities, for example available HUB ports or if the hardware can generate signal events using the <a class="el" href="group__usbh__host__gr.html#ga53619da2a3d56934629084b0d5c4700c">ARM_USBH_SignalPortEvent</a> callback function.</p>
+<p>Example: </p>
+<div class="fragment"><div class="line"><span class="keyword">extern</span> <a class="code" href="group__usbh__host__gr.html#struct_a_r_m___d_r_i_v_e_r___u_s_b_h" title="Access structure of USB Host Driver.">ARM_DRIVER_USBH</a> Driver_USBH0;</div>
+<div class="line"><a class="code" href="group__usbh__host__gr.html#struct_a_r_m___d_r_i_v_e_r___u_s_b_h" title="Access structure of USB Host Driver.">ARM_DRIVER_USBH</a> *drv_info;</div>
+<div class="line">  </div>
+<div class="line"><span class="keywordtype">void</span> read_capabilities (<span class="keywordtype">void</span>)  {</div>
+<div class="line">  <a class="code" href="group__usbh__host__gr.html#struct_a_r_m___u_s_b_h___c_a_p_a_b_i_l_i_t_i_e_s" title="USB Host Driver Capabilities.">ARM_USBH_CAPABILITIES</a> drv_capabilities;</div>
+<div class="line"> </div>
+<div class="line">  drv_info = &amp;Driver_USBH0;  </div>
+<div class="line">  drv_capabilities = drv_info-&gt;<a class="code" href="group__usbh__host__gr.html#aaba1d9458e32389c21c3d899f9cb9313" title="Pointer to ARM_USBH_GetCapabilities : Get driver capabilities.">GetCapabilities</a> ();</div>
+<div class="line">  <span class="comment">// interrogate capabilities</span></div>
+<div class="line"> </div>
 <div class="line">}</div>
 </div><!-- fragment --> 
 </div>
@@ -830,7 +810,7 @@ USB Host Port speed setting (ARM_USB_SPEED_xxx) </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>The function initializes the USB Host interface. It is called when the middleware component starts operation.</p>
+<p>The function <b>ARM_USBH_Initialize</b> initializes the USB Host interface. It is called when the middleware component starts operation.</p>
 <p>The function performs the following operations:</p>
 <ul>
 <li>Initializes the resources needed for the USBH interface.</li>
@@ -843,6 +823,205 @@ USB Host Port speed setting (ARM_USB_SPEED_xxx) </td></tr>
 <ul>
 <li>see <a class="el" href="group__usbh__interface__gr.html">USB Host Interface</a> - Driver Functions </li>
 </ul>
+
+</div>
+</div>
+<a class="anchor" id="gafc2f18bc12bb0019f9cd1836dcca408d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ARM_USBH_Uninitialize </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>De-initialize USB Host Interface. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
+<p>The function <b>ARM_USBH_Uninitialize</b> de-initializes the resources of USB Host interface.</p>
+<p>It is called when the middleware component stops operation and releases the software resources used by the interface. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga290a5e2e491da784e63be94699974d4a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ARM_USBH_PowerControl </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__common__drv__gr.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5">ARM_POWER_STATE</a>&#160;</td>
+          <td class="paramname"><em>state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Control USB Host Interface Power. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">state</td><td>Power state </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
+<p>The function <b>ARM_USBH_PowerControl</b> operates the power modes of the USB Host interface.</p>
+<p>The parameter <em>state</em> sets the operation and can have the following values:</p>
+<ul>
+<li><a class="el" href="_driver___common_8h.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5abed52b77a9ce4775570e44a842b1295e">ARM_POWER_FULL</a> : set-up peripheral for data transfers, enable interrupts (NVIC) and optionally DMA. Can be called multiple times. If the peripheral is already in this mode the function performs no operation and returns with <a class="el" href="group__execution__status.html#ga85752c5de59e8adeb001e35ff5be6be7">ARM_DRIVER_OK</a>.</li>
+<li><a class="el" href="_driver___common_8h.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5a9ef9e57cbcc948d0e22314e73dc8c434">ARM_POWER_LOW</a> : may use power saving. Returns <a class="el" href="group__execution__status.html#ga2efa59e480d82697795439220e6884e4">ARM_DRIVER_ERROR_UNSUPPORTED</a> when not implemented.</li>
+<li><a class="el" href="_driver___common_8h.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5ab6f5becc85ebd51c3dd2524a95d2ca35">ARM_POWER_OFF</a> : terminates any pending data transfers, disables peripheral, disables related interrupts and DMA.</li>
+</ul>
+<p>Refer to <a class="el" href="_theory_operation.html#CallSequence">Function Call Sequence</a> for more information. </p>
+
+</div>
+</div>
+<a class="anchor" id="gaccca5ddd4a9d04388e7678a3aed3f6e4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ARM_USBH_PortVbusOnOff </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>vbus</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Root HUB Port VBUS on/off. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">port</td><td>Root HUB Port Number </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">vbus</td><td><ul>
+<li><b>false</b> VBUS off</li>
+<li><b>true</b> VBUS on </li>
+</ul>
+</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
+<p>The function <b>ARM_USBH_PortVbusOnOff</b> controls the VBUS signal of the specified port. </p>
+
+</div>
+</div>
+<a class="anchor" id="gab99882e11ee03018da9ebe33797cc5ff"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ARM_USBH_PortReset </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>port</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Do Root HUB Port Reset. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">port</td><td>Root HUB Port Number </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
+<p>Executes reset signalling on the specified port. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga620f8852a70a47a581001ed3050436d6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ARM_USBH_PortSuspend </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>port</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Suspend Root HUB Port (stop generating SOFs). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">port</td><td>Root HUB Port Number </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
+<p>The function <b>ARM_USBH_PortSuspend</b> auspends USB signaling on the specified port. </p>
+
+</div>
+</div>
+<a class="anchor" id="gab438b55ada37e2987e77e105f061f2de"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ARM_USBH_PortResume </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>port</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Resume Root HUB Port (start generating SOFs). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">port</td><td>Root HUB Port Number </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
+<p>The function <b>ARM_USBH_PortResume</b> resumes USB signaling on the specified port. </p>
+
+</div>
+</div>
+<a class="anchor" id="gaea4ec5453c1d5fe37a2507d3cb4713bc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__usbh__host__gr.html#struct_a_r_m___u_s_b_h___p_o_r_t___s_t_a_t_e">ARM_USBH_PORT_STATE</a> ARM_USBH_PortGetState </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>port</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get current Root HUB Port State. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">port</td><td>Root HUB Port Number </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Port State <a class="el" href="group__usbh__host__gr.html#struct_a_r_m___u_s_b_h___p_o_r_t___s_t_a_t_e">ARM_USBH_PORT_STATE</a></dd></dl>
+<p>The function <b>ARM_USBH_PortGetState</b> returns the current state of the specified port. </p>
 
 </div>
 </div>
@@ -925,7 +1104,7 @@ USB Host Port speed setting (ARM_USB_SPEED_xxx) </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Pipe Handle <a class="el" href="group__usbh__host__gr.html#ga2e4d0ebd0851ba7bf364ae1d8948672c">ARM_USBH_PIPE_HANDLE</a></dd></dl>
-<p>Creates pipe for transfers (allocates required resources and configures the pipe).</p>
+<p>The function <b>ARM_USBH_PipeCreate</b> creates a pipe for transfers (allocates required resources and configures the pipe).</p>
 <p>The parameters specify pipe information (connection between host and device endpoint):</p>
 <ul>
 <li>device: address and speed</li>
@@ -933,32 +1112,6 @@ USB Host Port speed setting (ARM_USB_SPEED_xxx) </td></tr>
 <li>endpoint: address, type, maximum packet size and polling interval</li>
 </ul>
 <p>The function returns an pipe handle that is used for all subsequent operations on that pipe. In case of errors an invalid handle (<em>NULL</em>) is returned. </p>
-
-</div>
-</div>
-<a class="anchor" id="gab2135041e6d481f186015f36fa0d0521"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t ARM_USBH_PipeDelete </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="group__usbh__host__gr.html#ga2e4d0ebd0851ba7bf364ae1d8948672c">ARM_USBH_PIPE_HANDLE</a>&#160;</td>
-          <td class="paramname"><em>pipe_hndl</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Delete Pipe from System. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">pipe_hndl</td><td>Pipe Handle </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>Deletes pipe that was created with <a class="el" href="group__usbh__host__gr.html#ga30dcc05151a98c5a8f6fe17e83777fe0">ARM_USBH_PipeCreate</a> (deactivates the pipe and releases used resources). </p>
 
 </div>
 </div>
@@ -1023,7 +1176,33 @@ USB Host Port speed setting (ARM_USB_SPEED_xxx) </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>Modifies pipe configuration that was created with <a class="el" href="group__usbh__host__gr.html#ga30dcc05151a98c5a8f6fe17e83777fe0">ARM_USBH_PipeCreate</a>. </p>
+<p>The function <b>ARM_USBH_PipeModify</b> modifies a pipe configuration that was created with <a class="el" href="group__usbh__host__gr.html#ga30dcc05151a98c5a8f6fe17e83777fe0">ARM_USBH_PipeCreate</a>. </p>
+
+</div>
+</div>
+<a class="anchor" id="gab2135041e6d481f186015f36fa0d0521"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ARM_USBH_PipeDelete </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__usbh__host__gr.html#ga2e4d0ebd0851ba7bf364ae1d8948672c">ARM_USBH_PIPE_HANDLE</a>&#160;</td>
+          <td class="paramname"><em>pipe_hndl</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Delete Pipe from System. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pipe_hndl</td><td>Pipe Handle </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
+<p>The function <b>ARM_USBH_PipeDelete</b> deletes a pipe that was created with <a class="el" href="group__usbh__host__gr.html#ga30dcc05151a98c5a8f6fe17e83777fe0">ARM_USBH_PipeCreate</a> (deactivates the pipe and releases used resources). </p>
 
 </div>
 </div>
@@ -1049,7 +1228,7 @@ USB Host Port speed setting (ARM_USB_SPEED_xxx) </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>This function is used to clear Halt condition and reset data toggle on the specified pipe. </p>
+<p>The function <b>ARM_USBH_PipeReset</b> clears Halt condition and resets data toggle on the specified pipe. </p>
 
 </div>
 </div>
@@ -1100,37 +1279,11 @@ USB Host Port speed setting (ARM_USB_SPEED_xxx) </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>This function is used to generate packets in order to send data to or receive data from USB Endpoint.</p>
+<p>The function <b>ARM_USBH_PipeTransfer</b> generates packets for sending or receiving data from an USB Endpoint.</p>
 <p>The function specifies the buffer for data to read or with data to write and the number of bytes to transfer. It also specifies <a class="el" href="group___u_s_b_h__packets.html">USBH Packet Information</a> with parameter <em>packet</em>.</p>
 <p>The function is non-blocking and returns as soon as the driver starts the operation on the specified pipe. During the operation it is not allowed to call this function again on the same pipe. Also the data buffer must stay allocated and the contents of data must not be modified.</p>
 <p>Operation is completed when the the requested number of data bytes have been transferred and is indicated with <a class="el" href="group___u_s_b_h__pipe__events.html#gab161955b1ab0b7928befe446ef78634b">ARM_USBH_EVENT_TRANSFER_COMPLETE</a> event. It can also finish earlier on reception of different handshake tokens which are also indicated through <a class="el" href="group___u_s_b_h__pipe__events.html">USBH Pipe Events</a>.</p>
 <p>Transfer operation can be aborted by calling <a class="el" href="group__usbh__host__gr.html#ga1d4048a076aed71e585cea96a21f0afb">ARM_USBH_PipeTransferAbort</a>. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga1d4048a076aed71e585cea96a21f0afb"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t ARM_USBH_PipeTransferAbort </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="group__usbh__host__gr.html#ga2e4d0ebd0851ba7bf364ae1d8948672c">ARM_USBH_PIPE_HANDLE</a>&#160;</td>
-          <td class="paramname"><em>pipe_hndl</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Abort current USB Pipe transfer. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">pipe_hndl</td><td>Pipe Handle </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>This function is used to abort active pipe transfer started by <a class="el" href="group__usbh__host__gr.html#ga817d503a24ad8927fa362c8f6394920d">ARM_USBH_PipeTransfer</a>. </p>
 
 </div>
 </div>
@@ -1156,235 +1309,53 @@ USB Host Port speed setting (ARM_USB_SPEED_xxx) </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>number of successfully transferred data bytes</dd></dl>
-<p>Returns the number of successfully transferred data bytes started by <a class="el" href="group__usbh__host__gr.html#ga817d503a24ad8927fa362c8f6394920d">ARM_USBH_PipeTransfer</a> operation. </p>
+<p>The function <b>ARM_USBH_PipeTransferGetResult</b> returns the number of successfully transferred data bytes started by <a class="el" href="group__usbh__host__gr.html#ga817d503a24ad8927fa362c8f6394920d">ARM_USBH_PipeTransfer</a> operation. </p>
 
 </div>
 </div>
-<a class="anchor" id="gaea4ec5453c1d5fe37a2507d3cb4713bc"></a>
+<a class="anchor" id="ga1d4048a076aed71e585cea96a21f0afb"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group__usbh__host__gr.html#struct_a_r_m___u_s_b_h___p_o_r_t___s_t_a_t_e">ARM_USBH_PORT_STATE</a> ARM_USBH_PortGetState </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>port</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get current Root HUB Port State. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">port</td><td>Root HUB Port Number </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Port State <a class="el" href="group__usbh__host__gr.html#struct_a_r_m___u_s_b_h___p_o_r_t___s_t_a_t_e">ARM_USBH_PORT_STATE</a></dd></dl>
-<p>Retrieves the current state of the specified port. </p>
-
-</div>
-</div>
-<a class="anchor" id="gab99882e11ee03018da9ebe33797cc5ff"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t ARM_USBH_PortReset </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>port</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Do Root HUB Port Reset. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">port</td><td>Root HUB Port Number </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>Executes reset signalling on the specified port. </p>
-
-</div>
-</div>
-<a class="anchor" id="gab438b55ada37e2987e77e105f061f2de"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t ARM_USBH_PortResume </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>port</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Resume Root HUB Port (start generating SOFs). </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">port</td><td>Root HUB Port Number </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>Resumes USB signaling on the specified port. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga620f8852a70a47a581001ed3050436d6"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t ARM_USBH_PortSuspend </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>port</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Suspend Root HUB Port (stop generating SOFs). </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">port</td><td>Root HUB Port Number </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>Suspends USB signaling on the specified port. </p>
-
-</div>
-</div>
-<a class="anchor" id="gaccca5ddd4a9d04388e7678a3aed3f6e4"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t ARM_USBH_PortVbusOnOff </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>port</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>vbus</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Root HUB Port VBUS on/off. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">port</td><td>Root HUB Port Number </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">vbus</td><td><ul>
-<li><b>false</b> VBUS off</li>
-<li><b>true</b> VBUS on </li>
-</ul>
-</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>Allows you to control the VBUS signal of the specified port. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga290a5e2e491da784e63be94699974d4a"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t ARM_USBH_PowerControl </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="group__common__drv__gr.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5">ARM_POWER_STATE</a>&#160;</td>
-          <td class="paramname"><em>state</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Control USB Host Interface Power. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">state</td><td>Power state </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>Allows you to control the power modes of the USB Host interface. </p>
-
-</div>
-</div>
-<a class="anchor" id="gae58d36afd83a0e32b07e89fb7145c9de"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ARM_USBH_SignalPipeEvent </td>
+          <td class="memname">int32_t ARM_USBH_PipeTransferAbort </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__usbh__host__gr.html#ga2e4d0ebd0851ba7bf364ae1d8948672c">ARM_USBH_PIPE_HANDLE</a>&#160;</td>
-          <td class="paramname"><em>pipe_hndl</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>pipe_hndl</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>event</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Signal Pipe Event. </p>
+<p>Abort current USB Pipe transfer. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">pipe_hndl</td><td>Pipe Handle </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">event</td><td><a class="el" href="group___u_s_b_h__pipe__events.html">USBH Pipe Events</a> </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>none</dd></dl>
-<p>The function <b>ARM_USBH_SignalPipeEvent</b> notifies the application of the <a class="el" href="group___u_s_b_h__pipe__events.html">USBH Pipe Events</a> and it is registered by the function <a class="el" href="group__usbh__host__gr.html#gad1e73f778c95dd46d4396e7741a97f0b">ARM_USBH_Initialize</a>.</p>
-<p>The argument <em>pipe_hndl</em> specifies the pipe handle.</p>
-<p>The argument <em>event</em> represents the notification mask of the events. Each event is coded in a separate bit and therefore it is possible to signal multiple events in the event call back function. The following call back notifications are generated:</p>
-<table class="doxtable">
-<tr>
-<th>Bit</th><th align="left">Event </th><th align="left">Description</th></tr>
-<tr>
-<td>0 </td><td align="left"><a class="el" href="group___u_s_b_h__pipe__events.html#gab161955b1ab0b7928befe446ef78634b">ARM_USBH_EVENT_TRANSFER_COMPLETE</a> </td><td align="left">Occurs after all the data has been transferred without errors. </td></tr>
-<tr>
-<td>1 </td><td align="left"><a class="el" href="group___u_s_b_h__pipe__events.html#ga3895b82193855d9a6f0b7e8a9b65e2c0">ARM_USBH_EVENT_HANDSHAKE_NAK</a> </td><td align="left">Occurs when NAK Handshake is received before all the data is transferred. </td></tr>
-<tr>
-<td>2 </td><td align="left"><a class="el" href="group___u_s_b_h__pipe__events.html#ga62ae214576c923ce737a16098e9836e5">ARM_USBH_EVENT_HANDSHAKE_NYET</a> </td><td align="left">Occurs when NYET Handshake is received before all the data is transferred. </td></tr>
-<tr>
-<td>3 </td><td align="left"><a class="el" href="group___u_s_b_h__pipe__events.html#ga681ce0983f8c77c41f3cc5df1af8d010">ARM_USBH_EVENT_HANDSHAKE_MDATA</a> </td><td align="left">Occurs when MDATA Handshake is received before all the data is transferred. </td></tr>
-<tr>
-<td>4 </td><td align="left"><a class="el" href="group___u_s_b_h__pipe__events.html#ga4fdc44fc78f342576dd11ad7cb84b4b8">ARM_USBH_EVENT_HANDSHAKE_STALL</a> </td><td align="left">Occurs when STALL Handshake is received before all the data is transferred. </td></tr>
-<tr>
-<td>5 </td><td align="left"><a class="el" href="group___u_s_b_h__pipe__events.html#gac7cc573f879fbab678dc7d1347c68614">ARM_USBH_EVENT_HANDSHAKE_ERR</a> </td><td align="left">Occurs when ERR Handshake is received before all the data is transferred. </td></tr>
-<tr>
-<td>6 </td><td align="left"><a class="el" href="group___u_s_b_h__pipe__events.html#ga7bd871b1e5c059bee398c32429370724">ARM_USBH_EVENT_BUS_ERROR</a> </td><td align="left">Occurs when bus error is detected before all the data is transferred. </td></tr>
-</table>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
+<p>The function <b>ARM_USBH_PipeTransferAbort</b> aborts an active pipe transfer started by <a class="el" href="group__usbh__host__gr.html#ga817d503a24ad8927fa362c8f6394920d">ARM_USBH_PipeTransfer</a>. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga9dc305fc234c9987b9efd679b5042cc9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t ARM_USBH_GetFrameNumber </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get current USB Frame Number. </p>
+<dl class="section return"><dt>Returns</dt><dd>Frame Number</dd></dl>
+<p>The function <b>ARM_USBH_GetFrameNumber</b> returns the sequential 11-bit frame number of the last Start of Frame (SOF) packet. </p>
 
 </div>
 </div>
@@ -1421,48 +1392,91 @@ USB Host Port speed setting (ARM_USB_SPEED_xxx) </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>none</dd></dl>
-<p>The function <b>ARM_USBH_SignalPortEvent</b> notifies the application of the <a class="el" href="group___u_s_b_h__port__events.html">USBH Port Events</a> and it is registered by the function <a class="el" href="group__usbh__host__gr.html#gad1e73f778c95dd46d4396e7741a97f0b">ARM_USBH_Initialize</a>. The function <a class="el" href="group__usbh__host__gr.html#gadb509db50fdccfc7198dfd7ac54530d7">ARM_USBH_GetCapabilities</a> returns information about the implemented optional events in a driver.</p>
-<p>The argument <em>port</em> specifies the root hub port number.</p>
-<p>The argument <em>event</em> represents the notification mask of the events. Each event is coded in a separate bit and therefore it is possible to signal multiple events in the event call back function. The following call back notifications are generated:</p>
+<p>The function <b>ARM_USBH_SignalPortEvent</b> is a callback function registered by the function <a class="el" href="group__usbh__host__gr.html#gad1e73f778c95dd46d4396e7741a97f0b">ARM_USBH_Initialize</a>.</p>
+<p>The parameter <em>port</em> specifies the root hub port number. <br/>
+ The parameter <em>event</em> indicates one or more events that occurred during driver operation. Each event is encoded in a separate bit and therefore it is possible to signal multiple events within the same call.</p>
+<p>Not every event is necessarily generated by the driver. This depends on the implemented capabilities stored in the data fields of the structure <a class="el" href="group__usbh__host__gr.html#struct_a_r_m___u_s_b_h___c_a_p_a_b_i_l_i_t_i_e_s">ARM_USBH_CAPABILITIES</a>, which can be retrieved with the function <a class="el" href="group__usbh__host__gr.html#gadb509db50fdccfc7198dfd7ac54530d7">ARM_USBH_GetCapabilities</a>.</p>
+<p>The following events can be generated:</p>
 <table class="doxtable">
 <tr>
-<th>Bit</th><th align="left">Event </th><th align="left">Description</th></tr>
+<th align="left">Parameter <em>event</em> </th><th align="center">Bit </th><th align="left">Description </th><th>supported when <a class="el" href="group__usbh__host__gr.html#struct_a_r_m___u_s_b_h___c_a_p_a_b_i_l_i_t_i_e_s" title="USB Host Driver Capabilities.">ARM_USBH_CAPABILITIES</a></th></tr>
 <tr>
-<td>0 </td><td align="left"><a class="el" href="group___u_s_b_h__port__events.html#ga71bfd8b8cd41b8aa6303d5d3a91597e6">ARM_USBH_EVENT_CONNECT</a> </td><td align="left">Occurs when USB Device connects to the Host. </td></tr>
+<td align="left"><a class="el" href="group___u_s_b_h__port__events.html#ga71bfd8b8cd41b8aa6303d5d3a91597e6">ARM_USBH_EVENT_CONNECT</a> </td><td align="center">0 </td><td align="left">Occurs when USB Device connects to the Host. </td><td>data field <em>event_connect=</em> <span class="XML-Token">1</span> </td></tr>
 <tr>
-<td>1 </td><td align="left"><a class="el" href="group___u_s_b_h__port__events.html#gaba67919f64e9a08ba1264363b2710d20">ARM_USBH_EVENT_DISCONNECT</a> </td><td align="left">Occurs when USB Device disconnects from the Host. </td></tr>
+<td align="left"><a class="el" href="group___u_s_b_h__port__events.html#gaba67919f64e9a08ba1264363b2710d20">ARM_USBH_EVENT_DISCONNECT</a> </td><td align="center">1 </td><td align="left">Occurs when USB Device disconnects from the Host. </td><td>data field <em>event_disconnect=</em> <span class="XML-Token">1</span> </td></tr>
 <tr>
-<td>2 </td><td align="left"><a class="el" href="group___u_s_b_h__port__events.html#ga0955fdc2aedd2c5aa2be6cd782b3f2a8">ARM_USBH_EVENT_OVERCURRENT</a> </td><td align="left">Occurs when USB Overcurrent it detected. </td></tr>
+<td align="left"><a class="el" href="group___u_s_b_h__port__events.html#ga0955fdc2aedd2c5aa2be6cd782b3f2a8">ARM_USBH_EVENT_OVERCURRENT</a> </td><td align="center">2 </td><td align="left">Occurs when USB Overcurrent it detected. </td><td>data field <em>event_overcurrent=</em> <span class="XML-Token">1</span> </td></tr>
 <tr>
-<td>3 </td><td align="left"><a class="el" href="group___u_s_b_h__port__events.html#ga70ae1e0a7872556d302a7f7840843c4a">ARM_USBH_EVENT_RESET</a> </td><td align="left">Occurs when USB Reset is completed after calling <a class="el" href="group__usbh__host__gr.html#gab99882e11ee03018da9ebe33797cc5ff">ARM_USBH_PortReset</a>. </td></tr>
+<td align="left"><a class="el" href="group___u_s_b_h__port__events.html#ga70ae1e0a7872556d302a7f7840843c4a">ARM_USBH_EVENT_RESET</a> </td><td align="center">3 </td><td align="left">Occurs when USB Reset is completed after calling <a class="el" href="group__usbh__host__gr.html#gab99882e11ee03018da9ebe33797cc5ff">ARM_USBH_PortReset</a>. </td><td><em>always supported</em> </td></tr>
 <tr>
-<td>4 </td><td align="left"><a class="el" href="group___u_s_b_h__port__events.html#gae1f91db7d31bcebbf60a23fb04cf7eb5">ARM_USBH_EVENT_SUSPEND</a> </td><td align="left">Occurs when USB Suspend is detected. </td></tr>
+<td align="left"><a class="el" href="group___u_s_b_h__port__events.html#gae1f91db7d31bcebbf60a23fb04cf7eb5">ARM_USBH_EVENT_SUSPEND</a> </td><td align="center">4 </td><td align="left">Occurs when USB Suspend is detected. </td><td><em>always supported</em> </td></tr>
 <tr>
-<td>5 </td><td align="left"><a class="el" href="group___u_s_b_h__port__events.html#ga42f62bdf6dd639f9f3dffc6c127456e3">ARM_USBH_EVENT_RESUME</a> </td><td align="left">Occurs when USB Resume is detected. </td></tr>
+<td align="left"><a class="el" href="group___u_s_b_h__port__events.html#ga42f62bdf6dd639f9f3dffc6c127456e3">ARM_USBH_EVENT_RESUME</a> </td><td align="center">5 </td><td align="left">Occurs when USB Resume is detected. </td><td><em>always supported</em> </td></tr>
 <tr>
-<td>6 </td><td align="left"><a class="el" href="group___u_s_b_h__port__events.html#ga2b61e9df3c63fd78fc08f79280a7066e">ARM_USBH_EVENT_REMOTE_WAKEUP</a> </td><td align="left">Occurs when USB Remote wakeup is detected. </td></tr>
+<td align="left"><a class="el" href="group___u_s_b_h__port__events.html#ga2b61e9df3c63fd78fc08f79280a7066e">ARM_USBH_EVENT_REMOTE_WAKEUP</a> </td><td align="center">6 </td><td align="left">Occurs when USB Remote wakeup is detected. </td><td><em>always supported</em> </td></tr>
 </table>
 
 </div>
 </div>
-<a class="anchor" id="gafc2f18bc12bb0019f9cd1836dcca408d"></a>
+<a class="anchor" id="gae58d36afd83a0e32b07e89fb7145c9de"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int32_t ARM_USBH_Uninitialize </td>
+          <td class="memname">void ARM_USBH_SignalPipeEvent </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="group__usbh__host__gr.html#ga2e4d0ebd0851ba7bf364ae1d8948672c">ARM_USBH_PIPE_HANDLE</a>&#160;</td>
+          <td class="paramname"><em>pipe_hndl</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>event</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>De-initialize USB Host Interface. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>The function <a class="el" href="group__usbh__host__gr.html#gafc2f18bc12bb0019f9cd1836dcca408d">ARM_USBH_Uninitialize</a> de-initializes the resources of USB Host interface.</p>
-<p>It is called when the middleware component stops operation and releases the software resources used by the interface. </p>
+<p>Signal Pipe Event. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pipe_hndl</td><td>Pipe Handle </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">event</td><td><a class="el" href="group___u_s_b_h__pipe__events.html">USBH Pipe Events</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>none</dd></dl>
+<p>The function <b>ARM_USBH_SignalPipeEvent</b> is a callback function registered by the function <a class="el" href="group__usbh__host__gr.html#gad1e73f778c95dd46d4396e7741a97f0b">ARM_USBH_Initialize</a>.</p>
+<p>The parameter <em>pipe_hndl</em> specifies the pipe handle. <br/>
+ The parameter <em>event</em> indicates one or more events that occurred during driver operation. Each event is encoded in a separate bit and therefore it is possible to signal multiple events within the same call.</p>
+<p>The following events can be generated:</p>
+<table class="doxtable">
+<tr>
+<th align="left">Parameter <em>event</em> </th><th align="right">Bit</th><th align="left">Description</th></tr>
+<tr>
+<td align="left"><a class="el" href="group___u_s_b_h__pipe__events.html#gab161955b1ab0b7928befe446ef78634b">ARM_USBH_EVENT_TRANSFER_COMPLETE</a> </td><td align="right">0 </td><td align="left">Occurs after all the data has been transferred without errors. </td></tr>
+<tr>
+<td align="left"><a class="el" href="group___u_s_b_h__pipe__events.html#ga3895b82193855d9a6f0b7e8a9b65e2c0">ARM_USBH_EVENT_HANDSHAKE_NAK</a> </td><td align="right">1 </td><td align="left">Occurs when NAK Handshake is received before all the data is transferred. </td></tr>
+<tr>
+<td align="left"><a class="el" href="group___u_s_b_h__pipe__events.html#ga62ae214576c923ce737a16098e9836e5">ARM_USBH_EVENT_HANDSHAKE_NYET</a> </td><td align="right">2 </td><td align="left">Occurs when NYET Handshake is received before all the data is transferred. </td></tr>
+<tr>
+<td align="left"><a class="el" href="group___u_s_b_h__pipe__events.html#ga681ce0983f8c77c41f3cc5df1af8d010">ARM_USBH_EVENT_HANDSHAKE_MDATA</a> </td><td align="right">3 </td><td align="left">Occurs when MDATA Handshake is received before all the data is transferred. </td></tr>
+<tr>
+<td align="left"><a class="el" href="group___u_s_b_h__pipe__events.html#ga4fdc44fc78f342576dd11ad7cb84b4b8">ARM_USBH_EVENT_HANDSHAKE_STALL</a> </td><td align="right">4 </td><td align="left">Occurs when STALL Handshake is received before all the data is transferred. </td></tr>
+<tr>
+<td align="left"><a class="el" href="group___u_s_b_h__pipe__events.html#gac7cc573f879fbab678dc7d1347c68614">ARM_USBH_EVENT_HANDSHAKE_ERR</a> </td><td align="right">5 </td><td align="left">Occurs when ERR Handshake is received before all the data is transferred. </td></tr>
+<tr>
+<td align="left"><a class="el" href="group___u_s_b_h__pipe__events.html#ga7bd871b1e5c059bee398c32429370724">ARM_USBH_EVENT_BUS_ERROR</a> </td><td align="right">6 </td><td align="left">Occurs when bus error is detected before all the data is transferred. </td></tr>
+</table>
+<p><b>See also:</b></p>
+<ul>
+<li>ARM_USBH_PipeCreate </li>
+</ul>
 
 </div>
 </div>
@@ -1471,7 +1485,7 @@ USB Host Port speed setting (ARM_USB_SPEED_xxx) </td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:43 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:03 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

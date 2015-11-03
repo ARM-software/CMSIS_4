@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>Cluster Level (New)</title>
-<title>CMSIS-SVD: Cluster Level (New)</title>
+<title>Cluster Level</title>
+<title>CMSIS-SVD: Cluster Level</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="cmsis.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="jquery.js"></script>
@@ -27,7 +27,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-SVD
-   &#160;<span id="projectnumber">Version 1.2</span>
+   &#160;<span id="projectnumber">Version 1.3</span>
    </div>
    <div id="projectbrief">CMSIS System View Description</div>
   </td>
@@ -70,13 +70,13 @@ $(document).ready(function(){initNavTree('group__cluster_level__gr.html','');});
 <div id="doc-content">
 <div class="header">
   <div class="headertitle">
-<div class="title">Cluster Level (New)</div>  </div>
-<div class="ingroups"><a class="el" href="group__svd___format__1__1__gr.html">SVD Extension in Version 1.1 and 1.2</a></div></div><!--header-->
+<div class="title">Cluster Level</div>  </div>
+<div class="ingroups"><a class="el" href="group__svd___format__1__1__gr.html">SVD Extensions</a></div></div><!--header-->
 <div class="contents">
-<p><b>Cluster</b> adds a new and optional sub-level to the CMSIS SVD <em>registers</em> level. A cluster describes a sequence of registers within a peripheral. A cluster has an base offset relative to the base address of the peripheral. All registers within a cluster specify their address offset relative to the cluster base address. <em>Register</em> and <em>cluster</em> sections can occur in an arbitrary order. This feature, targeted at the generation of device header files, is useful to create a C data structure within the peripheral structure type, rather than describing all registers of a peripheral in a flat structure.</p>
+<p><b>Cluster</b> adds an optional sub-level within the CMSIS SVD <em>registers</em> level. A cluster describes a sequence of neighboring registers within a peripheral. A cluster specifies the <em>addressOffset</em> relative to the <em>baseAddress</em> of the peripheral. All <em>register</em> elements within a cluster specify their <em>addressOffset</em> relative to the cluster base address (<em>peripheral:baseAddress + cluster:addressOffset</em>). Multiple <em>&lt;register/&gt;</em> and <em>&lt;cluster&gt;</em> sections may occur in any order. Since version 1.3 of the specification the nesting of <em>&lt;cluster&gt;</em> elements is supported. This means, that within a <em>&lt;cluster&gt;</em> section any number of <em>&lt;register&gt;</em> and <em>&lt;cluster&gt;</em> sections may occur. Nested cluster express hierarchical structures of registers. It is predominantely targeted at the generation of device header files where it allows to create C data structure within the peripheral structure type instead of a flat list of registers. Note that you can also specify an array of a cluster using the <em>&lt;dim&gt;</em> element.</p>
 <hr/>
 <pre>
-<span class="mand"><b>&lt;registers&gt;</b> </span></pre><pre><span class="mand">    <b>&lt;cluster <span class="opt">derivedFrom=<em>identifierType</em></span>&gt;</b>
+<span class="mand"><b>&lt;registers&gt;</b> </span></pre><pre><span class="mand">    <b>&lt;cluster<span class="opt">derivedFrom=<em>identifierType</em></span>&gt;</b>
     <span class="opt">
         <em>&lt;!-- dimElementGroup --&gt; </em>
         &lt;dim&gt;<em>scaledNonNegativeInteger</em>&lt;/dim&gt;
@@ -90,9 +90,9 @@ $(document).ready(function(){initNavTree('group__cluster_level__gr.html','');});
         &lt;headerStructName&gt;<em>identifierType</em>&lt;/headerStructName&gt;
         &lt;alternateCluster&gt;<em>identifierType</em>&lt;/alternateCluster&gt;
     </span>
-        &lt;addressOffset&gt;<em>scaledNonNegativeInteger</em>&lt;/addressOffset&gt;</span></pre><pre><span class="mand">        &lt;register&gt;
+        &lt;addressOffset&gt;<em>scaledNonNegativeInteger</em>&lt;/addressOffset&gt;</span></pre><pre><span class="mand">        &lt;cluster&gt; ... &lt;/cluster&gt;
+        &lt;register&gt; ... &lt;/register&gt;
             ...
-        &lt;/register&gt;
     <b>&lt;/cluster&gt;</b>
     <span class="opt">...
     &lt;register&gt;
@@ -129,6 +129,10 @@ $(document).ready(function(){initNavTree('group__cluster_level__gr.html','');});
 <td>headerStructName  </td><td>This tag specifies the struct type name in the device header file. If not specified, then the name of the cluster will be used. </td><td>identifierType </td><td>0..1   </td></tr>
 <tr>
 <td>addressOffset </td><td>Value defining the cluster address relative to the <em>baseAddress</em> defined by the peripheral of the register. </td><td>scaledNonNegativeInteger </td><td>1..1   </td></tr>
+<tr>
+<td>register </td><td>register description </td><td>registerType </td><td>0..*   </td></tr>
+<tr>
+<td>cluster </td><td>cluster description </td><td>clusterType </td><td>0..*   </td></tr>
 </table>
 <h1><a class="anchor" id="clusterSection_ex"></a>
 Example:</h1>
@@ -166,7 +170,7 @@ Example:</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:59:01 for CMSIS-SVD by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:30 for CMSIS-SVD by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

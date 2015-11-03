@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-DSP
-   &#160;<span id="projectnumber">Version 1.4.5</span>
+   &#160;<span id="projectnumber">Version 1.4.6</span>
    </div>
    <div id="projectbrief">CMSIS DSP Software Library</div>
   </td>
@@ -112,7 +112,13 @@ $(document).ready(function(){initNavTree('_change_log_pg.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><hr/>
-<p><b>Version 1.4.5 2015/03/19</b></p>
+ <b>Version 1.4.6 (no source code change [still labeled 1.4.5]) 2015/08/26</b></p>
+<p>Modified <a class="el" href="arm__math_8h.html">arm_math.h</a></p>
+<ul>
+<li>Updated function <a class="el" href="group___s_q_r_t.html#ga56a40d1cf842b0b45267df6761975da0">arm_sqrt_f32</a> for use with IAR.</li>
+</ul>
+<hr/>
+ <b>Version 1.4.5 2015/03/19</b></p>
 <p>Added support for the Cortex-M7 processor</p>
 <p>Fixed bug in <a class="el" href="arm__mat__inverse__f32_8c.html">arm_mat_inverse_f32.c</a> and <a class="el" href="arm__mat__inverse__f64_8c.html">arm_mat_inverse_f64.c</a>. They weren't properly handling diagonal matrices.</p>
 <p><a class="el" href="arm__cfft__f32_8c.html">arm_cfft_f32.c</a> - help documentation updated</p>
@@ -342,7 +348,7 @@ Documentation
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:50 for CMSIS-DSP by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:14 for CMSIS-DSP by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

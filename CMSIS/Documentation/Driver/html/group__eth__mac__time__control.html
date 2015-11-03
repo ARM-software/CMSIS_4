@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -142,36 +142,6 @@ Macros</h2></td></tr>
 <p>Control codes for <a class="el" href="group__eth__mac__interface__gr.html#ga85d9dc865af3702b71a514b18a588643">ARM_ETH_MAC_ControlTimer</a> function. </p>
 <p>The following timer controls are used as parameter <em>control</em> for the <a class="el" href="group__eth__mac__interface__gr.html#ga85d9dc865af3702b71a514b18a588643">ARM_ETH_MAC_ControlTimer</a> function: </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="ga85cb862eba0934e958a8552022588db7"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_ETH_MAC_TIMER_ADJUST_CLOCK&#160;&#160;&#160;(0x06)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Adjust clock frequency; time-&gt;ns: correction factor * 2^31. </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__eth__mac__interface__gr.html#ga85d9dc865af3702b71a514b18a588643" title="Control Precision Timer.">ARM_ETH_MAC_ControlTimer</a> </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="gaca9f1c4259d0342e9717a362de1ccf41"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_ETH_MAC_TIMER_DEC_TIME&#160;&#160;&#160;(0x04)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Decrement current time. </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__eth__mac__interface__gr.html#ga85d9dc865af3702b71a514b18a588643" title="Control Precision Timer.">ARM_ETH_MAC_ControlTimer</a> </dd></dl>
-
-</div>
-</div>
 <a class="anchor" id="gad9a439b9727c032a7d851df2a7a622c2"></a>
 <div class="memitem">
 <div class="memproto">
@@ -183,36 +153,6 @@ Macros</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get current time. </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__eth__mac__interface__gr.html#ga85d9dc865af3702b71a514b18a588643" title="Control Precision Timer.">ARM_ETH_MAC_ControlTimer</a> </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ga3c57b3150717fb1a8cbbbac6a9b7ff69"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_ETH_MAC_TIMER_INC_TIME&#160;&#160;&#160;(0x03)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Increment current time. </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__eth__mac__interface__gr.html#ga85d9dc865af3702b71a514b18a588643" title="Control Precision Timer.">ARM_ETH_MAC_ControlTimer</a> </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ga04c2469ba027b020bc6b5baf3b51cf74"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_ETH_MAC_TIMER_SET_ALARM&#160;&#160;&#160;(0x05)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Set alarm time. </p>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__eth__mac__interface__gr.html#ga85d9dc865af3702b71a514b18a588643" title="Control Precision Timer.">ARM_ETH_MAC_ControlTimer</a> </dd></dl>
 
 </div>
@@ -232,12 +172,72 @@ Macros</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ga3c57b3150717fb1a8cbbbac6a9b7ff69"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_ETH_MAC_TIMER_INC_TIME&#160;&#160;&#160;(0x03)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Increment current time. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__eth__mac__interface__gr.html#ga85d9dc865af3702b71a514b18a588643" title="Control Precision Timer.">ARM_ETH_MAC_ControlTimer</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gaca9f1c4259d0342e9717a362de1ccf41"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_ETH_MAC_TIMER_DEC_TIME&#160;&#160;&#160;(0x04)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Decrement current time. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__eth__mac__interface__gr.html#ga85d9dc865af3702b71a514b18a588643" title="Control Precision Timer.">ARM_ETH_MAC_ControlTimer</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga04c2469ba027b020bc6b5baf3b51cf74"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_ETH_MAC_TIMER_SET_ALARM&#160;&#160;&#160;(0x05)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set alarm time. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__eth__mac__interface__gr.html#ga85d9dc865af3702b71a514b18a588643" title="Control Precision Timer.">ARM_ETH_MAC_ControlTimer</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga85cb862eba0934e958a8552022588db7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_ETH_MAC_TIMER_ADJUST_CLOCK&#160;&#160;&#160;(0x06)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adjust clock frequency; time-&gt;ns: correction factor * 2^31. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__eth__mac__interface__gr.html#ga85d9dc865af3702b71a514b18a588643" title="Control Precision Timer.">ARM_ETH_MAC_ControlTimer</a> </dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:42 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:02 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

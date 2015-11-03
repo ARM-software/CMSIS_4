@@ -1,5 +1,5 @@
 
-#include <cmsis_os.h>                                           // CMSIS RTOS header file
+#include "cmsis_os.h"                                           // CMSIS RTOS header file
 
 /*----------------------------------------------------------------------------
  *      Semaphore creation & usage
@@ -15,21 +15,21 @@ osSemaphoreDef (SampleSemaphore);                               // semaphore obj
 
 int Init_Semaphore (void) {
 
-  sid_Thread_Semaphore = osSemaphoreCreate(osSemaphore(SampleSemaphore), 1);
-  if (!sid_Thread_Semaphore)  {
+  sid_Thread_Semaphore = osSemaphoreCreate (osSemaphore(SampleSemaphore), 1);
+  if (!sid_Thread_Semaphore) {
     ; // Semaphore object not created, handle failure
   }
   
-  tid_Thread_Semaphore  = osThreadCreate (osThread(Thread_Semaphore), NULL);
-  if(!tid_Thread_Semaphore) return(-1);
+  tid_Thread_Semaphore = osThreadCreate (osThread(Thread_Semaphore), NULL);
+  if (!tid_Thread_Semaphore) return(-1);
   
   return(0);
 }
 
-void Thread_Semaphore(void const *argument) {
+void Thread_Semaphore (void const *argument) {
   int32_t val;
 
-  while(1) {
+  while (1) {
     ; // Insert thread code here...
 
     val = osSemaphoreWait (sid_Thread_Semaphore, 10);           // wait 10 mSec
@@ -46,6 +46,6 @@ void Thread_Semaphore(void const *argument) {
         break;
     }
 
-    osThreadYield();        // suspend thread
+    osThreadYield ();                                           // suspend thread
   }
 }

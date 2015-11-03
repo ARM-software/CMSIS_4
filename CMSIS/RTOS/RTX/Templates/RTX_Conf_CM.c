@@ -295,6 +295,8 @@ void os_error (uint32_t error_code) {
     case OS_ERROR_TIMER_OVF:
       /* User Timer Callback Queue overflow detected. */
       break;
+    default:
+      break;
   }
   for (;;);
 }

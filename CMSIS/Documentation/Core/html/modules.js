@@ -1,6 +1,6 @@
 var modules =
 [
-    [ "Peripheral Access", "group__peripheral__gr.html", null ],
+    [ "Peripheral Access", "group__peripheral__gr.html", "group__peripheral__gr" ],
     [ "System and Clock Configuration", "group__system__init__gr.html", "group__system__init__gr" ],
     [ "Interrupts and Exceptions (NVIC)", "group___n_v_i_c__gr.html", "group___n_v_i_c__gr" ],
     [ "Core Register Access", "group___core___register__gr.html", "group___core___register__gr" ],

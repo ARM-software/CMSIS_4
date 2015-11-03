@@ -19,7 +19,7 @@
  *
  *
  * $Date:        14. April 2014
- * $Revision:    V1.00
+ * $Revision:    V1.0
  *
  * Project:      GPIO Driver for NXP LPC18xx
  * -------------------------------------------------------------------------- */
@@ -61,7 +61,7 @@ void GPIO_SetDir (uint32_t port_num, uint32_t pin_num, uint32_t dir) {
 /**
   \fn          void GPIO_PinWrite (uint32_t port_num,
                                    uint32_t pin_num,
-                                   uint32_t val);
+                                   uint32_t val)
   \brief       Write port pin
   \param[in]   port_num   GPIO number (0..7)
   \param[in]   pin_num    Port pin number

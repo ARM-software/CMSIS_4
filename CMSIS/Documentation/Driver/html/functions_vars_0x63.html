@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -101,6 +101,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions_vars_0x67.html#index_g"><span>g</span></a></li>
       <li><a href="functions_vars_0x68.html#index_h"><span>h</span></a></li>
       <li><a href="functions_vars_0x69.html#index_i"><span>i</span></a></li>
+      <li><a href="functions_vars_0x6c.html#index_l"><span>l</span></a></li>
       <li><a href="functions_vars_0x6d.html#index_m"><span>m</span></a></li>
       <li><a href="functions_vars_0x6e.html#index_n"><span>n</span></a></li>
       <li><a href="functions_vars_0x6f.html#index_o"><span>o</span></a></li>
@@ -220,13 +221,14 @@ $(document).ready(function(){initNavTree('functions_vars_0x63.html','');});
 : <a class="el" href="group__usbh__host__gr.html#abf1a0792d6af28877b0abd141d5524ac">ARM_USBH_PORT_STATE</a>
 </li>
 <li>Control
-: <a class="el" href="group__i2c__interface__gr.html#a6e0f47a92f626a971c5197fca6545505">ARM_DRIVER_I2C</a>
-, <a class="el" href="group__usart__interface__gr.html#a6e0f47a92f626a971c5197fca6545505">ARM_DRIVER_USART</a>
-, <a class="el" href="group__nand__interface__gr.html#a706fedbc88921808e210d75b7b5da168">ARM_DRIVER_NAND</a>
+: <a class="el" href="group__spi__interface__gr.html#a6e0f47a92f626a971c5197fca6545505">ARM_DRIVER_SPI</a>
 , <a class="el" href="group__sai__interface__gr.html#a80455fc2c7355b1850098710fd66a244">ARM_DRIVER_SAI</a>
-, <a class="el" href="group__spi__interface__gr.html#a6e0f47a92f626a971c5197fca6545505">ARM_DRIVER_SPI</a>
+, <a class="el" href="group__i2c__interface__gr.html#a6e0f47a92f626a971c5197fca6545505">ARM_DRIVER_I2C</a>
 , <a class="el" href="group__mci__interface__gr.html#a6e0f47a92f626a971c5197fca6545505">ARM_DRIVER_MCI</a>
+, <a class="el" href="group__nand__interface__gr.html#a706fedbc88921808e210d75b7b5da168">ARM_DRIVER_NAND</a>
+, <a class="el" href="group__usart__interface__gr.html#a6e0f47a92f626a971c5197fca6545505">ARM_DRIVER_USART</a>
 , <a class="el" href="group__eth__mac__interface__gr.html#a6e0f47a92f626a971c5197fca6545505">ARM_DRIVER_ETH_MAC</a>
+, <a class="el" href="group__can__interface__gr.html#a6e0f47a92f626a971c5197fca6545505">ARM_DRIVER_CAN</a>
 </li>
 <li>ControlTimer
 : <a class="el" href="group__eth__mac__interface__gr.html#ab6bdbdc7fdfcc52e027201738b88b431">ARM_DRIVER_ETH_MAC</a>
@@ -235,8 +237,8 @@ $(document).ready(function(){initNavTree('functions_vars_0x63.html','');});
 : <a class="el" href="group__nand__interface__gr.html#ae65f920c4ad99fd0c6bdf5fd8c4d161a">ARM_NAND_ECC_INFO</a>
 </li>
 <li>cts
-: <a class="el" href="group__usart__interface__gr.html#a0a4ccfb729b3a40a5fd611021268c262">ARM_USART_MODEM_STATUS</a>
-, <a class="el" href="group__usart__interface__gr.html#a0a4ccfb729b3a40a5fd611021268c262">ARM_USART_CAPABILITIES</a>
+: <a class="el" href="group__usart__interface__gr.html#a0a4ccfb729b3a40a5fd611021268c262">ARM_USART_CAPABILITIES</a>
+, <a class="el" href="group__usart__interface__gr.html#a0a4ccfb729b3a40a5fd611021268c262">ARM_USART_MODEM_STATUS</a>
 </li>
 </ul>
 </div><!-- contents -->
@@ -244,7 +246,7 @@ $(document).ready(function(){initNavTree('functions_vars_0x63.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:43 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:03 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

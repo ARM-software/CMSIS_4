@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -173,160 +173,6 @@ Macros</h2></td></tr>
 <p><b>ARM_MCI_xxx</b> flags are sent with the function <a class="el" href="group__mci__interface__gr.html#ga5a431da89feabc2b4bc0c27943dff6f2">ARM_MCI_SendCommand</a> as the parameter <em>flag</em>. It controls the behavior of the command sent to the card and provides information about the expected response from the card.</p>
 <p>The following codes are defined: </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="ga8c55bc0a310630d49810802ccd1bb10d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_MCI_BOOT_ACK&#160;&#160;&#160;(1UL &lt;&lt; 11)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Expect Boot Acknowledge (MMC only) </p>
-
-</div>
-</div>
-<a class="anchor" id="ga30bd304652d4f870ee7ce61c266a9348"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_MCI_BOOT_ALTERNATIVE&#160;&#160;&#160;(1UL &lt;&lt; 10)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Execute Alternative Boot operation (MMC only) </p>
-
-</div>
-</div>
-<a class="anchor" id="gae04254f51dfd9838583206cae0a5f8f7"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_MCI_BOOT_OPERATION&#160;&#160;&#160;(1UL &lt;&lt; 9)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Execute Boot operation (MMC only) </p>
-
-</div>
-</div>
-<a class="anchor" id="ga81606bd94ce782e2c3764b913f929f60"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_MCI_CARD_INITIALIZE&#160;&#160;&#160;(1UL &lt;&lt; 6)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Execute Memory Card initialization sequence. </p>
-
-</div>
-</div>
-<a class="anchor" id="gab82c472e4ca3fca12ae3291e25997f00"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_MCI_CCS&#160;&#160;&#160;(1UL &lt;&lt; 13)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Expect Command Completion Signal (CCS) for CE-ATA device. </p>
-
-</div>
-</div>
-<a class="anchor" id="gab9df5169b37621764f8bb0f93db5281a"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_MCI_CCSD&#160;&#160;&#160;(1UL &lt;&lt; 12)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Send Command Completion Signal Disable (CCSD) for CE-ATA device. </p>
-
-</div>
-</div>
-<a class="anchor" id="gab2bfeedf1dc2df1872ebbcc559a7385a"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_MCI_INTERRUPT_COMMAND&#160;&#160;&#160;(1UL &lt;&lt; 7)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Send Interrupt command (CMD40 - MMC only) </p>
-
-</div>
-</div>
-<a class="anchor" id="gabc31b6b26988998c84c92a9a698fd5dc"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_MCI_INTERRUPT_RESPONSE&#160;&#160;&#160;(1UL &lt;&lt; 8)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Send Interrupt response (CMD40 - MMC only) </p>
-
-</div>
-</div>
-<a class="anchor" id="ga6ab3f4c1a2bf0fdb81fbcf7a5698f2de"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_MCI_RESPONSE_CRC&#160;&#160;&#160;(1UL &lt;&lt; 3)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Check CRC in response. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga497abf878c6e12f54cc7ddb92da76c4a"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_MCI_RESPONSE_INDEX&#160;&#160;&#160;(1UL &lt;&lt; 2)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Check command index in response. </p>
-
-</div>
-</div>
-<a class="anchor" id="gac49c7b39a7c51bd2193e048835bec2fb"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_MCI_RESPONSE_LONG&#160;&#160;&#160;(3UL &lt;&lt; ARM_MCI_RESPONSE_Pos)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Long response (136-bit) </p>
-
-</div>
-</div>
 <a class="anchor" id="ga70934cef80884e8c75fb4eebf8452118"></a>
 <div class="memitem">
 <div class="memproto">
@@ -369,17 +215,45 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga8aa566f69aa74ed416213df6ca3267bd"></a>
+<a class="anchor" id="gac49c7b39a7c51bd2193e048835bec2fb"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_MCI_TRANSFER_DATA&#160;&#160;&#160;(1UL &lt;&lt; 5)</td>
+          <td class="memname">#define ARM_MCI_RESPONSE_LONG&#160;&#160;&#160;(3UL &lt;&lt; ARM_MCI_RESPONSE_Pos)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Activate Data transfer. </p>
+<p>Long response (136-bit) </p>
+
+</div>
+</div>
+<a class="anchor" id="ga497abf878c6e12f54cc7ddb92da76c4a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_MCI_RESPONSE_INDEX&#160;&#160;&#160;(1UL &lt;&lt; 2)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check command index in response. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga6ab3f4c1a2bf0fdb81fbcf7a5698f2de"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_MCI_RESPONSE_CRC&#160;&#160;&#160;(1UL &lt;&lt; 3)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check CRC in response. </p>
 
 </div>
 </div>
@@ -397,12 +271,138 @@ Macros</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ga8aa566f69aa74ed416213df6ca3267bd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_MCI_TRANSFER_DATA&#160;&#160;&#160;(1UL &lt;&lt; 5)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Activate Data transfer. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga81606bd94ce782e2c3764b913f929f60"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_MCI_CARD_INITIALIZE&#160;&#160;&#160;(1UL &lt;&lt; 6)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Execute Memory Card initialization sequence. </p>
+
+</div>
+</div>
+<a class="anchor" id="gab2bfeedf1dc2df1872ebbcc559a7385a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_MCI_INTERRUPT_COMMAND&#160;&#160;&#160;(1UL &lt;&lt; 7)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Send Interrupt command (CMD40 - MMC only) </p>
+
+</div>
+</div>
+<a class="anchor" id="gabc31b6b26988998c84c92a9a698fd5dc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_MCI_INTERRUPT_RESPONSE&#160;&#160;&#160;(1UL &lt;&lt; 8)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Send Interrupt response (CMD40 - MMC only) </p>
+
+</div>
+</div>
+<a class="anchor" id="gae04254f51dfd9838583206cae0a5f8f7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_MCI_BOOT_OPERATION&#160;&#160;&#160;(1UL &lt;&lt; 9)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Execute Boot operation (MMC only) </p>
+
+</div>
+</div>
+<a class="anchor" id="ga30bd304652d4f870ee7ce61c266a9348"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_MCI_BOOT_ALTERNATIVE&#160;&#160;&#160;(1UL &lt;&lt; 10)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Execute Alternative Boot operation (MMC only) </p>
+
+</div>
+</div>
+<a class="anchor" id="ga8c55bc0a310630d49810802ccd1bb10d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_MCI_BOOT_ACK&#160;&#160;&#160;(1UL &lt;&lt; 11)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Expect Boot Acknowledge (MMC only) </p>
+
+</div>
+</div>
+<a class="anchor" id="gab9df5169b37621764f8bb0f93db5281a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_MCI_CCSD&#160;&#160;&#160;(1UL &lt;&lt; 12)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Send Command Completion Signal Disable (CCSD) for CE-ATA device. </p>
+
+</div>
+</div>
+<a class="anchor" id="gab82c472e4ca3fca12ae3291e25997f00"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_MCI_CCS&#160;&#160;&#160;(1UL &lt;&lt; 13)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Expect Command Completion Signal (CCS) for CE-ATA device. </p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:42 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:02 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

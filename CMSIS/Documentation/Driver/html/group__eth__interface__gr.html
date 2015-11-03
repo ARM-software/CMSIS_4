@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -121,6 +121,9 @@ $(document).ready(function(){initNavTree('group__eth__interface__gr.html','');})
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
 Content</h2></td></tr>
+<tr class="memitem:group__eth__interface__types1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__eth__interface__types1.html">Media Interface Types</a></td></tr>
+<tr class="memdesc:group__eth__interface__types1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ethernet Media Interface type. <br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:group__eth__mac__interface__gr"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__eth__mac__interface__gr.html">Ethernet MAC Interface</a></td></tr>
 <tr class="memdesc:group__eth__mac__interface__gr"><td class="mdescLeft">&#160;</td><td class="mdescRight">Driver API for Ethernet MAC Peripheral (Driver_ETH_MAC.h) <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -152,7 +155,7 @@ Enumerations</h2></td></tr>
 <p>Ethernet common definitions (Driver_ETH.h) </p>
 <p><b>Ethernet</b> is a networking technology for exchanging data packages between computer systems. Several microcontrollers integrate an Ethernet MAC (Media Access Control) data-link layer that interfaces to an Ethernet PHY (Physical Interface Transceiver).</p>
 <p>Wikipedia offers more information about the <a href="http://en.wikipedia.org/wiki/Ethernet" target="_blank"><b>Ethernet</b></a>.</p>
-<p><b>Ethernet Structure</b></p>
+<p><b>Block Diagram</b></p>
 <p>The Ethernet PHY connects typically to the Ethernet MAC using an MII (Media Independent Interface) or RMII (Reduced Media Independent Interface).</p>
 <p><br/>
  </p>
@@ -168,8 +171,9 @@ Block Diagram of a typical Ethernet Interface</div></div>
 <li><b>Driver_ETH_PHY.h</b> : API for the Ethernet PHY</li>
 </ul>
 <p>The driver implementation of the Ethernet MAC is a typical part of a Device Family Pack (DFP) that supports the peripherals of the microcontroller family. The driver implementation of the Ethernet PHY is a typical part of a <b>Network</b> Software Pack, since PHY is typically not integrated into the microcontroller.</p>
+<dl class="section note"><dt>Note</dt><dd>For parameters, the value marked with (default) is the setting after the driver initialization.</dd></dl>
 <p><b>Driver Functions</b></p>
-<p>The driver functions are published in the access struct as explained in <a class="el" href="_theory_operation.html#DriverFunctions">Driver Functions</a></p>
+<p>The driver functions are published in the access struct as explained in <a class="el" href="_theory_operation.html#DriverFunctions">Common Driver Functions</a></p>
 <ul>
 <li><a class="el" href="group__eth__mac__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___e_t_h___m_a_c">ARM_DRIVER_ETH_MAC</a> : access struct for <b>Ethernet MAC</b> driver functions.</li>
 <li><a class="el" href="group__eth__phy__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___e_t_h___p_h_y">ARM_DRIVER_ETH_PHY</a> : access struct for <b>Ethernet PHY</b> driver functions.</li>
@@ -266,17 +270,17 @@ Block Diagram of a typical Ethernet Interface</div></div>
 </div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a class="anchor" id="a44b6cae894d7311dcdae7e93969c3c09"></a>uint32_t</td>
-<td class="fieldname">
-duplex: 1</td>
-<td class="fielddoc">
-Duplex mode: 0= Half, 1= Full. </td></tr>
-<tr><td class="fieldtype">
 <a class="anchor" id="a220859a8b5da0232739a11cbe7f79fc5"></a>uint32_t</td>
 <td class="fieldname">
 speed: 2</td>
 <td class="fielddoc">
 Link speed: 0= 10 MBit, 1= 100 MBit, 2= 1 GBit. </td></tr>
+<tr><td class="fieldtype">
+<a class="anchor" id="a44b6cae894d7311dcdae7e93969c3c09"></a>uint32_t</td>
+<td class="fieldname">
+duplex: 1</td>
+<td class="fielddoc">
+Duplex mode: 0= Half, 1= Full. </td></tr>
 </table>
 
 </div>
@@ -343,7 +347,7 @@ MAC Address (6 bytes), MSB first. </td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:42 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:02 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

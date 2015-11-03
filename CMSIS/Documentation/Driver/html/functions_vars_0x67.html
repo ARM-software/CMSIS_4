@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -101,6 +101,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li class="current"><a href="functions_vars_0x67.html#index_g"><span>g</span></a></li>
       <li><a href="functions_vars_0x68.html#index_h"><span>h</span></a></li>
       <li><a href="functions_vars_0x69.html#index_i"><span>i</span></a></li>
+      <li><a href="functions_vars_0x6c.html#index_l"><span>l</span></a></li>
       <li><a href="functions_vars_0x6d.html#index_m"><span>m</span></a></li>
       <li><a href="functions_vars_0x6e.html#index_n"><span>n</span></a></li>
       <li><a href="functions_vars_0x6f.html#index_o"><span>o</span></a></li>
@@ -150,21 +151,25 @@ $(document).ready(function(){initNavTree('functions_vars_0x67.html','');});
 : <a class="el" href="group__i2c__interface__gr.html#ab65804439f6f5beda8da30381b0ad22d">ARM_I2C_STATUS</a>
 </li>
 <li>GetCapabilities
-: <a class="el" href="group__eth__mac__interface__gr.html#a9fd725bb058c584a9ced9c579561cdf1">ARM_DRIVER_ETH_MAC</a>
-, <a class="el" href="group__mci__interface__gr.html#a5648b4224e0346ba5e20fefc7e83aee8">ARM_DRIVER_MCI</a>
-, <a class="el" href="group__spi__interface__gr.html#a065b5fc24d0204692f0f95a44351ac1e">ARM_DRIVER_SPI</a>
-, <a class="el" href="group__usart__interface__gr.html#a9cec078ea816ece7b2d989f35caadb12">ARM_DRIVER_USART</a>
-, <a class="el" href="group__nand__interface__gr.html#adab9d081aee3e5d1f83c6911e45ceaa6">ARM_DRIVER_NAND</a>
-, <a class="el" href="group__usbd__interface__gr.html#a52045edf0f555a0f0ecdf37a5e169f7a">ARM_DRIVER_USBD</a>
-, <a class="el" href="group__usbh__host__gr.html#aaba1d9458e32389c21c3d899f9cb9313">ARM_DRIVER_USBH</a>
+: <a class="el" href="group__can__interface__gr.html#a62c0c62c2bf482c000b1b2a2c817a96f">ARM_DRIVER_CAN</a>
 , <a class="el" href="group__i2c__interface__gr.html#a5dfa74ca82e0af995d43da61e08c3103">ARM_DRIVER_I2C</a>
-, <a class="el" href="group__flash__interface__gr.html#a25076bd7274af5d3b0af6380ed1f0331">ARM_DRIVER_FLASH</a>
-, <a class="el" href="group__usbh__hci__gr.html#a7a41769405bb3bb4cc9eaba26cf220d4">ARM_DRIVER_USBH_HCI</a>
 , <a class="el" href="group__sai__interface__gr.html#a7e230744b9898cabf80ee6f2595569f6">ARM_DRIVER_SAI</a>
+, <a class="el" href="group__spi__interface__gr.html#a065b5fc24d0204692f0f95a44351ac1e">ARM_DRIVER_SPI</a>
+, <a class="el" href="group__mci__interface__gr.html#a5648b4224e0346ba5e20fefc7e83aee8">ARM_DRIVER_MCI</a>
+, <a class="el" href="group__usart__interface__gr.html#a9cec078ea816ece7b2d989f35caadb12">ARM_DRIVER_USART</a>
+, <a class="el" href="group__usbd__interface__gr.html#a52045edf0f555a0f0ecdf37a5e169f7a">ARM_DRIVER_USBD</a>
+, <a class="el" href="group__eth__mac__interface__gr.html#a9fd725bb058c584a9ced9c579561cdf1">ARM_DRIVER_ETH_MAC</a>
+, <a class="el" href="group__nand__interface__gr.html#adab9d081aee3e5d1f83c6911e45ceaa6">ARM_DRIVER_NAND</a>
+, <a class="el" href="group__usbh__host__gr.html#aaba1d9458e32389c21c3d899f9cb9313">ARM_DRIVER_USBH</a>
+, <a class="el" href="group__usbh__hci__gr.html#a7a41769405bb3bb4cc9eaba26cf220d4">ARM_DRIVER_USBH_HCI</a>
+, <a class="el" href="group__flash__interface__gr.html#a25076bd7274af5d3b0af6380ed1f0331">ARM_DRIVER_FLASH</a>
+</li>
+<li>GetClock
+: <a class="el" href="group__can__interface__gr.html#a21063f38e762cf29dfd3f5991ee936e2">ARM_DRIVER_CAN</a>
 </li>
 <li>GetDataCount
-: <a class="el" href="group__i2c__interface__gr.html#ad421a9b9b07fd6d3e6537396c2b98788">ARM_DRIVER_I2C</a>
-, <a class="el" href="group__spi__interface__gr.html#ad1d892ab3932f65cd7cdf2d0a91ae5da">ARM_DRIVER_SPI</a>
+: <a class="el" href="group__spi__interface__gr.html#ad1d892ab3932f65cd7cdf2d0a91ae5da">ARM_DRIVER_SPI</a>
+, <a class="el" href="group__i2c__interface__gr.html#ad421a9b9b07fd6d3e6537396c2b98788">ARM_DRIVER_I2C</a>
 </li>
 <li>GetDeviceBusy
 : <a class="el" href="group__nand__interface__gr.html#ac9bc93fb1a089c6ac71428122f3a072e">ARM_DRIVER_NAND</a>
@@ -199,13 +204,14 @@ $(document).ready(function(){initNavTree('functions_vars_0x67.html','');});
 : <a class="el" href="group__eth__mac__interface__gr.html#a8ae5a588bf4055bba3de73cfba78f7e8">ARM_DRIVER_ETH_MAC</a>
 </li>
 <li>GetStatus
-: <a class="el" href="group__i2c__interface__gr.html#ad4b47653bc47cdb02965dd311e88b96a">ARM_DRIVER_I2C</a>
-, <a class="el" href="group__spi__interface__gr.html#a7305e7248420cdb4b02ceba87672178d">ARM_DRIVER_SPI</a>
-, <a class="el" href="group__usart__interface__gr.html#a055ad4095356a022886828009a980316">ARM_DRIVER_USART</a>
-, <a class="el" href="group__sai__interface__gr.html#a310d55d55bd7c6b0393d43bb994db708">ARM_DRIVER_SAI</a>
-, <a class="el" href="group__mci__interface__gr.html#a2dc63353d6869c0ea2d3d29155c88b49">ARM_DRIVER_MCI</a>
+: <a class="el" href="group__mci__interface__gr.html#a2dc63353d6869c0ea2d3d29155c88b49">ARM_DRIVER_MCI</a>
 , <a class="el" href="group__nand__interface__gr.html#aa43ee108ee5bf29e40485ca89b34188b">ARM_DRIVER_NAND</a>
 , <a class="el" href="group__flash__interface__gr.html#afc1db6f33f777784f3c95efc816d4856">ARM_DRIVER_FLASH</a>
+, <a class="el" href="group__sai__interface__gr.html#a310d55d55bd7c6b0393d43bb994db708">ARM_DRIVER_SAI</a>
+, <a class="el" href="group__usart__interface__gr.html#a055ad4095356a022886828009a980316">ARM_DRIVER_USART</a>
+, <a class="el" href="group__spi__interface__gr.html#a7305e7248420cdb4b02ceba87672178d">ARM_DRIVER_SPI</a>
+, <a class="el" href="group__can__interface__gr.html#ad60ff24982cdb3ce38b8c17e0b4f0acc">ARM_DRIVER_CAN</a>
+, <a class="el" href="group__i2c__interface__gr.html#ad4b47653bc47cdb02965dd311e88b96a">ARM_DRIVER_I2C</a>
 </li>
 <li>GetTxCount
 : <a class="el" href="group__sai__interface__gr.html#a0b28b2c21016702f50c28655653099df">ARM_DRIVER_SAI</a>
@@ -215,18 +221,19 @@ $(document).ready(function(){initNavTree('functions_vars_0x67.html','');});
 : <a class="el" href="group__eth__mac__interface__gr.html#acf081f5020f4ef1435bcff7333a70b93">ARM_DRIVER_ETH_MAC</a>
 </li>
 <li>GetVersion
-: <a class="el" href="group__mci__interface__gr.html#a8834b281da48583845c044a81566c1b3">ARM_DRIVER_MCI</a>
+: <a class="el" href="group__eth__mac__interface__gr.html#a8834b281da48583845c044a81566c1b3">ARM_DRIVER_ETH_MAC</a>
+, <a class="el" href="group__can__interface__gr.html#a8834b281da48583845c044a81566c1b3">ARM_DRIVER_CAN</a>
 , <a class="el" href="group__eth__phy__interface__gr.html#a8834b281da48583845c044a81566c1b3">ARM_DRIVER_ETH_PHY</a>
-, <a class="el" href="group__usbh__host__gr.html#a8834b281da48583845c044a81566c1b3">ARM_DRIVER_USBH</a>
-, <a class="el" href="group__i2c__interface__gr.html#a8834b281da48583845c044a81566c1b3">ARM_DRIVER_I2C</a>
-, <a class="el" href="group__usart__interface__gr.html#a8834b281da48583845c044a81566c1b3">ARM_DRIVER_USART</a>
-, <a class="el" href="group__spi__interface__gr.html#a8834b281da48583845c044a81566c1b3">ARM_DRIVER_SPI</a>
 , <a class="el" href="group__flash__interface__gr.html#a8834b281da48583845c044a81566c1b3">ARM_DRIVER_FLASH</a>
-, <a class="el" href="group__eth__mac__interface__gr.html#a8834b281da48583845c044a81566c1b3">ARM_DRIVER_ETH_MAC</a>
-, <a class="el" href="group__sai__interface__gr.html#a8834b281da48583845c044a81566c1b3">ARM_DRIVER_SAI</a>
 , <a class="el" href="group__usbh__hci__gr.html#a8834b281da48583845c044a81566c1b3">ARM_DRIVER_USBH_HCI</a>
-, <a class="el" href="group__usbd__interface__gr.html#a8834b281da48583845c044a81566c1b3">ARM_DRIVER_USBD</a>
+, <a class="el" href="group__usart__interface__gr.html#a8834b281da48583845c044a81566c1b3">ARM_DRIVER_USART</a>
 , <a class="el" href="group__nand__interface__gr.html#a8834b281da48583845c044a81566c1b3">ARM_DRIVER_NAND</a>
+, <a class="el" href="group__spi__interface__gr.html#a8834b281da48583845c044a81566c1b3">ARM_DRIVER_SPI</a>
+, <a class="el" href="group__usbd__interface__gr.html#a8834b281da48583845c044a81566c1b3">ARM_DRIVER_USBD</a>
+, <a class="el" href="group__sai__interface__gr.html#a8834b281da48583845c044a81566c1b3">ARM_DRIVER_SAI</a>
+, <a class="el" href="group__i2c__interface__gr.html#a8834b281da48583845c044a81566c1b3">ARM_DRIVER_I2C</a>
+, <a class="el" href="group__mci__interface__gr.html#a8834b281da48583845c044a81566c1b3">ARM_DRIVER_MCI</a>
+, <a class="el" href="group__usbh__host__gr.html#a8834b281da48583845c044a81566c1b3">ARM_DRIVER_USBH</a>
 </li>
 </ul>
 </div><!-- contents -->
@@ -234,7 +241,7 @@ $(document).ready(function(){initNavTree('functions_vars_0x67.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:43 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:03 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

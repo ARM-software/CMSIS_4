@@ -19,16 +19,16 @@
  *
  *
  * $Date:        20. January 2015
- * $Revision:    V1.01
+ * $Revision:    V1.1
  *
  * Project:      USB common (Device and Host) module for NXP LPC18xx
  * -------------------------------------------------------------------------- */
 
 /* History:
- *  Version 1.01
- *    - Improved support for Host and Device
- *  Version 1.00
- *    - Initial release
+ *  Version 1.1
+ *    Improved support for Host and Device
+ *  Version 1.0
+ *    Initial release
  */
 
 #include "LPC18xx.h"
@@ -40,7 +40,7 @@
 #include "RTE_Components.h"
 
 volatile uint8_t USB1_role  = ARM_USB_ROLE_NONE;
-volatile uint8_t USB1_state = 0;
+volatile uint8_t USB1_state = 0U;
 
 #ifdef RTE_Drivers_USBH1
 extern void USBH1_IRQ (void);
@@ -111,10 +111,10 @@ void USB1_PinsConfigure (void) {
   // Host Pins
   if (USB1_role == ARM_USB_ROLE_HOST) {
 #if (RTE_USB1_PPWR_PIN_EN)
-    SCU_PinConfigure(RTE_USB1_PPWR_PORT, RTE_USB1_PPWR_BIT, RTE_USB1_PPWR_FUNC);
+    SCU_PinConfigure(RTE_USB1_PPWR_PORT,      RTE_USB1_PPWR_BIT,      RTE_USB1_PPWR_FUNC);
 #endif
 #if (RTE_USB1_PWR_FAULT_PIN_EN)
-    SCU_PinConfigure(RTE_USB1_PWR_FAULT_PORT,RTE_USB1_PWR_FAULT_BIT, RTE_USB1_PWR_FAULT_FUNC);
+    SCU_PinConfigure(RTE_USB1_PWR_FAULT_PORT, RTE_USB1_PWR_FAULT_BIT, RTE_USB1_PWR_FAULT_FUNC);
 #endif
   }
 
@@ -137,7 +137,7 @@ void USB1_PinsConfigure (void) {
 
 /**
   \fn          void USB1_PinsUnconfigure (void)
-  \brief       Unconfigure USB pins
+  \brief       De-configure USB pins
 */
 void USB1_PinsUnconfigure (void) {
 
@@ -161,10 +161,10 @@ void USB1_PinsUnconfigure (void) {
   // Host Pins
   if (USB1_role == ARM_USB_ROLE_HOST) {
 #if (RTE_USB1_PPWR_PIN_EN)
-    SCU_PinConfigure(RTE_USB1_PPWR_PORT, RTE_USB1_PPWR_BIT, 0);
+    SCU_PinConfigure(RTE_USB1_PPWR_PORT,      RTE_USB1_PPWR_BIT,      0);
 #endif
 #if (RTE_USB1_PWR_FAULT_PIN_EN)
-    SCU_PinConfigure(RTE_USB1_PWR_FAULT_PORT,RTE_USB1_PWR_FAULT_BIT, 0);
+    SCU_PinConfigure(RTE_USB1_PWR_FAULT_PORT, RTE_USB1_PWR_FAULT_BIT, 0);
 #endif
   }
 

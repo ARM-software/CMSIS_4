@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -112,7 +112,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>The CMSIS-Driver specification is a software API that describes peripheral driver interfaces for middleware stacks and user applications. The CMSIS-Driver API is designed to be generic and independent of a specific RTOS making it reusable across a wide range of supported microcontroller devices. The CMSIS-Driver API covers a wide range of use cases for the supported peripheral types, but can not take every potential use-case into account. Over time, it is indented to extend the CMSIS-Driver API with further groups to cover new use-cases.</p>
-<p>The CMSIS Software Pack publishes the API Interface under the Component Class <b>CMSIS Driver</b> with header files and a documentation. These header files are the reference for the implementation of the standardized peripheral driver interfaces. These implementations are published typically in the Device Family Pack of a related microcontroller family under the Component Class <b>CMSIS Driver</b>. A Device Family Pack may contain additional interfaces in the Component Class <b>Device</b> to extend the standard Peripheral Drivers covered by this CMSIS-Driver specification with additional device specific interfaces for example for Memory BUS, GPIO, or DMA.</p>
+<p>The CMSIS Software Pack publishes the API Interface under the Component Class <b>CMSIS</b> <b>Driver</b> with header files and a documentation. These header files are the reference for the implementation of the standardized peripheral driver interfaces. These implementations are published typically in the Device Family Pack of a related microcontroller family under the Component Class <b>CMSIS</b> <b>Driver</b>. A Device Family Pack may contain additional interfaces in the Component Class <b>Device</b> to extend the standard Peripheral Drivers covered by this CMSIS-Driver specification with additional device specific interfaces for example for Memory BUS, GPIO, or DMA.</p>
 <p>The standard peripheral driver interfaces connect microcontroller peripherals for example with middleware that implements communication stacks, file systems, or graphic user interfaces. Each peripheral driver interface may provide multiple instances reflecting the multiple physical interfaces of the same type in a device. For example the two physical SPI interfaces are reflected with a separate <a class="el" href="_theory_operation.html#AccessStruct">Access Struct</a> for SPI1 and SPI2. The <a class="el" href="_theory_operation.html#AccessStruct">Access Struct</a> is the interface of a driver to the middleware component or the user application.</p>
 <div class="image">
 <img src="Driver.png" alt="Driver.png"/>
@@ -120,6 +120,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 Peripheral Driver Interfaces and Middleware</div></div>
 <p> The following CMSIS-Driver API groups are defined:</p>
 <ul>
+<li><a class="el" href="group__can__interface__gr.html">CAN</a>: Interface to CAN bus peripheral.</li>
 <li><a class="el" href="group__eth__interface__gr.html">Ethernet</a>: Interface to Ethernet MAC and PHY peripheral.</li>
 <li><a class="el" href="group__i2c__interface__gr.html">I2C</a>: Multi-master Serial Single-Ended Bus interface driver.</li>
 <li><a class="el" href="group__mci__interface__gr.html">MCI</a>: Memory Card Interface for SD/MMC memory.</li>
@@ -147,7 +148,7 @@ Peripheral Driver Interfaces and Middleware</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:43 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:03 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

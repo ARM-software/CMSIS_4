@@ -18,24 +18,29 @@
  * 3. This notice may not be removed or altered from any source distribution.
  *
  *
- * $Date:        11. December 2014
- * $Revision:    V1.00
+ * $Date:        15. June 2015
+ * $Revision:    V1.2
  *
  * Driver:       Driver_SAI0, Driver_SAI1
  * Configured:   via RTE_Device.h configuration file
  * Project:      SAI (I2S used for SAI) Driver for NXP LPC18xx
- * -----------------------------------------------------------------------------
+ * --------------------------------------------------------------------------
  * Use the following configuration settings in the middleware component
  * to connect to this driver.
  *
- *   Configuration Setting               Value     SPI Interface
- *   ---------------------               -----     -------------
+ *   Configuration Setting                 Value   SAI Interface
+ *   ---------------------                 -----   -------------
  *   Connect to hardware via Driver_SAI# = 0       use SAI0 (I2S0)
  *   Connect to hardware via Driver_SAI# = 1       use SAI1 (I2S1)
  * -------------------------------------------------------------------------- */
 
 /* History:
- *  Version 1.00
+ *  Version 1.2
+ *    - PowerControl for Power OFF and Uninitialize functions made unconditional.
+ *    - Corrected status bit-field handling, to prevent race conditions.
+ *  Version 1.1
+ *    - Improved sampling frequency divider calculation
+ *  Version 1.0
  *    - Initial release
  */
 #include "GPIO_LPC18xx.h"
@@ -44,6 +49,7 @@
 #include "RTE_Device.h"
 #include "RTE_Components.h"
 
+#include <math.h>
 
 #if ((!defined(RTE_I2S0)) || (!defined(RTE_I2S1)))
 #error "I2S missing in RTE_Device.h. Please update RTE_Device.h!"
@@ -52,6 +58,15 @@
 #if ((defined(RTE_Drivers_SAI0) && !RTE_I2S0) && (defined(RTE_Drivers_SAI1) && !RTE_I2S1))
 #error "I2S0/1 not configured in RTE_Device.h!"
 #endif
+
+// Definitions
+
+// Frequency tolerance in percentage
+#ifndef I2S_FREQ_TOLERANCE
+#define I2S_FREQ_TOLERANCE   (1.)
+#endif
+
+#define D2F_DOMAIN           (255UL)
 
 #if (RTE_I2S0)
 // FIFO level can have value 1 to 7
@@ -90,7 +105,7 @@
 #endif
 
 
-#define ARM_SAI_DRV_VERSION ARM_DRIVER_VERSION_MAJOR_MINOR(1,00)   // driver version
+#define ARM_SAI_DRV_VERSION ARM_DRIVER_VERSION_MAJOR_MINOR(1,2)   // driver version
 // Driver Version
 static const ARM_DRIVER_VERSION DriverVersion = {
   ARM_SAI_API_VERSION,
@@ -350,6 +365,52 @@ static const I2S_RESOURCES I2S1_Resources = {
 // Extern Function
 extern uint32_t GetClockFreq (uint32_t clk_src);
 
+/*
+  \fn          static void i2s_dec2fract (double dec, uint8_t* xret, uint8_t* yret)
+  \brief       convert a decimal to a fraction for x/y baudrate factor
+  \details     Use continued fractions to find matching fraction
+               http://en.wikipedia.org/wiki/Generalized_continued_fraction
+  \param[in]   dec      Decimal fraction as floating point
+  \param[in]   xret     pointer to numerator result
+  \param[in]   yret     pointer to denominator result
+*/
+
+static void i2s_dec2fract (double dec, uint8_t* xret, uint8_t* yret) {
+  int_fast64_t a, tmp, idec;
+  int_fast64_t n = 1;
+
+  int_fast64_t f[3] = { 0, 1, 0 };
+  int_fast64_t g[3] = { 1, 0, 0 };
+  int i;
+
+  //Expand float input
+  while (dec != floor(dec)) { n <<= 1; dec *= 2; }
+  idec = dec;
+
+  //continue fraction
+  for (i = 0; i < 64; i++) {
+    a = n ? idec / n : 0;
+    if (i && !a) break;
+    tmp = idec;
+    idec = n; 
+    n = tmp % n;
+    tmp = a;
+    //check denominator
+    if (g[1] * a + g[0] >= D2F_DOMAIN) {
+      tmp = (D2F_DOMAIN - g[0]) / g[1];
+      if (tmp * 2 >= a || g[1] >= D2F_DOMAIN) { i = 65; }
+      else                                    { break;  }
+    }
+    f[2] = tmp * f[1] + f[0]; 
+    f[0] = f[1]; 
+    f[1] = f[2];
+    g[2] = tmp * g[1] + g[0]; 
+    g[0] = g[1]; 
+    g[1] = g[2];
+  }
+  *yret = g[1];
+  *xret = f[1];
+}
 
 /**
   \fn          ARM_DRIVER_VERSION I2Sx_GetVersion (void)
@@ -379,11 +440,6 @@ static ARM_SAI_CAPABILITIES I2S_GetCapabilities (I2S_RESOURCES *i2s) {
 */
 static int32_t I2S_Initialize (ARM_SAI_SignalEvent_t cb_event, I2S_RESOURCES *i2s) {
 
-  if (i2s->info->flags & I2S_FLAG_POWERED) {
-    // I2S is powered - could not be re-initialized
-    return ARM_DRIVER_ERROR;
-  }
-
   if (i2s->info->flags & I2S_FLAG_INITIALIZED) {
     // Driver is already initialized
     return ARM_DRIVER_OK;
@@ -396,11 +452,6 @@ static int32_t I2S_Initialize (ARM_SAI_SignalEvent_t cb_event, I2S_RESOURCES *i2
   i2s->info->status.rx_overflow   = 0U;
   i2s->info->status.tx_busy       = 0U;
   i2s->info->status.tx_underflow  = 0U;
-
-  i2s->info->rx.residue_cnt       = 0U;
-  i2s->info->rx.residue_num       = 0U;
-  i2s->info->tx.residue_cnt       = 0U;
-  i2s->info->tx.residue_num       = 0U;
 
   // Configure RX SCK pin
   if (i2s->rx_pins.sck != NULL) {
@@ -531,16 +582,6 @@ static int32_t I2S_Initialize (ARM_SAI_SignalEvent_t cb_event, I2S_RESOURCES *i2
 */
 static int32_t I2S_Uninitialize (I2S_RESOURCES *i2s) {
 
-  if (i2s->info->flags & I2S_FLAG_POWERED) {
-    // I2S is powered - could not be uninitialized
-    return ARM_DRIVER_ERROR;
-  }
-
-  if (i2s->info->flags == 0U) {
-    // Driver not initialized
-    return ARM_DRIVER_OK;
-  }
-
   // Reset RX SCK pin Configuration
   if (i2s->rx_pins.sck != NULL) {
     if (i2s->rx_pins.sck->port == 0x10U) {
@@ -629,7 +670,7 @@ static int32_t I2S_Uninitialize (I2S_RESOURCES *i2s) {
   }
 
   // DMA Uninitialize
-  if ((i2s->dma_tx != NULL) || (i2s->dma_rx != NULL))  GPDMA_Uninitialize ();
+  if ((i2s->dma_tx != NULL) || (i2s->dma_rx != NULL)) { GPDMA_Uninitialize (); }
 
   // Reset I2S status flags
   i2s->info->flags = 0U;
@@ -646,34 +687,36 @@ static int32_t I2S_Uninitialize (I2S_RESOURCES *i2s) {
 */
 static int32_t I2S_PowerControl (ARM_POWER_STATE state, I2S_RESOURCES *i2s) {
 
-  if ((i2s->info->flags & I2S_FLAG_INITIALIZED) == 0U) {
-    // Return error, if I2S is not initialized
-    return ARM_DRIVER_ERROR;
-  }
-
-  if (i2s->info->status.rx_busy == 1U) {
-    // Receive busy
-    return ARM_DRIVER_ERROR_BUSY;
-  }
-
-  if (i2s->info->status.tx_busy == 1U) {
-    // Transmit busy
-    return ARM_DRIVER_ERROR_BUSY;
-  }
-
   switch (state) {
     case ARM_POWER_OFF:
-      if ((i2s->info->flags & I2S_FLAG_POWERED) == 0U) {
-        return ARM_DRIVER_OK;
-      }
-
       // Disable I2S IRQ
       NVIC_DisableIRQ(i2s->irq_num);
 
-      i2s->reg->IRQ = 0U;
+      if ((i2s->dma_tx == NULL) && (i2s->info->status.tx_busy != 0U)) {
+        // Disable DMA channel
+        GPDMA_ChannelDisable (i2s->dma_tx->channel);
+      }
+      if ((i2s->dma_rx == NULL) && (i2s->info->status.rx_busy != 0U)) {
+        // Disable DMA channel
+        GPDMA_ChannelDisable (i2s->dma_rx->channel);
+      }
+
+      // Reset I2S peripheral
+      LPC_RGU->RESET_CTRL1 = (1U << 20) | (~(LPC_RGU->RESET_ACTIVE_STATUS1));
+      while ((LPC_RGU->RESET_ACTIVE_STATUS1 & (1U << 20)) == 0U);
 
       // Disable I2S peripheral clock
       LPC_CCU2->CLK_APLL_CFG &= ~CCU_CLK_CFG_RUN;
+
+      // Clear pending I2S interrupts in NVIC
+      NVIC_ClearPendingIRQ(i2s->irq_num);
+
+      // Clear driver variables
+      i2s->info->status.frame_error   = 0U;
+      i2s->info->status.rx_busy       = 0U;
+      i2s->info->status.rx_overflow   = 0U;
+      i2s->info->status.tx_busy       = 0U;
+      i2s->info->status.tx_underflow  = 0U;
 
       i2s->info->flags = I2S_FLAG_INITIALIZED;
       break;
@@ -706,6 +749,18 @@ static int32_t I2S_PowerControl (ARM_POWER_STATE state, I2S_RESOURCES *i2s) {
       // Stop transmitter and receiver
       i2s->reg->DAO |= (I2S_DAO_DAI_STOP | I2S_DAO_DAI_WS_SEL);
       i2s->reg->DAI |= (I2S_DAO_DAI_STOP | I2S_DAO_DAI_WS_SEL);
+
+      // Clear driver variables
+      i2s->info->status.frame_error   = 0U;
+      i2s->info->status.rx_busy       = 0U;
+      i2s->info->status.rx_overflow   = 0U;
+      i2s->info->status.tx_busy       = 0U;
+      i2s->info->status.tx_underflow  = 0U;
+
+      i2s->info->rx.residue_cnt       = 0U;
+      i2s->info->rx.residue_num       = 0U;
+      i2s->info->tx.residue_cnt       = 0U;
+      i2s->info->tx.residue_num       = 0U;
 
       i2s->info->flags = I2S_FLAG_POWERED | I2S_FLAG_INITIALIZED;
 
@@ -811,7 +866,7 @@ static int32_t I2S_Send (const void *data, uint32_t num, I2S_RESOURCES *i2s) {
                                      GPDMA_CH_CONFIG_ITC                                      |
                                      GPDMA_CH_CONFIG_E,
                                      i2s->dma_tx->cb_event);
-      if (stat == -1) { return ARM_DRIVER_ERROR_BUSY; }
+      if (stat == -1) { return ARM_DRIVER_ERROR; }
 
       // Set FIFO level and enable TX DMA
       i2s->reg->DMA1 = (((i2s->tx_fifo_level << I2S_DMA_TX_DEPTH_DMA_POS) & I2S_DMA_TX_DEPTH_DMA_MSK) |
@@ -917,7 +972,7 @@ static int32_t I2S_Receive (void *data, uint32_t num, I2S_RESOURCES *i2s) {
                                    GPDMA_CH_CONFIG_ITC                                      |
                                    GPDMA_CH_CONFIG_E,
                                    i2s->dma_rx->cb_event);
-    if (stat == -1) return ARM_DRIVER_ERROR_BUSY;
+    if (stat == -1) { return ARM_DRIVER_ERROR; }
 
     // Set FIFO level and enable RX DMA
     i2s->reg->DMA2 = (((i2s->rx_fifo_level << I2S_DMA_RX_DEPTH_DMA_POS) & I2S_DMA_RX_DEPTH_DMA_MSK) |
@@ -978,9 +1033,8 @@ static uint32_t I2S_GetRxCount (I2S_RESOURCES *i2s) {
 static int32_t I2S_Control (uint32_t control, uint32_t arg1, uint32_t arg2, I2S_RESOURCES *i2s) {
   uint32_t  val, pclk, mclk, master, data_bits;
   uint32_t  reg_daoi, reg_rate, reg_bitrate, reg_mode;
-  uint16_t  x, y;
   uint8_t   x_best, y_best;
-  double    delta_div, div_exact, delta_div_best;
+  double    div_exact, div, delta;
   I2S_PINS *pins;
 
   if ((i2s->info->flags & I2S_FLAG_POWERED) == 0U) {
@@ -1278,27 +1332,12 @@ static int32_t I2S_Control (uint32_t control, uint32_t arg1, uint32_t arg2, I2S_
       pclk = GetClockFreq (9);
 
       // MCLK = pclk * (x/y) /2  ==> (x/y) = 2*MCLK/pclk
-      // Find best x and y
-      x_best         =  1;
-      y_best         =  1;
       div_exact      = (2.0 * mclk) / pclk;
-      delta_div_best =  1.0 - div_exact;
-      for (y = 2; y < 256; y ++) {
-        for (x = 1; x < y; x++) {
-          delta_div = div_exact - (((double)x) / ((double)y));
-          if (delta_div < 0) delta_div *= -1.;
-          if (delta_div < delta_div_best) {
-            x_best         = x;
-            y_best         = y;
-            if (delta_div == div_exact) { 
-              // Exact divider found. Set y = 256 to exit for loops
-              y = 256;
-              break;
-            }
-            delta_div_best = delta_div;
-          }
-        }
-      }
+      i2s_dec2fract (div_exact, &x_best, &y_best);
+      div = (double)(x_best) / (double)(y_best);
+      if (div_exact > div) { delta = div_exact - div;       }
+      else                 { delta = div       - div_exact; }
+      if (((delta * 100U) / div_exact) > I2S_FREQ_TOLERANCE) {return ARM_SAI_ERROR_AUDIO_FREQ; }
       reg_rate = (y_best << I2S_TX_RX_RATE_Y_DIVIDER_POS) | (x_best << I2S_TX_RX_RATE_X_DIVIDER_POS);
     }
   }
@@ -1309,6 +1348,7 @@ static int32_t I2S_Control (uint32_t control, uint32_t arg1, uint32_t arg2, I2S_
     i2s->info->tx.master    = master;
     i2s->reg->TXRATE        = reg_rate;
     i2s->reg->TXBITRATE     = reg_bitrate;
+    i2s->reg->TXMODE        = reg_mode;
     reg_daoi |= (i2s->reg->DAO & (I2S_DAO_DAI_STOP | I2S_DAO_MUTE | I2S_DAO_DAI_WS_SEL));
     if (master == 0U) {reg_daoi |= I2S_DAO_DAI_WS_SEL;}
     i2s->reg->DAO           = reg_daoi;
@@ -1317,6 +1357,7 @@ static int32_t I2S_Control (uint32_t control, uint32_t arg1, uint32_t arg2, I2S_
     i2s->info->rx.master    = master;
     i2s->reg->RXRATE        = reg_rate;
     i2s->reg->RXBITRATE     = reg_bitrate;
+    i2s->reg->RXMODE        = reg_mode;
     reg_daoi |= (i2s->reg->DAI & (I2S_DAO_DAI_STOP | I2S_DAO_DAI_WS_SEL));
     if (master == 0U) {reg_daoi |= I2S_DAO_DAI_WS_SEL;}
     i2s->reg->DAI           = reg_daoi;
@@ -1334,7 +1375,15 @@ static int32_t I2S_Control (uint32_t control, uint32_t arg1, uint32_t arg2, I2S_
   \return      SAI status \ref ARM_SAI_STATUS
 */
 static ARM_SAI_STATUS I2S_GetStatus (I2S_RESOURCES *i2s) {
-  return i2s->info->status;
+  ARM_SAI_STATUS status;
+
+  status.frame_error  = i2s->info->status.frame_error;
+  status.rx_busy      = i2s->info->status.rx_busy;
+  status.rx_overflow  = i2s->info->status.rx_overflow;
+  status.tx_busy      = i2s->info->status.tx_busy;
+  status.tx_underflow = i2s->info->status.tx_underflow;
+
+  return status;
 }
 
 /**

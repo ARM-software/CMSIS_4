@@ -18,14 +18,25 @@
   
   3. This notice may not be removed or altered from any source distribution.
  
-  $Date:        13. Jan. 2015
-  $Revision:    1.3.3
+  $Date:        28. Aug. 2015
+  $Revision:    1.4.0
 
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>_<name>_<version>.pack
-  SchemaVersion=1.3
+  SchemaVersion=1.4
+
+  28. Aug 2015
+  - deprecate devices memory tag attribute id and use
+    introduced name and access attributes instead
+  - added devices memory tag attribute: alias
+  - added devices algorithm tag attribute: style
+  - added attribute to define a default component variant
+  - added board book category: layout
   
+  29. May 2015
+  - added missing Pname attribute to GeneratorDeviceSelectType used for multi processor
+    devices  
   12. Jan. 2014
   - allow to link a component with a generator via new component attribute
   - generator command extended to deal with more sophisticated command lines / document sequence
@@ -41,9 +52,24 @@
     </xs:restriction>
   </xs:simpleType>
 
+  <!-- MemoryAccessTypeString -->
+  <xs:simpleType name="MemoryAccessTypeString">
+    <xs:restriction base="xs:string">
+      <!-- r = Readable                    -->
+      <!-- w = Writable                    -->
+      <!-- x = eXecutable                  -->
+      <!-- p = Peripheral - details in SVD -->
+      <!-- s = Secure                      -->
+      <!-- n = Non-secure                  -->
+      <!-- c = non-secure Callable         -->
+      <xs:pattern value="[rwxp]*(s|n|c)?"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
   <!-- Registered Device Vendors -->
   <xs:simpleType name="DeviceVendorEnum">
     <xs:restriction base="xs:token">
+      <xs:enumeration value="ABOV Semiconductor:126"/>
       <xs:enumeration value="Actel:56"/>
       <xs:enumeration value="Altera:85"/>
       <xs:enumeration value="Altium:65"/>
@@ -68,9 +94,11 @@
       <xs:enumeration value="Hynix Semiconductor:6"/>
       <xs:enumeration value="Hyundai:35"/>
       <xs:enumeration value="Infineon:7"/>
+      <xs:enumeration value="Kionix:127"/>
       <xs:enumeration value="Lapis Semiconductor:10"/>
       <xs:enumeration value="Luminary Micro:76"/>
       <xs:enumeration value="Maxim:23"/>
+      <xs:enumeration value="MegaChips:128"/>
       <xs:enumeration value="Mentor Graphics Co.:24"/>
       <xs:enumeration value="Micronas:30"/>
       <xs:enumeration value="Microsemi:112"/>
@@ -178,6 +206,7 @@
     <xs:restriction base="xs:token">
       <xs:enumeration value="jtag"/>
       <xs:enumeration value="swd"/>
+      <xs:enumeration value="cjtag"/>
     </xs:restriction>
   </xs:simpleType>
   
@@ -198,6 +227,15 @@
     <xs:anyAttribute processContents="lax"/>
   </xs:complexType>
 
+  <!-- CJtagType -->
+  <xs:complexType name="CjtagType">
+    <xs:attribute name="tapindex"     type="NonNegativeInteger" use="optional"/>
+    <xs:attribute name="idcode"       type="NonNegativeInteger" use="optional"/>
+    <xs:attribute name="targetsel"    type="NonNegativeInteger" use="optional"/>
+    <xs:attribute name="irlen"        type="xs:unsignedInt"     use="optional"/>
+    <xs:anyAttribute processContents="lax"/>
+  </xs:complexType>
+  
   <!-- SwdType -->
   <xs:complexType name="SwdType">
     <xs:attribute name="idcode"       type="NonNegativeInteger" use="optional"/>
@@ -210,6 +248,7 @@
     <xs:sequence>
       <xs:element name="jtag"     type="JtagType"     minOccurs="0" maxOccurs="1"/>
       <xs:element name="swd"      type="SwdType"      minOccurs="0" maxOccurs="1"/>
+      <xs:element name="cjtag"    type="CjtagType"    minOccurs="0" maxOccurs="1"/>
     </xs:sequence>
     <xs:attribute name="__dp" type="xs:unsignedInt" use="optional"/>
     <xs:anyAttribute processContents="lax"/>
@@ -338,8 +377,15 @@
   <xs:complexType name="MemoryType">
     <!-- Pname identifies the processor this setting belongs to -->
     <xs:attribute name="Pname"   type="xs:string"/>
-    <!-- id specifies the enumerated ID of memory -->
-    <xs:attribute name="id"      type="MemoryIDTypeEnum"    use="required"/>
+    <!-- id specifies the enumerated ID of memory [deprecated in Version 1.4.0] -->
+    <xs:attribute name="id"      type="MemoryIDTypeEnum"    use="optional"/>
+    <!-- use name and access instead of id [Version 1.4.0] -->
+    <!-- unique name of memory -->
+    <xs:attribute name="name"    type="xs:string" use="optional"/>
+    <!-- access permissions attributes of the memory -->
+    <xs:attribute name="access"  type="MemoryAccessTypeString" use="optional"/>
+    <!-- memory is alternative access to the same physical memory referenced by name [Version 1.4.0] -->
+    <xs:attribute name="alias"   type="xs:string" use="optional"/>
     <!-- start specifies the base address of the memory -->
     <xs:attribute name="start"   type="NonNegativeInteger"  use="required"/>
     <!-- size specifies the size of the memory -->
@@ -351,6 +397,14 @@
     <!-- specifies whether the memory shall be used for the startup by linker -->
     <xs:attribute name="startup" type="xs:boolean"          use="optional" default="0"/>
   </xs:complexType>
+
+  <xs:simpleType name="AlgorithmStyleEnum">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="CMSIS"/>
+      <xs:enumeration value="IAR"/>
+      <xs:enumeration value="Keil"/>
+    </xs:restriction>
+  </xs:simpleType>
 
   <!-- Algorithm Type -->
   <xs:complexType name="AlgorithmType">
@@ -368,6 +422,8 @@
     <xs:attribute name="RAMsize"  type="NonNegativeInteger" use="optional"/>
     <!-- if default is set the algorithm will be configured for any new project -->
     <xs:attribute name="default"  type="xs:boolean"         use="optional" default="0"/>
+    <!-- flash algorithm style [Version 1.4.0] -->
+    <xs:attribute name="style"    type="AlgorithmStyleEnum" use="optional" default="Keil"/>
   </xs:complexType>
 
   <!-- Book Type -->
@@ -881,6 +937,7 @@
       <xs:enumeration value="schematic"/>
       <xs:enumeration value="overview"/>
       <xs:enumeration value="manual"/>
+      <xs:enumeration value="layout"/>
       <xs:enumeration value="other"/>
     </xs:restriction>
   </xs:simpleType>
@@ -915,7 +972,7 @@
 
   <xs:complexType name="BoardType">
     <xs:sequence>
-      <xs:group   ref="BoardElementsGroup" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:group   ref="BoardElementsGroup" minOccurs="1" maxOccurs="unbounded"/>
     </xs:sequence>
     <xs:attribute name="vendor"       type="xs:string" use="required"/>
     <xs:attribute name="name"         type="xs:string" use="required"/>
@@ -1058,6 +1115,7 @@
     <xs:attribute name="Dvendor"     type="DeviceVendorEnum" use="required"/>
     <xs:attribute name="Dname"       type="xs:string"        use="optional"/>
     <xs:attribute name="Dvariant"    type="xs:string"        use="optional"/>
+    <xs:attribute name="Pname"       type="xs:string"        use="optional"/>
   </xs:complexType>
 
   <xs:complexType name="GeneratorCommandArgumentType">
@@ -1225,6 +1283,8 @@
                         <xs:attribute name="Cgroup"   type="CgroupType"   use="required"/>
                         <xs:attribute name="Csub"     type="CsubType"     use="optional"/>
                         <xs:attribute name="Cvariant" type="CvariantType" use="optional"/>
+                        <!-- identifies this component variant to be the preferred variant [Version 1.4.0] -->
+                        <xs:attribute name="isDefaultVariant" type="xs:boolean" use="optional"/>
                         <!-- api version for this component -->
                         <xs:attribute name="Capiversion"  type="VersionType" use="optional"/>
                         <!-- component attribute for referencing a condition specified in conditions section above -->

@@ -4,18 +4,29 @@ var NAVTREE =
     [ "Overview", "index.html", null ],
     [ "Revision History of CMSIS-Driver", "driver_revision_history.html", null ],
     [ "Theory of Operation", "_theory_operation.html", [
+      [ "Common Driver Functions", "_theory_operation.html#DriverFunctions", [
+        [ "Cortex-M Processor Mode", "_theory_operation.html#ProcessorMode", null ]
+      ] ],
+      [ "Function Call Sequence", "_theory_operation.html#CallSequence", [
+        [ "Start Sequence", "_theory_operation.html#CS_start", null ],
+        [ "Stop Sequence", "_theory_operation.html#CS_stop", null ]
+      ] ],
+      [ "Shared I/O Pins", "_theory_operation.html#Share_IO", null ],
       [ "Data Transfer Functions", "_theory_operation.html#Data_Xfer_Functions", null ],
-      [ "Driver Functions", "_theory_operation.html#DriverFunctions", null ],
-      [ "Generic Function Call Sequence", "_theory_operation.html#CallSequence", null ],
-      [ "Access Struct", "_theory_operation.html#AccessStruct", null ],
-      [ "Driver Instances", "_theory_operation.html#DriverInstances", null ],
+      [ "Access Struct", "_theory_operation.html#AccessStruct", [
+        [ "Driver Instances", "_theory_operation.html#DriverInstances", null ]
+      ] ],
       [ "Driver Configuration", "_theory_operation.html#DriverConfiguration", null ],
-      [ "Example Code", "_theory_operation.html#CodeExample", null ]
+      [ "Code Example", "_theory_operation.html#CodeExample", null ]
     ] ],
     [ "Reference Implementation", "_reference_implementation.html", [
       [ "Driver Header Files", "_reference_implementation.html#DriverHeaderFiles", null ],
       [ "Driver Template Files", "_reference_implementation.html#DriverTemplates", null ],
       [ "Driver Examples", "_reference_implementation.html#DriverExamples", null ]
+    ] ],
+    [ "Driver Validation", "_driver_validation.html", [
+      [ "Sample Test Output", "_driver_validation.html#test_output", null ],
+      [ "Setup for Loop Back Communication", "_driver_validation.html#loop_back_setup", null ]
     ] ],
     [ "Reference", "modules.html", "modules" ],
     [ "Data Structures", "annotated.html", null ],
@@ -29,11 +40,12 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_driver___common_8h.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5a9ef9e57cbcc948d0e22314e73dc8c434",
-"group__eth__mac__interface__gr.html#gaa7c6865fb09754be869778142466c5e4",
-"group__mci__interface__gr.html#ga6f34d4ab362e596ddaf23aac093268cf",
-"group__sai__interface__gr.html#a808b1f9e0abc3fa67945899cfc9fccc1",
-"group__usbd__interface__gr.html#a0cc21434bc57e696fabf0207925fe5ff"
+"_driver___c_a_n_8h.html#ga11c12020b81a63a73a8b53e96a7e3deaa3b6d191c99f1eba4f01bcc5fbfaf67f3",
+"group__can__interface__gr.html#ga00ec0715f6755a49dae5b60dca182630",
+"group__i2c__control__gr.html",
+"group__nand__interface__gr.html#a0e7d3b9258d468492b22de55d855a06e",
+"group__spi__misc__ctrls.html#gafc00fe35bb4c89b076d014b43168b2b3",
+"group__usbh__host__gr.html#gad1e73f778c95dd46d4396e7741a97f0b"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

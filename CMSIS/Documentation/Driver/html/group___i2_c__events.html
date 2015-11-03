@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -152,104 +152,6 @@ Macros</h2></td></tr>
 <p>This section provides the event values for the <a class="el" href="group__i2c__interface__gr.html#gad4f93d2895794b416dc8d8e9de91c05e">ARM_I2C_SignalEvent</a> callback function.</p>
 <p>The following call back notification events are generated: </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="ga98b815769634d9578526b43589caa017"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_I2C_EVENT_ADDRESS_NACK&#160;&#160;&#160;(1UL &lt;&lt; 4)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Address not acknowledged from Slave. </p>
-
-</div>
-</div>
-<a class="anchor" id="gac9000f44a578e2117d64dbc2093cec6d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_I2C_EVENT_ARBITRATION_LOST&#160;&#160;&#160;(1UL &lt;&lt; 6)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Master lost arbitration. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga81ca21fad73dac1ffaff58921f848ea9"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_I2C_EVENT_BUS_CLEAR&#160;&#160;&#160;(1UL &lt;&lt; 8)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Bus clear finished. </p>
-
-</div>
-</div>
-<a class="anchor" id="gaeef542840355131c18b53fd9ed1904a8"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_I2C_EVENT_BUS_ERROR&#160;&#160;&#160;(1UL &lt;&lt; 7)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Bus error detected (START/STOP at illegal position) </p>
-
-</div>
-</div>
-<a class="anchor" id="ga3ab54410b6410ed3a58762ff0c0d68b9"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_I2C_EVENT_GENERAL_CALL&#160;&#160;&#160;(1UL &lt;&lt; 5)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>General Call indication. </p>
-
-</div>
-</div>
-<a class="anchor" id="gabd875b57ce39dadd849c53b885ad6661"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_I2C_EVENT_SLAVE_RECEIVE&#160;&#160;&#160;(1UL &lt;&lt; 3)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Slave Receive operation requested. </p>
-
-</div>
-</div>
-<a class="anchor" id="gacfbbec9af083d35e8ea87ad16e9c6ec2"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_I2C_EVENT_SLAVE_TRANSMIT&#160;&#160;&#160;(1UL &lt;&lt; 2)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Slave Transmit operation requested. </p>
-
-</div>
-</div>
 <a class="anchor" id="ga5992dc0f6e839c4d066cfa83d535f30d"></a>
 <div class="memitem">
 <div class="memproto">
@@ -278,12 +180,110 @@ Macros</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="gacfbbec9af083d35e8ea87ad16e9c6ec2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_I2C_EVENT_SLAVE_TRANSMIT&#160;&#160;&#160;(1UL &lt;&lt; 2)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Slave Transmit operation requested. </p>
+
+</div>
+</div>
+<a class="anchor" id="gabd875b57ce39dadd849c53b885ad6661"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_I2C_EVENT_SLAVE_RECEIVE&#160;&#160;&#160;(1UL &lt;&lt; 3)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Slave Receive operation requested. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga98b815769634d9578526b43589caa017"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_I2C_EVENT_ADDRESS_NACK&#160;&#160;&#160;(1UL &lt;&lt; 4)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Address not acknowledged from Slave. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga3ab54410b6410ed3a58762ff0c0d68b9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_I2C_EVENT_GENERAL_CALL&#160;&#160;&#160;(1UL &lt;&lt; 5)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>General Call indication. </p>
+
+</div>
+</div>
+<a class="anchor" id="gac9000f44a578e2117d64dbc2093cec6d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_I2C_EVENT_ARBITRATION_LOST&#160;&#160;&#160;(1UL &lt;&lt; 6)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Master lost arbitration. </p>
+
+</div>
+</div>
+<a class="anchor" id="gaeef542840355131c18b53fd9ed1904a8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_I2C_EVENT_BUS_ERROR&#160;&#160;&#160;(1UL &lt;&lt; 7)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Bus error detected (START/STOP at illegal position) </p>
+
+</div>
+</div>
+<a class="anchor" id="ga81ca21fad73dac1ffaff58921f848ea9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_I2C_EVENT_BUS_CLEAR&#160;&#160;&#160;(1UL &lt;&lt; 8)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Bus clear finished. </p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:42 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:02 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

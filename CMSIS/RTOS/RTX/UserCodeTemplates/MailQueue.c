@@ -1,4 +1,5 @@
-#include <cmsis_os.h>                                           // CMSIS RTOS header file
+
+#include "cmsis_os.h"                                           // CMSIS RTOS header file
 
 /*----------------------------------------------------------------------------
  *      Mail Queue creation & usage
@@ -23,47 +24,47 @@ osMailQDef (MailQueue, MAILQUEUE_OBJECTS, MAILQUEUE_OBJ_t);     // mail queue ob
 
 int Init_MailQueue (void) {
 
-  qid_MailQueue = osMailCreate(osMailQ(MailQueue), NULL);       // create mail queue
-  if(!qid_MailQueue) {
+  qid_MailQueue = osMailCreate (osMailQ(MailQueue), NULL);      // create mail queue
+  if (!qid_MailQueue) {
     ; // Mail Queue object not created, handle failure
   }
   
   tid_Thread_MailQueue1 = osThreadCreate (osThread(Thread_MailQueue1),  NULL);
-  if(!tid_Thread_MailQueue1) return(-1);
+  if (!tid_Thread_MailQueue1) return(-1);
   tid_Thread_MailQueue2 = osThreadCreate (osThread(Thread_MailQueue2),  NULL);
-  if(!tid_Thread_MailQueue2) return(-1);
+  if (!tid_Thread_MailQueue2) return(-1);
   
   return(0);
 }
 
-void Thread_MailQueue1(void const *argument) {
+void Thread_MailQueue1 (void const *argument) {
   MAILQUEUE_OBJ_t *pMail = 0;
 
-  while(1) {
+  while (1) {
     ; // Insert thread code here...
-    pMail = osMailAlloc(qid_MailQueue, osWaitForever);          // Allocate memory
-    if(pMail) {
+    pMail = osMailAlloc (qid_MailQueue, osWaitForever);         // Allocate memory
+    if (pMail) {
       pMail->Buf[0] = 0xff;                                     // Set the mail content
       pMail->Idx = 0;
-      osMailPut(qid_MailQueue, pMail);                          // Send Mail
+      osMailPut (qid_MailQueue, pMail);                         // Send Mail
     }
 
-    osThreadYield();                                            // suspend thread
+    osThreadYield ();                                           // suspend thread
   }
 }
 
-void Thread_MailQueue2(void const *argument) {
+void Thread_MailQueue2 (void const *argument) {
   MAILQUEUE_OBJ_t  *pMail = 0;
   osEvent           evt;
 
-  while(1) {
+  while (1) {
     ; // Insert thread code here...
-    evt = osMailGet(qid_MailQueue, osWaitForever);              // wait for mail
+    evt = osMailGet (qid_MailQueue, osWaitForever);             // wait for mail
     if (evt.status == osEventMail) {
       pMail = evt.value.p;
-      if(pMail) {
+      if (pMail) {
         ; // process data
-        osMailFree(qid_MailQueue, pMail);                       // free memory allocated for mail
+        osMailFree (qid_MailQueue, pMail);                      // free memory allocated for mail
       }
     }
   }

@@ -85,9 +85,10 @@ $(document).ready(function(){initNavTree('cmsis_os_h.html','');});
 <p>All definitions are prefixed with <b>os</b> to give an unique name space for CMSIS-RTOS functions. Definitions that are prefixed <b>os_</b> are not used in the application code but local to this header file. All definitions and functions that belong to a module are grouped and have a common prefix, i.e. <b>osThread</b>.</p>
 <p>Definitions that are marked with <b>CAN BE CHANGED</b> can be adapted towards the needs of the actual CMSIS-RTOS implementation. These definitions can be specific to the underlying RTOS kernel.</p>
 <p>Definitions that are marked with <b>MUST REMAIN UNCHANGED</b> cannot be altered. Otherwise the CMSIS-RTOS implementation is no longer compliant to the standard. Note that some functions are optional and need not to be provided by every CMSIS-RTOS implementation.</p>
-<p><b>Function calls from interrupt service routines</b></p>
-<p>The following CMSIS-RTOS functions can be called from threads and interrupt service routines (ISR):</p>
+<p><a class="anchor" id="isr_calls"></a><b>Function calls from Interrupt Service Routines (ISR)</b></p>
+<p>The following CMSIS-RTOS functions can be called from threads and Interrupt Service Routines (ISR):</p>
 <ul>
+<li><a class="el" href="group___c_m_s_i_s___r_t_o_s___kernel_ctrl.html#ga3b571de44cd3094c643247a7397f86b5">osKernelRunning</a></li>
 <li><a class="el" href="group___c_m_s_i_s___r_t_o_s___signal_mgmt.html#ga3de2730654589d6c3559c4b9e2825553">osSignalSet</a></li>
 <li><a class="el" href="group___c_m_s_i_s___r_t_o_s___semaphore_mgmt.html#gab108914997c49e14d8ff1ae0d1988ca0">osSemaphoreRelease</a></li>
 <li><a class="el" href="group___c_m_s_i_s___r_t_o_s___pool_mgmt.html#gaa0b2994f1a866c19e0d11e6e0d44f543">osPoolAlloc</a>, <a class="el" href="group___c_m_s_i_s___r_t_o_s___pool_mgmt.html#ga9f129fcad4730fbd1048ad4fa262f36a">osPoolCAlloc</a>, <a class="el" href="group___c_m_s_i_s___r_t_o_s___pool_mgmt.html#ga4a861e9c469c9d0daf5721bf174f8e54">osPoolFree</a></li>
@@ -110,7 +111,7 @@ $(document).ready(function(){initNavTree('cmsis_os_h.html','');});
 </div><!-- fragment --><p>This header file defines all objects when included in a C/C++ source file. When <b>#define osObjectsExternal</b> is present before the header file, the objects are defined as external symbols. A single consistent header file can therefore be used throughout the whole project.</p>
 <p><em>Example</em> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;osObjects.h&quot;</span>     <span class="comment">// Definition of the CMSIS-RTOS objects</span></div>
-</div><!-- fragment --><div class="fragment"><div class="line"><span class="preprocessor">#define osObjectExternal   // Objects will be defined as external symbols</span></div>
+</div><!-- fragment --><div class="fragment"><div class="line"><span class="preprocessor">#define osObjectsExternal  // Objects will be defined as external symbols</span></div>
 <div class="line"><span class="preprocessor">#include &quot;osObjects.h&quot;     // Reference to the CMSIS-RTOS objects</span></div>
 </div><!-- fragment --><p><b>Header file cmsis_os.h</b></p>
 <div class="fragment"><div class="line"><span class="comment">/* ----------------------------------------------------------------------</span></div>
@@ -825,7 +826,7 @@ $(document).ready(function(){initNavTree('cmsis_os_h.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:59 for CMSIS-RTOS by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:27 for CMSIS-RTOS by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

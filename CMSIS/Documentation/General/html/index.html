@@ -27,7 +27,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS
-   &#160;<span id="projectnumber">Version 4.3.0</span>
+   &#160;<span id="projectnumber">Version 4.4.0</span>
    </div>
    <div id="projectbrief">Cortex Microcontroller Software Interface Standard</div>
   </td>
@@ -76,13 +76,13 @@ $(document).ready(function(){initNavTree('index.html','');});
 <p>The CMSIS is defined in close cooperation with various silicon and software vendors and provides a common approach to interface to peripherals, real-time operating systems, and middleware components. The CMSIS is intended to enable the combination of software components from multiple middleware vendors.</p>
 <p><a class="anchor" id="CM_Components"></a>The CMSIS components are:</p>
 <ul>
-<li><a href="../../Core/html/index.html"><b>CMSIS-CORE</b></a>: API for the Cortex-M processor core and peripherals. It provides at standardized interface for Cortex-M0, Cortex-M3, Cortex-M4, SC000, and SC300. Included are also SIMD intrinsic functions for Cortex-M4 SIMD instructions.</li>
+<li><a href="../../Core/html/index.html"><b>CMSIS-CORE</b></a>: API for the Cortex-M processor core and peripherals. It provides at standardized interface for Cortex-M0, Cortex-M3, Cortex-M4, Cortex-M7, SC000, and SC300. Included are also SIMD intrinsic functions for Cortex-M4 and Cortex-M7 SIMD instructions.</li>
 </ul>
 <ul>
 <li><a href="../../Driver/html/index.html"><b>CMSIS-Driver</b></a>: defines generic peripheral driver interfaces for middleware making it reusable across supported devices. The API is RTOS independent and connects microcontroller peripherals with middleware that implements for example communication stacks, file systems, or graphic user interfaces.</li>
 </ul>
 <ul>
-<li><a href="../../DSP/html/index.html"><b>CMSIS-DSP</b></a>: DSP Library Collection with over 60 Functions for various data types: fix-point (fractional q7, q15, q31) and single precision floating-point (32-bit). The library is available for Cortex-M0, Cortex-M3, and Cortex-M4. The Cortex-M4 implementation is optimized for the SIMD instruction set.</li>
+<li><a href="../../DSP/html/index.html"><b>CMSIS-DSP</b></a>: DSP Library Collection with over 60 Functions for various data types: fix-point (fractional q7, q15, q31) and single precision floating-point (32-bit). The library is available for all Cortex-M cores. The Cortex-M4 and Cortex-M7 implementations are optimized for the SIMD instruction set.</li>
 </ul>
 <ul>
 <li><a href="../../RTOS/html/index.html"><b>CMSIS-RTOS API</b></a>: Common API for Real-Time operating systems. It provides a standardized programming interface that is portable to many RTOS and enables therefore software templates, middleware, libraries, and other components that can work across supported the RTOS systems.</li>
@@ -94,7 +94,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <li><a href="../../SVD/html/index.html"><b>CMSIS-SVD</b></a>: System View Description for Peripherals. Describes the peripherals of a device in an XML file and can be used to create peripheral awareness in debuggers or header files with peripheral register and interrupt definitions.</li>
 </ul>
 <ul>
-<li><a href="http://www.arm.com/cmsis" target="_blank"><b>CMSIS-DAP</b></a>: Debug Access Port. Standardized firmware for a Debug Unit that connects to the CoreSight Debug Access Port. CMSIS-DAP is distributed as separate package and well suited for integration on evaluation boards. This component is provided as separate download.</li>
+<li><a href="../../DAP/html/index.html"><b>CMSIS-DAP</b></a>: Debug Access Port. Standardized firmware for a Debug Unit that connects to the CoreSight Debug Access Port. CMSIS-DAP is distributed as separate package and well suited for integration on evaluation boards. This component is provided as separate download.</li>
 </ul>
 <dl class="section note"><dt>Note</dt><dd>Refer to <a class="el" href="index.html#CM_Pack_Content">ARM::CMSIS Pack</a> for more information on the content of the Software Pack.</dd></dl>
 <div class="image">
@@ -158,41 +158,43 @@ ARM::CMSIS Pack</h1>
 <p>The <b>ARM::CMSIS</b> Pack contains the following: </p>
 <table class="doxtable">
 <tr>
-<th>File/Folder </th><th>Content </th></tr>
+<th align="left">File/Directory </th><th align="left">Content </th></tr>
 <tr>
-<td><b>ARM.CMSIS.pdsc</b> </td><td>Package description file </td></tr>
+<td align="left"><b>ARM.CMSIS.pdsc</b> </td><td align="left">Package description file </td></tr>
 <tr>
-<td><b>CMSIS</b> </td><td><a class="el" href="index.html#CM_Components">CMSIS components</a> (see below) </td></tr>
+<td align="left"><b>CMSIS</b> </td><td align="left"><a class="el" href="index.html#CM_Components">CMSIS components</a> (see below) </td></tr>
 <tr>
-<td><b>CMSIS_RTX</b> </td><td><a href="http://www.keil.com/pack/doc/cmsis_rtx/index.html" class="el" target="_blank">Keil RTX</a> implementation of <a href="../../RTOS/html/index.html"><b>CMSIS-RTOS</b></a> </td></tr>
+<td align="left"><b>CMSIS_RTX</b> </td><td align="left"><a href="http://www.keil.com/pack/doc/cmsis_rtx/index.html" class="el" target="_blank">Keil RTX</a> implementation of <a href="../../RTOS/html/index.html"><b>CMSIS-RTOS</b></a> </td></tr>
 <tr>
-<td><b>Device</b> </td><td>ARM reference implementations of Cortex-M devices </td></tr>
+<td align="left"><b>Device</b> </td><td align="left">ARM reference implementations of Cortex-M devices </td></tr>
 </table>
 <h2>CMSIS Directory</h2>
 <p>The directory <b>CMSIS</b> contains the "CMSIS End User License Agreement" as PDF and RTF, a README text file, the index.html file for this documentation, and the following sub-directories:</p>
 <table class="doxtable">
 <tr>
-<th>Directory </th><th>Content </th></tr>
+<th align="left">Directory </th><th align="left">Content </th></tr>
 <tr>
-<td><b>Documentation</b> </td><td>This documentation </td></tr>
+<td align="left"><b>Documentation</b> </td><td align="left">This documentation </td></tr>
 <tr>
-<td><b>Driver</b> </td><td>Header files for the <a href="../../Driver/html/index.html"><b>CMSIS-Driver</b></a> peripheral interface API </td></tr>
+<td align="left"><b>DAP</b> </td><td align="left"><a href="../../DAP/html/index.html"><b>CMSIS-DAP</b></a> Debug Access Port source code and reference implementations </td></tr>
 <tr>
-<td><b>DSP_Lib</b> </td><td><a href="../../DSP/html/index.html"><b>CMSIS-DSP</b></a> software library files </td></tr>
+<td align="left"><b>Driver</b> </td><td align="left">Header files for the <a href="../../Driver/html/index.html"><b>CMSIS-Driver</b></a> peripheral interface API </td></tr>
 <tr>
-<td><b>Include</b> </td><td>Include files for <a href="../../Core/html/index.html"><b>CMSIS-CORE</b></a> and <a href="../../DSP/html/index.html"><b>CMSIS-DSP</b></a> </td></tr>
+<td align="left"><b>DSP_Lib</b> </td><td align="left"><a href="../../DSP/html/index.html"><b>CMSIS-DSP</b></a> software library source code </td></tr>
 <tr>
-<td><b>Lib</b> </td><td><a href="../../DSP/html/index.html"><b>CMSIS-DSP</b></a> libraries for ARMCC and GCC </td></tr>
+<td align="left"><b>Include</b> </td><td align="left">Include files for <a href="../../Core/html/index.html"><b>CMSIS-CORE</b></a> and <a href="../../DSP/html/index.html"><b>CMSIS-DSP</b></a> </td></tr>
 <tr>
-<td><b>Pack</b> </td><td><a href="../../Pack/html/_pack__example.html"><b>CMSIS-Pack</b></a> example </td></tr>
+<td align="left"><b>Lib</b> </td><td align="left"><a href="../../DSP/html/index.html"><b>CMSIS-DSP</b></a> generated libraries for ARMCC and GCC </td></tr>
 <tr>
-<td><b>RTOS</b> </td><td><a href="../../RTOS/html/index.html"><b>CMSIS-RTOS</b></a> API header file </td></tr>
+<td align="left"><b>Pack</b> </td><td align="left"><a href="../../Pack/html/_pack__example.html"><b>CMSIS-Pack</b></a> example </td></tr>
 <tr>
-<td><b>SVD</b> </td><td><a href="../../SVD/html/index.html"><b>CMSIS-SVD</b></a> example </td></tr>
+<td align="left"><b>RTOS</b> </td><td align="left"><a href="../../RTOS/html/index.html"><b>CMSIS-RTOS</b></a> API header file </td></tr>
 <tr>
-<td><b>UserCodeTemplates\ARM</b> </td><td>ITM_Retarget.c, CMSIS <a href="../../Core/html/group___i_t_m___debug__gr.html"><b>retarget output</b></a> to ITM Channel 0 template file </td></tr>
+<td align="left"><b>SVD</b> </td><td align="left"><a href="../../SVD/html/index.html"><b>CMSIS-SVD</b></a> example </td></tr>
 <tr>
-<td><b>Utilities</b> </td><td>PACK.xsd (<a href="../../Pack/html/_pack__example.html"><b>CMSIS-Pack</b></a> schema file), PackChk.exe (checking tool for software packs), <br/>
+<td align="left"><b>UserCodeTemplates\ARM</b> </td><td align="left">ITM_Retarget.c, CMSIS <a href="../../Core/html/group___i_t_m___debug__gr.html"><b>retarget output</b></a> to ITM Channel 0 template file </td></tr>
+<tr>
+<td align="left"><b>Utilities</b> </td><td align="left">PACK.xsd (<a href="../../Pack/html/_pack__example.html"><b>CMSIS-Pack</b></a> schema file), PackChk.exe (checking tool for software packs), <br/>
  CMSIS-SVD.xsd (<a href="../../SVD/html/index.html"><b>CMSIS-SVD</b></a> schema file), SVDConv.exe (conversion tool for SVD files) </td></tr>
 </table>
 <hr/>
@@ -201,7 +203,7 @@ ARM::CMSIS Pack</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:52 for CMSIS by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:17 for CMSIS by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

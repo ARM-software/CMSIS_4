@@ -1,5 +1,5 @@
 /* -----------------------------------------------------------------------------
- * Copyright (c) 2013-2014 ARM Ltd.
+ * Copyright (c) 2013-2015 ARM Ltd.
  *
  * This software is provided 'as-is', without any express or implied warranty.
  * In no event will the authors be held liable for any damages arising from
@@ -18,67 +18,49 @@
  * 3. This notice may not be removed or altered from any source distribution.
  *
  *
- * $Date:        4. March 2015
- * $Revision:    V2.03
+ * $Date:        02. June 2015
+ * $Revision:    V2.4
  *
  * Driver:       Driver_ETH_MAC0
  * Configured:   via RTE_Device.h configuration file
  * Project:      Ethernet Media Access (MAC) Driver for NXP LPC18xx
- * -----------------------------------------------------------------------------
+ * --------------------------------------------------------------------------
  * Use the following configuration settings in the middleware component
  * to connect to this driver.
  *
- *   Configuration Setting                   Value
- *   ---------------------                   -----
+ *   Configuration Setting                     Value
+ *   ---------------------                     -----
  *   Connect to hardware via Driver_ETH_MAC# = 0
  * -------------------------------------------------------------------------- */
 
 /* History:
- *  Version 2.03
+ *  Version 2.4
+ *    - Updated initialization, uninitialization and power procedures
+ *  Version 2.3
  *    - Corrected return value of PHY_Read and PHY_Write functions on timeout
- *  Version 2.02
+ *  Version 2.2
  *    - GetMacAddress function implemented in Ethernet driver
- *  Version 2.01
+ *  Version 2.1
  *    - Added Sleep mode and Wake-up on Magic Packet 
  *    - Improved robustness and error control
  *    - Added CLK0 pin option support
- *  Version 2.00
+ *  Version 2.0
  *    - Based on API V2.00
  *    - Added multicast MAC address filtering
- *  Version 1.01
+ *  Version 1.1
  *    - Based on API V1.10 (namespace prefix ARM_ added)
- *  Version 1.00
+ *  Version 1.0
  *    - Initial release
  */
-
-#include "cmsis_os.h"
-#include "LPC18xx.h"
-
-#include "SCU_LPC18xx.h"
 
 /* IEEE 1588 time stamping enable (PTP) */
 #ifndef EMAC_TIME_STAMP
 #define EMAC_TIME_STAMP         0
 #endif
+
 #include "EMAC_LPC18xx.h"
 
-#include "Driver_ETH_MAC.h"
-
-#include "RTE_Device.h"
-#include "RTE_Components.h"
-
-#define ARM_ETH_MAC_DRV_VERSION ARM_DRIVER_VERSION_MAJOR_MINOR(2,01) /* driver version */
-
-#if (defined(RTE_Drivers_ETH_MAC0) && !RTE_ENET)
-#error "Ethernet not configured in RTE_Device.h!"
-#endif
-
-#if (RTE_ENET_MII && RTE_ENET_RMII)
-#error "Ethernet interface configuration in RTE_Device.h is invalid!"
-#endif
-
-/* EMAC core clock (system_LPC18xx.c) */
-extern uint32_t GetClockFreq (uint32_t clk_src);
+#define ARM_ETH_MAC_DRV_VERSION ARM_DRIVER_VERSION_MAJOR_MINOR(2,4) /* driver version */
 
 /* Timeouts */
 #define PHY_TIMEOUT         200         /* PHY Register access timeout in us  */
@@ -87,6 +69,9 @@ extern uint32_t GetClockFreq (uint32_t clk_src);
 #define NUM_RX_BUF          4           /* 0x1800 for Rx (4*1536=6K)          */
 #define NUM_TX_BUF          2           /* 0x0C00 for Tx (2*1536=3K)          */
 #define ETH_BUF_SIZE        1536        /* ETH Receive/Transmit buffer size   */
+
+/* EMAC core clock (system_LPC43xx.c) */
+extern uint32_t GetClockFreq (uint32_t clk_src);
 
 /* Ethernet Pin definitions */
 static const PIN_ID eth_pins[] = {
@@ -274,19 +259,7 @@ static ARM_ETH_MAC_CAPABILITIES GetCapabilities (void) {
 static int32_t Initialize (ARM_ETH_MAC_SignalEvent_t cb_event) {
   const PIN_ID *pin;
 
-  if (emac.flags & EMAC_FLAG_POWER) {
-    /* Driver initialize not allowed */
-    return ARM_DRIVER_ERROR;
-  }
-
-  if (emac.flags & EMAC_FLAG_INIT) {
-    /* Driver already initialized */
-    return ARM_DRIVER_OK;
-  }
-  emac.flags = EMAC_FLAG_INIT;
-
-  /* Register driver callback function */
-  emac.cb_event = cb_event;
+  if (emac.flags & EMAC_FLAG_INIT) { return ARM_DRIVER_OK; }
 
   /* Configure EMAC pins */
   for (pin = eth_pins; pin != &eth_pins[sizeof(eth_pins)/sizeof(PIN_ID)]; pin++) {
@@ -296,6 +269,12 @@ static int32_t Initialize (ARM_ETH_MAC_SignalEvent_t cb_event) {
     }
     SCU_PinConfigure(pin->port, pin->num, pin->config_val);
   }
+  
+  /* Clear control structure */
+  memset (&emac, 0, sizeof (EMAC_CTRL));
+
+  emac.cb_event = cb_event;
+  emac.flags    = EMAC_FLAG_INIT;
 
   return ARM_DRIVER_OK;
 }
@@ -308,15 +287,6 @@ static int32_t Initialize (ARM_ETH_MAC_SignalEvent_t cb_event) {
 static int32_t Uninitialize (void) {
   const PIN_ID *pin;
 
-  if (!(emac.flags & EMAC_FLAG_INIT)) {
-    /* Driver not initialized */
-    return ARM_DRIVER_OK;
-  }
-
-  if (emac.flags & EMAC_FLAG_POWER) {
-    /* Driver needs POWER_OFF first */
-    return ARM_DRIVER_ERROR;
-  }
   emac.flags = 0;
 
   /* Unconfigure ethernet pins */
@@ -327,6 +297,7 @@ static int32_t Uninitialize (void) {
     }
     SCU_PinConfigure(pin->port, pin->num, 0);
   }
+
   return ARM_DRIVER_OK;
 }
 
@@ -339,21 +310,11 @@ static int32_t Uninitialize (void) {
 static int32_t PowerControl (ARM_POWER_STATE state) {
   uint32_t clk;
 
-  if (!(emac.flags & EMAC_FLAG_INIT)) {
-    /* Driver not initialized */
-    return ARM_DRIVER_ERROR;
-  }
-
   switch (state) {
     case ARM_POWER_OFF:
-      if (!(emac.flags & EMAC_FLAG_POWER)) {
-        /* Driver not powered */
-        break;
-      }
-      emac.flags = EMAC_FLAG_INIT;
-
       /* Disable EMAC interrupts */
       NVIC_DisableIRQ(ETHERNET_IRQn);
+
       ENET->DMA_INT_EN       = 0x00000000;
       ENET->MAC_TIMESTP_CTRL = 0x00000000;
 
@@ -370,6 +331,8 @@ static int32_t PowerControl (ARM_POWER_STATE state) {
 
       /* Disable EMAC peripheral clock */
       LPC_CCU1->CLK_M3_ETHERNET_CFG &= ~CCU_CLK_CFG_RUN;
+
+      emac.flags = EMAC_FLAG_INIT;
       break;
 
     case ARM_POWER_LOW:
@@ -387,11 +350,11 @@ static int32_t PowerControl (ARM_POWER_STATE state) {
 
       /* Configure Ethernet PHY interface mode (MII/RMII) */
       /* EMAC must be reset after changing PHY interface! */
-#if (RTE_ENET_RMII)
-      LPC_CREG->CREG6 = (LPC_CREG->CREG6 & ~EMAC_CREG6_ETH_MASK) | EMAC_CREG6_ETH_RMII;
-#else
-      LPC_CREG->CREG6 = (LPC_CREG->CREG6 & ~EMAC_CREG6_ETH_MASK) | EMAC_CREG6_ETH_MII;
-#endif
+      #if (RTE_ENET_RMII)
+        LPC_CREG->CREG6 = (LPC_CREG->CREG6 & ~EMAC_CREG6_ETH_MASK) | EMAC_CREG6_ETH_RMII;
+      #else
+        LPC_CREG->CREG6 = (LPC_CREG->CREG6 & ~EMAC_CREG6_ETH_MASK) | EMAC_CREG6_ETH_MII;
+      #endif
 
       /* Reset EMAC peripheral */
       LPC_RGU->RESET_CTRL0 = RGU_RESET_EMAC;
@@ -411,26 +374,26 @@ static int32_t PowerControl (ARM_POWER_STATE state) {
       else                       return ARM_DRIVER_ERROR_UNSUPPORTED;
       ENET->MAC_MII_ADDR = emac.mmar_cr_val;
 
-#if (EMAC_TIME_STAMP)
-      /* Enhanced DMA descriptor enable */
-      ENET->DMA_BUS_MODE |= EMAC_DBMR_ATDS;
+      #if (EMAC_TIME_STAMP)
+        /* Enhanced DMA descriptor enable */
+        ENET->DMA_BUS_MODE |= EMAC_DBMR_ATDS;
 
-      /* Set clock accuracy to 20ns (50MHz) or 50ns (20MHz) */
-      if (clk >= 51000000) {
-        ENET->SUBSECOND_INCR = 20;
-        ENET->ADDEND         = (50000000ull << 32) / clk;
-      }
-      else {
-        ENET->SUBSECOND_INCR = 50;
-        ENET->ADDEND         = (20000000ull << 32) / clk;
-      }
+        /* Set clock accuracy to 20ns (50MHz) or 50ns (20MHz) */
+        if (clk >= 51000000) {
+          ENET->SUBSECOND_INCR = 20;
+          ENET->ADDEND         = (50000000ull << 32) / clk;
+        }
+        else {
+          ENET->SUBSECOND_INCR = 50;
+          ENET->ADDEND         = (20000000ull << 32) / clk;
+        }
 
-      /* Enable timestamp fine update */
-      ENET->MAC_TIMESTP_CTRL = EMAC_MTCR_TSIPV4E | EMAC_MTCR_TSIPV6E |
-                               EMAC_MTCR_TSCTRL  | EMAC_MTCR_TSADDR  |
-                               EMAC_MTCR_TSCFUP  | EMAC_MTCR_TSENA;
-      emac.tx_ts_index = 0;
-#endif
+        /* Enable timestamp fine update */
+        ENET->MAC_TIMESTP_CTRL = EMAC_MTCR_TSIPV4E | EMAC_MTCR_TSIPV6E |
+                                 EMAC_MTCR_TSCTRL  | EMAC_MTCR_TSADDR  |
+                                 EMAC_MTCR_TSCFUP  | EMAC_MTCR_TSENA;
+        emac.tx_ts_index = 0;
+      #endif
 
       /* Initialize MAC configuration */
       ENET->MAC_CONFIG = EMAC_MCR_DO | EMAC_MCR_PS;
@@ -459,7 +422,7 @@ static int32_t PowerControl (ARM_POWER_STATE state) {
       NVIC_EnableIRQ(ETHERNET_IRQn);
 
       emac.frame_end = NULL;
-      emac.flags |= EMAC_FLAG_POWER;
+      emac.flags    |= EMAC_FLAG_POWER;
       break;
 
     default:

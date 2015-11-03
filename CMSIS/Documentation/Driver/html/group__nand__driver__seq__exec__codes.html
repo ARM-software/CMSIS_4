@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -163,45 +163,17 @@ Macros</h2></td></tr>
 <p>Specify execution codes. </p>
 <p>The defines can be used in the function <a class="el" href="group__nand__interface__gr.html#ga8a0108dba757a4610475151144b52825">ARM_NAND_ExecuteSequence</a> for the parameter <em>code</em>. </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="ga959522c98183036da32984dd5e07979b"></a>
+<a class="anchor" id="gaef90c96cd4f2309044d7d438c6b0930a"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_NAND_CODE_INC_ADDR_ROW&#160;&#160;&#160;(1UL &lt;&lt; 23)</td>
+          <td class="memname">#define ARM_NAND_CODE_SEND_CMD1&#160;&#160;&#160;(1UL &lt;&lt; 17)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Auto-increment Row Address. </p>
-
-</div>
-</div>
-<a class="anchor" id="gab524d840ab57c720ce8560144651dc9d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_NAND_CODE_READ_DATA&#160;&#160;&#160;(1UL &lt;&lt; 27)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Read Data. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga2250f6a532d2c0834bfdc618761ddc86"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_NAND_CODE_READ_STATUS&#160;&#160;&#160;(1UL &lt;&lt; 29)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Read Status byte and check FAIL bit (bit 0) </p>
+<p>Send Command 1. </p>
 
 </div>
 </div>
@@ -275,59 +247,17 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gaef90c96cd4f2309044d7d438c6b0930a"></a>
+<a class="anchor" id="ga959522c98183036da32984dd5e07979b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_NAND_CODE_SEND_CMD1&#160;&#160;&#160;(1UL &lt;&lt; 17)</td>
+          <td class="memname">#define ARM_NAND_CODE_INC_ADDR_ROW&#160;&#160;&#160;(1UL &lt;&lt; 23)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Send Command 1. </p>
-
-</div>
-</div>
-<a class="anchor" id="gacffafbbbca74f7ffa4cd3bb6b067c4ef"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_NAND_CODE_SEND_CMD2&#160;&#160;&#160;(1UL &lt;&lt; 25)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Send Command 2. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga20f96743ab77bda14ba391dc0c3cdba5"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_NAND_CODE_SEND_CMD3&#160;&#160;&#160;(1UL &lt;&lt; 28)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Send Command 3. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga0f4a8b1e97656e09f1c383852f290a37"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_NAND_CODE_WAIT_BUSY&#160;&#160;&#160;(1UL &lt;&lt; 26)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Wait while R/Bn busy. </p>
+<p>Auto-increment Row Address. </p>
 
 </div>
 </div>
@@ -345,12 +275,82 @@ Macros</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="gacffafbbbca74f7ffa4cd3bb6b067c4ef"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_NAND_CODE_SEND_CMD2&#160;&#160;&#160;(1UL &lt;&lt; 25)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Send Command 2. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga0f4a8b1e97656e09f1c383852f290a37"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_NAND_CODE_WAIT_BUSY&#160;&#160;&#160;(1UL &lt;&lt; 26)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Wait while R/Bn busy. </p>
+
+</div>
+</div>
+<a class="anchor" id="gab524d840ab57c720ce8560144651dc9d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_NAND_CODE_READ_DATA&#160;&#160;&#160;(1UL &lt;&lt; 27)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read Data. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga20f96743ab77bda14ba391dc0c3cdba5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_NAND_CODE_SEND_CMD3&#160;&#160;&#160;(1UL &lt;&lt; 28)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Send Command 3. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga2250f6a532d2c0834bfdc618761ddc86"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_NAND_CODE_READ_STATUS&#160;&#160;&#160;(1UL &lt;&lt; 29)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read Status byte and check FAIL bit (bit 0) </p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:42 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:03 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

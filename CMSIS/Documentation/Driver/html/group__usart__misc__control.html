@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -156,78 +156,63 @@ Macros</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Description</h2>
 <p>Specifies additional miscellaneous controls. </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="ga3f57bcedf610dc844e6cc3a230dba5f7"></a>
+<a class="anchor" id="gacd6f060afd55ffa1422567c31ebad950"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_USART_ABORT_RECEIVE&#160;&#160;&#160;(0x19UL &lt;&lt; ARM_USART_CONTROL_Pos)</td>
+          <td class="memname">#define ARM_USART_SET_DEFAULT_TX_VALUE&#160;&#160;&#160;(0x10UL &lt;&lt; ARM_USART_CONTROL_Pos)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Abort <a class="el" href="group__usart__interface__gr.html#gae9efabdabb5aaa17bce83339f8a58803">ARM_USART_Receive</a>. </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d" title="Control USART Interface.">ARM_USART_Control</a>; </dd></dl>
+<p>Set default Transmit value (Synchronous Receive only); arg = value. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d" title="Control USART Interface.">ARM_USART_Control</a>; <a class="el" href="group__usart__interface__gr.html#gae9efabdabb5aaa17bce83339f8a58803" title="Start receiving data from USART receiver.">ARM_USART_Receive</a>; </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="ga54e88b32bc7368ff9c44613eae735c44"></a>
+<a class="anchor" id="gab8565d1f26382e832327e4553d18eb02"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_USART_ABORT_SEND&#160;&#160;&#160;(0x18UL &lt;&lt; ARM_USART_CONTROL_Pos)</td>
+          <td class="memname">#define ARM_USART_SET_IRDA_PULSE&#160;&#160;&#160;(0x11UL &lt;&lt; ARM_USART_CONTROL_Pos)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Abort <a class="el" href="group__usart__interface__gr.html#ga5cf758b0b9d03dca68846962f73c0b08">ARM_USART_Send</a>. </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d" title="Control USART Interface.">ARM_USART_Control</a>; </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ga83d0ef402feb342f9939f0e4ffe26182"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_USART_ABORT_TRANSFER&#160;&#160;&#160;(0x1AUL &lt;&lt; ARM_USART_CONTROL_Pos)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Abort <a class="el" href="group__usart__interface__gr.html#ga878899928d34a818edd3e97d67b65c2a">ARM_USART_Transfer</a>. </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d" title="Control USART Interface.">ARM_USART_Control</a>; </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="gab194a6f916e5b25e0262534c0cce54dc"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_USART_CONTROL_BREAK&#160;&#160;&#160;(0x17UL &lt;&lt; ARM_USART_CONTROL_Pos)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Continuous Break transmission; arg: 0=disabled, 1=enabled. </p>
+<p>Set IrDA Pulse in ns; arg: 0=3/16 of bit period. </p>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d" title="Control USART Interface.">ARM_USART_Control</a> </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="gad52c08553ae203d4f7741404589b8169"></a>
+<a class="anchor" id="ga169be809adc186c131bb8b1618005b28"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_USART_CONTROL_RX&#160;&#160;&#160;(0x16UL &lt;&lt; ARM_USART_CONTROL_Pos)</td>
+          <td class="memname">#define ARM_USART_SET_SMART_CARD_GUARD_TIME&#160;&#160;&#160;(0x12UL &lt;&lt; ARM_USART_CONTROL_Pos)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Receiver; arg: 0=disabled, 1=enabled. </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d" title="Control USART Interface.">ARM_USART_Control</a>; <a class="el" href="group__usart__interface__gr.html#gae9efabdabb5aaa17bce83339f8a58803" title="Start receiving data from USART receiver.">ARM_USART_Receive</a>; <a class="el" href="group__usart__interface__gr.html#ga878899928d34a818edd3e97d67b65c2a" title="Start sending/receiving data to/from USART transmitter/receiver.">ARM_USART_Transfer</a>; </dd></dl>
+<p>Set Smart Card Guard Time; arg = number of bit periods. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d" title="Control USART Interface.">ARM_USART_Control</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga79698a2bd564c1f5bb1829ea422e9d3d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_USART_SET_SMART_CARD_CLOCK&#160;&#160;&#160;(0x13UL &lt;&lt; ARM_USART_CONTROL_Pos)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set Smart Card Clock in Hz; arg: 0=Clock not generated. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d" title="Control USART Interface.">ARM_USART_Control</a> </dd></dl>
 
 </div>
 </div>
@@ -261,63 +246,78 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gacd6f060afd55ffa1422567c31ebad950"></a>
+<a class="anchor" id="gad52c08553ae203d4f7741404589b8169"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_USART_SET_DEFAULT_TX_VALUE&#160;&#160;&#160;(0x10UL &lt;&lt; ARM_USART_CONTROL_Pos)</td>
+          <td class="memname">#define ARM_USART_CONTROL_RX&#160;&#160;&#160;(0x16UL &lt;&lt; ARM_USART_CONTROL_Pos)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Set default Transmit value (Synchronous Receive only); arg = value. </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d" title="Control USART Interface.">ARM_USART_Control</a>; <a class="el" href="group__usart__interface__gr.html#gae9efabdabb5aaa17bce83339f8a58803" title="Start receiving data from USART receiver.">ARM_USART_Receive</a>; </dd></dl>
+<p>Receiver; arg: 0=disabled, 1=enabled. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d" title="Control USART Interface.">ARM_USART_Control</a>; <a class="el" href="group__usart__interface__gr.html#gae9efabdabb5aaa17bce83339f8a58803" title="Start receiving data from USART receiver.">ARM_USART_Receive</a>; <a class="el" href="group__usart__interface__gr.html#ga878899928d34a818edd3e97d67b65c2a" title="Start sending/receiving data to/from USART transmitter/receiver.">ARM_USART_Transfer</a>; </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="gab8565d1f26382e832327e4553d18eb02"></a>
+<a class="anchor" id="gab194a6f916e5b25e0262534c0cce54dc"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_USART_SET_IRDA_PULSE&#160;&#160;&#160;(0x11UL &lt;&lt; ARM_USART_CONTROL_Pos)</td>
+          <td class="memname">#define ARM_USART_CONTROL_BREAK&#160;&#160;&#160;(0x17UL &lt;&lt; ARM_USART_CONTROL_Pos)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Set IrDA Pulse in ns; arg: 0=3/16 of bit period. </p>
+<p>Continuous Break transmission; arg: 0=disabled, 1=enabled. </p>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d" title="Control USART Interface.">ARM_USART_Control</a> </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="ga79698a2bd564c1f5bb1829ea422e9d3d"></a>
+<a class="anchor" id="ga54e88b32bc7368ff9c44613eae735c44"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_USART_SET_SMART_CARD_CLOCK&#160;&#160;&#160;(0x13UL &lt;&lt; ARM_USART_CONTROL_Pos)</td>
+          <td class="memname">#define ARM_USART_ABORT_SEND&#160;&#160;&#160;(0x18UL &lt;&lt; ARM_USART_CONTROL_Pos)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Set Smart Card Clock in Hz; arg: 0=Clock not generated. </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d" title="Control USART Interface.">ARM_USART_Control</a> </dd></dl>
+<p>Abort <a class="el" href="group__usart__interface__gr.html#ga5cf758b0b9d03dca68846962f73c0b08">ARM_USART_Send</a>. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d" title="Control USART Interface.">ARM_USART_Control</a>; </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="ga169be809adc186c131bb8b1618005b28"></a>
+<a class="anchor" id="ga3f57bcedf610dc844e6cc3a230dba5f7"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_USART_SET_SMART_CARD_GUARD_TIME&#160;&#160;&#160;(0x12UL &lt;&lt; ARM_USART_CONTROL_Pos)</td>
+          <td class="memname">#define ARM_USART_ABORT_RECEIVE&#160;&#160;&#160;(0x19UL &lt;&lt; ARM_USART_CONTROL_Pos)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Set Smart Card Guard Time; arg = number of bit periods. </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d" title="Control USART Interface.">ARM_USART_Control</a> </dd></dl>
+<p>Abort <a class="el" href="group__usart__interface__gr.html#gae9efabdabb5aaa17bce83339f8a58803">ARM_USART_Receive</a>. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d" title="Control USART Interface.">ARM_USART_Control</a>; </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga83d0ef402feb342f9939f0e4ffe26182"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_USART_ABORT_TRANSFER&#160;&#160;&#160;(0x1AUL &lt;&lt; ARM_USART_CONTROL_Pos)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Abort <a class="el" href="group__usart__interface__gr.html#ga878899928d34a818edd3e97d67b65c2a">ARM_USART_Transfer</a>. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d" title="Control USART Interface.">ARM_USART_Control</a>; </dd></dl>
 
 </div>
 </div>
@@ -326,7 +326,7 @@ Macros</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:43 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:03 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

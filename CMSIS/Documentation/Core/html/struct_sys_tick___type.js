@@ -1,7 +1,7 @@
 var struct_sys_tick___type =
 [
-    [ "CALIB", "struct_sys_tick___type.html#a9c9eda0ea6f6a7c904d2d75a6963e238", null ],
-    [ "CTRL", "struct_sys_tick___type.html#af2ad94ac83e5d40fc6e34884bc1bec5f", null ],
-    [ "LOAD", "struct_sys_tick___type.html#ae7bc9d3eac1147f3bba8d73a8395644f", null ],
-    [ "VAL", "struct_sys_tick___type.html#a0997ff20f11817f8246e8f0edac6f4e4", null ]
+    [ "CALIB", "struct_sys_tick___type.html#afcadb0c6d35b21cdc0018658a13942de", null ],
+    [ "CTRL", "struct_sys_tick___type.html#a875e7afa5c4fd43997fb544a4ac6e37e", null ],
+    [ "LOAD", "struct_sys_tick___type.html#a4780a489256bb9f54d0ba8ed4de191cd", null ],
+    [ "VAL", "struct_sys_tick___type.html#a9b5420d17e8e43104ddd4ae5a610af93", null ]
 ];

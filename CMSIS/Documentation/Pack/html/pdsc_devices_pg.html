@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.3.3</span>
+   &#160;<span id="projectnumber">Version 1.4.0</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -114,7 +114,7 @@ $(document).ready(function(){initNavTree('pdsc_devices_pg.html','');});
 <p>Devices can be organized in hierarchy groups to limit redundancy. The hierarchy levels are:</p>
 <ul>
 <li><a class="el" href="pdsc_family_pg.html#element_family">family</a>: the attributes of a device family which includes also the processor.</li>
-<li><a class="el" href="pdsc_family_pg.html#element_subfamily">sub-family</a>: attributes of an optional sub-family; this adds or modifies features of a family.</li>
+<li><a class="el" href="pdsc_family_pg.html#element_subFamily">subFamily</a>: attributes of an optional sub-family; this adds or modifies features of a family.</li>
 </ul>
 <p>Device characteristics can be defined in:</p>
 <ul>
@@ -149,7 +149,7 @@ $(document).ready(function(){initNavTree('pdsc_devices_pg.html','');});
 <div class="line"></div>
 <div class="line">      &lt;compile   header=<span class="stringliteral">&quot;Device\Include\stm32f2xx.h&quot;</span> define=<span class="stringliteral">&quot;STM32F2XX&quot;</span>/&gt;</div>
 <div class="line">      &lt;debug     svd=<span class="stringliteral">&quot;SVD\STM32F20x.svd&quot;</span>/&gt;</div>
-<div class="line">      &lt;algorithm name=<span class="stringliteral">&quot;Flash\STM32F2xx_OPT.flm&quot;</span> start=<span class="stringliteral">&quot;0x1FFFC000&quot;</span> size=<span class="stringliteral">&quot;0x00000010&quot;</span>/&gt;</div>
+<div class="line">      &lt;algorithm name=<span class="stringliteral">&quot;Flash\STM32F2xx_OPT.flm&quot;</span> start=<span class="stringliteral">&quot;0x1FFFC000&quot;</span> size=<span class="stringliteral">&quot;0x00000010&quot;</span> style=<span class="stringliteral">&quot;Keil&quot;</span>/&gt;</div>
 <div class="line">      &lt;book      name=<span class="stringliteral">&quot;doc\STM32F2.PDF&quot;</span> title=<span class="stringliteral">&quot;STM32F2 Reference Manual&quot;</span>/&gt;</div>
 <div class="line"></div>
 <div class="line">      &lt;description&gt;</div>
@@ -179,8 +179,8 @@ $(document).ready(function(){initNavTree('pdsc_devices_pg.html','');});
 <div class="line"></div>
 <div class="line">      &lt;!-- sub family level --&gt;</div>
 <div class="line">      &lt;subFamily DsubFamily=<span class="stringliteral">&quot;128 Flash&quot;</span>&gt;</div>
-<div class="line">        &lt;memory <span class="keywordtype">id</span>=<span class="stringliteral">&quot;IRAM1&quot;</span> start=<span class="stringliteral">&quot;0x20000000&quot;</span> size=<span class="stringliteral">&quot;0x10000&quot;</span> <span class="keywordflow">default</span>=<span class="stringliteral">&quot;1&quot;</span>/&gt;</div>
-<div class="line">        &lt;memory <span class="keywordtype">id</span>=<span class="stringliteral">&quot;IROM1&quot;</span> start=<span class="stringliteral">&quot;0x08000000&quot;</span> size=<span class="stringliteral">&quot;0x20000&quot;</span> startup=<span class="stringliteral">&quot;1&quot;</span> <span class="keywordflow">default</span>=<span class="stringliteral">&quot;1&quot;</span>/&gt;</div>
+<div class="line">        &lt;memory name=<span class="stringliteral">&quot;SRAM&quot;</span>  access=<span class="stringliteral">&quot;rwx&quot;</span> start=<span class="stringliteral">&quot;0x20000000&quot;</span> size=<span class="stringliteral">&quot;0x10000&quot;</span> <span class="keywordflow">default</span>=<span class="stringliteral">&quot;1&quot;</span>/&gt;</div>
+<div class="line">        &lt;memory name=<span class="stringliteral">&quot;Flash&quot;</span> access=<span class="stringliteral">&quot;rx&quot;</span>  start=<span class="stringliteral">&quot;0x08000000&quot;</span> size=<span class="stringliteral">&quot;0x20000&quot;</span> startup=<span class="stringliteral">&quot;1&quot;</span> <span class="keywordflow">default</span>=<span class="stringliteral">&quot;1&quot;</span>/&gt;</div>
 <div class="line">        </div>
 <div class="line">        &lt;!-- device level --&gt;</div>
 <div class="line">        &lt;device Dname=<span class="stringliteral">&quot;STM32F205RB&quot;</span>&gt;</div>
@@ -239,7 +239,7 @@ $(document).ready(function(){initNavTree('pdsc_devices_pg.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="_pack_format.html">Pack Description (*.PDSC) Format</a></li>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:58 for CMSIS-Pack by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:26 for CMSIS-Pack by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

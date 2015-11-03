@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -182,7 +182,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <div class="textblock"><p>Access structure of the Ethernet PHY Driver. </p>
-<p>The functions of the Ethernet PHY are accessed by function pointers exposed by this structure. Refer to <a class="el" href="_theory_operation.html#DriverFunctions">Driver Functions</a> for overview information.</p>
+<p>The functions of the Ethernet PHY are accessed by function pointers exposed by this structure. Refer to <a class="el" href="_theory_operation.html#DriverFunctions">Common Driver Functions</a> for overview information.</p>
 <p>Each instance of an Ethernet PHY provides such an access struct. The instance is identified by a postfix number in the symbol name of the access struct, for example:</p>
 <ul>
 <li><b>Driver_ETH_PHY0</b> is the name of the access struct of the first instance (no. 0).</li>
@@ -217,34 +217,6 @@ Functions</h2></td></tr>
 <tr class="separator:ac162bfaf93512fa0966bfbb923c45463"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h4 class="groupheader">Field Documentation</h4>
-<a class="anchor" id="ac162bfaf93512fa0966bfbb923c45463"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__eth__interface__gr.html#struct_a_r_m___e_t_h___l_i_n_k___i_n_f_o">ARM_ETH_LINK_INFO</a>(* GetLinkInfo)(void)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__eth__phy__interface__gr.html#ga8c79dcd7a12656403f3befab3c8605a2">ARM_ETH_PHY_GetLinkInfo</a> : Get Ethernet PHY Device Link information. </p>
-
-</div>
-</div>
-<a class="anchor" id="a0e25b2f267edc874f1bd785175fcf08a"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__eth__interface__gr.html#gacf7db5320eb841b462a4af3c56cc9291">ARM_ETH_LINK_STATE</a>(* GetLinkState)(void)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__eth__phy__interface__gr.html#ga4085cd24ebe33b78d51a3c003da4a5ba">ARM_ETH_PHY_GetLinkState</a> : Get Ethernet PHY Device Link state. </p>
-
-</div>
-</div>
 <a class="anchor" id="a8834b281da48583845c044a81566c1b3"></a>
 <div class="memitem">
 <div class="memproto">
@@ -270,6 +242,20 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Pointer to <a class="el" href="group__eth__phy__interface__gr.html#gacf2332a7fa2d84694b8e5f0838135589">ARM_ETH_PHY_Initialize</a> : Initialize PHY Device. </p>
+
+</div>
+</div>
+<a class="anchor" id="adcf20681a1402869ecb5c6447fada17b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* Uninitialize)(void)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__eth__phy__interface__gr.html#ga26ea7e1e9825b959284241ebff6eea3f">ARM_ETH_PHY_Uninitialize</a> : De-initialize PHY Device. </p>
 
 </div>
 </div>
@@ -315,17 +301,31 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="adcf20681a1402869ecb5c6447fada17b"></a>
+<a class="anchor" id="a0e25b2f267edc874f1bd785175fcf08a"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int32_t(* Uninitialize)(void)</td>
+          <td class="memname"><a class="el" href="group__eth__interface__gr.html#gacf7db5320eb841b462a4af3c56cc9291">ARM_ETH_LINK_STATE</a>(* GetLinkState)(void)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Pointer to <a class="el" href="group__eth__phy__interface__gr.html#ga26ea7e1e9825b959284241ebff6eea3f">ARM_ETH_PHY_Uninitialize</a> : De-initialize PHY Device. </p>
+<p>Pointer to <a class="el" href="group__eth__phy__interface__gr.html#ga4085cd24ebe33b78d51a3c003da4a5ba">ARM_ETH_PHY_GetLinkState</a> : Get Ethernet PHY Device Link state. </p>
+
+</div>
+</div>
+<a class="anchor" id="ac162bfaf93512fa0966bfbb923c45463"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__eth__interface__gr.html#struct_a_r_m___e_t_h___l_i_n_k___i_n_f_o">ARM_ETH_LINK_INFO</a>(* GetLinkInfo)(void)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__eth__phy__interface__gr.html#ga8c79dcd7a12656403f3befab3c8605a2">ARM_ETH_PHY_GetLinkInfo</a> : Get Ethernet PHY Device Link information. </p>
 
 </div>
 </div>
@@ -372,54 +372,6 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="ga8c79dcd7a12656403f3befab3c8605a2"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__eth__interface__gr.html#struct_a_r_m___e_t_h___l_i_n_k___i_n_f_o">ARM_ETH_LINK_INFO</a> ARM_ETH_PHY_GetLinkInfo </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get Ethernet PHY Device Link information. </p>
-<dl class="section return"><dt>Returns</dt><dd>current link parameters <a class="el" href="group__eth__interface__gr.html#struct_a_r_m___e_t_h___l_i_n_k___i_n_f_o">ARM_ETH_LINK_INFO</a></dd></dl>
-<p>The function <a class="el" href="group__eth__phy__interface__gr.html#ga8c79dcd7a12656403f3befab3c8605a2">ARM_ETH_PHY_GetLinkInfo</a> retrieves information about the current established communication mode (half/full duplex) and communication speed. Information is only valid when link is up (see <a class="el" href="group__eth__phy__interface__gr.html#ga4085cd24ebe33b78d51a3c003da4a5ba">ARM_ETH_PHY_GetLinkState</a>).</p>
-<p><b>Example:</b> </p>
-<ul>
-<li>see <a class="el" href="group__eth__interface__gr.html">Ethernet Interface</a> - Driver Functions </li>
-</ul>
-
-</div>
-</div>
-<a class="anchor" id="ga4085cd24ebe33b78d51a3c003da4a5ba"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__eth__interface__gr.html#gacf7db5320eb841b462a4af3c56cc9291">ARM_ETH_LINK_STATE</a> ARM_ETH_PHY_GetLinkState </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get Ethernet PHY Device Link state. </p>
-<dl class="section return"><dt>Returns</dt><dd>current link status <a class="el" href="group__eth__interface__gr.html#gacf7db5320eb841b462a4af3c56cc9291">ARM_ETH_LINK_STATE</a></dd></dl>
-<p>The function <a class="el" href="group__eth__phy__interface__gr.html#ga4085cd24ebe33b78d51a3c003da4a5ba">ARM_ETH_PHY_GetLinkState</a> retrieves the connection status of the physical Ethernet link.</p>
-<p><b>Example:</b> </p>
-<ul>
-<li>see <a class="el" href="group__eth__interface__gr.html">Ethernet Interface</a> - Driver Functions </li>
-</ul>
-
-</div>
-</div>
 <a class="anchor" id="ga6850d33d699d9deee4e983a2c99e9734"></a>
 <div class="memitem">
 <div class="memproto">
@@ -436,7 +388,7 @@ Functions</h2></td></tr>
 
 <p>Get driver version. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a></dd></dl>
-<p>Returns version information of the driver implementation in <a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a></p>
+<p>The function <b>ARM_ETH_PHY_GetVersion</b> returns version information of the driver implementation in <a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a></p>
 <ul>
 <li>API version is the version of the CMSIS-Driver specification used to implement this driver.</li>
 <li>Driver version is source code version of the actual driver implementation.</li>
@@ -491,7 +443,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>The function <a class="el" href="group__eth__phy__interface__gr.html#gacf2332a7fa2d84694b8e5f0838135589">ARM_ETH_PHY_Initialize</a> initializes the Ethernet PHY interface. It is called when the middleware component starts operation.</p>
+<p>The function <b>ARM_ETH_PHY_Initialize</b> initializes the Ethernet PHY interface. It is called when the middleware component starts operation.</p>
 <p>The <a class="el" href="group__eth__phy__interface__gr.html#gacf2332a7fa2d84694b8e5f0838135589">ARM_ETH_PHY_Initialize</a> function performs the following operations:</p>
 <ul>
 <li>Initializes the resources needed for Ethernet PHY peripheral.</li>
@@ -502,6 +454,27 @@ Functions</h2></td></tr>
 <ul>
 <li>see <a class="el" href="group__eth__interface__gr.html">Ethernet Interface</a> - Driver Functions </li>
 </ul>
+
+</div>
+</div>
+<a class="anchor" id="ga26ea7e1e9825b959284241ebff6eea3f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ARM_ETH_PHY_Uninitialize </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>De-initialize Ethernet PHY Device. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
+<p>The function <b>ARM_ETH_PHY_Uninitialize</b> de-initializes the resources of Ethernet PHY interface.</p>
+<p>It is called when the middleware component stops operation and releases the software resources used by the interface. </p>
 
 </div>
 </div>
@@ -527,14 +500,14 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>Allows you to control the power modes of the Ethernet PHY interface.</p>
-<p><em>state</em> can be:</p>
+<p>The function <b>ARM_ETH_PHY_PowerControl</b> operates the power modes of the Ethernet PHY interface.</p>
+<p>The parameter <em>state</em> sets the operation and can have the following values:</p>
 <ul>
-<li>ARM_POWER_OFF: Ethernet PHY peripheral is turned off.</li>
-<li>ARM_POWER_FULL: Ethernet PHY peripheral is turned on and fully operational.</li>
-<li>ARM_POWER_LOW: Ethernet PHY peripheral is in low power mode.</li>
+<li><a class="el" href="_driver___common_8h.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5abed52b77a9ce4775570e44a842b1295e">ARM_POWER_FULL</a> : set-up peripheral for data transfers, enable interrupts (NVIC) and optionally DMA. Can be called multiple times. If the peripheral is already in this mode the function performs no operation and returns with <a class="el" href="group__execution__status.html#ga85752c5de59e8adeb001e35ff5be6be7">ARM_DRIVER_OK</a>.</li>
+<li><a class="el" href="_driver___common_8h.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5a9ef9e57cbcc948d0e22314e73dc8c434">ARM_POWER_LOW</a> : may use power saving. Returns <a class="el" href="group__execution__status.html#ga2efa59e480d82697795439220e6884e4">ARM_DRIVER_ERROR_UNSUPPORTED</a> when not implemented.</li>
+<li><a class="el" href="_driver___common_8h.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5ab6f5becc85ebd51c3dd2524a95d2ca35">ARM_POWER_OFF</a> : terminates any pending data transfers, disables peripheral, disables related interrupts and DMA.</li>
 </ul>
-<p>If <em>state</em> specifies an unsupported mode, the function returns <a class="el" href="group__execution__status.html#ga2efa59e480d82697795439220e6884e4">ARM_DRIVER_ERROR_UNSUPPORTED</a>.</p>
+<p>Refer to <a class="el" href="_theory_operation.html#CallSequence">Function Call Sequence</a> for more information.</p>
 <p><b>Example:</b> </p>
 <ul>
 <li>see <a class="el" href="group__eth__interface__gr.html">Ethernet Interface</a> - Driver Functions </li>
@@ -564,12 +537,36 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>The function <a class="el" href="group__eth__phy__interface__gr.html#gaedd8b5650a1259d572a1f303d3e2c01c">ARM_ETH_PHY_SetInterface</a> specifies the Media Independent Interface type (<em>ARM_ETH_INTERFACE_xxx</em>) that is used by the interface between Ethernet MAC and Ethernet PHY. The Media Independent Interface type is obtained by the function <a class="el" href="group__eth__mac__interface__gr.html#ga2b13b230502736d8c7679b359dff20d0">ARM_ETH_MAC_GetCapabilities</a>.</p>
+<p>The function <b>ARM_ETH_PHY_SetInterface</b> specifies the <a class="el" href="group__eth__interface__types1.html">Media Interface Types</a> that links the Ethernet MAC and Ethernet PHY. After initialization of the PHY interface, you can set the media type. The function <a class="el" href="group__eth__mac__interface__gr.html#ga2b13b230502736d8c7679b359dff20d0">ARM_ETH_MAC_GetCapabilities</a> retrieves the media interface type encoded in the data field <b>media_interface</b> of the structure <a class="el" href="group__eth__mac__interface__gr.html#struct_a_r_m___e_t_h___m_a_c___c_a_p_a_b_i_l_i_t_i_e_s">ARM_ETH_MAC_CAPABILITIES</a>.</p>
+<p>The parameter <em>interface</em> can have the following values:</p>
+<table class="doxtable">
+<tr>
+<th align="left">Parameter <em>interface</em> </th><th align="left">Media Type</th></tr>
+<tr>
+<td align="left"><a class="el" href="group__eth__interface__types1.html#ga468c848ddf75d7925130171af1ec2ac7">ARM_ETH_INTERFACE_MII</a> </td><td align="left">Media Independent Interface (MII) </td></tr>
+<tr>
+<td align="left"><a class="el" href="group__eth__interface__types1.html#gac0361b34fbec9c19840ad0349e4c388b">ARM_ETH_INTERFACE_RMII</a> </td><td align="left">Reduced Media Independent Interface (RMII) </td></tr>
+<tr>
+<td align="left"><a class="el" href="group__eth__interface__types1.html#ga24047d142be48bbc241e8d6eacb5cf7a">ARM_ETH_INTERFACE_SMII</a> </td><td align="left">Serial Media Independent Interface (SMII); </td></tr>
+</table>
+<dl class="section note"><dt>Note</dt><dd>Some <em>interface</em> values may be unsupported by a driver implementation. For example <a class="el" href="group__eth__interface__types1.html#ga24047d142be48bbc241e8d6eacb5cf7a">ARM_ETH_INTERFACE_SMII</a> may return <b>ARM_DRIVER_ERROR_UNSUPPORTED</b>.</dd></dl>
 <p><b>Example:</b> </p>
-<ul>
-<li>see <a class="el" href="group__eth__interface__gr.html">Ethernet Interface</a> - Driver Functions </li>
-</ul>
-
+<div class="fragment"><div class="line"><span class="keyword">static</span> <a class="code" href="group__eth__mac__interface__gr.html#struct_a_r_m___e_t_h___m_a_c___c_a_p_a_b_i_l_i_t_i_e_s" title="Ethernet MAC Capabilities.">ARM_ETH_MAC_CAPABILITIES</a> capabilities;</div>
+<div class="line"><span class="keyword">static</span> <a class="code" href="group__eth__mac__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___e_t_h___m_a_c" title="Access structure of the Ethernet MAC Driver.">ARM_DRIVER_ETH_MAC</a> *mac;</div>
+<div class="line"><span class="keyword">static</span> <a class="code" href="group__eth__phy__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___e_t_h___p_h_y" title="Access structure of the Ethernet PHY Driver.">ARM_DRIVER_ETH_PHY</a> *phy;</div>
+<div class="line"> </div>
+<div class="line">mac = &amp;Driver_ETH_MAC0;</div>
+<div class="line">phy = &amp;Driver_ETH_PHY0;</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Initialize Media Access Controller</span></div>
+<div class="line">capabilities = mac-&gt;<a class="code" href="group__eth__mac__interface__gr.html#a9fd725bb058c584a9ced9c579561cdf1" title="Pointer to ARM_ETH_MAC_GetCapabilities : Get driver capabilities.">GetCapabilities</a> ();</div>
+<div class="line">...</div>
+<div class="line">status = phy-&gt;<a class="code" href="group__eth__phy__interface__gr.html#a7dfc7cf346c80e7fdb2fe4cea2c61161" title="Pointer to ARM_ETH_PHY_SetInterface : Set Ethernet Media Interface.">SetInterface</a> (capabilities.<a class="code" href="group__eth__mac__interface__gr.html#a3c5cb74e086417a01d0079f847a3fc8d" title="Ethernet Media Interface type.">media_interface</a>);</div>
+<div class="line"><span class="keywordflow">if</span> (status != <a class="code" href="group__execution__status.html#ga85752c5de59e8adeb001e35ff5be6be7" title="Operation succeeded.">ARM_DRIVER_OK</a>) ...  <span class="comment">// error handling</span></div>
+<div class="line">status = phy-&gt;<a class="code" href="group__eth__phy__interface__gr.html#ae6686344f4d6afa0881d1e545c898a3d" title="Pointer to ARM_ETH_PHY_SetMode : Set Ethernet PHY Device Operation mode.">SetMode</a> (<a class="code" href="group__eth__phy__mode__ctrls.html#ga6a8c54f8fed3e5f68bd04eb715d10ab9" title="Auto Negotiation mode.">ARM_ETH_PHY_AUTO_NEGOTIATE</a>);</div>
+<div class="line"><span class="keywordflow">if</span> (status != <a class="code" href="group__execution__status.html#ga85752c5de59e8adeb001e35ff5be6be7" title="Operation succeeded.">ARM_DRIVER_OK</a>) ...  <span class="comment">// error handling</span></div>
+<div class="line">...</div>
+</div><!-- fragment --> 
 </div>
 </div>
 <a class="anchor" id="ga9aa688c951f01ed9ca7c88cf51be8a09"></a>
@@ -594,41 +591,59 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>The function <a class="el" href="group__eth__phy__interface__gr.html#ga9aa688c951f01ed9ca7c88cf51be8a09">ARM_ETH_PHY_SetMode</a> defines the operation mode of the Ethernet PHY.</p>
-<p><b>Example:</b> </p>
-<ul>
-<li>see <a class="el" href="group__eth__interface__gr.html">Ethernet Interface</a> - Driver Functions</li>
-</ul>
-<p><b>Mode configuration parameters</b> specify bits for speed modes, link modes, checksum, and frame handling.</p>
-<table class="doxtable">
+<p>The function <b>ARM_ETH_PHY_SetMode</b> sets the operation mode parameters for the Ethernet PHY.</p>
+<p>The table below lists the possible values for the parameter <em>mode</em>. Values from different categories can be ORed as shown in this example code:</p>
+<div class="fragment"><div class="line">phy-&gt;<a class="code" href="group__eth__phy__interface__gr.html#ae6686344f4d6afa0881d1e545c898a3d" title="Pointer to ARM_ETH_PHY_SetMode : Set Ethernet PHY Device Operation mode.">SetMode</a> (<a class="code" href="group__eth__phy__mode__ctrls.html#gad1e8b2c8c210fa36949db9a34a993657" title="100 Mbps link speed">ARM_ETH_PHY_SPEED_100M</a> | <a class="code" href="group__eth__phy__mode__ctrls.html#ga5f7e46cda8ab3c774fe7ce0a8a1ba3ec" title="Loop-back test mode.">ARM_ETH_PHY_LOOPBACK</a> | <a class="code" href="group__eth__phy__mode__ctrls.html#gace797b3cd143be22f47c3ef61b20e14d" title="Half duplex link.">ARM_ETH_PHY_DUPLEX_HALF</a> );</div>
+</div><!-- fragment --><p> <br/>
+</p>
+<table  class="cmtable">
 <tr>
-<th align="left">Mode Parameters: Mode Bits </th><th align="left">Description</th></tr>
+<th>Parameter <em>mode</em> </th><th>bit </th><th>Category  </th><th>Description </th></tr>
 <tr>
-<td align="left"><a class="el" href="group__eth__phy__mode__ctrls.html#gabc7acc4ebe828c3d0825400e14ad20f0">ARM_ETH_PHY_SPEED_10M</a> </td><td align="left">Set the link speed to <span class="XML-Token">10 Mbps</span> </td></tr>
+<td><a class="el" href="group__eth__phy__mode__ctrls.html#gabc7acc4ebe828c3d0825400e14ad20f0">ARM_ETH_PHY_SPEED_10M</a> </td><td rowspan="3">0..1 </td><td rowspan="3">Link Speed  </td><td>Set the link speed to <span class="XML-Token">10 [Mbps]</span>  </td></tr>
 <tr>
-<td align="left"><a class="el" href="group__eth__phy__mode__ctrls.html#gad1e8b2c8c210fa36949db9a34a993657">ARM_ETH_PHY_SPEED_100M</a> </td><td align="left">Set the link speed to <span class="XML-Token">100 Mbps</span> </td></tr>
+<td><a class="el" href="group__eth__phy__mode__ctrls.html#gad1e8b2c8c210fa36949db9a34a993657">ARM_ETH_PHY_SPEED_100M</a>  </td><td>Set the link speed to <span class="XML-Token">100 [Mbps]</span>  </td></tr>
 <tr>
-<td align="left"><a class="el" href="group__eth__phy__mode__ctrls.html#ga046605398ceae99a176e6f82432ae710">ARM_ETH_PHY_SPEED_1G</a> </td><td align="left">Set the link speed to <span class="XML-Token">1 Gbps</span> </td></tr>
+<td><a class="el" href="group__eth__phy__mode__ctrls.html#ga046605398ceae99a176e6f82432ae710">ARM_ETH_PHY_SPEED_1G</a>  </td><td>Set the link speed to <span class="XML-Token">1 [Gbps]</span>  </td></tr>
 <tr>
-<td align="left"><a class="el" href="group__eth__phy__mode__ctrls.html#gace797b3cd143be22f47c3ef61b20e14d">ARM_ETH_PHY_DUPLEX_HALF</a> </td><td align="left">Set the link mode to half duplex link </td></tr>
+<td><a class="el" href="group__eth__phy__mode__ctrls.html#gace797b3cd143be22f47c3ef61b20e14d">ARM_ETH_PHY_DUPLEX_HALF</a> </td><td rowspan="2">2 </td><td rowspan="2">Link Mode  </td><td>Set the link mode to half duplex  </td></tr>
 <tr>
-<td align="left"><a class="el" href="group__eth__phy__mode__ctrls.html#ga5d06a94867c89cd311b6e279669321e3">ARM_ETH_PHY_DUPLEX_FULL</a> </td><td align="left">Set the link mode to full duplex link </td></tr>
+<td><a class="el" href="group__eth__phy__mode__ctrls.html#ga5d06a94867c89cd311b6e279669321e3">ARM_ETH_PHY_DUPLEX_FULL</a>  </td><td>Set the link mode to full duplex  </td></tr>
 <tr>
-<td align="left"><a class="el" href="group__eth__phy__mode__ctrls.html#ga6a8c54f8fed3e5f68bd04eb715d10ab9">ARM_ETH_PHY_AUTO_NEGOTIATE</a> </td><td align="left">Set the interface to Auto Negotiation mode </td></tr>
+<td><a class="el" href="group__eth__phy__mode__ctrls.html#ga6a8c54f8fed3e5f68bd04eb715d10ab9">ARM_ETH_PHY_AUTO_NEGOTIATE</a> </td><td>3 </td><td>Autonegotiation  </td><td>Set the interface to Auto Negotiation mode of transmission parameters </td></tr>
 <tr>
-<td align="left"><a class="el" href="group__eth__phy__mode__ctrls.html#ga5f7e46cda8ab3c774fe7ce0a8a1ba3ec">ARM_ETH_PHY_LOOPBACK</a> </td><td align="left">Set the interface into a Loop-back test mode </td></tr>
+<td><a class="el" href="group__eth__phy__mode__ctrls.html#ga5f7e46cda8ab3c774fe7ce0a8a1ba3ec">ARM_ETH_PHY_LOOPBACK</a> </td><td>4 </td><td>Loopback  </td><td>Set the interface into a Loop-back test mode  </td></tr>
 <tr>
-<td align="left"><a class="el" href="group__eth__phy__mode__ctrls.html#ga8d68719e07c7af449b57c5df802376c8">ARM_ETH_PHY_ISOLATE</a> </td><td align="left">Isolate the PHY interface from MII interface </td></tr>
+<td><a class="el" href="group__eth__phy__mode__ctrls.html#ga8d68719e07c7af449b57c5df802376c8">ARM_ETH_PHY_ISOLATE</a> </td><td>5 </td><td>Isolation  </td><td>Set to indicate electrical isolation of PHY interface from MII/RMII interface </td></tr>
 </table>
-
+<dl class="section note"><dt>Note</dt><dd>Some settings may be also taken from configuration pins (example <a class="el" href="group__eth__phy__mode__ctrls.html#ga8d68719e07c7af449b57c5df802376c8">ARM_ETH_PHY_ISOLATE</a>). Check the effect of mode settings in the actual driver implementation. </dd>
+<dd>
+Some <em>mode</em> values may be unsupported by a driver implementation. For example <a class="el" href="group__eth__phy__mode__ctrls.html#ga046605398ceae99a176e6f82432ae710">ARM_ETH_PHY_SPEED_1G</a> may return <b>ARM_DRIVER_ERROR_UNSUPPORTED</b>.</dd></dl>
+<p><b>Example:</b> </p>
+<div class="fragment"><div class="line"><span class="keyword">static</span> <a class="code" href="group__eth__mac__interface__gr.html#struct_a_r_m___e_t_h___m_a_c___c_a_p_a_b_i_l_i_t_i_e_s" title="Ethernet MAC Capabilities.">ARM_ETH_MAC_CAPABILITIES</a> capabilities;</div>
+<div class="line"><span class="keyword">static</span> <a class="code" href="group__eth__mac__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___e_t_h___m_a_c" title="Access structure of the Ethernet MAC Driver.">ARM_DRIVER_ETH_MAC</a> *mac;</div>
+<div class="line"><span class="keyword">static</span> <a class="code" href="group__eth__phy__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___e_t_h___p_h_y" title="Access structure of the Ethernet PHY Driver.">ARM_DRIVER_ETH_PHY</a> *phy;</div>
+<div class="line"> </div>
+<div class="line">mac = &amp;Driver_ETH_MAC0;</div>
+<div class="line">phy = &amp;Driver_ETH_PHY0;</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Initialize Media Access Controller</span></div>
+<div class="line">capabilities = mac-&gt;<a class="code" href="group__eth__mac__interface__gr.html#a9fd725bb058c584a9ced9c579561cdf1" title="Pointer to ARM_ETH_MAC_GetCapabilities : Get driver capabilities.">GetCapabilities</a> ();</div>
+<div class="line">...</div>
+<div class="line">status = phy-&gt;<a class="code" href="group__eth__phy__interface__gr.html#a7dfc7cf346c80e7fdb2fe4cea2c61161" title="Pointer to ARM_ETH_PHY_SetInterface : Set Ethernet Media Interface.">SetInterface</a> (capabilities.<a class="code" href="group__eth__mac__interface__gr.html#a3c5cb74e086417a01d0079f847a3fc8d" title="Ethernet Media Interface type.">media_interface</a>);</div>
+<div class="line"><span class="keywordflow">if</span> (status != <a class="code" href="group__execution__status.html#ga85752c5de59e8adeb001e35ff5be6be7" title="Operation succeeded.">ARM_DRIVER_OK</a>) ...  <span class="comment">// error handling</span></div>
+<div class="line">status = phy-&gt;<a class="code" href="group__eth__phy__interface__gr.html#ae6686344f4d6afa0881d1e545c898a3d" title="Pointer to ARM_ETH_PHY_SetMode : Set Ethernet PHY Device Operation mode.">SetMode</a> (<a class="code" href="group__eth__phy__mode__ctrls.html#gad1e8b2c8c210fa36949db9a34a993657" title="100 Mbps link speed">ARM_ETH_PHY_SPEED_100M</a> | <a class="code" href="group__eth__phy__mode__ctrls.html#ga5d06a94867c89cd311b6e279669321e3" title="Full duplex link.">ARM_ETH_PHY_DUPLEX_FULL</a> | <a class="code" href="group__eth__phy__mode__ctrls.html#ga8d68719e07c7af449b57c5df802376c8" title="Isolate PHY from MII/RMII interface.">ARM_ETH_PHY_ISOLATE</a>);</div>
+<div class="line"><span class="keywordflow">if</span> (status != <a class="code" href="group__execution__status.html#ga85752c5de59e8adeb001e35ff5be6be7" title="Operation succeeded.">ARM_DRIVER_OK</a>) ...  <span class="comment">// error handling</span></div>
+<div class="line">...</div>
+</div><!-- fragment --> 
 </div>
 </div>
-<a class="anchor" id="ga26ea7e1e9825b959284241ebff6eea3f"></a>
+<a class="anchor" id="ga4085cd24ebe33b78d51a3c003da4a5ba"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int32_t ARM_ETH_PHY_Uninitialize </td>
+          <td class="memname"><a class="el" href="group__eth__interface__gr.html#gacf7db5320eb841b462a4af3c56cc9291">ARM_ETH_LINK_STATE</a> ARM_ETH_PHY_GetLinkState </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -637,10 +652,37 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>De-initialize Ethernet PHY Device. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>The function <a class="el" href="group__eth__phy__interface__gr.html#ga26ea7e1e9825b959284241ebff6eea3f">ARM_ETH_PHY_Uninitialize</a> de-initializes the resources of Ethernet PHY interface.</p>
-<p>It is called when the middleware component stops operation and releases the software resources used by the interface. </p>
+<p>Get Ethernet PHY Device Link state. </p>
+<dl class="section return"><dt>Returns</dt><dd>current link status <a class="el" href="group__eth__interface__gr.html#gacf7db5320eb841b462a4af3c56cc9291">ARM_ETH_LINK_STATE</a></dd></dl>
+<p>The function <b>ARM_ETH_PHY_GetLinkState</b> retrieves the connection status of the physical Ethernet link.</p>
+<p><b>Example:</b> </p>
+<ul>
+<li>see <a class="el" href="group__eth__interface__gr.html">Ethernet Interface</a> - Driver Functions </li>
+</ul>
+
+</div>
+</div>
+<a class="anchor" id="ga8c79dcd7a12656403f3befab3c8605a2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__eth__interface__gr.html#struct_a_r_m___e_t_h___l_i_n_k___i_n_f_o">ARM_ETH_LINK_INFO</a> ARM_ETH_PHY_GetLinkInfo </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get Ethernet PHY Device Link information. </p>
+<dl class="section return"><dt>Returns</dt><dd>current link parameters <a class="el" href="group__eth__interface__gr.html#struct_a_r_m___e_t_h___l_i_n_k___i_n_f_o">ARM_ETH_LINK_INFO</a></dd></dl>
+<p>The function <b>ARM_ETH_PHY_GetLinkInfo</b> retrieves information about the current established communication mode (half/full duplex) and communication speed. Information is only valid when link is up (see <a class="el" href="group__eth__phy__interface__gr.html#ga4085cd24ebe33b78d51a3c003da4a5ba">ARM_ETH_PHY_GetLinkState</a>).</p>
+<p><b>Example:</b> </p>
+<ul>
+<li>see <a class="el" href="group__eth__interface__gr.html">Ethernet Interface</a> - Driver Functions </li>
+</ul>
 
 </div>
 </div>
@@ -649,7 +691,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:42 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:02 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

@@ -1,7 +1,5 @@
 @echo off
 
-SET TMP=C:\Temp
-SET TEMP=C:\Temp
 SET UVEXE=C:\Keil\UV4\UV4.EXE
 
 echo.

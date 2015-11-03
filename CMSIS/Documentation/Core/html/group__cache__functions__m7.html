@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-CORE
-   &#160;<span id="projectnumber">Version 4.10</span>
+   &#160;<span id="projectnumber">Version 4.20</span>
    </div>
    <div id="projectbrief">CMSIS-CORE support for Cortex-M processor-based devices</div>
   </td>
@@ -114,7 +114,7 @@ $(document).ready(function(){initNavTree('group__cache__functions__m7.html','');
 </div><!--header-->
 <div class="contents">
 
-<p>Functions for instruciton and data cache.  
+<p>Functions for Instruction and Data Cache.  
 <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
@@ -129,10 +129,7 @@ Content</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Description</h2>
 <p>Cortex-M7 processors include a memory system, which includes an optional MPU and Harvard data and instruction cache with ECC. The optional CPU cache has an instruction and data cache with sizes of <span class="XML-Token">[0;4;8;16;32;64]KB</span>. Both instruction and data cache RAM can be configured at implementation time to have Error Correcting Code (ECC) to protect the data stored in the memory from errors.</p>
 <p>All cache maintenance operations are executed by writing to registers in the memory mapped System Control Space (SCS) region of the internal PPB memory space.</p>
-<dl class="section note"><dt>Note</dt><dd><ul>
-<li>After reset, you must invalidate each cache before enabling it.</li>
-</ul>
-</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>After reset, you must invalidate each cache before enabling it.</dd></dl>
 <p>The functions are grouped for:</p>
 <ul>
 <li><a class="el" href="group___icache__functions__m7.html">I-Cache Functions</a></li>
@@ -143,7 +140,7 @@ Content</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:40 for CMSIS-CORE by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:39:59 for CMSIS-CORE by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

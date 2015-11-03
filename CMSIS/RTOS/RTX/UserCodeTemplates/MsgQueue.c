@@ -1,5 +1,5 @@
 
-#include <cmsis_os.h>                                           // CMSIS RTOS header file
+#include "cmsis_os.h"                                           // CMSIS RTOS header file
 
 /*----------------------------------------------------------------------------
  *      Message Queue creation & usage
@@ -34,51 +34,51 @@ osMessageQDef (MsgQueue, MSGQUEUE_OBJECTS, MSGQUEUE_OBJ_t);     // message queue
 int Init_MsgQueue (void) {
 
   mpid_MemPool2 = osPoolCreate (osPool (MemPool2));             // create Mem Pool
-  if(!mpid_MemPool2) {
+  if (!mpid_MemPool2) {
     ; // MemPool object not created, handle failure
   }
   
-  mid_MsgQueue = osMessageCreate(osMessageQ(MsgQueue), NULL);   // create msg queue
-  if(!mid_MsgQueue) {
+  mid_MsgQueue = osMessageCreate (osMessageQ(MsgQueue), NULL);  // create msg queue
+  if (!mid_MsgQueue) {
     ; // Message Queue object not created, handle failure
   }
   
-  tid_Thread_MsgQueue1  = osThreadCreate (osThread(Thread_MsgQueue1), NULL);
-  if(!tid_Thread_MsgQueue1) return(-1);
-  tid_Thread_MsgQueue2  = osThreadCreate (osThread(Thread_MsgQueue2), NULL);
-  if(!tid_Thread_MsgQueue2) return(-1);
+  tid_Thread_MsgQueue1 = osThreadCreate (osThread(Thread_MsgQueue1), NULL);
+  if (!tid_Thread_MsgQueue1) return(-1);
+  tid_Thread_MsgQueue2 = osThreadCreate (osThread(Thread_MsgQueue2), NULL);
+  if (!tid_Thread_MsgQueue2) return(-1);
   
   return(0);
 }
 
-void Thread_MsgQueue1(void const *argument) {
-  MEM_BLOCK_t  *pMsg = 0;
+void Thread_MsgQueue1 (void const *argument) {
+  MEM_BLOCK_t *pMsg = 0;
 
-  while(1) {
+  while (1) {
     ; // Insert thread code here...
     pMsg = (MEM_BLOCK_t *)osPoolCAlloc (mpid_MemPool2);         // get Mem Block
-    if(pMsg) {                                                  // Mem Block was available
-      pMsg->Buf[0]  = 0x55;                                     // do some work...
-      pMsg->Idx     = 0;
-      osMessagePut(mid_MsgQueue, (uint32_t)pMsg, osWaitForever);// Send Message
+    if (pMsg) {                                                 // Mem Block was available
+      pMsg->Buf[0] = 0x55;                                      // do some work...
+      pMsg->Idx    = 0;
+      osMessagePut (mid_MsgQueue, (uint32_t)pMsg, osWaitForever); // Send Message
     }
 
-    osThreadYield();                                            // suspend thread
+    osThreadYield ();                                           // suspend thread
   }
 }
 
-void Thread_MsgQueue2(void const *argument) {
-  osEvent       evt;
-  MEM_BLOCK_t  *pMsg = 0;
+void Thread_MsgQueue2 (void const *argument) {
+  osEvent      evt;
+  MEM_BLOCK_t *pMsg = 0;
 
-  while(1) {
+  while (1) {
     ; // Insert thread code here...
-    evt = osMessageGet(mid_MsgQueue, osWaitForever);            // wait for message
+    evt = osMessageGet (mid_MsgQueue, osWaitForever);           // wait for message
     if (evt.status == osEventMessage) {
       pMsg = evt.value.p;
-      if(pMsg) {
+      if (pMsg) {
         ; // process data
-        osPoolFree(mpid_MemPool2, pMsg);                        // free memory allocated for message
+        osPoolFree (mpid_MemPool2, pMsg);                       // free memory allocated for message
       }
     }
   }

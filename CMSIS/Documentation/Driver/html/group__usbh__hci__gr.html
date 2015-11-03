@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -173,7 +173,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <div class="textblock"><p>Access structure of USB Host HCI (OHCI/EHCI) Driver. </p>
-<p>The functions of the USB Host HCI (OHCI/EHCI) driver are accessed by function pointers. Refer to <a class="el" href="_theory_operation.html#DriverFunctions">Driver Functions</a> for overview information.</p>
+<p>The functions of the USB Host HCI (OHCI/EHCI) driver are accessed by function pointers. Refer to <a class="el" href="_theory_operation.html#DriverFunctions">Common Driver Functions</a> for overview information.</p>
 <p>Each instance of an USBH provides such an access struct. The instance is indicated by a postfix in the symbol name of the access struct, for example:</p>
 <ul>
 <li><b>Driver_USBH0_HCI</b> is the name of the access struct of the first instance (no. 0).</li>
@@ -203,20 +203,6 @@ Functions</h2></td></tr>
 <tr class="separator:ab859fb9f73a60ffa1ce71ed961d4744f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h4 class="groupheader">Field Documentation</h4>
-<a class="anchor" id="a7a41769405bb3bb4cc9eaba26cf220d4"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__usbh__hci__gr.html#struct_a_r_m___u_s_b_h___h_c_i___c_a_p_a_b_i_l_i_t_i_e_s">ARM_USBH_HCI_CAPABILITIES</a>(* GetCapabilities)(void)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__usbh__hci__gr.html#gae607c49ca97202500631473a901e8c2b">ARM_USBH_HCI_GetCapabilities</a> : Get driver capabilities. </p>
-
-</div>
-</div>
 <a class="anchor" id="a8834b281da48583845c044a81566c1b3"></a>
 <div class="memitem">
 <div class="memproto">
@@ -228,6 +214,20 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Pointer to <a class="el" href="group__usbh__hci__gr.html#ga10109d0c2a9a128225b5e893d3f72d08">ARM_USBH_HCI_GetVersion</a> : Get USB Host HCI (OHCI/EHCI) driver version. </p>
+
+</div>
+</div>
+<a class="anchor" id="a7a41769405bb3bb4cc9eaba26cf220d4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__usbh__hci__gr.html#struct_a_r_m___u_s_b_h___h_c_i___c_a_p_a_b_i_l_i_t_i_e_s">ARM_USBH_HCI_CAPABILITIES</a>(* GetCapabilities)(void)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__usbh__hci__gr.html#gae607c49ca97202500631473a901e8c2b">ARM_USBH_HCI_GetCapabilities</a> : Get driver capabilities. </p>
 
 </div>
 </div>
@@ -245,17 +245,17 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ab859fb9f73a60ffa1ce71ed961d4744f"></a>
+<a class="anchor" id="adcf20681a1402869ecb5c6447fada17b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int32_t(* PortVbusOnOff)(uint8_t port, bool vbus)</td>
+          <td class="memname">int32_t(* Uninitialize)(void)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Pointer to <a class="el" href="group__usbh__hci__gr.html#gade1e83403c6ea965fe3e6c4c21fbbded">ARM_USBH_HCI_PortVbusOnOff</a> : USB Host HCI (OHCI/EHCI) Root HUB Port VBUS on/off. </p>
+<p>Pointer to <a class="el" href="group__usbh__hci__gr.html#gaacb68fdf201cdb1846b31642a760f041">ARM_USBH_HCI_Uninitialize</a> : De-initialize USB Host HCI (OHCI/EHCI) Interface. </p>
 
 </div>
 </div>
@@ -273,17 +273,17 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="adcf20681a1402869ecb5c6447fada17b"></a>
+<a class="anchor" id="ab859fb9f73a60ffa1ce71ed961d4744f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int32_t(* Uninitialize)(void)</td>
+          <td class="memname">int32_t(* PortVbusOnOff)(uint8_t port, bool vbus)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Pointer to <a class="el" href="group__usbh__hci__gr.html#gaacb68fdf201cdb1846b31642a760f041">ARM_USBH_HCI_Uninitialize</a> : De-initialize USB Host HCI (OHCI/EHCI) Interface. </p>
+<p>Pointer to <a class="el" href="group__usbh__hci__gr.html#gade1e83403c6ea965fe3e6c4c21fbbded">ARM_USBH_HCI_PortVbusOnOff</a> : USB Host HCI (OHCI/EHCI) Root HUB Port VBUS on/off. </p>
 
 </div>
 </div>
@@ -300,7 +300,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <div class="textblock"><p>USB Host HCI (OHCI/EHCI) Driver Capabilities. </p>
-<p>A USB Host HCI (OHCI/EHCI) driver can be implemented with different capabilities. The bitfield members of this struct encode the capabilities implemented by this driver.</p>
+<p>A USB Host HCI (OHCI/EHCI) driver can be implemented with different capabilities. The data fields of this structure encode the capabilities implemented by this driver.</p>
 <p><b>Returned by:</b></p>
 <ul>
 <li><a class="el" href="group__usbh__hci__gr.html#gae607c49ca97202500631473a901e8c2b">ARM_USBH_HCI_GetCapabilities</a></li>
@@ -339,38 +339,6 @@ Root HUB available Ports Mask. </td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="gae607c49ca97202500631473a901e8c2b"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__usbh__hci__gr.html#struct_a_r_m___u_s_b_h___h_c_i___c_a_p_a_b_i_l_i_t_i_e_s">ARM_USBH_HCI_CAPABILITIES</a> ARM_USBH_HCI_GetCapabilities </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get driver capabilities. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__usbh__hci__gr.html#struct_a_r_m___u_s_b_h___h_c_i___c_a_p_a_b_i_l_i_t_i_e_s">ARM_USBH_HCI_CAPABILITIES</a></dd></dl>
-<p>Retrieves information about capabilities in this driver implementation. The bitfield members of the struct <a class="el" href="group__usbh__hci__gr.html#struct_a_r_m___u_s_b_h___h_c_i___c_a_p_a_b_i_l_i_t_i_e_s">ARM_USBH_HCI_CAPABILITIES</a> encode various capabilities, for example available HUB ports.</p>
-<p>Example: </p>
-<div class="fragment"><div class="line"><span class="keyword">extern</span> <a class="code" href="group__usbh__hci__gr.html#struct_a_r_m___d_r_i_v_e_r___u_s_b_h___h_c_i" title="Access structure of USB Host HCI (OHCI/EHCI) Driver.">ARM_DRIVER_USBH_HCI</a> Driver_USBH0_HCI;</div>
-<div class="line"><a class="code" href="group__usbh__hci__gr.html#struct_a_r_m___d_r_i_v_e_r___u_s_b_h___h_c_i" title="Access structure of USB Host HCI (OHCI/EHCI) Driver.">ARM_DRIVER_USBH_HCI</a> *drv_info;</div>
-<div class="line">  </div>
-<div class="line"><span class="keywordtype">void</span> read_capabilities (<span class="keywordtype">void</span>)  {</div>
-<div class="line">  <a class="code" href="group__usbh__hci__gr.html#struct_a_r_m___u_s_b_h___h_c_i___c_a_p_a_b_i_l_i_t_i_e_s" title="USB Host HCI (OHCI/EHCI) Driver Capabilities.">ARM_USBH_HCI_CAPABILITIES</a> drv_capabilities;</div>
-<div class="line"> </div>
-<div class="line">  drv_info = &amp;Driver_USBH0_HCI;  </div>
-<div class="line">  drv_capabilities = drv_info-&gt;<a class="code" href="group__usbh__hci__gr.html#a7a41769405bb3bb4cc9eaba26cf220d4" title="Pointer to ARM_USBH_HCI_GetCapabilities : Get driver capabilities.">GetCapabilities</a> ();</div>
-<div class="line">  <span class="comment">// interrogate capabilities</span></div>
-<div class="line"> </div>
-<div class="line">}</div>
-</div><!-- fragment --> 
-</div>
-</div>
 <a class="anchor" id="ga10109d0c2a9a128225b5e893d3f72d08"></a>
 <div class="memitem">
 <div class="memproto">
@@ -387,7 +355,7 @@ Root HUB available Ports Mask. </td></tr>
 
 <p>Get USB Host HCI (OHCI/EHCI) driver version. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a></dd></dl>
-<p>Returns version information of the driver implementation in <a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a></p>
+<p>The function <b>ARM_USBH_HCI_GetVersion</b> returns version information of the driver implementation in <a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a></p>
 <ul>
 <li>API version is the version of the CMSIS-Driver specification used to implement this driver.</li>
 <li>Driver version is source code version of the actual driver implementation.</li>
@@ -405,6 +373,38 @@ Root HUB available Ports Mask. </td></tr>
 <div class="line">    <span class="comment">// error handling</span></div>
 <div class="line">    <span class="keywordflow">return</span>;</div>
 <div class="line">  }</div>
+<div class="line">}</div>
+</div><!-- fragment --> 
+</div>
+</div>
+<a class="anchor" id="gae607c49ca97202500631473a901e8c2b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__usbh__hci__gr.html#struct_a_r_m___u_s_b_h___h_c_i___c_a_p_a_b_i_l_i_t_i_e_s">ARM_USBH_HCI_CAPABILITIES</a> ARM_USBH_HCI_GetCapabilities </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get driver capabilities. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__usbh__hci__gr.html#struct_a_r_m___u_s_b_h___h_c_i___c_a_p_a_b_i_l_i_t_i_e_s">ARM_USBH_HCI_CAPABILITIES</a></dd></dl>
+<p>The function <b>ARM_USBH_HCI_GetCapabilities</b> returns information about capabilities in this driver implementation. The data fields of the structure <a class="el" href="group__usbh__hci__gr.html#struct_a_r_m___u_s_b_h___h_c_i___c_a_p_a_b_i_l_i_t_i_e_s">ARM_USBH_HCI_CAPABILITIES</a> encode various capabilities, for example available HUB ports.</p>
+<p>Example: </p>
+<div class="fragment"><div class="line"><span class="keyword">extern</span> <a class="code" href="group__usbh__hci__gr.html#struct_a_r_m___d_r_i_v_e_r___u_s_b_h___h_c_i" title="Access structure of USB Host HCI (OHCI/EHCI) Driver.">ARM_DRIVER_USBH_HCI</a> Driver_USBH0_HCI;</div>
+<div class="line"><a class="code" href="group__usbh__hci__gr.html#struct_a_r_m___d_r_i_v_e_r___u_s_b_h___h_c_i" title="Access structure of USB Host HCI (OHCI/EHCI) Driver.">ARM_DRIVER_USBH_HCI</a> *drv_info;</div>
+<div class="line">  </div>
+<div class="line"><span class="keywordtype">void</span> read_capabilities (<span class="keywordtype">void</span>)  {</div>
+<div class="line">  <a class="code" href="group__usbh__hci__gr.html#struct_a_r_m___u_s_b_h___h_c_i___c_a_p_a_b_i_l_i_t_i_e_s" title="USB Host HCI (OHCI/EHCI) Driver Capabilities.">ARM_USBH_HCI_CAPABILITIES</a> drv_capabilities;</div>
+<div class="line"> </div>
+<div class="line">  drv_info = &amp;Driver_USBH0_HCI;  </div>
+<div class="line">  drv_capabilities = drv_info-&gt;<a class="code" href="group__usbh__hci__gr.html#a7a41769405bb3bb4cc9eaba26cf220d4" title="Pointer to ARM_USBH_HCI_GetCapabilities : Get driver capabilities.">GetCapabilities</a> ();</div>
+<div class="line">  <span class="comment">// interrogate capabilities</span></div>
+<div class="line"> </div>
 <div class="line">}</div>
 </div><!-- fragment --> 
 </div>
@@ -431,13 +431,13 @@ Root HUB available Ports Mask. </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>The function initializes the USB Host HCI (OHCI/EHCI) interface. It is called when the middleware component starts operation.</p>
+<p>The function <b>ARM_USBH_HCI_Initialize</b> initializes the USB Host HCI (OHCI/EHCI) interface. It is called when the middleware component starts operation.</p>
 <p>The function performs the following operations:</p>
 <ul>
 <li>Initializes the resources needed for the USBH interface.</li>
 <li>Registers the <a class="el" href="group__usbh__hci__gr.html#ga79d3c2509ed869c8d7d1485acad7b6c6">ARM_USBH_HCI_Interrupt</a> interrupt handler.</li>
 </ul>
-<p>The parameter <em>cb_interrupt</em> is a pointer to the interrupt routine of the OHCI/EHCI peripheral.</p>
+<p>The parameter <em>cb_interrupt</em> is a pointer to the interrupt routine of the OHCI/EHCI peripheral that needs to be registered. This function is called as ECHI Interrupt Service Handler.</p>
 <p><b>Example:</b> </p>
 <ul>
 <li>see <a class="el" href="group__usbh__interface__gr.html">USB Host Interface</a> - Driver Functions </li>
@@ -445,12 +445,12 @@ Root HUB available Ports Mask. </td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga79d3c2509ed869c8d7d1485acad7b6c6"></a>
+<a class="anchor" id="gaacb68fdf201cdb1846b31642a760f041"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void ARM_USBH_HCI_Interrupt </td>
+          <td class="memname">int32_t ARM_USBH_HCI_Uninitialize </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -459,8 +459,43 @@ Root HUB available Ports Mask. </td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>USB Host HCI Interrupt Handler. </p>
-<dl class="section return"><dt>Returns</dt><dd>none </dd></dl>
+<p>De-initialize USB Host HCI (OHCI/EHCI) Interface. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
+<p>The function <a class="el" href="group__usbh__hci__gr.html#gaacb68fdf201cdb1846b31642a760f041">ARM_USBH_HCI_Uninitialize</a> de-initializes the resources of USB Host HCI (OHCI/EHCI) interface.</p>
+<p>It is called when the middleware component stops operation and releases the software resources used by the interface. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga27fa5ec8854cd9877bbef4abffe9a12b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ARM_USBH_HCI_PowerControl </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__common__drv__gr.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5">ARM_POWER_STATE</a>&#160;</td>
+          <td class="paramname"><em>state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Control USB Host HCI (OHCI/EHCI) Interface Power. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">state</td><td>Power state </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
+<p>The function <b>ARM_USBH_HCI_PowerControl</b> operates the power modes of the USB Host HCI (OHCI/EHCI) interface.</p>
+<p>The parameter <em>state</em> sets the operation and can have the following values:</p>
+<ul>
+<li><a class="el" href="_driver___common_8h.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5abed52b77a9ce4775570e44a842b1295e">ARM_POWER_FULL</a> : set-up peripheral for data transfers, enable interrupts (NVIC) and optionally DMA. Can be called multiple times. If the peripheral is already in this mode the function performs no operation and returns with <a class="el" href="group__execution__status.html#ga85752c5de59e8adeb001e35ff5be6be7">ARM_DRIVER_OK</a>.</li>
+<li><a class="el" href="_driver___common_8h.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5a9ef9e57cbcc948d0e22314e73dc8c434">ARM_POWER_LOW</a> : may use power saving. Returns <a class="el" href="group__execution__status.html#ga2efa59e480d82697795439220e6884e4">ARM_DRIVER_ERROR_UNSUPPORTED</a> when not implemented.</li>
+<li><a class="el" href="_driver___common_8h.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5ab6f5becc85ebd51c3dd2524a95d2ca35">ARM_POWER_OFF</a> : terminates any pending data transfers, disables peripheral, disables related interrupts and DMA.</li>
+</ul>
+<p>Refer to <a class="el" href="_theory_operation.html#CallSequence">Function Call Sequence</a> for more information. </p>
 
 </div>
 </div>
@@ -501,42 +536,16 @@ Root HUB available Ports Mask. </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>Allows you to control the VBUS signal of the specified port. </p>
+<p>The function <b>ARM_USBH_HCI_PortVbusOnOff</b> controls the VBUS signal of the specified port. Most HCI complained USB Host controllers do not require this optional function. It is only required when a external VBUS interface (for example via I/O pin) is required. </p>
 
 </div>
 </div>
-<a class="anchor" id="ga27fa5ec8854cd9877bbef4abffe9a12b"></a>
+<a class="anchor" id="ga79d3c2509ed869c8d7d1485acad7b6c6"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int32_t ARM_USBH_HCI_PowerControl </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="group__common__drv__gr.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5">ARM_POWER_STATE</a>&#160;</td>
-          <td class="paramname"><em>state</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Control USB Host HCI (OHCI/EHCI) Interface Power. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">state</td><td>Power state </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>Allows you to control the power modes of the USB Host HCI (OHCI/EHCI) interface. </p>
-
-</div>
-</div>
-<a class="anchor" id="gaacb68fdf201cdb1846b31642a760f041"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t ARM_USBH_HCI_Uninitialize </td>
+          <td class="memname">void ARM_USBH_HCI_Interrupt </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -545,10 +554,9 @@ Root HUB available Ports Mask. </td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>De-initialize USB Host HCI (OHCI/EHCI) Interface. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>The function <a class="el" href="group__usbh__hci__gr.html#gaacb68fdf201cdb1846b31642a760f041">ARM_USBH_HCI_Uninitialize</a> de-initializes the resources of USB Host HCI (OHCI/EHCI) interface.</p>
-<p>It is called when the middleware component stops operation and releases the software resources used by the interface. </p>
+<p>USB Host HCI Interrupt Handler. </p>
+<dl class="section return"><dt>Returns</dt><dd>none</dd></dl>
+<p>The function <b>ARM_USBH_HCI_Interrupt</b> is called from the USBH HCI Interrupt Handler. </p>
 
 </div>
 </div>
@@ -557,7 +565,7 @@ Root HUB available Ports Mask. </td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:43 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:03 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

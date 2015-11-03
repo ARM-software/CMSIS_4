@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -167,45 +167,17 @@ Macros</h2></td></tr>
 <p>This section provides the event values for the <a class="el" href="group__usart__interface__gr.html#gad796cd023f8f6300a6caadcc39d43cbf">ARM_USART_SignalEvent</a> callback function.</p>
 <p>The following call back notification events are generated: </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="ga4cd807ca131bdcb1a7eb4f223fa70476"></a>
+<a class="anchor" id="gaae1c626192b16ccace93f3546e7884bf"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_USART_EVENT_CTS&#160;&#160;&#160;(1UL &lt;&lt; 10)</td>
+          <td class="memname">#define ARM_USART_EVENT_SEND_COMPLETE&#160;&#160;&#160;(1UL &lt;&lt; 0)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>CTS state changed (optional) </p>
-
-</div>
-</div>
-<a class="anchor" id="ga1628b951feba1c851f424ce89da409a4"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_USART_EVENT_DCD&#160;&#160;&#160;(1UL &lt;&lt; 12)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>DCD state changed (optional) </p>
-
-</div>
-</div>
-<a class="anchor" id="ga5afef591c2e8dd9bc4332b7bc8d96309"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_USART_EVENT_DSR&#160;&#160;&#160;(1UL &lt;&lt; 11)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>DSR state changed (optional) </p>
+<p>Send completed; however USART may still transmit data. </p>
 
 </div>
 </div>
@@ -220,104 +192,6 @@ Macros</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Receive completed. </p>
-
-</div>
-</div>
-<a class="anchor" id="gac17fe5723d4c5923656dadd9d1302154"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_USART_EVENT_RI&#160;&#160;&#160;(1UL &lt;&lt; 13)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>RI state changed (optional) </p>
-
-</div>
-</div>
-<a class="anchor" id="gaa1d19e48faf2bdc2a976de448928288e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_USART_EVENT_RX_BREAK&#160;&#160;&#160;(1UL &lt;&lt; 7)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Break detected on receive. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga2d97495c650220fbfe9d6977d0953127"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_USART_EVENT_RX_FRAMING_ERROR&#160;&#160;&#160;(1UL &lt;&lt; 8)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Framing error detected on receive. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga43a0869daf83abb3fea96926a97047ad"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_USART_EVENT_RX_OVERFLOW&#160;&#160;&#160;(1UL &lt;&lt; 5)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Receive data overflow. </p>
-
-</div>
-</div>
-<a class="anchor" id="gadb4fec2530fc5ae3ad2b056741883451"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_USART_EVENT_RX_PARITY_ERROR&#160;&#160;&#160;(1UL &lt;&lt; 9)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Parity error detected on receive. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga66ee2256571450a3fc3c530344ea9bd7"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_USART_EVENT_RX_TIMEOUT&#160;&#160;&#160;(1UL &lt;&lt; 6)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Receive character timeout (optional) </p>
-
-</div>
-</div>
-<a class="anchor" id="gaae1c626192b16ccace93f3546e7884bf"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_USART_EVENT_SEND_COMPLETE&#160;&#160;&#160;(1UL &lt;&lt; 0)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Send completed; however USART may still transmit data. </p>
 
 </div>
 </div>
@@ -363,12 +237,138 @@ Macros</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ga43a0869daf83abb3fea96926a97047ad"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_USART_EVENT_RX_OVERFLOW&#160;&#160;&#160;(1UL &lt;&lt; 5)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Receive data overflow. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga66ee2256571450a3fc3c530344ea9bd7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_USART_EVENT_RX_TIMEOUT&#160;&#160;&#160;(1UL &lt;&lt; 6)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Receive character timeout (optional) </p>
+
+</div>
+</div>
+<a class="anchor" id="gaa1d19e48faf2bdc2a976de448928288e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_USART_EVENT_RX_BREAK&#160;&#160;&#160;(1UL &lt;&lt; 7)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Break detected on receive. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga2d97495c650220fbfe9d6977d0953127"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_USART_EVENT_RX_FRAMING_ERROR&#160;&#160;&#160;(1UL &lt;&lt; 8)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Framing error detected on receive. </p>
+
+</div>
+</div>
+<a class="anchor" id="gadb4fec2530fc5ae3ad2b056741883451"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_USART_EVENT_RX_PARITY_ERROR&#160;&#160;&#160;(1UL &lt;&lt; 9)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Parity error detected on receive. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga4cd807ca131bdcb1a7eb4f223fa70476"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_USART_EVENT_CTS&#160;&#160;&#160;(1UL &lt;&lt; 10)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>CTS state changed (optional) </p>
+
+</div>
+</div>
+<a class="anchor" id="ga5afef591c2e8dd9bc4332b7bc8d96309"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_USART_EVENT_DSR&#160;&#160;&#160;(1UL &lt;&lt; 11)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>DSR state changed (optional) </p>
+
+</div>
+</div>
+<a class="anchor" id="ga1628b951feba1c851f424ce89da409a4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_USART_EVENT_DCD&#160;&#160;&#160;(1UL &lt;&lt; 12)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>DCD state changed (optional) </p>
+
+</div>
+</div>
+<a class="anchor" id="gac17fe5723d4c5923656dadd9d1302154"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_USART_EVENT_RI&#160;&#160;&#160;(1UL &lt;&lt; 13)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>RI state changed (optional) </p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:43 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:03 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -227,7 +227,7 @@ Functions</h2></td></tr>
 </ul>
 <p>The driver implementation is a typical part of the Device Family Pack (DFP) that supports the peripherals of the microcontroller family.</p>
 <p><b>Driver Functions</b></p>
-<p>The driver functions are published in the access struct as explained in <a class="el" href="_theory_operation.html#DriverFunctions">Driver Functions</a></p>
+<p>The driver functions are published in the access struct as explained in <a class="el" href="_theory_operation.html#DriverFunctions">Common Driver Functions</a></p>
 <ul>
 <li><a class="el" href="group__usart__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___u_s_a_r_t">ARM_DRIVER_USART</a> : access struct for USART driver functions</li>
 </ul>
@@ -330,7 +330,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <div class="textblock"><p>Access structure of the USART Driver. </p>
-<p>The functions of the USART driver are accessed by function pointers exposed by this structure. Refer to <a class="el" href="_theory_operation.html#DriverFunctions">Driver Functions</a> for overview information.</p>
+<p>The functions of the USART driver are accessed by function pointers exposed by this structure. Refer to <a class="el" href="_theory_operation.html#DriverFunctions">Common Driver Functions</a> for overview information.</p>
 <p>Each instance of an USART interface provides such an access structure. The instance is identified by a postfix number in the symbol name of the access structure, for example:</p>
 <ul>
 <li><b>Driver_USART0</b> is the name of the access struct of the first instance (no. 0).</li>
@@ -383,17 +383,17 @@ Functions</h2></td></tr>
 <tr class="separator:a517a7a98a444126734782beb4951a9db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h4 class="groupheader">Field Documentation</h4>
-<a class="anchor" id="a6e0f47a92f626a971c5197fca6545505"></a>
+<a class="anchor" id="a8834b281da48583845c044a81566c1b3"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int32_t(* Control)(uint32_t control, uint32_t arg)</td>
+          <td class="memname"><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a>(* GetVersion)(void)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Pointer to <a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d">ARM_USART_Control</a> : Control USART Interface. </p>
+<p>Pointer to <a class="el" href="group__usart__interface__gr.html#gabca6151cef47565832decaf484781b61">ARM_USART_GetVersion</a> : Get driver version. </p>
 
 </div>
 </div>
@@ -411,76 +411,6 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a517a7a98a444126734782beb4951a9db"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__usart__interface__gr.html#struct_a_r_m___u_s_a_r_t___m_o_d_e_m___s_t_a_t_u_s">ARM_USART_MODEM_STATUS</a>(* GetModemStatus)(void)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__usart__interface__gr.html#ga198af0d6a7c85b7c0b96f3d9db8c34e0">ARM_USART_GetModemStatus</a> : Get USART Modem Status lines state. </p>
-
-</div>
-</div>
-<a class="anchor" id="a758c7822edf6ac18f82eb33c9dc09d71"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint32_t(* GetRxCount)(void)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__usart__interface__gr.html#ga1a8799aeeba1363a9e5d22bada715a29">ARM_USART_GetRxCount</a> : Get received data count. </p>
-
-</div>
-</div>
-<a class="anchor" id="a055ad4095356a022886828009a980316"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__usart__interface__gr.html#struct_a_r_m___u_s_a_r_t___s_t_a_t_u_s">ARM_USART_STATUS</a>(* GetStatus)(void)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__usart__interface__gr.html#ga1e8fdd54294b587438b2b72f4dbde004">ARM_USART_GetStatus</a> : Get USART status. </p>
-
-</div>
-</div>
-<a class="anchor" id="a0b28b2c21016702f50c28655653099df"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint32_t(* GetTxCount)(void)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__usart__interface__gr.html#gacb355584bcdf4ebd36f11d945800fa03">ARM_USART_GetTxCount</a> : Get transmitted data count. </p>
-
-</div>
-</div>
-<a class="anchor" id="a8834b281da48583845c044a81566c1b3"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a>(* GetVersion)(void)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__usart__interface__gr.html#gabca6151cef47565832decaf484781b61">ARM_USART_GetVersion</a> : Get driver version. </p>
-
-</div>
-</div>
 <a class="anchor" id="a1a68601c09df8d37f3500ad373333962"></a>
 <div class="memitem">
 <div class="memproto">
@@ -492,76 +422,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Pointer to <a class="el" href="group__usart__interface__gr.html#ga51f06805e9a6197c553fa9513ac7b9d6">ARM_USART_Initialize</a> : Initialize USART Interface. </p>
-
-</div>
-</div>
-<a class="anchor" id="aba8f1c8019af95ffe19c32403e3240ef"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* PowerControl)(<a class="el" href="group__common__drv__gr.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5">ARM_POWER_STATE</a> state)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__usart__interface__gr.html#ga9bad012b28d544f3eeeea9c2f71a4086">ARM_USART_PowerControl</a> : Control USART Interface Power. </p>
-
-</div>
-</div>
-<a class="anchor" id="adb9224a35fe16c92eb0dd103638e4cf3"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* Receive)(void *data, uint32_t num)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__usart__interface__gr.html#gae9efabdabb5aaa17bce83339f8a58803">ARM_USART_Receive</a> : Start receiving data from USART receiver. </p>
-
-</div>
-</div>
-<a class="anchor" id="a44eedddf4428cf4b98883b6c27d31922"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* Send)(const void *data, uint32_t num)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__usart__interface__gr.html#ga5cf758b0b9d03dca68846962f73c0b08">ARM_USART_Send</a> : Start sending data to USART transmitter. </p>
-
-</div>
-</div>
-<a class="anchor" id="af6703d4078818df27ab9f8a7a8ad7b7b"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* SetModemControl)(<a class="el" href="group__usart__interface__gr.html#ga7b89d709f048b6a956aa211f63e75f6f">ARM_USART_MODEM_CONTROL</a> control)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__usart__interface__gr.html#gad8eb0eb1d1c24fc725584ab93214cfc7">ARM_USART_SetModemControl</a> : Set USART Modem Control line state. </p>
-
-</div>
-</div>
-<a class="anchor" id="ad88b63ed74c03ba06b0599ab06ad4cf7"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* Transfer)(const void *data_out, void *data_in, uint32_t num)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__usart__interface__gr.html#ga878899928d34a818edd3e97d67b65c2a">ARM_USART_Transfer</a> : Start sending/receiving data to/from USART. </p>
 
 </div>
 </div>
@@ -579,6 +439,146 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="aba8f1c8019af95ffe19c32403e3240ef"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* PowerControl)(<a class="el" href="group__common__drv__gr.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5">ARM_POWER_STATE</a> state)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__usart__interface__gr.html#ga9bad012b28d544f3eeeea9c2f71a4086">ARM_USART_PowerControl</a> : Control USART Interface Power. </p>
+
+</div>
+</div>
+<a class="anchor" id="a44eedddf4428cf4b98883b6c27d31922"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* Send)(const void *data, uint32_t num)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__usart__interface__gr.html#ga5cf758b0b9d03dca68846962f73c0b08">ARM_USART_Send</a> : Start sending data to USART transmitter. </p>
+
+</div>
+</div>
+<a class="anchor" id="adb9224a35fe16c92eb0dd103638e4cf3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* Receive)(void *data, uint32_t num)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__usart__interface__gr.html#gae9efabdabb5aaa17bce83339f8a58803">ARM_USART_Receive</a> : Start receiving data from USART receiver. </p>
+
+</div>
+</div>
+<a class="anchor" id="ad88b63ed74c03ba06b0599ab06ad4cf7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* Transfer)(const void *data_out, void *data_in, uint32_t num)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__usart__interface__gr.html#ga878899928d34a818edd3e97d67b65c2a">ARM_USART_Transfer</a> : Start sending/receiving data to/from USART. </p>
+
+</div>
+</div>
+<a class="anchor" id="a0b28b2c21016702f50c28655653099df"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t(* GetTxCount)(void)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__usart__interface__gr.html#gacb355584bcdf4ebd36f11d945800fa03">ARM_USART_GetTxCount</a> : Get transmitted data count. </p>
+
+</div>
+</div>
+<a class="anchor" id="a758c7822edf6ac18f82eb33c9dc09d71"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t(* GetRxCount)(void)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__usart__interface__gr.html#ga1a8799aeeba1363a9e5d22bada715a29">ARM_USART_GetRxCount</a> : Get received data count. </p>
+
+</div>
+</div>
+<a class="anchor" id="a6e0f47a92f626a971c5197fca6545505"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* Control)(uint32_t control, uint32_t arg)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d">ARM_USART_Control</a> : Control USART Interface. </p>
+
+</div>
+</div>
+<a class="anchor" id="a055ad4095356a022886828009a980316"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__usart__interface__gr.html#struct_a_r_m___u_s_a_r_t___s_t_a_t_u_s">ARM_USART_STATUS</a>(* GetStatus)(void)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__usart__interface__gr.html#ga1e8fdd54294b587438b2b72f4dbde004">ARM_USART_GetStatus</a> : Get USART status. </p>
+
+</div>
+</div>
+<a class="anchor" id="af6703d4078818df27ab9f8a7a8ad7b7b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* SetModemControl)(<a class="el" href="group__usart__interface__gr.html#ga7b89d709f048b6a956aa211f63e75f6f">ARM_USART_MODEM_CONTROL</a> control)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__usart__interface__gr.html#gad8eb0eb1d1c24fc725584ab93214cfc7">ARM_USART_SetModemControl</a> : Set USART Modem Control line state. </p>
+
+</div>
+</div>
+<a class="anchor" id="a517a7a98a444126734782beb4951a9db"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__usart__interface__gr.html#struct_a_r_m___u_s_a_r_t___m_o_d_e_m___s_t_a_t_u_s">ARM_USART_MODEM_STATUS</a>(* GetModemStatus)(void)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__usart__interface__gr.html#ga198af0d6a7c85b7c0b96f3d9db8c34e0">ARM_USART_GetModemStatus</a> : Get USART Modem Status lines state. </p>
+
+</div>
+</div>
 
 </div>
 </div>
@@ -592,7 +592,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <div class="textblock"><p>USART Device Driver Capabilities. </p>
-<p>An USART driver can be implemented with different capabilities. The bitfield members of this struct encode the capabilities implemented by this driver.</p>
+<p>An USART driver can be implemented with different capabilities. The data fields of this structure encode the capabilities implemented by this driver.</p>
 <p><b>Returned by:</b></p>
 <ul>
 <li><a class="el" href="group__usart__interface__gr.html#gad2d3ace1fe7627bb72945efefaeddf0a">ARM_USART_GetCapabilities</a> </li>
@@ -606,101 +606,29 @@ asynchronous: 1</td>
 <td class="fielddoc">
 supports UART (Asynchronous) mode </td></tr>
 <tr><td class="fieldtype">
-<a class="anchor" id="a0a4ccfb729b3a40a5fd611021268c262"></a>uint32_t</td>
+<a class="anchor" id="afb385bfd9fb2d714bb58aa7d8d9d7d51"></a>uint32_t</td>
 <td class="fieldname">
-cts: 1</td>
+synchronous_master: 1</td>
 <td class="fielddoc">
-CTS Line: 0=not available, 1=available. </td></tr>
+supports Synchronous Master mode </td></tr>
 <tr><td class="fieldtype">
-<a class="anchor" id="aa56a9ad6e266df78157f0e04feb4b78c"></a>uint32_t</td>
+<a class="anchor" id="a37dcd87df8762e2bc9af9fea368b1537"></a>uint32_t</td>
 <td class="fieldname">
-dcd: 1</td>
+synchronous_slave: 1</td>
 <td class="fielddoc">
-DCD Line: 0=not available, 1=available. </td></tr>
-<tr><td class="fieldtype">
-<a class="anchor" id="a437895b17519a16f920ae07461dd67d2"></a>uint32_t</td>
-<td class="fieldname">
-dsr: 1</td>
-<td class="fielddoc">
-DSR Line: 0=not available, 1=available. </td></tr>
-<tr><td class="fieldtype">
-<a class="anchor" id="aa3cc092c82fdc3e5e6646460be6ae9fd"></a>uint32_t</td>
-<td class="fieldname">
-dtr: 1</td>
-<td class="fielddoc">
-DTR Line: 0=not available, 1=available. </td></tr>
-<tr><td class="fieldtype">
-<a class="anchor" id="a4ebe5ddec8d99a63843f2a3c70ac85f9"></a>uint32_t</td>
-<td class="fieldname">
-event_cts: 1</td>
-<td class="fielddoc">
-Signal CTS change event: <a class="el" href="group___u_s_a_r_t__events.html#ga4cd807ca131bdcb1a7eb4f223fa70476">ARM_USART_EVENT_CTS</a>. </td></tr>
-<tr><td class="fieldtype">
-<a class="anchor" id="a7c1dd043d0db9738d6b5fa8d89211446"></a>uint32_t</td>
-<td class="fieldname">
-event_dcd: 1</td>
-<td class="fielddoc">
-Signal DCD change event: <a class="el" href="group___u_s_a_r_t__events.html#ga1628b951feba1c851f424ce89da409a4">ARM_USART_EVENT_DCD</a>. </td></tr>
-<tr><td class="fieldtype">
-<a class="anchor" id="aefdb61f16498d650b5a7f5f9b62779df"></a>uint32_t</td>
-<td class="fieldname">
-event_dsr: 1</td>
-<td class="fielddoc">
-Signal DSR change event: <a class="el" href="group___u_s_a_r_t__events.html#ga5afef591c2e8dd9bc4332b7bc8d96309">ARM_USART_EVENT_DSR</a>. </td></tr>
-<tr><td class="fieldtype">
-<a class="anchor" id="ab55f90aec5f909ff3a75bf36e61312ea"></a>uint32_t</td>
-<td class="fieldname">
-event_ri: 1</td>
-<td class="fielddoc">
-Signal RI change event: <a class="el" href="group___u_s_a_r_t__events.html#gac17fe5723d4c5923656dadd9d1302154">ARM_USART_EVENT_RI</a>. </td></tr>
-<tr><td class="fieldtype">
-<a class="anchor" id="afe469796cfca4ea61bd6181afb4916be"></a>uint32_t</td>
-<td class="fieldname">
-event_rx_timeout: 1</td>
-<td class="fielddoc">
-Signal receive character timeout event: <a class="el" href="group___u_s_a_r_t__events.html#ga66ee2256571450a3fc3c530344ea9bd7">ARM_USART_EVENT_RX_TIMEOUT</a>. </td></tr>
-<tr><td class="fieldtype">
-<a class="anchor" id="a0190aabe8d8f59176be8d693f8874fb3"></a>uint32_t</td>
-<td class="fieldname">
-event_tx_complete: 1</td>
-<td class="fielddoc">
-Transmit completed event: <a class="el" href="group___u_s_a_r_t__events.html#ga12872a3b04343f97d9535b5b0d37286d">ARM_USART_EVENT_TX_COMPLETE</a>. </td></tr>
-<tr><td class="fieldtype">
-<a class="anchor" id="a287da15773bb24a301cbfd806975e1e9"></a>uint32_t</td>
-<td class="fieldname">
-flow_control_cts: 1</td>
-<td class="fielddoc">
-CTS Flow Control available. </td></tr>
-<tr><td class="fieldtype">
-<a class="anchor" id="a1d55dd339a08293018608775fc8b4859"></a>uint32_t</td>
-<td class="fieldname">
-flow_control_rts: 1</td>
-<td class="fielddoc">
-RTS Flow Control available. </td></tr>
-<tr><td class="fieldtype">
-<a class="anchor" id="a9a72c5f0209a9ccf840fc196e9a9dffa"></a>uint32_t</td>
-<td class="fieldname">
-irda: 1</td>
-<td class="fielddoc">
-supports UART IrDA mode </td></tr>
-<tr><td class="fieldtype">
-<a class="anchor" id="aa6cf03b82235bedc0acf00acb46130fb"></a>uint32_t</td>
-<td class="fieldname">
-ri: 1</td>
-<td class="fielddoc">
-RI Line: 0=not available, 1=available. </td></tr>
-<tr><td class="fieldtype">
-<a class="anchor" id="afad044722f459552e9f0f602983659e9"></a>uint32_t</td>
-<td class="fieldname">
-rts: 1</td>
-<td class="fielddoc">
-RTS Line: 0=not available, 1=available. </td></tr>
+supports Synchronous Slave mode </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="ad1928b61021dd9ff689a3ccf9b8966a8"></a>uint32_t</td>
 <td class="fieldname">
 single_wire: 1</td>
 <td class="fielddoc">
 supports UART Single-wire mode </td></tr>
+<tr><td class="fieldtype">
+<a class="anchor" id="a9a72c5f0209a9ccf840fc196e9a9dffa"></a>uint32_t</td>
+<td class="fieldname">
+irda: 1</td>
+<td class="fielddoc">
+supports UART IrDA mode </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="aa78e1ee1726d1db2cfa83fd7b5acc8bd"></a>uint32_t</td>
 <td class="fieldname">
@@ -714,17 +642,89 @@ smart_card_clock: 1</td>
 <td class="fielddoc">
 Smart Card Clock generator available. </td></tr>
 <tr><td class="fieldtype">
-<a class="anchor" id="afb385bfd9fb2d714bb58aa7d8d9d7d51"></a>uint32_t</td>
+<a class="anchor" id="a1d55dd339a08293018608775fc8b4859"></a>uint32_t</td>
 <td class="fieldname">
-synchronous_master: 1</td>
+flow_control_rts: 1</td>
 <td class="fielddoc">
-supports Synchronous Master mode </td></tr>
+RTS Flow Control available. </td></tr>
 <tr><td class="fieldtype">
-<a class="anchor" id="a37dcd87df8762e2bc9af9fea368b1537"></a>uint32_t</td>
+<a class="anchor" id="a287da15773bb24a301cbfd806975e1e9"></a>uint32_t</td>
 <td class="fieldname">
-synchronous_slave: 1</td>
+flow_control_cts: 1</td>
 <td class="fielddoc">
-supports Synchronous Slave mode </td></tr>
+CTS Flow Control available. </td></tr>
+<tr><td class="fieldtype">
+<a class="anchor" id="a0190aabe8d8f59176be8d693f8874fb3"></a>uint32_t</td>
+<td class="fieldname">
+event_tx_complete: 1</td>
+<td class="fielddoc">
+Transmit completed event: <a class="el" href="group___u_s_a_r_t__events.html#ga12872a3b04343f97d9535b5b0d37286d">ARM_USART_EVENT_TX_COMPLETE</a>. </td></tr>
+<tr><td class="fieldtype">
+<a class="anchor" id="afe469796cfca4ea61bd6181afb4916be"></a>uint32_t</td>
+<td class="fieldname">
+event_rx_timeout: 1</td>
+<td class="fielddoc">
+Signal receive character timeout event: <a class="el" href="group___u_s_a_r_t__events.html#ga66ee2256571450a3fc3c530344ea9bd7">ARM_USART_EVENT_RX_TIMEOUT</a>. </td></tr>
+<tr><td class="fieldtype">
+<a class="anchor" id="afad044722f459552e9f0f602983659e9"></a>uint32_t</td>
+<td class="fieldname">
+rts: 1</td>
+<td class="fielddoc">
+RTS Line: 0=not available, 1=available. </td></tr>
+<tr><td class="fieldtype">
+<a class="anchor" id="a0a4ccfb729b3a40a5fd611021268c262"></a>uint32_t</td>
+<td class="fieldname">
+cts: 1</td>
+<td class="fielddoc">
+CTS Line: 0=not available, 1=available. </td></tr>
+<tr><td class="fieldtype">
+<a class="anchor" id="aa3cc092c82fdc3e5e6646460be6ae9fd"></a>uint32_t</td>
+<td class="fieldname">
+dtr: 1</td>
+<td class="fielddoc">
+DTR Line: 0=not available, 1=available. </td></tr>
+<tr><td class="fieldtype">
+<a class="anchor" id="a437895b17519a16f920ae07461dd67d2"></a>uint32_t</td>
+<td class="fieldname">
+dsr: 1</td>
+<td class="fielddoc">
+DSR Line: 0=not available, 1=available. </td></tr>
+<tr><td class="fieldtype">
+<a class="anchor" id="aa56a9ad6e266df78157f0e04feb4b78c"></a>uint32_t</td>
+<td class="fieldname">
+dcd: 1</td>
+<td class="fielddoc">
+DCD Line: 0=not available, 1=available. </td></tr>
+<tr><td class="fieldtype">
+<a class="anchor" id="aa6cf03b82235bedc0acf00acb46130fb"></a>uint32_t</td>
+<td class="fieldname">
+ri: 1</td>
+<td class="fielddoc">
+RI Line: 0=not available, 1=available. </td></tr>
+<tr><td class="fieldtype">
+<a class="anchor" id="a4ebe5ddec8d99a63843f2a3c70ac85f9"></a>uint32_t</td>
+<td class="fieldname">
+event_cts: 1</td>
+<td class="fielddoc">
+Signal CTS change event: <a class="el" href="group___u_s_a_r_t__events.html#ga4cd807ca131bdcb1a7eb4f223fa70476">ARM_USART_EVENT_CTS</a>. </td></tr>
+<tr><td class="fieldtype">
+<a class="anchor" id="aefdb61f16498d650b5a7f5f9b62779df"></a>uint32_t</td>
+<td class="fieldname">
+event_dsr: 1</td>
+<td class="fielddoc">
+Signal DSR change event: <a class="el" href="group___u_s_a_r_t__events.html#ga5afef591c2e8dd9bc4332b7bc8d96309">ARM_USART_EVENT_DSR</a>. </td></tr>
+<tr><td class="fieldtype">
+<a class="anchor" id="a7c1dd043d0db9738d6b5fa8d89211446"></a>uint32_t</td>
+<td class="fieldname">
+event_dcd: 1</td>
+<td class="fielddoc">
+Signal DCD change event: <a class="el" href="group___u_s_a_r_t__events.html#ga1628b951feba1c851f424ce89da409a4">ARM_USART_EVENT_DCD</a>. </td></tr>
+<tr><td class="fieldtype">
+<a class="anchor" id="ab55f90aec5f909ff3a75bf36e61312ea"></a>uint32_t</td>
+<td class="fieldname">
+event_ri: 1</td>
+<td class="fielddoc">
+Signal RI change event: <a class="el" href="group___u_s_a_r_t__events.html#gac17fe5723d4c5923656dadd9d1302154">ARM_USART_EVENT_RI</a>. </td></tr>
 </table>
 
 </div>
@@ -739,7 +739,7 @@ supports Synchronous Slave mode </td></tr>
       </table>
 </div><div class="memdoc">
 <div class="textblock"><p>USART Status. </p>
-<p>Structure with information about the status of the USART. The bitfields encode busy flags and error flags.</p>
+<p>Structure with information about the status of the USART. The data fields encode busy flags and error flags.</p>
 <p><b>Returned by:</b></p>
 <ul>
 <li><a class="el" href="group__usart__interface__gr.html#ga1e8fdd54294b587438b2b72f4dbde004">ARM_USART_GetStatus</a> </li>
@@ -747,11 +747,11 @@ supports Synchronous Slave mode </td></tr>
 </div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a class="anchor" id="aa5e3fa74f444688f9e727ffc1e988e5d"></a>uint32_t</td>
+<a class="anchor" id="a2c6d2b67fba3f3e084e96a6bc7fcac6b"></a>uint32_t</td>
 <td class="fieldname">
-rx_break: 1</td>
+tx_busy: 1</td>
 <td class="fielddoc">
-Break detected on receive (cleared on start of next receive operation) </td></tr>
+Transmitter busy flag. </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="a9f5baee58ed41b382628a82a0b1cbcb4"></a>uint32_t</td>
 <td class="fieldname">
@@ -759,11 +759,11 @@ rx_busy: 1</td>
 <td class="fielddoc">
 Receiver busy flag. </td></tr>
 <tr><td class="fieldtype">
-<a class="anchor" id="af1d1cfd8b231843d5cc23e6a2b1ca8d0"></a>uint32_t</td>
+<a class="anchor" id="a048f45e9d2257a21821f81d9edd17b72"></a>uint32_t</td>
 <td class="fieldname">
-rx_framing_error: 1</td>
+tx_underflow: 1</td>
 <td class="fielddoc">
-Framing error detected on receive (cleared on start of next receive operation) </td></tr>
+Transmit data underflow detected (cleared on start of next send operation) </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="ac403aefd9bce8b0172e1996c0f3dd8aa"></a>uint32_t</td>
 <td class="fieldname">
@@ -771,23 +771,23 @@ rx_overflow: 1</td>
 <td class="fielddoc">
 Receive data overflow detected (cleared on start of next receive operation) </td></tr>
 <tr><td class="fieldtype">
+<a class="anchor" id="aa5e3fa74f444688f9e727ffc1e988e5d"></a>uint32_t</td>
+<td class="fieldname">
+rx_break: 1</td>
+<td class="fielddoc">
+Break detected on receive (cleared on start of next receive operation) </td></tr>
+<tr><td class="fieldtype">
+<a class="anchor" id="af1d1cfd8b231843d5cc23e6a2b1ca8d0"></a>uint32_t</td>
+<td class="fieldname">
+rx_framing_error: 1</td>
+<td class="fielddoc">
+Framing error detected on receive (cleared on start of next receive operation) </td></tr>
+<tr><td class="fieldtype">
 <a class="anchor" id="affb21b610e2d0d71727702441c238f4f"></a>uint32_t</td>
 <td class="fieldname">
 rx_parity_error: 1</td>
 <td class="fielddoc">
 Parity error detected on receive (cleared on start of next receive operation) </td></tr>
-<tr><td class="fieldtype">
-<a class="anchor" id="a2c6d2b67fba3f3e084e96a6bc7fcac6b"></a>uint32_t</td>
-<td class="fieldname">
-tx_busy: 1</td>
-<td class="fielddoc">
-Transmitter busy flag. </td></tr>
-<tr><td class="fieldtype">
-<a class="anchor" id="a048f45e9d2257a21821f81d9edd17b72"></a>uint32_t</td>
-<td class="fieldname">
-tx_underflow: 1</td>
-<td class="fielddoc">
-Transmit data underflow detected (cleared on start of next send operation) </td></tr>
 </table>
 
 </div>
@@ -802,7 +802,7 @@ Transmit data underflow detected (cleared on start of next send operation) </td>
       </table>
 </div><div class="memdoc">
 <div class="textblock"><p>USART Modem Status. </p>
-<p>Structure with information about the status of modem lines. The bitfields encode states of modem status lines.</p>
+<p>Structure with information about the status of modem lines. The data fields encode states of modem status lines.</p>
 <p><b>Returned by:</b></p>
 <ul>
 <li><a class="el" href="group__usart__interface__gr.html#ga198af0d6a7c85b7c0b96f3d9db8c34e0">ARM_USART_GetModemStatus</a> </li>
@@ -816,17 +816,17 @@ cts: 1</td>
 <td class="fielddoc">
 CTS state: 1=Active, 0=Inactive. </td></tr>
 <tr><td class="fieldtype">
-<a class="anchor" id="aa56a9ad6e266df78157f0e04feb4b78c"></a>uint32_t</td>
-<td class="fieldname">
-dcd: 1</td>
-<td class="fielddoc">
-DCD state: 1=Active, 0=Inactive. </td></tr>
-<tr><td class="fieldtype">
 <a class="anchor" id="a437895b17519a16f920ae07461dd67d2"></a>uint32_t</td>
 <td class="fieldname">
 dsr: 1</td>
 <td class="fielddoc">
 DSR state: 1=Active, 0=Inactive. </td></tr>
+<tr><td class="fieldtype">
+<a class="anchor" id="aa56a9ad6e266df78157f0e04feb4b78c"></a>uint32_t</td>
+<td class="fieldname">
+dcd: 1</td>
+<td class="fielddoc">
+DCD state: 1=Active, 0=Inactive. </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="aa6cf03b82235bedc0acf00acb46130fb"></a>uint32_t</td>
 <td class="fieldname">
@@ -894,176 +894,42 @@ RI state: 1=Active, 0=Inactive. </td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="gad8ffdde2123b5412de3005c456da677d"></a>
+<a class="anchor" id="gabca6151cef47565832decaf484781b61"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int32_t ARM_USART_Control </td>
+          <td class="memname"><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a> ARM_USART_GetVersion </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>control</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>arg</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Control USART Interface. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">control</td><td>Operation </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">arg</td><td>Argument of operation (optional) </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>common <a class="el" href="group__execution__status.html">Status Error Codes</a> and driver specific <a class="el" href="group__usart__execution__status.html">Status Error Codes</a></dd></dl>
-<p>Control the USART interface settings and execute various operations.</p>
-<p>The parameter <em>control</em> is a bit mask that specifies various operations (see tables below). The control bits of the various groups can be combined to a control code as shown in the following example. Depending on the control bits, the parameter <em>arg</em> provides additional information, for example the baudrate.</p>
-<p><b>Example</b> </p>
+<p>Get driver version. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a></dd></dl>
+<p>The function <b>ARM_USART_GetVersion</b> returns version information of the driver implementation in <a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a></p>
+<ul>
+<li>API version is the version of the CMSIS-Driver specification used to implement this driver.</li>
+<li>Driver version is source code version of the actual driver implementation.</li>
+</ul>
+<p>Example: </p>
 <div class="fragment"><div class="line"><span class="keyword">extern</span> <a class="code" href="group__usart__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___u_s_a_r_t" title="Access structure of the USART Driver.">ARM_DRIVER_USART</a> Driver_USART0;</div>
-<div class="line"></div>
-<div class="line"><span class="comment">// configure to UART mode: 8 bits, no parity, 1 stop bit, no flow control, 9600 bps</span></div>
-<div class="line">status = Driver_USART0.<a class="code" href="group__usart__interface__gr.html#a6e0f47a92f626a971c5197fca6545505" title="Pointer to ARM_USART_Control : Control USART Interface.">Control</a>(<a class="code" href="group__usart__mode__control.html#gad85039731478c924d3b418ec00768388" title="UART (Asynchronous); arg = Baudrate.">ARM_USART_MODE_ASYNCHRONOUS</a> | </div>
-<div class="line">                               <a class="code" href="group__usart__data__bits.html#gadc5e8d17b5c69cd7f9135b849c2a4586" title="8 Data bits (default)">ARM_USART_DATA_BITS_8</a> | </div>
-<div class="line">                               <a class="code" href="group__usart__parity__bit.html#ga141a64650f99a1f642c3b3b6ced0eb8d" title="No Parity (default)">ARM_USART_PARITY_NONE</a> | </div>
-<div class="line">                               <a class="code" href="group__usart__stop__bits.html#ga45f51a51e654b4753a538ed33f0d7d78" title="1 Stop bit (default)">ARM_USART_STOP_BITS_1</a> | </div>
-<div class="line">                               <a class="code" href="group__usart__flow__control.html#gad04aa3fe4ea4b7363aee4bdca2ed3764" title="No Flow Control (default)">ARM_USART_FLOW_CONTROL_NONE</a>, 9600);</div>
-<div class="line"></div>
-<div class="line"><span class="comment">// identical with above settings (default settings removed)</span></div>
-<div class="line"><span class="comment">// configure to UART mode: 8 bits, no parity, 1 stop bit, flow control, 9600 bps</span></div>
-<div class="line">status = Driver_USART0.<a class="code" href="group__usart__interface__gr.html#a6e0f47a92f626a971c5197fca6545505" title="Pointer to ARM_USART_Control : Control USART Interface.">Control</a>(<a class="code" href="group__usart__mode__control.html#gad85039731478c924d3b418ec00768388" title="UART (Asynchronous); arg = Baudrate.">ARM_USART_MODE_ASYNCHRONOUS</a>, 9600);</div>
-<div class="line"></div>
-<div class="line"><span class="comment">// enable TX output</span></div>
-<div class="line">status = Driver_USART0.<a class="code" href="group__usart__interface__gr.html#a6e0f47a92f626a971c5197fca6545505" title="Pointer to ARM_USART_Control : Control USART Interface.">Control</a>(<a class="code" href="group__usart__misc__control.html#gad96ea1a80c97f968fbc0ae4c20e7fa6a" title="Transmitter; arg: 0=disabled, 1=enabled.">ARM_USART_CONTROL_TX</a>, 1);</div>
-<div class="line"></div>
-<div class="line"><span class="comment">// disable RX output</span></div>
-<div class="line">status = Driver_USART0.<a class="code" href="group__usart__interface__gr.html#a6e0f47a92f626a971c5197fca6545505" title="Pointer to ARM_USART_Control : Control USART Interface.">Control</a>(<a class="code" href="group__usart__misc__control.html#gad52c08553ae203d4f7741404589b8169" title="Receiver; arg: 0=disabled, 1=enabled.">ARM_USART_CONTROL_RX</a>, 0);</div>
-</div><!-- fragment --><p><b>ARM_USART_MODE_xxx</b> control bits specify the USART mode.</p>
-<table class="doxtable">
-<tr>
-<th align="left">Mode Control Bits </th><th align="left">Description</th></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__mode__control.html#gad85039731478c924d3b418ec00768388">ARM_USART_MODE_ASYNCHRONOUS</a> </td><td align="left">Set to asynchronous UART mode. <em>arg</em> specifies baudrate. </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__mode__control.html#ga7d3e9e0e838a3f15f8661983b9ac4573">ARM_USART_MODE_SYNCHRONOUS_MASTER</a> </td><td align="left">Set to synchronous master mode with clock signal generation. <em>arg</em> specifies baudrate. </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__mode__control.html#gae78778475f3fab09a080c2279afc69fa">ARM_USART_MODE_SYNCHRONOUS_SLAVE</a> </td><td align="left">Set to synchronous slave mode with external clock signal. </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__mode__control.html#ga4132136971d4f93f2e6a87c6775a9bb0">ARM_USART_MODE_SINGLE_WIRE</a> </td><td align="left">Set to single-wire (half-duplex) mode. <em>arg</em> specifies baudrate. </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__mode__control.html#ga458f4f60d1d772cfd7567ae424d9aad9">ARM_USART_MODE_IRDA</a> </td><td align="left">Set to Infrared data mode. <em>arg</em> specifies baudrate. </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__mode__control.html#gade65a1c27d9097d9ef0e86c02b55cecd">ARM_USART_MODE_SMART_CARD</a> </td><td align="left">Set to Smart Card mode. <em>arg</em> specifies baudrate. </td></tr>
-</table>
-<p>The Mode Control bits can be combined with Mode Control Parameters to specify data bits, parity, stop bits, flow control, clock polarity, and clock phase.</p>
-<p><b>ARM_USART_DATA_xxx</b> control bits specify the number of data bits.</p>
-<table class="doxtable">
-<tr>
-<th align="left">Mode Parameters: Data Bits </th><th align="left">Description</th></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__data__bits.html#ga981ff25b4ff806f743d1af4575b87339">ARM_USART_DATA_BITS_5</a> </td><td align="left">Set to <span class="XML-Token">5</span> data bits </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__data__bits.html#ga92ba3d6cea5cd5c0b661667539a9e43c">ARM_USART_DATA_BITS_6</a> </td><td align="left">Set to <span class="XML-Token">6</span> data bits </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__data__bits.html#gad86a2d971ce521c6f6eda28d4f8786a4">ARM_USART_DATA_BITS_7</a> </td><td align="left">Set to <span class="XML-Token">7</span> data bits </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__data__bits.html#gadc5e8d17b5c69cd7f9135b849c2a4586">ARM_USART_DATA_BITS_8</a> </td><td align="left">Set to <span class="XML-Token">8</span> data bits (default) </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__data__bits.html#gae238a08198dc7ac6178ae0a2a95a2764">ARM_USART_DATA_BITS_9</a> </td><td align="left">Set to <span class="XML-Token">9</span> data bits </td></tr>
-</table>
-<p><b>ARM_USART_PARITY_xxx</b> control bits specify the parity bit.</p>
-<table class="doxtable">
-<tr>
-<th align="left">Mode Parameters: Parity </th><th align="left">Description</th></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__parity__bit.html#gabc35e8dd2cbebb730abf36959e87a207">ARM_USART_PARITY_EVEN</a> </td><td align="left">Set to Even Parity </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__parity__bit.html#ga141a64650f99a1f642c3b3b6ced0eb8d">ARM_USART_PARITY_NONE</a> </td><td align="left">Set to No Parity (default) </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__parity__bit.html#ga02f30181eedd3b04d650dd507bf40d6d">ARM_USART_PARITY_ODD</a> </td><td align="left">Set to Odd Parity </td></tr>
-</table>
-<p><b>ARM_USART_STOP_BITS_xxx</b> control bits specify the number of stop bits.</p>
-<table class="doxtable">
-<tr>
-<th align="left">Mode Parameters: Stop Bits </th><th align="left">Description</th></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__stop__bits.html#ga45f51a51e654b4753a538ed33f0d7d78">ARM_USART_STOP_BITS_1</a> </td><td align="left">Set to <span class="XML-Token">1</span> Stop bit (default) </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__stop__bits.html#ga17f034b5f0d0328dc636b403d1954795">ARM_USART_STOP_BITS_2</a> </td><td align="left">Set to <span class="XML-Token">2</span> Stop bits </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__stop__bits.html#gafc1d0f2c95a76ef4c5152792a619f136">ARM_USART_STOP_BITS_1_5</a> </td><td align="left">Set to <span class="XML-Token">1.5</span> Stop bits </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__stop__bits.html#ga47f43cb83d9955a4c90d918acaaa44ba">ARM_USART_STOP_BITS_0_5</a> </td><td align="left">Set to <span class="XML-Token">0.5</span> Stop bits </td></tr>
-</table>
-<p><b>ARM_USART_FLOW_CONTROL_xxx</b> control bits specify the RTS/CTS flow control.</p>
-<table class="doxtable">
-<tr>
-<th align="left">Mode Parameters: Flow Control </th><th align="left">Description</th></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__flow__control.html#gad04aa3fe4ea4b7363aee4bdca2ed3764">ARM_USART_FLOW_CONTROL_NONE</a> </td><td align="left">No flow control signal (default) </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__flow__control.html#gaa7b38ebff1ce0f5c3e4479d22e66715f">ARM_USART_FLOW_CONTROL_CTS</a> </td><td align="left">Set to use the CTS flow control signal </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__flow__control.html#ga80c8a78e8868165cfcc543105bfd9621">ARM_USART_FLOW_CONTROL_RTS</a> </td><td align="left">Set to use the RTS flow control signal </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__flow__control.html#gab16151b5c376b41586faf033f4a42d02">ARM_USART_FLOW_CONTROL_RTS_CTS</a> </td><td align="left">Set to use the RTS and CTS flow control signal </td></tr>
-</table>
-<p><b>ARM_USART_CPOLx</b> define the clock polarity for synchronous mode.</p>
-<table class="doxtable">
-<tr>
-<th align="left">Mode Parameters: Clock Polarity </th><th align="left">Description</th></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__clock__polarity.html#ga472d459abb99f1caaff94fa0cdd2ad27">ARM_USART_CPOL0</a> </td><td align="left">CPOL=<span class="XML-Token">0</span> (default) : data are captured on rising edge (low-&gt;high transition) </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__clock__polarity.html#ga9e5541d8937a9d92e42aeb273138592a">ARM_USART_CPOL1</a> </td><td align="left">CPOL=<span class="XML-Token">1</span> : data are captured on falling edge (high-&gt;lowh transition) </td></tr>
-</table>
-<p><b>ARM_USART_CPHAx</b> define the clock phase for synchronous mode.</p>
-<table class="doxtable">
-<tr>
-<th align="left">Mode Parameters: Clock Phase </th><th align="left">Description</th></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__clock__phase.html#ga5eb27c2294b7d14a20d0c7e2ef0a47b4">ARM_USART_CPHA0</a> </td><td align="left">CPHA=<span class="XML-Token">0</span> (default) : sample on first (leading) edge </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__clock__phase.html#ga4b9f16371870476739a198c52dba6862">ARM_USART_CPHA1</a> </td><td align="left">CPHA=<span class="XML-Token">1</span> : sample on second (trailing) edge </td></tr>
-</table>
-<p><b> Miscellaneous Controls </b> execute various operations.</p>
-<table class="doxtable">
-<tr>
-<th align="left">Miscellaneous&#160;Controls </th><th align="left">Description</th></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__misc__control.html#ga3f57bcedf610dc844e6cc3a230dba5f7">ARM_USART_ABORT_RECEIVE</a> </td><td align="left">Abort receive operation (see also: <a class="el" href="group__usart__interface__gr.html#gae9efabdabb5aaa17bce83339f8a58803">ARM_USART_Receive</a>) </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__misc__control.html#ga54e88b32bc7368ff9c44613eae735c44">ARM_USART_ABORT_SEND</a> </td><td align="left">Abort send operation (see also: <a class="el" href="group__usart__interface__gr.html#ga5cf758b0b9d03dca68846962f73c0b08">ARM_USART_Send</a>) </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__misc__control.html#ga83d0ef402feb342f9939f0e4ffe26182">ARM_USART_ABORT_TRANSFER</a> </td><td align="left">Abort transfer operation (see also: <a class="el" href="group__usart__interface__gr.html#ga878899928d34a818edd3e97d67b65c2a">ARM_USART_Transfer</a>) </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__misc__control.html#gab194a6f916e5b25e0262534c0cce54dc">ARM_USART_CONTROL_BREAK</a> </td><td align="left">Enable or disable continuous Break transmission; <em>arg</em> : <span class="XML-Token">0=disabled; 1=enabled</span> </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__misc__control.html#gad52c08553ae203d4f7741404589b8169">ARM_USART_CONTROL_RX</a> </td><td align="left">Enable or disable receiver; <em>arg</em> : <span class="XML-Token">0=disabled; 1=enabled</span> (see also: <a class="el" href="group__usart__interface__gr.html#gae9efabdabb5aaa17bce83339f8a58803">ARM_USART_Receive</a>; <a class="el" href="group__usart__interface__gr.html#ga878899928d34a818edd3e97d67b65c2a">ARM_USART_Transfer</a>) </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__misc__control.html#ga4bb5374e7db308b6ff48aa13aa9c4b8a">ARM_USART_CONTROL_SMART_CARD_NACK</a> </td><td align="left">Enable or disable Smart Card NACK generation; <em>arg</em> : <span class="XML-Token">0=disabled; 1=enabled</span> </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__misc__control.html#gad96ea1a80c97f968fbc0ae4c20e7fa6a">ARM_USART_CONTROL_TX</a> </td><td align="left">Enable or disable transmitter; <em>arg</em> : <span class="XML-Token">0=disabled; 1=enabled</span> (see also: <a class="el" href="group__usart__interface__gr.html#ga5cf758b0b9d03dca68846962f73c0b08">ARM_USART_Send</a>; <a class="el" href="group__usart__interface__gr.html#ga878899928d34a818edd3e97d67b65c2a">ARM_USART_Transfer</a>) </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__misc__control.html#gacd6f060afd55ffa1422567c31ebad950">ARM_USART_SET_DEFAULT_TX_VALUE</a> </td><td align="left">Set the default transmit value (synchronous receive only); <em>arg</em> specifies the value. (see also: <a class="el" href="group__usart__interface__gr.html#gae9efabdabb5aaa17bce83339f8a58803">ARM_USART_Receive</a>) </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__misc__control.html#gab8565d1f26382e832327e4553d18eb02">ARM_USART_SET_IRDA_PULSE</a> </td><td align="left">Set the IrDA pulse value in <span class="XML-Token">ns</span>; <em>arg</em> : <span class="XML-Token">0=3/16 of bit period</span> </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__misc__control.html#ga79698a2bd564c1f5bb1829ea422e9d3d">ARM_USART_SET_SMART_CARD_CLOCK</a> </td><td align="left">Set the Smart Card Clock in <span class="XML-Token">Hz</span>; <em>arg</em> : <span class="XML-Token">0=Clock not set</span> </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__usart__misc__control.html#ga169be809adc186c131bb8b1618005b28">ARM_USART_SET_SMART_CARD_GUARD_TIME</a> </td><td align="left">Set the Smart Card guard time; <em>arg</em> = number of bit periods </td></tr>
-</table>
-
+<div class="line"><a class="code" href="group__usart__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___u_s_a_r_t" title="Access structure of the USART Driver.">ARM_DRIVER_USART</a> *drv_info;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> setup_usart (<span class="keywordtype">void</span>)  {</div>
+<div class="line">  <a class="code" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n" title="Driver Version.">ARM_DRIVER_VERSION</a>  version;</div>
+<div class="line"> </div>
+<div class="line">  drv_info = &amp;Driver_USART0;  </div>
+<div class="line">  version = drv_info-&gt;<a class="code" href="group__usart__interface__gr.html#a8834b281da48583845c044a81566c1b3" title="Pointer to ARM_USART_GetVersion : Get driver version.">GetVersion</a> ();</div>
+<div class="line">  <span class="keywordflow">if</span> (version.<a class="code" href="group__common__drv__gr.html#ad180da20fbde1d3dafc074af87c19540" title="API version.">api</a> &lt; 0x10A)  {      <span class="comment">// requires at minimum API version 1.10 or higher</span></div>
+<div class="line">    <span class="comment">// error handling</span></div>
+<div class="line">    <span class="keywordflow">return</span>;</div>
+<div class="line">  }</div>
+<div class="line">}</div>
+</div><!-- fragment --> 
 </div>
 </div>
 <a class="anchor" id="gad2d3ace1fe7627bb72945efefaeddf0a"></a>
@@ -1082,7 +948,7 @@ RI state: 1=Active, 0=Inactive. </td></tr>
 
 <p>Get driver capabilities. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__usart__interface__gr.html#struct_a_r_m___u_s_a_r_t___c_a_p_a_b_i_l_i_t_i_e_s">ARM_USART_CAPABILITIES</a></dd></dl>
-<p>Retrieves information about capabilities in this driver implementation. The bitfield members of the struct <a class="el" href="group__usart__interface__gr.html#struct_a_r_m___u_s_a_r_t___c_a_p_a_b_i_l_i_t_i_e_s">ARM_USART_CAPABILITIES</a> encode various capabilities, for example supported modes, if a hardware is capable to create signal events using the <a class="el" href="group__usart__interface__gr.html#gad796cd023f8f6300a6caadcc39d43cbf">ARM_USART_SignalEvent</a> callback function ...</p>
+<p>The function <b>ARM_USART_GetCapabilities</b> returns information about capabilities in this driver implementation. The data fields of the structure <a class="el" href="group__usart__interface__gr.html#struct_a_r_m___u_s_a_r_t___c_a_p_a_b_i_l_i_t_i_e_s">ARM_USART_CAPABILITIES</a> encode various capabilities, for example supported modes, if a hardware is capable to create signal events using the <a class="el" href="group__usart__interface__gr.html#gad796cd023f8f6300a6caadcc39d43cbf">ARM_USART_SignalEvent</a> callback function ...</p>
 <p>Example: </p>
 <div class="fragment"><div class="line"><span class="keyword">extern</span> <a class="code" href="group__usart__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___u_s_a_r_t" title="Access structure of the USART Driver.">ARM_DRIVER_USART</a> Driver_USART0;</div>
 <div class="line"><a class="code" href="group__usart__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___u_s_a_r_t" title="Access structure of the USART Driver.">ARM_DRIVER_USART</a> *drv_info;</div>
@@ -1094,125 +960,6 @@ RI state: 1=Active, 0=Inactive. </td></tr>
 <div class="line">  drv_capabilities = drv_info-&gt;<a class="code" href="group__usart__interface__gr.html#a9cec078ea816ece7b2d989f35caadb12" title="Pointer to ARM_USART_GetCapabilities : Get driver capabilities.">GetCapabilities</a> ();</div>
 <div class="line">  <span class="comment">// interrogate capabilities</span></div>
 <div class="line"> </div>
-<div class="line">}</div>
-</div><!-- fragment --> 
-</div>
-</div>
-<a class="anchor" id="ga198af0d6a7c85b7c0b96f3d9db8c34e0"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__usart__interface__gr.html#struct_a_r_m___u_s_a_r_t___m_o_d_e_m___s_t_a_t_u_s">ARM_USART_MODEM_STATUS</a> ARM_USART_GetModemStatus </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get USART Modem Status lines state. </p>
-<dl class="section return"><dt>Returns</dt><dd>modem status <a class="el" href="group__usart__interface__gr.html#struct_a_r_m___u_s_a_r_t___m_o_d_e_m___s_t_a_t_u_s">ARM_USART_MODEM_STATUS</a></dd></dl>
-<p>Get the current USART Modem Status lines state.</p>
-<p>The function <a class="el" href="group__usart__interface__gr.html#gad8eb0eb1d1c24fc725584ab93214cfc7">ARM_USART_SetModemControl</a> sets the modem control lines of the USART. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga1a8799aeeba1363a9e5d22bada715a29"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint32_t ARM_USART_GetRxCount </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get received data count. </p>
-<dl class="section return"><dt>Returns</dt><dd>number of data items received</dd></dl>
-<p>Returns the number of the currently received data items during <a class="el" href="group__usart__interface__gr.html#gae9efabdabb5aaa17bce83339f8a58803">ARM_USART_Receive</a> and <a class="el" href="group__usart__interface__gr.html#ga878899928d34a818edd3e97d67b65c2a">ARM_USART_Transfer</a> operation. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga1e8fdd54294b587438b2b72f4dbde004"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__usart__interface__gr.html#struct_a_r_m___u_s_a_r_t___s_t_a_t_u_s">ARM_USART_STATUS</a> ARM_USART_GetStatus </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get USART status. </p>
-<dl class="section return"><dt>Returns</dt><dd>USART status <a class="el" href="group__usart__interface__gr.html#struct_a_r_m___u_s_a_r_t___s_t_a_t_u_s">ARM_USART_STATUS</a></dd></dl>
-<p>Retrieves the current USART interface status. </p>
-
-</div>
-</div>
-<a class="anchor" id="gacb355584bcdf4ebd36f11d945800fa03"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint32_t ARM_USART_GetTxCount </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get transmitted data count. </p>
-<dl class="section return"><dt>Returns</dt><dd>number of data items transmitted</dd></dl>
-<p>Returns the number of the currently transmitted data items during <a class="el" href="group__usart__interface__gr.html#ga5cf758b0b9d03dca68846962f73c0b08">ARM_USART_Send</a> and <a class="el" href="group__usart__interface__gr.html#ga878899928d34a818edd3e97d67b65c2a">ARM_USART_Transfer</a> operation. </p>
-
-</div>
-</div>
-<a class="anchor" id="gabca6151cef47565832decaf484781b61"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a> ARM_USART_GetVersion </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get driver version. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a></dd></dl>
-<p>Returns version information of the driver implementation in <a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a></p>
-<ul>
-<li>API version is the version of the CMSIS-Driver specification used to implement this driver.</li>
-<li>Driver version is source code version of the actual driver implementation.</li>
-</ul>
-<p>Example: </p>
-<div class="fragment"><div class="line"><span class="keyword">extern</span> <a class="code" href="group__usart__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___u_s_a_r_t" title="Access structure of the USART Driver.">ARM_DRIVER_USART</a> Driver_USART0;</div>
-<div class="line"><a class="code" href="group__usart__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___u_s_a_r_t" title="Access structure of the USART Driver.">ARM_DRIVER_USART</a> *drv_info;</div>
-<div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> setup_usart (<span class="keywordtype">void</span>)  {</div>
-<div class="line">  <a class="code" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n" title="Driver Version.">ARM_DRIVER_VERSION</a>  version;</div>
-<div class="line"> </div>
-<div class="line">  drv_info = &amp;Driver_USART0;  </div>
-<div class="line">  version = drv_info-&gt;<a class="code" href="group__usart__interface__gr.html#a8834b281da48583845c044a81566c1b3" title="Pointer to ARM_USART_GetVersion : Get driver version.">GetVersion</a> ();</div>
-<div class="line">  <span class="keywordflow">if</span> (version.<a class="code" href="group__common__drv__gr.html#ad180da20fbde1d3dafc074af87c19540" title="API version.">api</a> &lt; 0x10A)  {      <span class="comment">// requires at minimum API version 1.10 or higher</span></div>
-<div class="line">    <span class="comment">// error handling</span></div>
-<div class="line">    <span class="keywordflow">return</span>;</div>
-<div class="line">  }</div>
 <div class="line">}</div>
 </div><!-- fragment --> 
 </div>
@@ -1239,7 +986,7 @@ RI state: 1=Active, 0=Inactive. </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>The function initializes the USART interface. It is called when the middleware component starts operation.</p>
+<p>The function <b>ARM_USART_Initialize</b> initializes the USART interface. It is called when the middleware component starts operation.</p>
 <p>The function performs the following operations:</p>
 <ul>
 <li>Initializes the resources needed for the USART interface.</li>
@@ -1250,6 +997,27 @@ RI state: 1=Active, 0=Inactive. </td></tr>
 <ul>
 <li>see <a class="el" href="group__usart__interface__gr.html">USART Interface</a> - Driver Functions </li>
 </ul>
+
+</div>
+</div>
+<a class="anchor" id="ga96f31f07a6721cf75de2a7a0ab723d26"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ARM_USART_Uninitialize </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>De-initialize USART Interface. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
+<p>The function <b>ARM_USART_Uninitialize</b> de-initializes the resources of USART interface.</p>
+<p>It is called when the middleware component stops operation and releases the software resources used by the interface. </p>
 
 </div>
 </div>
@@ -1275,63 +1043,14 @@ RI state: 1=Active, 0=Inactive. </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>Allows you to control the power modes of the USART interface. </p>
-
-</div>
-</div>
-<a class="anchor" id="gae9efabdabb5aaa17bce83339f8a58803"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t ARM_USART_Receive </td>
-          <td>(</td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>data</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>num</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Start receiving data from USART receiver. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">data</td><td>Pointer to buffer for data to receive from USART receiver </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">num</td><td>Number of data items to receive </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>This functions is used in asynchronous mode to receive data from the USART receiver. It can also be used in synchronous mode when receiving data only (transmits the default value as specified by <a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d">ARM_USART_Control</a> with <a class="el" href="group__usart__misc__control.html#gacd6f060afd55ffa1422567c31ebad950">ARM_USART_SET_DEFAULT_TX_VALUE</a> as control parameter).</p>
-<p>Receiver needs to be enabled by calling <a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d">ARM_USART_Control</a> with <a class="el" href="group__usart__misc__control.html#gad52c08553ae203d4f7741404589b8169">ARM_USART_CONTROL_RX</a> as the control parameter and <span class="XML-Token">1</span> as argument.</p>
-<p>The function parameters specify the buffer for data and the number of items to receive. The item size is defined by the data type which depends on the configured number of data bits.</p>
-<p>Data type is:</p>
+<p>The function <b>ARM_USART_PowerControl</b> operates the power modes of the USART interface.</p>
+<p>The parameter <em>state</em> sets the operation and can have the following values:</p>
 <ul>
-<li><em>uint8_t</em> when configured for 5..8 data bits</li>
-<li><em>uint16_t</em> when configured for 9 data bits</li>
+<li><a class="el" href="_driver___common_8h.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5abed52b77a9ce4775570e44a842b1295e">ARM_POWER_FULL</a> : set-up peripheral for data transfers, enable interrupts (NVIC) and optionally DMA. Can be called multiple times. If the peripheral is already in this mode the function performs no operation and returns with <a class="el" href="group__execution__status.html#ga85752c5de59e8adeb001e35ff5be6be7">ARM_DRIVER_OK</a>.</li>
+<li><a class="el" href="_driver___common_8h.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5a9ef9e57cbcc948d0e22314e73dc8c434">ARM_POWER_LOW</a> : may use power saving. Returns <a class="el" href="group__execution__status.html#ga2efa59e480d82697795439220e6884e4">ARM_DRIVER_ERROR_UNSUPPORTED</a> when not implemented.</li>
+<li><a class="el" href="_driver___common_8h.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5ab6f5becc85ebd51c3dd2524a95d2ca35">ARM_POWER_OFF</a> : terminates any pending data transfers, disables peripheral, disables related interrupts and DMA.</li>
 </ul>
-<p>Calling the function <b>ARM_USART_Receive</b> only starts the receive operation. The function is non-blocking and returns as soon as the driver has started the operation (driver typically configures DMA or the interrupt system for continuous transfer). When in synchronous slave mode the operation is only registered and started when the master starts the transfer. During the operation it is not allowed to call this function again or any other data transfer function when in synchronous mode. Also the data buffer must stay allocated. When receive operation is completed (requested number of items received) the <a class="el" href="group___u_s_a_r_t__events.html#ga08b165fd8525e44e3ce42ed6183cd30a">ARM_USART_EVENT_RECEIVE_COMPLETE</a> event is generated. Progress of receive operation can also be monitored by reading the number of items already received by calling <a class="el" href="group__usart__interface__gr.html#ga1a8799aeeba1363a9e5d22bada715a29">ARM_USART_GetRxCount</a>.</p>
-<p>Status of the receiver can be monitored by calling the <a class="el" href="group__usart__interface__gr.html#ga1e8fdd54294b587438b2b72f4dbde004">ARM_USART_GetStatus</a> and checking the <em>rx_busy</em> flag which indicates if reception is still in progress.</p>
-<p>During reception the following events can be generated (in asynchronous mode):</p>
-<ul>
-<li><a class="el" href="group___u_s_a_r_t__events.html#ga66ee2256571450a3fc3c530344ea9bd7">ARM_USART_EVENT_RX_TIMEOUT</a> : Receive timeout between consecutive characters detected (optional)</li>
-<li><a class="el" href="group___u_s_a_r_t__events.html#gaa1d19e48faf2bdc2a976de448928288e">ARM_USART_EVENT_RX_BREAK</a> : Break detected (Framing error is not generated for Break condition)</li>
-<li><a class="el" href="group___u_s_a_r_t__events.html#ga2d97495c650220fbfe9d6977d0953127">ARM_USART_EVENT_RX_FRAMING_ERROR</a> : Framing error detected</li>
-<li><a class="el" href="group___u_s_a_r_t__events.html#gadb4fec2530fc5ae3ad2b056741883451">ARM_USART_EVENT_RX_PARITY_ERROR</a> : Parity error detected</li>
-<li><a class="el" href="group___u_s_a_r_t__events.html#ga43a0869daf83abb3fea96926a97047ad">ARM_USART_EVENT_RX_OVERFLOW</a> : Data overflow detected (also in synchronous slave mode)</li>
-</ul>
-<p><a class="el" href="group___u_s_a_r_t__events.html#ga43a0869daf83abb3fea96926a97047ad">ARM_USART_EVENT_RX_OVERFLOW</a> event is also generated when receiver is enabled but data is lost because receive operation in asynchronous mode or receive/send/transfer operation in synchronous slave mode has not been started.</p>
-<p>Receive operation can be aborted by calling <a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d">ARM_USART_Control</a> with <a class="el" href="group__usart__misc__control.html#ga3f57bcedf610dc844e6cc3a230dba5f7">ARM_USART_ABORT_RECEIVE</a> as the control parameter. </p>
+<p>Refer to <a class="el" href="_theory_operation.html#CallSequence">Function Call Sequence</a> for more information. </p>
 
 </div>
 </div>
@@ -1368,7 +1087,7 @@ RI state: 1=Active, 0=Inactive. </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>This functions is used in asynchronous mode to send data to the USART transmitter. It can also be used in synchronous mode when sending data only (received data is ignored).</p>
+<p>This functions <b>ARM_USART_Send</b> is used in asynchronous mode to send data to the USART transmitter. It can also be used in synchronous mode when sending data only (received data is ignored).</p>
 <p>Transmitter needs to be enabled by calling <a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d">ARM_USART_Control</a> with <a class="el" href="group__usart__misc__control.html#gad96ea1a80c97f968fbc0ae4c20e7fa6a">ARM_USART_CONTROL_TX</a> as the control parameter and <span class="XML-Token">1</span> as argument.</p>
 <p>The function parameters specify the buffer with data and the number of items to send. The item size is defined by the data type which depends on the configured number of data bits.</p>
 <p>Data type is:</p>
@@ -1377,96 +1096,66 @@ RI state: 1=Active, 0=Inactive. </td></tr>
 <li><em>uint16_t</em> when configured for 9 data bits</li>
 </ul>
 <p>Calling the function <b>ARM_USART_Send</b> only starts the send operation. The function is non-blocking and returns as soon as the driver has started the operation (driver typically configures DMA or the interrupt system for continuous transfer). When in synchronous slave mode the operation is only registered and started when the master starts the transfer. During the operation it is not allowed to call this function again or any other data transfer function when in synchronous mode. Also the data buffer must stay allocated and the contents of unsent data must not be modified. When send operation is completed (requested number of items sent) the <a class="el" href="group___u_s_a_r_t__events.html#gaae1c626192b16ccace93f3546e7884bf">ARM_USART_EVENT_SEND_COMPLETE</a> event is generated. Progress of send operation can also be monitored by reading the number of items already sent by calling <a class="el" href="group__usart__interface__gr.html#gacb355584bcdf4ebd36f11d945800fa03">ARM_USART_GetTxCount</a>.</p>
-<p>After send operation has completed there might still be some data left in the driver's hardware buffer which is still being transmitted. When all data has been physically transmitted the <a class="el" href="group___u_s_a_r_t__events.html#ga12872a3b04343f97d9535b5b0d37286d">ARM_USART_EVENT_TX_COMPLETE</a> event is generated (if supported and reported by <em>event_tx_complete</em> in <a class="el" href="group__usart__interface__gr.html#struct_a_r_m___u_s_a_r_t___c_a_p_a_b_i_l_i_t_i_e_s">ARM_USART_CAPABILITIES</a>). At that point also the <em>tx_busy</em> flag in <a class="el" href="group__usart__interface__gr.html#struct_a_r_m___u_s_a_r_t___s_t_a_t_u_s">ARM_USART_STATUS</a> is cleared.</p>
+<p>After send operation has completed there might still be some data left in the driver's hardware buffer which is still being transmitted. When all data has been physically transmitted the <a class="el" href="group___u_s_a_r_t__events.html#ga12872a3b04343f97d9535b5b0d37286d">ARM_USART_EVENT_TX_COMPLETE</a> event is generated (if supported and reported by <em>event_tx_complete</em> in <a class="el" href="group__usart__interface__gr.html#struct_a_r_m___u_s_a_r_t___c_a_p_a_b_i_l_i_t_i_e_s">ARM_USART_CAPABILITIES</a>). At that point also the <em>tx_busy</em> data field in <a class="el" href="group__usart__interface__gr.html#struct_a_r_m___u_s_a_r_t___s_t_a_t_u_s">ARM_USART_STATUS</a> is cleared.</p>
 <p>Status of the transmitter can be monitored by calling the <a class="el" href="group__usart__interface__gr.html#ga1e8fdd54294b587438b2b72f4dbde004">ARM_USART_GetStatus</a> and checking the <em>tx_busy</em> flag which indicates if transmission is still in progress.</p>
 <p>When in synchronous slave mode and transmitter is enabled but send/receive/transfer operation is not started and data is requested by the master then the <a class="el" href="group___u_s_a_r_t__events.html#gae57b9977bd338bf8bef86978843fa443">ARM_USART_EVENT_TX_UNDERFLOW</a> event is generated.</p>
 <p>Send operation can be aborted by calling <a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d">ARM_USART_Control</a> with <a class="el" href="group__usart__misc__control.html#ga54e88b32bc7368ff9c44613eae735c44">ARM_USART_ABORT_SEND</a> as the control parameter. </p>
 
 </div>
 </div>
-<a class="anchor" id="gad8eb0eb1d1c24fc725584ab93214cfc7"></a>
+<a class="anchor" id="gae9efabdabb5aaa17bce83339f8a58803"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int32_t ARM_USART_SetModemControl </td>
+          <td class="memname">int32_t ARM_USART_Receive </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__usart__interface__gr.html#ga7b89d709f048b6a956aa211f63e75f6f">ARM_USART_MODEM_CONTROL</a>&#160;</td>
-          <td class="paramname"><em>control</em></td><td>)</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>num</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Set USART Modem Control line state. </p>
+<p>Start receiving data from USART receiver. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">control</td><td><a class="el" href="group__usart__interface__gr.html#ga7b89d709f048b6a956aa211f63e75f6f">ARM_USART_MODEM_CONTROL</a> </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">data</td><td>Pointer to buffer for data to receive from USART receiver </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">num</td><td>Number of data items to receive </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>Activate or deactivate the selected USART modem control line.</p>
-<p>The function <a class="el" href="group__usart__interface__gr.html#ga198af0d6a7c85b7c0b96f3d9db8c34e0">ARM_USART_GetModemStatus</a> returns information about status of the modem lines. </p>
-
-</div>
-</div>
-<a class="anchor" id="gad796cd023f8f6300a6caadcc39d43cbf"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ARM_USART_SignalEvent </td>
-          <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>event</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Signal USART Events. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">event</td><td><a class="el" href="group___u_s_a_r_t__events.html">USART Events</a> notification mask </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>none</dd></dl>
-<p>The function <b>ARM_USART_SignalEvent</b> notifies the application of the <a class="el" href="group___u_s_a_r_t__events.html">USART Events</a> and it is registered by the function <a class="el" href="group__usart__interface__gr.html#ga51f06805e9a6197c553fa9513ac7b9d6">ARM_USART_Initialize</a>. The function <a class="el" href="group__usart__interface__gr.html#gad2d3ace1fe7627bb72945efefaeddf0a">ARM_USART_GetCapabilities</a> returns information about the implemented optional events in a driver.</p>
-<p>The argument <em>event</em> represents the notification mask of the events. Each event is coded in a separate bit and therefore it is possible to signal multiple events in the event call back function. The following call back notifications are generated:</p>
-<table class="doxtable">
-<tr>
-<th>Bit</th><th align="left">Event </th><th align="left">Description</th></tr>
-<tr>
-<td>0 </td><td align="left"><a class="el" href="group___u_s_a_r_t__events.html#gaae1c626192b16ccace93f3546e7884bf">ARM_USART_EVENT_SEND_COMPLETE</a> </td><td align="left">Occurs after call to <a class="el" href="group__usart__interface__gr.html#ga5cf758b0b9d03dca68846962f73c0b08">ARM_USART_Send</a> to indicate that all the data to be sent was processed by the driver. All the data might have been already transmitted or parts of it is still queued in transmit buffers. The driver is ready for the next call to <a class="el" href="group__usart__interface__gr.html#ga5cf758b0b9d03dca68846962f73c0b08">ARM_USART_Send</a>; however USART may still transmit data. </td></tr>
-<tr>
-<td>1 </td><td align="left"><a class="el" href="group___u_s_a_r_t__events.html#ga08b165fd8525e44e3ce42ed6183cd30a">ARM_USART_EVENT_RECEIVE_COMPLETE</a> </td><td align="left">Occurs after call to <a class="el" href="group__usart__interface__gr.html#gae9efabdabb5aaa17bce83339f8a58803">ARM_USART_Receive</a> to indicate that all the data has been received. The driver is ready for the next call to <a class="el" href="group__usart__interface__gr.html#gae9efabdabb5aaa17bce83339f8a58803">ARM_USART_Receive</a>. </td></tr>
-<tr>
-<td>2 </td><td align="left"><a class="el" href="group___u_s_a_r_t__events.html#ga0599793e6aa531d56ff9f81ff12605d7">ARM_USART_EVENT_TRANSFER_COMPLETE</a> </td><td align="left">Occurs after call to <a class="el" href="group__usart__interface__gr.html#ga878899928d34a818edd3e97d67b65c2a">ARM_USART_Transfer</a> to indicate that all the data has been transferred. The driver is ready for the next call to <a class="el" href="group__usart__interface__gr.html#ga878899928d34a818edd3e97d67b65c2a">ARM_USART_Transfer</a>. </td></tr>
-<tr>
-<td>3 </td><td align="left"><a class="el" href="group___u_s_a_r_t__events.html#ga12872a3b04343f97d9535b5b0d37286d">ARM_USART_EVENT_TX_COMPLETE</a> (optional)</td><td align="left">Occurs after <a class="el" href="group___u_s_a_r_t__events.html#gaae1c626192b16ccace93f3546e7884bf">ARM_USART_EVENT_SEND_COMPLETE</a> event when all data has been physically transmitted. </td></tr>
-<tr>
-<td>4 </td><td align="left"><a class="el" href="group___u_s_a_r_t__events.html#gae57b9977bd338bf8bef86978843fa443">ARM_USART_EVENT_TX_UNDERFLOW</a> </td><td align="left">Occurs in synchronous slave mode when data is requested by the master but send/receive/transfer operation has not been started. </td></tr>
-<tr>
-<td>5 </td><td align="left"><a class="el" href="group___u_s_a_r_t__events.html#ga43a0869daf83abb3fea96926a97047ad">ARM_USART_EVENT_RX_OVERFLOW</a> </td><td align="left">Occurs when data is lost during receive/transfer operation or when data is lost because receive operation in asynchronous mode or receive/send/transfer operation in synchronous slave mode has not been started. </td></tr>
-<tr>
-<td>6 </td><td align="left"><a class="el" href="group___u_s_a_r_t__events.html#ga66ee2256571450a3fc3c530344ea9bd7">ARM_USART_EVENT_RX_TIMEOUT</a> (optional) </td><td align="left">Occurs during receive when idle time is detected between consecutive characters (idle time is hardware dependent). </td></tr>
-<tr>
-<td>7 </td><td align="left"><a class="el" href="group___u_s_a_r_t__events.html#gaa1d19e48faf2bdc2a976de448928288e">ARM_USART_EVENT_RX_BREAK</a> </td><td align="left">Occurs when break is detected during receive. </td></tr>
-<tr>
-<td>8 </td><td align="left"><a class="el" href="group___u_s_a_r_t__events.html#ga2d97495c650220fbfe9d6977d0953127">ARM_USART_EVENT_RX_FRAMING_ERROR</a> </td><td align="left">Occurs when framing error is detected during receive. </td></tr>
-<tr>
-<td>9 </td><td align="left"><a class="el" href="group___u_s_a_r_t__events.html#gadb4fec2530fc5ae3ad2b056741883451">ARM_USART_EVENT_RX_PARITY_ERROR</a> </td><td align="left">Occurs when parity error is detected during receive. </td></tr>
-<tr>
-<td>10 </td><td align="left"><a class="el" href="group___u_s_a_r_t__events.html#ga4cd807ca131bdcb1a7eb4f223fa70476">ARM_USART_EVENT_CTS</a> (optional) </td><td align="left">Indicates that CTS modem line state has changed. </td></tr>
-<tr>
-<td>11 </td><td align="left"><a class="el" href="group___u_s_a_r_t__events.html#ga5afef591c2e8dd9bc4332b7bc8d96309">ARM_USART_EVENT_DSR</a> (optional) </td><td align="left">Indicates that DSR modem line state has changed. </td></tr>
-<tr>
-<td>12 </td><td align="left"><a class="el" href="group___u_s_a_r_t__events.html#ga1628b951feba1c851f424ce89da409a4">ARM_USART_EVENT_DCD</a> (optional) </td><td align="left">Indicates that DCD modem line state has changed. </td></tr>
-<tr>
-<td>13 </td><td align="left"><a class="el" href="group___u_s_a_r_t__events.html#gac17fe5723d4c5923656dadd9d1302154">ARM_USART_EVENT_RI</a> (optional) </td><td align="left">Indicates that RI modem line state has changed. </td></tr>
-</table>
+<p>This functions <b>ARM_USART_Receive</b> is used in asynchronous mode to receive data from the USART receiver. It can also be used in synchronous mode when receiving data only (transmits the default value as specified by <a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d">ARM_USART_Control</a> with <a class="el" href="group__usart__misc__control.html#gacd6f060afd55ffa1422567c31ebad950">ARM_USART_SET_DEFAULT_TX_VALUE</a> as control parameter).</p>
+<p>Receiver needs to be enabled by calling <a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d">ARM_USART_Control</a> with <a class="el" href="group__usart__misc__control.html#gad52c08553ae203d4f7741404589b8169">ARM_USART_CONTROL_RX</a> as the control parameter and <span class="XML-Token">1</span> as argument.</p>
+<p>The function parameters specify the buffer for data and the number of items to receive. The item size is defined by the data type which depends on the configured number of data bits.</p>
+<p>Data type is:</p>
+<ul>
+<li><em>uint8_t</em> when configured for 5..8 data bits</li>
+<li><em>uint16_t</em> when configured for 9 data bits</li>
+</ul>
+<p>Calling the function <b>ARM_USART_Receive</b> only starts the receive operation. The function is non-blocking and returns as soon as the driver has started the operation (driver typically configures DMA or the interrupt system for continuous transfer). When in synchronous slave mode the operation is only registered and started when the master starts the transfer. During the operation it is not allowed to call this function again or any other data transfer function when in synchronous mode. Also the data buffer must stay allocated. When receive operation is completed (requested number of items received) the <a class="el" href="group___u_s_a_r_t__events.html#ga08b165fd8525e44e3ce42ed6183cd30a">ARM_USART_EVENT_RECEIVE_COMPLETE</a> event is generated. Progress of receive operation can also be monitored by reading the number of items already received by calling <a class="el" href="group__usart__interface__gr.html#ga1a8799aeeba1363a9e5d22bada715a29">ARM_USART_GetRxCount</a>.</p>
+<p>Status of the receiver can be monitored by calling the <a class="el" href="group__usart__interface__gr.html#ga1e8fdd54294b587438b2b72f4dbde004">ARM_USART_GetStatus</a> and checking the <em>rx_busy</em> flag which indicates if reception is still in progress.</p>
+<p>During reception the following events can be generated (in asynchronous mode):</p>
+<ul>
+<li><a class="el" href="group___u_s_a_r_t__events.html#ga66ee2256571450a3fc3c530344ea9bd7">ARM_USART_EVENT_RX_TIMEOUT</a> : Receive timeout between consecutive characters detected (optional)</li>
+<li><a class="el" href="group___u_s_a_r_t__events.html#gaa1d19e48faf2bdc2a976de448928288e">ARM_USART_EVENT_RX_BREAK</a> : Break detected (Framing error is not generated for Break condition)</li>
+<li><a class="el" href="group___u_s_a_r_t__events.html#ga2d97495c650220fbfe9d6977d0953127">ARM_USART_EVENT_RX_FRAMING_ERROR</a> : Framing error detected</li>
+<li><a class="el" href="group___u_s_a_r_t__events.html#gadb4fec2530fc5ae3ad2b056741883451">ARM_USART_EVENT_RX_PARITY_ERROR</a> : Parity error detected</li>
+<li><a class="el" href="group___u_s_a_r_t__events.html#ga43a0869daf83abb3fea96926a97047ad">ARM_USART_EVENT_RX_OVERFLOW</a> : Data overflow detected (also in synchronous slave mode)</li>
+</ul>
+<p><a class="el" href="group___u_s_a_r_t__events.html#ga43a0869daf83abb3fea96926a97047ad">ARM_USART_EVENT_RX_OVERFLOW</a> event is also generated when receiver is enabled but data is lost because receive operation in asynchronous mode or receive/send/transfer operation in synchronous slave mode has not been started.</p>
+<p>Receive operation can be aborted by calling <a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d">ARM_USART_Control</a> with <a class="el" href="group__usart__misc__control.html#ga3f57bcedf610dc844e6cc3a230dba5f7">ARM_USART_ABORT_RECEIVE</a> as the control parameter. </p>
 
 </div>
 </div>
@@ -1510,7 +1199,7 @@ RI state: 1=Active, 0=Inactive. </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>This functions is used in synchronous mode to transfer data via USART. It synchronously sends data to the USART transmitter and receives data from the USART receiver.</p>
+<p>This functions <b>ARM_USART_Transfer</b> is used in synchronous mode to transfer data via USART. It synchronously sends data to the USART transmitter and receives data from the USART receiver.</p>
 <p>Transmitter needs to be enabled by calling <a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d">ARM_USART_Control</a> with <a class="el" href="group__usart__misc__control.html#gad96ea1a80c97f968fbc0ae4c20e7fa6a">ARM_USART_CONTROL_TX</a> as the control parameter and <span class="XML-Token">1</span> as argument. Receiver needs to be enabled by calling <a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d">ARM_USART_Control</a> with <a class="el" href="group__usart__misc__control.html#gad52c08553ae203d4f7741404589b8169">ARM_USART_CONTROL_RX</a> as the control parameter and <span class="XML-Token">1</span> as argument.</p>
 <p>The function parameters specify the buffer with data to send, the buffer for data to receive and the number of items to transfer. The item size is defined by the data type which depends on the configured number of data bits.</p>
 <p>Data type is:</p>
@@ -1529,12 +1218,12 @@ RI state: 1=Active, 0=Inactive. </td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga96f31f07a6721cf75de2a7a0ab723d26"></a>
+<a class="anchor" id="gacb355584bcdf4ebd36f11d945800fa03"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int32_t ARM_USART_Uninitialize </td>
+          <td class="memname">uint32_t ARM_USART_GetTxCount </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -1543,10 +1232,300 @@ RI state: 1=Active, 0=Inactive. </td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>De-initialize USART Interface. </p>
+<p>Get transmitted data count. </p>
+<dl class="section return"><dt>Returns</dt><dd>number of data items transmitted</dd></dl>
+<p>The function <b>ARM_USART_GetTxCount</b> returns the number of the currently transmitted data items during <a class="el" href="group__usart__interface__gr.html#ga5cf758b0b9d03dca68846962f73c0b08">ARM_USART_Send</a> and <a class="el" href="group__usart__interface__gr.html#ga878899928d34a818edd3e97d67b65c2a">ARM_USART_Transfer</a> operation. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga1a8799aeeba1363a9e5d22bada715a29"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t ARM_USART_GetRxCount </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get received data count. </p>
+<dl class="section return"><dt>Returns</dt><dd>number of data items received</dd></dl>
+<p>The function <b>ARM_USART_GetRxCount</b> returns the number of the currently received data items during <a class="el" href="group__usart__interface__gr.html#gae9efabdabb5aaa17bce83339f8a58803">ARM_USART_Receive</a> and <a class="el" href="group__usart__interface__gr.html#ga878899928d34a818edd3e97d67b65c2a">ARM_USART_Transfer</a> operation. </p>
+
+</div>
+</div>
+<a class="anchor" id="gad8ffdde2123b5412de3005c456da677d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ARM_USART_Control </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>control</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>arg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Control USART Interface. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">control</td><td>Operation </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">arg</td><td>Argument of operation (optional) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>common <a class="el" href="group__execution__status.html">Status Error Codes</a> and driver specific <a class="el" href="group__usart__execution__status.html">Status Error Codes</a></dd></dl>
+<p>The function <b>ARM_USART_Control</b> control the USART interface settings and execute various operations.</p>
+<p>The parameter <em>control</em> sets the operation and is explained in the table below. Values from different categories can be ORed with the exception of <a class="el" href="group__usart__interface__gr.html#usart_misc_tab">&lt;b&gt;Miscellaneous Operations&lt;/b&gt;</a>. <br/>
+ The parameter <em>arg</em> provides, depending on the operation, additional information, for example the baudrate.</p>
+<p>The table list the <em>control</em> operations.</p>
+<table  class="cmtable">
+<tr>
+<th>Parameter <em>control</em>  </th><th style="text-align:right">Bit  </th><th>Category  </th><th>Description  </th></tr>
+<tr>
+<td><a class="el" href="group__usart__mode__control.html#gad85039731478c924d3b418ec00768388">ARM_USART_MODE_ASYNCHRONOUS</a> </td><td rowspan="6" style="text-align:right">0..7  </td><td rowspan="6">Operation Mode </td><td>Set to asynchronous UART mode. <em>arg</em> specifies baudrate. </td></tr>
+<tr>
+<td><a class="el" href="group__usart__mode__control.html#ga7d3e9e0e838a3f15f8661983b9ac4573">ARM_USART_MODE_SYNCHRONOUS_MASTER</a> </td><td>Set to synchronous master mode with clock signal generation. <em>arg</em> specifies baudrate. </td></tr>
+<tr>
+<td><a class="el" href="group__usart__mode__control.html#gae78778475f3fab09a080c2279afc69fa">ARM_USART_MODE_SYNCHRONOUS_SLAVE</a> </td><td>Set to synchronous slave mode with external clock signal. </td></tr>
+<tr>
+<td><a class="el" href="group__usart__mode__control.html#ga4132136971d4f93f2e6a87c6775a9bb0">ARM_USART_MODE_SINGLE_WIRE</a> </td><td>Set to single-wire (half-duplex) mode. <em>arg</em> specifies baudrate. </td></tr>
+<tr>
+<td><a class="el" href="group__usart__mode__control.html#ga458f4f60d1d772cfd7567ae424d9aad9">ARM_USART_MODE_IRDA</a> </td><td>Set to Infra-red data mode. <em>arg</em> specifies baudrate. </td></tr>
+<tr>
+<td><a class="el" href="group__usart__mode__control.html#gade65a1c27d9097d9ef0e86c02b55cecd">ARM_USART_MODE_SMART_CARD</a> </td><td>Set to Smart Card mode. <em>arg</em> specifies baudrate. </td></tr>
+<tr>
+<td><a class="el" href="group__usart__data__bits.html#ga981ff25b4ff806f743d1af4575b87339">ARM_USART_DATA_BITS_5</a> </td><td rowspan="5" style="text-align:right">8..11  </td><td rowspan="5">Data Bits </td><td>Set to <span class="XML-Token">5</span> data bits </td></tr>
+<tr>
+<td><a class="el" href="group__usart__data__bits.html#ga92ba3d6cea5cd5c0b661667539a9e43c">ARM_USART_DATA_BITS_6</a> </td><td>Set to <span class="XML-Token">6</span> data bits </td></tr>
+<tr>
+<td><a class="el" href="group__usart__data__bits.html#gad86a2d971ce521c6f6eda28d4f8786a4">ARM_USART_DATA_BITS_7</a> </td><td>Set to <span class="XML-Token">7</span> data bits </td></tr>
+<tr>
+<td><a class="el" href="group__usart__data__bits.html#gadc5e8d17b5c69cd7f9135b849c2a4586">ARM_USART_DATA_BITS_8</a> </td><td>Set to <span class="XML-Token">8</span> data bits (default) </td></tr>
+<tr>
+<td><a class="el" href="group__usart__data__bits.html#gae238a08198dc7ac6178ae0a2a95a2764">ARM_USART_DATA_BITS_9</a> </td><td>Set to <span class="XML-Token">9</span> data bits </td></tr>
+<tr>
+<td><a class="el" href="group__usart__parity__bit.html#gabc35e8dd2cbebb730abf36959e87a207">ARM_USART_PARITY_EVEN</a> </td><td rowspan="3" style="text-align:right">12..13  </td><td rowspan="3">Parity Bit </td><td>Set to Even Parity </td></tr>
+<tr>
+<td><a class="el" href="group__usart__parity__bit.html#ga141a64650f99a1f642c3b3b6ced0eb8d">ARM_USART_PARITY_NONE</a> </td><td>Set to No Parity (default) </td></tr>
+<tr>
+<td><a class="el" href="group__usart__parity__bit.html#ga02f30181eedd3b04d650dd507bf40d6d">ARM_USART_PARITY_ODD</a> </td><td>Set to Odd Parity </td></tr>
+<tr>
+<td><a class="el" href="group__usart__stop__bits.html#ga45f51a51e654b4753a538ed33f0d7d78">ARM_USART_STOP_BITS_1</a> </td><td rowspan="4" style="text-align:right">14..15  </td><td rowspan="4">Stop Bit </td><td>Set to <span class="XML-Token">1</span> Stop bit (default) </td></tr>
+<tr>
+<td><a class="el" href="group__usart__stop__bits.html#ga17f034b5f0d0328dc636b403d1954795">ARM_USART_STOP_BITS_2</a> </td><td>Set to <span class="XML-Token">2</span> Stop bits </td></tr>
+<tr>
+<td><a class="el" href="group__usart__stop__bits.html#gafc1d0f2c95a76ef4c5152792a619f136">ARM_USART_STOP_BITS_1_5</a> </td><td>Set to <span class="XML-Token">1.5</span> Stop bits </td></tr>
+<tr>
+<td><a class="el" href="group__usart__stop__bits.html#ga47f43cb83d9955a4c90d918acaaa44ba">ARM_USART_STOP_BITS_0_5</a> </td><td>Set to <span class="XML-Token">0.5</span> Stop bits </td></tr>
+<tr>
+<td><a class="el" href="group__usart__flow__control.html#gad04aa3fe4ea4b7363aee4bdca2ed3764">ARM_USART_FLOW_CONTROL_NONE</a> </td><td rowspan="4" style="text-align:right">16..17  </td><td rowspan="4">Flow Control </td><td>No flow control signal (default) </td></tr>
+<tr>
+<td><a class="el" href="group__usart__flow__control.html#gaa7b38ebff1ce0f5c3e4479d22e66715f">ARM_USART_FLOW_CONTROL_CTS</a> </td><td>Set to use the CTS flow control signal </td></tr>
+<tr>
+<td><a class="el" href="group__usart__flow__control.html#ga80c8a78e8868165cfcc543105bfd9621">ARM_USART_FLOW_CONTROL_RTS</a> </td><td>Set to use the RTS flow control signal </td></tr>
+<tr>
+<td><a class="el" href="group__usart__flow__control.html#gab16151b5c376b41586faf033f4a42d02">ARM_USART_FLOW_CONTROL_RTS_CTS</a> </td><td>Set to use the RTS and CTS flow control signal </td></tr>
+<tr>
+<td><a class="el" href="group__usart__clock__polarity.html#ga472d459abb99f1caaff94fa0cdd2ad27">ARM_USART_CPOL0</a> </td><td rowspan="2" style="text-align:right">18  </td><td rowspan="2">Clock Polarity </td><td>CPOL=<span class="XML-Token">0</span> (default) : data are captured on rising edge (low-&gt;high transition) </td></tr>
+<tr>
+<td><a class="el" href="group__usart__clock__polarity.html#ga9e5541d8937a9d92e42aeb273138592a">ARM_USART_CPOL1</a> </td><td>CPOL=<span class="XML-Token">1</span> : data are captured on falling edge (high-&gt;lowh transition) </td></tr>
+<tr>
+<td><a class="el" href="group__usart__clock__phase.html#ga5eb27c2294b7d14a20d0c7e2ef0a47b4">ARM_USART_CPHA0</a> </td><td rowspan="2" style="text-align:right">19  </td><td rowspan="2">Clock Phase </td><td>CPHA=<span class="XML-Token">0</span> (default) : sample on first (leading) edge </td></tr>
+<tr>
+<td><a class="el" href="group__usart__clock__phase.html#ga4b9f16371870476739a198c52dba6862">ARM_USART_CPHA1</a> </td><td>CPHA=<span class="XML-Token">1</span> : sample on second (trailing) edge </td></tr>
+<tr>
+<td><a class="el" href="group__usart__misc__control.html#ga3f57bcedf610dc844e6cc3a230dba5f7">ARM_USART_ABORT_RECEIVE</a> </td><td rowspan="11" style="text-align:right">0..19  </td><td rowspan="11"><a class="anchor" id="usart_misc_tab"></a>Miscellaneous Operations <br/>
+(cannot be ORed) </td><td>Abort receive operation (see also: <a class="el" href="group__usart__interface__gr.html#gae9efabdabb5aaa17bce83339f8a58803">ARM_USART_Receive</a>) </td></tr>
+<tr>
+<td><a class="el" href="group__usart__misc__control.html#ga54e88b32bc7368ff9c44613eae735c44">ARM_USART_ABORT_SEND</a> </td><td>Abort send operation (see also: <a class="el" href="group__usart__interface__gr.html#ga5cf758b0b9d03dca68846962f73c0b08">ARM_USART_Send</a>) </td></tr>
+<tr>
+<td><a class="el" href="group__usart__misc__control.html#ga83d0ef402feb342f9939f0e4ffe26182">ARM_USART_ABORT_TRANSFER</a> </td><td>Abort transfer operation (see also: <a class="el" href="group__usart__interface__gr.html#ga878899928d34a818edd3e97d67b65c2a">ARM_USART_Transfer</a>) </td></tr>
+<tr>
+<td><a class="el" href="group__usart__misc__control.html#gab194a6f916e5b25e0262534c0cce54dc">ARM_USART_CONTROL_BREAK</a> </td><td>Enable or disable continuous Break transmission; <em>arg</em> : <span class="XML-Token">0=disabled; 1=enabled</span> </td></tr>
+<tr>
+<td><a class="el" href="group__usart__misc__control.html#gad52c08553ae203d4f7741404589b8169">ARM_USART_CONTROL_RX</a> </td><td>Enable or disable receiver; <em>arg</em> : <span class="XML-Token">0=disabled; 1=enabled</span> (see also: <a class="el" href="group__usart__interface__gr.html#gae9efabdabb5aaa17bce83339f8a58803">ARM_USART_Receive</a>; <a class="el" href="group__usart__interface__gr.html#ga878899928d34a818edd3e97d67b65c2a">ARM_USART_Transfer</a>) </td></tr>
+<tr>
+<td><a class="el" href="group__usart__misc__control.html#ga4bb5374e7db308b6ff48aa13aa9c4b8a">ARM_USART_CONTROL_SMART_CARD_NACK</a> </td><td>Enable or disable Smart Card NACK generation; <em>arg</em> : <span class="XML-Token">0=disabled; 1=enabled</span> </td></tr>
+<tr>
+<td><a class="el" href="group__usart__misc__control.html#gad96ea1a80c97f968fbc0ae4c20e7fa6a">ARM_USART_CONTROL_TX</a> </td><td>Enable or disable transmitter; <em>arg</em> : <span class="XML-Token">0=disabled; 1=enabled</span> (see also: <a class="el" href="group__usart__interface__gr.html#ga5cf758b0b9d03dca68846962f73c0b08">ARM_USART_Send</a>; <a class="el" href="group__usart__interface__gr.html#ga878899928d34a818edd3e97d67b65c2a">ARM_USART_Transfer</a>) </td></tr>
+<tr>
+<td><a class="el" href="group__usart__misc__control.html#gacd6f060afd55ffa1422567c31ebad950">ARM_USART_SET_DEFAULT_TX_VALUE</a> </td><td>Set the default transmit value (synchronous receive only); <em>arg</em> specifies the value. (see also: <a class="el" href="group__usart__interface__gr.html#gae9efabdabb5aaa17bce83339f8a58803">ARM_USART_Receive</a>) </td></tr>
+<tr>
+<td><a class="el" href="group__usart__misc__control.html#gab8565d1f26382e832327e4553d18eb02">ARM_USART_SET_IRDA_PULSE</a> </td><td>Set the IrDA pulse value in <span class="XML-Token">ns</span>; <em>arg</em> : <span class="XML-Token">0=3/16 of bit period</span> </td></tr>
+<tr>
+<td><a class="el" href="group__usart__misc__control.html#ga79698a2bd564c1f5bb1829ea422e9d3d">ARM_USART_SET_SMART_CARD_CLOCK</a> </td><td>Set the Smart Card Clock in <span class="XML-Token">Hz</span>; <em>arg</em> : <span class="XML-Token">0=Clock not set</span> </td></tr>
+<tr>
+<td><a class="el" href="group__usart__misc__control.html#ga169be809adc186c131bb8b1618005b28">ARM_USART_SET_SMART_CARD_GUARD_TIME</a> </td><td>Set the Smart Card guard time; <em>arg</em> = number of bit periods </td></tr>
+</table>
+<p><b>Example</b> </p>
+<div class="fragment"><div class="line"><span class="keyword">extern</span> <a class="code" href="group__usart__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___u_s_a_r_t" title="Access structure of the USART Driver.">ARM_DRIVER_USART</a> Driver_USART0;</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// configure to UART mode: 8 bits, no parity, 1 stop bit, no flow control, 9600 bps</span></div>
+<div class="line">status = Driver_USART0.<a class="code" href="group__usart__interface__gr.html#a6e0f47a92f626a971c5197fca6545505" title="Pointer to ARM_USART_Control : Control USART Interface.">Control</a>(<a class="code" href="group__usart__mode__control.html#gad85039731478c924d3b418ec00768388" title="UART (Asynchronous); arg = Baudrate.">ARM_USART_MODE_ASYNCHRONOUS</a> | </div>
+<div class="line">                               <a class="code" href="group__usart__data__bits.html#gadc5e8d17b5c69cd7f9135b849c2a4586" title="8 Data bits (default)">ARM_USART_DATA_BITS_8</a> | </div>
+<div class="line">                               <a class="code" href="group__usart__parity__bit.html#ga141a64650f99a1f642c3b3b6ced0eb8d" title="No Parity (default)">ARM_USART_PARITY_NONE</a> | </div>
+<div class="line">                               <a class="code" href="group__usart__stop__bits.html#ga45f51a51e654b4753a538ed33f0d7d78" title="1 Stop bit (default)">ARM_USART_STOP_BITS_1</a> | </div>
+<div class="line">                               <a class="code" href="group__usart__flow__control.html#gad04aa3fe4ea4b7363aee4bdca2ed3764" title="No Flow Control (default)">ARM_USART_FLOW_CONTROL_NONE</a>, 9600);</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// identical with above settings (default settings removed)</span></div>
+<div class="line"><span class="comment">// configure to UART mode: 8 bits, no parity, 1 stop bit, flow control, 9600 bps</span></div>
+<div class="line">status = Driver_USART0.<a class="code" href="group__usart__interface__gr.html#a6e0f47a92f626a971c5197fca6545505" title="Pointer to ARM_USART_Control : Control USART Interface.">Control</a>(<a class="code" href="group__usart__mode__control.html#gad85039731478c924d3b418ec00768388" title="UART (Asynchronous); arg = Baudrate.">ARM_USART_MODE_ASYNCHRONOUS</a>, 9600);</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// enable TX output</span></div>
+<div class="line">status = Driver_USART0.<a class="code" href="group__usart__interface__gr.html#a6e0f47a92f626a971c5197fca6545505" title="Pointer to ARM_USART_Control : Control USART Interface.">Control</a>(<a class="code" href="group__usart__misc__control.html#gad96ea1a80c97f968fbc0ae4c20e7fa6a" title="Transmitter; arg: 0=disabled, 1=enabled.">ARM_USART_CONTROL_TX</a>, 1);</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// disable RX output</span></div>
+<div class="line">status = Driver_USART0.<a class="code" href="group__usart__interface__gr.html#a6e0f47a92f626a971c5197fca6545505" title="Pointer to ARM_USART_Control : Control USART Interface.">Control</a>(<a class="code" href="group__usart__misc__control.html#gad52c08553ae203d4f7741404589b8169" title="Receiver; arg: 0=disabled, 1=enabled.">ARM_USART_CONTROL_RX</a>, 0);</div>
+</div><!-- fragment --> 
+</div>
+</div>
+<a class="anchor" id="ga1e8fdd54294b587438b2b72f4dbde004"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__usart__interface__gr.html#struct_a_r_m___u_s_a_r_t___s_t_a_t_u_s">ARM_USART_STATUS</a> ARM_USART_GetStatus </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get USART status. </p>
+<dl class="section return"><dt>Returns</dt><dd>USART status <a class="el" href="group__usart__interface__gr.html#struct_a_r_m___u_s_a_r_t___s_t_a_t_u_s">ARM_USART_STATUS</a></dd></dl>
+<p>The function <b>ARM_USART_GetStatus</b> retrieves the current USART interface status. </p>
+
+</div>
+</div>
+<a class="anchor" id="gad8eb0eb1d1c24fc725584ab93214cfc7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ARM_USART_SetModemControl </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__usart__interface__gr.html#ga7b89d709f048b6a956aa211f63e75f6f">ARM_USART_MODEM_CONTROL</a>&#160;</td>
+          <td class="paramname"><em>control</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set USART Modem Control line state. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">control</td><td><a class="el" href="group__usart__interface__gr.html#ga7b89d709f048b6a956aa211f63e75f6f">ARM_USART_MODEM_CONTROL</a> </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>The function <a class="el" href="group__usart__interface__gr.html#ga96f31f07a6721cf75de2a7a0ab723d26">ARM_USART_Uninitialize</a> de-initializes the resources of USART interface.</p>
-<p>It is called when the middleware component stops operation and releases the software resources used by the interface. </p>
+<p>The function <b>ARM_USART_SetModemControl</b> activates or deactivates the selected USART modem control line.</p>
+<p>The function <a class="el" href="group__usart__interface__gr.html#ga198af0d6a7c85b7c0b96f3d9db8c34e0">ARM_USART_GetModemStatus</a> returns information about status of the modem lines. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga198af0d6a7c85b7c0b96f3d9db8c34e0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__usart__interface__gr.html#struct_a_r_m___u_s_a_r_t___m_o_d_e_m___s_t_a_t_u_s">ARM_USART_MODEM_STATUS</a> ARM_USART_GetModemStatus </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get USART Modem Status lines state. </p>
+<dl class="section return"><dt>Returns</dt><dd>modem status <a class="el" href="group__usart__interface__gr.html#struct_a_r_m___u_s_a_r_t___m_o_d_e_m___s_t_a_t_u_s">ARM_USART_MODEM_STATUS</a></dd></dl>
+<p>The function <b>ARM_USART_GetModemStatus</b> returns the current USART Modem Status lines state.</p>
+<p>The function <a class="el" href="group__usart__interface__gr.html#gad8eb0eb1d1c24fc725584ab93214cfc7">ARM_USART_SetModemControl</a> sets the modem control lines of the USART. </p>
+
+</div>
+</div>
+<a class="anchor" id="gad796cd023f8f6300a6caadcc39d43cbf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ARM_USART_SignalEvent </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Signal USART Events. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">event</td><td><a class="el" href="group___u_s_a_r_t__events.html">USART Events</a> notification mask </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>none</dd></dl>
+<p>The function <b>ARM_USART_SignalEvent</b> is a callback function registered by the function <a class="el" href="group__usart__interface__gr.html#ga51f06805e9a6197c553fa9513ac7b9d6">ARM_USART_Initialize</a>.</p>
+<p>The parameter <em>event</em> indicates one or more events that occurred during driver operation. Each event is encoded in a separate bit and therefore it is possible to signal multiple events within the same call.</p>
+<p>Not every event is necessarily generated by the driver. This depends on the implemented capabilities stored in the data fields of the structure <a class="el" href="group__usart__interface__gr.html#struct_a_r_m___u_s_a_r_t___c_a_p_a_b_i_l_i_t_i_e_s">ARM_USART_CAPABILITIES</a>, which can be retrieved with the function <a class="el" href="group__usart__interface__gr.html#gad2d3ace1fe7627bb72945efefaeddf0a">ARM_USART_GetCapabilities</a>.</p>
+<p>The following events can be generated:</p>
+<table  class="cmtable">
+<tr>
+<th>Parameter <em>event</em> </th><th>Bit </th><th>Description  </th><th>supported when <a class="el" href="group__usart__interface__gr.html#struct_a_r_m___u_s_a_r_t___c_a_p_a_b_i_l_i_t_i_e_s" title="USART Device Driver Capabilities.">ARM_USART_CAPABILITIES</a>   </th></tr>
+<tr>
+<td><a class="el" href="group___u_s_a_r_t__events.html#gaae1c626192b16ccace93f3546e7884bf">ARM_USART_EVENT_SEND_COMPLETE</a> </td><td>0 </td><td>Occurs after call to <a class="el" href="group__usart__interface__gr.html#ga5cf758b0b9d03dca68846962f73c0b08">ARM_USART_Send</a> to indicate that all the data to be sent was processed by the driver. All the data might have been already transmitted or parts of it are still queued in transmit buffers. The driver is ready for the next call to <a class="el" href="group__usart__interface__gr.html#ga5cf758b0b9d03dca68846962f73c0b08">ARM_USART_Send</a>; however USART may still transmit data.  </td><td><em>allways supported</em>   </td></tr>
+<tr>
+<td><a class="el" href="group___u_s_a_r_t__events.html#ga08b165fd8525e44e3ce42ed6183cd30a">ARM_USART_EVENT_RECEIVE_COMPLETE</a> </td><td>1 </td><td>Occurs after call to <a class="el" href="group__usart__interface__gr.html#gae9efabdabb5aaa17bce83339f8a58803">ARM_USART_Receive</a> to indicate that all the data has been received. The driver is ready for the next call to <a class="el" href="group__usart__interface__gr.html#gae9efabdabb5aaa17bce83339f8a58803">ARM_USART_Receive</a>.  </td><td><em>allways supported</em>   </td></tr>
+<tr>
+<td><a class="el" href="group___u_s_a_r_t__events.html#ga0599793e6aa531d56ff9f81ff12605d7">ARM_USART_EVENT_TRANSFER_COMPLETE</a> </td><td>2 </td><td>Occurs after call to <a class="el" href="group__usart__interface__gr.html#ga878899928d34a818edd3e97d67b65c2a">ARM_USART_Transfer</a> to indicate that all the data has been transferred. The driver is ready for the next call to <a class="el" href="group__usart__interface__gr.html#ga878899928d34a818edd3e97d67b65c2a">ARM_USART_Transfer</a>.  </td><td><em>allways supported</em>   </td></tr>
+<tr>
+<td><a class="el" href="group___u_s_a_r_t__events.html#ga12872a3b04343f97d9535b5b0d37286d">ARM_USART_EVENT_TX_COMPLETE</a> </td><td>3 </td><td>Occurs after call to <a class="el" href="group__usart__interface__gr.html#ga878899928d34a818edd3e97d67b65c2a">ARM_USART_Transfer</a> to indicate that all the data has been transferred. The driver is ready for the next call to <a class="el" href="group__usart__interface__gr.html#ga878899928d34a818edd3e97d67b65c2a">ARM_USART_Transfer</a>.  </td><td>data field <em>event_tx_complete</em> = <span class="XML-Token">1</span>   </td></tr>
+<tr>
+<td><a class="el" href="group___u_s_a_r_t__events.html#gae57b9977bd338bf8bef86978843fa443">ARM_USART_EVENT_TX_UNDERFLOW</a> </td><td>4 </td><td>Occurs in synchronous slave mode when data is requested by the master but send/receive/transfer operation has not been started. Data field <em>rx_underflow</em> = <span class="XML-Token">1</span> of <a class="el" href="group__usart__interface__gr.html#struct_a_r_m___u_s_a_r_t___s_t_a_t_u_s">ARM_USART_STATUS</a>.  </td><td><em>allways supported</em>   </td></tr>
+<tr>
+<td><a class="el" href="group___u_s_a_r_t__events.html#ga43a0869daf83abb3fea96926a97047ad">ARM_USART_EVENT_RX_OVERFLOW</a> </td><td>5 </td><td>Occurs when data is lost during receive/transfer operation or when data is lost because receive operation in asynchronous mode or receive/send/transfer operation in synchronous slave mode has not been started. Data field <em>rx_overflow</em> = <span class="XML-Token">1</span> of <a class="el" href="group__usart__interface__gr.html#struct_a_r_m___u_s_a_r_t___s_t_a_t_u_s">ARM_USART_STATUS</a>.  </td><td><em>allways supported</em>   </td></tr>
+<tr>
+<td>ARM_USART_EVENT_RX_TIMEOUT </td><td>6 </td><td>Occurs during receive when idle time is detected between consecutive characters (idle time is hardware dependent). </td><td>data field <em>event_rx_timeout</em> = <span class="XML-Token">1</span>   </td></tr>
+<tr>
+<td><a class="el" href="group___u_s_a_r_t__events.html#gaa1d19e48faf2bdc2a976de448928288e">ARM_USART_EVENT_RX_BREAK</a> </td><td>7 </td><td>Occurs when break is detected during receive. Data field <em>rx_break</em> = <span class="XML-Token">1</span> of <a class="el" href="group__usart__interface__gr.html#struct_a_r_m___u_s_a_r_t___s_t_a_t_u_s">ARM_USART_STATUS</a>.  </td><td><em>allways supported</em>   </td></tr>
+<tr>
+<td><a class="el" href="group___u_s_a_r_t__events.html#ga2d97495c650220fbfe9d6977d0953127">ARM_USART_EVENT_RX_FRAMING_ERROR</a> </td><td>8 </td><td>Occurs when framing error is detected during receive. Data field <em>rx_framing_error</em> = <span class="XML-Token">1</span> of <a class="el" href="group__usart__interface__gr.html#struct_a_r_m___u_s_a_r_t___s_t_a_t_u_s">ARM_USART_STATUS</a>.  </td><td><em>allways supported</em>   </td></tr>
+<tr>
+<td><a class="el" href="group___u_s_a_r_t__events.html#gadb4fec2530fc5ae3ad2b056741883451">ARM_USART_EVENT_RX_PARITY_ERROR</a> </td><td>9 </td><td>Occurs when parity error is detected during receive. Data field <em>rx_parity_error</em> = <span class="XML-Token">1</span> of <a class="el" href="group__usart__interface__gr.html#struct_a_r_m___u_s_a_r_t___s_t_a_t_u_s">ARM_USART_STATUS</a>.  </td><td><em>allways supported</em>   </td></tr>
+<tr>
+<td>ARM_USART_EVENT_CTS </td><td>10 </td><td>Indicates that CTS modem line state has changed. Data field <em>cts</em> = <span class="XML-Token">1</span> of <a class="el" href="group__usart__interface__gr.html#struct_a_r_m___u_s_a_r_t___m_o_d_e_m___s_t_a_t_u_s">ARM_USART_MODEM_STATUS</a>.  </td><td>data field <em>event_cts</em> = <span class="XML-Token">1</span> and <br/>
+ data field <em>cts</em> = <span class="XML-Token">1</span>   </td></tr>
+<tr>
+<td>ARM_USART_EVENT_CTS </td><td>11 </td><td>Indicates that DSR modem line state has changed. Data field <em>dsr</em> = <span class="XML-Token">1</span> of <a class="el" href="group__usart__interface__gr.html#struct_a_r_m___u_s_a_r_t___m_o_d_e_m___s_t_a_t_u_s">ARM_USART_MODEM_STATUS</a>.  </td><td>data field <em>event_dsr</em> = <span class="XML-Token">1</span> and <br/>
+ data field <em>dsr</em> = <span class="XML-Token">1</span>   </td></tr>
+<tr>
+<td>ARM_USART_EVENT_DCD </td><td>12 </td><td>Indicates that DCD modem line state has changed. Data field <em>dcd</em> = <span class="XML-Token">1</span> of <a class="el" href="group__usart__interface__gr.html#struct_a_r_m___u_s_a_r_t___m_o_d_e_m___s_t_a_t_u_s">ARM_USART_MODEM_STATUS</a>.  </td><td>data field <em>event_dcd</em> = <span class="XML-Token">1</span> and <br/>
+ data field <em>dcd</em> = <span class="XML-Token">1</span>   </td></tr>
+<tr>
+<td>ARM_USART_EVENT_RI </td><td>13 </td><td>Indicates that RI modem line state has changed. Data field <em>ri</em> = <span class="XML-Token">1</span> of <a class="el" href="group__usart__interface__gr.html#struct_a_r_m___u_s_a_r_t___m_o_d_e_m___s_t_a_t_u_s">ARM_USART_MODEM_STATUS</a>.  </td><td>data field <em>event_ri</em> = <span class="XML-Token">1</span> and <br/>
+ data field <em>ri</em> = <span class="XML-Token">1</span>   </td></tr>
+</table>
 
 </div>
 </div>
@@ -1555,7 +1534,7 @@ RI state: 1=Active, 0=Inactive. </td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:43 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:03 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

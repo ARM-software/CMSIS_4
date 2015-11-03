@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-CORE
-   &#160;<span id="projectnumber">Version 4.10</span>
+   &#160;<span id="projectnumber">Version 4.20</span>
    </div>
    <div id="projectbrief">CMSIS-CORE support for Cortex-M processor-based devices</div>
   </td>
@@ -263,10 +263,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>The function turns off the entire data cache.</p>
-<dl class="section note"><dt>Note</dt><dd><ul>
-<li>When disabling the data cache, you must clean (<a class="el" href="group___dcache__functions__m7.html#ga55583e3065c6eabca204b8b89b121c4c">SCB_CleanDCache</a>) the entire cache to ensure that any dirty data is flushed to external memory. </li>
-</ul>
-</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>When disabling the data cache, you must clean (<a class="el" href="group___dcache__functions__m7.html#ga55583e3065c6eabca204b8b89b121c4c">SCB_CleanDCache</a>) the entire cache to ensure that any dirty data is flushed to external memory. </dd></dl>
 
 </div>
 </div>
@@ -284,15 +281,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>The function turns on the entire data cache. </p>
-<dl class="section note"><dt>Note</dt><dd><ul>
-<li>Before enabling the data cache, you must invalidate the entire data cache (<a class="el" href="group___dcache__functions__m7.html#gace2d30db08887d0bdb818b8a785a5ce6">SCB_InvalidateDCache</a>), because external memory might have changed from when the cache was disabled. </li>
-</ul>
-</dd>
+<dl class="section note"><dt>Note</dt><dd>Before enabling the data cache, you must invalidate the entire data cache (<a class="el" href="group___dcache__functions__m7.html#gace2d30db08887d0bdb818b8a785a5ce6">SCB_InvalidateDCache</a>), because external memory might have changed from when the cache was disabled.</dd>
 <dd>
-<ul>
-<li>After reset, you must invalidate (<a class="el" href="group___dcache__functions__m7.html#gace2d30db08887d0bdb818b8a785a5ce6">SCB_InvalidateDCache</a>) each cache before enabling it. </li>
-</ul>
-</dd></dl>
+After reset, you must invalidate (<a class="el" href="group___dcache__functions__m7.html#gace2d30db08887d0bdb818b8a785a5ce6">SCB_InvalidateDCache</a>) each cache before enabling it. </dd></dl>
 
 </div>
 </div>
@@ -310,10 +301,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>The function invalidates the entire data cache.</p>
-<dl class="section note"><dt>Note</dt><dd><ul>
-<li>After reset, you must invalidate each cache before enabling (<a class="el" href="group___dcache__functions__m7.html#ga63aa640d9006021a796a5dcf9c7180b6">SCB_EnableDCache</a>) it. </li>
-</ul>
-</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>After reset, you must invalidate each cache before enabling (<a class="el" href="group___dcache__functions__m7.html#ga63aa640d9006021a796a5dcf9c7180b6">SCB_EnableDCache</a>) it. </dd></dl>
 
 </div>
 </div>
@@ -356,7 +344,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:40 for CMSIS-CORE by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:39:59 for CMSIS-CORE by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

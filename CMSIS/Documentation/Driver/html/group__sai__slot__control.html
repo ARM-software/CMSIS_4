@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -156,21 +156,17 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga48d4a142f3a1bb0fa4e88c9e427932a0"></a>
+<a class="anchor" id="gad77c6c0de2a4e7223a0c42e1594f0a2c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_SAI_SLOT_OFFSET</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">n</td><td>)</td>
-          <td>&#160;&#160;&#160;(((n)&amp;0x1FU) &lt;&lt; ARM_SAI_SLOT_OFFSET_Pos)</td>
+          <td class="memname">#define ARM_SAI_SLOT_SIZE_DEFAULT&#160;&#160;&#160;(0U &lt;&lt; ARM_SAI_SLOT_SIZE_Pos)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Offset of first data bit in slot (0..31); default=0; User Protocol only (ignored otherwise) </p>
+<p>Slot size is equal to data size (default) </p>
 
 </div>
 </div>
@@ -202,17 +198,21 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gad77c6c0de2a4e7223a0c42e1594f0a2c"></a>
+<a class="anchor" id="ga48d4a142f3a1bb0fa4e88c9e427932a0"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_SAI_SLOT_SIZE_DEFAULT&#160;&#160;&#160;(0U &lt;&lt; ARM_SAI_SLOT_SIZE_Pos)</td>
+          <td class="memname">#define ARM_SAI_SLOT_OFFSET</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">n</td><td>)</td>
+          <td>&#160;&#160;&#160;(((n)&amp;0x1FU) &lt;&lt; ARM_SAI_SLOT_OFFSET_Pos)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Slot size is equal to data size (default) </p>
+<p>Offset of first data bit in slot (0..31); default=0; User Protocol only (ignored otherwise) </p>
 
 </div>
 </div>
@@ -221,7 +221,7 @@ Macros</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:42 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:03 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

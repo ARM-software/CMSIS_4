@@ -1,5 +1,5 @@
 /* -----------------------------------------------------------------------------
- * Copyright (c) 2013-2014 ARM Ltd.
+ * Copyright (c) 2013-2015 ARM Ltd.
  *
  * This software is provided 'as-is', without any express or implied warranty.
  * In no event will the authors be held liable for any damages arising from
@@ -18,14 +18,16 @@
  * 3. This notice may not be removed or altered from any source distribution.
  *
  *
- * $Date:        3. November 2014
- * $Revision:    V1.01
+ * $Date:        16. June 2015
+ * $Revision:    V1.2
  *
  * Project:      GPDMA Driver for NXP LPC18xx
  * -------------------------------------------------------------------------- */
- 
+
 /* History:
- *  Version 1.01
+ *  Version 1.2
+ *    - Added GPDMA_ChannelGetCount function.
+ *  Version 1.1
  *    - Updated Initialize and Uninitialize functions
  */
 
@@ -48,6 +50,8 @@ static GPDMA_SignalEvent_t GPDMA_cb_event[GPDMA_NUMBER_OF_CHANNELS];
 static uint32_t Channel_active = 0;
 static uint32_t Init_cnt       = 0;
 
+static uint32_t Channel_transfer_sz[GPDMA_NUMBER_OF_CHANNELS] = {0};
+
 #define GPDMA_CHANNEL(n)  ((GPDMA_CHANNEL_REG *) (&(LPC_GPDMA->C0SRCADDR) + (n * 8)))
 
 
@@ -59,7 +63,7 @@ static uint32_t Init_cnt       = 0;
    - \b  0: function succeeded
    - \b -1: function failed
 */
-static int32_t Set_Channel_active_flag (uint8_t ch) {
+__inline static int32_t Set_Channel_active_flag (uint8_t ch) {
   uint32_t val;
 
   do {
@@ -78,7 +82,7 @@ static int32_t Set_Channel_active_flag (uint8_t ch) {
   \brief       Protected clear of channel active flag
   \param[in]   ch        Channel number (0..7)
 */
-static void Clear_Channel_active_flag (uint8_t ch) {
+__inline static void Clear_Channel_active_flag (uint8_t ch) {
   while(__STREXW((__LDREXW(&Channel_active) & ~(1 << ch)), &Channel_active));
 }
 
@@ -220,6 +224,10 @@ int32_t GPDMA_ChannelConfigure (uint8_t              ch,
   dma_ch->DESTADDR = dest_addr;
 
   dma_ch->CONTROL = control;
+
+  // Save transfer size
+  Channel_transfer_sz[ch] = control & GPDMA_CH_CONTROL_TRANSFERSIZE_MSK;
+
   dma_ch->CONFIG  = config;
 
   if ((config & GPDMA_CONFIG_E) == 0) {
@@ -286,6 +294,20 @@ uint32_t GPDMA_ChannelGetStatus (uint8_t ch) {
 
   if (Channel_active & (1 << ch)) return 1;
   else                            return 0;
+}
+
+/**
+  \fn          uint32_t GPDMA_ChannelGetCount (uint8_t ch)
+  \brief       Get number of transfered data
+  \param[in]   ch Channel number (0..7)
+  \returns     Numer of transfered data
+*/
+uint32_t GPDMA_ChannelGetCount (uint8_t ch) {
+
+  // Check if channel is valid
+  if (ch >= GPDMA_NUMBER_OF_CHANNELS) return 0;
+
+  return (Channel_transfer_sz[ch] - (GPDMA_CHANNEL(ch)->CONTROL & GPDMA_CH_CONTROL_TRANSFERSIZE_MSK));
 }
 
 /**

@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -146,7 +146,7 @@ Enumerations</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description</h2>
 <p>Definitions common in all driver interfaces (Driver_Common.h) </p>
-<p>The following definitions are common in all CMSIS-Driver interfaces. Refer to <a class="el" href="_theory_operation.html#DriverFunctions">Driver Functions</a> for a general overview. </p>
+<p>The following definitions are common in all CMSIS-Driver interfaces. Refer to <a class="el" href="_theory_operation.html#DriverFunctions">Common Driver Functions</a> for a general overview. </p>
 <hr/><h2 class="groupheader">Data Structure Documentation</h2>
 <a name="struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n" id="struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n"></a>
 <div class="memitem">
@@ -199,7 +199,8 @@ Driver version. </td></tr>
 </div><div class="memdoc">
 
 <p>General power states. </p>
-<p>The access structure of each CMSIS-Driver provides the function <b>PowerControl</b>, which handles the power profile for a peripheral using the parameter <a class="el" href="group__common__drv__gr.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5">ARM_POWER_STATE</a>. Depending on this parameter, the peripheral will operate at full speed, detect just events, or is completely un-powered. </p>
+<p>The access structure of each CMSIS-Driver provides the function <b>PowerControl</b>, which handles the power profile for a peripheral using the parameter <a class="el" href="group__common__drv__gr.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5">ARM_POWER_STATE</a>. Depending on this parameter, the peripheral will operate at full speed, detect just events, or is completely un-powered.</p>
+<p>Refer to <a class="el" href="_theory_operation.html#CallSequence">Function Call Sequence</a> for more information. </p>
 <dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
 <tr><td valign="top"><em><a class="anchor" id="ga47d6d7c31f88f3b8ae4aaf9d8444afa5ab6f5becc85ebd51c3dd2524a95d2ca35"></a>ARM_POWER_OFF</em>&nbsp;</td><td>
 <p>Power off: no operation possible. </p>
@@ -221,7 +222,7 @@ Driver version. </td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:42 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:02 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

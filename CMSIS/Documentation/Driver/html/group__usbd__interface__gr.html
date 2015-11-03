@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -248,7 +248,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <div class="textblock"><p>Access structure of the USB Device Driver. </p>
-<p>The functions of the USB Device driver are accessed by function pointers. Refer to <a class="el" href="_theory_operation.html#DriverFunctions">Driver Functions</a> for overview information.</p>
+<p>The functions of the USB Device driver are accessed by function pointers. Refer to <a class="el" href="_theory_operation.html#DriverFunctions">Common Driver Functions</a> for overview information.</p>
 <p>Each instance of an USBD provides such an access struct. The instance is indicated by a postfix in the symbol name of the access struct, for example:</p>
 <ul>
 <li><b>Driver_USBD0</b> is the name of the access struct of the first instance (no. 0).</li>
@@ -314,6 +314,76 @@ Functions</h2></td></tr>
 <tr class="separator:a31d1785d6d46f75241ebbf6b5a6b4919"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h4 class="groupheader">Field Documentation</h4>
+<a class="anchor" id="a8834b281da48583845c044a81566c1b3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a>(* GetVersion)(void)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__usbd__interface__gr.html#ga1dcb8b7790f0e3613ee3da77e5fd18fc">ARM_USBD_GetVersion</a> : Get driver version. </p>
+
+</div>
+</div>
+<a class="anchor" id="a52045edf0f555a0f0ecdf37a5e169f7a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__usbd__interface__gr.html#struct_a_r_m___u_s_b_d___c_a_p_a_b_i_l_i_t_i_e_s">ARM_USBD_CAPABILITIES</a>(* GetCapabilities)(void)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__usbd__interface__gr.html#ga178d01ab7896e1c675b90bbccfe8ea7d">ARM_USBD_GetCapabilities</a> : Get driver capabilities. </p>
+
+</div>
+</div>
+<a class="anchor" id="a84439aa5677d330d257a4b43e48d6426"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* Initialize)(<a class="el" href="group__usbd__interface__gr.html#ga7c1878799699ddd34cec696da499f7bd">ARM_USBD_SignalDeviceEvent_t</a> cb_device_event, <a class="el" href="group__usbd__interface__gr.html#gaae754763700fc5059a6bde57ea2d4e2c">ARM_USBD_SignalEndpointEvent_t</a> cb_endpoint_event)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__usbd__interface__gr.html#ga60b95c9c0c6767ff5938464cfd748f81">ARM_USBD_Initialize</a> : Initialize USB Device Interface. </p>
+
+</div>
+</div>
+<a class="anchor" id="adcf20681a1402869ecb5c6447fada17b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* Uninitialize)(void)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__usbd__interface__gr.html#gafaead6713f141be1734de0110eda966b">ARM_USBD_Uninitialize</a> : De-initialize USB Device Interface. </p>
+
+</div>
+</div>
+<a class="anchor" id="aba8f1c8019af95ffe19c32403e3240ef"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* PowerControl)(<a class="el" href="group__common__drv__gr.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5">ARM_POWER_STATE</a> state)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__usbd__interface__gr.html#gaa5bdaac19f6df30c6e569abef17cdb42">ARM_USBD_PowerControl</a> : Control USB Device Interface Power. </p>
+
+</div>
+</div>
 <a class="anchor" id="a71d312ce5c5335c6a035da55c25848e4"></a>
 <div class="memitem">
 <div class="memproto">
@@ -384,6 +454,20 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ab5593bf9bb516cc7b36c6072fc55260f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* ReadSetupPacket)(uint8_t *setup)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__usbd__interface__gr.html#ga6bc0ebf699a0f28330f21cab83f85e9e">ARM_USBD_ReadSetupPacket</a> : Read setup packet received over Control Endpoint. </p>
+
+</div>
+</div>
 <a class="anchor" id="a9fcafd15149d35022b05cf3c396e714e"></a>
 <div class="memitem">
 <div class="memproto">
@@ -395,6 +479,20 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Pointer to <a class="el" href="group__usbd__interface__gr.html#ga62d7d5bdcf9ca7bf7e6d8434368abad8">ARM_USBD_EndpointConfigure</a> : Configure USB Endpoint. </p>
+
+</div>
+</div>
+<a class="anchor" id="ad45578fffbd046231f69aa058d29bba5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* EndpointUnconfigure)(uint8_t ep_addr)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__usbd__interface__gr.html#gaca913df5188dc0f0c4f707b57c2a88fc">ARM_USBD_EndpointUnconfigure</a> : Unconfigure USB Endpoint. </p>
 
 </div>
 </div>
@@ -426,20 +524,6 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a4e36fd46291f71e4a748264e2f6ae431"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* EndpointTransferAbort)(uint8_t ep_addr)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__usbd__interface__gr.html#ga7cf3bcc105dbb8cbdc915e8caca8529e">ARM_USBD_EndpointTransferAbort</a> : Abort current USB Endpoint transfer. </p>
-
-</div>
-</div>
 <a class="anchor" id="a217e38c26bbcdecbad8c984753b2597a"></a>
 <div class="memitem">
 <div class="memproto">
@@ -454,31 +538,17 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ad45578fffbd046231f69aa058d29bba5"></a>
+<a class="anchor" id="a4e36fd46291f71e4a748264e2f6ae431"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int32_t(* EndpointUnconfigure)(uint8_t ep_addr)</td>
+          <td class="memname">int32_t(* EndpointTransferAbort)(uint8_t ep_addr)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Pointer to <a class="el" href="group__usbd__interface__gr.html#gaca913df5188dc0f0c4f707b57c2a88fc">ARM_USBD_EndpointUnconfigure</a> : Unconfigure USB Endpoint. </p>
-
-</div>
-</div>
-<a class="anchor" id="a52045edf0f555a0f0ecdf37a5e169f7a"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__usbd__interface__gr.html#struct_a_r_m___u_s_b_d___c_a_p_a_b_i_l_i_t_i_e_s">ARM_USBD_CAPABILITIES</a>(* GetCapabilities)(void)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__usbd__interface__gr.html#ga178d01ab7896e1c675b90bbccfe8ea7d">ARM_USBD_GetCapabilities</a> : Get driver capabilities. </p>
+<p>Pointer to <a class="el" href="group__usbd__interface__gr.html#ga7cf3bcc105dbb8cbdc915e8caca8529e">ARM_USBD_EndpointTransferAbort</a> : Abort current USB Endpoint transfer. </p>
 
 </div>
 </div>
@@ -496,76 +566,6 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a8834b281da48583845c044a81566c1b3"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a>(* GetVersion)(void)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__usbd__interface__gr.html#ga1dcb8b7790f0e3613ee3da77e5fd18fc">ARM_USBD_GetVersion</a> : Get driver version. </p>
-
-</div>
-</div>
-<a class="anchor" id="a84439aa5677d330d257a4b43e48d6426"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* Initialize)(<a class="el" href="group__usbd__interface__gr.html#ga7c1878799699ddd34cec696da499f7bd">ARM_USBD_SignalDeviceEvent_t</a> cb_device_event, <a class="el" href="group__usbd__interface__gr.html#gaae754763700fc5059a6bde57ea2d4e2c">ARM_USBD_SignalEndpointEvent_t</a> cb_endpoint_event)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__usbd__interface__gr.html#ga60b95c9c0c6767ff5938464cfd748f81">ARM_USBD_Initialize</a> : Initialize USB Device Interface. </p>
-
-</div>
-</div>
-<a class="anchor" id="aba8f1c8019af95ffe19c32403e3240ef"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* PowerControl)(<a class="el" href="group__common__drv__gr.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5">ARM_POWER_STATE</a> state)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__usbd__interface__gr.html#gaa5bdaac19f6df30c6e569abef17cdb42">ARM_USBD_PowerControl</a> : Control USB Device Interface Power. </p>
-
-</div>
-</div>
-<a class="anchor" id="ab5593bf9bb516cc7b36c6072fc55260f"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* ReadSetupPacket)(uint8_t *setup)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__usbd__interface__gr.html#ga6bc0ebf699a0f28330f21cab83f85e9e">ARM_USBD_ReadSetupPacket</a> : Read setup packet received over Control Endpoint. </p>
-
-</div>
-</div>
-<a class="anchor" id="adcf20681a1402869ecb5c6447fada17b"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* Uninitialize)(void)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__usbd__interface__gr.html#gafaead6713f141be1734de0110eda966b">ARM_USBD_Uninitialize</a> : De-initialize USB Device Interface. </p>
-
-</div>
-</div>
 
 </div>
 </div>
@@ -579,7 +579,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <div class="textblock"><p>USB Device Driver Capabilities. </p>
-<p>A USB Device driver can be implemented with different capabilities. The bitfield members of this struct encode the capabilities implemented by this driver.</p>
+<p>A USB Device driver can be implemented with different capabilities. The data fields of this structure encode the capabilities implemented by this driver.</p>
 <p><b>Returned by:</b></p>
 <ul>
 <li><a class="el" href="group__usbd__interface__gr.html#ga178d01ab7896e1c675b90bbccfe8ea7d">ARM_USBD_GetCapabilities</a></li>
@@ -588,11 +588,11 @@ Functions</h2></td></tr>
 </div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a class="anchor" id="a72d905bc20735bafda40d73c91829709"></a>uint32_t</td>
+<a class="anchor" id="a6673fc1aa13f62122ecf51e52a605c6e"></a>uint32_t</td>
 <td class="fieldname">
-event_vbus_off: 1</td>
+vbus_detection: 1</td>
 <td class="fielddoc">
-Signal VBUS Off event. </td></tr>
+VBUS detection. </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="a53f95b9ecb7c84197947e7542501c7d3"></a>uint32_t</td>
 <td class="fieldname">
@@ -600,11 +600,11 @@ event_vbus_on: 1</td>
 <td class="fielddoc">
 Signal VBUS On event. </td></tr>
 <tr><td class="fieldtype">
-<a class="anchor" id="a6673fc1aa13f62122ecf51e52a605c6e"></a>uint32_t</td>
+<a class="anchor" id="a72d905bc20735bafda40d73c91829709"></a>uint32_t</td>
 <td class="fieldname">
-vbus_detection: 1</td>
+event_vbus_off: 1</td>
 <td class="fielddoc">
-VBUS detection. </td></tr>
+Signal VBUS Off event. </td></tr>
 </table>
 
 </div>
@@ -619,7 +619,7 @@ VBUS detection. </td></tr>
       </table>
 </div><div class="memdoc">
 <div class="textblock"><p>USB Device State. </p>
-<p>This structure stores information about the state of the USB Device. The bitfields encode whether the device is powered, the established speed and if active.</p>
+<p>This structure stores information about the state of the USB Device. The data fields encode the established speed, whether the device is powered and active.</p>
 <p><b>Returned by:</b></p>
 <ul>
 <li><a class="el" href="group__usbd__interface__gr.html#ga7624d6b2cbe5e6ab5016206ce641eee2">ARM_USBD_DeviceGetState</a> </li>
@@ -627,11 +627,11 @@ VBUS detection. </td></tr>
 </div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a class="anchor" id="ab22b96a3efad48f5a542f46c1b224800"></a>uint32_t</td>
+<a class="anchor" id="aa961d5fb2bd3d2960578f1ac3b903070"></a>uint32_t</td>
 <td class="fieldname">
-active: 1</td>
+vbus: 1</td>
 <td class="fielddoc">
-USB Device active flag. </td></tr>
+USB Device VBUS flag. </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="a220859a8b5da0232739a11cbe7f79fc5"></a>uint32_t</td>
 <td class="fieldname">
@@ -639,11 +639,11 @@ speed: 2</td>
 <td class="fielddoc">
 USB Device speed setting (ARM_USB_SPEED_xxx) </td></tr>
 <tr><td class="fieldtype">
-<a class="anchor" id="aa961d5fb2bd3d2960578f1ac3b903070"></a>uint32_t</td>
+<a class="anchor" id="ab22b96a3efad48f5a542f46c1b224800"></a>uint32_t</td>
 <td class="fieldname">
-vbus: 1</td>
+active: 1</td>
 <td class="fielddoc">
-USB Device VBUS flag. </td></tr>
+USB Device active flag. </td></tr>
 </table>
 
 </div>
@@ -688,6 +688,179 @@ USB Device VBUS flag. </td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="ga1dcb8b7790f0e3613ee3da77e5fd18fc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a> ARM_USBD_GetVersion </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get driver version. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a></dd></dl>
+<p>The function <b>ARM_USBD_GetVersion</b> returns version information of the driver implementation in <a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a></p>
+<ul>
+<li>API version is the version of the CMSIS-Driver specification used to implement this driver.</li>
+<li>Driver version is source code version of the actual driver implementation.</li>
+</ul>
+<p>Example: </p>
+<div class="fragment"><div class="line"><span class="keyword">extern</span> <a class="code" href="group__usbd__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___u_s_b_d" title="Access structure of the USB Device Driver.">ARM_DRIVER_USBD</a> Driver_USBD0;</div>
+<div class="line"><a class="code" href="group__usbd__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___u_s_b_d" title="Access structure of the USB Device Driver.">ARM_DRIVER_USBD</a> *drv_info;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> setup_usbd (<span class="keywordtype">void</span>)  {</div>
+<div class="line">  <a class="code" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n" title="Driver Version.">ARM_DRIVER_VERSION</a>  version;</div>
+<div class="line"> </div>
+<div class="line">  drv_info = &amp;Driver_USBD0;  </div>
+<div class="line">  version = drv_info-&gt;<a class="code" href="group__usbd__interface__gr.html#a8834b281da48583845c044a81566c1b3" title="Pointer to ARM_USBD_GetVersion : Get driver version.">GetVersion</a> ();</div>
+<div class="line">  <span class="keywordflow">if</span> (version.<a class="code" href="group__common__drv__gr.html#ad180da20fbde1d3dafc074af87c19540" title="API version.">api</a> &lt; 0x10A)   {      <span class="comment">// requires at minimum API version 1.10 or higher</span></div>
+<div class="line">    <span class="comment">// error handling</span></div>
+<div class="line">    <span class="keywordflow">return</span>;</div>
+<div class="line">  }</div>
+<div class="line">}</div>
+</div><!-- fragment --> 
+</div>
+</div>
+<a class="anchor" id="ga178d01ab7896e1c675b90bbccfe8ea7d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__usbd__interface__gr.html#struct_a_r_m___u_s_b_d___c_a_p_a_b_i_l_i_t_i_e_s">ARM_USBD_CAPABILITIES</a> ARM_USBD_GetCapabilities </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get driver capabilities. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__usbd__interface__gr.html#struct_a_r_m___u_s_b_d___c_a_p_a_b_i_l_i_t_i_e_s">ARM_USBD_CAPABILITIES</a></dd></dl>
+<p>The function <b>ARM_USBD_GetCapabilities</b> returns information about capabilities in this driver implementation. The data fields of the structure <a class="el" href="group__usbd__interface__gr.html#struct_a_r_m___u_s_b_d___c_a_p_a_b_i_l_i_t_i_e_s">ARM_USBD_CAPABILITIES</a> encode various capabilities, for example if the hardware can create signal events using the <a class="el" href="group__usbd__interface__gr.html#gafe58a4db1d26b21ca5d418ee49e103a5">ARM_USBD_SignalDeviceEvent</a> callback function.</p>
+<p>Example: </p>
+<div class="fragment"><div class="line"><span class="keyword">extern</span> <a class="code" href="group__usbd__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___u_s_b_d" title="Access structure of the USB Device Driver.">ARM_DRIVER_USBD</a> Driver_USBD0;</div>
+<div class="line"><a class="code" href="group__usbd__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___u_s_b_d" title="Access structure of the USB Device Driver.">ARM_DRIVER_USBD</a> *drv_info;</div>
+<div class="line">  </div>
+<div class="line"><span class="keywordtype">void</span> read_capabilities (<span class="keywordtype">void</span>)  {</div>
+<div class="line">  <a class="code" href="group__usbd__interface__gr.html#struct_a_r_m___u_s_b_d___c_a_p_a_b_i_l_i_t_i_e_s" title="USB Device Driver Capabilities.">ARM_USBD_CAPABILITIES</a> drv_capabilities;</div>
+<div class="line"> </div>
+<div class="line">  drv_info = &amp;Driver_USBD0;  </div>
+<div class="line">  drv_capabilities = drv_info-&gt;<a class="code" href="group__usbd__interface__gr.html#a52045edf0f555a0f0ecdf37a5e169f7a" title="Pointer to ARM_USBD_GetCapabilities : Get driver capabilities.">GetCapabilities</a> ();</div>
+<div class="line">  <span class="comment">// interrogate capabilities</span></div>
+<div class="line"> </div>
+<div class="line">}</div>
+</div><!-- fragment --> 
+</div>
+</div>
+<a class="anchor" id="ga60b95c9c0c6767ff5938464cfd748f81"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ARM_USBD_Initialize </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__usbd__interface__gr.html#ga7c1878799699ddd34cec696da499f7bd">ARM_USBD_SignalDeviceEvent_t</a>&#160;</td>
+          <td class="paramname"><em>cb_device_event</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__usbd__interface__gr.html#gaae754763700fc5059a6bde57ea2d4e2c">ARM_USBD_SignalEndpointEvent_t</a>&#160;</td>
+          <td class="paramname"><em>cb_endpoint_event</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialize USB Device Interface. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">cb_device_event</td><td>Pointer to <a class="el" href="group__usbd__interface__gr.html#gafe58a4db1d26b21ca5d418ee49e103a5">ARM_USBD_SignalDeviceEvent</a> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">cb_endpoint_event</td><td>Pointer to <a class="el" href="group__usbd__interface__gr.html#ga9aa5bc5cb45084194a77fae1457f6575">ARM_USBD_SignalEndpointEvent</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
+<p>The function <b>ARM_USBD_Initialize</b> initializes the USB Device interface. It is called when the middleware component starts operation.</p>
+<p>The function performs the following operations:</p>
+<ul>
+<li>Initializes the resources needed for the USBD interface.</li>
+<li>Registers the <a class="el" href="group__usbd__interface__gr.html#gafe58a4db1d26b21ca5d418ee49e103a5">ARM_USBD_SignalDeviceEvent</a> callback function.</li>
+<li>Registers the <a class="el" href="group__usbd__interface__gr.html#ga9aa5bc5cb45084194a77fae1457f6575">ARM_USBD_SignalEndpointEvent</a> callback function.</li>
+</ul>
+<p>The parameter <em>cb_device_event</em> is a pointer to the <a class="el" href="group__usbd__interface__gr.html#gafe58a4db1d26b21ca5d418ee49e103a5">ARM_USBD_SignalDeviceEvent</a> callback function; use a NULL pointer when no device callback signals are required. <br/>
+ The parameter <em>cb_endpoint_event</em> is a pointer to the <a class="el" href="group__usbd__interface__gr.html#ga9aa5bc5cb45084194a77fae1457f6575">ARM_USBD_SignalEndpointEvent</a> callback function.</p>
+<p><b>Example:</b> </p>
+<ul>
+<li>see <a class="el" href="group__usbd__interface__gr.html">USB Device Interface</a> - Driver Functions </li>
+</ul>
+
+</div>
+</div>
+<a class="anchor" id="gafaead6713f141be1734de0110eda966b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ARM_USBD_Uninitialize </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>De-initialize USB Device Interface. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
+<p>The function <b>ARM_USBD_Uninitialize</b> de-initializes the resources of USBD interface.</p>
+<p>It is called when the middleware component stops operation and releases the software resources used by the interface. </p>
+
+</div>
+</div>
+<a class="anchor" id="gaa5bdaac19f6df30c6e569abef17cdb42"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ARM_USBD_PowerControl </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__common__drv__gr.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5">ARM_POWER_STATE</a>&#160;</td>
+          <td class="paramname"><em>state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Control USB Device Interface Power. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">state</td><td>Power state </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
+<p>The function <b>ARM_USBD_PowerControl</b> operates the power modes of the USB Device interface.</p>
+<p>The parameter <em>state</em> sets the operation and can have the following values:</p>
+<ul>
+<li><a class="el" href="_driver___common_8h.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5abed52b77a9ce4775570e44a842b1295e">ARM_POWER_FULL</a> : set-up peripheral for data transfers, enable interrupts (NVIC) and optionally DMA. Can be called multiple times. If the peripheral is already in this mode the function performs no operation and returns with <a class="el" href="group__execution__status.html#ga85752c5de59e8adeb001e35ff5be6be7">ARM_DRIVER_OK</a>.</li>
+<li><a class="el" href="_driver___common_8h.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5a9ef9e57cbcc948d0e22314e73dc8c434">ARM_POWER_LOW</a> : may use power saving. Returns <a class="el" href="group__execution__status.html#ga2efa59e480d82697795439220e6884e4">ARM_DRIVER_ERROR_UNSUPPORTED</a> when not implemented.</li>
+<li><a class="el" href="_driver___common_8h.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5ab6f5becc85ebd51c3dd2524a95d2ca35">ARM_POWER_OFF</a> : terminates any pending data transfers, disables peripheral, disables related interrupts and DMA.</li>
+</ul>
+<p>Refer to <a class="el" href="_theory_operation.html#CallSequence">Function Call Sequence</a> for more information. </p>
+
+</div>
+</div>
 <a class="anchor" id="ga99207f7ff5e97a7f65754eab7f775fca"></a>
 <div class="memitem">
 <div class="memproto">
@@ -704,7 +877,7 @@ USB Device VBUS flag. </td></tr>
 
 <p>Connect USB Device. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>Signals to the host that the device is connected. </p>
+<p>The function <b>ARM_USBD_DeviceConnect</b> signals to the host that the device is connected. </p>
 
 </div>
 </div>
@@ -724,7 +897,7 @@ USB Device VBUS flag. </td></tr>
 
 <p>Disconnect USB Device. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>Signals to the host that the device is disconnected. </p>
+<p>The function <b>ARM_USBD_DeviceDisconnect</b> signals to the host that the device is disconnected. </p>
 
 </div>
 </div>
@@ -764,7 +937,7 @@ USB Device VBUS flag. </td></tr>
 
 <p>Trigger USB Remote Wakeup. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>Signals remote wakeup to the host. </p>
+<p>The function <b>ARM_USBD_DeviceRemoteWakeup</b> signals remote wakeup to the host. </p>
 
 </div>
 </div>
@@ -791,6 +964,36 @@ USB Device VBUS flag. </td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
 <p>Assigns an address to the device. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga6bc0ebf699a0f28330f21cab83f85e9e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ARM_USBD_ReadSetupPacket </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>setup</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read setup packet received over Control Endpoint. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">setup</td><td>Pointer to buffer for setup packet </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
+<p>The function <b>ARM_USBD_ReadSetupPacket</b> reads the last SETUP packet (8 bytes) that was received over Control Endpoint (Endpoint 0) which is indicated by <a class="el" href="group___u_s_b_d__ep__events.html#gaa0814f6880f4c0ac302ac9ebc8170739">ARM_USBD_EVENT_SETUP</a> event.</p>
+<p><b>See also:</b></p>
+<ul>
+<li><a class="el" href="group__usbd__interface__gr.html#ga9aa5bc5cb45084194a77fae1457f6575">ARM_USBD_SignalEndpointEvent</a> </li>
+</ul>
 
 </div>
 </div>
@@ -838,7 +1041,38 @@ USB Device VBUS flag. </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>Configures the specified endpoint for transfers. </p>
+<p>The function <b>ARM_USBD_EndpointConfigure</b> configures an endpoint for transfers. </p>
+
+</div>
+</div>
+<a class="anchor" id="gaca913df5188dc0f0c4f707b57c2a88fc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ARM_USBD_EndpointUnconfigure </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>ep_addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Unconfigure USB Endpoint. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">ep_addr</td><td>Endpoint Address<ul>
+<li>ep_addr.0..3: Address</li>
+<li>ep_addr.7: Direction </li>
+</ul>
+</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
+<p>The function <b>ARM_USBD_EndpointUnconfigure</b> de-configures the specified endpoint.</p>
+<p>The parameter <em>ep_addr</em> specifies the endpoint address. </p>
 
 </div>
 </div>
@@ -883,7 +1117,9 @@ USB Device VBUS flag. </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>Sets or clears stall condition for the specified endpoint. </p>
+<p>The function <b>ARM_USBD_EndpointStall</b> sets or clears stall condition for the specified endpoint.</p>
+<p>The parameter <em>ep_addr</em> specifies the endpoint address. <br/>
+ The parameter <em>stall</em> is a boolean parameter. </p>
 
 </div>
 </div>
@@ -931,8 +1167,10 @@ USB Device VBUS flag. </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>This function is used to read data from or to write data to USB Endpoint.</p>
-<p>The function specifies the endpoint address, the buffer for data to read or with data to write and the number of bytes to transfer.</p>
+<p>The function <b>ARM_USBD_EndpointTransfer</b> reads from or writes data to an USB Endpoint.</p>
+<p>The parameter <em>ep_addr</em> specifies the endpoint address. <br/>
+ The parameter <em>data</em> is a buffer for data to read or data to write. <br/>
+ The parameter <em>num</em> is the number of bytes to transfer.</p>
 <p>The function is non-blocking and returns as soon as the driver starts the operation on the specified endpoint. During the operation it is not allowed to call this function again on the same endpoint. Also the data buffer must stay allocated and the contents of data must not be modified.</p>
 <p>Direction in the endpoint address specifies the type of transfer:</p>
 <ul>
@@ -942,36 +1180,6 @@ USB Device VBUS flag. </td></tr>
 <p>Endpoint Read is finished when the requested number of data bytes have been received or when a short packet or ZLP (Zero-Length Packet) has been received. Completion of operation is indicated by <a class="el" href="group___u_s_b_d__ep__events.html#ga35f7340508acb5fe7a5f43bbcac1887a">ARM_USBD_EVENT_OUT</a> event. Number of successfully received data bytes can be retrieved by calling <a class="el" href="group__usbd__interface__gr.html#gab81fac01522a4d504edcb7b7d3abba6c">ARM_USBD_EndpointTransferGetResult</a>.</p>
 <p>Endpoint Write is finished when the requested number of data bytes have been sent. Completion of operation is indicated by <a class="el" href="group___u_s_b_d__ep__events.html#ga375d3d8f363a056ff607c5ab3b92a864">ARM_USBD_EVENT_IN</a> event. Number of successfully sent data bytes can be retrieved by calling <a class="el" href="group__usbd__interface__gr.html#gab81fac01522a4d504edcb7b7d3abba6c">ARM_USBD_EndpointTransferGetResult</a>.</p>
 <p>Transfer operation can be aborted by calling <a class="el" href="group__usbd__interface__gr.html#ga7cf3bcc105dbb8cbdc915e8caca8529e">ARM_USBD_EndpointTransferAbort</a>. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga7cf3bcc105dbb8cbdc915e8caca8529e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t ARM_USBD_EndpointTransferAbort </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>ep_addr</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Abort current USB Endpoint transfer. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">ep_addr</td><td>Endpoint Address<ul>
-<li>ep_addr.0..3: Address</li>
-<li>ep_addr.7: Direction </li>
-</ul>
-</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>This function is used to abort active endpoint transfer started by <a class="el" href="group__usbd__interface__gr.html#ga6e69ad097553125bb01a22dc719e0d30">ARM_USBD_EndpointTransfer</a>. </p>
 
 </div>
 </div>
@@ -1001,16 +1209,17 @@ USB Device VBUS flag. </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>number of successfully transferred data bytes</dd></dl>
-<p>Returns the number of successfully transferred data bytes started by <a class="el" href="group__usbd__interface__gr.html#ga6e69ad097553125bb01a22dc719e0d30">ARM_USBD_EndpointTransfer</a> operation. </p>
+<p>The function <b>ARM_USBD_EndpointTransferGetResult</b> returns the number of successfully transferred data bytes started by <a class="el" href="group__usbd__interface__gr.html#ga6e69ad097553125bb01a22dc719e0d30">ARM_USBD_EndpointTransfer</a>.</p>
+<p>The parameter <em>ep_addr</em> specifies the endpoint address. </p>
 
 </div>
 </div>
-<a class="anchor" id="gaca913df5188dc0f0c4f707b57c2a88fc"></a>
+<a class="anchor" id="ga7cf3bcc105dbb8cbdc915e8caca8529e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int32_t ARM_USBD_EndpointUnconfigure </td>
+          <td class="memname">int32_t ARM_USBD_EndpointTransferAbort </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>ep_addr</em></td><td>)</td>
@@ -1019,7 +1228,7 @@ USB Device VBUS flag. </td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Unconfigure USB Endpoint. </p>
+<p>Abort current USB Endpoint transfer. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">ep_addr</td><td>Endpoint Address<ul>
@@ -1031,40 +1240,9 @@ USB Device VBUS flag. </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>Unconfigures the specified endpoint. </p>
+<p>The function <b>ARM_USBD_EndpointTransferAbort</b> aborts the transfer to an endpoint started by <a class="el" href="group__usbd__interface__gr.html#ga6e69ad097553125bb01a22dc719e0d30">ARM_USBD_EndpointTransfer</a>.</p>
+<p>The parameter <em>ep_addr</em> specifies the endpoint address. </p>
 
-</div>
-</div>
-<a class="anchor" id="ga178d01ab7896e1c675b90bbccfe8ea7d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__usbd__interface__gr.html#struct_a_r_m___u_s_b_d___c_a_p_a_b_i_l_i_t_i_e_s">ARM_USBD_CAPABILITIES</a> ARM_USBD_GetCapabilities </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get driver capabilities. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__usbd__interface__gr.html#struct_a_r_m___u_s_b_d___c_a_p_a_b_i_l_i_t_i_e_s">ARM_USBD_CAPABILITIES</a></dd></dl>
-<p>Retrieves information about capabilities in this driver implementation. The bitfield members of the struct <a class="el" href="group__usbd__interface__gr.html#struct_a_r_m___u_s_b_d___c_a_p_a_b_i_l_i_t_i_e_s">ARM_USBD_CAPABILITIES</a> encode various capabilities, for example if the hardware can create signal events using the <a class="el" href="group__usbd__interface__gr.html#gafe58a4db1d26b21ca5d418ee49e103a5">ARM_USBD_SignalDeviceEvent</a> callback function.</p>
-<p>Example: </p>
-<div class="fragment"><div class="line"><span class="keyword">extern</span> <a class="code" href="group__usbd__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___u_s_b_d" title="Access structure of the USB Device Driver.">ARM_DRIVER_USBD</a> Driver_USBD0;</div>
-<div class="line"><a class="code" href="group__usbd__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___u_s_b_d" title="Access structure of the USB Device Driver.">ARM_DRIVER_USBD</a> *drv_info;</div>
-<div class="line">  </div>
-<div class="line"><span class="keywordtype">void</span> read_capabilities (<span class="keywordtype">void</span>)  {</div>
-<div class="line">  <a class="code" href="group__usbd__interface__gr.html#struct_a_r_m___u_s_b_d___c_a_p_a_b_i_l_i_t_i_e_s" title="USB Device Driver Capabilities.">ARM_USBD_CAPABILITIES</a> drv_capabilities;</div>
-<div class="line"> </div>
-<div class="line">  drv_info = &amp;Driver_USBD0;  </div>
-<div class="line">  drv_capabilities = drv_info-&gt;<a class="code" href="group__usbd__interface__gr.html#a52045edf0f555a0f0ecdf37a5e169f7a" title="Pointer to ARM_USBD_GetCapabilities : Get driver capabilities.">GetCapabilities</a> ();</div>
-<div class="line">  <span class="comment">// interrogate capabilities</span></div>
-<div class="line"> </div>
-<div class="line">}</div>
-</div><!-- fragment --> 
 </div>
 </div>
 <a class="anchor" id="ga4cd050b8343407fe465a27ad1cb7c264"></a>
@@ -1084,145 +1262,6 @@ USB Device VBUS flag. </td></tr>
 <p>Get current USB Frame Number. </p>
 <dl class="section return"><dt>Returns</dt><dd>Frame Number</dd></dl>
 <p>Retrieves the sequential 11-bit frame number of the last Start of Frame (SOF) packet. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga1dcb8b7790f0e3613ee3da77e5fd18fc"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a> ARM_USBD_GetVersion </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get driver version. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a></dd></dl>
-<p>Returns version information of the driver implementation in <a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a></p>
-<ul>
-<li>API version is the version of the CMSIS-Driver specification used to implement this driver.</li>
-<li>Driver version is source code version of the actual driver implementation.</li>
-</ul>
-<p>Example: </p>
-<div class="fragment"><div class="line"><span class="keyword">extern</span> <a class="code" href="group__usbd__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___u_s_b_d" title="Access structure of the USB Device Driver.">ARM_DRIVER_USBD</a> Driver_USBD0;</div>
-<div class="line"><a class="code" href="group__usbd__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___u_s_b_d" title="Access structure of the USB Device Driver.">ARM_DRIVER_USBD</a> *drv_info;</div>
-<div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> setup_usbd (<span class="keywordtype">void</span>)  {</div>
-<div class="line">  <a class="code" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n" title="Driver Version.">ARM_DRIVER_VERSION</a>  version;</div>
-<div class="line"> </div>
-<div class="line">  drv_info = &amp;Driver_USBD0;  </div>
-<div class="line">  version = drv_info-&gt;<a class="code" href="group__usbd__interface__gr.html#a8834b281da48583845c044a81566c1b3" title="Pointer to ARM_USBD_GetVersion : Get driver version.">GetVersion</a> ();</div>
-<div class="line">  <span class="keywordflow">if</span> (version.<a class="code" href="group__common__drv__gr.html#ad180da20fbde1d3dafc074af87c19540" title="API version.">api</a> &lt; 0x10A)   {      <span class="comment">// requires at minimum API version 1.10 or higher</span></div>
-<div class="line">    <span class="comment">// error handling</span></div>
-<div class="line">    <span class="keywordflow">return</span>;</div>
-<div class="line">  }</div>
-<div class="line">}</div>
-</div><!-- fragment --> 
-</div>
-</div>
-<a class="anchor" id="ga60b95c9c0c6767ff5938464cfd748f81"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t ARM_USBD_Initialize </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="group__usbd__interface__gr.html#ga7c1878799699ddd34cec696da499f7bd">ARM_USBD_SignalDeviceEvent_t</a>&#160;</td>
-          <td class="paramname"><em>cb_device_event</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="group__usbd__interface__gr.html#gaae754763700fc5059a6bde57ea2d4e2c">ARM_USBD_SignalEndpointEvent_t</a>&#160;</td>
-          <td class="paramname"><em>cb_endpoint_event</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Initialize USB Device Interface. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">cb_device_event</td><td>Pointer to <a class="el" href="group__usbd__interface__gr.html#gafe58a4db1d26b21ca5d418ee49e103a5">ARM_USBD_SignalDeviceEvent</a> </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">cb_endpoint_event</td><td>Pointer to <a class="el" href="group__usbd__interface__gr.html#ga9aa5bc5cb45084194a77fae1457f6575">ARM_USBD_SignalEndpointEvent</a> </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>The function initializes the USB Device interface. It is called when the middleware component starts operation.</p>
-<p>The function performs the following operations:</p>
-<ul>
-<li>Initializes the resources needed for the USBD interface.</li>
-<li>Registers the <a class="el" href="group__usbd__interface__gr.html#gafe58a4db1d26b21ca5d418ee49e103a5">ARM_USBD_SignalDeviceEvent</a> callback function.</li>
-<li>Registers the <a class="el" href="group__usbd__interface__gr.html#ga9aa5bc5cb45084194a77fae1457f6575">ARM_USBD_SignalEndpointEvent</a> callback function.</li>
-</ul>
-<p>The parameter <em>cb_device_event</em> is a pointer to the <a class="el" href="group__usbd__interface__gr.html#gafe58a4db1d26b21ca5d418ee49e103a5">ARM_USBD_SignalDeviceEvent</a> callback function; use a NULL pointer when no device callback signals are required.</p>
-<p>The parameter <em>cb_endpoint_event</em> is a pointer to the <a class="el" href="group__usbd__interface__gr.html#ga9aa5bc5cb45084194a77fae1457f6575">ARM_USBD_SignalEndpointEvent</a> callback function.</p>
-<p><b>Example:</b> </p>
-<ul>
-<li>see <a class="el" href="group__usbd__interface__gr.html">USB Device Interface</a> - Driver Functions </li>
-</ul>
-
-</div>
-</div>
-<a class="anchor" id="gaa5bdaac19f6df30c6e569abef17cdb42"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t ARM_USBD_PowerControl </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="group__common__drv__gr.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5">ARM_POWER_STATE</a>&#160;</td>
-          <td class="paramname"><em>state</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Control USB Device Interface Power. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">state</td><td>Power state </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>Allows you to control the power modes of the USB Device interface. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga6bc0ebf699a0f28330f21cab83f85e9e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t ARM_USBD_ReadSetupPacket </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t *&#160;</td>
-          <td class="paramname"><em>setup</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Read setup packet received over Control Endpoint. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">setup</td><td>Pointer to buffer for setup packet </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>Reads last SETUP packet (8 bytes) that was received over Control Endpoint (Endpoint 0) which is indicated by <a class="el" href="group___u_s_b_d__ep__events.html#gaa0814f6880f4c0ac302ac9ebc8170739">ARM_USBD_EVENT_SETUP</a> event. </p>
 
 </div>
 </div>
@@ -1248,23 +1287,25 @@ USB Device VBUS flag. </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>none</dd></dl>
-<p>The function <b>ARM_USBD_SignalDeviceEvent</b> notifies the application of the <a class="el" href="group___u_s_b_d__dev__events.html">USBD Device Events</a> and it is registered by the function <a class="el" href="group__usbd__interface__gr.html#ga60b95c9c0c6767ff5938464cfd748f81">ARM_USBD_Initialize</a>. The function <a class="el" href="group__usbd__interface__gr.html#ga178d01ab7896e1c675b90bbccfe8ea7d">ARM_USBD_GetCapabilities</a> returns information about the implemented optional events in a driver.</p>
-<p>The argument <em>event</em> represents the notification mask of the events. Each event is coded in a separate bit and therefore it is possible to signal multiple events in the event call back function. The following call back notifications are generated:</p>
+<p>The function <b>ARM_USBD_SignalDeviceEvent</b> is a callback function registered by the function <a class="el" href="group__usbd__interface__gr.html#ga60b95c9c0c6767ff5938464cfd748f81">ARM_USBD_Initialize</a>.</p>
+<p>The parameter <em>event</em> indicates one or more events that occurred during driver operation. Each event is encoded in a separate bit and therefore it is possible to signal multiple events within the same call.</p>
+<p>Not every event is necessarily generated by the driver. This depends on the implemented capabilities stored in the data fields of the structure <a class="el" href="group__usbd__interface__gr.html#struct_a_r_m___u_s_b_d___c_a_p_a_b_i_l_i_t_i_e_s">ARM_USBD_CAPABILITIES</a>, which can be retrieved with the function <a class="el" href="group__usbd__interface__gr.html#ga178d01ab7896e1c675b90bbccfe8ea7d">ARM_USBD_GetCapabilities</a>.</p>
+<p>The following events can be generated:</p>
 <table class="doxtable">
 <tr>
-<th>Bit</th><th align="left">Event </th><th align="left">Description</th></tr>
+<th align="left">Event </th><th align="right">Bit</th><th align="left">Description </th><th>supported when <a class="el" href="group__usbd__interface__gr.html#struct_a_r_m___u_s_b_d___c_a_p_a_b_i_l_i_t_i_e_s">ARM_USBD_CAPABILITIES</a></th></tr>
 <tr>
-<td>0 </td><td align="left"><a class="el" href="group___u_s_b_d__dev__events.html#ga32546413cfe55154351f74fb56de1045">ARM_USBD_EVENT_VBUS_ON</a> </td><td align="left">Occurs when valid VBUS voltage is detected. </td></tr>
+<td align="left"><a class="el" href="group___u_s_b_d__dev__events.html#ga32546413cfe55154351f74fb56de1045">ARM_USBD_EVENT_VBUS_ON</a> </td><td align="right">0 </td><td align="left">Occurs when valid VBUS voltage is detected. </td><td>data field <em>event_vbus_on</em> = <span class="XML-Token">1</span> </td></tr>
 <tr>
-<td>1 </td><td align="left"><a class="el" href="group___u_s_b_d__dev__events.html#ga6810c08a6e6a46ba443899e5ba9c3aec">ARM_USBD_EVENT_VBUS_OFF</a> </td><td align="left">Occurs when VBUS voltage is turned off. </td></tr>
+<td align="left"><a class="el" href="group___u_s_b_d__dev__events.html#ga6810c08a6e6a46ba443899e5ba9c3aec">ARM_USBD_EVENT_VBUS_OFF</a> </td><td align="right">1 </td><td align="left">Occurs when VBUS voltage is turned off. </td><td>data field <em>event_vbus_off</em> = <span class="XML-Token">1</span> </td></tr>
 <tr>
-<td>2 </td><td align="left"><a class="el" href="group___u_s_b_d__dev__events.html#ga489e1b88f7b0361494ca3a8dc73c227a">ARM_USBD_EVENT_RESET</a> </td><td align="left">Occurs when USB Reset is detected. </td></tr>
+<td align="left"><a class="el" href="group___u_s_b_d__dev__events.html#ga489e1b88f7b0361494ca3a8dc73c227a">ARM_USBD_EVENT_RESET</a> </td><td align="right">2 </td><td align="left">Occurs when USB Reset is detected. </td><td><em>always supported</em> </td></tr>
 <tr>
-<td>3 </td><td align="left"><a class="el" href="group___u_s_b_d__dev__events.html#ga689d1e031013d0e66aeef4243490d843">ARM_USBD_EVENT_HIGH_SPEED</a> </td><td align="left">Occurs when USB Device is switched to High-speed. </td></tr>
+<td align="left"><a class="el" href="group___u_s_b_d__dev__events.html#ga689d1e031013d0e66aeef4243490d843">ARM_USBD_EVENT_HIGH_SPEED</a> </td><td align="right">3 </td><td align="left">Occurs when USB Device is switched to High-speed. </td><td><em>always supported</em> </td></tr>
 <tr>
-<td>4 </td><td align="left"><a class="el" href="group___u_s_b_d__dev__events.html#ga74dc7c0ba71baf285400d5a555224653">ARM_USBD_EVENT_SUSPEND</a> </td><td align="left">Occurs when USB Suspend is detected. </td></tr>
+<td align="left"><a class="el" href="group___u_s_b_d__dev__events.html#ga74dc7c0ba71baf285400d5a555224653">ARM_USBD_EVENT_SUSPEND</a> </td><td align="right">4 </td><td align="left">Occurs when USB Suspend is detected. </td><td><em>always supported</em> </td></tr>
 <tr>
-<td>5 </td><td align="left"><a class="el" href="group___u_s_b_d__dev__events.html#ga5b1c9884b237ba7778f79761e5db9f45">ARM_USBD_EVENT_RESUME</a> </td><td align="left">Occurs when USB Resume is detected. </td></tr>
+<td align="left"><a class="el" href="group___u_s_b_d__dev__events.html#ga5b1c9884b237ba7778f79761e5db9f45">ARM_USBD_EVENT_RESUME</a> </td><td align="right">5 </td><td align="left">Occurs when USB Resume is detected. </td><td><em>always supported</em> </td></tr>
 </table>
 
 </div>
@@ -1306,40 +1347,20 @@ USB Device VBUS flag. </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>none</dd></dl>
-<p>The function <b>ARM_USBD_SignalEndpointEvent</b> notifies the application of the <a class="el" href="group___u_s_b_d__ep__events.html">USBD Endpoint Events</a> and it is registered by the function <a class="el" href="group__usbd__interface__gr.html#ga60b95c9c0c6767ff5938464cfd748f81">ARM_USBD_Initialize</a>.</p>
-<p>The argument <em>ep_addr</em> specifies the endpoint that is used.</p>
-<p>The argument <em>event</em> represents the notification mask of the events. Each event is coded in a separate bit and therefore it is possible to signal multiple events in the event call back function. The following call back notifications are generated:</p>
+<p>The function <b>ARM_USBD_SignalEndpointEvent</b> is a callback function registered by the function <a class="el" href="group__usbd__interface__gr.html#ga60b95c9c0c6767ff5938464cfd748f81">ARM_USBD_Initialize</a>.</p>
+<p>The argument <em>ep_addr</em> specifies the endpoint. <br/>
+ The parameter <em>event</em> indicates one or more events that occurred during driver operation. Each event is encoded in a separate bit and therefore it is possible to signal multiple events within the same call.</p>
+<p>The following events can be generated:</p>
 <table class="doxtable">
 <tr>
-<th>Bit</th><th align="left">Event </th><th align="left">Description</th></tr>
+<th align="left">Event </th><th align="right">Bit </th><th align="left">Description</th></tr>
 <tr>
-<td>0 </td><td align="left"><a class="el" href="group___u_s_b_d__ep__events.html#gaa0814f6880f4c0ac302ac9ebc8170739">ARM_USBD_EVENT_SETUP</a> </td><td align="left">Occurs when SETUP packet is received over Control Endpoint. </td></tr>
+<td align="left"><a class="el" href="group___u_s_b_d__ep__events.html#gaa0814f6880f4c0ac302ac9ebc8170739">ARM_USBD_EVENT_SETUP</a> </td><td align="right">0 </td><td align="left">Occurs when SETUP packet is received over Control Endpoint. </td></tr>
 <tr>
-<td>1 </td><td align="left"><a class="el" href="group___u_s_b_d__ep__events.html#ga35f7340508acb5fe7a5f43bbcac1887a">ARM_USBD_EVENT_OUT</a> </td><td align="left">Occurs when data is received over OUT Endpoint. </td></tr>
+<td align="left"><a class="el" href="group___u_s_b_d__ep__events.html#ga35f7340508acb5fe7a5f43bbcac1887a">ARM_USBD_EVENT_OUT</a> </td><td align="right">1 </td><td align="left">Occurs when data is received over OUT Endpoint. </td></tr>
 <tr>
-<td>2 </td><td align="left"><a class="el" href="group___u_s_b_d__ep__events.html#ga375d3d8f363a056ff607c5ab3b92a864">ARM_USBD_EVENT_IN</a> </td><td align="left">Occurs when data is sent over IN Endpoint. </td></tr>
+<td align="left"><a class="el" href="group___u_s_b_d__ep__events.html#ga375d3d8f363a056ff607c5ab3b92a864">ARM_USBD_EVENT_IN</a> </td><td align="right">2 </td><td align="left">Occurs when data is sent over IN Endpoint. </td></tr>
 </table>
-
-</div>
-</div>
-<a class="anchor" id="gafaead6713f141be1734de0110eda966b"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t ARM_USBD_Uninitialize </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>De-initialize USB Device Interface. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>The function <a class="el" href="group__usbd__interface__gr.html#gafaead6713f141be1734de0110eda966b">ARM_USBD_Uninitialize</a> de-initializes the resources of USBD interface.</p>
-<p>It is called when the middleware component stops operation and releases the software resources used by the interface. </p>
 
 </div>
 </div>
@@ -1348,7 +1369,7 @@ USB Device VBUS flag. </td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:43 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:03 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

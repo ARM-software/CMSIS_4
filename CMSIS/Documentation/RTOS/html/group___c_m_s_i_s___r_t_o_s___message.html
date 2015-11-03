@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>Message Queue Management</title>
-<title>CMSIS-RTOS: Message Queue Management</title>
+<title>Message Queue</title>
+<title>CMSIS-RTOS: Message Queue</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="cmsis.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="jquery.js"></script>
@@ -73,11 +73,11 @@ $(document).ready(function(){initNavTree('group___c_m_s_i_s___r_t_o_s___message.
 <a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">Message Queue Management</div>  </div>
-<div class="ingroups"><a class="el" href="group___c_m_s_i_s___r_t_o_s.html">CMSIS-RTOS API</a></div></div><!--header-->
+<div class="title">Message Queue</div>  </div>
+<div class="ingroups"><a class="el" href="group___c_m_s_i_s___r_t_o_s___inter_thread.html">Inter-Thread Communication and Resource Sharing</a></div></div><!--header-->
 <div class="contents">
 
-<p>Control, send, receive, or wait for messages.  
+<p>Exchange messages between threads in a FIFO-like operation.  
 <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
@@ -105,11 +105,27 @@ Functions</h2></td></tr>
 <tr class="separator:ga6c6892b8f2296cca6becd57ca2d7e1ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description</h2>
-<p>Message Queue Management functions allow to control, send, receive, or wait for messages. A message queue can be used to pass data from one thread to another in a FIFO-like operation. The data to be passed can be of integer or pointer type:</p>
+<p><b>Message</b> <b>passing</b> is another basic communication model between threads. In the message passing model, one thread sends data explicitly, while another thread receives it. The operation is more like some kind of I/O rather than a direct access to information to be shared. In CMSIS-RTOS, this mechanism is called s <b>message</b> <b>queue</b>. The data is passed from one thread to another in a FIFO-like operation. Using message queue functions, you can control, send, receive, or wait for messages. The data to be passed can be of integer or pointer type:</p>
 <div class="image">
 <img src="MessageQueue.png" alt="MessageQueue.png"/>
 <div class="caption">
 CMSIS-RTOS Message Queue</div></div>
+<p> Compared to a <a class="el" href="group___c_m_s_i_s___r_t_o_s___pool_mgmt.html">Memory Pool</a>, message queues are less efficient in general, but solve a broader range of problems. Sometimes, threads do not have a common address space or the use of shared memory raises problems, such as mutual exclusion.</p>
+<h2>Working with Message Queues</h2>
+<p>Follow these steps to create and use a message queue:</p>
+<ol type="1">
+<li>Setup the message queue: <div class="fragment"><div class="line"><a class="code" href="group___c_m_s_i_s___r_t_o_s___message.html#gac9a6a6276c12609793e7701afcc82326" title="Create a Message Queue Definition.">osMessageQDef</a>(message_q, 5, uint32_t); <span class="comment">// Declare a message queue</span></div>
+<div class="line"><a class="code" href="cmsis__os_8h.html#ad9ec70c32c6c521970636b521e12d17f" title="Message ID identifies the message queue (pointer to a message queue control block).">osMessageQId</a> (message_q_id);           <span class="comment">// Declare an ID for the message queue</span></div>
+</div><!-- fragment --></li>
+<li>Then, create the message queue in a thread: <div class="fragment"><div class="line">message_q_id = <a class="code" href="group___c_m_s_i_s___r_t_o_s___message.html#gaf3b9345cf426304d46565152bc26fb78" title="Create and Initialize a Message Queue.">osMessageCreate</a>(<a class="code" href="group___c_m_s_i_s___r_t_o_s___message.html#ga2d446a0b4bb90bf05d6f92eedeaabc97" title="Access a Message Queue Definition.">osMessageQ</a>(message_q), NULL);</div>
+</div><!-- fragment --></li>
+<li>Fill the message queue with data: <div class="fragment"><div class="line">uint32_t data = 512;</div>
+<div class="line"> </div>
+<div class="line"><a class="code" href="group___c_m_s_i_s___r_t_o_s___mail.html#ga485ef6f81854ebda8ffbce4832181e02" title="Put a mail to a queue.">osMailPut</a>(message_q_id, data, <a class="code" href="cmsis__os_8h.html#a9eb9a7a797a42e4b55eb171ecc609ddb" title="Timeout value.">osWaitForever</a>);</div>
+</div><!-- fragment --></li>
+<li>From the receiving thread access the data using: <div class="fragment"><div class="line"><a class="code" href="group___c_m_s_i_s___r_t_o_s___definitions.html#structos_event" title="Event structure contains detailed information about an event.">osEvent</a> <span class="keyword">event</span> = <a class="code" href="group___c_m_s_i_s___r_t_o_s___message.html#ga6c6892b8f2296cca6becd57ca2d7e1ae" title="Get a Message or Wait for a Message from a Queue.">osMessageGet</a>(message_q_id, <a class="code" href="cmsis__os_8h.html#a9eb9a7a797a42e4b55eb171ecc609ddb" title="Timeout value.">osWaitForever</a>);</div>
+</div><!-- fragment --> </li>
+</ol>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a class="anchor" id="ga479a6561f859e3d4818e25708593d203"></a>
 <div class="memitem">
@@ -418,7 +434,7 @@ CMSIS-RTOS Message Queue</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:59 for CMSIS-RTOS by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:27 for CMSIS-RTOS by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

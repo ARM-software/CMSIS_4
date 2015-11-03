@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -138,7 +138,7 @@ Macros</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Description</h2>
 <p>Specify the data bus width. </p>
 <p>The function <a class="el" href="group__mci__interface__gr.html#gaec0506a2aa4ae75cf6bc02528f36fe30">ARM_MCI_Control</a> with <em>control</em> = <a class="el" href="group__mci__mode__ctrls.html#ga876d964d0eeacdb16e93f7558a544587">ARM_MCI_BUS_DATA_WIDTH</a> specifies with <em>arg</em> the number of data I/O pins on the SD/MMC interface.</p>
-<p>For high-speed memory cards, a 4-bit bus data width should be used (or 8-bit for eMMC). The bitfields <a class="el" href="group__mci__interface__gr.html#a950669a8c88b49c8da4c56163b45a79d" title="Supports 4-bit data.">ARM_MCI_CAPABILITIES.data_width_4</a> and <a class="el" href="group__mci__interface__gr.html#a808703d6c70a501464e156e55f5cabd2" title="Supports 8-bit data.">ARM_MCI_CAPABILITIES.data_width_8</a> encode whether the driver supports a specific bus data with.</p>
+<p>For high-speed memory cards, a 4-bit bus data width should be used (or 8-bit for eMMC). The data fields <em>data_width_4</em> and <em>data_width_8</em> of the structure <a class="el" href="group__mci__interface__gr.html#struct_a_r_m___m_c_i___c_a_p_a_b_i_l_i_t_i_e_s" title="MCI Driver Capabilities.">ARM_MCI_CAPABILITIES</a> encode whether the driver supports a specific bus data with.</p>
 <p>The following codes are defined: </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a class="anchor" id="gaa09a00d810a4dfd1d1824311ee290585"></a>
@@ -169,20 +169,6 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gaccb174bd131f8fd8cd9a56439a8ebb60"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_MCI_BUS_DATA_WIDTH_4_DDR&#160;&#160;&#160;(0x03)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Bus data width: 4 bits, DDR (Dual Data Rate) - MMC only. </p>
-
-</div>
-</div>
 <a class="anchor" id="ga3bb99a2d98ba9fb8c5bc97fa2b8ef469"></a>
 <div class="memitem">
 <div class="memproto">
@@ -194,6 +180,20 @@ Macros</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Bus data width: 8 bits. </p>
+
+</div>
+</div>
+<a class="anchor" id="gaccb174bd131f8fd8cd9a56439a8ebb60"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_MCI_BUS_DATA_WIDTH_4_DDR&#160;&#160;&#160;(0x03)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Bus data width: 4 bits, DDR (Dual Data Rate) - MMC only. </p>
 
 </div>
 </div>
@@ -216,7 +216,7 @@ Macros</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:42 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:02 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

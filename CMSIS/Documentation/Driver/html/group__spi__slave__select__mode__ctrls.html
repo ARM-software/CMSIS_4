@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -142,34 +142,18 @@ Macros</h2></td></tr>
 <p>Specifies SPI slave select mode. </p>
 <p><b>SPI</b> <b>Slave</b> <b>Select</b> <b>Mode</b> configures the behavior of the <b>Slave</b> <b>Select</b> <b></b>(SS) signal. The configuration is separate for <b>Master</b> (ARM_SPI_SS_MASTER_*) and for <b>Slave</b> (<a class="el" href="group__spi__slave__select__mode__ctrls.html#ga2bd0d1f3ade2dc0cc48cc0593336ad70">ARM_SPI_SS_SLAVE_HW</a>, <a class="el" href="group__spi__slave__select__mode__ctrls.html#gad371f6ba0d12a57bdcc3217c351abfb0">ARM_SPI_SS_SLAVE_SW</a>). The active configuration depends on the current state (Master/Slave). </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="ga8561bd0cc25ab2bb02b138c1c6a586cd"></a>
+<a class="anchor" id="gae19343adc7bd71408b51733171f99dc7"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_SPI_SS_MASTER_HW_INPUT&#160;&#160;&#160;(3UL &lt;&lt; ARM_SPI_SS_MASTER_MODE_Pos)</td>
+          <td class="memname">#define ARM_SPI_SS_MASTER_UNUSED&#160;&#160;&#160;(0UL &lt;&lt; ARM_SPI_SS_MASTER_MODE_Pos)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>SPI Slave Select when Master: Hardware monitored Input. </p>
-<p>This is normally used in a multi-master configuration, where a master does not drive the SS line when driving the bus but only monitors it. When another master activates this line, the active master backs off. This is called <b>mode</b> <b>fault</b>. SS is configured as input and the hardware only monitors it. When it is externally deactivated while being the master, it presents a mode fault and the SPI switches to <b>inactive</b> mode. </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__spi__interface__gr.html#gad18d229992598d6677bec250015e5d1a" title="Control SPI Interface.">ARM_SPI_Control</a> </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ga07762709a40dc90aca85553f500c8761"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_SPI_SS_MASTER_HW_OUTPUT&#160;&#160;&#160;(2UL &lt;&lt; ARM_SPI_SS_MASTER_MODE_Pos)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>SPI Slave Select when Master: Hardware controlled Output. </p>
-<p>Here, SS is configured as an output. It will be automatically activated/deactivated for the transfers by hardware (not controlled by <a class="el" href="group__spi__interface__gr.html#gad18d229992598d6677bec250015e5d1a">ARM_SPI_Control</a> (<a class="el" href="group__spi__misc__ctrls.html#ga5776272b82decff92da003568540c92f">ARM_SPI_CONTROL_SS</a>)). The activation/deactivation of the line is completely hardware dependent. Typically, the hardware will activate it before starting a transfer and deactivate it after a transfer completes. Some hardware will leave it activated as long as the SPI stays master. Due to different hardware behavior, this mode is typically not useful because certain devices require that the SS signal is strictly defined with regards to transfers. </p>
+<p>SPI Slave Select when Master: Not used (default) </p>
+<p>An SPI master does not drive or monitor the SS line. For example, when connecting to a single slave, the SS line can be connected to a fixed low level. </p>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__spi__interface__gr.html#gad18d229992598d6677bec250015e5d1a" title="Control SPI Interface.">ARM_SPI_Control</a> </dd></dl>
 
 </div>
@@ -190,18 +174,34 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gae19343adc7bd71408b51733171f99dc7"></a>
+<a class="anchor" id="ga07762709a40dc90aca85553f500c8761"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_SPI_SS_MASTER_UNUSED&#160;&#160;&#160;(0UL &lt;&lt; ARM_SPI_SS_MASTER_MODE_Pos)</td>
+          <td class="memname">#define ARM_SPI_SS_MASTER_HW_OUTPUT&#160;&#160;&#160;(2UL &lt;&lt; ARM_SPI_SS_MASTER_MODE_Pos)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>SPI Slave Select when Master: Not used (default) </p>
-<p>An SPI master does not drive or monitor the SS line. For example, when connecting to a single slave, the SS line can be connected to a fixed low level. </p>
+<p>SPI Slave Select when Master: Hardware controlled Output. </p>
+<p>Here, SS is configured as an output. It will be automatically activated/deactivated for the transfers by hardware (not controlled by <a class="el" href="group__spi__interface__gr.html#gad18d229992598d6677bec250015e5d1a">ARM_SPI_Control</a> (<a class="el" href="group__spi__misc__ctrls.html#ga5776272b82decff92da003568540c92f">ARM_SPI_CONTROL_SS</a>)). The activation/deactivation of the line is completely hardware dependent. Typically, the hardware will activate it before starting a transfer and deactivate it after a transfer completes. Some hardware will leave it activated as long as the SPI stays master. Due to different hardware behavior, this mode is typically not useful because certain devices require that the SS signal is strictly defined with regards to transfers. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__spi__interface__gr.html#gad18d229992598d6677bec250015e5d1a" title="Control SPI Interface.">ARM_SPI_Control</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga8561bd0cc25ab2bb02b138c1c6a586cd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_SPI_SS_MASTER_HW_INPUT&#160;&#160;&#160;(3UL &lt;&lt; ARM_SPI_SS_MASTER_MODE_Pos)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>SPI Slave Select when Master: Hardware monitored Input. </p>
+<p>This is normally used in a multi-master configuration, where a master does not drive the SS line when driving the bus but only monitors it. When another master activates this line, the active master backs off. This is called <b>mode</b> <b>fault</b>. SS is configured as input and the hardware only monitors it. When it is externally deactivated while being the master, it presents a mode fault and the SPI switches to <b>inactive</b> mode. </p>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__spi__interface__gr.html#gad18d229992598d6677bec250015e5d1a" title="Control SPI Interface.">ARM_SPI_Control</a> </dd></dl>
 
 </div>
@@ -243,7 +243,7 @@ Macros</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:43 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:03 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

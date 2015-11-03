@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.3.3</span>
+   &#160;<span id="projectnumber">Version 1.4.0</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -175,7 +175,11 @@ Pack Conventions</h1>
 <li><b>&lt;version&gt;</b>specifies the version number of the <a class="el" href="_c_p__s_w_components.html">Software Pack</a>.</li>
 <li><b>.pack</b> is the file extension identifying a <a class="el" href="_c_p__s_w_components.html">Software Pack</a>.</li>
 </ul>
-<p>The XML elements <b>&lt;vendor&gt;</b>, <b>&lt;name&gt;</b>, and <b>&lt;version&gt;</b> are declared in the <a class="el" href="_pack_format.html#Filenames">PDSC</a> file.</p>
+<dl class="section note"><dt>Note</dt><dd><ul>
+<li>The XML elements <b>&lt;vendor&gt;</b>, <b>&lt;name&gt;</b>, and <b>&lt;version&gt;</b> are declared in the <a class="el" href="_pack_format.html#Filenames">PDSC</a> file.</li>
+<li><b>&lt;vendor&gt;</b> and <b>&lt;name&gt;</b> <em>must</em> <em>not</em> contain spaces.</li>
+</ul>
+</dd></dl>
 <p>The PDSC file needs to reside at the top-level of the Pack file, using it as the root directory for all file references.</p>
 <h1><a class="anchor" id="PackTutorials"></a>
 Pack Tutorial</h1>
@@ -195,7 +199,7 @@ Pack Tutorial</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:58 for CMSIS-Pack by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:25 for CMSIS-Pack by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

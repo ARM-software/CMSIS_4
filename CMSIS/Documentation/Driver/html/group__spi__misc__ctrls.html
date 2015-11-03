@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -138,32 +138,17 @@ Macros</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Description</h2>
 <p>Specifies additional miscellaneous controls. </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="ga44708b80e48984be099cd6eb11780dc3"></a>
+<a class="anchor" id="ga5ef3d114979f3fd6010d0df16c2bf5c1"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_SPI_ABORT_TRANSFER&#160;&#160;&#160;(0x14UL &lt;&lt; ARM_SPI_CONTROL_Pos)</td>
+          <td class="memname">#define ARM_SPI_SET_BUS_SPEED&#160;&#160;&#160;(0x10UL &lt;&lt; ARM_SPI_CONTROL_Pos)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Abort current data transfer. </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__spi__interface__gr.html#gad18d229992598d6677bec250015e5d1a" title="Control SPI Interface.">ARM_SPI_Control</a> </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ga5776272b82decff92da003568540c92f"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_SPI_CONTROL_SS&#160;&#160;&#160;(0x13UL &lt;&lt; ARM_SPI_CONTROL_Pos)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Control Slave Select; arg: 0=inactive, 1=active. </p>
+<p>Set Bus Speed in bps; arg = value. </p>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__spi__interface__gr.html#gad18d229992598d6677bec250015e5d1a" title="Control SPI Interface.">ARM_SPI_Control</a> </dd></dl>
 
 </div>
@@ -183,21 +168,6 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga5ef3d114979f3fd6010d0df16c2bf5c1"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_SPI_SET_BUS_SPEED&#160;&#160;&#160;(0x10UL &lt;&lt; ARM_SPI_CONTROL_Pos)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Set Bus Speed in bps; arg = value. </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__spi__interface__gr.html#gad18d229992598d6677bec250015e5d1a" title="Control SPI Interface.">ARM_SPI_Control</a> </dd></dl>
-
-</div>
-</div>
 <a class="anchor" id="gae9861221dee78d52bd1522b7846535ce"></a>
 <div class="memitem">
 <div class="memproto">
@@ -213,12 +183,42 @@ Macros</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ga5776272b82decff92da003568540c92f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_SPI_CONTROL_SS&#160;&#160;&#160;(0x13UL &lt;&lt; ARM_SPI_CONTROL_Pos)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Control Slave Select; arg: 0=inactive, 1=active. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__spi__interface__gr.html#gad18d229992598d6677bec250015e5d1a" title="Control SPI Interface.">ARM_SPI_Control</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga44708b80e48984be099cd6eb11780dc3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_SPI_ABORT_TRANSFER&#160;&#160;&#160;(0x14UL &lt;&lt; ARM_SPI_CONTROL_Pos)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Abort current data transfer. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__spi__interface__gr.html#gad18d229992598d6677bec250015e5d1a" title="Control SPI Interface.">ARM_SPI_Control</a> </dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:43 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:03 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

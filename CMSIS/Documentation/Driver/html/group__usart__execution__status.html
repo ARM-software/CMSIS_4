@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -148,6 +148,21 @@ Macros</h2></td></tr>
 <p>Negative values indicate errors (USART has specific codes in addition to common <a class="el" href="group__execution__status.html">Status Error Codes</a>). </p>
 <p>The USART driver has additional status error codes that are listed below. Note that the USART driver also returns the common <a class="el" href="group__execution__status.html">Status Error Codes</a>. </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
+<a class="anchor" id="gaa98f35611ec5bd7034f21cb47199322b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_USART_ERROR_MODE&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 1)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Specified Mode not supported. </p>
+<p>The <b>mode</b> requested with the function <a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d">ARM_USART_Control</a> is not supported by this driver. </p>
+
+</div>
+</div>
 <a class="anchor" id="gab57c4e8d4cb3a4b73751a002f5ec4586"></a>
 <div class="memitem">
 <div class="memproto">
@@ -163,36 +178,6 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gade1af23c4ed5409dacd99ab76dc2ff8b"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_USART_ERROR_CPHA&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 8)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Specified Clock Phase not supported. </p>
-<p>The <b>clock phase</b> requested with the function <a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d">ARM_USART_Control</a> is not supported by this driver. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga2a1cd0a1e1bce9b545b0d7854a6fd6d6"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_USART_ERROR_CPOL&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 7)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Specified Clock Polarity not supported. </p>
-<p>The <b>clock polarity</b> requested with the function <a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d">ARM_USART_Control</a> is not supported by this driver. </p>
-
-</div>
-</div>
 <a class="anchor" id="gaade95ddec6882e96c086dfe8e0ba9a4c"></a>
 <div class="memitem">
 <div class="memproto">
@@ -205,36 +190,6 @@ Macros</h2></td></tr>
 
 <p>Specified number of Data bits not supported. </p>
 <p>The number of <b>data bits</b> requested with the function <a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d">ARM_USART_Control</a> is not supported by this driver. </p>
-
-</div>
-</div>
-<a class="anchor" id="gaf8fea8d43ff72c76434d8b5e9eebd890"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_USART_ERROR_FLOW_CONTROL&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 6)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Specified Flow Control not supported. </p>
-<p>The <b>flow control</b> requested with the function <a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d">ARM_USART_Control</a> is not supported by this driver. </p>
-
-</div>
-</div>
-<a class="anchor" id="gaa98f35611ec5bd7034f21cb47199322b"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_USART_ERROR_MODE&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 1)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Specified Mode not supported. </p>
-<p>The <b>mode</b> requested with the function <a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d">ARM_USART_Control</a> is not supported by this driver. </p>
 
 </div>
 </div>
@@ -268,12 +223,57 @@ Macros</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="gaf8fea8d43ff72c76434d8b5e9eebd890"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_USART_ERROR_FLOW_CONTROL&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 6)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Specified Flow Control not supported. </p>
+<p>The <b>flow control</b> requested with the function <a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d">ARM_USART_Control</a> is not supported by this driver. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga2a1cd0a1e1bce9b545b0d7854a6fd6d6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_USART_ERROR_CPOL&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 7)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Specified Clock Polarity not supported. </p>
+<p>The <b>clock polarity</b> requested with the function <a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d">ARM_USART_Control</a> is not supported by this driver. </p>
+
+</div>
+</div>
+<a class="anchor" id="gade1af23c4ed5409dacd99ab76dc2ff8b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_USART_ERROR_CPHA&#160;&#160;&#160;(<a class="el" href="group__execution__status.html#ga5a2b5d68f6649598d099b88c0eaee3e5">ARM_DRIVER_ERROR_SPECIFIC</a> - 8)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Specified Clock Phase not supported. </p>
+<p>The <b>clock phase</b> requested with the function <a class="el" href="group__usart__interface__gr.html#gad8ffdde2123b5412de3005c456da677d">ARM_USART_Control</a> is not supported by this driver. </p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:43 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:03 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

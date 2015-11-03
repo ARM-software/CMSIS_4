@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['status_20error_20codes',['Status Error Codes',['../group__can__status__code__ctrls.html',1,'']]],
   ['status_20error_20codes',['Status Error Codes',['../group__execution__status.html',1,'']]],
   ['status_20error_20codes',['Status Error Codes',['../group__nand__execution__status.html',1,'']]],
   ['sai_20bit_20order',['SAI Bit Order',['../group__sai__bit__order__control.html',1,'']]],
@@ -32,9 +33,10 @@ var searchData=
   ['sendframe',['SendFrame',['../group__eth__mac__interface__gr.html#ac095aea379f23e30a0e51b1f3518ad37',1,'ARM_DRIVER_ETH_MAC']]],
   ['sequence_5foperation',['sequence_operation',['../group__nand__interface__gr.html#afa4b798731b1154878c26dda3f090acf',1,'ARM_NAND_CAPABILITIES']]],
   ['setaddressfilter',['SetAddressFilter',['../group__eth__mac__interface__gr.html#a45b879a6df608f582d1866daff715798',1,'ARM_DRIVER_ETH_MAC']]],
+  ['setbitrate',['SetBitrate',['../group__can__interface__gr.html#a360a314665607fc2d866c24e1608fd06',1,'ARM_DRIVER_CAN']]],
   ['setinterface',['SetInterface',['../group__eth__phy__interface__gr.html#a7dfc7cf346c80e7fdb2fe4cea2c61161',1,'ARM_DRIVER_ETH_PHY']]],
   ['setmacaddress',['SetMacAddress',['../group__eth__mac__interface__gr.html#ac640f929dc4d5bde3e4282c75b25c00d',1,'ARM_DRIVER_ETH_MAC']]],
-  ['setmode',['SetMode',['../group__eth__phy__interface__gr.html#ae6686344f4d6afa0881d1e545c898a3d',1,'ARM_DRIVER_ETH_PHY']]],
+  ['setmode',['SetMode',['../group__can__interface__gr.html#a0fa2edbde052011604addec816782b4e',1,'ARM_DRIVER_CAN::SetMode()'],['../group__eth__phy__interface__gr.html#ae6686344f4d6afa0881d1e545c898a3d',1,'ARM_DRIVER_ETH_PHY::SetMode()']]],
   ['setmodemcontrol',['SetModemControl',['../group__usart__interface__gr.html#af6703d4078818df27ab9f8a7a8ad7b7b',1,'ARM_DRIVER_USART']]],
   ['setuptransfer',['SetupTransfer',['../group__mci__interface__gr.html#adc63bab660e8304d78faa1ac429e792b',1,'ARM_DRIVER_MCI']]],
   ['simplex',['simplex',['../group__spi__interface__gr.html#af244e2c2facf6414e3886495ee6b40bc',1,'ARM_SPI_CAPABILITIES']]],

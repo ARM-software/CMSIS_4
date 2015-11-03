@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -101,6 +101,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions_vars_0x67.html#index_g"><span>g</span></a></li>
       <li><a href="functions_vars_0x68.html#index_h"><span>h</span></a></li>
       <li><a href="functions_vars_0x69.html#index_i"><span>i</span></a></li>
+      <li><a href="functions_vars_0x6c.html#index_l"><span>l</span></a></li>
       <li><a href="functions_vars_0x6d.html#index_m"><span>m</span></a></li>
       <li><a href="functions_vars_0x6e.html#index_n"><span>n</span></a></li>
       <li><a href="functions_vars_0x6f.html#index_o"><span>o</span></a></li>
@@ -146,6 +147,9 @@ $(document).ready(function(){initNavTree('functions_vars_0x72.html','');});
 &#160;
 
 <h3><a class="anchor" id="index_r"></a>- r -</h3><ul>
+<li>range_filtering
+: <a class="el" href="group__can__interface__gr.html#a96dcf869f4adc9cec686630082c7c60a">ARM_CAN_OBJ_CAPABILITIES</a>
+</li>
 <li>rb_monitor
 : <a class="el" href="group__nand__interface__gr.html#a69f5e734ee4a9bb501718cf78a740c3e">ARM_NAND_CAPABILITIES</a>
 </li>
@@ -174,20 +178,30 @@ $(document).ready(function(){initNavTree('functions_vars_0x72.html','');});
 , <a class="el" href="group__usart__interface__gr.html#adb9224a35fe16c92eb0dd103638e4cf3">ARM_DRIVER_USART</a>
 </li>
 <li>reentrant_operation
-: <a class="el" href="group__nand__interface__gr.html#ae0514834750c7452431717a881471e2b">ARM_NAND_CAPABILITIES</a>
+: <a class="el" href="group__can__interface__gr.html#ae0514834750c7452431717a881471e2b">ARM_CAN_CAPABILITIES</a>
+, <a class="el" href="group__nand__interface__gr.html#ae0514834750c7452431717a881471e2b">ARM_NAND_CAPABILITIES</a>
 </li>
 <li>reserved
 : <a class="el" href="group__nand__interface__gr.html#aa43c4c21b173ada1b6b7568956f0d650">ARM_NAND_ECC_INFO</a>
 </li>
+<li>restricted_mode
+: <a class="el" href="group__can__interface__gr.html#a93008ac105806db484e78e0582ca118c">ARM_CAN_CAPABILITIES</a>
+</li>
 <li>ri
-: <a class="el" href="group__usart__interface__gr.html#aa6cf03b82235bedc0acf00acb46130fb">ARM_USART_CAPABILITIES</a>
-, <a class="el" href="group__usart__interface__gr.html#aa6cf03b82235bedc0acf00acb46130fb">ARM_USART_MODEM_STATUS</a>
+: <a class="el" href="group__usart__interface__gr.html#aa6cf03b82235bedc0acf00acb46130fb">ARM_USART_MODEM_STATUS</a>
+, <a class="el" href="group__usart__interface__gr.html#aa6cf03b82235bedc0acf00acb46130fb">ARM_USART_CAPABILITIES</a>
 </li>
 <li>rst_n
 : <a class="el" href="group__mci__interface__gr.html#a2e8bd27f2c5c3093c4fec557890b97d4">ARM_MCI_CAPABILITIES</a>
 </li>
+<li>rtr
+: <a class="el" href="group__can__interface__gr.html#a1f32fc9e5d3b33babf5905140e7a53af">ARM_CAN_MSG_INFO</a>
+</li>
 <li>rts
 : <a class="el" href="group__usart__interface__gr.html#afad044722f459552e9f0f602983659e9">ARM_USART_CAPABILITIES</a>
+</li>
+<li>rx
+: <a class="el" href="group__can__interface__gr.html#a895532773c3204e1538191f155c7bac8">ARM_CAN_OBJ_CAPABILITIES</a>
 </li>
 <li>rx_break
 : <a class="el" href="group__usart__interface__gr.html#aa5e3fa74f444688f9e727ffc1e988e5d">ARM_USART_STATUS</a>
@@ -196,15 +210,21 @@ $(document).ready(function(){initNavTree('functions_vars_0x72.html','');});
 : <a class="el" href="group__usart__interface__gr.html#a9f5baee58ed41b382628a82a0b1cbcb4">ARM_USART_STATUS</a>
 , <a class="el" href="group__sai__interface__gr.html#a9f5baee58ed41b382628a82a0b1cbcb4">ARM_SAI_STATUS</a>
 </li>
+<li>rx_error_count
+: <a class="el" href="group__can__interface__gr.html#ab7e8b863b379b786ad1af935aa3ef2e8">ARM_CAN_STATUS</a>
+</li>
 <li>rx_framing_error
 : <a class="el" href="group__usart__interface__gr.html#af1d1cfd8b231843d5cc23e6a2b1ca8d0">ARM_USART_STATUS</a>
 </li>
 <li>rx_overflow
-: <a class="el" href="group__usart__interface__gr.html#ac403aefd9bce8b0172e1996c0f3dd8aa">ARM_USART_STATUS</a>
-, <a class="el" href="group__sai__interface__gr.html#ac403aefd9bce8b0172e1996c0f3dd8aa">ARM_SAI_STATUS</a>
+: <a class="el" href="group__sai__interface__gr.html#ac403aefd9bce8b0172e1996c0f3dd8aa">ARM_SAI_STATUS</a>
+, <a class="el" href="group__usart__interface__gr.html#ac403aefd9bce8b0172e1996c0f3dd8aa">ARM_USART_STATUS</a>
 </li>
 <li>rx_parity_error
 : <a class="el" href="group__usart__interface__gr.html#affb21b610e2d0d71727702441c238f4f">ARM_USART_STATUS</a>
+</li>
+<li>rx_rtr_tx_data
+: <a class="el" href="group__can__interface__gr.html#a8a41139926d7c032247458d055071fda">ARM_CAN_OBJ_CAPABILITIES</a>
 </li>
 </ul>
 </div><!-- contents -->
@@ -212,7 +232,7 @@ $(document).ready(function(){initNavTree('functions_vars_0x72.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:43 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:04 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

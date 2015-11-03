@@ -2,13 +2,10 @@
  * @file     system_ARMSC000.h
  * @brief    CMSIS Device System Header File for
  *           ARMSC000 Device Series
- * @version  V1.08
- * @date     23. November 2012
- *
- * @note
- *
+ * @version  V2.00
+ * @date     18. August 2015
  ******************************************************************************/
-/* Copyright (c) 2011 - 2012 ARM LIMITED
+/* Copyright (c) 2011 - 2015 ARM LIMITED
 
    All rights reserved.
    Redistribution and use in source and binary forms, with or without
@@ -43,28 +40,20 @@
 extern "C" {
 #endif
 
-extern uint32_t SystemCoreClock;     /*!< System Clock Frequency (Core Clock)  */
+extern uint32_t SystemCoreClock;     /*!< System Clock Frequency (Core Clock) */
 
 
-/**
- * Initialize the system
- *
- * @param  none
- * @return none
- *
- * @brief  Setup the microcontroller system.
- *         Initialize the System and update the SystemCoreClock variable.
+/** @brief Setup the microcontroller system.
+
+    Initialize the System and update the SystemCoreClock variable.
  */
 extern void SystemInit (void);
 
-/**
- * Update SystemCoreClock variable
- *
- * @param  none
- * @return none
- *
- * @brief  Updates the SystemCoreClock with current core Clock
- *         retrieved from cpu registers.
+
+/** \brief  Update SystemCoreClock variable.
+
+    Updates the SystemCoreClock with current core Clock
+    retrieved from cpu registers.
  */
 extern void SystemCoreClockUpdate (void);
 

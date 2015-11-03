@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -199,7 +199,7 @@ Functions</h2></td></tr>
 <li><b>Driver_Flash.h</b> : Driver API for Flash Device Interface</li>
 </ul>
 <p><b>Driver Functions</b></p>
-<p>The driver functions are published in the access struct as explained in <a class="el" href="_theory_operation.html#DriverFunctions">Driver Functions</a></p>
+<p>The driver functions are published in the access struct as explained in <a class="el" href="_theory_operation.html#DriverFunctions">Common Driver Functions</a></p>
 <ul>
 <li><a class="el" href="group__flash__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___f_l_a_s_h">ARM_DRIVER_FLASH</a> : access struct for Flash driver functions </li>
 </ul>
@@ -222,17 +222,17 @@ Functions</h2></td></tr>
 </div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a class="anchor" id="a204a3f4fa39b9c007f9784d3e4af4667"></a>uint32_t</td>
-<td class="fieldname">
-end</td>
-<td class="fielddoc">
-Sector End address (start+size-1) </td></tr>
-<tr><td class="fieldtype">
 <a class="anchor" id="a61eb63d26b2fa6c2971603ceccffb14b"></a>uint32_t</td>
 <td class="fieldname">
 start</td>
 <td class="fielddoc">
 Sector Start address. </td></tr>
+<tr><td class="fieldtype">
+<a class="anchor" id="a204a3f4fa39b9c007f9784d3e4af4667"></a>uint32_t</td>
+<td class="fieldname">
+end</td>
+<td class="fielddoc">
+Sector End address (start+size-1) </td></tr>
 </table>
 
 </div>
@@ -256,11 +256,23 @@ Sector Start address. </td></tr>
 </div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a class="anchor" id="a85c3826bf20669d38e466dfd376994db"></a>uint8_t</td>
+<a class="anchor" id="a8dfb9d5160358e45293bba527762238d"></a><a class="el" href="group__flash__interface__gr.html#struct_a_r_m___f_l_a_s_h___s_e_c_t_o_r">ARM_FLASH_SECTOR</a> *</td>
 <td class="fieldname">
-erased_value</td>
+sector_info</td>
 <td class="fielddoc">
-Contents of erased memory (usually 0xFF) </td></tr>
+Sector layout information (NULL=Uniform sectors) </td></tr>
+<tr><td class="fieldtype">
+<a class="anchor" id="a50947f9a42bbaa2d68d6e5079150d7bf"></a>uint32_t</td>
+<td class="fieldname">
+sector_count</td>
+<td class="fielddoc">
+Number of sectors. </td></tr>
+<tr><td class="fieldtype">
+<a class="anchor" id="a7d37def484362c6e97a2d75144080b1d"></a>uint32_t</td>
+<td class="fieldname">
+sector_size</td>
+<td class="fielddoc">
+Uniform sector size in bytes (0=sector_info used) </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="a9dd3e47e968a8f6beb5d88c6d1b7ebe9"></a>uint32_t</td>
 <td class="fieldname">
@@ -274,23 +286,11 @@ program_unit</td>
 <td class="fielddoc">
 Smallest programmable unit in bytes. </td></tr>
 <tr><td class="fieldtype">
-<a class="anchor" id="a50947f9a42bbaa2d68d6e5079150d7bf"></a>uint32_t</td>
+<a class="anchor" id="a85c3826bf20669d38e466dfd376994db"></a>uint8_t</td>
 <td class="fieldname">
-sector_count</td>
+erased_value</td>
 <td class="fielddoc">
-Number of sectors. </td></tr>
-<tr><td class="fieldtype">
-<a class="anchor" id="a8dfb9d5160358e45293bba527762238d"></a><a class="el" href="group__flash__interface__gr.html#struct_a_r_m___f_l_a_s_h___s_e_c_t_o_r">ARM_FLASH_SECTOR</a> *</td>
-<td class="fieldname">
-sector_info</td>
-<td class="fielddoc">
-Sector layout information (NULL=Uniform sectors) </td></tr>
-<tr><td class="fieldtype">
-<a class="anchor" id="a7d37def484362c6e97a2d75144080b1d"></a>uint32_t</td>
-<td class="fieldname">
-sector_size</td>
-<td class="fielddoc">
-Uniform sector size in bytes (0=sector_info used) </td></tr>
+Contents of erased memory (usually 0xFF) </td></tr>
 </table>
 
 </div>
@@ -305,7 +305,7 @@ Uniform sector size in bytes (0=sector_info used) </td></tr>
       </table>
 </div><div class="memdoc">
 <div class="textblock"><p>Access structure of the Flash Driver. </p>
-<p>The functions of the Flash driver are accessed by function pointers exposed by this structure. Refer to <a class="el" href="_theory_operation.html#DriverFunctions">Driver Functions</a> for overview information.</p>
+<p>The functions of the Flash driver are accessed by function pointers exposed by this structure. Refer to <a class="el" href="_theory_operation.html#DriverFunctions">Common Driver Functions</a> for overview information.</p>
 <p>Each instance of a Flash interface provides such an access structure. The instance is identified by a postfix number in the symbol name of the access structure, for example:</p>
 <ul>
 <li><b>Driver_Flash0</b> is the name of the access struct of the first instance (no. 0).</li>
@@ -349,31 +349,17 @@ Uniform sector size in bytes (0=sector_info used) </td></tr>
 <tr class="separator:ae64d4ee61b7a7ee0b38a0ef2b61f1db2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h4 class="groupheader">Field Documentation</h4>
-<a class="anchor" id="ae873705c743d94572fb6500421e15760"></a>
+<a class="anchor" id="a8834b281da48583845c044a81566c1b3"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int32_t(* EraseChip)(void)</td>
+          <td class="memname"><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a>(* GetVersion)(void)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Pointer to <a class="el" href="group__flash__interface__gr.html#ga6cbaebe069d31d56c70b1f8f847e2d55">ARM_Flash_EraseChip</a> : Erase complete Flash. </p>
-
-</div>
-</div>
-<a class="anchor" id="ad9d78f9fe07aabf12b23b95239818b55"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* EraseSector)(uint32_t addr)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__flash__interface__gr.html#ga0b2b4fe5a7be579cf3644995a765ea20">ARM_Flash_EraseSector</a> : Erase Flash Sector. </p>
+<p>Pointer to <a class="el" href="group__flash__interface__gr.html#ga1cfe24b2ffa571ee50ae544bd922b604">ARM_Flash_GetVersion</a> : Get driver version. </p>
 
 </div>
 </div>
@@ -391,48 +377,6 @@ Uniform sector size in bytes (0=sector_info used) </td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ae64d4ee61b7a7ee0b38a0ef2b61f1db2"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__flash__interface__gr.html#struct_a_r_m___f_l_a_s_h___i_n_f_o">ARM_FLASH_INFO</a>*(* GetInfo)(void)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__flash__interface__gr.html#gac047b7509356e888502e0424a9d189ae">ARM_Flash_GetInfo</a> : Get Flash information. </p>
-
-</div>
-</div>
-<a class="anchor" id="afc1db6f33f777784f3c95efc816d4856"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__flash__interface__gr.html#struct_a_r_m___f_l_a_s_h___s_t_a_t_u_s">ARM_FLASH_STATUS</a>(* GetStatus)(void)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__flash__interface__gr.html#ga06885c0d4587d5a23f97614a8b849ef1">ARM_Flash_GetStatus</a> : Get Flash status. </p>
-
-</div>
-</div>
-<a class="anchor" id="a8834b281da48583845c044a81566c1b3"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a>(* GetVersion)(void)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__flash__interface__gr.html#ga1cfe24b2ffa571ee50ae544bd922b604">ARM_Flash_GetVersion</a> : Get driver version. </p>
-
-</div>
-</div>
 <a class="anchor" id="a2d1eb2b5c3ee21ba5c92c37e89412567"></a>
 <div class="memitem">
 <div class="memproto">
@@ -444,48 +388,6 @@ Uniform sector size in bytes (0=sector_info used) </td></tr>
 </div><div class="memdoc">
 
 <p>Pointer to <a class="el" href="group__flash__interface__gr.html#gaa5b4bbe529d620d4ad4825588a4c4cf0">ARM_Flash_Initialize</a> : Initialize Flash Interface. </p>
-
-</div>
-</div>
-<a class="anchor" id="aba8f1c8019af95ffe19c32403e3240ef"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* PowerControl)(<a class="el" href="group__common__drv__gr.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5">ARM_POWER_STATE</a> state)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__flash__interface__gr.html#gaa8baa4618ea33568f8b3752afb2ab5a2">ARM_Flash_PowerControl</a> : Control Flash Interface Power. </p>
-
-</div>
-</div>
-<a class="anchor" id="a429fc193f1ec62858219ab8749c563ae"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* ProgramData)(uint32_t addr, const void *data, uint32_t cnt)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__flash__interface__gr.html#ga947f24ea4042093fdb5605a68ae74f9d">ARM_Flash_ProgramData</a> : Program data to Flash. </p>
-
-</div>
-</div>
-<a class="anchor" id="adec45569a2f6f0d915a206f8f19107bd"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* ReadData)(uint32_t addr, void *data, uint32_t cnt)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__flash__interface__gr.html#ga223138342383219896ed7e255faeb99a">ARM_Flash_ReadData</a> : Read data from Flash. </p>
 
 </div>
 </div>
@@ -503,6 +405,104 @@ Uniform sector size in bytes (0=sector_info used) </td></tr>
 
 </div>
 </div>
+<a class="anchor" id="aba8f1c8019af95ffe19c32403e3240ef"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* PowerControl)(<a class="el" href="group__common__drv__gr.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5">ARM_POWER_STATE</a> state)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__flash__interface__gr.html#gaa8baa4618ea33568f8b3752afb2ab5a2">ARM_Flash_PowerControl</a> : Control Flash Interface Power. </p>
+
+</div>
+</div>
+<a class="anchor" id="adec45569a2f6f0d915a206f8f19107bd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* ReadData)(uint32_t addr, void *data, uint32_t cnt)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__flash__interface__gr.html#ga223138342383219896ed7e255faeb99a">ARM_Flash_ReadData</a> : Read data from Flash. </p>
+
+</div>
+</div>
+<a class="anchor" id="a429fc193f1ec62858219ab8749c563ae"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* ProgramData)(uint32_t addr, const void *data, uint32_t cnt)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__flash__interface__gr.html#ga947f24ea4042093fdb5605a68ae74f9d">ARM_Flash_ProgramData</a> : Program data to Flash. </p>
+
+</div>
+</div>
+<a class="anchor" id="ad9d78f9fe07aabf12b23b95239818b55"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* EraseSector)(uint32_t addr)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__flash__interface__gr.html#ga0b2b4fe5a7be579cf3644995a765ea20">ARM_Flash_EraseSector</a> : Erase Flash Sector. </p>
+
+</div>
+</div>
+<a class="anchor" id="ae873705c743d94572fb6500421e15760"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* EraseChip)(void)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__flash__interface__gr.html#ga6cbaebe069d31d56c70b1f8f847e2d55">ARM_Flash_EraseChip</a> : Erase complete Flash. </p>
+
+</div>
+</div>
+<a class="anchor" id="afc1db6f33f777784f3c95efc816d4856"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__flash__interface__gr.html#struct_a_r_m___f_l_a_s_h___s_t_a_t_u_s">ARM_FLASH_STATUS</a>(* GetStatus)(void)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__flash__interface__gr.html#ga06885c0d4587d5a23f97614a8b849ef1">ARM_Flash_GetStatus</a> : Get Flash status. </p>
+
+</div>
+</div>
+<a class="anchor" id="ae64d4ee61b7a7ee0b38a0ef2b61f1db2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__flash__interface__gr.html#struct_a_r_m___f_l_a_s_h___i_n_f_o">ARM_FLASH_INFO</a>*(* GetInfo)(void)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__flash__interface__gr.html#gac047b7509356e888502e0424a9d189ae">ARM_Flash_GetInfo</a> : Get Flash information. </p>
+
+</div>
+</div>
 
 </div>
 </div>
@@ -516,7 +516,7 @@ Uniform sector size in bytes (0=sector_info used) </td></tr>
       </table>
 </div><div class="memdoc">
 <div class="textblock"><p>Flash Driver Capabilities. </p>
-<p>A Flash driver can be implemented with different capabilities. The bitfield members of this struct encode the capabilities implemented by this driver.</p>
+<p>A Flash driver can be implemented with different capabilities. The data fields of this struct encode the capabilities implemented by this driver.</p>
 <p>The element <em>event_ready</em> indicates that the driver is able to generate the <a class="el" href="group___flash__events.html#gaf7a9c4ad125ee90df35907d861151e23">ARM_FLASH_EVENT_READY</a> event. In case that this event is not available it is possible to poll the driver status by calling the <a class="el" href="group__flash__interface__gr.html#ga06885c0d4587d5a23f97614a8b849ef1">ARM_Flash_GetStatus</a> and check the <em>busy</em> flag.</p>
 <p>The element <em>data_width</em> specifies the data access size and also defines the data type (uint8_t, uint16_t or uint32_t) for the <em>data</em> parameter in <a class="el" href="group__flash__interface__gr.html#ga223138342383219896ed7e255faeb99a">ARM_Flash_ReadData</a> and <a class="el" href="group__flash__interface__gr.html#ga947f24ea4042093fdb5605a68ae74f9d">ARM_Flash_ProgramData</a> functions.</p>
 <p>The element <em>erase_chip</em> specifies that the <a class="el" href="group__flash__interface__gr.html#ga6cbaebe069d31d56c70b1f8f847e2d55">ARM_Flash_EraseChip</a> function is supported. Typically full chip erase is much faster than erasing the whole device sector per sector.</p>
@@ -526,6 +526,12 @@ Uniform sector size in bytes (0=sector_info used) </td></tr>
 </ul>
 </div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
+<tr><td class="fieldtype">
+<a class="anchor" id="add296ba516c8fc17ba51e30f2a00f0a9"></a>uint32_t</td>
+<td class="fieldname">
+event_ready: 1</td>
+<td class="fielddoc">
+Signal Flash Ready event. </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="a04c173610dd0a545ecae308e342aafb0"></a>uint32_t</td>
 <td class="fieldname">
@@ -538,12 +544,6 @@ Data width: 0=8-bit, 1=16-bit, 2=32-bit. </td></tr>
 erase_chip: 1</td>
 <td class="fielddoc">
 Supports EraseChip operation. </td></tr>
-<tr><td class="fieldtype">
-<a class="anchor" id="add296ba516c8fc17ba51e30f2a00f0a9"></a>uint32_t</td>
-<td class="fieldname">
-event_ready: 1</td>
-<td class="fielddoc">
-Signal Flash Ready event. </td></tr>
 </table>
 
 </div>
@@ -604,12 +604,12 @@ Read/Program/Erase error flag (cleared on start of next operation) </td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="ga6cbaebe069d31d56c70b1f8f847e2d55"></a>
+<a class="anchor" id="ga1cfe24b2ffa571ee50ae544bd922b604"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int32_t ARM_Flash_EraseChip </td>
+          <td class="memname"><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a> ARM_Flash_GetVersion </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -618,38 +618,28 @@ Read/Program/Erase error flag (cleared on start of next operation) </td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Erase complete Flash. Optional function for faster full chip erase. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>This <b>optional</b> function erases the complete device. If the device does not support global erase or only a portion of the Flash memory space is used for storing files then this functions returns the error value <a class="el" href="group__execution__status.html#ga2efa59e480d82697795439220e6884e4">ARM_DRIVER_ERROR_UNSUPPORTED</a>. Function <a class="el" href="group__flash__interface__gr.html#ga27c23c998032cd47cb47293c0185ee5d">ARM_Flash_GetCapabilities</a> reports if the function <b>ARM_Flash_EraseChip</b> is supported.</p>
-<p>The function is non-blocking and returns as soon as the driver has started the operation. When the operation is completed the <a class="el" href="group___flash__events.html#gaf7a9c4ad125ee90df35907d861151e23">ARM_FLASH_EVENT_READY</a> event is generated (if supported and reported by <a class="el" href="group__flash__interface__gr.html#ga27c23c998032cd47cb47293c0185ee5d">ARM_Flash_GetCapabilities</a>). In case of errors the <a class="el" href="group___flash__events.html#ga0dfea52761c0eed83e5d73e7a7f69962">ARM_FLASH_EVENT_ERROR</a> event is generated at the same time. Progress of the operation can also be monitored by calling the <a class="el" href="group__flash__interface__gr.html#ga06885c0d4587d5a23f97614a8b849ef1">ARM_Flash_GetStatus</a> function and checking the <em>busy</em> flag. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga0b2b4fe5a7be579cf3644995a765ea20"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t ARM_Flash_EraseSector </td>
-          <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>addr</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Erase Flash Sector. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">addr</td><td>Sector address </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>This function erases a flash sector specified by the parameter <em>adr</em> (points to start of the sector).</p>
-<p>The function is non-blocking and returns as soon as the driver has started the operation. When the operation is completed the <a class="el" href="group___flash__events.html#gaf7a9c4ad125ee90df35907d861151e23">ARM_FLASH_EVENT_READY</a> event is generated (if supported and reported by <a class="el" href="group__flash__interface__gr.html#ga27c23c998032cd47cb47293c0185ee5d">ARM_Flash_GetCapabilities</a>). In case of errors the <a class="el" href="group___flash__events.html#ga0dfea52761c0eed83e5d73e7a7f69962">ARM_FLASH_EVENT_ERROR</a> event is generated at the same time. Progress of the operation can also be monitored by calling the <a class="el" href="group__flash__interface__gr.html#ga06885c0d4587d5a23f97614a8b849ef1">ARM_Flash_GetStatus</a> function and checking the <em>busy</em> flag. </p>
-
+<p>Get driver version. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a></dd></dl>
+<p>The function <b>ARM_Flash_GetVersion</b> returns version information of the driver implementation in <a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a></p>
+<ul>
+<li>API version is the version of the CMSIS-Driver specification used to implement this driver.</li>
+<li>Driver version is source code version of the actual driver implementation.</li>
+</ul>
+<p>Example: </p>
+<div class="fragment"><div class="line"><span class="keyword">extern</span> <a class="code" href="group__flash__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___f_l_a_s_h" title="Access structure of the Flash Driver.">ARM_DRIVER_FLASH</a> Driver_Flash0;</div>
+<div class="line"><a class="code" href="group__flash__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___f_l_a_s_h" title="Access structure of the Flash Driver.">ARM_DRIVER_FLASH</a> *drv_info;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> read_version (<span class="keywordtype">void</span>)  {</div>
+<div class="line">  <a class="code" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n" title="Driver Version.">ARM_DRIVER_VERSION</a>  version;</div>
+<div class="line"> </div>
+<div class="line">  drv_info = &amp;Driver_Flash0;  </div>
+<div class="line">  version = drv_info-&gt;<a class="code" href="group__flash__interface__gr.html#a8834b281da48583845c044a81566c1b3" title="Pointer to ARM_Flash_GetVersion : Get driver version.">GetVersion</a> ();</div>
+<div class="line">  <span class="keywordflow">if</span> (version.<a class="code" href="group__common__drv__gr.html#ad180da20fbde1d3dafc074af87c19540" title="API version.">api</a> &lt; 0x10A)   {      <span class="comment">// requires at minimum API version 1.10 or higher</span></div>
+<div class="line">    <span class="comment">// error handling</span></div>
+<div class="line">    <span class="keywordflow">return</span>;</div>
+<div class="line">  }</div>
+<div class="line">}</div>
+</div><!-- fragment --> 
 </div>
 </div>
 <a class="anchor" id="ga27c23c998032cd47cb47293c0185ee5d"></a>
@@ -668,7 +658,7 @@ Read/Program/Erase error flag (cleared on start of next operation) </td></tr>
 
 <p>Get driver capabilities. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__flash__interface__gr.html#struct_a_r_m___f_l_a_s_h___c_a_p_a_b_i_l_i_t_i_e_s">ARM_FLASH_CAPABILITIES</a></dd></dl>
-<p>Retrieves information about capabilities in this driver implementation. The bitfield members of the struct <a class="el" href="group__flash__interface__gr.html#struct_a_r_m___f_l_a_s_h___c_a_p_a_b_i_l_i_t_i_e_s">ARM_FLASH_CAPABILITIES</a> encode various capabilities, for example if a hardware is able to create signal events using the <a class="el" href="group__flash__interface__gr.html#ga97b75555b5433b268add81f2e60f095a">ARM_Flash_SignalEvent</a> callback function.</p>
+<p>The function <b>ARM_Flash_GetCapabilities</b> returns information about capabilities in this driver implementation. The data fields of the struct <a class="el" href="group__flash__interface__gr.html#struct_a_r_m___f_l_a_s_h___c_a_p_a_b_i_l_i_t_i_e_s">ARM_FLASH_CAPABILITIES</a> encode various capabilities, for example if a hardware is able to create signal events using the <a class="el" href="group__flash__interface__gr.html#ga97b75555b5433b268add81f2e60f095a">ARM_Flash_SignalEvent</a> callback function.</p>
 <p>Example: </p>
 <div class="fragment"><div class="line"><span class="keyword">extern</span> <a class="code" href="group__flash__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___f_l_a_s_h" title="Access structure of the Flash Driver.">ARM_DRIVER_FLASH</a> Driver_Flash0;</div>
 <div class="line"><a class="code" href="group__flash__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___f_l_a_s_h" title="Access structure of the Flash Driver.">ARM_DRIVER_FLASH</a> *drv_info;</div>
@@ -680,84 +670,6 @@ Read/Program/Erase error flag (cleared on start of next operation) </td></tr>
 <div class="line">  drv_capabilities = drv_info-&gt;<a class="code" href="group__flash__interface__gr.html#a25076bd7274af5d3b0af6380ed1f0331" title="Pointer to ARM_Flash_GetCapabilities : Get driver capabilities.">GetCapabilities</a> ();</div>
 <div class="line">  <span class="comment">// interrogate capabilities</span></div>
 <div class="line"> </div>
-<div class="line">}</div>
-</div><!-- fragment --> 
-</div>
-</div>
-<a class="anchor" id="gac047b7509356e888502e0424a9d189ae"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__flash__interface__gr.html#struct_a_r_m___f_l_a_s_h___i_n_f_o">ARM_FLASH_INFO</a> * ARM_Flash_GetInfo </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get Flash information. </p>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to Flash information <a class="el" href="group__flash__interface__gr.html#struct_a_r_m___f_l_a_s_h___i_n_f_o">ARM_FLASH_INFO</a></dd></dl>
-<p>Retrieves information about the Flash device. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga06885c0d4587d5a23f97614a8b849ef1"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__flash__interface__gr.html#struct_a_r_m___f_l_a_s_h___s_t_a_t_u_s">ARM_FLASH_STATUS</a> ARM_Flash_GetStatus </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get Flash status. </p>
-<dl class="section return"><dt>Returns</dt><dd>Flash status <a class="el" href="group__flash__interface__gr.html#struct_a_r_m___f_l_a_s_h___s_t_a_t_u_s">ARM_FLASH_STATUS</a></dd></dl>
-<p>Retrieves current Flash interface status. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga1cfe24b2ffa571ee50ae544bd922b604"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a> ARM_Flash_GetVersion </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get driver version. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a></dd></dl>
-<p>Returns version information of the driver implementation in <a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a></p>
-<ul>
-<li>API version is the version of the CMSIS-Driver specification used to implement this driver.</li>
-<li>Driver version is source code version of the actual driver implementation.</li>
-</ul>
-<p>Example: </p>
-<div class="fragment"><div class="line"><span class="keyword">extern</span> <a class="code" href="group__flash__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___f_l_a_s_h" title="Access structure of the Flash Driver.">ARM_DRIVER_FLASH</a> Driver_Flash0;</div>
-<div class="line"><a class="code" href="group__flash__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___f_l_a_s_h" title="Access structure of the Flash Driver.">ARM_DRIVER_FLASH</a> *drv_info;</div>
-<div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> read_version (<span class="keywordtype">void</span>)  {</div>
-<div class="line">  <a class="code" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n" title="Driver Version.">ARM_DRIVER_VERSION</a>  version;</div>
-<div class="line"> </div>
-<div class="line">  drv_info = &amp;Driver_Flash0;  </div>
-<div class="line">  version = drv_info-&gt;<a class="code" href="group__flash__interface__gr.html#a8834b281da48583845c044a81566c1b3" title="Pointer to ARM_Flash_GetVersion : Get driver version.">GetVersion</a> ();</div>
-<div class="line">  <span class="keywordflow">if</span> (version.<a class="code" href="group__common__drv__gr.html#ad180da20fbde1d3dafc074af87c19540" title="API version.">api</a> &lt; 0x10A)   {      <span class="comment">// requires at minimum API version 1.10 or higher</span></div>
-<div class="line">    <span class="comment">// error handling</span></div>
-<div class="line">    <span class="keywordflow">return</span>;</div>
-<div class="line">  }</div>
 <div class="line">}</div>
 </div><!-- fragment --> 
 </div>
@@ -784,7 +696,7 @@ Read/Program/Erase error flag (cleared on start of next operation) </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>The function initializes the Flash interface. It is called when the middleware component starts operation.</p>
+<p>The function <b>ARM_Flash_Initialize</b> initializes the Flash interface. It is called when the middleware component starts operation.</p>
 <p>The function performs the following operations:</p>
 <ul>
 <li>Initializes the resources needed for the Flash interface.</li>
@@ -795,6 +707,27 @@ Read/Program/Erase error flag (cleared on start of next operation) </td></tr>
 <ul>
 <li>see <a class="el" href="group__flash__interface__gr.html">Flash Interface</a> - Driver Functions </li>
 </ul>
+
+</div>
+</div>
+<a class="anchor" id="gae23af293e9f8a67cdb19c7d0d562d415"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ARM_Flash_Uninitialize </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>De-initialize the Flash Interface. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
+<p>The function <b>ARM_Flash_Uninitialize</b> de-initializes the resources of Flash interface.</p>
+<p>It is called when the middleware component stops operation and releases the software resources used by the interface. </p>
 
 </div>
 </div>
@@ -820,57 +753,14 @@ Read/Program/Erase error flag (cleared on start of next operation) </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>Control Flash Interface Power. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga947f24ea4042093fdb5605a68ae74f9d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t ARM_Flash_ProgramData </td>
-          <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>addr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const void *&#160;</td>
-          <td class="paramname"><em>data</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>cnt</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Program data to Flash. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">addr</td><td>Data address. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>Pointer to a buffer containing the data to be programmed to Flash. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">cnt</td><td>Number of data items to program. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>number of data items programmed or <a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>This function programs data to the Flash device.</p>
-<p>The parameter <em>addr</em> specifies the address to where to program data (needs to be aligned to <em>program_unit</em> specified in <a class="el" href="group__flash__interface__gr.html#struct_a_r_m___f_l_a_s_h___i_n_f_o">ARM_FLASH_INFO</a>). The parameter <em>data</em> specifies the pointer to a buffer containing data to be programmed. The data type is <em>uint8_t</em>, <em>uint16_t</em> or <em>uint32_t</em> and is specified by the <em>data_width</em> in <a class="el" href="group__flash__interface__gr.html#struct_a_r_m___f_l_a_s_h___c_a_p_a_b_i_l_i_t_i_e_s">ARM_FLASH_CAPABILITIES</a>. The parameter <em>cnt</em> specifies the number of data items to program (data size needs to be a multiple of <em>program_unit</em>).</p>
-<p>The function executes in the following ways:</p>
+<p>The function <b>ARM_Flash_PowerControl</b> operates the power modes of the Flash interface.</p>
+<p>The parameter <em>state</em> can have the following values:</p>
 <ul>
-<li>When the operation is non-blocking (typically) then the function only starts the operation and returns with zero number of data items programmed. When the operation is completed the <a class="el" href="group___flash__events.html#gaf7a9c4ad125ee90df35907d861151e23">ARM_FLASH_EVENT_READY</a> event is generated (if supported and reported by <a class="el" href="group__flash__interface__gr.html#ga27c23c998032cd47cb47293c0185ee5d">ARM_Flash_GetCapabilities</a>). In case of errors the <a class="el" href="group___flash__events.html#ga0dfea52761c0eed83e5d73e7a7f69962">ARM_FLASH_EVENT_ERROR</a> event is generated at the same time. Progress of the operation can also be monitored by calling the <a class="el" href="group__flash__interface__gr.html#ga06885c0d4587d5a23f97614a8b849ef1">ARM_Flash_GetStatus</a> function and checking the <em>busy</em> flag.</li>
-<li>When the operation is blocking then the function returns after the data is programmed and returns the number of data items programmed. </li>
+<li><a class="el" href="_driver___common_8h.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5abed52b77a9ce4775570e44a842b1295e">ARM_POWER_FULL</a> : set-up peripheral for data transfers, enable interrupts (NVIC) and optionally DMA. Can be called multiple times. If the peripheral is already in this mode, then the function performs no operation and returns with <a class="el" href="group__execution__status.html#ga85752c5de59e8adeb001e35ff5be6be7">ARM_DRIVER_OK</a>.</li>
+<li><a class="el" href="_driver___common_8h.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5a9ef9e57cbcc948d0e22314e73dc8c434">ARM_POWER_LOW</a> : may use power saving. Returns <a class="el" href="group__execution__status.html#ga2efa59e480d82697795439220e6884e4">ARM_DRIVER_ERROR_UNSUPPORTED</a> when not implemented.</li>
+<li><a class="el" href="_driver___common_8h.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5ab6f5becc85ebd51c3dd2524a95d2ca35">ARM_POWER_OFF</a> : terminates any pending data transfers, disables peripheral, disables related interrupts and DMA.</li>
 </ul>
+<p>Refer to <a class="el" href="_theory_operation.html#CallSequence">Function Call Sequence</a> for more information. </p>
 
 </div>
 </div>
@@ -914,13 +804,159 @@ Read/Program/Erase error flag (cleared on start of next operation) </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>number of data items read or <a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>This function reads data from the Flash device.</p>
-<p>The parameter <em>addr</em> specifies the address from where to read data (needs to be aligned to data type size). The parameter <em>data</em> specifies the pointer to a buffer storing the data read. The data type is <em>uint8_t</em>, <em>uint16_t</em> or <em>uint32_t</em> and is specified by the <em>data_width</em> in <a class="el" href="group__flash__interface__gr.html#struct_a_r_m___f_l_a_s_h___c_a_p_a_b_i_l_i_t_i_e_s">ARM_FLASH_CAPABILITIES</a>. The parameter <em>cnt</em> specifies the number of data items to read.</p>
+<p>This function <b>ARM_Flash_ReadData</b> reads data from the Flash device.</p>
+<p>The parameter <em>addr</em> specifies the address from where to read data (needs to be aligned to data type size). <br/>
+ The parameter <em>data</em> specifies the pointer to a buffer storing the data read. The data type is <em>uint8_t</em>, <em>uint16_t</em> or <em>uint32_t</em> and is specified by the <em>data_width</em> in <a class="el" href="group__flash__interface__gr.html#struct_a_r_m___f_l_a_s_h___c_a_p_a_b_i_l_i_t_i_e_s">ARM_FLASH_CAPABILITIES</a>. <br/>
+ The parameter <em>cnt</em> specifies the number of data items to read.</p>
 <p>The function executes in the following ways:</p>
 <ul>
 <li>When the operation is non-blocking (typical for SPI Flash) then the function only starts the operation and returns with zero number of data items read. When the operation is completed the <a class="el" href="group___flash__events.html#gaf7a9c4ad125ee90df35907d861151e23">ARM_FLASH_EVENT_READY</a> event is generated (if supported and reported by <a class="el" href="group__flash__interface__gr.html#ga27c23c998032cd47cb47293c0185ee5d">ARM_Flash_GetCapabilities</a>). In case of errors the <a class="el" href="group___flash__events.html#ga0dfea52761c0eed83e5d73e7a7f69962">ARM_FLASH_EVENT_ERROR</a> event is generated at the same time. Progress of the operation can also be monitored by calling the <a class="el" href="group__flash__interface__gr.html#ga06885c0d4587d5a23f97614a8b849ef1">ARM_Flash_GetStatus</a> function and checking the <em>busy</em> flag.</li>
 <li>When the operation is blocking (typical for memory mapped Flash) then the function returns after the data is read and returns the number of data items read. </li>
 </ul>
+
+</div>
+</div>
+<a class="anchor" id="ga947f24ea4042093fdb5605a68ae74f9d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ARM_Flash_ProgramData </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>cnt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Program data to Flash. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">addr</td><td>Data address. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>Pointer to a buffer containing the data to be programmed to Flash. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">cnt</td><td>Number of data items to program. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>number of data items programmed or <a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
+<p>This function <b>ARM_Flash_ProgramData</b> programs data to the Flash device.</p>
+<p>The parameter <em>addr</em> specifies the address to where to program data (needs to be aligned to <em>program_unit</em> specified in <a class="el" href="group__flash__interface__gr.html#struct_a_r_m___f_l_a_s_h___i_n_f_o">ARM_FLASH_INFO</a>). <br/>
+ The parameter <em>data</em> specifies the pointer to a buffer containing data to be programmed. The data type is <em>uint8_t</em>, <em>uint16_t</em> or <em>uint32_t</em> and is specified by the <em>data_width</em> in <a class="el" href="group__flash__interface__gr.html#struct_a_r_m___f_l_a_s_h___c_a_p_a_b_i_l_i_t_i_e_s">ARM_FLASH_CAPABILITIES</a>. <br/>
+ The parameter <em>cnt</em> specifies the number of data items to program (data size needs to be a multiple of <em>program_unit</em>).</p>
+<p>The function executes in the following ways:</p>
+<ul>
+<li>When the operation is non-blocking (typically) then the function only starts the operation and returns with zero number of data items programmed. When the operation is completed the <a class="el" href="group___flash__events.html#gaf7a9c4ad125ee90df35907d861151e23">ARM_FLASH_EVENT_READY</a> event is generated (if supported and reported by <a class="el" href="group__flash__interface__gr.html#ga27c23c998032cd47cb47293c0185ee5d">ARM_Flash_GetCapabilities</a>). In case of errors the <a class="el" href="group___flash__events.html#ga0dfea52761c0eed83e5d73e7a7f69962">ARM_FLASH_EVENT_ERROR</a> event is generated at the same time. Progress of the operation can also be monitored by calling the <a class="el" href="group__flash__interface__gr.html#ga06885c0d4587d5a23f97614a8b849ef1">ARM_Flash_GetStatus</a> function and checking the <em>busy</em> flag.</li>
+<li>When the operation is blocking then the function returns after the data is programmed and returns the number of data items programmed. </li>
+</ul>
+
+</div>
+</div>
+<a class="anchor" id="ga0b2b4fe5a7be579cf3644995a765ea20"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ARM_Flash_EraseSector </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Erase Flash Sector. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">addr</td><td>Sector address </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
+<p>This function <b>ARM_Flash_EraseSector</b> erases a flash sector specified by the parameter <em>adr</em> (points to start of the sector).</p>
+<p>The function is non-blocking and returns as soon as the driver has started the operation. When the operation is completed the <a class="el" href="group___flash__events.html#gaf7a9c4ad125ee90df35907d861151e23">ARM_FLASH_EVENT_READY</a> event is generated (if supported and reported by <a class="el" href="group__flash__interface__gr.html#ga27c23c998032cd47cb47293c0185ee5d">ARM_Flash_GetCapabilities</a>). In case of errors the <a class="el" href="group___flash__events.html#ga0dfea52761c0eed83e5d73e7a7f69962">ARM_FLASH_EVENT_ERROR</a> event is generated at the same time. Progress of the operation can also be monitored by calling the <a class="el" href="group__flash__interface__gr.html#ga06885c0d4587d5a23f97614a8b849ef1">ARM_Flash_GetStatus</a> function and checking the <em>busy</em> flag. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga6cbaebe069d31d56c70b1f8f847e2d55"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ARM_Flash_EraseChip </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Erase complete Flash. Optional function for faster full chip erase. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
+<p>The optional function <b>ARM_Flash_EraseChip</b> erases the complete device. If the device does not support global erase or only a portion of the Flash memory space is used for storing files, then the functions returns the error value <a class="el" href="group__execution__status.html#ga2efa59e480d82697795439220e6884e4">ARM_DRIVER_ERROR_UNSUPPORTED</a>. The data field <em>eras_chip</em> = <span class="XML-Token">1</span> of the structure <a class="el" href="group__flash__interface__gr.html#struct_a_r_m___f_l_a_s_h___c_a_p_a_b_i_l_i_t_i_e_s">ARM_FLASH_CAPABILITIES</a> encodes that <b>ARM_Flash_EraseChip</b> is supported. The field can be verified with the function <a class="el" href="group__flash__interface__gr.html#ga27c23c998032cd47cb47293c0185ee5d">ARM_Flash_GetCapabilities</a>.</p>
+<p>The function is non-blocking and returns as soon as the driver has started the operation. When the operation is completed, the <a class="el" href="group___flash__events.html#gaf7a9c4ad125ee90df35907d861151e23">ARM_FLASH_EVENT_READY</a> event is generated (if supported and reported by <a class="el" href="group__flash__interface__gr.html#ga27c23c998032cd47cb47293c0185ee5d">ARM_Flash_GetCapabilities</a>). In case of errors, the <a class="el" href="group___flash__events.html#ga0dfea52761c0eed83e5d73e7a7f69962">ARM_FLASH_EVENT_ERROR</a> event is generated at the same time. Progress of the operation can also be monitored by calling the <a class="el" href="group__flash__interface__gr.html#ga06885c0d4587d5a23f97614a8b849ef1">ARM_Flash_GetStatus</a> function and checking the <em>busy</em> flag.</p>
+<p><b>See also:</b></p>
+<ul>
+<li>ARM_Flash_SignalEvent </li>
+</ul>
+
+</div>
+</div>
+<a class="anchor" id="ga06885c0d4587d5a23f97614a8b849ef1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__flash__interface__gr.html#struct_a_r_m___f_l_a_s_h___s_t_a_t_u_s">ARM_FLASH_STATUS</a> ARM_Flash_GetStatus </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get Flash status. </p>
+<dl class="section return"><dt>Returns</dt><dd>Flash status <a class="el" href="group__flash__interface__gr.html#struct_a_r_m___f_l_a_s_h___s_t_a_t_u_s">ARM_FLASH_STATUS</a></dd></dl>
+<p>The function <b>ARM_Flash_GetStatus</b> returns the current Flash interface status stored in the structure <a class="el" href="group__flash__interface__gr.html#struct_a_r_m___f_l_a_s_h___s_t_a_t_u_s">ARM_FLASH_STATUS</a>. </p>
+
+</div>
+</div>
+<a class="anchor" id="gac047b7509356e888502e0424a9d189ae"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__flash__interface__gr.html#struct_a_r_m___f_l_a_s_h___i_n_f_o">ARM_FLASH_INFO</a> * ARM_Flash_GetInfo </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get Flash information. </p>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to Flash information <a class="el" href="group__flash__interface__gr.html#struct_a_r_m___f_l_a_s_h___i_n_f_o">ARM_FLASH_INFO</a></dd></dl>
+<p>The function <b>ARM_Flash_GetInfo</b> returns information about the Flash device. </p>
 
 </div>
 </div>
@@ -946,37 +982,22 @@ Read/Program/Erase error flag (cleared on start of next operation) </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>none</dd></dl>
-<p>The function <b>ARM_Flash_SignalEvent</b> notifies the application of the <a class="el" href="group___flash__events.html">Flash Events</a> and it is registered by the function <a class="el" href="group__flash__interface__gr.html#gaa5b4bbe529d620d4ad4825588a4c4cf0">ARM_Flash_Initialize</a>. The function is called automatically after read/program/erase operation completes. The function <a class="el" href="group__flash__interface__gr.html#ga27c23c998032cd47cb47293c0185ee5d">ARM_Flash_GetCapabilities</a> returns information about the implemented optional events in a driver.</p>
-<p>The argument <em>event</em> represents the notification mask of the events. Each event is coded in a separate bit and therefore it is possible to signal multiple events in the event call back function. The following call back notifications are generated:</p>
+<p>The function <b>ARM_Flash_SignalEvent</b> is a callback function registered by the function <a class="el" href="group__flash__interface__gr.html#gaa5b4bbe529d620d4ad4825588a4c4cf0">ARM_Flash_Initialize</a>. The function is called automatically after read/program/erase operation completes.</p>
+<p>The parameter <em>event</em> indicates one or more events that occurred during driver operation. Each event is coded in a separate bit and therefore it is possible to signal multiple events in the event call back function.</p>
+<p>Not every event is necessarily generated by the driver. This depends on the implemented capabilities stored in the data fields of the structure <a class="el" href="group__flash__interface__gr.html#struct_a_r_m___f_l_a_s_h___c_a_p_a_b_i_l_i_t_i_e_s">ARM_FLASH_CAPABILITIES</a>, which can be retrieved with the function <a class="el" href="group__flash__interface__gr.html#ga27c23c998032cd47cb47293c0185ee5d">ARM_Flash_GetCapabilities</a>.</p>
+<p>The following events can be generated:</p>
 <table class="doxtable">
 <tr>
-<th>Bit </th><th align="left">Event </th><th align="left">Description</th></tr>
+<th align="left">Parameter <em>event</em> </th><th align="center">Bit </th><th align="left">Description</th></tr>
 <tr>
-<td>0 </td><td align="left"><a class="el" href="group___flash__events.html#gaf7a9c4ad125ee90df35907d861151e23">ARM_FLASH_EVENT_READY</a> </td><td align="left">Occurs after read/program/erase operation completes. </td></tr>
+<td align="left"><a class="el" href="group___flash__events.html#gaf7a9c4ad125ee90df35907d861151e23">ARM_FLASH_EVENT_READY</a> </td><td align="center">0 </td><td align="left">Occurs after read/program/erase operation completes. </td></tr>
 <tr>
-<td>1 </td><td align="left"><a class="el" href="group___flash__events.html#ga0dfea52761c0eed83e5d73e7a7f69962">ARM_FLASH_EVENT_ERROR</a> </td><td align="left">Occurs together with <a class="el" href="group___flash__events.html#gaf7a9c4ad125ee90df35907d861151e23">ARM_FLASH_EVENT_READY</a> when operation completes with errors. </td></tr>
+<td align="left"><a class="el" href="group___flash__events.html#ga0dfea52761c0eed83e5d73e7a7f69962">ARM_FLASH_EVENT_ERROR</a> </td><td align="center">1 </td><td align="left">Occurs together with <a class="el" href="group___flash__events.html#gaf7a9c4ad125ee90df35907d861151e23">ARM_FLASH_EVENT_READY</a> when operation completes with errors. </td></tr>
 </table>
-
-</div>
-</div>
-<a class="anchor" id="gae23af293e9f8a67cdb19c7d0d562d415"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t ARM_Flash_Uninitialize </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>De-initialize the Flash Interface. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>The function <a class="el" href="group__flash__interface__gr.html#gae23af293e9f8a67cdb19c7d0d562d415">ARM_Flash_Uninitialize</a> de-initializes the resources of Flash interface.</p>
-<p>It is called when the middleware component stops operation and releases the software resources used by the interface. </p>
+<p><b>See also:</b></p>
+<ul>
+<li><a class="el" href="group__flash__interface__gr.html#ga6cbaebe069d31d56c70b1f8f847e2d55">ARM_Flash_EraseChip</a> </li>
+</ul>
 
 </div>
 </div>
@@ -985,7 +1006,7 @@ Read/Program/Erase error flag (cleared on start of next operation) </td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:42 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:03 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

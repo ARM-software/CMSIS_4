@@ -1,5 +1,5 @@
 /* -----------------------------------------------------------------------------
- * Copyright (c) 2013 - 2014 ARM Ltd.
+ * Copyright (c) 2013 - 2015 ARM Ltd.
  *
  * This software is provided 'as-is', without any express or implied warranty.
  * In no event will the authors be held liable for any damages arising from
@@ -17,8 +17,8 @@
  *
  * 3. This notice may not be removed or altered from any source distribution.
  *
- * $Date:        16. April 2014
- * $Revision:    V5.00
+ * $Date:        26. August 2015
+ * $Revision:    V5.0.1
  *
  * Project:      NXP LPC18xx System initialization
  * -------------------------------------------------------------------------- */
@@ -753,7 +753,7 @@ uint32_t MeasureFreq (uint32_t clk_sel) {
 /*----------------------------------------------------------------------------
   Get PLL1 (divider and multiplier) parameters
  *----------------------------------------------------------------------------*/
-__inline uint32_t GetPLL1Param (void) {
+static __inline uint32_t GetPLL1Param (void) {
   uint32_t ctrl;
   uint32_t p;
   uint32_t div, mul;

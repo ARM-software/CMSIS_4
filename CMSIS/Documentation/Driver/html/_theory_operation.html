@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -112,21 +112,26 @@ $(document).ready(function(){initNavTree('_theory_operation.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="toc"><h3>Table of Contents</h3>
-<ul><li class="level1"><a href="#Data_Xfer_Functions">Data Transfer Functions</a></li>
-<li class="level1"><a href="#DriverFunctions">Driver Functions</a></li>
-<li class="level1"><a href="#CallSequence">Generic Function Call Sequence</a></li>
-<li class="level1"><a href="#AccessStruct">Access Struct</a></li>
-<li class="level1"><a href="#DriverInstances">Driver Instances</a></li>
+<ul><li class="level1"><a href="#DriverFunctions">Common Driver Functions</a><ul><li class="level2"><a href="#ProcessorMode">Cortex-M Processor Mode</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#CallSequence">Function Call Sequence</a><ul><li class="level2"><a href="#CS_start">Start Sequence</a></li>
+<li class="level2"><a href="#CS_stop">Stop Sequence</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#Share_IO">Shared I/O Pins</a></li>
+<li class="level1"><a href="#Data_Xfer_Functions">Data Transfer Functions</a></li>
+<li class="level1"><a href="#AccessStruct">Access Struct</a><ul><li class="level2"><a href="#DriverInstances">Driver Instances</a></li>
+</ul>
+</li>
 <li class="level1"><a href="#DriverConfiguration">Driver Configuration</a></li>
-<li class="level1"><a href="#CodeExample">Example Code</a></li>
+<li class="level1"><a href="#CodeExample">Code Example</a></li>
 </ul>
 </div>
-<div class="textblock"><p>This section gives an overview of the general operation of CMSIS-Drivers. It explains the <a class="el" href="_theory_operation.html#DriverFunctions">Driver Functions</a> that are common in all CMSIS-Drivers along with the <a class="el" href="_theory_operation.html#CallSequence">Generic Function Call Sequence</a>. The topic <a class="el" href="_theory_operation.html#Data_Xfer_Functions">Data Transfer Functions</a> describes how data read/write operations to the peripheral are implemented.</p>
-<h1><a class="anchor" id="Data_Xfer_Functions"></a>
-Data Transfer Functions</h1>
+<div class="textblock"><p>This section gives an overview of the general operation of CMSIS-Drivers. It explains the <a class="el" href="_theory_operation.html#DriverFunctions">Common Driver Functions</a> that are common in all CMSIS-Drivers along with the <a class="el" href="_theory_operation.html#CallSequence">Function Call Sequence</a>. The topic <a class="el" href="_theory_operation.html#Data_Xfer_Functions">Data Transfer Functions</a> describes how data read/write operations to the peripheral are implemented.</p>
 <p>Each CMSIS-Driver defines an <a class="el" href="_theory_operation.html#AccessStruct">Access Struct</a> for calling the various driver functions and each peripheral (that is accessed via a CMSIS-Driver) has one <a class="el" href="_theory_operation.html#DriverInstances">Driver Instance</a>.</p>
 <h1><a class="anchor" id="DriverFunctions"></a>
-Driver Functions</h1>
+Common Driver Functions</h1>
 <p>Each CMSIS-Driver contains these functions:</p>
 <ul>
 <li><b>GetVersion:</b> can be called at any time to obtain version information of the driver interface.</li>
@@ -135,34 +140,84 @@ Driver Functions</h1>
 <li><b>GetCapabilities:</b> can be called at any time to obtain capabilities of the driver interface.</li>
 </ul>
 <ul>
-<li><b>Initialize:</b> must be called first. Initializes the software resources used by the interface (clear variables, allocate memory, create CMSIS-RTOS objects, ...). Initialize may also register a <b>SignalEvent</b> callback function. Initialize leaves the peripheral in powered-off state.</li>
+<li><b>Initialize:</b> must be called before powering the peripheral using <b>PowerControl</b>. This function performs the following:<ul>
+<li>allocate I/O resources.<ul>
+<li>register an optional <b>SignalEvent</b> callback function.</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li><b>SignalEvent:</b> is an optional callback function that is registered with the <b>Initialize</b> function. This callback function is initiated from interrupt service routines and indicates hardware events or the completion of a data block transfer operation.</li>
 </ul>
 <ul>
-<li><b>PowerControl:</b> Controls the power profile of the peripheral and may be called after <b>Initialize</b>. Typically three power options are available:<ul>
-<li>ARM_POWER_FULL: Peripheral is turned on and fully operational. The driver may initialize at that point the peripheral registers.</li>
-<li>ARM_POWER_LOW: (optional) Peripheral is in low power mode and partially operational; usually it can detect external events and wake-up.</li>
-<li>ARM_POWER_OFF: Peripheral is turned off and not operational (it will also stop any pending operations). This is also the state of the peripheral after device reset.</li>
+<li><b>PowerControl:</b> Controls the power profile of the peripheral and needs to be called after <b>Initialize</b>. Typically, three power options are available:<ul>
+<li><code>ARM_POWER_FULL:</code> Peripheral is turned on and fully operational. The driver initializes the peripheral registers, interrupts, and (optionally) DMA.</li>
+<li><code>ARM_POWER_LOW:</code> (optional) Peripheral is in low power mode and partially operational; usually, it can detect external events and wake-up.</li>
+<li><code>ARM_POWER_OFF:</code> Peripheral is turned off and not operational (pending operations are terminated). This is the state after device reset.</li>
 </ul>
 </li>
 </ul>
 <ul>
-<li><b>Uninitialize:</b> Complementary function to Initialize. It will free all software resources used by the interface (de-allocate memory, release CMSIS-RTOS objects, ...).</li>
+<li><b>Uninitialize:</b> Complementary function to Initialize. Releases the I/O pin resources used by the interface.</li>
 </ul>
 <ul>
 <li><b>Control:</b> Several drivers provide a control function to configure communication parameters or execute miscellaneous control functions.</li>
 </ul>
-<p>Additional functions are specific to each driver interface and are described in the individual sections of each driver.</p>
+<p>The section <a class="el" href="_theory_operation.html#CallSequence">Function Call Sequence</a> contains more information on the operation of each function. Additional functions are specific to each driver interface and are described in the individual sections of each driver.</p>
+<h2><a class="anchor" id="ProcessorMode"></a>
+Cortex-M Processor Mode</h2>
+<p>The CMSIS-Driver functions access peripherals and interrupts and are designed to execute in <b>Privileged</b> mode. When calling CMSIS-Driver functions from RTOS threads, it should be ensure that these threads execute in <b>Privileged</b> mode.</p>
 <h1><a class="anchor" id="CallSequence"></a>
-Generic Function Call Sequence</h1>
-<p>The driver API functions <b>GetVersion</b>, <b>GetCapabilities</b>, <b>Initialize</b>, <b>PowerControl</b>, <b>Uninitialize</b> are called in the following order:</p>
+Function Call Sequence</h1>
+<p>For normal operation of the driver, the API functions <b>GetVersion</b>, <b>GetCapabilities</b>, <b>Initialize</b>, <b>PowerControl</b>, <b>Uninitialize</b> are called in the following order:</p>
 <div align="center">
 <img src="msc_inline_mscgraph_1.png" alt="msc_inline_mscgraph_1" border="0" usemap="#msc_inline_mscgraph_1.map"/>
 <map name="msc_inline_mscgraph_1.map" id="msc_inline_mscgraph_1.map"></map>
 </div>
-<h1><a class="anchor" id="Data_Xfer_Functions"></a>
+<p>The functions <b>GetVersion</b> and <b>GetCapabilities</b> can be called any time to obtain the required information from the driver. These functions return always the same information.</p>
+<h2><a class="anchor" id="CS_start"></a>
+Start Sequence</h2>
+<p>To start working with a peripheral the functions <b>Initialize</b> and <b>PowerControl</b> need to be called in this order: </p>
+<div class="fragment"><div class="line">drv-&gt;Initialize (...);                 <span class="comment">// Allocate I/O pins</span></div>
+<div class="line">drv-&gt;PowerControl (<a class="code" href="_driver___common_8h.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5abed52b77a9ce4775570e44a842b1295e" title="Power on: full operation at maximum performance.">ARM_POWER_FULL</a>);    <span class="comment">// Power up peripheral, setup IRQ/DMA</span></div>
+</div><!-- fragment --><ul>
+<li><b>Initialize</b> typically allocates the I/O resources (pins) for the peripheral. The function can be called multiple times; if the I/O resources are already initialized it performs no operation and just returns with <a class="el" href="group__execution__status.html#ga85752c5de59e8adeb001e35ff5be6be7">ARM_DRIVER_OK</a>.</li>
+<li><b>PowerControl</b> (<code>ARM_POWER_FULL</code>) sets the peripheral registers including interrupt (NVIC) and optionally DMA. The function can be called multiple times; if the registers are already set it performs no operation and just returns with <a class="el" href="group__execution__status.html#ga85752c5de59e8adeb001e35ff5be6be7">ARM_DRIVER_OK</a>.</li>
+</ul>
+<h2><a class="anchor" id="CS_stop"></a>
+Stop Sequence</h2>
+<p>To stop working with a peripheral the functions <b>PowerControl</b> and <b>Uninitialize</b> need to be called in this order: </p>
+<div class="fragment"><div class="line">drv-&gt;PowerControl (<a class="code" href="_driver___common_8h.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5ab6f5becc85ebd51c3dd2524a95d2ca35" title="Power off: no operation possible.">ARM_POWER_OFF</a>);     <span class="comment">// Terminate any pending transfers, reset IRQ/DMA, power off peripheral</span></div>
+<div class="line">drv-&gt;Uninitialize (...);               <span class="comment">// Release I/O pins</span></div>
+</div><!-- fragment --><p> The functions <b>PowerControl</b> and <b>Uninitialize</b> always execute and can be used to put the peripheral into a <b>Safe State</b>, for example after any data transmission errors. To restart the peripheral in a error condition, you should first execute the <a class="el" href="_theory_operation.html#CS_stop">Stop Sequence</a> and then the <a class="el" href="_theory_operation.html#CS_start">Start Sequence</a>.</p>
+<ul>
+<li><b>PowerControl</b> (<code>ARM_POWER_OFF</code>) terminates any pending data transfers with the peripheral, disables the peripheral and leaves it in a defined mode (typically the reset state).<ul>
+<li>when DMA is used it is disabled (including the interrupts)</li>
+<li>peripheral interrupts are disabled on NVIC level</li>
+<li>the peripheral is reset using a dedicated reset mechanism (if available) or by clearing the peripheral registers</li>
+<li>pending peripheral interrupts are cleared on NVIC level</li>
+<li>driver variables are cleared</li>
+</ul>
+</li>
+<li><b>Uninitialize</b> always releases I/O pin resources.</li>
+</ul>
+<h1><a class="anchor" id="Share_IO"></a>
+Shared I/O Pins</h1>
+<p>All CMSIS-Driver provide a <a class="el" href="_theory_operation.html#CS_start">Start Sequence</a> and <a class="el" href="_theory_operation.html#CS_stop">Stop Sequence</a>. Therefore two different drivers can share the same I/O pins, for example UART1 and SPI1 can have overlapping I/O pins. In this case the communication channels can be used as shown below:</p>
+<div class="fragment"><div class="line">SPI1drv-&gt;Initialize (...);                <span class="comment">// Start SPI1</span></div>
+<div class="line">SPI1drv-&gt;PowerControl (<a class="code" href="_driver___common_8h.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5abed52b77a9ce4775570e44a842b1295e" title="Power on: full operation at maximum performance.">ARM_POWER_FULL</a>);</div>
+<div class="line"> ...                                      <span class="comment">// Do operations with SPI1</span></div>
+<div class="line">SPI1drv-&gt;PowerControl (<a class="code" href="_driver___common_8h.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5ab6f5becc85ebd51c3dd2524a95d2ca35" title="Power off: no operation possible.">ARM_POWER_OFF</a>);    <span class="comment">// Stop SPI1</span></div>
+<div class="line">SPI1drv-&gt;Uninitialize ();</div>
+<div class="line"> ...</div>
+<div class="line">USART1drv-&gt;Initialize (...);              <span class="comment">// Start USART1</span></div>
+<div class="line">USART1drv-&gt;PowerControl (<a class="code" href="_driver___common_8h.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5abed52b77a9ce4775570e44a842b1295e" title="Power on: full operation at maximum performance.">ARM_POWER_FULL</a>);</div>
+<div class="line"> ...                                      <span class="comment">// Do operations with USART1</span></div>
+<div class="line">USART1drv-&gt;PowerControl (<a class="code" href="_driver___common_8h.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5ab6f5becc85ebd51c3dd2524a95d2ca35" title="Power off: no operation possible.">ARM_POWER_OFF</a>);  <span class="comment">// Stop USART1</span></div>
+<div class="line">USART1drv-&gt;Uninitialize ();</div>
+</div><!-- fragment --><h1><a class="anchor" id="Data_Xfer_Functions"></a>
 Data Transfer Functions</h1>
 <p>A CMSIS-Driver implements non-blocking functions to transfer data to a peripheral. This means that the driver configures the read or write access to the peripheral and instantly returns to the calling application. The function names for data transfer end with:</p>
 <ul>
@@ -184,8 +239,8 @@ Data Transfer Functions</h1>
 Non-blocking Send Function</div></div>
  <h1><a class="anchor" id="AccessStruct"></a>
 Access Struct</h1>
-<p>A CMSIS-Driver publishes a <a class="el" href="_theory_operation.html#AccessStruct">Access Struct</a> with the data type name ARM_DRIVER_xxxx that gives to access the driver functions.</p>
-<p><b>Example: Function Access of the SPI driver</b> </p>
+<p>A CMSIS-Driver publishes an <a class="el" href="_theory_operation.html#AccessStruct">Access Struct</a> with the data type name ARM_DRIVER_xxxx that gives to access the driver functions.</p>
+<p><b>Code</b> <b>Example:</b> <b>Function</b> <b>Access</b> <b>of</b> <b>the</b> <b>SPI</b> <b>driver</b> </p>
 <div class="fragment"><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span>_ARM_DRIVER_SPI {</div>
 <div class="line">  <a class="code" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n" title="Driver Version.">ARM_DRIVER_VERSION</a>   (*GetVersion)      (void);</div>
 <div class="line">  <a class="code" href="group__spi__interface__gr.html#struct_a_r_m___s_p_i___c_a_p_a_b_i_l_i_t_i_e_s" title="SPI Driver Capabilities.">ARM_SPI_CAPABILITIES</a> (*GetCapabilities) (void);</div>
@@ -199,18 +254,27 @@ Access Struct</h1>
 <div class="line">  int32_t              (*Control)         (uint32_t control, uint32_t arg);</div>
 <div class="line">  <a class="code" href="group__spi__interface__gr.html#struct_a_r_m___s_p_i___s_t_a_t_u_s" title="SPI Status.">ARM_SPI_STATUS</a>       (*GetStatus)       (void);</div>
 <div class="line">} <span class="keyword">const</span> <a class="code" href="group__spi__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___s_p_i" title="Access structure of the SPI Driver.">ARM_DRIVER_SPI</a>;</div>
-</div><!-- fragment --><h1><a class="anchor" id="DriverInstances"></a>
-Driver Instances</h1>
+</div><!-- fragment --><h2><a class="anchor" id="DriverInstances"></a>
+Driver Instances</h2>
 <p>A device may offer several peripherals of the same type. For such devices, the CMSIS-Driver publishes multiple instances of the <a class="el" href="_theory_operation.html#AccessStruct">Access Struct</a>. The name of each driver instance reflects the names of the peripheral available in the device.</p>
-<p><b>Example: <a class="el" href="_theory_operation.html#AccessStruct">Access Struct</a> for 3 SPIs in a microcontroller device.</b> </p>
+<p><b>Code</b> <b>Example:</b> <a class="el" href="_theory_operation.html#AccessStruct">Access Struct</a> <b>for</b> <b>three</b> <b>SPIs</b> <b>in</b> <b>a</b> <b>microcontroller</b> <b>device</b>. </p>
 <div class="fragment"><div class="line"><a class="code" href="group__spi__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___s_p_i" title="Access structure of the SPI Driver.">ARM_DRIVER_SPI</a> Driver_SPI1;     <span class="comment">// access functions for SPI1 interface</span></div>
 <div class="line"><a class="code" href="group__spi__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___s_p_i" title="Access structure of the SPI Driver.">ARM_DRIVER_SPI</a> Driver_SPI2;     <span class="comment">// access functions for SPI2 interface</span></div>
 <div class="line"><a class="code" href="group__spi__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___s_p_i" title="Access structure of the SPI Driver.">ARM_DRIVER_SPI</a> Driver_SPI3;     <span class="comment">// access functions for SPI3 interface</span></div>
+</div><!-- fragment --><p>The access functions can be passed to middleware to specify the driver instance that the middleware should use for communication.</p>
+<p><b>Example:</b> </p>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> init_middleware (<a class="code" href="group__spi__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___s_p_i" title="Access structure of the SPI Driver.">ARM_DRIVER_SPI</a> *Drv_spi) ...</div>
+<div class="line">\\ inside the middleware the SPI driver functions are called with:</div>
+<div class="line">\\   Drv_spi-&gt;function (...);</div>
+</div><!-- fragment --><div class="fragment"><div class="line">\\ setup middleware</div>
+<div class="line">init_middleware (&amp;Driver_SPI1);      <span class="comment">// connect middleware to SPI1 interface</span></div>
+<div class="line">  :</div>
+<div class="line">init_middleware (&amp;Driver_SPI2);      <span class="comment">// connect middleware to SPI2 interface</span></div>
 </div><!-- fragment --><h1><a class="anchor" id="DriverConfiguration"></a>
 Driver Configuration</h1>
-<p>For a device family, the drivers may be configurable. The reference implementations store configuration options in a central file with the name <b>RTE_Device.h</b>. However, the configuration of the drivers itself is not part of the CMSIS-Driver specification.</p>
+<p>For a device family, the drivers may be configurable. The <a class="el" href="_reference_implementation.html">Reference Implementation</a> stores configuration options in a central file with the name <b>RTE_Device.h</b>. However, the configuration of the drivers itself is not part of the CMSIS-Driver specification.</p>
 <h1><a class="anchor" id="CodeExample"></a>
-Example Code</h1>
+Code Example</h1>
 <p>The following example code shows the usage of the SPI interface.</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="_driver___s_p_i_8h.html">Driver_SPI.h</a>&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;cmsis_os.h&quot;</span>                   <span class="comment">// ARM::CMSIS:RTOS:Keil RTX</span></div>
@@ -314,7 +378,7 @@ Example Code</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:42 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:02 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

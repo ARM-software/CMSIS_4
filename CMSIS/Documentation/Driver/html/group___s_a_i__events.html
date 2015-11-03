@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -140,17 +140,17 @@ Macros</h2></td></tr>
 <p>This section provides the event values for the <a class="el" href="group__sai__interface__gr.html#gaedf3347cb25d6bf2faad1bbb35ad79f4">ARM_SAI_SignalEvent</a> callback function.</p>
 <p>The following call back notification events are generated: </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="ga6ffcf96fe404b48421a57fbd122b26bc"></a>
+<a class="anchor" id="ga3dfa64375859f40d157c224187d2885e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_SAI_EVENT_FRAME_ERROR&#160;&#160;&#160;(1U &lt;&lt; 4)</td>
+          <td class="memname">#define ARM_SAI_EVENT_SEND_COMPLETE&#160;&#160;&#160;(1U &lt;&lt; 0)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sync Frame error in Slave mode (optional) </p>
+<p>Send completed. </p>
 
 </div>
 </div>
@@ -168,34 +168,6 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gac83e9df0238803ef2c88f16605f73bf5"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_SAI_EVENT_RX_OVERFLOW&#160;&#160;&#160;(1U &lt;&lt; 3)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Receive data overflow. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga3dfa64375859f40d157c224187d2885e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_SAI_EVENT_SEND_COMPLETE&#160;&#160;&#160;(1U &lt;&lt; 0)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Send completed. </p>
-
-</div>
-</div>
 <a class="anchor" id="ga6a0be7aaf9d700e5259f741641bc37ca"></a>
 <div class="memitem">
 <div class="memproto">
@@ -210,12 +182,40 @@ Macros</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="gac83e9df0238803ef2c88f16605f73bf5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_SAI_EVENT_RX_OVERFLOW&#160;&#160;&#160;(1U &lt;&lt; 3)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Receive data overflow. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga6ffcf96fe404b48421a57fbd122b26bc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_SAI_EVENT_FRAME_ERROR&#160;&#160;&#160;(1U &lt;&lt; 4)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sync Frame error in Slave mode (optional) </p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:42 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:03 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

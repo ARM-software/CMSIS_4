@@ -90,16 +90,16 @@
 #define ARM_NAND_BUS_TIMING_MODE_7      (0x07UL << ARM_NAND_BUS_TIMING_MODE_Pos)  ///< Timing Mode 7 (NV-DDR2 only)
 #define ARM_NAND_BUS_DDR2_DO_WCYC_Pos    8
 #define ARM_NAND_BUS_DDR2_DO_WCYC_Msk   (0x0FUL << ARM_NAND_BUS_DDR2_DO_WCYC_Pos)
-#define ARM_NAND_BUS_DDR2_DO_WCYC_0     (0x00UL << ARM_NAND_BUS_DDR2_DO_WCYC_Pos) ///< DDR2 Data Output Warmup cycles: 0 (default)
-#define ARM_NAND_BUS_DDR2_DO_WCYC_1     (0x01UL << ARM_NAND_BUS_DDR2_DO_WCYC_Pos) ///< DDR2 Data Output Warmup cycles: 1
-#define ARM_NAND_BUS_DDR2_DO_WCYC_2     (0x02UL << ARM_NAND_BUS_DDR2_DO_WCYC_Pos) ///< DDR2 Data Output Warmup cycles: 2
-#define ARM_NAND_BUS_DDR2_DO_WCYC_4     (0x03UL << ARM_NAND_BUS_DDR2_DO_WCYC_Pos) ///< DDR2 Data Output Warmup cycles: 4
+#define ARM_NAND_BUS_DDR2_DO_WCYC_0     (0x00UL << ARM_NAND_BUS_DDR2_DO_WCYC_Pos) ///< DDR2 Data Output Warm-up cycles: 0 (default)
+#define ARM_NAND_BUS_DDR2_DO_WCYC_1     (0x01UL << ARM_NAND_BUS_DDR2_DO_WCYC_Pos) ///< DDR2 Data Output Warm-up cycles: 1
+#define ARM_NAND_BUS_DDR2_DO_WCYC_2     (0x02UL << ARM_NAND_BUS_DDR2_DO_WCYC_Pos) ///< DDR2 Data Output Warm-up cycles: 2
+#define ARM_NAND_BUS_DDR2_DO_WCYC_4     (0x03UL << ARM_NAND_BUS_DDR2_DO_WCYC_Pos) ///< DDR2 Data Output Warm-up cycles: 4
 #define ARM_NAND_BUS_DDR2_DI_WCYC_Pos    12
 #define ARM_NAND_BUS_DDR2_DI_WCYC_Msk   (0x0FUL << ARM_NAND_BUS_DDR2_DI_WCYC_Pos)
-#define ARM_NAND_BUS_DDR2_DI_WCYC_0     (0x00UL << ARM_NAND_BUS_DDR2_DI_WCYC_Pos) ///< DDR2 Data Input Warmup cycles: 0 (default)
-#define ARM_NAND_BUS_DDR2_DI_WCYC_1     (0x01UL << ARM_NAND_BUS_DDR2_DI_WCYC_Pos) ///< DDR2 Data Input Warmup cycles: 1
-#define ARM_NAND_BUS_DDR2_DI_WCYC_2     (0x02UL << ARM_NAND_BUS_DDR2_DI_WCYC_Pos) ///< DDR2 Data Input Warmup cycles: 2
-#define ARM_NAND_BUS_DDR2_DI_WCYC_4     (0x03UL << ARM_NAND_BUS_DDR2_DI_WCYC_Pos) ///< DDR2 Data Input Warmup cycles: 4
+#define ARM_NAND_BUS_DDR2_DI_WCYC_0     (0x00UL << ARM_NAND_BUS_DDR2_DI_WCYC_Pos) ///< DDR2 Data Input Warm-up cycles: 0 (default)
+#define ARM_NAND_BUS_DDR2_DI_WCYC_1     (0x01UL << ARM_NAND_BUS_DDR2_DI_WCYC_Pos) ///< DDR2 Data Input Warm-up cycles: 1
+#define ARM_NAND_BUS_DDR2_DI_WCYC_2     (0x02UL << ARM_NAND_BUS_DDR2_DI_WCYC_Pos) ///< DDR2 Data Input Warm-up cycles: 2
+#define ARM_NAND_BUS_DDR2_DI_WCYC_4     (0x03UL << ARM_NAND_BUS_DDR2_DI_WCYC_Pos) ///< DDR2 Data Input Warm-up cycles: 4
 #define ARM_NAND_BUS_DDR2_VEN           (1UL << 16)                               ///< DDR2 Enable external VREFQ as reference
 #define ARM_NAND_BUS_DDR2_CMPD          (1UL << 17)                               ///< DDR2 Enable complementary DQS (DQS_c) signal
 #define ARM_NAND_BUS_DDR2_CMPR          (1UL << 18)                               ///< DDR2 Enable complementary RE_n (RE_c) signal

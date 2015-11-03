@@ -11,11 +11,11 @@
  */
 int main (void) {
   osKernelInitialize ();                    // initialize CMSIS-RTOS
-	
+
   // initialize peripherals here
-	
+
   // create 'thread' functions that start executing,
   // example: tid_name = osThreadCreate (osThread(name), NULL);
 
-	osKernelStart ();                         // start thread execution 
+  osKernelStart ();                         // start thread execution 
 }

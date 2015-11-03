@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -194,29 +194,49 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description</h2>
 <p>Driver API for I2C Bus Peripheral (Driver_I2C.h) </p>
-<p>I<sup>2</sup>C (Inter-Integrated Circuit, referred to as I-squared-C, I-two-C, or IIC) is a multimaster serial single-ended bus used for attaching low-speed peripherals to a motherboard, embedded system, cellphone, or other electronic device. I<sup>2</sup>C is used mostly on single boards, but can also to connect components which are linked via cable.</p>
+<p>I<sup>2</sup>C (Inter-Integrated Circuit, referred to as I-squared-C, I-two-C, or IIC) is a multi-master serial single-ended bus and is mostly used on single boards, but can also connect to components which are linked via cable.</p>
 <p>Most significant features of the I<sup>2</sup>C bus include:</p>
 <ul>
 <li>Only two bus lines are required</li>
-<li>I2C is a true multi-master bus. Simple master/slave relationships exist between all components</li>
+<li>I<sup>2</sup>C is a true multi-master bus. Simple master/slave relationships exist between all components</li>
 <li>A baud rate is not required; the master device determines a bus clock</li>
 <li>Each connected device is addressable by a unique address</li>
 <li>Providing arbitration and collision detection</li>
 </ul>
-<p>Wikipedia offers more information about the <a href="http://en.wikipedia.org/wiki/I%C2%B2C" target="_blank">I<sup>2</sup>C</a>.</p>
-<p><b>I<sup>2</sup>C API</b></p>
+<p>For more information about I<sup>2</sup>C refer to the following web pages:</p>
+<ul>
+<li>Wikipedia: <a href="http://en.wikipedia.org/wiki/I%C2%B2C" target="_blank">I<sup>2</sup>C</a></li>
+<li><a href="http://www.i2c-bus.org" target="_blank">www.i2c-bus.org</a>.</li>
+</ul>
+<p>Devices can operation in Master or Slave mode:</p>
+<ul>
+<li>To operate in Master mode call the functions <a class="el" href="group__i2c__interface__gr.html#ga8bf4214580149d5a5d2360f71f0feb94">ARM_I2C_MasterTransmit</a> or <a class="el" href="group__i2c__interface__gr.html#gafa22504bcf88a85584dfe6e0dd270ad5">ARM_I2C_MasterReceive</a>. These functions get as argument a <em>slave address</em>.</li>
+</ul>
+<ul>
+<li>To operate in Slave mode set the <em>slave address</em> using the function <a class="el" href="group__i2c__interface__gr.html#ga828f5fa289d065675ef78a9a73d129dc">ARM_I2C_Control</a>. The functions <a class="el" href="group__i2c__interface__gr.html#gafe164f30eba78f066272373b98a62cd4">ARM_I2C_SlaveTransmit</a> or <a class="el" href="group__i2c__interface__gr.html#gae3c9abccd1d377385d3d4cfe29035164">ARM_I2C_SlaveReceive</a> are used to transfer data in Slave mode.</li>
+</ul>
+<p><b>I<sup>2</sup>C Slave Address</b></p>
+<p>Depending on the device, I<sup>2</sup>C supports 7-bit and 10-bit Slaves addresses. The element <em>address_10_bit</em> in <a class="el" href="group__i2c__interface__gr.html#struct_a_r_m___i2_c___c_a_p_a_b_i_l_i_t_i_e_s">ARM_I2C_CAPABILITIES</a> indicates that the driver is able to handle 10-bit addresses. A 10-bit Slave address is ORed with <a class="el" href="group__i2c__address__flags.html#ga16be1861b90774bf062feab2dbb829a4">ARM_I2C_ADDRESS_10BIT</a>.</p>
+<p>I<sup>2</sup>C also supports a General Call to all Slaves by using the slave address value <span class="XML-Token">0</span>. A General Call is recognized by Slaves have a slave address value <a class="el" href="group__i2c__address__flags.html#ga337f4f1aa082e9b593b2dcd43c50134e">ARM_I2C_ADDRESS_GC</a> registered with the function <a class="el" href="group__i2c__interface__gr.html#ga828f5fa289d065675ef78a9a73d129dc">ARM_I2C_Control</a>.</p>
+<p><b>Block Diagram</b></p>
+<p>The I2C driver allows you to connect low-speed peripherals to a motherboard, embedded system, cellphone, or other electronic device.</p>
+<div class="image">
+<img src="I2C_BlockDiagram.png" alt="I2C_BlockDiagram.png"/>
+<div class="caption">
+Master/Slave connected via I2C interface</div></div>
+<p> <b>I<sup>2</sup>C API</b></p>
 <p>The following header files define the Application Programming Interface (API) for the I<sup>2</sup>C interface:</p>
 <ul>
 <li><b>Driver_I2C.h</b> : Driver API for I2C Bus Peripheral</li>
 </ul>
 <p>The driver implementation is a typical part of the Device Family Pack (DFP) that supports the peripherals of the microcontroller family.</p>
 <p><b>Driver Functions</b></p>
-<p>The driver functions are published in the access struct as explained in <a class="el" href="_theory_operation.html#DriverFunctions">Driver Functions</a></p>
+<p>The driver functions are published in the access struct as explained in <a class="el" href="_theory_operation.html#DriverFunctions">Common Driver Functions</a></p>
 <ul>
 <li><a class="el" href="group__i2c__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___i2_c">ARM_DRIVER_I2C</a> : access struct for I2C driver functions</li>
 </ul>
-<p><b>Example Code</b></p>
-<p>The following example code shows the usage of the I<sup>2</sup>C interface.</p>
+<p><a class="anchor" id="example"></a><b>Example Code</b></p>
+<p>The following example code shows the usage of the I<sup>2</sup>C interface in Master mode.</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="_driver___i2_c_8h.html">Driver_I2C.h</a>&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;cmsis_os.h&quot;</span>                   <span class="comment">// ARM::CMSIS:RTOS:Keil RTX</span></div>
 <div class="line"><span class="preprocessor">#include &lt;string.h&gt;</span></div>
@@ -260,7 +280,7 @@ Functions</h2></td></tr>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
-<div class="line"></div>
+<div class="line"> </div>
 <div class="line">int32_t EEPROM_ReadBuf (uint16_t addr, uint8_t *buf, uint32_t len) {</div>
 <div class="line">  uint8_t a[2];</div>
 <div class="line"> </div>
@@ -275,7 +295,7 @@ Functions</h2></td></tr>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
-<div class="line"></div>
+<div class="line"> </div>
 <div class="line">int32_t EEPROM_Initialize (<span class="keywordtype">void</span>) {</div>
 <div class="line">  uint8_t val;</div>
 <div class="line"> </div>
@@ -293,7 +313,7 @@ Functions</h2></td></tr>
 <div class="line">  }</div>
 <div class="line">  <span class="keywordflow">return</span> -1;</div>
 <div class="line">}</div>
-<div class="line"> </div>
+<div class="line">  </div>
 <div class="line">uint32_t EEPROM_GetSize (<span class="keywordtype">void</span>) {</div>
 <div class="line">  <span class="keywordflow">return</span> EEPROM_MAX_ADDR;</div>
 <div class="line">}</div>
@@ -308,7 +328,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <div class="textblock"><p>Access structure of the I2C Driver. </p>
-<p>The functions of the I2C interface are accessed by function pointers exposed by this structure. Refer to <a class="el" href="_theory_operation.html#DriverFunctions">Driver Functions</a> for overview information.</p>
+<p>The functions of the I2C interface are accessed by function pointers exposed by this structure. Refer to <a class="el" href="_theory_operation.html#DriverFunctions">Common Driver Functions</a> for overview information.</p>
 <p>Each instance of an I2C provides such an access structure. The instance is indicated by a postfix in the symbol name of the access structure, for example:</p>
 <ul>
 <li><b>Driver_I2C0</b> is the name of the access struct of the first instance (no. 0).</li>
@@ -355,17 +375,17 @@ Functions</h2></td></tr>
 <tr class="separator:ad4b47653bc47cdb02965dd311e88b96a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h4 class="groupheader">Field Documentation</h4>
-<a class="anchor" id="a6e0f47a92f626a971c5197fca6545505"></a>
+<a class="anchor" id="a8834b281da48583845c044a81566c1b3"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int32_t(* Control)(uint32_t control, uint32_t arg)</td>
+          <td class="memname"><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a>(* GetVersion)(void)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Pointer to <a class="el" href="group__i2c__interface__gr.html#ga828f5fa289d065675ef78a9a73d129dc">ARM_I2C_Control</a> : Control I2C Interface. </p>
+<p>Pointer to <a class="el" href="group__i2c__interface__gr.html#ga956bd87590c7fb6e23609a0abfb5412c">ARM_I2C_GetVersion</a> : Get driver version. </p>
 
 </div>
 </div>
@@ -383,48 +403,6 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ad421a9b9b07fd6d3e6537396c2b98788"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* GetDataCount)(void)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__i2c__interface__gr.html#ga19db20ad8d7fde84d07f6db4d75f4b7c">ARM_I2C_GetDataCount</a> : Get transferred data count. </p>
-
-</div>
-</div>
-<a class="anchor" id="ad4b47653bc47cdb02965dd311e88b96a"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__i2c__interface__gr.html#struct_a_r_m___i2_c___s_t_a_t_u_s">ARM_I2C_STATUS</a>(* GetStatus)(void)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__i2c__interface__gr.html#gaba4e0f3eb4018e7dafd51b675c465f3e">ARM_I2C_GetStatus</a> : Get I2C status. </p>
-
-</div>
-</div>
-<a class="anchor" id="a8834b281da48583845c044a81566c1b3"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a>(* GetVersion)(void)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__i2c__interface__gr.html#ga956bd87590c7fb6e23609a0abfb5412c">ARM_I2C_GetVersion</a> : Get driver version. </p>
-
-</div>
-</div>
 <a class="anchor" id="ab0480980f67e0ebe0461ccea7873a65b"></a>
 <div class="memitem">
 <div class="memproto">
@@ -436,76 +414,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Pointer to <a class="el" href="group__i2c__interface__gr.html#ga79d2f7d01b3a681d1cf0d70ac6692696">ARM_I2C_Initialize</a> : Initialize I2C Interface. </p>
-
-</div>
-</div>
-<a class="anchor" id="aa135ff2f4832d35ceb5d7e248159b981"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* MasterReceive)(uint32_t addr, uint8_t *data, uint32_t num, bool xfer_pending)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__i2c__interface__gr.html#gafa22504bcf88a85584dfe6e0dd270ad5">ARM_I2C_MasterReceive</a> : Start receiving data as I2C Master. </p>
-
-</div>
-</div>
-<a class="anchor" id="a9e58f7ea5fd9476e06b45c70b6696b95"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* MasterTransmit)(uint32_t addr, const uint8_t *data, uint32_t num, bool xfer_pending)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__i2c__interface__gr.html#ga8bf4214580149d5a5d2360f71f0feb94">ARM_I2C_MasterTransmit</a> : Start transmitting data as I2C Master. </p>
-
-</div>
-</div>
-<a class="anchor" id="aba8f1c8019af95ffe19c32403e3240ef"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* PowerControl)(<a class="el" href="group__common__drv__gr.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5">ARM_POWER_STATE</a> state)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__i2c__interface__gr.html#ga734a69200e063fdbfb5110062afe9329">ARM_I2C_PowerControl</a> : Control I2C Interface Power. </p>
-
-</div>
-</div>
-<a class="anchor" id="a12d2689d6e93985e64b9561a8e4e917b"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* SlaveReceive)(uint8_t *data, uint32_t num)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__i2c__interface__gr.html#gae3c9abccd1d377385d3d4cfe29035164">ARM_I2C_SlaveReceive</a> : Start receiving data as I2C Slave. </p>
-
-</div>
-</div>
-<a class="anchor" id="ae9e3b81b352d4564fd2337fdf0e5488c"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* SlaveTransmit)(const uint8_t *data, uint32_t num)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__i2c__interface__gr.html#gafe164f30eba78f066272373b98a62cd4">ARM_I2C_SlaveTransmit</a> : Start transmitting data as I2C Slave. </p>
 
 </div>
 </div>
@@ -523,6 +431,118 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="aba8f1c8019af95ffe19c32403e3240ef"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* PowerControl)(<a class="el" href="group__common__drv__gr.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5">ARM_POWER_STATE</a> state)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__i2c__interface__gr.html#ga734a69200e063fdbfb5110062afe9329">ARM_I2C_PowerControl</a> : Control I2C Interface Power. </p>
+
+</div>
+</div>
+<a class="anchor" id="a9e58f7ea5fd9476e06b45c70b6696b95"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* MasterTransmit)(uint32_t addr, const uint8_t *data, uint32_t num, bool xfer_pending)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__i2c__interface__gr.html#ga8bf4214580149d5a5d2360f71f0feb94">ARM_I2C_MasterTransmit</a> : Start transmitting data as I2C Master. </p>
+
+</div>
+</div>
+<a class="anchor" id="aa135ff2f4832d35ceb5d7e248159b981"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* MasterReceive)(uint32_t addr, uint8_t *data, uint32_t num, bool xfer_pending)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__i2c__interface__gr.html#gafa22504bcf88a85584dfe6e0dd270ad5">ARM_I2C_MasterReceive</a> : Start receiving data as I2C Master. </p>
+
+</div>
+</div>
+<a class="anchor" id="ae9e3b81b352d4564fd2337fdf0e5488c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* SlaveTransmit)(const uint8_t *data, uint32_t num)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__i2c__interface__gr.html#gafe164f30eba78f066272373b98a62cd4">ARM_I2C_SlaveTransmit</a> : Start transmitting data as I2C Slave. </p>
+
+</div>
+</div>
+<a class="anchor" id="a12d2689d6e93985e64b9561a8e4e917b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* SlaveReceive)(uint8_t *data, uint32_t num)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__i2c__interface__gr.html#gae3c9abccd1d377385d3d4cfe29035164">ARM_I2C_SlaveReceive</a> : Start receiving data as I2C Slave. </p>
+
+</div>
+</div>
+<a class="anchor" id="ad421a9b9b07fd6d3e6537396c2b98788"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* GetDataCount)(void)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__i2c__interface__gr.html#ga19db20ad8d7fde84d07f6db4d75f4b7c">ARM_I2C_GetDataCount</a> : Get transferred data count. </p>
+
+</div>
+</div>
+<a class="anchor" id="a6e0f47a92f626a971c5197fca6545505"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* Control)(uint32_t control, uint32_t arg)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__i2c__interface__gr.html#ga828f5fa289d065675ef78a9a73d129dc">ARM_I2C_Control</a> : Control I2C Interface. </p>
+
+</div>
+</div>
+<a class="anchor" id="ad4b47653bc47cdb02965dd311e88b96a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__i2c__interface__gr.html#struct_a_r_m___i2_c___s_t_a_t_u_s">ARM_I2C_STATUS</a>(* GetStatus)(void)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__i2c__interface__gr.html#gaba4e0f3eb4018e7dafd51b675c465f3e">ARM_I2C_GetStatus</a> : Get I2C status. </p>
+
+</div>
+</div>
 
 </div>
 </div>
@@ -536,7 +556,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <div class="textblock"><p>I2C Driver Capabilities. </p>
-<p>An I2C driver can be implemented with different capabilities. The bitfield members of this struct encode the capabilities implemented by this driver.</p>
+<p>An I2C driver can be implemented with different capabilities. The data fields of this struct encode the capabilities implemented by this driver.</p>
 <p>The element <em>address_10_bit</em> indicates that the driver is able to handle 10-bit addressing natively. User can still emulate the 10-bit addressing in software if the driver does not support it.</p>
 <p><b>Returned by:</b></p>
 <ul>
@@ -584,23 +604,17 @@ supports 10-bit addressing </td></tr>
 </div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a class="anchor" id="ab3e3c8eeeae7fbe3c51dcb3d4104af24"></a>uint32_t</td>
-<td class="fieldname">
-arbitration_lost: 1</td>
-<td class="fielddoc">
-Master lost arbitration (cleared on start of next Master operation) </td></tr>
-<tr><td class="fieldtype">
-<a class="anchor" id="a43b1d210c48f4361c5054ba69bcae702"></a>uint32_t</td>
-<td class="fieldname">
-bus_error: 1</td>
-<td class="fielddoc">
-Bus error detected (cleared on start of next Master/Slave operation) </td></tr>
-<tr><td class="fieldtype">
 <a class="anchor" id="a50c88f3c1d787773e2ac1b59533f034a"></a>uint32_t</td>
 <td class="fieldname">
 busy: 1</td>
 <td class="fielddoc">
 Busy flag. </td></tr>
+<tr><td class="fieldtype">
+<a class="anchor" id="a6b29e4f37f4482274af785ad5ffe96a7"></a>uint32_t</td>
+<td class="fieldname">
+mode: 1</td>
+<td class="fielddoc">
+Mode: 0=Slave, 1=Master. </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="a2148ffb99828aeaced6a5655502434ac"></a>uint32_t</td>
 <td class="fieldname">
@@ -614,11 +628,17 @@ general_call: 1</td>
 <td class="fielddoc">
 General Call indication (cleared on start of next Slave operation) </td></tr>
 <tr><td class="fieldtype">
-<a class="anchor" id="a6b29e4f37f4482274af785ad5ffe96a7"></a>uint32_t</td>
+<a class="anchor" id="ab3e3c8eeeae7fbe3c51dcb3d4104af24"></a>uint32_t</td>
 <td class="fieldname">
-mode: 1</td>
+arbitration_lost: 1</td>
 <td class="fielddoc">
-Mode: 0=Slave, 1=Master. </td></tr>
+Master lost arbitration (cleared on start of next Master operation) </td></tr>
+<tr><td class="fieldtype">
+<a class="anchor" id="a43b1d210c48f4361c5054ba69bcae702"></a>uint32_t</td>
+<td class="fieldname">
+bus_error: 1</td>
+<td class="fielddoc">
+Bus error detected (cleared on start of next Master/Slave operation) </td></tr>
 </table>
 
 </div>
@@ -644,69 +664,42 @@ Mode: 0=Slave, 1=Master. </td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="ga828f5fa289d065675ef78a9a73d129dc"></a>
+<a class="anchor" id="ga956bd87590c7fb6e23609a0abfb5412c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int32_t ARM_I2C_Control </td>
+          <td class="memname"><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a> ARM_I2C_GetVersion </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>control</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>arg</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Control I2C Interface. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">control</td><td>Operation </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">arg</td><td>Argument of operation (optional) </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>Controls the I2C interface settings and executes various operations.</p>
-<p>The function <b>ARM_I2C_Control</b> controls the I2C interface settings and executes various operations. It is registered by the function <a class="el" href="group__i2c__interface__gr.html#ga79d2f7d01b3a681d1cf0d70ac6692696">ARM_I2C_Initialize</a>.</p>
-<p>The parameter <em>control</em> specifies various parameters with the <b>ARM_I2C_xxx</b> values (see table below). Depending on the control value, the parameter <em>arg</em> provides additional information.</p>
-<table class="doxtable">
-<tr>
-<th align="left">Control Bits </th><th align="left">Description</th></tr>
-<tr>
-<td align="left"><a class="el" href="group__i2c__control__codes.html#ga69d130b9f8aa34d6df5334ab67c74307">ARM_I2C_OWN_ADDRESS</a> </td><td align="left">Set Own Slave Address; <em>arg</em> = slave own address </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__i2c__control__codes.html#ga35733133237d65146abd9449f5353a7f">ARM_I2C_BUS_SPEED</a> </td><td align="left">Set the Bus Speed; <em>arg</em> = bus speed </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__i2c__control__codes.html#gadacf04578770faca4b3eaae34b2c5f03">ARM_I2C_BUS_CLEAR</a> </td><td align="left">Clear the bus by sending nine clock pulses </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__i2c__control__codes.html#ga661e91aaa642d10ba80e3cc72f263040">ARM_I2C_ABORT_TRANSFER</a> </td><td align="left">Aborts the data transfer between Master and Slave for Transmit or Receive </td></tr>
-</table>
-<p>The function <b>ARM_I2C_Control</b> with <em>control</em> = <b>ARM_I2C_OWN_ADDRESS</b> specifies the slave own address with <em>arg</em>. Using the value <span class="XML-Token">0</span> disables the slave. <a class="el" href="group__i2c__address__flags.html#ga16be1861b90774bf062feab2dbb829a4">ARM_I2C_ADDRESS_10BIT</a> is used to indicate that it is a 10-bit address. <a class="el" href="group__i2c__address__flags.html#ga337f4f1aa082e9b593b2dcd43c50134e">ARM_I2C_ADDRESS_GC</a> is used to indicate that the slave responds to a General Call.</p>
-<p>The function <b>ARM_I2C_Control</b> with <em>control</em> = <b>ARM_I2C_BUS_SPEED</b> specifies the bus speed of the I2C interface with <em>arg</em> using the following values.</p>
-<table class="doxtable">
-<tr>
-<th align="left">Bus Speed </th><th align="left">Description</th></tr>
-<tr>
-<td align="left"><a class="el" href="group__i2c__bus__speed__ctrls.html#ga0aaa6398280fdd7ad651d7d6d44c863f">ARM_I2C_BUS_SPEED_STANDARD</a> </td><td align="left">Standard Speed to (<span class="XML-Token">100 kHz</span>) </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__i2c__bus__speed__ctrls.html#ga39f49ef4cd1100a8d9dc9003329e5ecd">ARM_I2C_BUS_SPEED_FAST</a> </td><td align="left">Fast Speed (<span class="XML-Token">400kHz</span>) </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__i2c__bus__speed__ctrls.html#ga2615262062e0327ab478ec85675ca649">ARM_I2C_BUS_SPEED_FAST_PLUS</a> </td><td align="left">Fast+ Speed (<span class="XML-Token">1MHz</span>) </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__i2c__bus__speed__ctrls.html#ga10aae5a8c7fcc90e514c5fb7393056ec">ARM_I2C_BUS_SPEED_HIGH</a> </td><td align="left">High Speed (<span class="XML-Token">3.4MHz</span>) </td></tr>
-</table>
-
+<p>Get driver version. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a></dd></dl>
+<p>The function <b>ARM_I2C_GetVersion</b> returns version information of the driver implementation in <a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a></p>
+<ul>
+<li>API version is the version of the CMSIS-Driver specification used to implement this driver.</li>
+<li>Driver version is source code version of the actual driver implementation.</li>
+</ul>
+<p>Example: </p>
+<div class="fragment"><div class="line"><span class="keyword">extern</span> <a class="code" href="group__i2c__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___i2_c" title="Access structure of the I2C Driver.">ARM_DRIVER_I2C</a> Driver_I2C0;</div>
+<div class="line"><a class="code" href="group__i2c__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___i2_c" title="Access structure of the I2C Driver.">ARM_DRIVER_I2C</a> *drv_info;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> setup_i2c (<span class="keywordtype">void</span>)  {</div>
+<div class="line">  <a class="code" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n" title="Driver Version.">ARM_DRIVER_VERSION</a>  version;</div>
+<div class="line"> </div>
+<div class="line">  drv_info = &amp;Driver_I2C0;  </div>
+<div class="line">  version = drv_info-&gt;<a class="code" href="group__i2c__interface__gr.html#a8834b281da48583845c044a81566c1b3" title="Pointer to ARM_I2C_GetVersion : Get driver version.">GetVersion</a> ();</div>
+<div class="line">  <span class="keywordflow">if</span> (version.<a class="code" href="group__common__drv__gr.html#ad180da20fbde1d3dafc074af87c19540" title="API version.">api</a> &lt; 0x10A)   {      <span class="comment">// requires at minimum API version 1.10 or higher</span></div>
+<div class="line">    <span class="comment">// error handling</span></div>
+<div class="line">    <span class="keywordflow">return</span>;</div>
+<div class="line">  }</div>
+<div class="line">}</div>
+</div><!-- fragment --> 
 </div>
 </div>
 <a class="anchor" id="gad20e6731f627aa7b9d6e99a50806122e"></a>
@@ -725,7 +718,7 @@ Mode: 0=Slave, 1=Master. </td></tr>
 
 <p>Get driver capabilities. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__i2c__interface__gr.html#struct_a_r_m___i2_c___c_a_p_a_b_i_l_i_t_i_e_s">ARM_I2C_CAPABILITIES</a></dd></dl>
-<p>Retrieves information about capabilities in this driver implementation. The bitfield members of the struct <a class="el" href="group__i2c__interface__gr.html#struct_a_r_m___i2_c___c_a_p_a_b_i_l_i_t_i_e_s">ARM_I2C_CAPABILITIES</a> encode various capabilities.</p>
+<p>The function <b>ARM_I2C_GetCapabilities</b> returns information about capabilities of this driver implementation. The data fields of the struct <a class="el" href="group__i2c__interface__gr.html#struct_a_r_m___i2_c___c_a_p_a_b_i_l_i_t_i_e_s">ARM_I2C_CAPABILITIES</a> encodes the driver capabilities.</p>
 <p>Example: </p>
 <div class="fragment"><div class="line"><span class="keyword">extern</span> <a class="code" href="group__i2c__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___i2_c" title="Access structure of the I2C Driver.">ARM_DRIVER_I2C</a> Driver_I2C0;</div>
 <div class="line"><a class="code" href="group__i2c__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___i2_c" title="Access structure of the I2C Driver.">ARM_DRIVER_I2C</a> *drv_info;</div>
@@ -737,91 +730,6 @@ Mode: 0=Slave, 1=Master. </td></tr>
 <div class="line">  drv_capabilities = drv_info-&gt;<a class="code" href="group__i2c__interface__gr.html#a5dfa74ca82e0af995d43da61e08c3103" title="Pointer to ARM_I2C_GetCapabilities : Get driver capabilities.">GetCapabilities</a> ();</div>
 <div class="line">  <span class="comment">// interrogate capabilities</span></div>
 <div class="line"> </div>
-<div class="line">}</div>
-</div><!-- fragment --> 
-</div>
-</div>
-<a class="anchor" id="ga19db20ad8d7fde84d07f6db4d75f4b7c"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t ARM_I2C_GetDataCount </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get transferred data count. </p>
-<dl class="section return"><dt>Returns</dt><dd>number of data bytes transferred; -1 when Slave is not addressed by Master</dd></dl>
-<p>Returns the number of currently transferred data bytes during and after:</p>
-<ul>
-<li><a class="el" href="group__i2c__interface__gr.html#ga8bf4214580149d5a5d2360f71f0feb94">ARM_I2C_MasterTransmit</a> : number of data bytes transmitted and acknowledged</li>
-<li><a class="el" href="group__i2c__interface__gr.html#gafa22504bcf88a85584dfe6e0dd270ad5">ARM_I2C_MasterReceive</a> : number of data bytes received</li>
-<li><a class="el" href="group__i2c__interface__gr.html#gafe164f30eba78f066272373b98a62cd4">ARM_I2C_SlaveTransmit</a> : number of data bytes transmitted</li>
-<li><a class="el" href="group__i2c__interface__gr.html#gae3c9abccd1d377385d3d4cfe29035164">ARM_I2C_SlaveReceive</a> : number of data bytes received and acknowledged</li>
-</ul>
-<p>When the Slave is not yet addressed by the Master then <span class="XML-Token">-1</span> is returned. </p>
-
-</div>
-</div>
-<a class="anchor" id="gaba4e0f3eb4018e7dafd51b675c465f3e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__i2c__interface__gr.html#struct_a_r_m___i2_c___s_t_a_t_u_s">ARM_I2C_STATUS</a> ARM_I2C_GetStatus </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get I2C status. </p>
-<dl class="section return"><dt>Returns</dt><dd>I2C status <a class="el" href="group__i2c__interface__gr.html#struct_a_r_m___i2_c___s_t_a_t_u_s">ARM_I2C_STATUS</a></dd></dl>
-<p>Retrieves current I2C interface status. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga956bd87590c7fb6e23609a0abfb5412c"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a> ARM_I2C_GetVersion </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get driver version. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a></dd></dl>
-<p>Returns version information of the driver implementation in <a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a></p>
-<ul>
-<li>API version is the version of the CMSIS-Driver specification used to implement this driver.</li>
-<li>Driver version is source code version of the actual driver implementation.</li>
-</ul>
-<p>Example: </p>
-<div class="fragment"><div class="line"><span class="keyword">extern</span> <a class="code" href="group__i2c__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___i2_c" title="Access structure of the I2C Driver.">ARM_DRIVER_I2C</a> Driver_I2C0;</div>
-<div class="line"><a class="code" href="group__i2c__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___i2_c" title="Access structure of the I2C Driver.">ARM_DRIVER_I2C</a> *drv_info;</div>
-<div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> setup_i2c (<span class="keywordtype">void</span>)  {</div>
-<div class="line">  <a class="code" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n" title="Driver Version.">ARM_DRIVER_VERSION</a>  version;</div>
-<div class="line"> </div>
-<div class="line">  drv_info = &amp;Driver_I2C0;  </div>
-<div class="line">  version = drv_info-&gt;<a class="code" href="group__i2c__interface__gr.html#a8834b281da48583845c044a81566c1b3" title="Pointer to ARM_I2C_GetVersion : Get driver version.">GetVersion</a> ();</div>
-<div class="line">  <span class="keywordflow">if</span> (version.<a class="code" href="group__common__drv__gr.html#ad180da20fbde1d3dafc074af87c19540" title="API version.">api</a> &lt; 0x10A)   {      <span class="comment">// requires at minimum API version 1.10 or higher</span></div>
-<div class="line">    <span class="comment">// error handling</span></div>
-<div class="line">    <span class="keywordflow">return</span>;</div>
-<div class="line">  }</div>
 <div class="line">}</div>
 </div><!-- fragment --> 
 </div>
@@ -848,88 +756,81 @@ Mode: 0=Slave, 1=Master. </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>The function initializes the I2C interface. It is called when the middleware component starts operation.</p>
+<p>The function <b>ARM_I2C_Initialize</b> initializes the I2C interface. It is called when the middleware component starts operation.</p>
 <p>The function performs the following operations:</p>
 <ul>
-<li>Initializes the resources needed for the I2C interface.</li>
+<li>Initializes and the I/O resources for the I2C interface.</li>
 <li>Registers the <a class="el" href="group__i2c__interface__gr.html#gad4f93d2895794b416dc8d8e9de91c05e">ARM_I2C_SignalEvent</a> callback function.</li>
 </ul>
-<p>The parameter <em>cb_event</em> is a pointer to the <a class="el" href="group__i2c__interface__gr.html#gad4f93d2895794b416dc8d8e9de91c05e">ARM_I2C_SignalEvent</a> callback function; use a NULL pointer when no callback signals are required.</p>
+<p>The parameter <em>cb_event</em> is a pointer to the <a class="el" href="group__i2c__interface__gr.html#gad4f93d2895794b416dc8d8e9de91c05e">ARM_I2C_SignalEvent</a> callback function. Use a NULL pointer when no callback events are required.</p>
+<p>Can be called multiple times. If the peripheral is already initialized the function performs no operation and returns with <a class="el" href="group__execution__status.html#ga85752c5de59e8adeb001e35ff5be6be7">ARM_DRIVER_OK</a>. Refer to <a class="el" href="_theory_operation.html#CallSequence">Function Call Sequence</a> for more information.</p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__i2c__interface__gr.html#ga734a69200e063fdbfb5110062afe9329" title="Control I2C Interface Power.">ARM_I2C_PowerControl</a> </dd>
+<dd>
+<a class="el" href="group__i2c__interface__gr.html#ga30d8bf600b6b3182a1f867407b3d6e75" title="De-initialize I2C Interface.">ARM_I2C_Uninitialize</a></dd></dl>
 <p><b>Example:</b> </p>
 <ul>
-<li>see <a class="el" href="group__i2c__interface__gr.html">I2C Interface</a> - Driver Functions </li>
+<li>refer to <a class="el" href="group__i2c__interface__gr.html#example">Example Code</a> </li>
 </ul>
 
 </div>
 </div>
-<a class="anchor" id="gafa22504bcf88a85584dfe6e0dd270ad5"></a>
+<a class="anchor" id="ga30d8bf600b6b3182a1f867407b3d6e75"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int32_t ARM_I2C_MasterReceive </td>
+          <td class="memname">int32_t ARM_I2C_Uninitialize </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>addr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
-          <td class="paramtype">uint8_t *&#160;</td>
-          <td class="paramname"><em>data</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>num</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>xfer_pending</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Start receiving data as I2C Master. </p>
+<p>De-initialize I2C Interface. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
+<p>The function <b>ARM_I2C_Uninitialize</b> releases the I/O resources of I2C interface.</p>
+<p>It is called when the middleware component stops operation and releases the I/O resources used by the I2C interface. Refer to <a class="el" href="_theory_operation.html#CallSequence">Function Call Sequence</a> for more information.</p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__i2c__interface__gr.html#ga79d2f7d01b3a681d1cf0d70ac6692696" title="Initialize I2C Interface.">ARM_I2C_Initialize</a> </dd>
+<dd>
+<a class="el" href="group__i2c__interface__gr.html#ga734a69200e063fdbfb5110062afe9329" title="Control I2C Interface Power.">ARM_I2C_PowerControl</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga734a69200e063fdbfb5110062afe9329"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ARM_I2C_PowerControl </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__common__drv__gr.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5">ARM_POWER_STATE</a>&#160;</td>
+          <td class="paramname"><em>state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Control I2C Interface Power. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">addr</td><td>Slave address (7-bit or 10-bit) </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">data</td><td>Pointer to buffer for data to receive from I2C Slave </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">num</td><td>Number of data bytes to receive </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">xfer_pending</td><td>Transfer operation is pending - Stop condition will not be generated </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">state</td><td>Power state </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>This function is used to receive data as Master from the selected Slave.</p>
-<p>The operation consists of:</p>
+<p>The function <b>ARM_I2C_PowerControl</b> operates the power modes of the I2C interface.</p>
+<p>The parameter <em>state</em> can have the following values:</p>
 <ul>
-<li>Master generates START condition</li>
-<li>Master addresses the Slave as Master Receiver</li>
-<li>Master receives data from the addressed Slave</li>
-<li>Master generates STOP condition (if <em>xfer_pending</em> is "false")</li>
+<li><a class="el" href="_driver___common_8h.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5abed52b77a9ce4775570e44a842b1295e">ARM_POWER_FULL</a> : set-up peripheral for data transfers, enable interrupts (NVIC) and optionally DMA. Can be called multiple times. If the peripheral is already in this mode, then the function performs no operation and returns with <a class="el" href="group__execution__status.html#ga85752c5de59e8adeb001e35ff5be6be7">ARM_DRIVER_OK</a>.</li>
+<li><a class="el" href="_driver___common_8h.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5a9ef9e57cbcc948d0e22314e73dc8c434">ARM_POWER_LOW</a> : may use power saving. Returns <a class="el" href="group__execution__status.html#ga2efa59e480d82697795439220e6884e4">ARM_DRIVER_ERROR_UNSUPPORTED</a> when not implemented.</li>
+<li><a class="el" href="_driver___common_8h.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5ab6f5becc85ebd51c3dd2524a95d2ca35">ARM_POWER_OFF</a> : terminates any pending data transfers, disables peripheral, disables related interrupts and DMA.</li>
 </ul>
-<p>The parameter <em>addr</em> is the address of the slave to receive the data from. The value can be ORed with <a class="el" href="group__i2c__address__flags.html#ga16be1861b90774bf062feab2dbb829a4">ARM_I2C_ADDRESS_10BIT</a> to identify a 10-bit address value.</p>
-<p>The parameter <em>data</em> and <em>num</em> specify the address of a data buffer and the number of bytes to receive.</p>
-<p>Set the parameter <em>xfer_pending</em> to 'true' if another transfer operation follows. With <em>xfer_pending</em> set to 'false' a STOP condition is generated.</p>
-<p>The function is non-blocking and returns as soon as the driver has started the operation. During the operation it is not allowed to call any Master function again. Also the data buffer must stay allocated. When receive operation has finished the <a class="el" href="group___i2_c__events.html#ga5992dc0f6e839c4d066cfa83d535f30d">ARM_I2C_EVENT_TRANSFER_DONE</a> event is generated. When not all the data is transferred then the <a class="el" href="group___i2_c__events.html#gafac3989c7b57727e1bed4ee9f2496ac9">ARM_I2C_EVENT_TRANSFER_INCOMPLETE</a> flag is set at the same time.</p>
-<p>Number of data bytes received is returned by the function <a class="el" href="group__i2c__interface__gr.html#ga19db20ad8d7fde84d07f6db4d75f4b7c">ARM_I2C_GetDataCount</a> during and after the operation has finished.</p>
-<p>The operation is aborted in the following cases (<a class="el" href="group___i2_c__events.html#ga5992dc0f6e839c4d066cfa83d535f30d">ARM_I2C_EVENT_TRANSFER_DONE</a> event is generated together with):</p>
-<ul>
-<li>selected slave has not acknowledged the address: <a class="el" href="group___i2_c__events.html#ga98b815769634d9578526b43589caa017">ARM_I2C_EVENT_ADDRESS_NACK</a> event</li>
-<li>arbitration has been lost: <a class="el" href="group___i2_c__events.html#gac9000f44a578e2117d64dbc2093cec6d">ARM_I2C_EVENT_ARBITRATION_LOST</a> event</li>
-<li>bus error has been detected: <a class="el" href="group___i2_c__events.html#gaeef542840355131c18b53fd9ed1904a8">ARM_I2C_EVENT_BUS_ERROR</a> event</li>
-</ul>
-<p>Status can be monitored by calling the <a class="el" href="group__i2c__interface__gr.html#gaba4e0f3eb4018e7dafd51b675c465f3e">ARM_I2C_GetStatus</a> and checking the flags.</p>
-<p>Receive operation can be aborted also by calling <a class="el" href="group__i2c__interface__gr.html#ga828f5fa289d065675ef78a9a73d129dc">ARM_I2C_Control</a> with <a class="el" href="group__i2c__control__codes.html#ga661e91aaa642d10ba80e3cc72f263040">ARM_I2C_ABORT_TRANSFER</a> as the <em>control</em> parameter. </p>
+<p>Refer to <a class="el" href="_theory_operation.html#CallSequence">Function Call Sequence</a> for more information.</p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__i2c__interface__gr.html#ga79d2f7d01b3a681d1cf0d70ac6692696" title="Initialize I2C Interface.">ARM_I2C_Initialize</a> </dd>
+<dd>
+<a class="el" href="group__i2c__interface__gr.html#ga30d8bf600b6b3182a1f867407b3d6e75" title="De-initialize I2C Interface.">ARM_I2C_Uninitialize</a> </dd></dl>
 
 </div>
 </div>
@@ -980,7 +881,7 @@ Mode: 0=Slave, 1=Master. </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>This function is used to transmit data as Master to the selected Slave.</p>
+<p>This function <b>ARM_I2C_MasterTransmit</b> transmits data as Master to the selected Slave.</p>
 <p>The operation consists of:</p>
 <ul>
 <li>Master generates START condition</li>
@@ -988,9 +889,9 @@ Mode: 0=Slave, 1=Master. </td></tr>
 <li>Master transmits data to the addressed Slave</li>
 <li>Master generates STOP condition (if <em>xfer_pending</em> is "false")</li>
 </ul>
-<p>The parameter <em>addr</em> is the address of the slave to transmit the data to. The value can be ORed with <a class="el" href="group__i2c__address__flags.html#ga16be1861b90774bf062feab2dbb829a4">ARM_I2C_ADDRESS_10BIT</a> to identify a 10-bit address value.</p>
-<p>The parameter <em>data</em> and <em>num</em> specify the address of a data buffer and the number of bytes to transmit.</p>
-<p>Set the parameter <em>xfer_pending</em> to 'true' if another transfer operation follows. With <em>xfer_pending</em> set to 'false' a STOP condition is generated.</p>
+<p>The parameter <em>addr</em> is the address of the slave to transmit the data to. The value can be ORed with <a class="el" href="group__i2c__address__flags.html#ga16be1861b90774bf062feab2dbb829a4">ARM_I2C_ADDRESS_10BIT</a> to identify a 10-bit address value. <br/>
+ The parameter <em>data</em> and <em>num</em> specify the address of a data buffer and the number of bytes to transmit. <br/>
+ Set the parameter <em>xfer_pending</em> to 'true' if another transfer operation follows. With <em>xfer_pending</em> set to 'false' a STOP condition is generated.</p>
 <p>The function is non-blocking and returns as soon as the driver has started the operation. During the operation it is not allowed to call any Master function again. Also the data buffer must stay allocated and the contents of data must not be modified. When transmit operation has finished the <a class="el" href="group___i2_c__events.html#ga5992dc0f6e839c4d066cfa83d535f30d">ARM_I2C_EVENT_TRANSFER_DONE</a> event is generated. When not all the data is transferred then the <a class="el" href="group___i2_c__events.html#gafac3989c7b57727e1bed4ee9f2496ac9">ARM_I2C_EVENT_TRANSFER_INCOMPLETE</a> flag is set at the same time.</p>
 <p>Number of data bytes transmitted and acknowledged is returned by the function <a class="el" href="group__i2c__interface__gr.html#ga19db20ad8d7fde84d07f6db4d75f4b7c">ARM_I2C_GetDataCount</a> during and after the operation has finished.</p>
 <p>The operation is aborted in the following cases (<a class="el" href="group___i2_c__events.html#ga5992dc0f6e839c4d066cfa83d535f30d">ARM_I2C_EVENT_TRANSFER_DONE</a> event is generated together with):</p>
@@ -1000,92 +901,23 @@ Mode: 0=Slave, 1=Master. </td></tr>
 <li>bus error has been detected: <a class="el" href="group___i2_c__events.html#gaeef542840355131c18b53fd9ed1904a8">ARM_I2C_EVENT_BUS_ERROR</a> event</li>
 </ul>
 <p>Status can be monitored by calling the <a class="el" href="group__i2c__interface__gr.html#gaba4e0f3eb4018e7dafd51b675c465f3e">ARM_I2C_GetStatus</a> and checking the flags.</p>
-<p>Transmit operation can be aborted also by calling <a class="el" href="group__i2c__interface__gr.html#ga828f5fa289d065675ef78a9a73d129dc">ARM_I2C_Control</a> with <a class="el" href="group__i2c__control__codes.html#ga661e91aaa642d10ba80e3cc72f263040">ARM_I2C_ABORT_TRANSFER</a> as the <em>control</em> parameter. </p>
+<p>Transmit operation can be aborted also by calling <a class="el" href="group__i2c__interface__gr.html#ga828f5fa289d065675ef78a9a73d129dc">ARM_I2C_Control</a> with the parameter <em>control</em> <a class="el" href="group__i2c__control__codes.html#ga661e91aaa642d10ba80e3cc72f263040">ARM_I2C_ABORT_TRANSFER</a>. </p>
 
 </div>
 </div>
-<a class="anchor" id="ga734a69200e063fdbfb5110062afe9329"></a>
+<a class="anchor" id="gafa22504bcf88a85584dfe6e0dd270ad5"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int32_t ARM_I2C_PowerControl </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="group__common__drv__gr.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5">ARM_POWER_STATE</a>&#160;</td>
-          <td class="paramname"><em>state</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Control I2C Interface Power. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">state</td><td>Power state </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>Allows controlling the power modes of the I2C interface. </p>
-
-</div>
-</div>
-<a class="anchor" id="gad4f93d2895794b416dc8d8e9de91c05e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ARM_I2C_SignalEvent </td>
+          <td class="memname">int32_t ARM_I2C_MasterReceive </td>
           <td>(</td>
           <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>event</em></td><td>)</td>
-          <td></td>
+          <td class="paramname"><em>addr</em>, </td>
         </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Signal I2C Events. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">event</td><td><a class="el" href="group___i2_c__events.html">I2C Events</a> notification mask</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>The function <b>ARM_I2C_SignalEvent</b> is called by the I2C driver to notify the application of the <a class="el" href="group___i2_c__events.html">I2C Events</a> and it is registered by the function <a class="el" href="group__i2c__interface__gr.html#ga79d2f7d01b3a681d1cf0d70ac6692696">ARM_I2C_Initialize</a>.</p>
-<p>The argument <em>event</em> represents the notification mask of the events.</p>
-<p>Each event is coded in a separate bit and therefore it is possible to signal multiple events in the event call back function. The following call back notifications are generated:</p>
-<table class="doxtable">
-<tr>
-<th>Bit</th><th align="left">Event </th><th align="left">Description</th></tr>
-<tr>
-<td>0 </td><td align="left"><a class="el" href="group___i2_c__events.html#ga5992dc0f6e839c4d066cfa83d535f30d">ARM_I2C_EVENT_TRANSFER_DONE</a> </td><td align="left">Occurs after Master/Slave Transmit/Receive operation has finished. </td></tr>
-<tr>
-<td>1 </td><td align="left"><a class="el" href="group___i2_c__events.html#gafac3989c7b57727e1bed4ee9f2496ac9">ARM_I2C_EVENT_TRANSFER_INCOMPLETE</a> </td><td align="left">Occurs together with <a class="el" href="group___i2_c__events.html#ga5992dc0f6e839c4d066cfa83d535f30d">ARM_I2C_EVENT_TRANSFER_DONE</a> when less data is transferred then requested. </td></tr>
-<tr>
-<td>2 </td><td align="left"><a class="el" href="group___i2_c__events.html#gacfbbec9af083d35e8ea87ad16e9c6ec2">ARM_I2C_EVENT_SLAVE_TRANSMIT</a> </td><td align="left">Occurs when addressed as Slave Transmitter and <a class="el" href="group__i2c__interface__gr.html#gafe164f30eba78f066272373b98a62cd4">ARM_I2C_SlaveTransmit</a> has not been started. </td></tr>
-<tr>
-<td>3 </td><td align="left"><a class="el" href="group___i2_c__events.html#gabd875b57ce39dadd849c53b885ad6661">ARM_I2C_EVENT_SLAVE_RECEIVE</a> </td><td align="left">Occurs when addressed as Slave Receiver and <a class="el" href="group__i2c__interface__gr.html#gae3c9abccd1d377385d3d4cfe29035164">ARM_I2C_SlaveReceive</a> has not been started. </td></tr>
-<tr>
-<td>4 </td><td align="left"><a class="el" href="group___i2_c__events.html#ga3ab54410b6410ed3a58762ff0c0d68b9">ARM_I2C_EVENT_GENERAL_CALL</a> </td><td align="left">Indicates General Call in slave mode together with <a class="el" href="group___i2_c__events.html#ga5992dc0f6e839c4d066cfa83d535f30d">ARM_I2C_EVENT_TRANSFER_DONE</a>, <a class="el" href="group___i2_c__events.html#gacfbbec9af083d35e8ea87ad16e9c6ec2">ARM_I2C_EVENT_SLAVE_TRANSMIT</a> and <a class="el" href="group___i2_c__events.html#gabd875b57ce39dadd849c53b885ad6661">ARM_I2C_EVENT_SLAVE_RECEIVE</a>. </td></tr>
-<tr>
-<td>5 </td><td align="left"><a class="el" href="group___i2_c__events.html#ga98b815769634d9578526b43589caa017">ARM_I2C_EVENT_ADDRESS_NACK</a> </td><td align="left">Occurs in master mode when address is not acknowledged from slave. </td></tr>
-<tr>
-<td>6 </td><td align="left"><a class="el" href="group___i2_c__events.html#gac9000f44a578e2117d64dbc2093cec6d">ARM_I2C_EVENT_ARBITRATION_LOST</a> </td><td align="left">Occurs in master mode when arbitration is lost. </td></tr>
-<tr>
-<td>7 </td><td align="left"><a class="el" href="group___i2_c__events.html#gaeef542840355131c18b53fd9ed1904a8">ARM_I2C_EVENT_BUS_ERROR</a> </td><td align="left">Occurs when bus error is detected. </td></tr>
-<tr>
-<td>8 </td><td align="left"><a class="el" href="group___i2_c__events.html#ga81ca21fad73dac1ffaff58921f848ea9">ARM_I2C_EVENT_BUS_CLEAR</a> </td><td align="left">Occurs after <a class="el" href="group__i2c__control__codes.html#gadacf04578770faca4b3eaae34b2c5f03">ARM_I2C_BUS_CLEAR</a> Control operation has finished. </td></tr>
-</table>
-
-</div>
-</div>
-<a class="anchor" id="gae3c9abccd1d377385d3d4cfe29035164"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
         <tr>
-          <td class="memname">int32_t ARM_I2C_SlaveReceive </td>
-          <td>(</td>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">uint8_t *&#160;</td>
           <td class="paramname"><em>data</em>, </td>
         </tr>
@@ -1093,7 +925,13 @@ Mode: 0=Slave, 1=Master. </td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>num</em>&#160;</td>
+          <td class="paramname"><em>num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>xfer_pending</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1103,25 +941,38 @@ Mode: 0=Slave, 1=Master. </td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Start receiving data as I2C Slave. </p>
+<p>Start receiving data as I2C Master. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">data</td><td>Pointer to buffer for data to receive from I2C Master </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">addr</td><td>Slave address (7-bit or 10-bit) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">data</td><td>Pointer to buffer for data to receive from I2C Slave </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">num</td><td>Number of data bytes to receive </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">xfer_pending</td><td>Transfer operation is pending - Stop condition will not be generated </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>This function is used to receive data as Slave from the Master.</p>
-<p>The parameter <em>data</em> and <em>num</em> specify the address of a data buffer and the number of bytes to receive.</p>
-<p>The function is non-blocking and returns as soon as the driver has registered the operation. The actual operation will start after being addressed by the master as a Slave Receiver. If the operation has not been registered at that point the <a class="el" href="group___i2_c__events.html#gabd875b57ce39dadd849c53b885ad6661">ARM_I2C_EVENT_SLAVE_RECEIVE</a> event is generated.</p>
-<p>It is not allowed to call this function again if the operation has started until it finishes. Also the data buffer must stay allocated. When receive operation has finished the <a class="el" href="group___i2_c__events.html#ga5992dc0f6e839c4d066cfa83d535f30d">ARM_I2C_EVENT_TRANSFER_DONE</a> event is generated. When not all the data is transferred then the <a class="el" href="group___i2_c__events.html#gafac3989c7b57727e1bed4ee9f2496ac9">ARM_I2C_EVENT_TRANSFER_INCOMPLETE</a> flag is set at the same time.</p>
-<p>Number of data bytes received and acknowledged is returned by the function <a class="el" href="group__i2c__interface__gr.html#ga19db20ad8d7fde84d07f6db4d75f4b7c">ARM_I2C_GetDataCount</a> during and after the operation has finished.</p>
-<p>In case that a General call has been detected the <a class="el" href="group___i2_c__events.html#ga3ab54410b6410ed3a58762ff0c0d68b9">ARM_I2C_EVENT_GENERAL_CALL</a> flag is indicated together with the <a class="el" href="group___i2_c__events.html#ga5992dc0f6e839c4d066cfa83d535f30d">ARM_I2C_EVENT_TRANSFER_DONE</a> event (also with <a class="el" href="group___i2_c__events.html#gabd875b57ce39dadd849c53b885ad6661">ARM_I2C_EVENT_SLAVE_RECEIVE</a> event).</p>
-<p>In case that bus error has been detected then the operation is aborted and the <a class="el" href="group___i2_c__events.html#gaeef542840355131c18b53fd9ed1904a8">ARM_I2C_EVENT_BUS_ERROR</a> event is generated together with <a class="el" href="group___i2_c__events.html#ga5992dc0f6e839c4d066cfa83d535f30d">ARM_I2C_EVENT_TRANSFER_DONE</a>.</p>
-<p>Slave will only respond to its own address (or General call if enabled) that is specified by calling <a class="el" href="group__i2c__interface__gr.html#ga828f5fa289d065675ef78a9a73d129dc">ARM_I2C_Control</a> with <a class="el" href="group__i2c__control__codes.html#ga69d130b9f8aa34d6df5334ab67c74307">ARM_I2C_OWN_ADDRESS</a> as control parameter. Using address <span class="XML-Token">0</span> disables the slave.</p>
+<p>This function <b>ARM_I2C_MasterReceive</b> is used to receive data as Master from the selected Slave.</p>
+<p>The operation consists of:</p>
+<ul>
+<li>Master generates START condition</li>
+<li>Master addresses the Slave as Master Receiver</li>
+<li>Master receives data from the addressed Slave</li>
+<li>Master generates STOP condition (if <em>xfer_pending</em> is "false")</li>
+</ul>
+<p>The parameter <em>addr</em> is the address of the slave to receive the data from. The value can be ORed with <a class="el" href="group__i2c__address__flags.html#ga16be1861b90774bf062feab2dbb829a4">ARM_I2C_ADDRESS_10BIT</a> to identify a 10-bit address value. <br/>
+ The parameter <em>data</em> and <em>num</em> specify the address of a data buffer and the number of bytes to receive. <br/>
+ Set the parameter <em>xfer_pending</em> to 'true' if another transfer operation follows. With <em>xfer_pending</em> set to 'false' a STOP condition is generated.</p>
+<p>The function is non-blocking and returns as soon as the driver has started the operation. During the operation it is not allowed to call any Master function again. Also the data buffer must stay allocated. When receive operation has finished the <a class="el" href="group___i2_c__events.html#ga5992dc0f6e839c4d066cfa83d535f30d">ARM_I2C_EVENT_TRANSFER_DONE</a> event is generated. When not all the data is transferred then the <a class="el" href="group___i2_c__events.html#gafac3989c7b57727e1bed4ee9f2496ac9">ARM_I2C_EVENT_TRANSFER_INCOMPLETE</a> flag is set at the same time.</p>
+<p>Number of data bytes received is returned by the function <a class="el" href="group__i2c__interface__gr.html#ga19db20ad8d7fde84d07f6db4d75f4b7c">ARM_I2C_GetDataCount</a> during and after the operation has finished.</p>
+<p>The operation is aborted in the following cases (<a class="el" href="group___i2_c__events.html#ga5992dc0f6e839c4d066cfa83d535f30d">ARM_I2C_EVENT_TRANSFER_DONE</a> event is generated together with):</p>
+<ul>
+<li>selected slave has not acknowledged the address: <a class="el" href="group___i2_c__events.html#ga98b815769634d9578526b43589caa017">ARM_I2C_EVENT_ADDRESS_NACK</a> event</li>
+<li>arbitration has been lost: <a class="el" href="group___i2_c__events.html#gac9000f44a578e2117d64dbc2093cec6d">ARM_I2C_EVENT_ARBITRATION_LOST</a> event</li>
+<li>bus error has been detected: <a class="el" href="group___i2_c__events.html#gaeef542840355131c18b53fd9ed1904a8">ARM_I2C_EVENT_BUS_ERROR</a> event</li>
+</ul>
 <p>Status can be monitored by calling the <a class="el" href="group__i2c__interface__gr.html#gaba4e0f3eb4018e7dafd51b675c465f3e">ARM_I2C_GetStatus</a> and checking the flags.</p>
-<p>Receive operation can be canceled or aborted by calling <a class="el" href="group__i2c__interface__gr.html#ga828f5fa289d065675ef78a9a73d129dc">ARM_I2C_Control</a> with <a class="el" href="group__i2c__control__codes.html#ga661e91aaa642d10ba80e3cc72f263040">ARM_I2C_ABORT_TRANSFER</a> as the <em>control</em> parameter. </p>
+<p>Receive operation can be aborted also by calling <a class="el" href="group__i2c__interface__gr.html#ga828f5fa289d065675ef78a9a73d129dc">ARM_I2C_Control</a> with the parameter <em>control</em> = <a class="el" href="group__i2c__control__codes.html#ga661e91aaa642d10ba80e3cc72f263040">ARM_I2C_ABORT_TRANSFER</a>. </p>
 
 </div>
 </div>
@@ -1158,8 +1009,9 @@ Mode: 0=Slave, 1=Master. </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>This function is used to transmit data as Slave to the Master.</p>
-<p>The parameter <em>data</em> and <em>num</em> specify the address of a data buffer and the number of bytes to transmit.</p>
+<p>This function <b>ARM_I2C_SlaveTransmit</b> is used to transmit data as Slave to the Master.</p>
+<p>The parameter <em>data</em> is a pointer to the data to transmit. <br/>
+ The parameter <em>num</em> specifies the number of bytes to transmit.</p>
 <p>The function is non-blocking and returns as soon as the driver has registered the operation. The actual operation will start after being addressed by the master as a Slave Transmitter. If the operation has not been registered at that point the <a class="el" href="group___i2_c__events.html#gacfbbec9af083d35e8ea87ad16e9c6ec2">ARM_I2C_EVENT_SLAVE_TRANSMIT</a> event is generated. The same event is also generated if the operation has finished (specified number of bytes transmitted) but more data is requested by the master.</p>
 <p>It is not allowed to call this function again if the operation has started until it finishes. Also the data buffer must stay allocated and the contents of data must not be modified. When transmit operation has finished the <a class="el" href="group___i2_c__events.html#ga5992dc0f6e839c4d066cfa83d535f30d">ARM_I2C_EVENT_TRANSFER_DONE</a> event is generated. When not all the data is transferred then the <a class="el" href="group___i2_c__events.html#gafac3989c7b57727e1bed4ee9f2496ac9">ARM_I2C_EVENT_TRANSFER_INCOMPLETE</a> flag is set at the same time.</p>
 <p>Number of data bytes transmitted is returned by the function <a class="el" href="group__i2c__interface__gr.html#ga19db20ad8d7fde84d07f6db4d75f4b7c">ARM_I2C_GetDataCount</a> during and after the operation has finished.</p>
@@ -1167,16 +1019,63 @@ Mode: 0=Slave, 1=Master. </td></tr>
 <p>In case that bus error has been detected then the operation is aborted and the <a class="el" href="group___i2_c__events.html#gaeef542840355131c18b53fd9ed1904a8">ARM_I2C_EVENT_BUS_ERROR</a> event is generated together with <a class="el" href="group___i2_c__events.html#ga5992dc0f6e839c4d066cfa83d535f30d">ARM_I2C_EVENT_TRANSFER_DONE</a>.</p>
 <p>Slave will only respond to its own address (or General call if enabled) that is specified by calling <a class="el" href="group__i2c__interface__gr.html#ga828f5fa289d065675ef78a9a73d129dc">ARM_I2C_Control</a> with <a class="el" href="group__i2c__control__codes.html#ga69d130b9f8aa34d6df5334ab67c74307">ARM_I2C_OWN_ADDRESS</a> as control parameter. Using address <span class="XML-Token">0</span> disables the slave.</p>
 <p>Status can be monitored by calling the <a class="el" href="group__i2c__interface__gr.html#gaba4e0f3eb4018e7dafd51b675c465f3e">ARM_I2C_GetStatus</a> and checking the flags.</p>
-<p>Transmit operation can be canceled or aborted by calling <a class="el" href="group__i2c__interface__gr.html#ga828f5fa289d065675ef78a9a73d129dc">ARM_I2C_Control</a> with <a class="el" href="group__i2c__control__codes.html#ga661e91aaa642d10ba80e3cc72f263040">ARM_I2C_ABORT_TRANSFER</a> as the control parameter. </p>
+<p>Transmit operation can be canceled or aborted by calling <a class="el" href="group__i2c__interface__gr.html#ga828f5fa289d065675ef78a9a73d129dc">ARM_I2C_Control</a> with the parameter <em>control</em> = <a class="el" href="group__i2c__control__codes.html#ga661e91aaa642d10ba80e3cc72f263040">ARM_I2C_ABORT_TRANSFER</a>. </p>
 
 </div>
 </div>
-<a class="anchor" id="ga30d8bf600b6b3182a1f867407b3d6e75"></a>
+<a class="anchor" id="gae3c9abccd1d377385d3d4cfe29035164"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int32_t ARM_I2C_Uninitialize </td>
+          <td class="memname">int32_t ARM_I2C_SlaveReceive </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>num</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Start receiving data as I2C Slave. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">data</td><td>Pointer to buffer for data to receive from I2C Master </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">num</td><td>Number of data bytes to receive </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
+<p>This function <b>ARM_I2C_SlaveReceive</b> receives data as Slave from the Master.</p>
+<p>The parameter <em>data</em> is a pointer to the data to receive. <br/>
+ The parameter <em>num</em> specifies the number of bytes to receive.</p>
+<p>The function is non-blocking and returns as soon as the driver has registered the operation. The actual operation will start after being addressed by the master as a Slave Receiver. If the operation has not been registered at that point the <a class="el" href="group___i2_c__events.html#gabd875b57ce39dadd849c53b885ad6661">ARM_I2C_EVENT_SLAVE_RECEIVE</a> event is generated.</p>
+<p>It is not allowed to call this function again if the operation has started until it finishes. Also the data buffer must stay allocated. When receive operation has finished the <a class="el" href="group___i2_c__events.html#ga5992dc0f6e839c4d066cfa83d535f30d">ARM_I2C_EVENT_TRANSFER_DONE</a> event is generated. When not all the data is transferred then the <a class="el" href="group___i2_c__events.html#gafac3989c7b57727e1bed4ee9f2496ac9">ARM_I2C_EVENT_TRANSFER_INCOMPLETE</a> flag is set at the same time.</p>
+<p>Number of data bytes received and acknowledged is returned by the function <a class="el" href="group__i2c__interface__gr.html#ga19db20ad8d7fde84d07f6db4d75f4b7c">ARM_I2C_GetDataCount</a> during and after the operation has finished.</p>
+<p>In case that a General call has been detected the <a class="el" href="group___i2_c__events.html#ga3ab54410b6410ed3a58762ff0c0d68b9">ARM_I2C_EVENT_GENERAL_CALL</a> flag is indicated together with the <a class="el" href="group___i2_c__events.html#ga5992dc0f6e839c4d066cfa83d535f30d">ARM_I2C_EVENT_TRANSFER_DONE</a> event (also with <a class="el" href="group___i2_c__events.html#gabd875b57ce39dadd849c53b885ad6661">ARM_I2C_EVENT_SLAVE_RECEIVE</a> event).</p>
+<p>In case that bus error has been detected then the operation is aborted and the <a class="el" href="group___i2_c__events.html#gaeef542840355131c18b53fd9ed1904a8">ARM_I2C_EVENT_BUS_ERROR</a> event is generated together with <a class="el" href="group___i2_c__events.html#ga5992dc0f6e839c4d066cfa83d535f30d">ARM_I2C_EVENT_TRANSFER_DONE</a>.</p>
+<p>Slave will only respond to its own address (or General call if enabled) that is specified by calling <a class="el" href="group__i2c__interface__gr.html#ga828f5fa289d065675ef78a9a73d129dc">ARM_I2C_Control</a> with <a class="el" href="group__i2c__control__codes.html#ga69d130b9f8aa34d6df5334ab67c74307">ARM_I2C_OWN_ADDRESS</a> as control parameter. Using address <span class="XML-Token">0</span> disables the slave.</p>
+<p>Status can be monitored by calling the <a class="el" href="group__i2c__interface__gr.html#gaba4e0f3eb4018e7dafd51b675c465f3e">ARM_I2C_GetStatus</a> and checking the flags.</p>
+<p>Receive operation can be canceled or aborted by calling <a class="el" href="group__i2c__interface__gr.html#ga828f5fa289d065675ef78a9a73d129dc">ARM_I2C_Control</a> with the parameter <em>control</em> = <a class="el" href="group__i2c__control__codes.html#ga661e91aaa642d10ba80e3cc72f263040">ARM_I2C_ABORT_TRANSFER</a>. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga19db20ad8d7fde84d07f6db4d75f4b7c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ARM_I2C_GetDataCount </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -1185,10 +1084,164 @@ Mode: 0=Slave, 1=Master. </td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>De-initialize I2C Interface. </p>
+<p>Get transferred data count. </p>
+<dl class="section return"><dt>Returns</dt><dd>number of data bytes transferred; -1 when Slave is not addressed by Master</dd></dl>
+<p>The function <b>ARM_I2C_GetDataCount</b> returns the number of currently transferred data bytes during and after:</p>
+<ul>
+<li><a class="el" href="group__i2c__interface__gr.html#ga8bf4214580149d5a5d2360f71f0feb94">ARM_I2C_MasterTransmit</a> : number of data bytes transmitted and acknowledged</li>
+<li><a class="el" href="group__i2c__interface__gr.html#gafa22504bcf88a85584dfe6e0dd270ad5">ARM_I2C_MasterReceive</a> : number of data bytes received</li>
+<li><a class="el" href="group__i2c__interface__gr.html#gafe164f30eba78f066272373b98a62cd4">ARM_I2C_SlaveTransmit</a> : number of data bytes transmitted</li>
+<li><a class="el" href="group__i2c__interface__gr.html#gae3c9abccd1d377385d3d4cfe29035164">ARM_I2C_SlaveReceive</a> : number of data bytes received and acknowledged</li>
+</ul>
+<p>When the Slave is not yet addressed by the Master then <span class="XML-Token">-1</span> is returned. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga828f5fa289d065675ef78a9a73d129dc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ARM_I2C_Control </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>control</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>arg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Control I2C Interface. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">control</td><td>Operation </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">arg</td><td>Argument of operation (optional) </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>The function <a class="el" href="group__i2c__interface__gr.html#ga30d8bf600b6b3182a1f867407b3d6e75">ARM_I2C_Uninitialize</a> de-initializes the resources of I2C interface.</p>
-<p>It is called when the middleware component stops operation and releases the software resources used by the interface. </p>
+<p>The function <b>ARM_I2C_Control</b> operates the I2C interface and executes various operations.</p>
+<p>The parameter <em>control</em> specifies various operations as listed in the table below. <br/>
+ The parameter <em>arg</em> provides, depending on the operation, additional information. <br/>
+</p>
+<table class="doxtable">
+<tr>
+<th align="left">Parameter <em>control</em> </th><th align="left">Operation</th></tr>
+<tr>
+<td align="left"><a class="el" href="group__i2c__control__codes.html#ga69d130b9f8aa34d6df5334ab67c74307">ARM_I2C_OWN_ADDRESS</a> </td><td align="left">Set Own Slave Address; <em>arg</em> = slave address </td></tr>
+<tr>
+<td align="left"><a class="el" href="group__i2c__control__codes.html#ga35733133237d65146abd9449f5353a7f">ARM_I2C_BUS_SPEED</a> </td><td align="left">Set Bus Speed; <em>arg</em> = bus speed </td></tr>
+<tr>
+<td align="left"><a class="el" href="group__i2c__control__codes.html#gadacf04578770faca4b3eaae34b2c5f03">ARM_I2C_BUS_CLEAR</a> </td><td align="left">Clear the bus by sending nine clock pulses </td></tr>
+<tr>
+<td align="left"><a class="el" href="group__i2c__control__codes.html#ga661e91aaa642d10ba80e3cc72f263040">ARM_I2C_ABORT_TRANSFER</a> </td><td align="left">Aborts the data transfer between Master and Slave for Transmit or Receive </td></tr>
+</table>
+<p><b>Set Own Slave Address</b></p>
+<p>After initialization, the I2C Device has no slave address assigned and does not accept any requests from an I2C Master.</p>
+<p>The <em>control</em> operation <a class="el" href="group__i2c__control__codes.html#ga69d130b9f8aa34d6df5334ab67c74307">ARM_I2C_OWN_ADDRESS</a> sets the slave address with the parameter <em>arg</em>. The slave address can be ORed with <a class="el" href="group__i2c__address__flags.html#ga16be1861b90774bf062feab2dbb829a4">ARM_I2C_ADDRESS_10BIT</a> to indicate a 10-bit address.</p>
+<p>The slave address can be ORed with <a class="el" href="group__i2c__address__flags.html#ga337f4f1aa082e9b593b2dcd43c50134e">ARM_I2C_ADDRESS_GC</a> to indicate that the slave accepts a General Call. If the slave address value is only <a class="el" href="group__i2c__address__flags.html#ga337f4f1aa082e9b593b2dcd43c50134e">ARM_I2C_ADDRESS_GC</a>, then the slave only accepts a General Call.</p>
+<p>The slave address value <span class="XML-Token">0</span> disables Slave mode and clears any assigned slave address.</p>
+<p><b>Examples:</b></p>
+<p>Set the Slave address value <span class="XML-Token">0x45</span> as 7-bit address. </p>
+<div class="fragment"><div class="line">I2Cdrv-&gt;<a class="code" href="group__i2c__interface__gr.html#a6e0f47a92f626a971c5197fca6545505" title="Pointer to ARM_I2C_Control : Control I2C Interface.">Control</a>      (<a class="code" href="group__i2c__control__codes.html#ga69d130b9f8aa34d6df5334ab67c74307" title="Set Own Slave Address; arg = address.">ARM_I2C_OWN_ADDRESS</a>, 0x45);</div>
+</div><!-- fragment --><p>Set the Slave address value <span class="XML-Token">0x135</span> as 10-bit address and accept a General Call. </p>
+<div class="fragment"><div class="line">I2Cdrv-&gt;<a class="code" href="group__i2c__interface__gr.html#a6e0f47a92f626a971c5197fca6545505" title="Pointer to ARM_I2C_Control : Control I2C Interface.">Control</a>      (<a class="code" href="group__i2c__control__codes.html#ga69d130b9f8aa34d6df5334ab67c74307" title="Set Own Slave Address; arg = address.">ARM_I2C_OWN_ADDRESS</a>, 0x135 | <a class="code" href="group__i2c__address__flags.html#ga16be1861b90774bf062feab2dbb829a4" title="10-bit address flag">ARM_I2C_ADDRESS_10BIT</a> | <a class="code" href="group__i2c__address__flags.html#ga337f4f1aa082e9b593b2dcd43c50134e" title="General Call flag.">ARM_I2C_ADDRESS_GC</a>);</div>
+</div><!-- fragment --><p><b>Bus Speed</b></p>
+<p>The <em>control</em> operation <a class="el" href="group__i2c__control__codes.html#ga35733133237d65146abd9449f5353a7f">ARM_I2C_BUS_SPEED</a> sets the bus speed using the parameter <em>arg</em>.</p>
+<table class="doxtable">
+<tr>
+<th align="left">Parameter <em>arg</em> </th><th align="left">Bus Speed</th></tr>
+<tr>
+<td align="left"><a class="el" href="group__i2c__bus__speed__ctrls.html#ga0aaa6398280fdd7ad651d7d6d44c863f">ARM_I2C_BUS_SPEED_STANDARD</a> </td><td align="left">Standard Speed to (<span class="XML-Token">100 kHz</span>) </td></tr>
+<tr>
+<td align="left"><a class="el" href="group__i2c__bus__speed__ctrls.html#ga39f49ef4cd1100a8d9dc9003329e5ecd">ARM_I2C_BUS_SPEED_FAST</a> </td><td align="left">Fast Speed (<span class="XML-Token">400kHz</span>) </td></tr>
+<tr>
+<td align="left"><a class="el" href="group__i2c__bus__speed__ctrls.html#ga2615262062e0327ab478ec85675ca649">ARM_I2C_BUS_SPEED_FAST_PLUS</a> </td><td align="left">Fast + Speed (<span class="XML-Token">1MHz</span>) </td></tr>
+<tr>
+<td align="left"><a class="el" href="group__i2c__bus__speed__ctrls.html#ga10aae5a8c7fcc90e514c5fb7393056ec">ARM_I2C_BUS_SPEED_HIGH</a> </td><td align="left">High Speed (<span class="XML-Token">3.4MHz</span>) </td></tr>
+</table>
+<p><b>Example:</b></p>
+<div class="fragment"><div class="line">I2Cdrv-&gt;<a class="code" href="group__i2c__interface__gr.html#a6e0f47a92f626a971c5197fca6545505" title="Pointer to ARM_I2C_Control : Control I2C Interface.">Control</a>      (<a class="code" href="group__i2c__control__codes.html#ga35733133237d65146abd9449f5353a7f" title="Set Bus Speed; arg = speed.">ARM_I2C_BUS_SPEED</a>, I2C_BUS_SPEED_FAST);</div>
+</div><!-- fragment --> 
+</div>
+</div>
+<a class="anchor" id="gaba4e0f3eb4018e7dafd51b675c465f3e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__i2c__interface__gr.html#struct_a_r_m___i2_c___s_t_a_t_u_s">ARM_I2C_STATUS</a> ARM_I2C_GetStatus </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get I2C status. </p>
+<dl class="section return"><dt>Returns</dt><dd>I2C status <a class="el" href="group__i2c__interface__gr.html#struct_a_r_m___i2_c___s_t_a_t_u_s">ARM_I2C_STATUS</a></dd></dl>
+<p>The function <b>ARM_I2C_GetStatus</b> returns the current I2C interface status.</p>
+<p>Refer to <a class="el" href="group__i2c__interface__gr.html#struct_a_r_m___i2_c___s_t_a_t_u_s">ARM_I2C_STATUS</a> for details. </p>
+
+</div>
+</div>
+<a class="anchor" id="gad4f93d2895794b416dc8d8e9de91c05e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ARM_I2C_SignalEvent </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Signal I2C Events. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">event</td><td><a class="el" href="group___i2_c__events.html">I2C Events</a> notification mask</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>The function <b>ARM_I2C_SignalEvent</b> is a callback function registered by the function <a class="el" href="group__i2c__interface__gr.html#ga79d2f7d01b3a681d1cf0d70ac6692696">ARM_I2C_Initialize</a>.. It is called by the I2C driver to notify the application about <a class="el" href="group___i2_c__events.html">I2C Events</a> occured during operation.</p>
+<p>The parameter <em>event</em> indicates one or more events that occurred during driver operation. Each event is encoded in a separate bit and therefore it is possible to signal multiple events within the same call.</p>
+<p>The following events can be generated:</p>
+<table class="doxtable">
+<tr>
+<th align="left">Parameter <em>event</em> </th><th align="center">Bit </th><th align="left">Description</th></tr>
+<tr>
+<td align="left"><a class="el" href="group___i2_c__events.html#ga5992dc0f6e839c4d066cfa83d535f30d">ARM_I2C_EVENT_TRANSFER_DONE</a> </td><td align="center">0 </td><td align="left">Occurs after Master/Slave Transmit/Receive operation has finished. </td></tr>
+<tr>
+<td align="left"><a class="el" href="group___i2_c__events.html#gafac3989c7b57727e1bed4ee9f2496ac9">ARM_I2C_EVENT_TRANSFER_INCOMPLETE</a> </td><td align="center">1 </td><td align="left">Occurs together with <a class="el" href="group___i2_c__events.html#ga5992dc0f6e839c4d066cfa83d535f30d">ARM_I2C_EVENT_TRANSFER_DONE</a> when less data is transferred then requested. </td></tr>
+<tr>
+<td align="left"><a class="el" href="group___i2_c__events.html#gacfbbec9af083d35e8ea87ad16e9c6ec2">ARM_I2C_EVENT_SLAVE_TRANSMIT</a> </td><td align="center">2 </td><td align="left">Occurs when addressed as Slave Transmitter and <a class="el" href="group__i2c__interface__gr.html#gafe164f30eba78f066272373b98a62cd4">ARM_I2C_SlaveTransmit</a> has not been started. </td></tr>
+<tr>
+<td align="left"><a class="el" href="group___i2_c__events.html#gabd875b57ce39dadd849c53b885ad6661">ARM_I2C_EVENT_SLAVE_RECEIVE</a> </td><td align="center">3 </td><td align="left">Occurs when addressed as Slave Receiver and <a class="el" href="group__i2c__interface__gr.html#gae3c9abccd1d377385d3d4cfe29035164">ARM_I2C_SlaveReceive</a> has not been started. </td></tr>
+<tr>
+<td align="left"><a class="el" href="group___i2_c__events.html#ga3ab54410b6410ed3a58762ff0c0d68b9">ARM_I2C_EVENT_GENERAL_CALL</a> </td><td align="center">4 </td><td align="left">Indicates General Call in slave mode together with <a class="el" href="group___i2_c__events.html#ga5992dc0f6e839c4d066cfa83d535f30d">ARM_I2C_EVENT_TRANSFER_DONE</a>, <a class="el" href="group___i2_c__events.html#gacfbbec9af083d35e8ea87ad16e9c6ec2">ARM_I2C_EVENT_SLAVE_TRANSMIT</a> and <a class="el" href="group___i2_c__events.html#gabd875b57ce39dadd849c53b885ad6661">ARM_I2C_EVENT_SLAVE_RECEIVE</a>. </td></tr>
+<tr>
+<td align="left"><a class="el" href="group___i2_c__events.html#ga98b815769634d9578526b43589caa017">ARM_I2C_EVENT_ADDRESS_NACK</a> </td><td align="center">5 </td><td align="left">Occurs in master mode when address is not acknowledged from slave. </td></tr>
+<tr>
+<td align="left"><a class="el" href="group___i2_c__events.html#gac9000f44a578e2117d64dbc2093cec6d">ARM_I2C_EVENT_ARBITRATION_LOST</a> </td><td align="center">6 </td><td align="left">Occurs in master mode when arbitration is lost. </td></tr>
+<tr>
+<td align="left"><a class="el" href="group___i2_c__events.html#gaeef542840355131c18b53fd9ed1904a8">ARM_I2C_EVENT_BUS_ERROR</a> </td><td align="center">7 </td><td align="left">Occurs when bus error is detected. </td></tr>
+<tr>
+<td align="left"><a class="el" href="group___i2_c__events.html#ga81ca21fad73dac1ffaff58921f848ea9">ARM_I2C_EVENT_BUS_CLEAR</a> </td><td align="center">8 </td><td align="left">Occurs after <a class="el" href="group__i2c__control__codes.html#gadacf04578770faca4b3eaae34b2c5f03">ARM_I2C_BUS_CLEAR</a> Control operation has finished. </td></tr>
+</table>
 
 </div>
 </div>
@@ -1197,7 +1250,7 @@ Mode: 0=Slave, 1=Master. </td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:42 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:02 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

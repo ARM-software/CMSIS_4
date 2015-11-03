@@ -27,7 +27,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-SVD
-   &#160;<span id="projectnumber">Version 1.2</span>
+   &#160;<span id="projectnumber">Version 1.3</span>
    </div>
    <div id="projectbrief">CMSIS System View Description</div>
   </td>
@@ -102,6 +102,8 @@ Default values for register attributes like register size, reset value, and acce
 </ul>
 <p><b>Multiple Instantiation</b></p>
 <p>CMSIS-SVD supports the reuse of whole sections of the description. The attribute <em>derivedFrom</em> for the peripheral-, register-, and field-section specifies the source of the section to be copied from. Individual tags can be used to redefine specific elements within a copied section. In case the name of the description source is not unique, the name needs to be qualified hierarchically until the element composite name becomes unique. Hierarchies are separated by a dot. For example, <em>&lt;peripheral name&gt;.&lt;register name&gt;.&lt;field name&gt;</em>.</p>
+<p><b>Array of Elements</b></p>
+<p>A powerfull construct in data structures of the C programming language is the <em>array</em>. An array is a series of data elements of the same type selected via an index. CMSIS-SVD supports arrays of <em>&lt;peripherals&gt;</em>, <em>&lt;cluster&gt;</em> and <em>&lt;register&gt;</em>.</p>
 <p><b>Peripheral Grouping</b></p>
 <p>Peripherals that provide similar functionality (Simple Timer, Complex Timer) can be grouped with the element <em>groupName</em>. All peripherals associated with the same group name are collectively listed under this group in the order they have been specified in the file. Collecting similar or related peripherals into peripheral groups helps structuring the list of peripherals in the debugger.</p>
 <p><b>Descriptions</b></p>
@@ -112,7 +114,7 @@ Default values for register attributes like register size, reset value, and acce
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="index.html">System View Description</a></li>
-    <li class="footer">Generated on Fri Mar 20 2015 14:59:01 for CMSIS-SVD by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:30 for CMSIS-SVD by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

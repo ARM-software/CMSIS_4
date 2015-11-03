@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.3.3</span>
+   &#160;<span id="projectnumber">Version 1.4.0</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -114,11 +114,18 @@ $(document).ready(function(){initNavTree('pack_revision_history.html','');});
 <tr>
 <th>Version </th><th>Description  </th></tr>
 <tr>
+<td>1.4.0 </td><td>Modifications compared to Version 1.3.3:<ul>
+<li>device section <em>memory</em> specification redefined, deprecating <em>id</em> attribute</li>
+<li>device section <em>algorithm</em> support multiple flash programming algorithm styles</li>
+<li>device section <em>debug</em> adding CJTAG debug port type </li>
+</ul>
+</td></tr>
+<tr>
 <td>1.3.3 </td><td>Modifications compared to Version 1.3.1:<ul>
 <li>Schema Version remains unchanged, since no incompatible update</li>
 <li><em>Added</em> generator section can specify a target GPDSC file that it will generate</li>
 <li><em>Added</em> A component can be linked to a generator and the generator's GPDSC file will be automatically included in the project as part of the component.</li>
-<li><em>Added</em> A generator command is optionally extended by a separate description of arguments.</li>
+<li><em>Added</em> A generator command is optionally extended by a separate description of arguments</li>
 <li><em>Updated</em> Vendor list</li>
 <li><em>Updated</em> Utility PackChk.exe to Version 1.3.0.0:<ul>
 <li>detect redefinitions of boards</li>
@@ -175,7 +182,7 @@ $(document).ready(function(){initNavTree('pack_revision_history.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:58 for CMSIS-Pack by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:25 for CMSIS-Pack by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

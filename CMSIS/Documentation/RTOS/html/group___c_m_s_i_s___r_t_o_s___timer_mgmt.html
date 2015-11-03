@@ -116,13 +116,28 @@ Functions</h2></td></tr>
 <tr class="separator:ga746b8043d906849bd65e3900fcb483cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description</h2>
-<p>The Timer Management function groups allow creating and controlling of timers and callback functions in the system. When a timer expires, a callback function is called to run associated code with the timer. The timer number is passed as a parameter to the callback function. This is available for both, one-shot and periodic timers. A timer can be started, restarted, or stopped.</p>
+<p>In addition to the <a class="el" href="group___c_m_s_i_s___r_t_o_s___wait.html">Generic Wait Functions</a> CMSIS-RTOS also supports virtual timer objects. These timer objects can trigger the execution of a function (not threads). When a timer expires, a callback function is executed to run associated code with the timer. The timer number is passed as a parameter to the callback function. Each timer can be configured as a one-shot or a periodic timer. A periodic timer repeats its operation until it is <a class="el" href="group___c_m_s_i_s___r_t_o_s___timer_mgmt.html#ga746b8043d906849bd65e3900fcb483cf">deleted</a> or <a class="el" href="group___c_m_s_i_s___r_t_o_s___timer_mgmt.html#ga58f36b121a812936435cacc6e1e0e091">stopped</a>. All timers can be <a class="el" href="group___c_m_s_i_s___r_t_o_s___timer_mgmt.html#ga27a797a401b068e2644d1125f22a07ca">started, restarted</a>, or <a class="el" href="group___c_m_s_i_s___r_t_o_s___timer_mgmt.html#ga58f36b121a812936435cacc6e1e0e091">stopped</a>.</p>
 <p>Timers are handled in the thread <b>osTimerThread</b>. Callback functions run under control of this thread and may use other CMSIS-RTOS API calls.</p>
 <p>The figure below shows the behavior of a periodic timer. For one-shot timers, the timer stops after execution of the callback function.</p>
 <div class="image">
 <img src="Timer.png" alt="Timer.png"/>
 <div class="caption">
 Behavior of a Periodic Timer</div></div>
+ <h2>Working with Timers</h2>
+<p>The following steps are required to use a timer:</p>
+<ol type="1">
+<li>Define the timers: <div class="fragment"><div class="line"><a class="code" href="group___c_m_s_i_s___r_t_o_s___timer_mgmt.html#ga1c720627e08d1cc1afcad44e799ed492" title="Define a Timer object.">osTimerDef</a>(one_shot, start_machine);  <span class="comment">// when the timer expires, the function start_machine is called</span></div>
+<div class="line"><a class="code" href="group___c_m_s_i_s___r_t_o_s___timer_mgmt.html#ga1c720627e08d1cc1afcad44e799ed492" title="Define a Timer object.">osTimerDef</a>(periodic, toggle_power);   <span class="comment">// when the timer expires, the function toggle_power is called</span></div>
+<div class="line"><a class="code" href="cmsis__os_8h.html#ab8530dd4273f1f5382187732e14fcaa7" title="Timer ID identifies the timer (pointer to a timer control block).">osTimerId</a> one_shot_id, periodic_id;</div>
+</div><!-- fragment --></li>
+<li>Instantiate and start the timers in an RTOS thread: <div class="fragment"><div class="line">one_shot_id = <a class="code" href="group___c_m_s_i_s___r_t_o_s___timer_mgmt.html#gaedd312bfdca04e0b8162b666e09a1ae6" title="Create a timer.">osTimerCreate</a>(<a class="code" href="group___c_m_s_i_s___r_t_o_s___timer_mgmt.html#ga1b8d670eaf964b2910fa06885e650678" title="Access a Timer definition.">osTimer</a>(one_shot), <a class="code" href="group___c_m_s_i_s___r_t_o_s___timer_mgmt.html#gadac860eb9e1b4b0619271e6595ed83d9ad21712f8df5f97069c82dc9eec37b951" title="one-shot timer">osTimerOnce</a>, (<span class="keywordtype">void</span> *)0);      <span class="comment">// creates a one-shot timer;</span></div>
+<div class="line">                                                                             <span class="comment">// (void*)0 is passed as an argument to the callback function</span></div>
+<div class="line">periodic_id = <a class="code" href="group___c_m_s_i_s___r_t_o_s___timer_mgmt.html#gaedd312bfdca04e0b8162b666e09a1ae6" title="Create a timer.">osTimerCreate</a>(<a class="code" href="group___c_m_s_i_s___r_t_o_s___timer_mgmt.html#ga1b8d670eaf964b2910fa06885e650678" title="Access a Timer definition.">osTimer</a>(periodic), <a class="code" href="group___c_m_s_i_s___r_t_o_s___timer_mgmt.html#gadac860eb9e1b4b0619271e6595ed83d9ab9c91f9699162edb09bb7c90c11c8788" title="repeating timer">osTimerPeriodic</a>, (<span class="keywordtype">void</span> *)5);  <span class="comment">// creates a periodic timer;</span></div>
+<div class="line">                                                                             <span class="comment">// (void*)5 is passed as an argument to the callback function</span></div>
+<div class="line"><a class="code" href="group___c_m_s_i_s___r_t_o_s___timer_mgmt.html#ga27a797a401b068e2644d1125f22a07ca" title="Start or restart a timer.">osTimerStart</a>(one_shot_id, 500);</div>
+<div class="line"><a class="code" href="group___c_m_s_i_s___r_t_o_s___timer_mgmt.html#ga27a797a401b068e2644d1125f22a07ca" title="Start or restart a timer.">osTimerStart</a>(periodic, 1500);</div>
+</div><!-- fragment --> </li>
+</ol>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a class="anchor" id="ga1b8d670eaf964b2910fa06885e650678"></a>
 <div class="memitem">
@@ -467,7 +482,7 @@ Behavior of a Periodic Timer</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:59 for CMSIS-RTOS by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:27 for CMSIS-RTOS by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

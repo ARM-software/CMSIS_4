@@ -27,7 +27,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-SVD
-   &#160;<span id="projectnumber">Version 1.2</span>
+   &#160;<span id="projectnumber">Version 1.3</span>
    </div>
    <div id="projectbrief">CMSIS System View Description</div>
   </td>
@@ -79,7 +79,8 @@ $(document).ready(function(){initNavTree('group__svd__xml__peripherals__gr.html'
 <li>The address range allocated by a peripheral is defined through one or more address blocks.</li>
 <li>An address block and register addresses are specified relative to the base address of a peripheral. The address block information can be used for constructing a memory map for the device peripherals.</li>
 </ul>
-<dl class="section remark"><dt>Remarks</dt><dd>The memory map does not contain any information about RAM, ROM, or FLASH memory.</dd></dl>
+<p>Starting version 1.3 of the SVD specification arrays of peripherals can be specified. The single peripheral description gets duplicated automatically into an array. The number of array elements is specified by the &lt;dim&gt; element. The peripheral name needs to be of the format <em>myPeripheral[s]</em>. The <em>&lt;dimIncrement&gt;</em> specifies the address offset between two peripherals. The &lt;dimIndex&gt; is ignored. If you want to create copies of a peripheral using different names, please use the derivedFrom attribute.</p>
+<dl class="section remark"><dt>Remarks</dt><dd>The memory map does not contain any information about physical memory. The memories of a device are described as part of the CMSIS-PACK device description.</dd></dl>
 <hr/>
 <pre>
 <span class="mand"> <b>&lt;peripherals&gt;</b> </span></pre><pre><span class="mand">    <b>&lt;peripheral <span class="opt">derivedFrom=<em>identifierType</em></span>&gt;</b></span></pre><pre><span class="mand">        &lt;name&gt;<em>identifierType</em>&lt;/name&gt;
@@ -156,7 +157,9 @@ $(document).ready(function(){initNavTree('group__svd__xml__peripherals__gr.html'
 <tr class="group1">
 <td align="right">size </td><td>Defines the default bit-width of any register contained in the device (implicit inheritance).  </td><td>scaledNonNegativeInteger </td><td>0..1  </td></tr>
 <tr class="group1">
-<td align="right">access </td><td>Defines the default access rights for all registers. </td><td>accessType </td><td>0..1  </td></tr>
+<td align="right">access </td><td>Defines the default access rights for all registers. </td><td>accessType </td><td>0..1 </td></tr>
+<tr class="group1">
+<td align="right">protection </td><td>Defines the protection rights for all registers. </td><td>protectionStringType </td><td>0..1    </td></tr>
 <tr class="group1">
 <td align="right">resetValue  </td><td>Defines the default value for all registers at RESET. </td><td>scaledNonNegativeInteger  </td><td>0..1   </td></tr>
 <tr class="group1">
@@ -207,7 +210,7 @@ Example:</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:59:01 for CMSIS-SVD by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:30 for CMSIS-SVD by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

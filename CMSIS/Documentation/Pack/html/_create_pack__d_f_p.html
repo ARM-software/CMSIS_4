@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.3.3</span>
+   &#160;<span id="projectnumber">Version 1.4.0</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -167,7 +167,7 @@ Add a <a class="el" href="pdsc_family_pg.html#element_device">&lt;devices&gt;</a
 <div class="line">    &lt;description&gt;</div>
 <div class="line">      The MVCM3 device family contains an ARM Cortex-M3 processor, running up to 100 MHz with a versatile <span class="keyword">set</span> of on-chip peripherals.</div>
 <div class="line">    &lt;/description&gt;</div>
-<div class="line">    &lt;!-- ************************  Subfamily <span class="stringliteral">&#39;MVCM3100&#39;</span>  **************************** --&gt;</div>
+<div class="line">    &lt;!-- ************************  Sub-family <span class="stringliteral">&#39;MVCM3100&#39;</span>  **************************** --&gt;</div>
 <div class="line">    &lt;subFamily DsubFamily=<span class="stringliteral">&quot;MVCM3100&quot;</span>&gt;</div>
 <div class="line">      &lt;processor  Dclock=<span class="stringliteral">&quot;50000000&quot;</span>/&gt;</div>
 <div class="line">      &lt;!-- *************************  Device <span class="stringliteral">&#39;MVCM3110&#39;</span>  ***************************** --&gt;</div>
@@ -181,7 +181,7 @@ Add a <a class="el" href="pdsc_family_pg.html#element_device">&lt;devices&gt;</a
 <div class="line">        &lt;memory     <span class="keywordtype">id</span>=<span class="stringliteral">&quot;IRAM1&quot;</span>                      start=<span class="stringliteral">&quot;0x20000000&quot;</span>  size=<span class="stringliteral">&quot;0x1000&quot;</span>     init   =<span class="stringliteral">&quot;0&quot;</span>   <span class="keywordflow">default</span>=<span class="stringliteral">&quot;1&quot;</span>/&gt;</div>
 <div class="line">      &lt;/device&gt;</div>
 <div class="line">    &lt;/subFamily&gt;</div>
-<div class="line">    &lt;!-- ************************  Subfamily <span class="stringliteral">&#39;MVCM3200&#39;</span>  **************************** --&gt;</div>
+<div class="line">    &lt;!-- ************************  Sub Family <span class="stringliteral">&#39;MVCM3200&#39;</span>  **************************** --&gt;</div>
 <div class="line">    &lt;subFamily DsubFamily=<span class="stringliteral">&quot;MVCM3200&quot;</span>&gt;</div>
 <div class="line">      &lt;processor  Dclock=<span class="stringliteral">&quot;100000000&quot;</span>/&gt;</div>
 <div class="line">      &lt;!-- *************************  Device <span class="stringliteral">&#39;MVCM3250&#39;</span>  ***************************** --&gt;</div>
@@ -398,7 +398,7 @@ Device Properties</h1>
 <p>To limit redundancy, devices can be organized in two hierarchy groups:</p>
 <ul>
 <li><a class="el" href="pdsc_family_pg.html#element_family">family</a>: the attributes of a device family which includes also the processor.</li>
-<li><a class="el" href="pdsc_family_pg.html#element_subfamily">sub-family</a>: attributes of an optional sub-family; this adds or modifies features of a family.</li>
+<li><a class="el" href="pdsc_family_pg.html#element_subFamily">subFamily</a>: attributes of an optional sub-family; this adds or modifies features of a family.</li>
 </ul>
 <p>Parameters of each single device are defined in:</p>
 <ul>
@@ -521,7 +521,7 @@ Finally, save the PDSC file and regenerate the Pack file using the <a class="el"
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:58 for CMSIS-Pack by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:26 for CMSIS-Pack by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

@@ -1,5 +1,15 @@
 var searchData=
 [
+  ['can_20bus_20communication_20mode',['CAN Bus Communication Mode',['../group__can__bus__mode__ctrls.html',1,'']]],
+  ['can_20control_20codes',['CAN Control Codes',['../group__can__control.html',1,'']]],
+  ['can_20object_20events',['CAN Object Events',['../group___c_a_n__events.html',1,'']]],
+  ['can_20filter_20operation_20codes',['CAN Filter Operation Codes',['../group__can__filter__operation__ctrls.html',1,'']]],
+  ['can_20identifier',['CAN Identifier',['../group__can__identifer__ctrls.html',1,'']]],
+  ['can_20interface',['CAN Interface',['../group__can__interface__gr.html',1,'']]],
+  ['can_20operation_20codes',['CAN Operation Codes',['../group__can__mode__ctrls.html',1,'']]],
+  ['can_20object_20configuration_20codes',['CAN Object Configuration Codes',['../group__can__obj__config__ctrls.html',1,'']]],
+  ['can_20bit_20timing_20codes',['CAN Bit Timing Codes',['../group__can__timeseg__ctrls.html',1,'']]],
+  ['can_20unit_20events',['CAN Unit Events',['../group___c_a_n__unit__events.html',1,'']]],
   ['cardpower',['CardPower',['../group__mci__interface__gr.html#a73334c737658b227ef3097343d5c78bb',1,'ARM_DRIVER_MCI']]],
   ['ccs',['ccs',['../group__mci__interface__gr.html#a13c956ba993083f1e59379968e2badbe',1,'ARM_MCI_STATUS::ccs()'],['../group__mci__interface__gr.html#a13c956ba993083f1e59379968e2badbe',1,'ARM_MCI_CAPABILITIES::ccs()']]],
   ['ccs_5ftimeout',['ccs_timeout',['../group__mci__interface__gr.html#a9739c230a13b46482feb5475d257e482',1,'ARM_MCI_CAPABILITIES']]],
@@ -25,7 +35,7 @@ var searchData=
   ['common_20driver_20definitions',['Common Driver Definitions',['../group__common__drv__gr.html',1,'']]],
   ['companding',['companding',['../group__sai__interface__gr.html#a77e4d8466d2bde30e6583b9ad8ba8c82',1,'ARM_SAI_CAPABILITIES']]],
   ['connected',['connected',['../group__usbh__host__gr.html#abf1a0792d6af28877b0abd141d5524ac',1,'ARM_USBH_PORT_STATE']]],
-  ['control',['Control',['../group__eth__mac__interface__gr.html#a6e0f47a92f626a971c5197fca6545505',1,'ARM_DRIVER_ETH_MAC::Control()'],['../group__i2c__interface__gr.html#a6e0f47a92f626a971c5197fca6545505',1,'ARM_DRIVER_I2C::Control()'],['../group__mci__interface__gr.html#a6e0f47a92f626a971c5197fca6545505',1,'ARM_DRIVER_MCI::Control()'],['../group__nand__interface__gr.html#a706fedbc88921808e210d75b7b5da168',1,'ARM_DRIVER_NAND::Control()'],['../group__sai__interface__gr.html#a80455fc2c7355b1850098710fd66a244',1,'ARM_DRIVER_SAI::Control()'],['../group__spi__interface__gr.html#a6e0f47a92f626a971c5197fca6545505',1,'ARM_DRIVER_SPI::Control()'],['../group__usart__interface__gr.html#a6e0f47a92f626a971c5197fca6545505',1,'ARM_DRIVER_USART::Control()']]],
+  ['control',['Control',['../group__can__interface__gr.html#a6e0f47a92f626a971c5197fca6545505',1,'ARM_DRIVER_CAN::Control()'],['../group__eth__mac__interface__gr.html#a6e0f47a92f626a971c5197fca6545505',1,'ARM_DRIVER_ETH_MAC::Control()'],['../group__i2c__interface__gr.html#a6e0f47a92f626a971c5197fca6545505',1,'ARM_DRIVER_I2C::Control()'],['../group__mci__interface__gr.html#a6e0f47a92f626a971c5197fca6545505',1,'ARM_DRIVER_MCI::Control()'],['../group__nand__interface__gr.html#a706fedbc88921808e210d75b7b5da168',1,'ARM_DRIVER_NAND::Control()'],['../group__sai__interface__gr.html#a80455fc2c7355b1850098710fd66a244',1,'ARM_DRIVER_SAI::Control()'],['../group__spi__interface__gr.html#a6e0f47a92f626a971c5197fca6545505',1,'ARM_DRIVER_SPI::Control()'],['../group__usart__interface__gr.html#a6e0f47a92f626a971c5197fca6545505',1,'ARM_DRIVER_USART::Control()']]],
   ['controltimer',['ControlTimer',['../group__eth__mac__interface__gr.html#ab6bdbdc7fdfcc52e027201738b88b431',1,'ARM_DRIVER_ETH_MAC']]],
   ['correctable_5fbits',['correctable_bits',['../group__nand__interface__gr.html#ae65f920c4ad99fd0c6bdf5fd8c4d161a',1,'ARM_NAND_ECC_INFO']]],
   ['cts',['cts',['../group__usart__interface__gr.html#a0a4ccfb729b3a40a5fd611021268c262',1,'ARM_USART_MODEM_STATUS::cts()'],['../group__usart__interface__gr.html#a0a4ccfb729b3a40a5fd611021268c262',1,'ARM_USART_CAPABILITIES::cts()']]]

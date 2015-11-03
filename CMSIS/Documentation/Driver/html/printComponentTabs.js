@@ -21,6 +21,7 @@ var arr = [];
  arr.push( new tabElement( "RTX",    "/RTX/html/",         "RTX")       );
  arr.push( new tabElement( "PACK",   "/Pack/html/",        "Pack")      );
  arr.push( new tabElement( "SVD",    "/SVD/html/",         "SVD")       );
+ arr.push( new tabElement( "DAP",    "/DAP/html/",         "DAP")       );
  
 // write tabs
 // called from the header file.

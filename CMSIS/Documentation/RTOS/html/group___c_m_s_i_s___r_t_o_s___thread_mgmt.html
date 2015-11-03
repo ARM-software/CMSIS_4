@@ -135,7 +135,7 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description</h2>
 <p>The Thread Management function group allows defining, creating, and controlling thread functions in the system. The function <b>main</b> is a special thread function that is started at system initialization and has the initial priority <em>osPriorityNormal</em>.</p>
-<p>Threads can be in the following states:</p>
+<p><a class="anchor" id="ThreadStates"></a>Threads can be in the following states:</p>
 <ul>
 <li><b>RUNNING:</b> The thread that is currently running is in the <b>RUNNING</b> state. Only one thread at a time can be in this state.</li>
 <li><b>READY:</b> Threads which are ready to run are in the <b>READY</b> state. Once the <b>RUNNING</b> thread has terminated or is <b>WAITING</b>, the next <b>READY</b> thread with the highest priority becomes the <b>RUNNING</b> thread.</li>
@@ -560,7 +560,7 @@ Thread State and State Transitions</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:59 for CMSIS-RTOS by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:27 for CMSIS-RTOS by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

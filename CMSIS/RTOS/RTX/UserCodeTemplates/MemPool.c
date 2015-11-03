@@ -1,5 +1,5 @@
 
-#include <cmsis_os.h>                                           // CMSIS RTOS header file
+#include "cmsis_os.h"                                           // CMSIS RTOS header file
 
 /*----------------------------------------------------------------------------
  *      Memory Pool creation & usage
@@ -23,30 +23,30 @@ osPoolDef (MemPool, MEMPOOL_OBJECTS, MEM_BLOCK_t);              // memory pool o
 int Init_MemPool (void) {
 
   mpid_MemPool = osPoolCreate (osPool (MemPool));               // create Mem Pool
-  if(!mpid_MemPool) {
+  if (!mpid_MemPool) {
     ; // MemPool object not created, handle failure
   }
   
-  tid_Thread_MemPool  = osThreadCreate (osThread(Thread_MemPool), NULL);
-  if(!tid_Thread_MemPool) return(-1);
+  tid_Thread_MemPool = osThreadCreate (osThread(Thread_MemPool), NULL);
+  if (!tid_Thread_MemPool) return(-1);
   
   return(0);
 }
 
-void Thread_MemPool(void const *argument) {
-  osStatus      status;
-  MEM_BLOCK_t  *pMem = 0;
+void Thread_MemPool (void const *argument) {
+  osStatus     status;
+  MEM_BLOCK_t *pMem = 0;
 
-  while(1) {
+  while (1) {
     ; // Insert thread code here...
 
     pMem = (MEM_BLOCK_t *)osPoolCAlloc (mpid_MemPool);          // get Mem Block
-    if(pMem) {                                                  // Mem Block was available
-      pMem->Buf[0]  = 0x55;                                     // do some work...
-      pMem->Idx     = 0;      
+    if (pMem) {                                                 // Mem Block was available
+      pMem->Buf[0] = 0x55;                                      // do some work...
+      pMem->Idx    = 0;      
       
       status = osPoolFree (mpid_MemPool, pMem);                 // free mem block
-      switch(status)  {
+      switch (status)  {
         case osOK:
           break;
         case osErrorParameter:
@@ -54,10 +54,10 @@ void Thread_MemPool(void const *argument) {
         case osErrorValue:
           break;
         default:
-        break;
+          break;
       }
     }
 
-    osThreadYield();        // suspend thread
+    osThreadYield ();                                           // suspend thread
   }
 }

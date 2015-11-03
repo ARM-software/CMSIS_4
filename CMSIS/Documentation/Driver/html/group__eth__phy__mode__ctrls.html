@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -141,83 +141,23 @@ Macros</h2></td></tr>
 <tr class="memdesc:ga5f7e46cda8ab3c774fe7ce0a8a1ba3ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loop-back test mode.  <a href="#ga5f7e46cda8ab3c774fe7ce0a8a1ba3ec"></a><br/></td></tr>
 <tr class="separator:ga5f7e46cda8ab3c774fe7ce0a8a1ba3ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8d68719e07c7af449b57c5df802376c8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__eth__phy__mode__ctrls.html#ga8d68719e07c7af449b57c5df802376c8">ARM_ETH_PHY_ISOLATE</a>&#160;&#160;&#160;(1UL &lt;&lt; 5)</td></tr>
-<tr class="memdesc:ga8d68719e07c7af449b57c5df802376c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Isolate PHY from MII interface.  <a href="#ga8d68719e07c7af449b57c5df802376c8"></a><br/></td></tr>
+<tr class="memdesc:ga8d68719e07c7af449b57c5df802376c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Isolate PHY from MII/RMII interface.  <a href="#ga8d68719e07c7af449b57c5df802376c8"></a><br/></td></tr>
 <tr class="separator:ga8d68719e07c7af449b57c5df802376c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description</h2>
 <p>Specify operation modes of the Ethernet PHY interface. </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="ga6a8c54f8fed3e5f68bd04eb715d10ab9"></a>
+<a class="anchor" id="gabc7acc4ebe828c3d0825400e14ad20f0"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_ETH_PHY_AUTO_NEGOTIATE&#160;&#160;&#160;(1UL &lt;&lt; 3)</td>
+          <td class="memname">#define ARM_ETH_PHY_SPEED_10M&#160;&#160;&#160;(<a class="el" href="_driver___e_t_h_8h.html#a1f834c4c785d7f69b1eaca011ee298ec">ARM_ETH_SPEED_10M</a>   &lt;&lt; <a class="el" href="_driver___e_t_h___p_h_y_8h.html#a13700fab82aa60a3357614faa0619e97">ARM_ETH_PHY_SPEED_Pos</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Auto Negotiation mode. </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__eth__phy__interface__gr.html#ga9aa688c951f01ed9ca7c88cf51be8a09" title="Set Ethernet PHY Device Operation mode.">ARM_ETH_PHY_SetMode</a> </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ga5d06a94867c89cd311b6e279669321e3"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_ETH_PHY_DUPLEX_FULL&#160;&#160;&#160;(<a class="el" href="_driver___e_t_h_8h.html#a7848c83cd1fd6b2645c17919c2990354">ARM_ETH_DUPLEX_FULL</a> &lt;&lt; <a class="el" href="_driver___e_t_h___p_h_y_8h.html#aebafadc356d8e58407db156a5dac743f">ARM_ETH_PHY_DUPLEX_Pos</a>)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Full duplex link. </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__eth__phy__interface__gr.html#ga9aa688c951f01ed9ca7c88cf51be8a09" title="Set Ethernet PHY Device Operation mode.">ARM_ETH_PHY_SetMode</a> </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="gace797b3cd143be22f47c3ef61b20e14d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_ETH_PHY_DUPLEX_HALF&#160;&#160;&#160;(<a class="el" href="_driver___e_t_h_8h.html#acb15afc2bfe61c56049b7279d6eae8fe">ARM_ETH_DUPLEX_HALF</a> &lt;&lt; <a class="el" href="_driver___e_t_h___p_h_y_8h.html#aebafadc356d8e58407db156a5dac743f">ARM_ETH_PHY_DUPLEX_Pos</a>)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Half duplex link. </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__eth__phy__interface__gr.html#ga9aa688c951f01ed9ca7c88cf51be8a09" title="Set Ethernet PHY Device Operation mode.">ARM_ETH_PHY_SetMode</a> </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ga8d68719e07c7af449b57c5df802376c8"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_ETH_PHY_ISOLATE&#160;&#160;&#160;(1UL &lt;&lt; 5)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Isolate PHY from MII interface. </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__eth__phy__interface__gr.html#ga9aa688c951f01ed9ca7c88cf51be8a09" title="Set Ethernet PHY Device Operation mode.">ARM_ETH_PHY_SetMode</a> </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ga5f7e46cda8ab3c774fe7ce0a8a1ba3ec"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_ETH_PHY_LOOPBACK&#160;&#160;&#160;(1UL &lt;&lt; 4)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Loop-back test mode. </p>
+<p>10 Mbps link speed </p>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__eth__phy__interface__gr.html#ga9aa688c951f01ed9ca7c88cf51be8a09" title="Set Ethernet PHY Device Operation mode.">ARM_ETH_PHY_SetMode</a> </dd></dl>
 
 </div>
@@ -237,21 +177,6 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gabc7acc4ebe828c3d0825400e14ad20f0"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_ETH_PHY_SPEED_10M&#160;&#160;&#160;(<a class="el" href="_driver___e_t_h_8h.html#a1f834c4c785d7f69b1eaca011ee298ec">ARM_ETH_SPEED_10M</a>   &lt;&lt; <a class="el" href="_driver___e_t_h___p_h_y_8h.html#a13700fab82aa60a3357614faa0619e97">ARM_ETH_PHY_SPEED_Pos</a>)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>10 Mbps link speed </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__eth__phy__interface__gr.html#ga9aa688c951f01ed9ca7c88cf51be8a09" title="Set Ethernet PHY Device Operation mode.">ARM_ETH_PHY_SetMode</a> </dd></dl>
-
-</div>
-</div>
 <a class="anchor" id="ga046605398ceae99a176e6f82432ae710"></a>
 <div class="memitem">
 <div class="memproto">
@@ -267,12 +192,87 @@ Macros</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="gace797b3cd143be22f47c3ef61b20e14d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_ETH_PHY_DUPLEX_HALF&#160;&#160;&#160;(<a class="el" href="_driver___e_t_h_8h.html#acb15afc2bfe61c56049b7279d6eae8fe">ARM_ETH_DUPLEX_HALF</a> &lt;&lt; <a class="el" href="_driver___e_t_h___p_h_y_8h.html#aebafadc356d8e58407db156a5dac743f">ARM_ETH_PHY_DUPLEX_Pos</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Half duplex link. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__eth__phy__interface__gr.html#ga9aa688c951f01ed9ca7c88cf51be8a09" title="Set Ethernet PHY Device Operation mode.">ARM_ETH_PHY_SetMode</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga5d06a94867c89cd311b6e279669321e3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_ETH_PHY_DUPLEX_FULL&#160;&#160;&#160;(<a class="el" href="_driver___e_t_h_8h.html#a7848c83cd1fd6b2645c17919c2990354">ARM_ETH_DUPLEX_FULL</a> &lt;&lt; <a class="el" href="_driver___e_t_h___p_h_y_8h.html#aebafadc356d8e58407db156a5dac743f">ARM_ETH_PHY_DUPLEX_Pos</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Full duplex link. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__eth__phy__interface__gr.html#ga9aa688c951f01ed9ca7c88cf51be8a09" title="Set Ethernet PHY Device Operation mode.">ARM_ETH_PHY_SetMode</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga6a8c54f8fed3e5f68bd04eb715d10ab9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_ETH_PHY_AUTO_NEGOTIATE&#160;&#160;&#160;(1UL &lt;&lt; 3)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Auto Negotiation mode. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__eth__phy__interface__gr.html#ga9aa688c951f01ed9ca7c88cf51be8a09" title="Set Ethernet PHY Device Operation mode.">ARM_ETH_PHY_SetMode</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga5f7e46cda8ab3c774fe7ce0a8a1ba3ec"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_ETH_PHY_LOOPBACK&#160;&#160;&#160;(1UL &lt;&lt; 4)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Loop-back test mode. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__eth__phy__interface__gr.html#ga9aa688c951f01ed9ca7c88cf51be8a09" title="Set Ethernet PHY Device Operation mode.">ARM_ETH_PHY_SetMode</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga8d68719e07c7af449b57c5df802376c8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_ETH_PHY_ISOLATE&#160;&#160;&#160;(1UL &lt;&lt; 5)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Isolate PHY from MII/RMII interface. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__eth__phy__interface__gr.html#ga9aa688c951f01ed9ca7c88cf51be8a09" title="Set Ethernet PHY Device Operation mode.">ARM_ETH_PHY_SetMode</a> </dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:42 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:02 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

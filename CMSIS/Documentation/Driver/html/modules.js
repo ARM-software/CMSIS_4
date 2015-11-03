@@ -1,6 +1,7 @@
 var modules =
 [
     [ "Common Driver Definitions", "group__common__drv__gr.html", "group__common__drv__gr" ],
+    [ "CAN Interface", "group__can__interface__gr.html", "group__can__interface__gr" ],
     [ "Ethernet Interface", "group__eth__interface__gr.html", "group__eth__interface__gr" ],
     [ "I2C Interface", "group__i2c__interface__gr.html", "group__i2c__interface__gr" ],
     [ "MCI Interface", "group__mci__interface__gr.html", "group__mci__interface__gr" ],

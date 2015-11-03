@@ -19,15 +19,15 @@
  *
  *
  * $Date:        11. August 2014
- * $Revision:    V1.01
+ * $Revision:    V1.1
  *
  * Project:      SCU Driver for NXP LPC18xx
  * -------------------------------------------------------------------------- */
- 
+
 /* History:
- *  Version 1.01
+ *  Version 1.1
  *    - Corrected SCU_SFSCLKx(clk_pin) and SCU_ENAIOx(n) macros
- *  Version 1.00
+ *  Version 1.0
  *    - Initial release
  */
 

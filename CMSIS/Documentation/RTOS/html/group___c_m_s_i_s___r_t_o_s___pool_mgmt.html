@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>Memory Pool Management</title>
-<title>CMSIS-RTOS: Memory Pool Management</title>
+<title>Memory Pool</title>
+<title>CMSIS-RTOS: Memory Pool</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="cmsis.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="jquery.js"></script>
@@ -73,11 +73,11 @@ $(document).ready(function(){initNavTree('group___c_m_s_i_s___r_t_o_s___pool_mgm
 <a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">Memory Pool Management</div>  </div>
-<div class="ingroups"><a class="el" href="group___c_m_s_i_s___r_t_o_s.html">CMSIS-RTOS API</a></div></div><!--header-->
+<div class="title">Memory Pool</div>  </div>
+<div class="ingroups"><a class="el" href="group___c_m_s_i_s___r_t_o_s___inter_thread.html">Inter-Thread Communication and Resource Sharing</a></div></div><!--header-->
 <div class="contents">
 
-<p>Define and manage fixed-size memory pools.  
+<p>Manage thread-safe fixed-size blocks of dynamic memory.  
 <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
@@ -108,7 +108,32 @@ Functions</h2></td></tr>
 <tr class="separator:ga4a861e9c469c9d0daf5721bf174f8e54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description</h2>
-<p>The Memory Pool Management function group is used to define and manage fixed-sized memory pools. </p>
+<p><b>Memory</b> <b>pools</b> are fixed-size blocks of memory that are thread-safe. They operate much faster than the dynamically allocated heap and do not suffer from fragmentation. Being thread-safe, they can be accessed from threads and ISRs alike.</p>
+<p><b>Shared</b> <b>memory</b> is one of the basic models to exchange information between threads. Using memory pools for exchanging data, you can share more complex objects between threads if compared to a <a class="el" href="group___c_m_s_i_s___r_t_o_s___message.html">Message Queue</a>. Memory pool management functions are used to define and manage such fixed-sized memory pools.</p>
+<h2>Working with Memory Pools</h2>
+<p>Follow these steps to create and use a memory pool:</p>
+<ol type="1">
+<li>Declare a data structure that combines a number of elements: <div class="fragment"><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line">  uint32_t length;</div>
+<div class="line">  uint32_t width;</div>
+<div class="line">  uint32_t height;</div>
+<div class="line">  uint32_t weight;</div>
+<div class="line">} properties_t;</div>
+</div><!-- fragment --></li>
+<li>Declare a memory pool of these objects as a block of memory: <div class="fragment"><div class="line"><a class="code" href="group___c_m_s_i_s___r_t_o_s___pool_mgmt.html#ga87b471d4fe2d5dbd0040708edd52771b" title="Define a Memory Pool.">osPoolDef</a> (object_pool, 10, properties_t);  <span class="comment">// Declare memory pool</span></div>
+<div class="line"><a class="code" href="cmsis__os_8h.html#a08d2e20fd9bbd96220fe068d420f3686" title="Pool ID identifies the memory pool (pointer to a memory pool control block).">osPoolId</a>  (object_pool_id);                 <span class="comment">// Memory pool ID</span></div>
+</div><!-- fragment --></li>
+<li>Then, create the memory pool in a thread: <div class="fragment"><div class="line">object_pool_id = <a class="code" href="group___c_m_s_i_s___r_t_o_s___pool_mgmt.html#ga34af5c4f4ab38f4138ea7f1f9ece3a1a" title="Create and Initialize a memory pool.">osPoolCreate</a>(<a class="code" href="group___c_m_s_i_s___r_t_o_s___pool_mgmt.html#ga5f0b204a82327533d420210125c90697" title="Access a Memory Pool definition.">osPool</a>(object_pool));</div>
+</div><!-- fragment --></li>
+<li>Allocate the pool within a thread and fill it with data: <div class="fragment"><div class="line">properties_t *object_data;</div>
+<div class="line">*object_data = (properties_t *) <a class="code" href="group___c_m_s_i_s___r_t_o_s___pool_mgmt.html#gaa0b2994f1a866c19e0d11e6e0d44f543" title="Allocate a memory block from a memory pool.">osPoolAlloc</a>(object_pool_id);</div>
+<div class="line"> </div>
+<div class="line">object_data-&gt;length = 100;</div>
+<div class="line">object_data-&gt;width  = 10;</div>
+<div class="line">object_data-&gt;height = 23;</div>
+<div class="line">object_data-&gt;weight = 1000;</div>
+</div><!-- fragment --> </li>
+</ol>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a class="anchor" id="gadd84b683001de327894851b428587caa"></a>
 <div class="memitem">
@@ -415,7 +440,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:59 for CMSIS-RTOS by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:27 for CMSIS-RTOS by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

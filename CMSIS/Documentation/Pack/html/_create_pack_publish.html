@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.3.3</span>
+   &#160;<span id="projectnumber">Version 1.4.0</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -129,6 +129,11 @@ Web Download</h1>
 <p>All previous versions listed in the <b>&lt;releases&gt;</b> section of the PDSC file should be present in that folder as well. This will enable customers to revert updates or to be able to download a specific version of a Software Pack (for code maintenance purposes for example).</p>
 <p>Depending on the Pack management tool, a Pack Index Server might be in place that gathers information about published Packs in an index file. This information is then used in the management tool to retrieve version information and to trigger updates of Packs within the development environment.</p>
 <dl class="section note"><dt>Note</dt><dd><ul>
+<li>It is important to understand how the &lt;url&gt; element works. If you specify a URL, for example <a href="http://www.keil.com/pack/" target="_blank">http://www.keil.com/pack</a>, then you have to make the PDSC file and the corresponding PACK file(s) available for download at that exact location. The naming of the files follow the standard naming rules. For example, the ARM::CMSIS PDSC and Pack files are available here:<br/>
+ <a href="http://www.keil.com/pack/ARM.CMSIS.pdsc" target="_blank">http://www.keil.com/pack/ARM.CMSIS.pdsc</a> and <br/>
+ <a href="http://www.keil.com/pack/ARM.CMSIS.4.3.0.pack" target="_blank">http://www.keil.com/pack/ARM.CMSIS.4.3.0.pack</a> and <br/>
+ <a href="http://www.keil.com/pack/ARM.CMSIS.4.2.0.pack" target="_blank">http://www.keil.com/pack/ARM.CMSIS.4.2.0.pack</a> and ... <br/>
+ At the specified location, you need to have one (unversioned) PDSC file and can have multiple versioned PACK files, but at least one.</li>
 <li>If the URL or the PDSC/PACK files become unavailable (temporarily or permanently), users will not be able to retrieve updates.</li>
 <li>Do not replace PDSC/PACK files without updating the version number because the Pack management tools will not recognize the update unless the version has been changed.</li>
 <li>Older PACKs should remain available.</li>
@@ -155,7 +160,7 @@ Publishing on www.keil.com/pack</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:58 for CMSIS-Pack by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:26 for CMSIS-Pack by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

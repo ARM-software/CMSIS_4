@@ -1,5 +1,5 @@
 
-#include <cmsis_os.h>                                           // CMSIS RTOS header file
+#include "cmsis_os.h"                                           // CMSIS RTOS header file
 
 /*----------------------------------------------------------------------------
  *      Mutex creation & usage
@@ -15,28 +15,28 @@ osMutexDef (SampleMutex);                                       // mutex name de
 
 int Init_Mutex (void) {
 
-  mid_Thread_Mutex = osMutexCreate  (osMutex (SampleMutex));
-  if (!tid_Thread_Mutex)  {
+  mid_Thread_Mutex = osMutexCreate (osMutex (SampleMutex));
+  if (!tid_Thread_Mutex) {
     ; // Mutex object not created, handle failure
   }
   
-  tid_Thread_Mutex    = osThreadCreate (osThread(Thread_Mutex),   NULL);
-  if(!tid_Thread_Mutex) return(-1);
+  tid_Thread_Mutex = osThreadCreate (osThread(Thread_Mutex), NULL);
+  if (!tid_Thread_Mutex) return(-1);
   
   return(0);
 }
 
-void Thread_Mutex(void const *argument) {
+void Thread_Mutex (void const *argument) {
   osStatus status;
 
-  while(1) {
+  while (1) {
     ; // Insert thread code here...
 
-    status = osMutexWait(mid_Thread_Mutex, NULL);
-    switch(status) {
+    status = osMutexWait (mid_Thread_Mutex, NULL);
+    switch (status) {
       case osOK:
         ; // Use protected code here...
-        osMutexRelease(mid_Thread_Mutex);
+        osMutexRelease (mid_Thread_Mutex);
         break;
       case osErrorTimeoutResource:
         break;
@@ -50,6 +50,6 @@ void Thread_Mutex(void const *argument) {
         break;
     }
 
-    osThreadYield();        // suspend thread
+    osThreadYield ();                                           // suspend thread
   }
 }

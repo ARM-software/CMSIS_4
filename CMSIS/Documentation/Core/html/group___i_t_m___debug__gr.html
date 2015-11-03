@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-CORE
-   &#160;<span id="projectnumber">Version 4.10</span>
+   &#160;<span id="projectnumber">Version 4.20</span>
    </div>
    <div id="projectbrief">CMSIS-CORE support for Cortex-M processor-based devices</div>
   </td>
@@ -114,6 +114,9 @@ $(document).ready(function(){initNavTree('group___i_t_m___debug__gr.html','');})
 <div class="title">Debug Access</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Debug Access to the Instrumented Trace Macrocell (ITM)  
+<a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -150,13 +153,13 @@ Variables</h2></td></tr>
 </dd></dl>
 <hr/>
  <h1><a class="anchor" id="ITM_debug_uv"></a>
-ITM Debug Support in uVision</h1>
-<p>In a debug session, uVision uses the <b>Debug (printf) Viewer</b> window to display data.</p>
-<p><b>Direction: Microcontroller &ndash;&gt; uVision:</b></p>
+ITM Debugger Support</h1>
+<p>A debugger may support a <b>Debug (printf) Viewer</b> window to display data.</p>
+<p><b>Direction: Microcontroller &ndash;&gt; Debugger:</b></p>
 <ul>
 <li>Characters received via ITM communication channel 0 are written in a printf-style to the <b>Debug (printf) Viewer</b> window.</li>
 </ul>
-<p><b>Direction: uVision &ndash;&gt; Microcontroller:</b></p>
+<p><b>Direction: Debugger &ndash;&gt; Microcontroller:</b></p>
 <ul>
 <li>Check if <a class="el" href="group___i_t_m___debug__gr.html#ga12e68e55a7badc271b948d6c7230b2a8">ITM_RxBuffer</a> variable is available (only performed once).</li>
 <li>Read the character from the <b>Debug (printf) Viewer</b> window.</li>
@@ -265,7 +268,7 @@ Example:</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:40 for CMSIS-CORE by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:39:59 for CMSIS-CORE by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

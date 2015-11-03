@@ -107,12 +107,10 @@ table.cmtable td, table.cmtable th {
 
 table.cmtable th {
 	background-color: #EBEFF6;
-	border: 1px solid #2D4068;
 	font-size: 110%;
 	padding-bottom: 4px;
 	padding-top: 5px;
 	text-align:left;
-	height: 28px;
 }
 
 td.MonoTxt {

@@ -400,7 +400,7 @@ Functions</h2></td></tr>
 <div class="line">  Device.Setup ();                               <span class="comment">// initialize a device or peripheral</span></div>
 <div class="line">  <span class="keywordflow">do</span> {                                           <span class="comment">// poll device busy status for 100 microseconds</span></div>
 <div class="line">    <span class="keywordflow">if</span> (!Device.Busy) <span class="keywordflow">break</span>;                     <span class="comment">// check if device is correctly initialized</span></div>
-<div class="line">  } <span class="keywordflow">while</span> ((<a class="code" href="group___c_m_s_i_s___r_t_o_s___kernel_ctrl.html#gad0262e4688e95d1e9038afd9bcc16001" title="Get the RTOS kernel system timer counter.">osKernelSysTick</a>() - tick) &lt; osKernelTickMicroSec(100));  </div>
+<div class="line">  } <span class="keywordflow">while</span> ((<a class="code" href="group___c_m_s_i_s___r_t_o_s___kernel_ctrl.html#gad0262e4688e95d1e9038afd9bcc16001" title="Get the RTOS kernel system timer counter.">osKernelSysTick</a>() - tick) &lt; <a class="code" href="group___c_m_s_i_s___r_t_o_s___kernel_ctrl.html#gae12c190af42d7310d8006d64f4ed5a88" title="Convert a microseconds value to a RTOS kernel system timer value.">osKernelSysTickMicroSec</a>(100));  </div>
 <div class="line">  <span class="keywordflow">if</span> (Device.Busy)  {              </div>
 <div class="line">    ;                                            <span class="comment">// in case device still busy, signal error</span></div>
 <div class="line">  }</div>
@@ -414,7 +414,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:59 for CMSIS-RTOS by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:27 for CMSIS-RTOS by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -156,17 +156,21 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gabec3992447436a2a8ed99108908ae208"></a>
+<a class="anchor" id="gae165fd96e6a5b06b362954fadeabcb7a"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_SAI_FRAME_SYNC_EARLY&#160;&#160;&#160;(1U &lt;&lt; 19)</td>
+          <td class="memname">#define ARM_SAI_FRAME_SYNC_WIDTH</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">n</td><td>)</td>
+          <td>&#160;&#160;&#160;((((n)-1)&amp;0xFFU) &lt;&lt; ARM_SAI_FRAME_SYNC_WIDTH_Pos)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Frame Sync one bit before the first bit of the frame; User Protocol only (ignored otherwise) </p>
+<p>Frame Sync width in bits (1..256); default=1; User Protocol only (ignored otherwise) </p>
 
 </div>
 </div>
@@ -198,21 +202,17 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gae165fd96e6a5b06b362954fadeabcb7a"></a>
+<a class="anchor" id="gabec3992447436a2a8ed99108908ae208"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_SAI_FRAME_SYNC_WIDTH</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">n</td><td>)</td>
-          <td>&#160;&#160;&#160;((((n)-1)&amp;0xFFU) &lt;&lt; ARM_SAI_FRAME_SYNC_WIDTH_Pos)</td>
+          <td class="memname">#define ARM_SAI_FRAME_SYNC_EARLY&#160;&#160;&#160;(1U &lt;&lt; 19)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Frame Sync width in bits (1..256); default=1; User Protocol only (ignored otherwise) </p>
+<p>Frame Sync one bit before the first bit of the frame; User Protocol only (ignored otherwise) </p>
 
 </div>
 </div>
@@ -221,7 +221,7 @@ Macros</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:42 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:03 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

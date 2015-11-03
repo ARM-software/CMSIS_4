@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -224,19 +224,13 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <div class="textblock"><p>Ethernet MAC Capabilities. </p>
-<p>An Ethernet MAC driver can be implemented with different capabilities. The bitfield members of this struct encode the capabilities implemented by this driver.</p>
+<p>An Ethernet MAC driver can be implemented with different capabilities. The data fields of this struct encode the capabilities implemented by this driver.</p>
 <p><b>Returned by:</b></p>
 <ul>
 <li><a class="el" href="group__eth__mac__interface__gr.html#ga2b13b230502736d8c7679b359dff20d0">ARM_ETH_MAC_GetCapabilities</a> </li>
 </ul>
 </div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
-<tr><td class="fieldtype">
-<a class="anchor" id="a142179445bfdbaaaf0d451f277fb0e96"></a>uint32_t</td>
-<td class="fieldname">
-checksum_offload_rx_icmp: 1</td>
-<td class="fielddoc">
-1 = ICMP payload checksum verified on receive </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="a0051111be2e389c3161da1c444746216"></a>uint32_t</td>
 <td class="fieldname">
@@ -250,23 +244,23 @@ checksum_offload_rx_ip6: 1</td>
 <td class="fielddoc">
 1 = IPv6 checksum verification supported on receive </td></tr>
 <tr><td class="fieldtype">
-<a class="anchor" id="a730d6be6a7b868e0690d9548e77b7aae"></a>uint32_t</td>
-<td class="fieldname">
-checksum_offload_rx_tcp: 1</td>
-<td class="fielddoc">
-1 = TCP payload checksum verified on receive </td></tr>
-<tr><td class="fieldtype">
 <a class="anchor" id="a5a447f05a5fbfd35896aad9cd769511c"></a>uint32_t</td>
 <td class="fieldname">
 checksum_offload_rx_udp: 1</td>
 <td class="fielddoc">
 1 = UDP payload checksum verified on receive </td></tr>
 <tr><td class="fieldtype">
-<a class="anchor" id="a7b701bac9d66886b5c6964b20c6ca55a"></a>uint32_t</td>
+<a class="anchor" id="a730d6be6a7b868e0690d9548e77b7aae"></a>uint32_t</td>
 <td class="fieldname">
-checksum_offload_tx_icmp: 1</td>
+checksum_offload_rx_tcp: 1</td>
 <td class="fielddoc">
-1 = ICMP payload checksum generated on transmit </td></tr>
+1 = TCP payload checksum verified on receive </td></tr>
+<tr><td class="fieldtype">
+<a class="anchor" id="a142179445bfdbaaaf0d451f277fb0e96"></a>uint32_t</td>
+<td class="fieldname">
+checksum_offload_rx_icmp: 1</td>
+<td class="fielddoc">
+1 = ICMP payload checksum verified on receive </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="ac787d70407ce70e28724932fb32ef0ba"></a>uint32_t</td>
 <td class="fieldname">
@@ -280,17 +274,35 @@ checksum_offload_tx_ip6: 1</td>
 <td class="fielddoc">
 1 = IPv6 checksum generation supported on transmit </td></tr>
 <tr><td class="fieldtype">
+<a class="anchor" id="ab3f9560668a087606c40cd81b935396b"></a>uint32_t</td>
+<td class="fieldname">
+checksum_offload_tx_udp: 1</td>
+<td class="fielddoc">
+1 = UDP payload checksum generated on transmit </td></tr>
+<tr><td class="fieldtype">
 <a class="anchor" id="a6c2b80bbfe520f3e7808cf3d4aaedb45"></a>uint32_t</td>
 <td class="fieldname">
 checksum_offload_tx_tcp: 1</td>
 <td class="fielddoc">
 1 = TCP payload checksum generated on transmit </td></tr>
 <tr><td class="fieldtype">
-<a class="anchor" id="ab3f9560668a087606c40cd81b935396b"></a>uint32_t</td>
+<a class="anchor" id="a7b701bac9d66886b5c6964b20c6ca55a"></a>uint32_t</td>
 <td class="fieldname">
-checksum_offload_tx_udp: 1</td>
+checksum_offload_tx_icmp: 1</td>
 <td class="fielddoc">
-1 = UDP payload checksum generated on transmit </td></tr>
+1 = ICMP payload checksum generated on transmit </td></tr>
+<tr><td class="fieldtype">
+<a class="anchor" id="a3c5cb74e086417a01d0079f847a3fc8d"></a>uint32_t</td>
+<td class="fieldname">
+media_interface: 2</td>
+<td class="fielddoc">
+Ethernet Media Interface type. </td></tr>
+<tr><td class="fieldtype">
+<a class="anchor" id="a7fdea04bacd9c0e12792751055ef6238"></a>uint32_t</td>
+<td class="fieldname">
+mac_address: 1</td>
+<td class="fielddoc">
+1 = driver provides initial valid MAC address </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="a8c8f1ac2bf053a9bac98c476646a6018"></a>uint32_t</td>
 <td class="fieldname">
@@ -309,18 +321,6 @@ event_tx_frame: 1</td>
 event_wakeup: 1</td>
 <td class="fielddoc">
 1 = wakeup event <a class="el" href="group___e_t_h___m_a_c__events.html#ga1f3bdb219afa8f2a121b58cc84f5761c">ARM_ETH_MAC_EVENT_WAKEUP</a> generated </td></tr>
-<tr><td class="fieldtype">
-<a class="anchor" id="a7fdea04bacd9c0e12792751055ef6238"></a>uint32_t</td>
-<td class="fieldname">
-mac_address: 1</td>
-<td class="fielddoc">
-1 = driver provides initial valid MAC address </td></tr>
-<tr><td class="fieldtype">
-<a class="anchor" id="a3c5cb74e086417a01d0079f847a3fc8d"></a>uint32_t</td>
-<td class="fieldname">
-media_interface: 2</td>
-<td class="fielddoc">
-Ethernet Media Interface type. </td></tr>
 <tr><td class="fieldtype">
 <a class="anchor" id="a881a863974d32f95d7829f768ac47aa2"></a>uint32_t</td>
 <td class="fieldname">
@@ -341,7 +341,7 @@ precision_timer: 1</td>
       </table>
 </div><div class="memdoc">
 <div class="textblock"><p>Access structure of the Ethernet MAC Driver. </p>
-<p>The functions of the Ethernet MAC are accessed by function pointers. Refer to <a class="el" href="_theory_operation.html#DriverFunctions">Driver Functions</a> for overview information.</p>
+<p>The functions of the Ethernet MAC are accessed by function pointers. Refer to <a class="el" href="_theory_operation.html#DriverFunctions">Common Driver Functions</a> for overview information.</p>
 <p>Each instance of an Ethernet MAC provides such an access struct. The instance is indicated by a postfix in the symbol name of the access struct, for example:</p>
 <ul>
 <li><b>Driver_ETH_MAC0</b> is the name of the access struct of the first instance (no. 0).</li>
@@ -403,31 +403,17 @@ precision_timer: 1</td>
 <tr class="separator:ac3efe9bdc31c3b1d7fd8eb82bbfb4c13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h4 class="groupheader">Field Documentation</h4>
-<a class="anchor" id="a6e0f47a92f626a971c5197fca6545505"></a>
+<a class="anchor" id="a8834b281da48583845c044a81566c1b3"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int32_t(* Control)(uint32_t control, uint32_t arg)</td>
+          <td class="memname"><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a>(* GetVersion)(void)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Pointer to <a class="el" href="group__eth__mac__interface__gr.html#gac3e90c66058d20077f04ac8e8b8d0536">ARM_ETH_MAC_Control</a> : Control Ethernet Interface. </p>
-
-</div>
-</div>
-<a class="anchor" id="ab6bdbdc7fdfcc52e027201738b88b431"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* ControlTimer)(uint32_t control, <a class="el" href="group__eth__mac__interface__gr.html#struct_a_r_m___e_t_h___m_a_c___t_i_m_e">ARM_ETH_MAC_TIME</a> *time)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__eth__mac__interface__gr.html#ga85d9dc865af3702b71a514b18a588643">ARM_ETH_MAC_ControlTimer</a> : Control Precision Timer. </p>
+<p>Pointer to <a class="el" href="group__eth__mac__interface__gr.html#ga86b15062c297384ad5842dd57b9d6b1d">ARM_ETH_MAC_GetVersion</a> : Get driver version. </p>
 
 </div>
 </div>
@@ -445,6 +431,48 @@ precision_timer: 1</td>
 
 </div>
 </div>
+<a class="anchor" id="aa34417c70cb8b43567c59aa530866cc7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* Initialize)(<a class="el" href="group__eth__mac__interface__gr.html#gadfc95cb09c541a29a72da86963668726">ARM_ETH_MAC_SignalEvent_t</a> cb_event)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__eth__mac__interface__gr.html#gacf42d11b171cd032f0ec1de6db2b6832">ARM_ETH_MAC_Initialize</a> : Initialize Ethernet MAC Device. </p>
+
+</div>
+</div>
+<a class="anchor" id="adcf20681a1402869ecb5c6447fada17b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* Uninitialize)(void)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__eth__mac__interface__gr.html#gacb2c2ae06f32328775bffbdeaaabfb5d">ARM_ETH_MAC_Uninitialize</a> : De-initialize Ethernet MAC Device. </p>
+
+</div>
+</div>
+<a class="anchor" id="aba8f1c8019af95ffe19c32403e3240ef"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* PowerControl)(<a class="el" href="group__common__drv__gr.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5">ARM_POWER_STATE</a> state)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__eth__mac__interface__gr.html#ga346fef040a0e9bac5762a04a306b1be7">ARM_ETH_MAC_PowerControl</a> : Control Ethernet MAC Device Power. </p>
+
+</div>
+</div>
 <a class="anchor" id="a02837059933cd04b04bf795a7138f218"></a>
 <div class="memitem">
 <div class="memproto">
@@ -456,6 +484,62 @@ precision_timer: 1</td>
 </div><div class="memdoc">
 
 <p>Pointer to <a class="el" href="group__eth__mac__interface__gr.html#ga66308c1e791952047e974bd653037fae">ARM_ETH_MAC_GetMacAddress</a> : Get Ethernet MAC Address. </p>
+
+</div>
+</div>
+<a class="anchor" id="ac640f929dc4d5bde3e4282c75b25c00d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* SetMacAddress)(const <a class="el" href="group__eth__interface__gr.html#struct_a_r_m___e_t_h___m_a_c___a_d_d_r">ARM_ETH_MAC_ADDR</a> *ptr_addr)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__eth__mac__interface__gr.html#ga7cc3d17c7312c5032202dfd9a915f24a">ARM_ETH_MAC_SetMacAddress</a> : Set Ethernet MAC Address. </p>
+
+</div>
+</div>
+<a class="anchor" id="a45b879a6df608f582d1866daff715798"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* SetAddressFilter)(const <a class="el" href="group__eth__interface__gr.html#struct_a_r_m___e_t_h___m_a_c___a_d_d_r">ARM_ETH_MAC_ADDR</a> *ptr_addr, uint32_t num_addr)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__eth__mac__interface__gr.html#ga150fe30290275a4b32756f94208124e8">ARM_ETH_MAC_SetAddressFilter</a> : Configure Address Filter. </p>
+
+</div>
+</div>
+<a class="anchor" id="ac095aea379f23e30a0e51b1f3518ad37"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* SendFrame)(const uint8_t *frame, uint32_t len, uint32_t flags)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__eth__mac__interface__gr.html#ga5bf58defdb239ed7dc948f1da147a1c3">ARM_ETH_MAC_SendFrame</a> : Send Ethernet frame. </p>
+
+</div>
+</div>
+<a class="anchor" id="a466b724be2167ea7d9a14569062a8fa8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t(* ReadFrame)(uint8_t *frame, uint32_t len)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to <a class="el" href="group__eth__mac__interface__gr.html#ga4b79f57d8624bb4410ee12c73a483993">ARM_ETH_MAC_ReadFrame</a> : Read data of received Ethernet frame. </p>
 
 </div>
 </div>
@@ -501,31 +585,31 @@ precision_timer: 1</td>
 
 </div>
 </div>
-<a class="anchor" id="a8834b281da48583845c044a81566c1b3"></a>
+<a class="anchor" id="ab6bdbdc7fdfcc52e027201738b88b431"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a>(* GetVersion)(void)</td>
+          <td class="memname">int32_t(* ControlTimer)(uint32_t control, <a class="el" href="group__eth__mac__interface__gr.html#struct_a_r_m___e_t_h___m_a_c___t_i_m_e">ARM_ETH_MAC_TIME</a> *time)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Pointer to <a class="el" href="group__eth__mac__interface__gr.html#ga86b15062c297384ad5842dd57b9d6b1d">ARM_ETH_MAC_GetVersion</a> : Get driver version. </p>
+<p>Pointer to <a class="el" href="group__eth__mac__interface__gr.html#ga85d9dc865af3702b71a514b18a588643">ARM_ETH_MAC_ControlTimer</a> : Control Precision Timer. </p>
 
 </div>
 </div>
-<a class="anchor" id="aa34417c70cb8b43567c59aa530866cc7"></a>
+<a class="anchor" id="a6e0f47a92f626a971c5197fca6545505"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int32_t(* Initialize)(<a class="el" href="group__eth__mac__interface__gr.html#gadfc95cb09c541a29a72da86963668726">ARM_ETH_MAC_SignalEvent_t</a> cb_event)</td>
+          <td class="memname">int32_t(* Control)(uint32_t control, uint32_t arg)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Pointer to <a class="el" href="group__eth__mac__interface__gr.html#gacf42d11b171cd032f0ec1de6db2b6832">ARM_ETH_MAC_Initialize</a> : Initialize Ethernet MAC Device. </p>
+<p>Pointer to <a class="el" href="group__eth__mac__interface__gr.html#gac3e90c66058d20077f04ac8e8b8d0536">ARM_ETH_MAC_Control</a> : Control Ethernet Interface. </p>
 
 </div>
 </div>
@@ -554,90 +638,6 @@ precision_timer: 1</td>
 </div><div class="memdoc">
 
 <p>Pointer to <a class="el" href="group__eth__mac__interface__gr.html#ga79dd38672749aeebd28f39d9b4f813ce">ARM_ETH_MAC_PHY_Write</a> : Write Ethernet PHY Register through Management Interface. </p>
-
-</div>
-</div>
-<a class="anchor" id="aba8f1c8019af95ffe19c32403e3240ef"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* PowerControl)(<a class="el" href="group__common__drv__gr.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5">ARM_POWER_STATE</a> state)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__eth__mac__interface__gr.html#ga346fef040a0e9bac5762a04a306b1be7">ARM_ETH_MAC_PowerControl</a> : Control Ethernet MAC Device Power. </p>
-
-</div>
-</div>
-<a class="anchor" id="a466b724be2167ea7d9a14569062a8fa8"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* ReadFrame)(uint8_t *frame, uint32_t len)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__eth__mac__interface__gr.html#ga4b79f57d8624bb4410ee12c73a483993">ARM_ETH_MAC_ReadFrame</a> : Read data of received Ethernet frame. </p>
-
-</div>
-</div>
-<a class="anchor" id="ac095aea379f23e30a0e51b1f3518ad37"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* SendFrame)(const uint8_t *frame, uint32_t len, uint32_t flags)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__eth__mac__interface__gr.html#ga5bf58defdb239ed7dc948f1da147a1c3">ARM_ETH_MAC_SendFrame</a> : Send Ethernet frame. </p>
-
-</div>
-</div>
-<a class="anchor" id="a45b879a6df608f582d1866daff715798"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* SetAddressFilter)(const <a class="el" href="group__eth__interface__gr.html#struct_a_r_m___e_t_h___m_a_c___a_d_d_r">ARM_ETH_MAC_ADDR</a> *ptr_addr, uint32_t num_addr)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__eth__mac__interface__gr.html#ga150fe30290275a4b32756f94208124e8">ARM_ETH_MAC_SetAddressFilter</a> : Configure Address Filter. </p>
-
-</div>
-</div>
-<a class="anchor" id="ac640f929dc4d5bde3e4282c75b25c00d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* SetMacAddress)(const <a class="el" href="group__eth__interface__gr.html#struct_a_r_m___e_t_h___m_a_c___a_d_d_r">ARM_ETH_MAC_ADDR</a> *ptr_addr)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__eth__mac__interface__gr.html#ga7cc3d17c7312c5032202dfd9a915f24a">ARM_ETH_MAC_SetMacAddress</a> : Set Ethernet MAC Address. </p>
-
-</div>
-</div>
-<a class="anchor" id="adcf20681a1402869ecb5c6447fada17b"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t(* Uninitialize)(void)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pointer to <a class="el" href="group__eth__mac__interface__gr.html#gacb2c2ae06f32328775bffbdeaaabfb5d">ARM_ETH_MAC_Uninitialize</a> : De-initialize Ethernet MAC Device. </p>
 
 </div>
 </div>
@@ -701,154 +701,42 @@ Seconds. </td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="gac3e90c66058d20077f04ac8e8b8d0536"></a>
+<a class="anchor" id="ga86b15062c297384ad5842dd57b9d6b1d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int32_t ARM_ETH_MAC_Control </td>
+          <td class="memname"><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a> ARM_ETH_MAC_GetVersion </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>control</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>arg</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Control Ethernet Interface. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">control</td><td>Operation </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">arg</td><td>Argument of operation (optional) </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>Controls the Ethernet MAC interface settings and executes various operations.</p>
-<p>The parameter <em>control</em> specifies various operations (see tables below). Depending on the control bits, the parameter <em>arg</em> provides additional information or sets values.</p>
-<p><b>Example:</b> </p>
+<p>Get driver version. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a></dd></dl>
+<p>The function <b>ARM_ETH_MAC_GetVersion</b> returns version information of the driver implementation in <a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a></p>
 <ul>
-<li>see <a class="el" href="group__eth__interface__gr.html">Ethernet Interface</a> - Driver Functions</li>
+<li>API version is the version of the CMSIS-Driver specification used to implement this driver.</li>
+<li>Driver version is source code version of the actual driver implementation.</li>
 </ul>
-<p><b>ARM_ETH_MAC_xxx</b> controls configure the Ethernet MAC interface or execute various operations:</p>
-<table class="doxtable">
-<tr>
-<th align="left">Controls </th><th align="left">Description</th></tr>
-<tr>
-<td align="left"><a class="el" href="group__eth__mac__ctrls.html#ga7819c7a1aa7bbc13dc42d0fd7e75a23c">ARM_ETH_MAC_CONFIGURE</a> </td><td align="left">Configure the Ethernet MAC interface; <em>arg</em> sets the configuration </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__eth__mac__ctrls.html#ga3a98c8a7ee5ed4b1ffd250eecaeefe5c">ARM_ETH_MAC_CONTROL_TX</a> </td><td align="left">Enable or disable the transmitter; <em>arg</em> : <span class="XML-Token">0=disabled (default); 1=enabled</span> </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__eth__mac__ctrls.html#gae0964364b81b38b6e1fbf7196f3be869">ARM_ETH_MAC_CONTROL_RX</a> </td><td align="left">Enable or disable the receiver; <em>arg</em> : <span class="XML-Token">0=disabled (default); 1=enabled</span> </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__eth__mac__ctrls.html#ga530812ef349a2e297f23de72e660fe27">ARM_ETH_MAC_FLUSH</a> </td><td align="left">Flush a buffer; <em>arg</em> = takes values as described in <a class="el" href="group__eth__mac__flush__flag__ctrls.html">Ethernet MAC Flush Flags</a> </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__eth__mac__ctrls.html#ga4afe66589216f566f529af52f9075fdf">ARM_ETH_MAC_SLEEP</a> </td><td align="left">Enter/Exit Sleep mode; <em>arg</em> : <span class="XML-Token">1=enter and wait for Magic packet; 0=exit</span> </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__eth__mac__ctrls.html#gab332b58ba320e73864830dc42ad74181">ARM_ETH_MAC_VLAN_FILTER</a> </td><td align="left">Configure VLAN Filter for received frames; <em>arg15</em>..0 : VLAN Tag; <em>arg16</em> : optional <a class="el" href="group__eth__mac__vlan__filter__ctrls.html#ga2511c9e4c22a2b351ce2e454be1c9427">ARM_ETH_MAC_VLAN_FILTER_ID_ONLY</a>; 0=disabled (default) </td></tr>
-</table>
-<p><b>Ethernet MAC Configuration</b> specifies speed mode, link mode, checksum, and frame filtering modes:</p>
-<table class="doxtable">
-<tr>
-<th align="left">Ethernet MAC Configuration </th><th align="left">Description</th></tr>
-<tr>
-<td align="left"><a class="el" href="group__eth__mac__configuration__ctrls.html#ga8c5b40d018ecfad05fe2546ba717c1d4">ARM_ETH_MAC_SPEED_10M</a> </td><td align="left">Set the link speed to <span class="XML-Token">10 [Mbps]</span> </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__eth__mac__configuration__ctrls.html#ga29160c83a7b0952c64053d86789c6490">ARM_ETH_MAC_SPEED_100M</a> </td><td align="left">Set the link speed to <span class="XML-Token">100 [Mbps]</span> </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__eth__mac__configuration__ctrls.html#ga8acefed744d8397a1777b9fd0e6230d2">ARM_ETH_MAC_SPEED_1G</a> </td><td align="left">Set the link speed to <span class="XML-Token">1 [Gbps]</span> </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__eth__mac__configuration__ctrls.html#gadb0fe2c5a1e21b0656d39c788ae22f36">ARM_ETH_MAC_DUPLEX_HALF</a> </td><td align="left">Set the link mode to half duplex </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__eth__mac__configuration__ctrls.html#gad5a7d4b5b8a31825eff1504e3828d8f6">ARM_ETH_MAC_DUPLEX_FULL</a> </td><td align="left">Set the link mode to full duplex </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__eth__mac__configuration__ctrls.html#gab32765f35c35b672ee476278fe24a24e">ARM_ETH_MAC_LOOPBACK</a> </td><td align="left">Set the interface into a Loop-back test mode </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__eth__mac__configuration__ctrls.html#ga281dfed993b5666ed999709b9f28578f">ARM_ETH_MAC_CHECKSUM_OFFLOAD_RX</a> </td><td align="left">Enable Receiver Checksum offload </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__eth__mac__configuration__ctrls.html#ga7272d2c55aeeeadbb95c591cbf6c1a2e">ARM_ETH_MAC_CHECKSUM_OFFLOAD_TX</a> </td><td align="left">Enable Transmitter Checksum offload </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__eth__mac__configuration__ctrls.html#ga43792feab641c3c87eafb943351ab0f4">ARM_ETH_MAC_ADDRESS_BROADCAST</a> </td><td align="left">Accept frames with Broadcast address </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__eth__mac__configuration__ctrls.html#ga1d3ff8c63362b385548fe91730f20588">ARM_ETH_MAC_ADDRESS_MULTICAST</a> </td><td align="left">Accept frames with any Multicast address </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__eth__mac__configuration__ctrls.html#gab29ab9e295807f4c59ddd1c4642086d1">ARM_ETH_MAC_ADDRESS_ALL</a> </td><td align="left">Accept frames with any address (Promiscuous Mode) </td></tr>
-</table>
-<p><b>ARM_ETH_MAC_FLUSH_xx</b> specifies which buffer to flush:</p>
-<table class="doxtable">
-<tr>
-<th align="left">Ethernet MAC Flush Flags </th><th align="left">Description</th></tr>
-<tr>
-<td align="left"><a class="el" href="group__eth__mac__flush__flag__ctrls.html#gac18950811038319960756f063e1ef6d4">ARM_ETH_MAC_FLUSH_RX</a> </td><td align="left">Flush the Receive buffer </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__eth__mac__flush__flag__ctrls.html#ga2d10ff33f4f4927820c6a17a2262b120">ARM_ETH_MAC_FLUSH_TX</a> </td><td align="left">Flush the Transmit buffer </td></tr>
-</table>
-
-</div>
-</div>
-<a class="anchor" id="ga85d9dc865af3702b71a514b18a588643"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t ARM_ETH_MAC_ControlTimer </td>
-          <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>control</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="group__eth__mac__interface__gr.html#struct_a_r_m___e_t_h___m_a_c___t_i_m_e">ARM_ETH_MAC_TIME</a> *&#160;</td>
-          <td class="paramname"><em>time</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Control Precision Timer. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">control</td><td>Operation </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">time</td><td>Pointer to time structure </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>Controls the timer required for PTP (Precision Time Protocol).</p>
-<p>The parameter <em>control</em> receives <b>ARM_ETH_MAC_TIMER_xxx</b> codes to manage the timer for a PTP enabled Ethernet MAC interface.</p>
-<p>The parameter <em>time</em> is pointer to a struct that holds time information.</p>
-<table class="doxtable">
-<tr>
-<th align="left">Mode Parameters: Timer Controls </th><th align="left">Description</th></tr>
-<tr>
-<td align="left"><a class="el" href="group__eth__mac__time__control.html#gad9a439b9727c032a7d851df2a7a622c2">ARM_ETH_MAC_TIMER_GET_TIME</a> </td><td align="left">Retrieve the current time and update the content <a class="el" href="group__eth__mac__interface__gr.html#struct_a_r_m___e_t_h___m_a_c___t_i_m_e">ARM_ETH_MAC_TIME</a> *time. </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__eth__mac__time__control.html#ga5e867a003c06046d7944bcb5723e6049">ARM_ETH_MAC_TIMER_SET_TIME</a> </td><td align="left">Set the new time using the values provided with <a class="el" href="group__eth__mac__interface__gr.html#struct_a_r_m___e_t_h___m_a_c___t_i_m_e">ARM_ETH_MAC_TIME</a> *time. </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__eth__mac__time__control.html#ga3c57b3150717fb1a8cbbbac6a9b7ff69">ARM_ETH_MAC_TIMER_INC_TIME</a> </td><td align="left">Increment the current time by using the values provided with <a class="el" href="group__eth__mac__interface__gr.html#struct_a_r_m___e_t_h___m_a_c___t_i_m_e">ARM_ETH_MAC_TIME</a> *time. </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__eth__mac__time__control.html#gaca9f1c4259d0342e9717a362de1ccf41">ARM_ETH_MAC_TIMER_DEC_TIME</a> </td><td align="left">Decrement the current time by using the values provided with <a class="el" href="group__eth__mac__interface__gr.html#struct_a_r_m___e_t_h___m_a_c___t_i_m_e">ARM_ETH_MAC_TIME</a> *time. </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__eth__mac__time__control.html#ga04c2469ba027b020bc6b5baf3b51cf74">ARM_ETH_MAC_TIMER_SET_ALARM</a> </td><td align="left">Set the alarm time to the values provided with <a class="el" href="group__eth__mac__interface__gr.html#struct_a_r_m___e_t_h___m_a_c___t_i_m_e">ARM_ETH_MAC_TIME</a> *time. </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__eth__mac__time__control.html#ga85cb862eba0934e958a8552022588db7">ARM_ETH_MAC_TIMER_ADJUST_CLOCK</a> </td><td align="left">Set the clock frequency; the value in time-&gt;ns is the <b>correction factor</b> in fractional format q31. </td></tr>
-</table>
-
+<p>Example: </p>
+<div class="fragment"><div class="line"><span class="keyword">extern</span> <a class="code" href="group__eth__mac__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___e_t_h___m_a_c" title="Access structure of the Ethernet MAC Driver.">ARM_DRIVER_ETH_MAC</a> Driver_ETH_MAC0;</div>
+<div class="line"><a class="code" href="group__eth__mac__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___e_t_h___m_a_c" title="Access structure of the Ethernet MAC Driver.">ARM_DRIVER_ETH_MAC</a> *mac;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> setup_ethernet (<span class="keywordtype">void</span>)  {</div>
+<div class="line">  <a class="code" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n" title="Driver Version.">ARM_DRIVER_VERSION</a>  version;</div>
+<div class="line"> </div>
+<div class="line">  mac = &amp;Driver_ETH_MAC0;  </div>
+<div class="line">  version = mac-&gt;<a class="code" href="group__eth__mac__interface__gr.html#a8834b281da48583845c044a81566c1b3" title="Pointer to ARM_ETH_MAC_GetVersion : Get driver version.">GetVersion</a> ();</div>
+<div class="line">  <span class="keywordflow">if</span> (version.<a class="code" href="group__common__drv__gr.html#ad180da20fbde1d3dafc074af87c19540" title="API version.">api</a> &lt; 0x10A)   {      <span class="comment">// requires at minimum API version 1.10 or higher</span></div>
+<div class="line">    <span class="comment">// error handling</span></div>
+<div class="line">    <span class="keywordflow">return</span>;</div>
+<div class="line">  }</div>
+<div class="line">}</div>
+</div><!-- fragment --> 
 </div>
 </div>
 <a class="anchor" id="ga2b13b230502736d8c7679b359dff20d0"></a>
@@ -867,7 +755,7 @@ Seconds. </td></tr>
 
 <p>Get driver capabilities. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__eth__mac__interface__gr.html#struct_a_r_m___e_t_h___m_a_c___c_a_p_a_b_i_l_i_t_i_e_s">ARM_ETH_MAC_CAPABILITIES</a></dd></dl>
-<p>The function <a class="el" href="group__eth__mac__interface__gr.html#ga2b13b230502736d8c7679b359dff20d0">ARM_ETH_MAC_GetCapabilities</a> retrieves information about capabilities in this driver implementation. The bitfield members of the struct <a class="el" href="group__eth__mac__interface__gr.html#struct_a_r_m___e_t_h___m_a_c___c_a_p_a_b_i_l_i_t_i_e_s">ARM_ETH_MAC_CAPABILITIES</a> encode various capabilities, for example if a hardware is capable to create checksums in hardware or signal events using the <a class="el" href="group__eth__mac__interface__gr.html#gae0697be4c4229601f3bfc17e2978ada6">ARM_ETH_MAC_SignalEvent</a> callback function.</p>
+<p>The function <b>ARM_ETH_MAC_GetCapabilities</b> retrieves information about capabilities in this driver implementation. The data fields of the struct <a class="el" href="group__eth__mac__interface__gr.html#struct_a_r_m___e_t_h___m_a_c___c_a_p_a_b_i_l_i_t_i_e_s">ARM_ETH_MAC_CAPABILITIES</a> encode various capabilities, for example if a hardware is capable to create checksums in hardware or signal events using the <a class="el" href="group__eth__mac__interface__gr.html#gae0697be4c4229601f3bfc17e2978ada6">ARM_ETH_MAC_SignalEvent</a> callback function.</p>
 <p>Example: </p>
 <div class="fragment"><div class="line"><span class="keyword">extern</span> <a class="code" href="group__eth__mac__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___e_t_h___m_a_c" title="Access structure of the Ethernet MAC Driver.">ARM_DRIVER_ETH_MAC</a> Driver_ETH_MAC0;</div>
 <div class="line"><a class="code" href="group__eth__mac__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___e_t_h___m_a_c" title="Access structure of the Ethernet MAC Driver.">ARM_DRIVER_ETH_MAC</a> *mac;</div>
@@ -881,6 +769,99 @@ Seconds. </td></tr>
 <div class="line"> </div>
 <div class="line">}</div>
 </div><!-- fragment --> 
+</div>
+</div>
+<a class="anchor" id="gacf42d11b171cd032f0ec1de6db2b6832"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ARM_ETH_MAC_Initialize </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__eth__mac__interface__gr.html#gadfc95cb09c541a29a72da86963668726">ARM_ETH_MAC_SignalEvent_t</a>&#160;</td>
+          <td class="paramname"><em>cb_event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialize Ethernet MAC Device. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">cb_event</td><td>Pointer to <a class="el" href="group__eth__mac__interface__gr.html#gae0697be4c4229601f3bfc17e2978ada6">ARM_ETH_MAC_SignalEvent</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
+<p>The function <b>ARM_ETH_MAC_Initialize</b> initializes the Ethernet MAC interface. It is called when the middleware component starts operation.</p>
+<p>The <a class="el" href="group__eth__mac__interface__gr.html#gacf42d11b171cd032f0ec1de6db2b6832">ARM_ETH_MAC_Initialize</a> function performs the following operations:</p>
+<ul>
+<li>Initializes the resources needed for the Ethernet MAC peripheral.</li>
+<li>Registers the <a class="el" href="group__eth__mac__interface__gr.html#gae0697be4c4229601f3bfc17e2978ada6">ARM_ETH_MAC_SignalEvent</a> callback function.</li>
+</ul>
+<p>The parameter <em>cb_event</em> is a pointer to the <a class="el" href="group__eth__mac__interface__gr.html#gae0697be4c4229601f3bfc17e2978ada6">ARM_ETH_MAC_SignalEvent</a> callback function; use a NULL pointer when no callback signals are required.</p>
+<p><b>Example:</b> </p>
+<ul>
+<li>see <a class="el" href="group__eth__interface__gr.html">Ethernet Interface</a> - Driver Functions </li>
+</ul>
+
+</div>
+</div>
+<a class="anchor" id="gacb2c2ae06f32328775bffbdeaaabfb5d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ARM_ETH_MAC_Uninitialize </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>De-initialize Ethernet MAC Device. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
+<p>The function <b>ARM_ETH_MAC_Uninitialize</b> de-initializes the resources of Ethernet MAC interface.</p>
+<p>It is called when the middleware component stops operation and releases the software resources used by the interface. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga346fef040a0e9bac5762a04a306b1be7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ARM_ETH_MAC_PowerControl </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__common__drv__gr.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5">ARM_POWER_STATE</a>&#160;</td>
+          <td class="paramname"><em>state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Control Ethernet MAC Device Power. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">state</td><td>Power state </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
+<p>The function <b>ARM_ETH_MAC_PowerControl</b> allows you to configure the power modes of the Ethernet MAC interface.</p>
+<p>The parameter <em>state</em> can be:</p>
+<ul>
+<li>ARM_POWER_OFF: Ethernet MAC peripheral is turned off.</li>
+<li>ARM_POWER_FULL: Ethernet MAC peripheral is turned on and fully operational.</li>
+</ul>
+<p>If power <em>state</em> specifies an unsupported mode, the function returns <a class="el" href="group__execution__status.html#ga2efa59e480d82697795439220e6884e4">ARM_DRIVER_ERROR_UNSUPPORTED</a> as status information and the previous power state of the peripheral is unchanged. Multiple calls with the same <em>state</em> generate no error.</p>
+<p><b>Example:</b> </p>
+<ul>
+<li>see <a class="el" href="group__eth__interface__gr.html">Ethernet Interface</a> - Driver Functions </li>
+</ul>
+
 </div>
 </div>
 <a class="anchor" id="ga66308c1e791952047e974bd653037fae"></a>
@@ -905,8 +886,191 @@ Seconds. </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>The function <a class="el" href="group__eth__mac__interface__gr.html#ga66308c1e791952047e974bd653037fae">ARM_ETH_MAC_GetMacAddress</a> retrieves the Ethernet MAC own address from the driver. </p>
+<p>The function <b>ARM_ETH_MAC_GetMacAddress</b> retrieves the Ethernet MAC own address from the driver. </p>
 
+</div>
+</div>
+<a class="anchor" id="ga7cc3d17c7312c5032202dfd9a915f24a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ARM_ETH_MAC_SetMacAddress </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="group__eth__interface__gr.html#struct_a_r_m___e_t_h___m_a_c___a_d_d_r">ARM_ETH_MAC_ADDR</a> *&#160;</td>
+          <td class="paramname"><em>ptr_addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set Ethernet MAC Address. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">ptr_addr</td><td>Pointer to address </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
+<p>The function <b>ARM_ETH_MAC_SetMacAddress</b> configures Ethernet MAC own address. The Ethernet MAC accepts packets <a href="http://en.wikipedia.org/wiki/Ethernet_frame" target="_blank"><b>Ethernet frames</b></a> which contains a MAC destination address that matches the address specified with <em>ptr_addr</em>.</p>
+<p>The Ethernet MAC receiver will accept also packets with addresses configured by <a class="el" href="group__eth__mac__interface__gr.html#ga150fe30290275a4b32756f94208124e8">ARM_ETH_MAC_SetAddressFilter</a> function.</p>
+<p>MAC receiver can be configured to accept also packets with broadcast address, any multicast address or even all packets regardless of address (Promiscuity Mode). This is configured by function <a class="el" href="group__eth__mac__interface__gr.html#gac3e90c66058d20077f04ac8e8b8d0536">ARM_ETH_MAC_Control</a> with <a class="el" href="group__eth__mac__ctrls.html#ga7819c7a1aa7bbc13dc42d0fd7e75a23c">ARM_ETH_MAC_CONFIGURE</a> as control parameter. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga150fe30290275a4b32756f94208124e8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ARM_ETH_MAC_SetAddressFilter </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="group__eth__interface__gr.html#struct_a_r_m___e_t_h___m_a_c___a_d_d_r">ARM_ETH_MAC_ADDR</a> *&#160;</td>
+          <td class="paramname"><em>ptr_addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>num_addr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Configure Address Filter. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">ptr_addr</td><td>Pointer to addresses </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">num_addr</td><td>Number of addresses to configure </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
+<p>The function <b>ARM_ETH_MAC_SetAddressFilter</b> configures Ethernet MAC receiver address filtering. The Ethernet MAC accepts packets <a href="http://en.wikipedia.org/wiki/Ethernet_frame" target="_blank"><b>Ethernet frames</b></a> which contains a MAC destination address of the list supplied with <em>ptr_addr</em>. The parameter <em>ptr_addr</em> provides and array of Ethernet MAC addresses. The number of addresses is supplied by <em>num_addr</em>. Specifying <em>num_adr</em> = 0 disables address filtering previously set with this function.</p>
+<p>The Ethernet MAC receiver will accept packets addressed to its own address and packets with addresses configured by this function.</p>
+<p>MAC receiver can be configured to accept also packets with broadcast address, any multicast address or even all packets regardless of address (Promiscuity Mode). This is configured by function <a class="el" href="group__eth__mac__interface__gr.html#gac3e90c66058d20077f04ac8e8b8d0536">ARM_ETH_MAC_Control</a> with <a class="el" href="group__eth__mac__ctrls.html#ga7819c7a1aa7bbc13dc42d0fd7e75a23c">ARM_ETH_MAC_CONFIGURE</a> as control parameter. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga5bf58defdb239ed7dc948f1da147a1c3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ARM_ETH_MAC_SendFrame </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>frame</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>len</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>flags</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Send Ethernet frame. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">frame</td><td>Pointer to frame buffer with data to send </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">len</td><td>Frame buffer length in bytes </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">flags</td><td>Frame transmit flags (see ARM_ETH_MAC_TX_FRAME_...) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
+<p>The function <b>ARM_ETH_MAC_SendFrame</b> writes an <a href="http://en.wikipedia.org/wiki/Ethernet_frame" target="_blank"><b>Ethernet frame</b></a> to the Ethernet MAC transmit buffer.</p>
+<p>The Ethernet MAC transmit engine must be enabled by using the function <a class="el" href="group__eth__mac__interface__gr.html#gac3e90c66058d20077f04ac8e8b8d0536">ARM_ETH_MAC_Control</a> (ARM_ETH_MAC_CONTROL_TX, 1) before a call to this function.</p>
+<p>The frame data addressed by <em>buf</em> starts with MAC destination and ends with the last Payload data byte. The frame data is copied into the transmit buffer of the Ethernet MAC interface. The function does not wait until the transmission over the Ethernet is complete, however the memory addressed by <em>buf</em> is available for the next Ethernet frame after return.</p>
+<p>The maximum value for <em>len</em> is implied by the size restrictions of the Ethernet frame but is not verified. Using an invalid value for <em>len</em> may generate unpredicted results.</p>
+<p>The parameter <em>flags</em> specifies additional attributes for the function as shown in the following table. Multiple flags can be combined, for example: ARM_ETH_MAC_TX_FRAME_EVENT | ARM_ETH_MAC_TX_FRAME_TIMESTAMP.</p>
+<table class="doxtable">
+<tr>
+<th align="left">Flag bit </th><th align="left">Description</th></tr>
+<tr>
+<td align="left"><a class="el" href="group__eth__mac__frame__transmit__ctrls.html#gab7bd6dea5bb57240291db71e95c99d9c">ARM_ETH_MAC_TX_FRAME_FRAGMENT</a> </td><td align="left">Indicates that it is a fragment of the frame. allows you to collect multiple fragments before the frame is sent. </td></tr>
+<tr>
+<td align="left"><a class="el" href="group__eth__mac__frame__transmit__ctrls.html#ga91a923680ea0dad758b8950a3fbd237e">ARM_ETH_MAC_TX_FRAME_EVENT</a> </td><td align="left"><a class="el" href="group__eth__mac__interface__gr.html#gae0697be4c4229601f3bfc17e2978ada6">ARM_ETH_MAC_SignalEvent</a> with <em>event</em> bit <a class="el" href="group___e_t_h___m_a_c__events.html#ga0c0328ff7cf886d5fdb53bb84ec03c1b">ARM_ETH_MAC_EVENT_TX_FRAME</a> set will be called when frame send is complete. </td></tr>
+<tr>
+<td align="left"><a class="el" href="group__eth__mac__frame__transmit__ctrls.html#gade137f65dd345ae40e93c77d495f9b54">ARM_ETH_MAC_TX_FRAME_TIMESTAMP</a> </td><td align="left">Capture the time stamp of the frame. The time stamp can be obtained using the function <a class="el" href="group__eth__mac__interface__gr.html#ga115b5c7e149aec2b181de760f5d83f60">ARM_ETH_MAC_GetTxFrameTime</a>. </td></tr>
+</table>
+<p><b>Example:</b> </p>
+<div class="fragment"><div class="line">status = mac-&gt;<a class="code" href="group__eth__mac__interface__gr.html#ac095aea379f23e30a0e51b1f3518ad37" title="Pointer to ARM_ETH_MAC_SendFrame : Send Ethernet frame.">SendFrame</a> (&amp;frame-&gt;data[0], frame-&gt;length, 0);</div>
+<div class="line"><span class="keywordflow">if</span> (status != <a class="code" href="group__execution__status.html#ga85752c5de59e8adeb001e35ff5be6be7" title="Operation succeeded.">ARM_DRIVER_OK</a>)  {</div>
+<div class="line">  <span class="comment">// error handling</span></div>
+<div class="line">}</div>
+</div><!-- fragment --> 
+</div>
+</div>
+<a class="anchor" id="ga4b79f57d8624bb4410ee12c73a483993"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ARM_ETH_MAC_ReadFrame </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>frame</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read data of received Ethernet frame. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">frame</td><td>Pointer to frame buffer for data to read into </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">len</td><td>Frame buffer length in bytes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>number of data bytes read or execution status<ul>
+<li>value &gt;= 0: number of data bytes read</li>
+<li>value &lt; 0: error occurred, value is execution status as defined with <a class="el" href="group__execution__status.html">Status Error Codes</a></li>
+</ul>
+</dd></dl>
+<p>The function <b>ARM_ETH_MAC_ReadFrame</b> reads an <a href="http://en.wikipedia.org/wiki/Ethernet_address" target="_blank"><b>Ethernet frame</b></a> from the Ethernet MAC receive buffer.</p>
+<p>The Ethernet MAC receive engine must be enabled using the function <a class="el" href="group__eth__mac__interface__gr.html#gac3e90c66058d20077f04ac8e8b8d0536">ARM_ETH_MAC_Control</a> (ARM_ETH_MAC_CONTROL_RX , 1) before a call to this function. The <em>len</em> of the Ethernet frame can be checked using the function <a class="el" href="group__eth__mac__interface__gr.html#ga5ee86d6b0efab5329b9bc191c23a466d">ARM_ETH_MAC_GetRxFrameSize</a>.</p>
+<p>The frame data addressed by <em>buf</em> starts with MAC destination and ends with the last Payload data byte. The frame data is read from the receive buffer of the Ethernet MAC interface and the number of bytes written into the memory addressed by <em>buf</em> is returned. A negative return value indicates an error whereby the status code is defined with driver common return codes.</p>
+<p>The function <a class="el" href="group__eth__mac__interface__gr.html#ga4b79f57d8624bb4410ee12c73a483993">ARM_ETH_MAC_ReadFrame</a> may be called with <em>buf</em> = NULL and <em>len</em> = 0 to discard or release an frame. This is useful when an incorrect frame has been received or no memory is available to hold the Ethernet frame.</p>
+<p><b>Example:</b> </p>
+<div class="fragment"><div class="line">size = mac-&gt;<a class="code" href="group__eth__mac__interface__gr.html#a3286cc9c7624168b162aa3ce3cbe135e" title="Pointer to ARM_ETH_MAC_GetRxFrameSize : Get size of received Ethernet frame.">GetRxFrameSize</a> ();</div>
+<div class="line"><span class="keywordflow">if</span> ((size &lt; 14) || (size &gt; 1514)) {    <span class="comment">// frame excludes CRC</span></div>
+<div class="line">  mac-&gt;<a class="code" href="group__eth__mac__interface__gr.html#a466b724be2167ea7d9a14569062a8fa8" title="Pointer to ARM_ETH_MAC_ReadFrame : Read data of received Ethernet frame.">ReadFrame</a> (NULL, 0);            <span class="comment">// Frame error, release it</span></div>
+<div class="line">}</div>
+<div class="line">len = mac-&gt;<a class="code" href="group__eth__mac__interface__gr.html#a466b724be2167ea7d9a14569062a8fa8" title="Pointer to ARM_ETH_MAC_ReadFrame : Read data of received Ethernet frame.">ReadFrame</a> (&amp;frame-&gt;data[0], size);</div>
+<div class="line"><span class="keywordflow">if</span> (len &lt; 0)  {</div>
+<div class="line">  <span class="comment">// error handling</span></div>
+<div class="line">}</div>
+</div><!-- fragment --> 
 </div>
 </div>
 <a class="anchor" id="ga5ee86d6b0efab5329b9bc191c23a466d"></a>
@@ -925,7 +1089,7 @@ Seconds. </td></tr>
 
 <p>Get size of received Ethernet frame. </p>
 <dl class="section return"><dt>Returns</dt><dd>number of bytes in received frame</dd></dl>
-<p>Retrieve size of a received <a href="http://en.wikipedia.org/wiki/Ethernet_address" target="_blank"><b>Ethernet frame</b></a>. This function is called before <a class="el" href="group__eth__mac__interface__gr.html#ga4b79f57d8624bb4410ee12c73a483993">ARM_ETH_MAC_ReadFrame</a> and supplies the value <em>len</em>.</p>
+<p>The function <b>ARM_ETH_MAC_GetRxFrameSize</b> returns the size of a received <a href="http://en.wikipedia.org/wiki/Ethernet_address" target="_blank"><b>Ethernet frame</b></a>. This function is called before <a class="el" href="group__eth__mac__interface__gr.html#ga4b79f57d8624bb4410ee12c73a483993">ARM_ETH_MAC_ReadFrame</a> and supplies the value <em>len</em>.</p>
 <p>The frame size includes MAC destination and ends with the last Payload data byte.</p>
 <p><b>Example:</b> </p>
 <ul>
@@ -982,81 +1146,190 @@ Seconds. </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>Retrieve time stamp of a transmitted <a href="http://en.wikipedia.org/wiki/Ethernet_address" target="_blank"><b>Ethernet frame</b></a>. </p>
+<p>The function <b>returns</b> the time stamp of a transmitted <a href="http://en.wikipedia.org/wiki/Ethernet_address" target="_blank"><b>Ethernet frame</b></a>. </p>
 
 </div>
 </div>
-<a class="anchor" id="ga86b15062c297384ad5842dd57b9d6b1d"></a>
+<a class="anchor" id="gac3e90c66058d20077f04ac8e8b8d0536"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a> ARM_ETH_MAC_GetVersion </td>
+          <td class="memname">int32_t ARM_ETH_MAC_Control </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>control</em>, </td>
         </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get driver version. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a></dd></dl>
-<p>The function <a class="el" href="group__eth__mac__interface__gr.html#ga86b15062c297384ad5842dd57b9d6b1d">ARM_ETH_MAC_GetVersion</a> returns version information of the driver implementation in <a class="el" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n">ARM_DRIVER_VERSION</a></p>
-<ul>
-<li>API version is the version of the CMSIS-Driver specification used to implement this driver.</li>
-<li>Driver version is source code version of the actual driver implementation.</li>
-</ul>
-<p>Example: </p>
-<div class="fragment"><div class="line"><span class="keyword">extern</span> <a class="code" href="group__eth__mac__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___e_t_h___m_a_c" title="Access structure of the Ethernet MAC Driver.">ARM_DRIVER_ETH_MAC</a> Driver_ETH_MAC0;</div>
-<div class="line"><a class="code" href="group__eth__mac__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___e_t_h___m_a_c" title="Access structure of the Ethernet MAC Driver.">ARM_DRIVER_ETH_MAC</a> *mac;</div>
-<div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> setup_ethernet (<span class="keywordtype">void</span>)  {</div>
-<div class="line">  <a class="code" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n" title="Driver Version.">ARM_DRIVER_VERSION</a>  version;</div>
-<div class="line"> </div>
-<div class="line">  mac = &amp;Driver_ETH_MAC0;  </div>
-<div class="line">  version = mac-&gt;<a class="code" href="group__eth__mac__interface__gr.html#a8834b281da48583845c044a81566c1b3" title="Pointer to ARM_ETH_MAC_GetVersion : Get driver version.">GetVersion</a> ();</div>
-<div class="line">  <span class="keywordflow">if</span> (version.<a class="code" href="group__common__drv__gr.html#ad180da20fbde1d3dafc074af87c19540" title="API version.">api</a> &lt; 0x10A)   {      <span class="comment">// requires at minimum API version 1.10 or higher</span></div>
-<div class="line">    <span class="comment">// error handling</span></div>
-<div class="line">    <span class="keywordflow">return</span>;</div>
-<div class="line">  }</div>
-<div class="line">}</div>
-</div><!-- fragment --> 
-</div>
-</div>
-<a class="anchor" id="gacf42d11b171cd032f0ec1de6db2b6832"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
         <tr>
-          <td class="memname">int32_t ARM_ETH_MAC_Initialize </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="group__eth__mac__interface__gr.html#gadfc95cb09c541a29a72da86963668726">ARM_ETH_MAC_SignalEvent_t</a>&#160;</td>
-          <td class="paramname"><em>cb_event</em></td><td>)</td>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>arg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Initialize Ethernet MAC Device. </p>
+<p>Control Ethernet Interface. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">cb_event</td><td>Pointer to <a class="el" href="group__eth__mac__interface__gr.html#gae0697be4c4229601f3bfc17e2978ada6">ARM_ETH_MAC_SignalEvent</a> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">control</td><td>Operation </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">arg</td><td>Argument of operation (optional) </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>The function <a class="el" href="group__eth__mac__interface__gr.html#gacf42d11b171cd032f0ec1de6db2b6832">ARM_ETH_MAC_Initialize</a> initializes the Ethernet MAC interface. It is called when the middleware component starts operation.</p>
-<p>The <a class="el" href="group__eth__mac__interface__gr.html#gacf42d11b171cd032f0ec1de6db2b6832">ARM_ETH_MAC_Initialize</a> function performs the following operations:</p>
-<ul>
-<li>Initializes the resources needed for the Ethernet MAC peripheral.</li>
-<li>Registers the <a class="el" href="group__eth__mac__interface__gr.html#gae0697be4c4229601f3bfc17e2978ada6">ARM_ETH_MAC_SignalEvent</a> callback function.</li>
-</ul>
-<p>The parameter <em>cb_event</em> is a pointer to the <a class="el" href="group__eth__mac__interface__gr.html#gae0697be4c4229601f3bfc17e2978ada6">ARM_ETH_MAC_SignalEvent</a> callback function; use a NULL pointer when no callback signals are required.</p>
+<p>The function <b>ARM_ETH_MAC_Control</b> controls the Ethernet MAC interface and executes various operations. After initialization, the Ethernet transceiver and receiver are disabled.</p>
+<p>The parameter <em>control</em> specifies an operation as defined in the table <b>Parameter <em>control</b></em>. <br/>
+ The parameter <em>arg</em> provides, depending on the operation, additional information or values.</p>
+<p>The table lists values for the parameter <em>control</em>.</p>
+<table class="doxtable">
+<tr>
+<th align="left">Parameter <em>control</em> </th><th align="left">Operation</th></tr>
+<tr>
+<td align="left"><a class="el" href="group__eth__mac__ctrls.html#ga7819c7a1aa7bbc13dc42d0fd7e75a23c">ARM_ETH_MAC_CONFIGURE</a> </td><td align="left">Configure the Ethernet MAC interface; For <em>arg</em> values, see table <b>Parameter <em>arg</em> for CONFIGURE</b> </td></tr>
+<tr>
+<td align="left"><a class="el" href="group__eth__mac__ctrls.html#ga3a98c8a7ee5ed4b1ffd250eecaeefe5c">ARM_ETH_MAC_CONTROL_TX</a> </td><td align="left">Enable or disable the transmitter; <em>arg</em> : <span class="XML-Token">0=disable; 1=enable</span> </td></tr>
+<tr>
+<td align="left"><a class="el" href="group__eth__mac__ctrls.html#gae0964364b81b38b6e1fbf7196f3be869">ARM_ETH_MAC_CONTROL_RX</a> </td><td align="left">Enable or disable the receiver; <em>arg</em> : <span class="XML-Token">0=disable; 1=enable</span> </td></tr>
+<tr>
+<td align="left"><a class="el" href="group__eth__mac__ctrls.html#ga530812ef349a2e297f23de72e660fe27">ARM_ETH_MAC_FLUSH</a> </td><td align="left">Flush a buffer; <em>arg</em> : see table <b>Parameter <em>arg</em> for FLUSH</b> </td></tr>
+<tr>
+<td align="left"><a class="el" href="group__eth__mac__ctrls.html#ga4afe66589216f566f529af52f9075fdf">ARM_ETH_MAC_SLEEP</a> </td><td align="left">Exit/Enter Sleep mode; <em>arg</em> : <span class="XML-Token">0=exit; 1=enter and wait for Magic packet</span> </td></tr>
+<tr>
+<td align="left"><a class="el" href="group__eth__mac__ctrls.html#gab332b58ba320e73864830dc42ad74181">ARM_ETH_MAC_VLAN_FILTER</a> </td><td align="left">Configure VLAN Filter for received frames; <em>arg</em> : See table <b>Parameter <em>arg</em> for VLAN Filter</b> </td></tr>
+</table>
+<p>The table <b>Parameter <em>arg</em> for CONFIGURE</b> lists the <em>arg</em> values for the <em>control</em> <b>ARM_ETH_MAC_CONFIGURE</b>. The values can be ORed in the following way: </p>
+<div class="fragment"><div class="line">mac-&gt;<a class="code" href="group__eth__mac__interface__gr.html#a6e0f47a92f626a971c5197fca6545505" title="Pointer to ARM_ETH_MAC_Control : Control Ethernet Interface.">Control</a>(<a class="code" href="group__eth__mac__ctrls.html#ga7819c7a1aa7bbc13dc42d0fd7e75a23c" title="Configure MAC; arg = configuration.">ARM_ETH_MAC_CONFIGURE</a>, <a class="code" href="group__eth__mac__configuration__ctrls.html#ga29160c83a7b0952c64053d86789c6490" title="100 Mbps link speed">ARM_ETH_MAC_SPEED_100M</a> | <a class="code" href="group__eth__mac__configuration__ctrls.html#gad5a7d4b5b8a31825eff1504e3828d8f6" title="Full duplex link.">ARM_ETH_MAC_DUPLEX_FULL</a> | <a class="code" href="group__eth__mac__configuration__ctrls.html#gab32765f35c35b672ee476278fe24a24e" title="Loop-back test mode.">ARM_ETH_MAC_LOOPBACK</a>);</div>
+</div><!-- fragment --><table  class="cmtable">
+<tr>
+<th colspan="4">Parameter <em>arg</em> CONFIGURE  </th></tr>
+<tr>
+<th>Parameter <em>arg</em> </th><th>Bit </th><th>Category </th><th>Description  </th></tr>
+<tr>
+<td><a class="el" href="group__eth__mac__configuration__ctrls.html#ga8c5b40d018ecfad05fe2546ba717c1d4">ARM_ETH_MAC_SPEED_10M</a> </td><td rowspan="3">0..1 </td><td rowspan="3">Link Speed </td><td>Set the link speed to <span class="XML-Token">10 [Mbps]</span>  </td></tr>
+<tr>
+<td><a class="el" href="group__eth__mac__configuration__ctrls.html#ga29160c83a7b0952c64053d86789c6490">ARM_ETH_MAC_SPEED_100M</a>  </td><td>Set the link speed to <span class="XML-Token">100 [Mbps]</span> </td></tr>
+<tr>
+<td><a class="el" href="group__eth__mac__configuration__ctrls.html#ga8acefed744d8397a1777b9fd0e6230d2">ARM_ETH_MAC_SPEED_1G</a>  </td><td>Set the link speed to <span class="XML-Token">1 [Gbps]</span>  </td></tr>
+<tr>
+<td><a class="el" href="group__eth__mac__configuration__ctrls.html#gadb0fe2c5a1e21b0656d39c788ae22f36">ARM_ETH_MAC_DUPLEX_HALF</a> </td><td rowspan="2">2 </td><td rowspan="2">Link Mode </td><td>Set the link mode to half duplex  </td></tr>
+<tr>
+<td><a class="el" href="group__eth__mac__configuration__ctrls.html#gad5a7d4b5b8a31825eff1504e3828d8f6">ARM_ETH_MAC_DUPLEX_FULL</a>  </td><td>Set the link mode to full duplex  </td></tr>
+<tr>
+<td>n.a. </td><td>3 </td><td>n.a. </td><td><em>reserved</em>  </td></tr>
+<tr>
+<td><a class="el" href="group__eth__mac__configuration__ctrls.html#gab32765f35c35b672ee476278fe24a24e">ARM_ETH_MAC_LOOPBACK</a> </td><td>4 </td><td>Loopback Test Mode </td><td>Set the interface into a Loop-back test mode </td></tr>
+<tr>
+<td><a class="el" href="group__eth__mac__configuration__ctrls.html#ga281dfed993b5666ed999709b9f28578f">ARM_ETH_MAC_CHECKSUM_OFFLOAD_RX</a></td><td>5 </td><td>Receiver Checksum offload</td><td>Enable Receiver Checksum offload  </td></tr>
+<tr>
+<td><a class="el" href="group__eth__mac__configuration__ctrls.html#ga7272d2c55aeeeadbb95c591cbf6c1a2e">ARM_ETH_MAC_CHECKSUM_OFFLOAD_TX</a></td><td>6 </td><td>Transmitter Checksum offload</td><td>Enable Transmitter Checksum offload  </td></tr>
+<tr>
+<td><a class="el" href="group__eth__mac__configuration__ctrls.html#ga43792feab641c3c87eafb943351ab0f4">ARM_ETH_MAC_ADDRESS_BROADCAST</a> </td><td>7 </td><td>Broadcast Frame address </td><td>Accept frames with Broadcast address  </td></tr>
+<tr>
+<td><a class="el" href="group__eth__mac__configuration__ctrls.html#ga1d3ff8c63362b385548fe91730f20588">ARM_ETH_MAC_ADDRESS_MULTICAST</a> </td><td>8 </td><td>Multicast Frame address </td><td>Accept frames with any Multicast address </td></tr>
+<tr>
+<td><a class="el" href="group__eth__mac__configuration__ctrls.html#gab29ab9e295807f4c59ddd1c4642086d1">ARM_ETH_MAC_ADDRESS_ALL</a> </td><td>9 </td><td>Any Frame address </td><td>Accept frames with any address (Promiscuous Mode) </td></tr>
+</table>
+<p>The table <b>Parameter <em>arg</em> for FLUSH</b> lists the <em>arg</em> values for the <em>control</em> <b>ARM_ETH_MAC_FLUSH</b>. The <em>arg</em> values can be ORed.</p>
+<table  class="cmtable">
+<tr>
+<th colspan="4">Parameter <em>arg</em> for FLUSH  </th></tr>
+<tr>
+<th>Parameter <em>arg</em> </th><th>Bit </th><th>Category </th><th>Description  </th></tr>
+<tr>
+<td><a class="el" href="group__eth__mac__flush__flag__ctrls.html#gac18950811038319960756f063e1ef6d4">ARM_ETH_MAC_FLUSH_RX</a> </td><td>1 </td><td>Receive buffer </td><td>Flush the Receive buffer  </td></tr>
+<tr>
+<td><a class="el" href="group__eth__mac__flush__flag__ctrls.html#ga2d10ff33f4f4927820c6a17a2262b120">ARM_ETH_MAC_FLUSH_TX</a> </td><td>2 </td><td>Transmit buffer </td><td>Flush the Transmit buffer  </td></tr>
+</table>
+<p>The table <b>Parameter <em>arg</em> for VLAN Filter</b> lists the <em>arg</em> values for the <em>control</em> <b>ARM_ETH_MAC_VLAN_FILTER</b>. The <em>arg</em> values can be ORed.</p>
+<table  class="cmtable">
+<tr>
+<th colspan="4">Parameter <em>arg</em> for VLAN Filter </th></tr>
+<tr>
+<th>Parameter <em>arg</em> </th><th>Bit </th><th>Category </th><th>Description  </th></tr>
+<tr>
+<td><em>value</em> </td><td>0..15 </td><td>VLAN Tag </td><td>Set VLAN Tag value  </td></tr>
+<tr>
+<td><span class="XML-Token">0</span> </td><td rowspan="2">16 </td><td rowspan="2">Use of VLAN </td><td>Compare the complete 16-bit VLAN Tag value  </td></tr>
+<tr>
+<td><a class="el" href="group__eth__mac__vlan__filter__ctrls.html#ga2511c9e4c22a2b351ce2e454be1c9427">ARM_ETH_MAC_VLAN_FILTER_ID_ONLY</a>  </td><td>Compare only the 12-bit VLAN Identifier  </td></tr>
+<tr>
+<td><span class="XML-Token">0</span> </td><td>0..16 </td><td>Disable </td><td>Disable the VLAN Filter  </td></tr>
+</table>
 <p><b>Example:</b> </p>
-<ul>
-<li>see <a class="el" href="group__eth__interface__gr.html">Ethernet Interface</a> - Driver Functions </li>
-</ul>
+<div class="fragment"><div class="line">...</div>
+<div class="line">                                         <span class="comment">// start transfer</span></div>
+<div class="line">    mac-&gt;<a class="code" href="group__eth__mac__interface__gr.html#a6e0f47a92f626a971c5197fca6545505" title="Pointer to ARM_ETH_MAC_Control : Control Ethernet Interface.">Control</a>(<a class="code" href="group__eth__mac__ctrls.html#ga7819c7a1aa7bbc13dc42d0fd7e75a23c" title="Configure MAC; arg = configuration.">ARM_ETH_MAC_CONFIGURE</a>, <a class="code" href="group__eth__mac__configuration__ctrls.html#ga29160c83a7b0952c64053d86789c6490" title="100 Mbps link speed">ARM_ETH_MAC_SPEED_100M</a> | <a class="code" href="group__eth__mac__configuration__ctrls.html#gad5a7d4b5b8a31825eff1504e3828d8f6" title="Full duplex link.">ARM_ETH_MAC_DUPLEX_FULL</a> | <a class="code" href="group__eth__mac__configuration__ctrls.html#ga43792feab641c3c87eafb943351ab0f4" title="Accept frames with Broadcast address.">ARM_ETH_MAC_ADDRESS_BROADCAST</a>);</div>
+<div class="line">    mac-&gt;<a class="code" href="group__eth__mac__interface__gr.html#a6e0f47a92f626a971c5197fca6545505" title="Pointer to ARM_ETH_MAC_Control : Control Ethernet Interface.">Control</a>(<a class="code" href="group__eth__mac__ctrls.html#ga3a98c8a7ee5ed4b1ffd250eecaeefe5c" title="Transmitter; arg: 0=disabled (default), 1=enabled.">ARM_ETH_MAC_CONTROL_TX</a>, 1);</div>
+<div class="line">    mac-&gt;<a class="code" href="group__eth__mac__interface__gr.html#a6e0f47a92f626a971c5197fca6545505" title="Pointer to ARM_ETH_MAC_Control : Control Ethernet Interface.">Control</a>(<a class="code" href="group__eth__mac__ctrls.html#gae0964364b81b38b6e1fbf7196f3be869" title="Receiver; arg: 0=disabled (default), 1=enabled.">ARM_ETH_MAC_CONTROL_RX</a>, 1);</div>
+<div class="line">         </div>
+<div class="line">...                                      <span class="comment">// stop transfer</span></div>
+<div class="line">    mac-&gt;<a class="code" href="group__eth__mac__interface__gr.html#a6e0f47a92f626a971c5197fca6545505" title="Pointer to ARM_ETH_MAC_Control : Control Ethernet Interface.">Control</a>(<a class="code" href="group__eth__mac__ctrls.html#ga530812ef349a2e297f23de72e660fe27" title="Flush buffer; arg = ARM_ETH_MAC_FLUSH_...">ARM_ETH_MAC_FLUSH</a>, <a class="code" href="group__eth__mac__flush__flag__ctrls.html#ga2d10ff33f4f4927820c6a17a2262b120" title="Flush Transmit buffer.">ARM_ETH_MAC_FLUSH_TX</a> | <a class="code" href="group__eth__mac__flush__flag__ctrls.html#gac18950811038319960756f063e1ef6d4" title="Flush Receive buffer.">ARM_ETH_MAC_FLUSH_RX</a>);</div>
+<div class="line">    mac-&gt;<a class="code" href="group__eth__mac__interface__gr.html#a6e0f47a92f626a971c5197fca6545505" title="Pointer to ARM_ETH_MAC_Control : Control Ethernet Interface.">Control</a>(<a class="code" href="group__eth__mac__ctrls.html#ga3a98c8a7ee5ed4b1ffd250eecaeefe5c" title="Transmitter; arg: 0=disabled (default), 1=enabled.">ARM_ETH_MAC_CONTROL_TX</a>, 0);</div>
+<div class="line">    mac-&gt;<a class="code" href="group__eth__mac__interface__gr.html#a6e0f47a92f626a971c5197fca6545505" title="Pointer to ARM_ETH_MAC_Control : Control Ethernet Interface.">Control</a>(<a class="code" href="group__eth__mac__ctrls.html#gae0964364b81b38b6e1fbf7196f3be869" title="Receiver; arg: 0=disabled (default), 1=enabled.">ARM_ETH_MAC_CONTROL_RX</a>, 0);</div>
+<div class="line">  }</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>For a complete example, refer to <a class="el" href="group__eth__interface__gr.html">Ethernet Interface</a> - Driver Functions. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga85d9dc865af3702b71a514b18a588643"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t ARM_ETH_MAC_ControlTimer </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>control</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__eth__mac__interface__gr.html#struct_a_r_m___e_t_h___m_a_c___t_i_m_e">ARM_ETH_MAC_TIME</a> *&#160;</td>
+          <td class="paramname"><em>time</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Control Precision Timer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">control</td><td>Operation </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">time</td><td>Pointer to time structure </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
+<p>The function <b>ARM_ETH_MAC_ControlTimer</b> controls the timer required for PTP (Precision Time Protocol).</p>
+<p>The parameter <em>control</em> receives <b>ARM_ETH_MAC_TIMER_xxx</b> codes to manage the timer for a PTP enabled Ethernet MAC interface. <br/>
+ The parameter <em>time</em> is pointer to a structure that holds time information.</p>
+<table class="doxtable">
+<tr>
+<th align="left">Mode Parameters: Timer Controls </th><th align="left">Description</th></tr>
+<tr>
+<td align="left"><a class="el" href="group__eth__mac__time__control.html#gad9a439b9727c032a7d851df2a7a622c2">ARM_ETH_MAC_TIMER_GET_TIME</a> </td><td align="left">Retrieve the current time and update the content <a class="el" href="group__eth__mac__interface__gr.html#struct_a_r_m___e_t_h___m_a_c___t_i_m_e">ARM_ETH_MAC_TIME</a> *time. </td></tr>
+<tr>
+<td align="left"><a class="el" href="group__eth__mac__time__control.html#ga5e867a003c06046d7944bcb5723e6049">ARM_ETH_MAC_TIMER_SET_TIME</a> </td><td align="left">Set the new time using the values provided with <a class="el" href="group__eth__mac__interface__gr.html#struct_a_r_m___e_t_h___m_a_c___t_i_m_e">ARM_ETH_MAC_TIME</a> *time. </td></tr>
+<tr>
+<td align="left"><a class="el" href="group__eth__mac__time__control.html#ga3c57b3150717fb1a8cbbbac6a9b7ff69">ARM_ETH_MAC_TIMER_INC_TIME</a> </td><td align="left">Increment the current time by using the values provided with <a class="el" href="group__eth__mac__interface__gr.html#struct_a_r_m___e_t_h___m_a_c___t_i_m_e">ARM_ETH_MAC_TIME</a> *time. </td></tr>
+<tr>
+<td align="left"><a class="el" href="group__eth__mac__time__control.html#gaca9f1c4259d0342e9717a362de1ccf41">ARM_ETH_MAC_TIMER_DEC_TIME</a> </td><td align="left">Decrement the current time by using the values provided with <a class="el" href="group__eth__mac__interface__gr.html#struct_a_r_m___e_t_h___m_a_c___t_i_m_e">ARM_ETH_MAC_TIME</a> *time. </td></tr>
+<tr>
+<td align="left"><a class="el" href="group__eth__mac__time__control.html#ga04c2469ba027b020bc6b5baf3b51cf74">ARM_ETH_MAC_TIMER_SET_ALARM</a> </td><td align="left">Set the alarm time to the values provided with <a class="el" href="group__eth__mac__interface__gr.html#struct_a_r_m___e_t_h___m_a_c___t_i_m_e">ARM_ETH_MAC_TIME</a> *time. </td></tr>
+<tr>
+<td align="left"><a class="el" href="group__eth__mac__time__control.html#ga85cb862eba0934e958a8552022588db7">ARM_ETH_MAC_TIMER_ADJUST_CLOCK</a> </td><td align="left">Set the clock frequency; the value in time-&gt;ns is the <b>correction factor</b> in fractional format q31. </td></tr>
+</table>
 
 </div>
 </div>
@@ -1148,230 +1421,11 @@ Seconds. </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>Write Ethernet PHY Register through the Management Interface. The function is passed to <a class="el" href="group__eth__phy__interface__gr.html#gacf2332a7fa2d84694b8e5f0838135589">ARM_ETH_PHY_Initialize</a>. The Ethernet PHY driver uses this function to write data to PHY registers.</p>
+<p>The function <b>ARM_ETH_MAC_PHY_Write</b> writes to a Ethernet PHY register through the Management Interface. The function is passed to <a class="el" href="group__eth__phy__interface__gr.html#gacf2332a7fa2d84694b8e5f0838135589">ARM_ETH_PHY_Initialize</a>. The Ethernet PHY driver uses this function to write data to PHY registers.</p>
 <p><b>Example:</b> </p>
 <ul>
 <li>see <a class="el" href="group__eth__interface__gr.html">Ethernet Interface</a> - Driver Functions </li>
 </ul>
-
-</div>
-</div>
-<a class="anchor" id="ga346fef040a0e9bac5762a04a306b1be7"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t ARM_ETH_MAC_PowerControl </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="group__common__drv__gr.html#ga47d6d7c31f88f3b8ae4aaf9d8444afa5">ARM_POWER_STATE</a>&#160;</td>
-          <td class="paramname"><em>state</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Control Ethernet MAC Device Power. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">state</td><td>Power state </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>The function <a class="el" href="group__eth__mac__interface__gr.html#ga346fef040a0e9bac5762a04a306b1be7">ARM_ETH_MAC_PowerControl</a> allows you to configure the power modes of the Ethernet MAC interface.</p>
-<p>The argument <em>state</em> can be:</p>
-<ul>
-<li>ARM_POWER_OFF: Ethernet MAC peripheral is turned off.</li>
-<li>ARM_POWER_FULL: Ethernet MAC peripheral is turned on and fully operational.</li>
-</ul>
-<p>If power <em>state</em> specifies an unsupported mode, the function returns <a class="el" href="group__execution__status.html#ga2efa59e480d82697795439220e6884e4">ARM_DRIVER_ERROR_UNSUPPORTED</a> as status information and the previous power state of the peripheral is unchanged. Multiple calls with the same <em>state</em> generate no error.</p>
-<p><b>Example:</b> </p>
-<ul>
-<li>see <a class="el" href="group__eth__interface__gr.html">Ethernet Interface</a> - Driver Functions </li>
-</ul>
-
-</div>
-</div>
-<a class="anchor" id="ga4b79f57d8624bb4410ee12c73a483993"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t ARM_ETH_MAC_ReadFrame </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t *&#160;</td>
-          <td class="paramname"><em>frame</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>len</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Read data of received Ethernet frame. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">frame</td><td>Pointer to frame buffer for data to read into </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">len</td><td>Frame buffer length in bytes </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>number of data bytes read or execution status<ul>
-<li>value &gt;= 0: number of data bytes read</li>
-<li>value &lt; 0: error occurred, value is execution status as defined with <a class="el" href="group__execution__status.html">Status Error Codes</a></li>
-</ul>
-</dd></dl>
-<p>The function <a class="el" href="group__eth__mac__interface__gr.html#ga4b79f57d8624bb4410ee12c73a483993">ARM_ETH_MAC_ReadFrame</a> reads an <a href="http://en.wikipedia.org/wiki/Ethernet_address" target="_blank"><b>Ethernet frame</b></a> from the Ethernet MAC receive buffer.</p>
-<p>The Ethernet MAC receive engine must be enabled using the function <a class="el" href="group__eth__mac__interface__gr.html#gac3e90c66058d20077f04ac8e8b8d0536">ARM_ETH_MAC_Control</a> (ARM_ETH_MAC_CONTROL_RX , 1) before a call to this function. The <em>len</em> of the Ethernet frame can be checked using the function <a class="el" href="group__eth__mac__interface__gr.html#ga5ee86d6b0efab5329b9bc191c23a466d">ARM_ETH_MAC_GetRxFrameSize</a>.</p>
-<p>The frame data addressed by <em>buf</em> starts with MAC destination and ends with the last Payload data byte. The frame data is read from the receive buffer of the Ethernet MAC interface and the number of bytes written into the memory addressed by <em>buf</em> is returned. A negative return value indicates an error whereby the status code is defined with driver common return codes.</p>
-<p>The function <a class="el" href="group__eth__mac__interface__gr.html#ga4b79f57d8624bb4410ee12c73a483993">ARM_ETH_MAC_ReadFrame</a> may be called with <em>buf</em> = NULL and <em>len</em> = 0 to discard or release an frame. This is useful when an incorrect frame has been received or no memory is available to hold the Ethernet frame.</p>
-<p><b>Example:</b> </p>
-<div class="fragment"><div class="line">size = mac-&gt;<a class="code" href="group__eth__mac__interface__gr.html#a3286cc9c7624168b162aa3ce3cbe135e" title="Pointer to ARM_ETH_MAC_GetRxFrameSize : Get size of received Ethernet frame.">GetRxFrameSize</a> ();</div>
-<div class="line"><span class="keywordflow">if</span> ((size &lt; 14) || (size &gt; 1514)) {    <span class="comment">// frame excludes CRC</span></div>
-<div class="line">  mac-&gt;<a class="code" href="group__eth__mac__interface__gr.html#a466b724be2167ea7d9a14569062a8fa8" title="Pointer to ARM_ETH_MAC_ReadFrame : Read data of received Ethernet frame.">ReadFrame</a> (NULL, 0);            <span class="comment">// Frame error, release it</span></div>
-<div class="line">}</div>
-<div class="line">len = mac-&gt;<a class="code" href="group__eth__mac__interface__gr.html#a466b724be2167ea7d9a14569062a8fa8" title="Pointer to ARM_ETH_MAC_ReadFrame : Read data of received Ethernet frame.">ReadFrame</a> (&amp;frame-&gt;data[0], size);</div>
-<div class="line"><span class="keywordflow">if</span> (len &lt; 0)  {</div>
-<div class="line">  <span class="comment">// error handling</span></div>
-<div class="line">}</div>
-</div><!-- fragment --> 
-</div>
-</div>
-<a class="anchor" id="ga5bf58defdb239ed7dc948f1da147a1c3"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t ARM_ETH_MAC_SendFrame </td>
-          <td>(</td>
-          <td class="paramtype">const uint8_t *&#160;</td>
-          <td class="paramname"><em>frame</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>len</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>flags</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Send Ethernet frame. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">frame</td><td>Pointer to frame buffer with data to send </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">len</td><td>Frame buffer length in bytes </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">flags</td><td>Frame transmit flags (see ARM_ETH_MAC_TX_FRAME_...) </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>The function <a class="el" href="group__eth__mac__interface__gr.html#ga5bf58defdb239ed7dc948f1da147a1c3">ARM_ETH_MAC_SendFrame</a> writes an <a href="http://en.wikipedia.org/wiki/Ethernet_frame" target="_blank"><b>Ethernet frame</b></a> to the Ethernet MAC transmit buffer.</p>
-<p>The Ethernet MAC transmit engine must be enabled by using the function <a class="el" href="group__eth__mac__interface__gr.html#gac3e90c66058d20077f04ac8e8b8d0536">ARM_ETH_MAC_Control</a> (ARM_ETH_MAC_CONTROL_TX, 1) before a call to this function.</p>
-<p>The frame data addressed by <em>buf</em> starts with MAC destination and ends with the last Payload data byte. The frame data is copied into the transmit buffer of the Ethernet MAC interface. The function does not wait until the transmission over the Ethernet is complete, however the memory addressed by <em>buf</em> is available for the next Ethernet frame after return.</p>
-<p>The maximum value for <em>len</em> is implied by the size restrictions of the Ethernet frame but is not verified. Using an invalid value for <em>len</em> may generate unpredicted results.</p>
-<p>The parameter <em>flags</em> specifies additional attributes for the function as shown in the following table. Multiple flags can be combined, for example: ARM_ETH_MAC_TX_FRAME_EVENT | ARM_ETH_MAC_TX_FRAME_TIMESTAMP.</p>
-<table class="doxtable">
-<tr>
-<th align="left">Flag bit </th><th align="left">Description</th></tr>
-<tr>
-<td align="left"><a class="el" href="group__eth__mac__frame__transmit__ctrls.html#gab7bd6dea5bb57240291db71e95c99d9c">ARM_ETH_MAC_TX_FRAME_FRAGMENT</a> </td><td align="left">Indicates that it is a fragment of the frame. allows you to collect multiple fragments before the frame is sent. </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__eth__mac__frame__transmit__ctrls.html#ga91a923680ea0dad758b8950a3fbd237e">ARM_ETH_MAC_TX_FRAME_EVENT</a> </td><td align="left"><a class="el" href="group__eth__mac__interface__gr.html#gae0697be4c4229601f3bfc17e2978ada6">ARM_ETH_MAC_SignalEvent</a> with <em>event</em> bit <a class="el" href="group___e_t_h___m_a_c__events.html#ga0c0328ff7cf886d5fdb53bb84ec03c1b">ARM_ETH_MAC_EVENT_TX_FRAME</a> set will be called when frame send is complete. </td></tr>
-<tr>
-<td align="left"><a class="el" href="group__eth__mac__frame__transmit__ctrls.html#gade137f65dd345ae40e93c77d495f9b54">ARM_ETH_MAC_TX_FRAME_TIMESTAMP</a> </td><td align="left">Capture the time stamp of the frame. The time stamp can be obtained using the function <a class="el" href="group__eth__mac__interface__gr.html#ga115b5c7e149aec2b181de760f5d83f60">ARM_ETH_MAC_GetTxFrameTime</a>. </td></tr>
-</table>
-<p><b>Example:</b> </p>
-<div class="fragment"><div class="line">status = mac-&gt;<a class="code" href="group__eth__mac__interface__gr.html#ac095aea379f23e30a0e51b1f3518ad37" title="Pointer to ARM_ETH_MAC_SendFrame : Send Ethernet frame.">SendFrame</a> (&amp;frame-&gt;data[0], frame-&gt;length, 0);</div>
-<div class="line"><span class="keywordflow">if</span> (status != <a class="code" href="group__execution__status.html#ga85752c5de59e8adeb001e35ff5be6be7" title="Operation succeeded.">ARM_DRIVER_OK</a>)  {</div>
-<div class="line">  <span class="comment">// error handling</span></div>
-<div class="line">}</div>
-</div><!-- fragment --> 
-</div>
-</div>
-<a class="anchor" id="ga150fe30290275a4b32756f94208124e8"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t ARM_ETH_MAC_SetAddressFilter </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="group__eth__interface__gr.html#struct_a_r_m___e_t_h___m_a_c___a_d_d_r">ARM_ETH_MAC_ADDR</a> *&#160;</td>
-          <td class="paramname"><em>ptr_addr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>num_addr</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Configure Address Filter. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">ptr_addr</td><td>Pointer to addresses </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">num_addr</td><td>Number of addresses to configure </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>The function <a class="el" href="group__eth__mac__interface__gr.html#ga150fe30290275a4b32756f94208124e8">ARM_ETH_MAC_SetAddressFilter</a> configures Ethernet MAC receiver address filtering. The Ethernet MAC accepts packets <a href="http://en.wikipedia.org/wiki/Ethernet_frame" target="_blank"><b>Ethernet frames</b></a> which contains a MAC destination address of the list supplied with <em>ptr_addr</em>. The parameter <em>ptr_addr</em> provides and array of Ethernet MAC addresses. The number of addresses is supplied by <em>num_addr</em>. Specifying <em>num_adr</em> = 0 disables address filtering previously set with this function.</p>
-<p>The Ethernet MAC receiver will accept packets addressed to its own address and packets with addresses configured by this function.</p>
-<p>MAC receiver can be configured to accept also packets with broadcast address, any multicast address or even all packets regardless of address (Promiscuity Mode). This is configured by function <a class="el" href="group__eth__mac__interface__gr.html#gac3e90c66058d20077f04ac8e8b8d0536">ARM_ETH_MAC_Control</a> with <a class="el" href="group__eth__mac__ctrls.html#ga7819c7a1aa7bbc13dc42d0fd7e75a23c">ARM_ETH_MAC_CONFIGURE</a> as control parameter. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga7cc3d17c7312c5032202dfd9a915f24a"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t ARM_ETH_MAC_SetMacAddress </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="group__eth__interface__gr.html#struct_a_r_m___e_t_h___m_a_c___a_d_d_r">ARM_ETH_MAC_ADDR</a> *&#160;</td>
-          <td class="paramname"><em>ptr_addr</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Set Ethernet MAC Address. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">ptr_addr</td><td>Pointer to address </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>The function <a class="el" href="group__eth__mac__interface__gr.html#ga7cc3d17c7312c5032202dfd9a915f24a">ARM_ETH_MAC_SetMacAddress</a> configures Ethernet MAC own address. The Ethernet MAC accepts packets <a href="http://en.wikipedia.org/wiki/Ethernet_frame" target="_blank"><b>Ethernet frames</b></a> which contains a MAC destination address that matches the address specified with <em>ptr_addr</em>.</p>
-<p>The Ethernet MAC receiver will accept also packets with addresses configured by <a class="el" href="group__eth__mac__interface__gr.html#ga150fe30290275a4b32756f94208124e8">ARM_ETH_MAC_SetAddressFilter</a> function.</p>
-<p>MAC receiver can be configured to accept also packets with broadcast address, any multicast address or even all packets regardless of address (Promiscuity Mode). This is configured by function <a class="el" href="group__eth__mac__interface__gr.html#gac3e90c66058d20077f04ac8e8b8d0536">ARM_ETH_MAC_Control</a> with <a class="el" href="group__eth__mac__ctrls.html#ga7819c7a1aa7bbc13dc42d0fd7e75a23c">ARM_ETH_MAC_CONFIGURE</a> as control parameter. </p>
 
 </div>
 </div>
@@ -1397,42 +1451,22 @@ Seconds. </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>none</dd></dl>
-<p>The function <a class="el" href="group__eth__mac__interface__gr.html#gae0697be4c4229601f3bfc17e2978ada6">ARM_ETH_MAC_SignalEvent</a> notifies the various <a class="el" href="group___e_t_h___m_a_c__events.html">Ethernet MAC Events</a> and it is registered by the function <a class="el" href="group__eth__mac__interface__gr.html#gacf42d11b171cd032f0ec1de6db2b6832">ARM_ETH_MAC_Initialize</a>. The function <a class="el" href="group__eth__mac__interface__gr.html#ga2b13b230502736d8c7679b359dff20d0">ARM_ETH_MAC_GetCapabilities</a> returns information about the implemented optional events in a driver. This function is typically called from interrupt service routines (ISR) to indicate that a frame is processed or a special event occurred.</p>
-<p>The argument <em>event</em> represents the notification mask of the events. One or more events may be notified with the same callback.</p>
-<p>Each event is coded in a bit and therefore it is possible to signal multiple events in the event call back function. The following call back notifications are generated:</p>
+<p>The function <b>ARM_ETH_MAC_SignalEvent</b> is a callback function registered by the function <a class="el" href="group__eth__mac__interface__gr.html#gacf42d11b171cd032f0ec1de6db2b6832">ARM_ETH_MAC_Initialize</a>. This function is typically called from interrupt service routines (ISR) to indicate that a frame is processed or a special event occurred.</p>
+<p>The parameter <em>event</em> indicates one or more events that occurred during driver operation. Each event is encoded in a separate bit and therefore it is possible to signal multiple events within the same call.</p>
+<p>Not every event is necessarily generated by the driver. This depends on the implemented capabilities stored in the data fields of the structure <a class="el" href="group__eth__mac__interface__gr.html#struct_a_r_m___e_t_h___m_a_c___c_a_p_a_b_i_l_i_t_i_e_s">ARM_ETH_MAC_CAPABILITIES</a>, which can be retrieved with the function <a class="el" href="group__eth__mac__interface__gr.html#ga2b13b230502736d8c7679b359dff20d0">ARM_ETH_MAC_GetCapabilities</a>.</p>
+<p>The following events can be generated:</p>
 <table class="doxtable">
 <tr>
-<th>Bit</th><th align="left">Event </th><th align="left">Description</th></tr>
+<th align="left">Parameter <em>event</em> </th><th align="center">Bit </th><th align="left">Description</th></tr>
 <tr>
-<td>0 </td><td align="left"><a class="el" href="group___e_t_h___m_a_c__events.html#ga76943471a4a3e9e8c1ff9fe83e43bd47">ARM_ETH_MAC_EVENT_RX_FRAME</a> </td><td align="left">Occurs after a frame is received. Frame can be read by calling <a class="el" href="group__eth__mac__interface__gr.html#ga4b79f57d8624bb4410ee12c73a483993">ARM_ETH_MAC_ReadFrame</a>. </td></tr>
+<td align="left"><a class="el" href="group___e_t_h___m_a_c__events.html#ga76943471a4a3e9e8c1ff9fe83e43bd47">ARM_ETH_MAC_EVENT_RX_FRAME</a> </td><td align="center">0 </td><td align="left">Occurs after a frame is received. Frame can be read by calling <a class="el" href="group__eth__mac__interface__gr.html#ga4b79f57d8624bb4410ee12c73a483993">ARM_ETH_MAC_ReadFrame</a>. </td></tr>
 <tr>
-<td>1 </td><td align="left"><a class="el" href="group___e_t_h___m_a_c__events.html#ga0c0328ff7cf886d5fdb53bb84ec03c1b">ARM_ETH_MAC_EVENT_TX_FRAME</a> </td><td align="left">Occurs after call to <a class="el" href="group__eth__mac__interface__gr.html#ga5bf58defdb239ed7dc948f1da147a1c3">ARM_ETH_MAC_SendFrame</a> to indicate that the frame is transmitted. </td></tr>
+<td align="left"><a class="el" href="group___e_t_h___m_a_c__events.html#ga0c0328ff7cf886d5fdb53bb84ec03c1b">ARM_ETH_MAC_EVENT_TX_FRAME</a> </td><td align="center">1 </td><td align="left">Occurs after call to <a class="el" href="group__eth__mac__interface__gr.html#ga5bf58defdb239ed7dc948f1da147a1c3">ARM_ETH_MAC_SendFrame</a> to indicate that the frame is transmitted. </td></tr>
 <tr>
-<td>2 </td><td align="left"><a class="el" href="group___e_t_h___m_a_c__events.html#ga1f3bdb219afa8f2a121b58cc84f5761c">ARM_ETH_MAC_EVENT_WAKEUP</a> </td><td align="left">Indicates that a Magic Packet is received while the driver is in Sleep mode (set by <a class="el" href="group__eth__mac__ctrls.html#ga4afe66589216f566f529af52f9075fdf">ARM_ETH_MAC_SLEEP</a> using <a class="el" href="group__eth__mac__interface__gr.html#gac3e90c66058d20077f04ac8e8b8d0536">ARM_ETH_MAC_Control</a>). </td></tr>
+<td align="left"><a class="el" href="group___e_t_h___m_a_c__events.html#ga1f3bdb219afa8f2a121b58cc84f5761c">ARM_ETH_MAC_EVENT_WAKEUP</a> </td><td align="center">2 </td><td align="left">Indicates that a Magic Packet is received while the driver is in Sleep mode (set by <a class="el" href="group__eth__mac__ctrls.html#ga4afe66589216f566f529af52f9075fdf">ARM_ETH_MAC_SLEEP</a> using <a class="el" href="group__eth__mac__interface__gr.html#gac3e90c66058d20077f04ac8e8b8d0536">ARM_ETH_MAC_Control</a>). </td></tr>
 <tr>
-<td>3 </td><td align="left"><a class="el" href="group___e_t_h___m_a_c__events.html#ga4afc71ecac964f195e27be4acdbe7c61">ARM_ETH_MAC_EVENT_TIMER_ALARM</a> </td><td align="left">Indicates that a Timer Alarm occurred that was set with <a class="el" href="group__eth__mac__time__control.html#ga04c2469ba027b020bc6b5baf3b51cf74">ARM_ETH_MAC_TIMER_SET_ALARM</a> using ARM_ETH_MAC_ControlTimer. </td></tr>
+<td align="left"><a class="el" href="group___e_t_h___m_a_c__events.html#ga4afc71ecac964f195e27be4acdbe7c61">ARM_ETH_MAC_EVENT_TIMER_ALARM</a> </td><td align="center">3 </td><td align="left">Indicates that a Timer Alarm occurred that was set with <a class="el" href="group__eth__mac__time__control.html#ga04c2469ba027b020bc6b5baf3b51cf74">ARM_ETH_MAC_TIMER_SET_ALARM</a> using ARM_ETH_MAC_ControlTimer. </td></tr>
 </table>
-
-</div>
-</div>
-<a class="anchor" id="gacb2c2ae06f32328775bffbdeaaabfb5d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t ARM_ETH_MAC_Uninitialize </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>De-initialize Ethernet MAC Device. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>The function <a class="el" href="group__eth__mac__interface__gr.html#gacb2c2ae06f32328775bffbdeaaabfb5d">ARM_ETH_MAC_Uninitialize</a> de-initializes the resources of Ethernet MAC interface.</p>
-<p>It is called when the middleware component stops operation and releases the software resources used by the interface. </p>
 
 </div>
 </div>
@@ -1441,7 +1475,7 @@ Seconds. </td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:42 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:02 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-RTOS RTX
-   &#160;<span id="projectnumber">Version 4.78</span>
+   &#160;<span id="projectnumber">Version 4.79</span>
    </div>
    <div id="projectbrief">CMSIS-RTOS RTX: Real-Time Operating System for Cortex-M processor-based devices</div>
   </td>
@@ -115,6 +115,13 @@ $(document).ready(function(){initNavTree('rtx_revision_history.html','');});
 <tr>
 <th>Version </th><th>Description  </th></tr>
 <tr>
+<td>V4.79 </td><td>Corrected: time delay parameter ‘millisec’ in all functions (osDelay, osSignalWait, …) is now treated as lower bound – wait for at least time given (before it could have been up to 1ms less).<br/>
+ Corrected: Lazy Context switching for Cortex-M4 with FPU could lead to a crash when thread which used FPU was terminated.<br/>
+ Corrected: osMailCAlloc only cleared the allocated memory block if it was available without waiting.<br/>
+ Corrected: osThreadCreate function returns NULL when trying to create more concurrent threads than defined in the configuration.<br/>
+ Improved source code MISRA compliance.<br/>
+   </td></tr>
+<tr>
 <td>V4.78 </td><td>Corrected: osTimerStart function accepts full 32-bit range for time delay value in milisec.<br/>
  Added: User Timer Callback Queue overflow reported through os_error(OS_ERROR_TIMER_OVF).<br/>
    </td></tr>
@@ -166,7 +173,7 @@ $(document).ready(function(){initNavTree('rtx_revision_history.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:59:00 for CMSIS-RTOS RTX by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:28 for CMSIS-RTOS RTX by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

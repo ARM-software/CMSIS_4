@@ -18,18 +18,18 @@
  * 3. This notice may not be removed or altered from any source distribution.
  *
  *
- * $Date:        22. January 2015
- * $Revision:    V2.02
+ * $Date:        02. June 2015
+ * $Revision:    V2.4
  *
  * Driver:       Driver_MCI0
  * Configured:   via RTE_Device.h configuration file
  * Project:      MCI Driver for NXP LPC18xx
- * -----------------------------------------------------------------------------
+ * --------------------------------------------------------------------------
  * Use the following configuration settings in the middleware component
  * to connect to this driver.
  *
- *   Configuration Setting               Value
- *   ---------------------               -----
+ *   Configuration Setting                 Value
+ *   ---------------------                 -----
  *   Connect to hardware via Driver_MCI# = 0
  * -------------------------------------------------------------------------- */
 
@@ -40,47 +40,32 @@
  */
 
 /* History:
- *  Version 2.02
+ *  Version 2.4
+ *    - Updated initialization, uninitialization and power procedures
+ *    - IRQ processing optimized
+ *    - Data timeout handling corrected
+ *    - Include file definitions moved to header file
+ *  Version 2.3
+ *    - FIFO Threshold Watermark Register values corrected
+ *  Version 2.2
  *    - High speed enabled under capabilities
  *    - Block size handling added to SetupTransfer function
- *  Version 2.01
+ *  Version 2.1
  *    - DMA descriptor handling corrected
  *    - Minor functional corrections
  *    - Card Detect event handling added
  *    - SD_RST pin handling added
- *  Version 2.00
+ *  Version 2.0
  *    - Updated to CMSIS Driver API V2.01
- *  Version 1.01
+ *  Version 1.1
  *    - Based on API V1.10 (namespace prefix ARM_ added)
- *  Version 1.00
+ *  Version 1.0
  *    - Initial release
  */
 
-#include "LPC18xx.h"
-#include "SCU_LPC18xx.h"
 #include "MCI_LPC18xx.h"
 
-#include "RTE_Device.h"
-#include "RTE_Components.h"
-
-#define ARM_MCI_DRV_VERSION ARM_DRIVER_VERSION_MAJOR_MINOR(2,02)  /* driver version */
-
-#if (defined(RTE_Drivers_MCI0) && !RTE_SDMMC)
-#error "SDMMC not configured in RTE_Device.h!"
-#endif
-
-#define SDMMC_DMA_DESC_CNT 4
-
-/* Clock Control Unit register bits */
-#define CCU_CLK_CFG_RUN   (1 << 0)
-#define CCU_CLK_CFG_AUTO  (1 << 1)
-#define CCU_CLK_STAT_RUN  (1 << 0)
-
-/* Reset Generation Unit register bits */
-#define RGU_RESET_CTRL0_SDIO_RST (1 << 20)
-
-/* CGU BASE_SDIO_CLK CLK_SEL definition */
-#define SDIO_CLK_SEL_PLL1 0x09
+#define ARM_MCI_DRV_VERSION ARM_DRIVER_VERSION_MAJOR_MINOR(2,4)  /* driver version */
 
 /* External function (system_LPC18xx.c) used to get SDMMC peripheral clock */
 extern uint32_t GetClockFreq (uint32_t clk_src);
@@ -192,10 +177,7 @@ static ARM_MCI_CAPABILITIES GetCapabilities (void) {
 */
 static int32_t Initialize (ARM_MCI_SignalEvent_t cb_event) {
 
-  if (MCI.flags & MCI_POWER) { return ARM_DRIVER_ERROR; }
-  if (MCI.flags & MCI_INIT)  { return ARM_DRIVER_OK;    }
-
-  MCI.cb_event = cb_event;
+  if (MCI.flags & MCI_INIT)  { return ARM_DRIVER_OK; }
 
   /* Enable GPIO register interface clock */
   LPC_CCU1->CLK_M3_GPIO_CFG |= CCU_CLK_CFG_AUTO | CCU_CLK_CFG_RUN;
@@ -295,13 +277,11 @@ static int32_t Initialize (ARM_MCI_SignalEvent_t cb_event) {
   /* Connect SDIO base clock to PLL1 */
   LPC_CGU->BASE_SDIO_CLK  = (0x01 << 11) | (SDIO_CLK_SEL_PLL1 << 24);
 
-  /* Clear status */
-  MCI.status.command_active  = 0;
-  MCI.status.transfer_active = 0;
-  MCI.status.sdio_interrupt  = 0;
-  MCI.status.ccs             = 0;
-  
-  MCI.flags = MCI_INIT;
+  /* Clear control structure */
+  memset (&MCI, 0, sizeof (MCI_INFO));
+
+  MCI.cb_event = cb_event;
+  MCI.flags    = MCI_INIT;
 
   return ARM_DRIVER_OK;
 }
@@ -314,60 +294,57 @@ static int32_t Initialize (ARM_MCI_SignalEvent_t cb_event) {
 */
 static int32_t Uninitialize (void) {
 
-  if (MCI.flags & MCI_POWER) { return ARM_DRIVER_ERROR; }
+  /* Change SDIO base clock from PLL1 to IRC */
+  LPC_CGU->BASE_SDIO_CLK  = (0x01 << 11) | (0x01 << 24);
 
-  if (MCI.flags & MCI_INIT) {
-    MCI.flags = 0;
-
-    /* Change SDIO base clock from PLL1 to IRC */
-    LPC_CGU->BASE_SDIO_CLK  = (0x01 << 11) | (0x01 << 24);
-
-    /* Unconfigure SD_CLK and SD_CMD and SD_DAT0 */
-    if (RTE_SD_CLK_PORT == 0x10) {
-      SCU_CLK_PinConfigure (RTE_SD_CLK_PIN, 0);
-    }
-    else {
-      SCU_PinConfigure(RTE_SD_CLK_PORT,  RTE_SD_CLK_PIN,  0);
-    }
-    SCU_PinConfigure(RTE_SD_CMD_PORT,  RTE_SD_CMD_PIN,  0);
-    SCU_PinConfigure(RTE_SD_DAT0_PORT, RTE_SD_DAT0_PIN, 0);
-    
-    #if (RTE_SDMMC_BUS_WIDTH_4)
-    /* SD_DAT[3..1] */
-    SCU_PinConfigure(RTE_SD_DAT1_PORT, RTE_SD_DAT1_PIN, 0);
-    SCU_PinConfigure(RTE_SD_DAT2_PORT, RTE_SD_DAT2_PIN, 0);
-    SCU_PinConfigure(RTE_SD_DAT3_PORT, RTE_SD_DAT3_PIN, 0);
-    
-      #if (RTE_SDMMC_BUS_WIDTH_8)
-      /* SD_DAT[7..4] */
-      SCU_PinConfigure(RTE_SD_DAT4_PORT, RTE_SD_DAT4_PIN, 0);
-      SCU_PinConfigure(RTE_SD_DAT5_PORT, RTE_SD_DAT5_PIN, 0);
-      SCU_PinConfigure(RTE_SD_DAT6_PORT, RTE_SD_DAT6_PIN, 0);
-      SCU_PinConfigure(RTE_SD_DAT7_PORT, RTE_SD_DAT7_PIN, 0);
-      #endif /* RTE_SDMMC_BUS_WIDTH_8 */
-    
-    #endif /* RTE_SDMMC_BUS_WIDTH_4 */
-
-    /* Unconfigure SD_CD (Card Detect) Pin */
-    #if (RTE_SD_CD_PIN_EN)
-      SCU_PinConfigure(RTE_SD_CD_PORT, RTE_SD_CD_PIN, 0);
-    #endif
-
-    /* Unconfigure SD_WP (Write Protect) Pin */
-    #if (RTE_SD_WP_PIN_EN)
-      SCU_PinConfigure(RTE_SD_WP_PORT, RTE_SD_WP_PIN, 0);
-    #endif
-    
-    /* Unconfigure SD_POW Pin */
-    #if (RTE_SD_POW_PIN_EN)
-      SCU_PinConfigure(RTE_SD_POW_PORT, RTE_SD_POW_PIN, 0);
-    #endif
-
-    /* Unconfigure SD_RST Pin */
-    #if (RTE_SD_RST_PIN_EN)
-      SCU_PinConfigure(RTE_SD_RST_PORT, RTE_SD_RST_PIN, 0);
-    #endif
+  /* Unconfigure SD_CLK and SD_CMD and SD_DAT0 */
+  if (RTE_SD_CLK_PORT == 0x10) {
+    SCU_CLK_PinConfigure (RTE_SD_CLK_PIN, 0);
   }
+  else {
+    SCU_PinConfigure(RTE_SD_CLK_PORT,  RTE_SD_CLK_PIN,  0);
+  }
+  SCU_PinConfigure(RTE_SD_CMD_PORT,  RTE_SD_CMD_PIN,  0);
+  SCU_PinConfigure(RTE_SD_DAT0_PORT, RTE_SD_DAT0_PIN, 0);
+  
+  #if (RTE_SDMMC_BUS_WIDTH_4)
+  /* SD_DAT[3..1] */
+  SCU_PinConfigure(RTE_SD_DAT1_PORT, RTE_SD_DAT1_PIN, 0);
+  SCU_PinConfigure(RTE_SD_DAT2_PORT, RTE_SD_DAT2_PIN, 0);
+  SCU_PinConfigure(RTE_SD_DAT3_PORT, RTE_SD_DAT3_PIN, 0);
+  
+    #if (RTE_SDMMC_BUS_WIDTH_8)
+    /* SD_DAT[7..4] */
+    SCU_PinConfigure(RTE_SD_DAT4_PORT, RTE_SD_DAT4_PIN, 0);
+    SCU_PinConfigure(RTE_SD_DAT5_PORT, RTE_SD_DAT5_PIN, 0);
+    SCU_PinConfigure(RTE_SD_DAT6_PORT, RTE_SD_DAT6_PIN, 0);
+    SCU_PinConfigure(RTE_SD_DAT7_PORT, RTE_SD_DAT7_PIN, 0);
+    #endif /* RTE_SDMMC_BUS_WIDTH_8 */
+  
+  #endif /* RTE_SDMMC_BUS_WIDTH_4 */
+
+  /* Unconfigure SD_CD (Card Detect) Pin */
+  #if (RTE_SD_CD_PIN_EN)
+    SCU_PinConfigure(RTE_SD_CD_PORT, RTE_SD_CD_PIN, 0);
+  #endif
+
+  /* Unconfigure SD_WP (Write Protect) Pin */
+  #if (RTE_SD_WP_PIN_EN)
+    SCU_PinConfigure(RTE_SD_WP_PORT, RTE_SD_WP_PIN, 0);
+  #endif
+  
+  /* Unconfigure SD_POW Pin */
+  #if (RTE_SD_POW_PIN_EN)
+    SCU_PinConfigure(RTE_SD_POW_PORT, RTE_SD_POW_PIN, 0);
+  #endif
+
+  /* Unconfigure SD_RST Pin */
+  #if (RTE_SD_RST_PIN_EN)
+    SCU_PinConfigure(RTE_SD_RST_PORT, RTE_SD_RST_PIN, 0);
+  #endif
+
+  MCI.flags = 0;
+
   return ARM_DRIVER_OK;
 }
 
@@ -380,29 +357,38 @@ static int32_t Uninitialize (void) {
 */
 static int32_t PowerControl (ARM_POWER_STATE state) {
 
-  if (!(MCI.flags & MCI_INIT)) return ARM_DRIVER_ERROR;
-
   switch (state) {
     case ARM_POWER_OFF:
-      if (MCI.flags & MCI_POWER) {
-        MCI.flags &= ~(MCI_POWER | MCI_SETUP);
+      /* Disable SDIO interrupts */
+      NVIC_DisableIRQ(SDIO_IRQn);
 
-        /* Disable SDIO interrupts */
-        NVIC_DisableIRQ(SDIO_IRQn);
+      MCI.flags = MCI_INIT;
 
-        /* Reset peripheral */
-        LPC_RGU->RESET_CTRL0 = RGU_RESET_CTRL0_SDIO_RST;
-        __NOP();
+      /* Clear status */
+      MCI.status.command_active   = 0U;
+      MCI.status.command_timeout  = 0U;
+      MCI.status.command_error    = 0U;
+      MCI.status.transfer_active  = 0U;
+      MCI.status.transfer_timeout = 0U;
+      MCI.status.transfer_error   = 0U;
+      MCI.status.sdio_interrupt   = 0U;
+      MCI.status.ccs              = 0U;
 
-        /* Disable SDIO interface clock */
-        LPC_CCU2->CLK_SDIO_CFG    = 0;
-        LPC_CCU1->CLK_M3_SDIO_CFG = 0;
-        LPC_CGU->BASE_SDIO_CLK    = 1;
-      }
+      /* Reset peripheral */
+      LPC_RGU->RESET_CTRL0 = RGU_RESET_CTRL0_SDIO_RST;
+      __NOP();
+
+      /* Disable SDIO interface clock */
+      LPC_CCU2->CLK_SDIO_CFG    = 0;
+      LPC_CCU1->CLK_M3_SDIO_CFG = 0;
       break;
 
     case ARM_POWER_FULL:
       if (!(MCI.flags & MCI_POWER)) {
+        /* Clear response and transfer variables */
+        MCI.response = NULL;
+        MCI.xfer.cnt = NULL;
+
         /* Enable SDIO clocks */
         LPC_CCU1->CLK_M3_SDIO_CFG |= CCU_CLK_CFG_AUTO | CCU_CLK_CFG_RUN;
         while (!(LPC_CCU1->CLK_M3_SDIO_CFG & CCU_CLK_STAT_RUN));
@@ -439,12 +425,12 @@ static int32_t PowerControl (ARM_POWER_STATE state) {
         LPC_SDMMC->CTRL = SDMMC_CTRL_INT_ENABLE | SDMMC_CTRL_USE_INTERNAL_DMAC;
 
         /* Set FIFO Threshold watermark */
-        LPC_SDMMC->FIFOTH = SDMMC_FIFOTH_DMA_MTS(1)   |
-                            SDMMC_FIFOTH_RX_WMARK(15) |
-                            SDMMC_FIFOTH_TX_WMARK(16) ;
+        LPC_SDMMC->FIFOTH = SDMMC_FIFOTH_DMA_MTS(0)   |
+                            SDMMC_FIFOTH_RX_WMARK(14) |
+                            SDMMC_FIFOTH_TX_WMARK(15) ;
 
         /* Set Bus Mode */
-        LPC_SDMMC->BMOD = SDMMC_BMOD_PBL(1) | SDMMC_BMOD_DE;
+        LPC_SDMMC->BMOD = SDMMC_BMOD_DE;
 
         /* Set descriptor address */
         LPC_SDMMC->DBADDR = (uint32_t)&SDMMC_DMA_Descriptor;
@@ -571,13 +557,11 @@ static int32_t SendCommand (uint32_t cmd, uint32_t arg, uint32_t flags, uint32_t
 
     case ARM_MCI_RESPONSE_SHORT:
     case ARM_MCI_RESPONSE_SHORT_BUSY:
-      if (response == NULL) { return ARM_DRIVER_ERROR_PARAMETER; }
       /* Short response expected */
       cmd |= SDMMC_CMD_RESPONSE_EXPECT;
       break;
 
     case ARM_MCI_RESPONSE_LONG:
-      if (response == NULL) { return ARM_DRIVER_ERROR_PARAMETER; }
       MCI.flags |= MCI_RESP_LONG;
       /* Long response expected */
       cmd |= SDMMC_CMD_RESPONSE_EXPECT | SDMMC_CMD_RESPONSE_LENGTH;
@@ -808,9 +792,12 @@ static int32_t Control (uint32_t control, uint32_t arg) {
       break;
 
     case ARM_MCI_DATA_TIMEOUT:
-      arg <<= 8;
-      arg |= LPC_SDMMC->TMOUT & 0xFF;
-      LPC_SDMMC->TMOUT = arg;
+      if (arg > 0xFFFFFF) {
+        /* Max timeout @ 50MHz is ~335ms: this could cause */
+        /* data timeout issues on slow devices             */
+        arg = 0xFFFFFF;
+      }
+      LPC_SDMMC->TMOUT = (arg << 8) | 0x40;
       break;
     
     case ARM_MCI_MONITOR_SDIO_INTERRUPT:
@@ -855,7 +842,7 @@ static ARM_MCI_STATUS GetStatus (void) {
 void SDIO_IRQHandler (void) {
   uint32_t rintsts, idsts;
   uint32_t rintclr, idclr;
-  uint32_t event, mask;
+  uint32_t event;
 
   event   = 0;
   rintclr = 0;
@@ -890,10 +877,58 @@ void SDIO_IRQHandler (void) {
     }
   }
   #endif
-  if (rintsts & SDMMC_RINTSTS_RE) {
-    rintclr |= SDMMC_RINTSTS_RE;
-    /* Response error */
-    event |= ARM_MCI_EVENT_COMMAND_ERROR;
+  
+  if (rintsts & SDMMC_RINT_ERR_SDIO_Msk) {
+    if (rintsts & SDMMC_RINTSTS_RE) {
+      rintclr |= SDMMC_RINTSTS_RE;
+      /* Response error */
+      event |= ARM_MCI_EVENT_COMMAND_ERROR;
+    }
+    if (rintsts & SDMMC_RINTSTS_RCRC) {
+      rintclr |= SDMMC_RINTSTS_RCRC;
+      /* Response CRC error */
+      event |= ARM_MCI_EVENT_COMMAND_ERROR;
+    }
+    if (rintsts & SDMMC_RINTSTS_DCRC) {
+      rintclr |= SDMMC_RINTSTS_DCRC;
+      /* Data CRC error */
+      event |= ARM_MCI_EVENT_TRANSFER_ERROR;
+    }
+    if (rintsts & SDMMC_RINTSTS_RTO_BAR) {
+      rintclr |= SDMMC_RINTSTS_RTO_BAR;
+      /* Response time-out/Boot Ack Received */
+      event |= ARM_MCI_EVENT_COMMAND_TIMEOUT;
+    }
+    if (rintsts & SDMMC_RINTSTS_DRTO_BDS) {
+      rintclr |= SDMMC_RINTSTS_DRTO_BDS;
+      /* Data read time-out / Boot Data Start              */
+      /* Card has not sent data within the time-out period */
+      event |= ARM_MCI_EVENT_TRANSFER_TIMEOUT;
+    }
+    if (rintsts & SDMMC_RINTSTS_HLE) {
+      rintclr |= SDMMC_RINTSTS_HLE;
+      /* Hardware locked error (command buffer full) */
+      event |= ARM_MCI_EVENT_COMMAND_ERROR;
+    }
+    if (rintsts & SDMMC_RINTSTS_SBE) {
+      rintclr |= SDMMC_RINTSTS_SBE;
+      /* Start-bit error */
+      event |= ARM_MCI_EVENT_TRANSFER_ERROR;
+    }
+    if (rintsts & SDMMC_RINTSTS_EBE) {
+      rintclr |= SDMMC_RINTSTS_EBE;
+      /* End-bit error (read)/write no CRC */
+      event |= ARM_MCI_EVENT_TRANSFER_ERROR;
+    }
+    if (rintsts & SDMMC_RINTSTS_SDIO_INTERRUPT) {
+      rintclr |= SDMMC_RINTSTS_SDIO_INTERRUPT;
+      /* Interrupt from SDIO card */
+      event |= ARM_MCI_EVENT_SDIO_INTERRUPT;
+      MCI.status.sdio_interrupt = 1;
+
+      /* Disable interrupt (must be re-enabled using Control) */
+      LPC_SDMMC->INTMASK &= ~SDMMC_INTMASK_SDIO_INT_MASK;
+    }
   }
   if (rintsts & SDMMC_RINTSTS_CDONE) {
     rintclr |= SDMMC_RINTSTS_CDONE;
@@ -916,62 +951,14 @@ void SDIO_IRQHandler (void) {
     /* Data transfer over */
     event |= ARM_MCI_EVENT_TRANSFER_COMPLETE;
   }
-  if (rintsts & SDMMC_RINTSTS_RCRC) {
-    rintclr |= SDMMC_RINTSTS_RCRC;
-    /* Response CRC error */
-    event |= ARM_MCI_EVENT_COMMAND_ERROR;
-  }
-  if (rintsts & SDMMC_RINTSTS_DCRC) {
-    rintclr |= SDMMC_RINTSTS_DCRC;
-    /* Data CRC error */
-    event |= ARM_MCI_EVENT_TRANSFER_ERROR;
-  }
-  if (rintsts & SDMMC_RINTSTS_RTO_BAR) {
-    rintclr |= SDMMC_RINTSTS_RTO_BAR;
-    /* Response time-out/Boot Ack Received */
-    event |= ARM_MCI_EVENT_COMMAND_TIMEOUT;
-  }
-  if (rintsts & SDMMC_RINTSTS_DRTO_BDS) {
-    rintclr |= SDMMC_RINTSTS_DRTO_BDS;
-    /* Data read time-out / Boot Data Start              */
-    /* Card has not sent data within the time-out period */
-    event |= ARM_MCI_EVENT_TRANSFER_TIMEOUT;
-  }
-  if (rintsts & SDMMC_RINTSTS_HLE) {
-    rintclr |= SDMMC_RINTSTS_HLE;
-    /* Hardware locked error (command buffer full) */
-    event |= ARM_MCI_EVENT_COMMAND_ERROR;
-  }
-  if (rintsts & SDMMC_RINTSTS_SBE) {
-    rintclr |= SDMMC_RINTSTS_SBE;
-    /* Start-bit error */
-    event |= ARM_MCI_EVENT_TRANSFER_ERROR;
-  }
-  if (rintsts & SDMMC_RINTSTS_EBE) {
-    rintclr |= SDMMC_RINTSTS_EBE;
-    /* End-bit error (read)/write no CRC */
-    event |= ARM_MCI_EVENT_TRANSFER_ERROR;
-  }
-  if (rintsts & SDMMC_RINTSTS_SDIO_INTERRUPT) {
-    rintclr |= SDMMC_RINTSTS_SDIO_INTERRUPT;
-    /* Interrupt from SDIO card */
-    event |= ARM_MCI_EVENT_SDIO_INTERRUPT;
-    MCI.status.sdio_interrupt = 1;
-
-    /* Disable interrupt (must be re-enabled using Control) */
-    LPC_SDMMC->INTMASK &= ~SDMMC_INTMASK_SDIO_INT_MASK;
-  }
 
   LPC_SDMMC->RINTSTS = rintclr;
   LPC_SDMMC->IDSTS   = idclr;
 
-  if (event && MCI.cb_event) {
-    mask = ARM_MCI_EVENT_TRANSFER_ERROR   |
-           ARM_MCI_EVENT_TRANSFER_TIMEOUT |
-           ARM_MCI_EVENT_TRANSFER_COMPLETE;
-    if (event & mask) {
-      MCI.status.transfer_active = 0;
+  if (event & MCI_TRANSFER_EVENT_Msk) {
+    MCI.status.transfer_active = 0;
 
+    if (MCI.cb_event) {
       if (event & ARM_MCI_EVENT_TRANSFER_ERROR) {
         (MCI.cb_event)(ARM_MCI_EVENT_TRANSFER_ERROR);
       }
@@ -982,12 +969,12 @@ void SDIO_IRQHandler (void) {
         (MCI.cb_event)(ARM_MCI_EVENT_TRANSFER_COMPLETE);
       }
     }
-    mask = ARM_MCI_EVENT_COMMAND_ERROR   |
-           ARM_MCI_EVENT_COMMAND_TIMEOUT |
-           ARM_MCI_EVENT_COMMAND_COMPLETE;
-    if (event & mask) {
-      MCI.status.command_active = 0;
+  }
+  
+  if (event & MCI_COMMAND_EVENT_Msk) {
+    MCI.status.command_active = 0;
 
+    if (MCI.cb_event) {
       if (event & ARM_MCI_EVENT_COMMAND_ERROR) {
         (MCI.cb_event)(ARM_MCI_EVENT_COMMAND_ERROR);
       }
@@ -998,11 +985,11 @@ void SDIO_IRQHandler (void) {
         (MCI.cb_event)(ARM_MCI_EVENT_COMMAND_COMPLETE);
       }
     }
-    mask = ARM_MCI_EVENT_CARD_INSERTED |
-           ARM_MCI_EVENT_CARD_REMOVED  |
-           ARM_MCI_EVENT_SDIO_INTERRUPT;
-    if (event & mask) {
-      (MCI.cb_event)(event & mask);
+  }
+
+  if (event & MCI_CONTROL_EVENT_Msk) {
+    if (MCI.cb_event) {
+      (MCI.cb_event)(event & MCI_CONTROL_EVENT_Msk);
     }
   }
 }

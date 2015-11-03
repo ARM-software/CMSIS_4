@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -157,45 +157,87 @@ Macros</h2></td></tr>
 <p>Specifies speed mode, link mode, checksum, and frame filtering modes. </p>
 <p>The function <a class="el" href="group__eth__mac__interface__gr.html#gac3e90c66058d20077f04ac8e8b8d0536">ARM_ETH_MAC_Control</a> with <em>control</em> = <a class="el" href="group__eth__mac__ctrls.html#ga7819c7a1aa7bbc13dc42d0fd7e75a23c">ARM_ETH_MAC_CONFIGURE</a> configures the Ethernet MAC interface as specified with <em>arg</em> listed bellow. </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="gab29ab9e295807f4c59ddd1c4642086d1"></a>
+<a class="anchor" id="ga8c5b40d018ecfad05fe2546ba717c1d4"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_ETH_MAC_ADDRESS_ALL&#160;&#160;&#160;(1UL &lt;&lt; 9)</td>
+          <td class="memname">#define ARM_ETH_MAC_SPEED_10M&#160;&#160;&#160;(<a class="el" href="_driver___e_t_h_8h.html#a1f834c4c785d7f69b1eaca011ee298ec">ARM_ETH_SPEED_10M</a>   &lt;&lt; <a class="el" href="_driver___e_t_h___m_a_c_8h.html#ad7fd5c5f4d4f39a56466c2d34cb699ef">ARM_ETH_MAC_SPEED_Pos</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Accept frames with any address (Promiscuous Mode) </p>
+<p>10 Mbps link speed </p>
 
 </div>
 </div>
-<a class="anchor" id="ga43792feab641c3c87eafb943351ab0f4"></a>
+<a class="anchor" id="ga29160c83a7b0952c64053d86789c6490"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_ETH_MAC_ADDRESS_BROADCAST&#160;&#160;&#160;(1UL &lt;&lt; 7)</td>
+          <td class="memname">#define ARM_ETH_MAC_SPEED_100M&#160;&#160;&#160;(<a class="el" href="_driver___e_t_h_8h.html#a3bddfc4cf5645f8568d9cb6621fd606a">ARM_ETH_SPEED_100M</a>  &lt;&lt; <a class="el" href="_driver___e_t_h___m_a_c_8h.html#ad7fd5c5f4d4f39a56466c2d34cb699ef">ARM_ETH_MAC_SPEED_Pos</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Accept frames with Broadcast address. </p>
+<p>100 Mbps link speed </p>
 
 </div>
 </div>
-<a class="anchor" id="ga1d3ff8c63362b385548fe91730f20588"></a>
+<a class="anchor" id="ga8acefed744d8397a1777b9fd0e6230d2"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_ETH_MAC_ADDRESS_MULTICAST&#160;&#160;&#160;(1UL &lt;&lt; 8)</td>
+          <td class="memname">#define ARM_ETH_MAC_SPEED_1G&#160;&#160;&#160;(<a class="el" href="_driver___e_t_h_8h.html#a218f470079b7c04de6776d467a53772a">ARM_ETH_SPEED_1G</a>    &lt;&lt; <a class="el" href="_driver___e_t_h___m_a_c_8h.html#ad7fd5c5f4d4f39a56466c2d34cb699ef">ARM_ETH_MAC_SPEED_Pos</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Accept frames with any Multicast address. </p>
+<p>1 Gpbs link speed </p>
+
+</div>
+</div>
+<a class="anchor" id="gadb0fe2c5a1e21b0656d39c788ae22f36"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_ETH_MAC_DUPLEX_HALF&#160;&#160;&#160;(<a class="el" href="_driver___e_t_h_8h.html#acb15afc2bfe61c56049b7279d6eae8fe">ARM_ETH_DUPLEX_HALF</a> &lt;&lt; <a class="el" href="_driver___e_t_h___m_a_c_8h.html#a245688f6265e8d017435dc6d2c233b87">ARM_ETH_MAC_DUPLEX_Pos</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Half duplex link. </p>
+
+</div>
+</div>
+<a class="anchor" id="gad5a7d4b5b8a31825eff1504e3828d8f6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_ETH_MAC_DUPLEX_FULL&#160;&#160;&#160;(<a class="el" href="_driver___e_t_h_8h.html#a7848c83cd1fd6b2645c17919c2990354">ARM_ETH_DUPLEX_FULL</a> &lt;&lt; <a class="el" href="_driver___e_t_h___m_a_c_8h.html#a245688f6265e8d017435dc6d2c233b87">ARM_ETH_MAC_DUPLEX_Pos</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Full duplex link. </p>
+
+</div>
+</div>
+<a class="anchor" id="gab32765f35c35b672ee476278fe24a24e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_ETH_MAC_LOOPBACK&#160;&#160;&#160;(1UL &lt;&lt; 4)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Loop-back test mode. </p>
 
 </div>
 </div>
@@ -227,87 +269,45 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gad5a7d4b5b8a31825eff1504e3828d8f6"></a>
+<a class="anchor" id="ga43792feab641c3c87eafb943351ab0f4"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_ETH_MAC_DUPLEX_FULL&#160;&#160;&#160;(<a class="el" href="_driver___e_t_h_8h.html#a7848c83cd1fd6b2645c17919c2990354">ARM_ETH_DUPLEX_FULL</a> &lt;&lt; <a class="el" href="_driver___e_t_h___m_a_c_8h.html#a245688f6265e8d017435dc6d2c233b87">ARM_ETH_MAC_DUPLEX_Pos</a>)</td>
+          <td class="memname">#define ARM_ETH_MAC_ADDRESS_BROADCAST&#160;&#160;&#160;(1UL &lt;&lt; 7)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Full duplex link. </p>
+<p>Accept frames with Broadcast address. </p>
 
 </div>
 </div>
-<a class="anchor" id="gadb0fe2c5a1e21b0656d39c788ae22f36"></a>
+<a class="anchor" id="ga1d3ff8c63362b385548fe91730f20588"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_ETH_MAC_DUPLEX_HALF&#160;&#160;&#160;(<a class="el" href="_driver___e_t_h_8h.html#acb15afc2bfe61c56049b7279d6eae8fe">ARM_ETH_DUPLEX_HALF</a> &lt;&lt; <a class="el" href="_driver___e_t_h___m_a_c_8h.html#a245688f6265e8d017435dc6d2c233b87">ARM_ETH_MAC_DUPLEX_Pos</a>)</td>
+          <td class="memname">#define ARM_ETH_MAC_ADDRESS_MULTICAST&#160;&#160;&#160;(1UL &lt;&lt; 8)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Half duplex link. </p>
+<p>Accept frames with any Multicast address. </p>
 
 </div>
 </div>
-<a class="anchor" id="gab32765f35c35b672ee476278fe24a24e"></a>
+<a class="anchor" id="gab29ab9e295807f4c59ddd1c4642086d1"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_ETH_MAC_LOOPBACK&#160;&#160;&#160;(1UL &lt;&lt; 4)</td>
+          <td class="memname">#define ARM_ETH_MAC_ADDRESS_ALL&#160;&#160;&#160;(1UL &lt;&lt; 9)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Loop-back test mode. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga29160c83a7b0952c64053d86789c6490"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_ETH_MAC_SPEED_100M&#160;&#160;&#160;(<a class="el" href="_driver___e_t_h_8h.html#a3bddfc4cf5645f8568d9cb6621fd606a">ARM_ETH_SPEED_100M</a>  &lt;&lt; <a class="el" href="_driver___e_t_h___m_a_c_8h.html#ad7fd5c5f4d4f39a56466c2d34cb699ef">ARM_ETH_MAC_SPEED_Pos</a>)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>100 Mbps link speed </p>
-
-</div>
-</div>
-<a class="anchor" id="ga8c5b40d018ecfad05fe2546ba717c1d4"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_ETH_MAC_SPEED_10M&#160;&#160;&#160;(<a class="el" href="_driver___e_t_h_8h.html#a1f834c4c785d7f69b1eaca011ee298ec">ARM_ETH_SPEED_10M</a>   &lt;&lt; <a class="el" href="_driver___e_t_h___m_a_c_8h.html#ad7fd5c5f4d4f39a56466c2d34cb699ef">ARM_ETH_MAC_SPEED_Pos</a>)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>10 Mbps link speed </p>
-
-</div>
-</div>
-<a class="anchor" id="ga8acefed744d8397a1777b9fd0e6230d2"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_ETH_MAC_SPEED_1G&#160;&#160;&#160;(<a class="el" href="_driver___e_t_h_8h.html#a218f470079b7c04de6776d467a53772a">ARM_ETH_SPEED_1G</a>    &lt;&lt; <a class="el" href="_driver___e_t_h___m_a_c_8h.html#ad7fd5c5f4d4f39a56466c2d34cb699ef">ARM_ETH_MAC_SPEED_Pos</a>)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>1 Gpbs link speed </p>
+<p>Accept frames with any address (Promiscuous Mode) </p>
 
 </div>
 </div>
@@ -316,7 +316,7 @@ Macros</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:42 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:02 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

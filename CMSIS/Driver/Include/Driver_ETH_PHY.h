@@ -59,7 +59,7 @@
 #define ARM_ETH_PHY_DUPLEX_FULL         (ARM_ETH_DUPLEX_FULL << ARM_ETH_PHY_DUPLEX_Pos) ///< Full duplex link
 #define ARM_ETH_PHY_AUTO_NEGOTIATE      (1UL << 3)                                      ///< Auto Negotiation mode
 #define ARM_ETH_PHY_LOOPBACK            (1UL << 4)                                      ///< Loop-back test mode
-#define ARM_ETH_PHY_ISOLATE             (1UL << 5)                                      ///< Isolate PHY from MII interface
+#define ARM_ETH_PHY_ISOLATE             (1UL << 5)                                      ///< Isolate PHY from MII/RMII interface
 
 
 // Function documentation

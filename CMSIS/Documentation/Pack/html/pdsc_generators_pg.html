@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.3.3</span>
+   &#160;<span id="projectnumber">Version 1.4.0</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -239,7 +239,7 @@ $(document).ready(function(){initNavTree('pdsc_generators_pg.html','');});
 <tr>
 <td>description </td><td>Briefly describes the generator tool. </td><td>xs:string </td><td>0..1  </td></tr>
 <tr>
-<td><a class="el" href="pdsc_generators_pg.html#element_gen_select">select</a> </td><td>Complex type describing a device (specified by the device name, vendor, and variant). </td><td>GeneratorSelectType </td><td>0..1  </td></tr>
+<td><a class="el" href="pdsc_generators_pg.html#element_gen_select">select</a> </td><td>Complex type specifying the configured device. A device is uniquely identified by vendor, name or variant and processor name in case of devices with multiple processors. </td><td>GeneratorSelectType </td><td>0..1  </td></tr>
 <tr>
 <td>workingDir </td><td>Directory to be set as current directory before launching the <code>&lt;command&gt;</code>. This is either an absolute or relative path to PDSC or GPDSC file. If not specified, the current directory is the directory of the project configured by the environment.  </td><td>xs:string </td><td>0..1  </td></tr>
 <tr>
@@ -259,7 +259,7 @@ $(document).ready(function(){initNavTree('pdsc_generators_pg.html','');});
 <hr/>
 <h1><a class="anchor" id="element_gen_select"></a>
 /package/generators/generator/select</h1>
-<p>This element contains information about the device and vendor that has been used to generate the GPDSC file. Only one such element can exist in <code>&lt;generators&gt;</code>.</p>
+<p>This element contains information about the vendor and device the GPDSC file has been generated for. Only one such element can exist in <code>&lt;generators&gt;</code>.</p>
 <p><b>Example:</b> </p>
 <div class="fragment"><div class="line">&lt;generators&gt;</div>
 <div class="line">  &lt;generator <span class="keywordtype">id</span>=<span class="stringliteral">&quot;DAVE3&quot;</span>&gt;</div>
@@ -275,11 +275,13 @@ $(document).ready(function(){initNavTree('pdsc_generators_pg.html','');});
 <tr>
 <th>Attributes </th><th>Description </th><th>Type </th><th>Use  </th></tr>
 <tr>
-<td>Dvendor </td><td>Vendor name of the target device. Use predefined values as listed in the table <a class="el" href="pdsc_family_pg.html#DeviceVendorEnum">Device Vendor</a>.  </td><td>DeviceVendorEnum </td><td>required  </td></tr>
+<td>Dvendor </td><td>Vendor name of the targeted device. Use predefined values as listed in the table <a class="el" href="pdsc_family_pg.html#DeviceVendorEnum">Device Vendor</a>.  </td><td>DeviceVendorEnum </td><td>required  </td></tr>
 <tr>
-<td>Dname </td><td>Name of the target device. </td><td>xs:string </td><td>optional  </td></tr>
+<td>Dname </td><td>Name of the targeted device. If no Dvariant is specified this tag is required </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
-<td>Dvariant </td><td>Name of a device variant. </td><td>xs:string </td><td>optional  </td></tr>
+<td>Dvariant </td><td>Name of the targeted device variant. If a variant is specified, the device name will be ignored and the variant rules. If no Dname is specified, this tag is required. </td><td>xs:string </td><td>optional  </td></tr>
+<tr>
+<td>Pname </td><td>Name of the targeted processor of a device with multiple processors. For devices with multiple processors this tag is required. </td><td>xs:string </td><td>optional  </td></tr>
 </table>
 <p>&#160;</p>
 <hr/>
@@ -431,7 +433,7 @@ $(document).ready(function(){initNavTree('pdsc_generators_pg.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="_pack_format.html">Pack Description (*.PDSC) Format</a></li>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:58 for CMSIS-Pack by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:26 for CMSIS-Pack by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

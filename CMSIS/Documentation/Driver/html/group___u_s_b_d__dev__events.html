@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -143,59 +143,17 @@ Macros</h2></td></tr>
 <p>This section provides the event values for the <a class="el" href="group__usbd__interface__gr.html#gafe58a4db1d26b21ca5d418ee49e103a5">ARM_USBD_SignalDeviceEvent</a> callback function.</p>
 <p>The following call back notification events are generated: </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="ga689d1e031013d0e66aeef4243490d843"></a>
+<a class="anchor" id="ga32546413cfe55154351f74fb56de1045"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_USBD_EVENT_HIGH_SPEED&#160;&#160;&#160;(1UL &lt;&lt; 3)</td>
+          <td class="memname">#define ARM_USBD_EVENT_VBUS_ON&#160;&#160;&#160;(1UL &lt;&lt; 0)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>USB switch to High Speed occurred. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga489e1b88f7b0361494ca3a8dc73c227a"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_USBD_EVENT_RESET&#160;&#160;&#160;(1UL &lt;&lt; 2)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>USB Reset occurred. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga5b1c9884b237ba7778f79761e5db9f45"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_USBD_EVENT_RESUME&#160;&#160;&#160;(1UL &lt;&lt; 5)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>USB Resume occurred. </p>
-
-</div>
-</div>
-<a class="anchor" id="ga74dc7c0ba71baf285400d5a555224653"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_USBD_EVENT_SUSPEND&#160;&#160;&#160;(1UL &lt;&lt; 4)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>USB Suspend occurred. </p>
+<p>USB Device VBUS On. </p>
 
 </div>
 </div>
@@ -213,17 +171,59 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga32546413cfe55154351f74fb56de1045"></a>
+<a class="anchor" id="ga489e1b88f7b0361494ca3a8dc73c227a"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_USBD_EVENT_VBUS_ON&#160;&#160;&#160;(1UL &lt;&lt; 0)</td>
+          <td class="memname">#define ARM_USBD_EVENT_RESET&#160;&#160;&#160;(1UL &lt;&lt; 2)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>USB Device VBUS On. </p>
+<p>USB Reset occurred. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga689d1e031013d0e66aeef4243490d843"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_USBD_EVENT_HIGH_SPEED&#160;&#160;&#160;(1UL &lt;&lt; 3)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>USB switch to High Speed occurred. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga74dc7c0ba71baf285400d5a555224653"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_USBD_EVENT_SUSPEND&#160;&#160;&#160;(1UL &lt;&lt; 4)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>USB Suspend occurred. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga5b1c9884b237ba7778f79761e5db9f45"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_USBD_EVENT_RESUME&#160;&#160;&#160;(1UL &lt;&lt; 5)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>USB Resume occurred. </p>
 
 </div>
 </div>
@@ -232,7 +232,7 @@ Macros</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:43 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:03 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

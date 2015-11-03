@@ -20,6 +20,17 @@
   </taxonomy>
 
   <releases>
+    <release version="4.4.0" date="2015-09-11">
+      - CMSIS-Core     4.20   (see revision history for details)
+      - CMSIS-DSP      1.4.6  (no source code change [still labeled 1.4.5], see revision history for details)
+      - CMSIS-PACK     1.4.0  (adding memory attributes, algorithm style)
+      - CMSIS-Driver   2.03   (adding CAN [Controller Area Network] API)
+      - CMSIS-RTOS 
+        -- API         1.02   (unchanged)
+        -- RTX         4.79   (see revision history for details)
+      - CMSIS-SVD      1.2    (unchanged)
+      - CMSIS-DAP      1.1.0  (extended with SWO support)
+    </release>
     <release version="4.3.0" date="2015-03-20">
       - CMSIS-Core     4.10   (Cortex-M7 extended Cache Maintenance functions)
       - CMSIS-DSP      1.4.5  (see revision history for details)
@@ -97,7 +108,7 @@
   <devices>
     <!-- ******************************  Cortex-M0  ****************************** -->
     <family Dfamily="ARM Cortex M0" Dvendor="ARM:82">
-      <book      name="Device/ARM/Documents/cortex_m0_dgug.pdf"       title="Cortex-M4 Device Generic Users Guide"/>
+      <book      name="Device/ARM/Documents/cortex_m0_dgug.pdf"       title="Cortex-M0 Device Generic Users Guide"/>
       <description>
 The Cortex-M0 processor is an entry-level 32-bit ARM Cortex processor designed for a broad range of embedded applications. It offers significant benefits to developers, including:
 - simple, easy-to-use programmers model
@@ -119,7 +130,7 @@ The Cortex-M0 processor is an entry-level 32-bit ARM Cortex processor designed f
 
     <!-- ******************************  Cortex-M0P  ****************************** -->
     <family Dfamily="ARM Cortex M0 plus" Dvendor="ARM:82">
-      <book      name="Device/ARM/Documents/cortex_m0p_dgug.pdf"       title="Cortex-M4 Device Generic Users Guide"/>
+      <book      name="Device/ARM/Documents/cortex_m0p_dgug.pdf"       title="Cortex-M0+ Device Generic Users Guide"/>
       <description>
 The Cortex-M0+ processor is an entry-level 32-bit ARM Cortex processor designed for a broad range of embedded applications. It offers significant benefits to developers, including:
 - simple, easy-to-use programmers model
@@ -190,7 +201,7 @@ The Cortex-M4 processor is an entry-level 32-bit ARM Cortex processor designed f
 
     <!-- ******************************  Cortex-M7  ****************************** -->
     <family Dfamily="ARM Cortex M7" Dvendor="ARM:82">
-      <!-- <book      name="Documents/..."                 title="ARM Cortex-M4 Device Generic Users Guide"/> -->
+      <book      name="Device/ARM/Documents/cortex_m7_dgug.pdf"       title="Cortex-M7 Device Generic Users Guide"/>
       <description>
 The Cortex-M4 processor is an entry-level 32-bit ARM Cortex processor designed for a broad range of embedded applications. It offers significant benefits to developers, including:
 - simple, easy-to-use programmers model
@@ -298,6 +309,13 @@ The ARM SC300 processor is an entry-level 32-bit ARM Cortex processor designed f
       <files>
         <file category="doc" name="CMSIS/Documentation/Driver/html/group__i2c__interface__gr.html"/>
         <file category="header" name="CMSIS/Driver/Include/Driver_I2C.h" />
+      </files>
+    </api>
+    <api Cclass="CMSIS Driver" Cgroup="CAN" Capiversion="1.00" exclusive="0">
+      <description>CAN Driver API for Cortex-M</description>
+      <files>
+        <file category="doc" name="CMSIS/Documentation/Driver/html/group__can__interface__gr.html"/>
+        <file category="header" name="CMSIS/Driver/Include/Driver_CAN.h" />
       </files>
     </api>
     <api Cclass="CMSIS Driver" Cgroup="Flash" Capiversion="2.00" exclusive="0">
@@ -873,7 +891,7 @@ The ARM SC300 processor is an entry-level 32-bit ARM Cortex processor designed f
   
   <components>
     <!-- CMSIS-Core component -->
-    <component Cclass="CMSIS" Cgroup="CORE" Cversion="4.1.0" condition="CMSIS Core">
+    <component Cclass="CMSIS" Cgroup="CORE" Cversion="4.2.0" condition="Cortex-M Device">
       <description>CMSIS-CORE for Cortex-M, SC000, and SC300</description>
       <files>
         <!-- CPU independent -->
@@ -1066,7 +1084,7 @@ The ARM SC300 processor is an entry-level 32-bit ARM Cortex processor designed f
     </component>
 
     <!-- CMSIS-DSP component -->
-    <component Cclass="CMSIS" Cgroup="DSP" Cversion="1.4.5" condition="CMSIS DSP">
+    <component Cclass="CMSIS" Cgroup="DSP" Cversion="1.4.6" condition="CMSIS DSP">
       <description>CMSIS-DSP Library for Cortex-M, SC000, and SC300</description>
       <files>
         <!-- CPU independent -->
@@ -1094,14 +1112,14 @@ The ARM SC300 processor is an entry-level 32-bit ARM Cortex processor designed f
         <file category="library" condition="CM3_LE_GCC"       name="CMSIS/Lib/GCC/libarm_cortexM3l_math.a"     src="CMSIS/DSP_Lib/Source/GCC"/>
         <file category="library" condition="CM4_LE_GCC"       name="CMSIS/Lib/GCC/libarm_cortexM4l_math.a"     src="CMSIS/DSP_Lib/Source/GCC"/>
         <file category="library" condition="CM4F_LE_GCC"      name="CMSIS/Lib/GCC/libarm_cortexM4lf_math.a"    src="CMSIS/DSP_Lib/Source/GCC"/>
-        <!--file category="library" condition="CM7_LE_GCC"       name="CMSIS/Lib/GCC/libarm_cortexM7l_math.a"     src="CMSIS/DSP_Lib/Source/GCC"/-->
-        <!--file category="library" condition="CM7FSP_LE_GCC"    name="CMSIS/Lib/GCC/libarm_cortexM7lfsp_math.a"  src="CMSIS/DSP_Lib/Source/GCC"/-->
-        <!--file category="library" condition="CM7FDP_LE_GCC"    name="CMSIS/Lib/GCC/libarm_cortexM7lfdp_math.a"  src="CMSIS/DSP_Lib/Source/GCC"/-->
+        <file category="library" condition="CM7_LE_GCC"       name="CMSIS/Lib/GCC/libarm_cortexM7l_math.a"     src="CMSIS/DSP_Lib/Source/GCC"/>
+        <file category="library" condition="CM7FSP_LE_GCC"    name="CMSIS/Lib/GCC/libarm_cortexM7lfsp_math.a"  src="CMSIS/DSP_Lib/Source/GCC"/>
+        <file category="library" condition="CM7FDP_LE_GCC"    name="CMSIS/Lib/GCC/libarm_cortexM7lfdp_math.a"  src="CMSIS/DSP_Lib/Source/GCC"/>
       </files>
     </component>
 
     <!-- CMSIS-RTOS Keil RTX component -->
-    <component Cclass="CMSIS" Cgroup="RTOS" Csub="Keil RTX" Cversion="4.78.0" condition="Cortex-M Device Startup">
+    <component Cclass="CMSIS" Cgroup="RTOS" Csub="Keil RTX" Cversion="4.79.0" condition="Cortex-M Device Startup">
       <description>CMSIS-RTOS RTX implementation for Cortex-M, SC000, and SC300</description>
       <RTE_Components_h>
         <!-- the following content goes into file 'RTE_Components.h' -->
@@ -1181,6 +1199,7 @@ The ARM SC300 processor is an entry-level 32-bit ARM Cortex processor designed f
     <board name="uVision Simulator" vendor="Keil">
       <description>uVision Simulator</description>
       <mountedDevice    deviceIndex="0" Dvendor="ARM:82" Dname="ARMCM0"/>
+      <compatibleDevice deviceIndex="0" Dvendor="ARM:82" Dname="ARMCM0P"/>
       <compatibleDevice deviceIndex="0" Dvendor="ARM:82" Dname="ARMCM3"/>
       <compatibleDevice deviceIndex="0" Dvendor="ARM:82" Dname="ARMCM4_FP"/>
       <compatibleDevice deviceIndex="0" Dvendor="ARM:82" Dname="ARMCM7_DP"/>

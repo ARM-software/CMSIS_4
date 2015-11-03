@@ -18,31 +18,35 @@
  * 3. This notice may not be removed or altered from any source distribution.
  *
  *
- * $Date:        21. May 2014
- * $Revision:    V2.01
+ * $Date:        24. August 2015
+ * $Revision:    V2.5
  *
  * Driver:       Driver_I2C0, Driver_I2C1
  * Configured:   via RTE_Device.h configuration file
  * Project:      I2C Driver for NXP LPC18xx
- * -----------------------------------------------------------------------------
+ * --------------------------------------------------------------------------
  * Use the following configuration settings in the middleware component
  * to connect to this driver.
  *
- *   Configuration Setting               Value     I2C Interface
- *   ---------------------               -----     -------------
+ *   Configuration Setting                 Value   I2C Interface
+ *   ---------------------                 -----   -------------
  *   Connect to hardware via Driver_I2C# = 0       use I2C0
  *   Connect to hardware via Driver_I2C# = 1       use I2C1
  * -------------------------------------------------------------------------- */
 
 /* History:
- *  Version 2.01
+ *  Version 2.3
+ *    - Pending IRQ flag cleared after aborted transfer
+ *  Version 2.2
+ *    - Updated initialization, uninitialization and power procedures
+ *  Version 2.1
  *    - Updated to CMSIS Driver API V2.02
  *    - Added Multi-master support
- *  Version 2.00
+ *  Version 2.0
  *    - Based on API V2.00
- *  Version 1.01
+ *  Version 1.1
  *    - Based on API V1.10 (namespace prefix ARM_ added)
- *  Version 1.00
+ *  Version 1.0
  *    - Initial release
  */
 
@@ -56,7 +60,7 @@
 #include "RTE_Device.h"
 #include "RTE_Components.h"
 
-#define ARM_I2C_DRV_VERSION ARM_DRIVER_VERSION_MAJOR_MINOR(2,01) /* driver version */
+#define ARM_I2C_DRV_VERSION ARM_DRIVER_VERSION_MAJOR_MINOR(2,3) /* driver version */
 
 #if ((defined(RTE_Drivers_I2C0) || \
       defined(RTE_Drivers_I2C1))   \
@@ -143,21 +147,10 @@ static ARM_I2C_CAPABILITIES I2C_GetCapabilities (void) {
 */
 static int32_t I2Cx_Initialize (ARM_I2C_SignalEvent_t cb_event, I2C_RESOURCES *i2c) {
 
-  if (i2c->ctrl->flags & I2C_FLAG_POWER) {
-    /* Driver initialize not allowed */
-    return ARM_DRIVER_ERROR;
-  }
-  if (i2c->ctrl->flags & I2C_FLAG_INIT) {
-    /* Driver already initialized */
-    return ARM_DRIVER_OK;
-  }
-  i2c->ctrl->flags = I2C_FLAG_INIT;
-
-  /* Register driver callback function */
-  i2c->ctrl->cb_event = cb_event;
+  if (i2c->ctrl->flags & I2C_FLAG_INIT) { return ARM_DRIVER_OK; }
 
   /* Configure I2C Pins */
-  if (i2c->reg == LPC_I2C0) { 
+  if (i2c->reg == LPC_I2C0) {
     SCU_I2C_PinConfigure (SCU_I2C_PIN_MODE_STANDARD_FAST);
   }
   else if (i2c->reg == LPC_I2C1) { 
@@ -165,8 +158,11 @@ static int32_t I2Cx_Initialize (ARM_I2C_SignalEvent_t cb_event, I2C_RESOURCES *i
     SCU_PinConfigure (RTE_I2C1_SDA_PORT, RTE_I2C1_SDA_PIN, SCU_SFS_EZI | RTE_I2C1_SDA_FUNC);
   }
 
-  /* Clear driver status */
-  memset (&i2c->ctrl->status, 0, sizeof(ARM_I2C_STATUS));
+  /* Reset Run-Time information structure */
+  memset (i2c->ctrl, 0x00, sizeof (I2C_CTRL));
+
+  i2c->ctrl->cb_event = cb_event;
+  i2c->ctrl->flags    = I2C_FLAG_INIT;
 
   return ARM_DRIVER_OK;
 }
@@ -179,14 +175,6 @@ static int32_t I2Cx_Initialize (ARM_I2C_SignalEvent_t cb_event, I2C_RESOURCES *i
 */
 static int32_t I2Cx_Uninitialize (I2C_RESOURCES *i2c) {
 
-  if (!(i2c->ctrl->flags & I2C_FLAG_INIT)) {
-    /* Driver not initialized */
-    return ARM_DRIVER_OK;
-  }
-  if (i2c->ctrl->flags & I2C_FLAG_POWER) {
-    /* Driver needs POWER_OFF first */
-    return ARM_DRIVER_ERROR;
-  }
   i2c->ctrl->flags = 0;
 
   /* Unconfigure SCL and SDA pins */
@@ -210,26 +198,32 @@ static int32_t I2Cx_Uninitialize (I2C_RESOURCES *i2c) {
   \return      \ref execution_status
 */
 static int32_t I2Cx_PowerControl (ARM_POWER_STATE state, I2C_RESOURCES *i2c) {
-
-  if (!(i2c->ctrl->flags & I2C_FLAG_INIT)) {
-    /* Driver not initialized */
-    return ARM_DRIVER_ERROR;
-  }
+  uint32_t conset;
 
   switch (state) {
     case ARM_POWER_OFF:
-      if (!(i2c->ctrl->flags & I2C_FLAG_POWER)) {
-        /* Driver not powered */
-        break;
-      }
-      if (i2c->ctrl->status.busy) {
-        /* Transfer operation in progress */
-        return ARM_DRIVER_ERROR_BUSY;
-      }
-      i2c->ctrl->flags = I2C_FLAG_INIT;
-
       /* Disable I2C interrupts */
       NVIC_DisableIRQ (i2c->i2c_ev_irq);
+
+      if (i2c->ctrl->status.busy) {
+        /* Master: send STOP to I2C bus           */
+        /* Slave:  enter non-addressed Slave mode */
+        conset = I2C_CON_STO | i2c->ctrl->con_aa;
+        i2c->reg->CONSET = conset; 
+        i2c->reg->CONCLR = conset ^ I2C_CON_FLAGS;
+      }
+
+      i2c->ctrl->status.busy             = 0U;
+      i2c->ctrl->status.mode             = 0U;
+      i2c->ctrl->status.direction        = 0U;
+      i2c->ctrl->status.general_call     = 0U;
+      i2c->ctrl->status.arbitration_lost = 0U;
+      i2c->ctrl->status.bus_error        = 0U;
+
+      i2c->ctrl->stalled = 0U;
+      i2c->ctrl->snum    = 0U;
+
+      i2c->ctrl->flags   = I2C_FLAG_INIT;
 
       /* Disable I2C Operation */
       i2c->reg->CONCLR = I2C_CON_AA | I2C_CON_SI | I2C_CON_STA | I2C_CON_I2EN;
@@ -239,35 +233,32 @@ static int32_t I2Cx_PowerControl (ARM_POWER_STATE state, I2C_RESOURCES *i2c) {
       break;
 
     case ARM_POWER_FULL:
-      if (i2c->ctrl->flags & I2C_FLAG_POWER) {
-        /* Driver already powered */
-        break;
+      if ((i2c->ctrl->flags & I2C_FLAG_POWER) == 0U) {
+        /* Connect base clock */
+        *i2c->base_clk_reg = (1    << 11) |   /* Autoblock En               */
+                             (0x09 << 24) ;   /* PLL1 is APB  clock source  */
+
+        /* Enable I2C peripheral clock */
+        *i2c->pclk_cfg_reg = CCU_CLK_CFG_AUTO | CCU_CLK_CFG_RUN;
+        while (!((*i2c->pclk_stat_reg) & CCU_CLK_STAT_RUN));
+
+        /* Reset I2C peripheral */
+        LPC_RGU->RESET_CTRL1 = i2c->rgu_val;
+        while (!(LPC_RGU->RESET_ACTIVE_STATUS1 & i2c->rgu_val));
+
+        /* Enable I2C Operation */
+        i2c->reg->CONCLR = I2C_CON_FLAGS;
+        i2c->reg->CONSET = I2C_CON_I2EN;
+
+        i2c->ctrl->stalled = 0;
+        i2c->ctrl->con_aa  = 0;
+
+        /* Enable I2C interrupts */
+        NVIC_ClearPendingIRQ (i2c->i2c_ev_irq);
+        NVIC_EnableIRQ (i2c->i2c_ev_irq);
+
+        i2c->ctrl->flags |= I2C_FLAG_POWER;
       }
-
-      /* Connect base clock */
-      *i2c->base_clk_reg = (1    << 11) |   /* Autoblock En               */
-                           (0x09 << 24) ;   /* PLL1 is APB  clock source  */
-
-      /* Enable I2C peripheral clock */
-      *i2c->pclk_cfg_reg = CCU_CLK_CFG_AUTO | CCU_CLK_CFG_RUN;
-      while (!((*i2c->pclk_stat_reg) & CCU_CLK_STAT_RUN));
-
-      /* Reset I2C peripheral */
-      LPC_RGU->RESET_CTRL1 = i2c->rgu_val;
-      while (!(LPC_RGU->RESET_ACTIVE_STATUS1 & i2c->rgu_val));
-
-      /* Enable I2C Operation */
-      i2c->reg->CONCLR = I2C_CON_FLAGS;
-      i2c->reg->CONSET = I2C_CON_I2EN;
-
-      i2c->ctrl->stalled = 0;
-      i2c->ctrl->con_aa  = 0;
-
-      /* Enable I2C interrupts */
-      NVIC_ClearPendingIRQ (i2c->i2c_ev_irq);
-      NVIC_EnableIRQ (i2c->i2c_ev_irq);
-
-      i2c->ctrl->flags |= I2C_FLAG_POWER;
       break;
 
     default:
@@ -565,6 +556,7 @@ static int32_t I2Cx_Control (uint32_t control, uint32_t arg, I2C_RESOURCES *i2c)
       i2c->reg->CONSET = conset; 
       i2c->reg->CONCLR = conset ^ I2C_CON_FLAGS;
 
+      NVIC_ClearPendingIRQ (i2c->i2c_ev_irq);
       NVIC_EnableIRQ (i2c->i2c_ev_irq);
       break;
 

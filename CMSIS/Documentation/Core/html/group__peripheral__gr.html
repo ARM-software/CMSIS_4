@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-CORE
-   &#160;<span id="projectnumber">Version 4.10</span>
+   &#160;<span id="projectnumber">Version 4.20</span>
    </div>
    <div id="projectbrief">CMSIS-CORE support for Cortex-M processor-based devices</div>
   </td>
@@ -107,6 +107,8 @@ $(document).ready(function(){initNavTree('group__peripheral__gr.html','');});
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a>  </div>
   <div class="headertitle">
 <div class="title">Peripheral Access</div>  </div>
 </div><!--header-->
@@ -114,61 +116,88 @@ $(document).ready(function(){initNavTree('group__peripheral__gr.html','');});
 
 <p>Describes naming conventions, requirements, and optional features for accessing peripherals.  
 <a href="#details">More...</a></p>
-<p>Each peripheral provides a data type definition with a name that is composed of a prefix <b>&lt;<em>device abbreviation&gt;</em>_</b> and the <b>&lt;<em>peripheral name</em>&gt;_</b>, for example <b>LPC_UART</b> for the device <b>LPC</b> and the peripheral <b>UART</b>. The intention is to avoid name collisions caused by short names. If more peripherals exist of the same type, identifiers have a postfix consisting of a digit or letter, for example <b>LPC_UART0</b>, <b>LPC_UART1</b>.</p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ga286e3b913dbd236c7f48ea70c8821f4e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__peripheral__gr.html#ga286e3b913dbd236c7f48ea70c8821f4e">_VAL2FLD</a>(field, value)</td></tr>
+<tr class="memdesc:ga286e3b913dbd236c7f48ea70c8821f4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mask and shift a bit field value for assigning to result to a peripheral register.  <a href="#ga286e3b913dbd236c7f48ea70c8821f4e"></a><br/></td></tr>
+<tr class="separator:ga286e3b913dbd236c7f48ea70c8821f4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga139b6e261c981f014f386927ca4a8444"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__peripheral__gr.html#ga139b6e261c981f014f386927ca4a8444">_FLD2VAL</a>(field, value)</td></tr>
+<tr class="memdesc:ga139b6e261c981f014f386927ca4a8444"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extract from a peripheral register value the a bit field value.  <a href="#ga139b6e261c981f014f386927ca4a8444"></a><br/></td></tr>
+<tr class="separator:ga139b6e261c981f014f386927ca4a8444"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description</h2>
+<p>The section below describes the naming conventions, requirements, and optional features for accessing device specific peripherals. Most of the rules also apply to the core peripherals. The <a class="el" href="device_h_pg.html">Device Header File &lt;device.h&gt;</a> contains typically these definition and also includes the core specific header files.</p>
+<p>Most of the definitions can be generated using the <a href="../../SVD/html/index.html"><b>CMSIS-SVD</b></a> System View Description for Peripherals. Refer to <a href="../../SVD/html/svd__s_v_d_conv_pg.html"><b>SVDConv.exe</b></a> for more information.</p>
+<p>Each peripheral provides a data type definition with a name that is composed of:</p>
 <ul>
-<li>The data type definition uses the standard C data types from the ANSI C header file &lt;stdint.h&gt;. IO Type Qualifiers are used to specify the access to peripheral variables. IO Type Qualifiers are indented to be used for automatic generation of debug information of peripheral registers and are defined as shown below:<br/>
- <div class="fragment"><div class="line"><span class="preprocessor">#define   __I     volatile const       </span></div>
-<div class="line"><span class="preprocessor">#define   __O     volatile             </span></div>
-<div class="line"><span class="preprocessor">#define   __IO    volatile             </span></div>
-</div><!-- fragment --></li>
+<li>prefix <b>&lt;<em>device abbreviation&gt;</em>_</b></li>
+<li><b>&lt;<em>peripheral name</em>&gt;</b></li>
+<li>postfix <b>_Type</b> or <b>_TypeDef</b> to identify a type definition.</li>
 </ul>
+<p>Example: <b>LPC_UART_TypeDef</b> for the device <b>LPC</b> and the peripheral <b>UART</b>.</p>
+<p>The data type definition uses standard C data types defined by the ANSI C header file &lt;stdint.h&gt;.</p>
 <ul>
-<li>The following typedef is an example for a UART. &lt;<em>device abbreviation</em>&gt;_UART_TypeDef: defines the generic register layout for all UART channels in a device. <br/>
- <div class="fragment"><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<li>IO Type Qualifiers are used to specify the access to peripheral variables. <table class="doxtable">
+<tr>
+<th align="left">IO Type Qualifier </th><th align="left">Type </th><th align="left">Description</th></tr>
+<tr>
+<td align="left"><b>__IM</b> </td><td align="left">Struct member </td><td align="left">Defines 'read only' permissions </td></tr>
+<tr>
+<td align="left"><b>__OM</b> </td><td align="left">Struct member </td><td align="left">Defines 'write only' permissions </td></tr>
+<tr>
+<td align="left"><b>__IOM</b> </td><td align="left">Struct member </td><td align="left">Defines 'read / write' permissions </td></tr>
+<tr>
+<td align="left"><b>__I</b> </td><td align="left">Scalar variable </td><td align="left">Defines 'read only' permissions </td></tr>
+<tr>
+<td align="left"><b>__O</b> </td><td align="left">Scalar variable </td><td align="left">Defines 'write only' permissions </td></tr>
+<tr>
+<td align="left"><b>__IO</b> </td><td align="left">Scalar variable </td><td align="left">Defines 'read / write' permissions </td></tr>
+</table>
+</li>
+</ul>
+<dl class="section note"><dt>Note</dt><dd><b>__IM</b>, <b>__OM</b>, <b>__IOM</b> are added in CMSIS-Core V4.20 to enhance support for C++. Prior version used <b>__I</b>, <b>__O</b>, <b>__IO</b> also for struct member definitions.</dd></dl>
+<p>The typedef <b>&lt;<em>device abbreviation</em>&gt;_UART_TypeDef</b> shown below defines the generic register layout for all UART channels in a device.</p>
+<div class="fragment"><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span></div>
 <div class="line">{</div>
 <div class="line">  <span class="keyword">union </span>{</div>
-<div class="line">  __I  uint8_t  RBR;                  <span class="comment">/* Offset: 0x000 (R/ )  Receiver Buffer Register            */</span></div>
-<div class="line">  __O  uint8_t  THR;                  <span class="comment">/* Offset: 0x000 ( /W)  Transmit Holding Register           */</span></div>
-<div class="line">  __IO uint8_t  DLL;                  <span class="comment">/* Offset: 0x000 (R/W)  Divisor Latch LSB                   */</span></div>
-<div class="line">       uint32_t RESERVED0;</div>
+<div class="line">  __IM  uint8_t  RBR;                 <span class="comment">/* Offset: 0x000 (R/ )  Receiver Buffer Register            */</span></div>
+<div class="line">  __OM  uint8_t  THR;                 <span class="comment">/* Offset: 0x000 ( /W)  Transmit Holding Register           */</span></div>
+<div class="line">  __IOM uint8_t  DLL;                 <span class="comment">/* Offset: 0x000 (R/W)  Divisor Latch LSB                   */</span></div>
+<div class="line">        uint32_t RESERVED0;</div>
 <div class="line">  };</div>
 <div class="line">  <span class="keyword">union </span>{</div>
-<div class="line">  __IO uint8_t  DLM;                  <span class="comment">/* Offset: 0x004 (R/W)  Divisor Latch MSB                   */</span></div>
-<div class="line">  __IO uint32_t IER;                  <span class="comment">/* Offset: 0x004 (R/W)  Interrupt Enable Register           */</span></div>
+<div class="line">  __IOM uint8_t  DLM;                 <span class="comment">/* Offset: 0x004 (R/W)  Divisor Latch MSB                   */</span></div>
+<div class="line">  __IOM uint32_t IER;                 <span class="comment">/* Offset: 0x004 (R/W)  Interrupt Enable Register           */</span></div>
 <div class="line">  };</div>
 <div class="line">  <span class="keyword">union </span>{</div>
-<div class="line">  __I  uint32_t IIR;                  <span class="comment">/* Offset: 0x008 (R/ )  Interrupt ID Register               */</span></div>
-<div class="line">  __O  uint8_t  FCR;                  <span class="comment">/* Offset: 0x008 ( /W)  FIFO Control Register               */</span></div>
+<div class="line">  __IM  uint32_t IIR;                 <span class="comment">/* Offset: 0x008 (R/ )  Interrupt ID Register               */</span></div>
+<div class="line">  __OM  uint8_t  FCR;                 <span class="comment">/* Offset: 0x008 ( /W)  FIFO Control Register               */</span></div>
 <div class="line">  };</div>
-<div class="line">  __IO uint8_t  LCR;                  <span class="comment">/* Offset: 0x00C (R/W)  Line Control Register               */</span></div>
-<div class="line">       uint8_t  RESERVED1[7];</div>
-<div class="line">  __I  uint8_t  LSR;                  <span class="comment">/* Offset: 0x014 (R/ )  Line Status Register                */</span></div>
-<div class="line">       uint8_t  RESERVED2[7];</div>
-<div class="line">  __IO uint8_t  SCR;                  <span class="comment">/* Offset: 0x01C (R/W)  Scratch Pad Register                */</span></div>
-<div class="line">       uint8_t  RESERVED3[3];</div>
-<div class="line">  __IO uint32_t ACR;                  <span class="comment">/* Offset: 0x020 (R/W)  Autobaud Control Register           */</span></div>
-<div class="line">  __IO uint8_t  ICR;                  <span class="comment">/* Offset: 0x024 (R/W)  IrDA Control Register               */</span></div>
-<div class="line">       uint8_t  RESERVED4[3];</div>
-<div class="line">  __IO uint8_t  FDR;                  <span class="comment">/* Offset: 0x028 (R/W)  Fractional Divider Register         */</span></div>
-<div class="line">       uint8_t  RESERVED5[7];</div>
-<div class="line">  __IO uint8_t  TER;                  <span class="comment">/* Offset: 0x030 (R/W)  Transmit Enable Register            */</span></div>
-<div class="line">       uint8_t  RESERVED6[39];</div>
-<div class="line">  __I  uint8_t  FIFOLVL;              <span class="comment">/* Offset: 0x058 (R/ )  FIFO Level Register                 */</span></div>
+<div class="line">  __IOM uint8_t  LCR;                 <span class="comment">/* Offset: 0x00C (R/W)  Line Control Register               */</span></div>
+<div class="line">        uint8_t  RESERVED1[7];</div>
+<div class="line">  __IM  uint8_t  LSR;                 <span class="comment">/* Offset: 0x014 (R/ )  Line Status Register                */</span></div>
+<div class="line">        uint8_t  RESERVED2[7];</div>
+<div class="line">  __IOM uint8_t  SCR;                 <span class="comment">/* Offset: 0x01C (R/W)  Scratch Pad Register                */</span></div>
+<div class="line">        uint8_t  RESERVED3[3];</div>
+<div class="line">  __IOM uint32_t ACR;                 <span class="comment">/* Offset: 0x020 (R/W)  Autobaud Control Register           */</span></div>
+<div class="line">  __IOM uint8_t  ICR;                 <span class="comment">/* Offset: 0x024 (R/W)  IrDA Control Register               */</span></div>
+<div class="line">        uint8_t  RESERVED4[3];</div>
+<div class="line">  __IOM uint8_t  FDR;                 <span class="comment">/* Offset: 0x028 (R/W)  Fractional Divider Register         */</span></div>
+<div class="line">        uint8_t  RESERVED5[7];</div>
+<div class="line">  __IOM uint8_t  TER;                 <span class="comment">/* Offset: 0x030 (R/W)  Transmit Enable Register            */</span></div>
+<div class="line">        uint8_t  RESERVED6[39];</div>
+<div class="line">  __IM  uint8_t  FIFOLVL;             <span class="comment">/* Offset: 0x058 (R/ )  FIFO Level Register                 */</span></div>
 <div class="line">} LPC_UART_TypeDef;</div>
-</div><!-- fragment --></li>
-</ul>
-<ul>
-<li>To access the registers of the UART defined above, pointers to a register structure are defined. In this example &lt;<em>device abbreviation</em>&gt;_UART# are two pointers to UARTs defined with above register structure. <br/>
- <div class="fragment"><div class="line"><span class="preprocessor">#define LPC_UART2             ((LPC_UART_TypeDef      *) LPC_UART2_BASE    )</span></div>
+</div><!-- fragment --><p>To access the registers of the UART defined above, pointers to this register structure are defined. If more instances of a peripheral exist, the variables have a postfix (digit or letter) that identifies the peripheral.</p>
+<p><b>Example:</b> In this example <b>LPC_UART2</b> and <b>LPC_UART3</b> are two pointers to UARTs defined with above register structure. <br/>
+ </p>
+<div class="fragment"><div class="line"><span class="preprocessor">#define LPC_UART2             ((LPC_UART_TypeDef      *) LPC_UART2_BASE    )</span></div>
 <div class="line"><span class="preprocessor">#define LPC_UART3             ((LPC_UART_TypeDef      *) LPC_UART3_BASE    )</span></div>
-</div><!-- fragment --></li>
-</ul>
-<ul>
-<li>The registers in the various UARTs can now be referred in the user code as shown below:<br/>
- <div class="fragment"><div class="line">LPC_UART1-&gt;DR   <span class="comment">// is the data register of UART1.</span></div>
-</div><!-- fragment --></li>
-</ul>
-<hr/>
+</div><!-- fragment --><p>The registers in the various UARTs can now be referred in the user code as shown below:<br/>
+ </p>
+<div class="fragment"><div class="line">val = LPC_UART2-&gt;DR   <span class="comment">// is the data register of UART1.</span></div>
+</div><!-- fragment --><hr/>
 <h1><a class="anchor" id="core_cmsis_pal_min_reqs"></a>
 Minimal Requirements</h1>
 <p>To access the peripheral registers and related function in a device, the files <b><em>device.h</em></b> and <b>core_cm<em>#</em>.h</b> define as a minimum: <br/>
@@ -179,17 +208,17 @@ Minimal Requirements</h1>
 <br/>
  <b>Example:</b> <div class="fragment"><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span></div>
 <div class="line">{</div>
-<div class="line">  __IO uint32_t CTRL;                 <span class="comment">/* Offset: 0x000 (R/W)  SysTick Control and Status Register */</span></div>
-<div class="line">  __IO uint32_t LOAD;                 <span class="comment">/* Offset: 0x004 (R/W)  SysTick Reload Value Register       */</span></div>
-<div class="line">  __IO uint32_t VAL;                  <span class="comment">/* Offset: 0x008 (R/W)  SysTick Current Value Register      */</span></div>
-<div class="line">  __I  uint32_t CALIB;                <span class="comment">/* Offset: 0x00C (R/ )  SysTick Calibration Register        */</span></div>
+<div class="line">  __IOM uint32_t CTRL;                <span class="comment">/* Offset: 0x000 (R/W)  SysTick Control and Status Register */</span></div>
+<div class="line">  __IOM uint32_t LOAD;                <span class="comment">/* Offset: 0x004 (R/W)  SysTick Reload Value Register       */</span></div>
+<div class="line">  __IOM uint32_t VAL;                 <span class="comment">/* Offset: 0x008 (R/W)  SysTick Current Value Register      */</span></div>
+<div class="line">  __IM  uint32_t CALIB;               <span class="comment">/* Offset: 0x00C (R/ )  SysTick Calibration Register        */</span></div>
 <div class="line">} <a class="code" href="struct_sys_tick___type.html" title="Structure type to access the System Timer (SysTick).">SysTick_Type</a>;</div>
 </div><!-- fragment --></li>
 </ul>
 <ul>
 <li><b>Base Address</b> for each peripheral (in case of multiple peripherals that use the same <b>register layout typedef</b> multiple base addresses are defined). <br/>
 <br/>
- <b>Example:</b> <div class="fragment"><div class="line"><span class="preprocessor">#define SysTick_BASE (SCS_BASE + 0x0010)            </span><span class="comment">/* SysTick Base Address     */</span><span class="preprocessor">    </span></div>
+ <b>Example:</b> <div class="fragment"><div class="line"><span class="preprocessor">#define SysTick_BASE (SCS_BASE + 0x0010)            </span><span class="comment">/* SysTick Base Address     */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></li>
 </ul>
 <ul>
@@ -199,25 +228,118 @@ Minimal Requirements</h1>
 </div><!-- fragment --></li>
 </ul>
 <p>These definitions allow accessing peripheral registers with simple assignments.</p>
-<p><b>Example:</b> <br/>
- </p>
-<div class="fragment"><div class="line">SysTick-&gt;CTRL = 0;    </div>
-</div><!-- fragment --><hr/>
+<ul>
+<li><b>Example:</b> <br/>
+ <div class="fragment"><div class="line">SysTick-&gt;CTRL = 0;</div>
+</div><!-- fragment --></li>
+</ul>
+<hr/>
 <h1><a class="anchor" id="core_cmsis_pal_opts"></a>
 Optional Features</h1>
 <p>Optionally, the file <b><em>device</em>.h</b> may define:</p>
 <ul>
-<li>#define constants, which simplify access to peripheral registers. These constants define bit-positions or other specific patterns that are required for programming peripheral registers. The identifiers start with <b>&lt;<em>device abbreviation</em>&gt;_</b> and <b>&lt;<em>peripheral name</em>&gt;_</b>. It is recommended to use CAPITAL letters for such #define constants.</li>
+<li><a class="el" href="group__peripheral__gr.html#core_cmsis_pal_bitfields">Register Bit Fields</a> and #define constants that simplify access to peripheral registers. These constants may define bit-positions or other specific patterns that are required for programming peripheral registers. The identifiers should start with <b>&lt;<em>device abbreviation</em>&gt;_</b> and <b>&lt;<em>peripheral name</em>&gt;_</b>. It is recommended to use CAPITAL letters for #define constants.</li>
 </ul>
 <ul>
-<li>More complex functions (i.e. status query before a sending register is accessed). Again, these functions start with <b>&lt;<em>device abbreviation</em>&gt;_</b> and <b>&lt;<em>peripheral name</em>&gt;_</b>. </li>
+<li>More complex functions (i.e. status query before a sending register is accessed). Again, these functions start with <b>&lt;<em>device abbreviation</em>&gt;_</b> and <b>&lt;<em>peripheral name</em>&gt;_</b>.</li>
 </ul>
+<hr/>
+<h1><a class="anchor" id="core_cmsis_pal_bitfields"></a>
+Register Bit Fields</h1>
+<p>For Core Register, macros define the position and the mask value for a bit field. It is recommended to create such definitions also for other peripheral registers.</p>
+<p><b>Example:</b></p>
+<p>Bit field definitions for register CPUID in SCB (System Control Block).</p>
+<div class="fragment"><div class="line"><span class="comment">/* SCB CPUID Register Definitions */</span></div>
+<div class="line"><span class="preprocessor">#define SCB_CPUID_IMPLEMENTER_Pos      24U                                       </span></div>
+<div class="line"><span class="preprocessor">#define SCB_CPUID_IMPLEMENTER_Msk      (0xFFUL &lt;&lt; SCB_CPUID_IMPLEMENTER_Pos)     </span></div>
+<div class="line"><span class="preprocessor">#define SCB_CPUID_VARIANT_Pos          20U                                       </span></div>
+<div class="line"><span class="preprocessor">#define SCB_CPUID_VARIANT_Msk          (0xFUL &lt;&lt; SCB_CPUID_VARIANT_Pos)          </span></div>
+<div class="line"><span class="preprocessor">#define SCB_CPUID_ARCHITECTURE_Pos     16U                                       </span></div>
+<div class="line"><span class="preprocessor">#define SCB_CPUID_ARCHITECTURE_Msk     (0xFUL &lt;&lt; SCB_CPUID_ARCHITECTURE_Pos)     </span></div>
+<div class="line"><span class="preprocessor">#define SCB_CPUID_PARTNO_Pos            4U                                       </span></div>
+<div class="line"><span class="preprocessor">#define SCB_CPUID_PARTNO_Msk           (0xFFFUL &lt;&lt; SCB_CPUID_PARTNO_Pos)         </span></div>
+<div class="line"><span class="preprocessor">#define SCB_CPUID_REVISION_Pos          0U                                       </span></div>
+<div class="line"><span class="preprocessor">#define SCB_CPUID_REVISION_Msk         (0xFUL </span><span class="comment">/*&lt;&lt; SCB_CPUID_REVISION_Pos*/</span><span class="preprocessor">)     </span></div>
+</div><!-- fragment --><p>The macros <b><a class="el" href="group__peripheral__gr.html#ga286e3b913dbd236c7f48ea70c8821f4e" title="Mask and shift a bit field value for assigning to result to a peripheral register.">_VAL2FLD(field, value)</a></b> and <b><a class="el" href="group__peripheral__gr.html#ga139b6e261c981f014f386927ca4a8444" title="Extract from a peripheral register value the a bit field value.">_FLD2VAL(field, value)</a></b> enable access to bit fields. </p>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a class="anchor" id="ga139b6e261c981f014f386927ca4a8444"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _FLD2VAL</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">field, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">value&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">field</td><td>name of bit field. </td></tr>
+    <tr><td class="paramname">value</td><td>value of the register</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>The macro <a class="el" href="group__peripheral__gr.html#ga139b6e261c981f014f386927ca4a8444">_FLD2VAL</a> uses the #define's <em>_Pos</em> and <em>_Msk</em> of the related bit field to extract the value of a bit field from a register.</p>
+<p><b>Example:</b> </p>
+<div class="fragment"><div class="line"><span class="keywordtype">id</span> = = <a class="code" href="group__peripheral__gr.html#ga139b6e261c981f014f386927ca4a8444" title="Extract from a peripheral register value the a bit field value.">_FLD2VAL</a>(SCB_CPUID_REVISION, SCB-&gt;CPUID);</div>
+</div><!-- fragment --> 
+</div>
+</div>
+<a class="anchor" id="ga286e3b913dbd236c7f48ea70c8821f4e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _VAL2FLD</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">field, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">value&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">field</td><td>name of bit field. </td></tr>
+    <tr><td class="paramname">value</td><td>value for the bit field.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>The macro <a class="el" href="group__peripheral__gr.html#ga286e3b913dbd236c7f48ea70c8821f4e">_VAL2FLD</a> uses the #define's <em>_Pos</em> and <em>_Msk</em> of the related bit field to shift bit-field values for assigning to a register.</p>
+<p><b>Example:</b> </p>
+<div class="fragment"><div class="line">SCB-&gt;CPUID = <a class="code" href="group__peripheral__gr.html#ga286e3b913dbd236c7f48ea70c8821f4e" title="Mask and shift a bit field value for assigning to result to a peripheral register.">_VAL2FLD</a>(SCB_CPUID_REVISION, 0x3) | <a class="code" href="group__peripheral__gr.html#ga286e3b913dbd236c7f48ea70c8821f4e" title="Mask and shift a bit field value for assigning to result to a peripheral register.">_VAL2FLD</a>(SCB_CPUID_VARIANT, 0x3);</div>
+</div><!-- fragment --> 
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:40 for CMSIS-CORE by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:39:59 for CMSIS-CORE by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

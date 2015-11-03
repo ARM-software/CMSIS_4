@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-RTOS RTX
-   &#160;<span id="projectnumber">Version 4.78</span>
+   &#160;<span id="projectnumber">Version 4.79</span>
    </div>
    <div id="projectbrief">CMSIS-RTOS RTX: Real-Time Operating System for Cortex-M processor-based devices</div>
   </td>
@@ -114,7 +114,6 @@ $(document).ready(function(){initNavTree('_overview.html','');});
 <div class="textblock"><p>This version of RTX implements the CMSIS-RTOS API, which is a generic RTOS interface for Cortex-M processor-based devices. The CMSIS-RTOS API provides a standardized interface for software components that require RTOS functionality. This RTX implementation gives therefore serious benefits to the users and the software industry.</p>
 <ul>
 <li>The unified feature set of the CMSIS-RTOS API simplifies sharing of software components and reduces learning efforts.</li>
-<li>The underlying RTOS kernel may be changed. This gives you the freedom to choose the RTOS that best fits the requirements.</li>
 <li>Middleware components that use the CMSIS-RTOS API are RTOS agnostic and CMSIS-RTOS compliant middleware is easier to adapt.</li>
 <li>This RTX implementation is available under the BSD license and can be freely distributed with project templates.</li>
 </ul>
@@ -130,7 +129,7 @@ CMSIS-RTOS RTX Structure</div></div>
 <p>Attributes of the CMSIS-RTOS RTX implementation:</p>
 <ul>
 <li>Provides the complete functions specified for a CMSIS-RTOS with the exception of the function <a class="el" href="_technical_data.html#osWait">osWait</a>.</li>
-<li>Interrupt Service Routines (ISR) may call most CMSIS-RTOS RTX functions.</li>
+<li>Interrupt Service Routines (ISR) <a class="el" href="_theory.html#isr_function_calls">may call some CMSIS-RTOS RTX functions</a>.</li>
 <li>Configurations options for Thread Stack. Refer to <a class="el" href="_thread_config.html">Thread Configuration</a> for more information.</li>
 <li>Fully deterministic context switching and deadlock avoidance. Refer to <a class="el" href="_theory.html#PriorityInversion">Priority Inversion on Resource Sharing</a> for more information.</li>
 <li>Optional Round-Robin Thread switching with configurable time-slices. Refer to <a class="el" href="_thread_config.html">Thread Configuration</a> for more information.</li>
@@ -139,7 +138,8 @@ CMSIS-RTOS RTX Structure</div></div>
 <ul>
 <li><a class="el" href="_theory.html">Theory of Operation</a> : provides general information about the operation of CMSIS-RTOS RTX.</li>
 <li><a class="el" href="_files.html">Directory Structure and File Overview</a> : explains the directories and files that are supplied as part of CMSIS-RTOS RTX.</li>
-<li><a class="el" href="_technical_data.html">Technical Data</a> : lists hardware requirements and limitations such as number of concurrent threads. </li>
+<li><a class="el" href="_technical_data.html">Technical Data</a> : lists hardware requirements and limitations such as number of concurrent threads.</li>
+<li><a class="el" href="_m_i_s_r_a_compliance.html">MISRA-C:2004 Compliance Exceptions</a> : describes the violations to the MISRA standard. </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
@@ -147,7 +147,7 @@ CMSIS-RTOS RTX Structure</div></div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="index.html">index</a></li>
-    <li class="footer">Generated on Fri Mar 20 2015 14:59:00 for CMSIS-RTOS RTX by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:28 for CMSIS-RTOS RTX by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

@@ -19,7 +19,7 @@
  *
  *
  * $Date:        14. April 2014
- * $Revision:    V1.00
+ * $Revision:    V1.0
  *
  * Project:      SCU Driver Definitions for NXP LPC18xx
  * -------------------------------------------------------------------------- */

@@ -18,8 +18,8 @@
  * 3. This notice may not be removed or altered from any source distribution.
  *
  *
- * $Date:        22. January 2015
- * $Revision:    V2.01
+ * $Date:        15. June 2015
+ * $Revision:    V2.2
  *
  * Project:      SSP Driver Definitions for NXP LPC18xx
  * -------------------------------------------------------------------------- */
@@ -143,10 +143,17 @@ typedef const struct _SSP_DMA {
   void                (*rx_callback)(uint32_t event); // Receive callback
 } SSP_DMA;
 
+/* SSP status */
+typedef struct _SSP_STATUS {
+  uint8_t busy;                         // Transmitter/Receiver busy flag
+  uint8_t data_lost;                    // Data lost: Receive overflow / Transmit underflow (cleared on start of transfer operation)
+  uint8_t mode_fault;                   // Mode fault detected; optional (cleared on start of transfer operation)
+} SSP_STATUS;
+
 /* SSP Information (Run-time) */
 typedef struct _SSP_INFO {
   ARM_SPI_SignalEvent_t cb_event;       // Event Callback
-  ARM_SPI_STATUS        status;         // Status flags
+  SSP_STATUS            status;         // Status flags
   uint8_t               state;          // Current SSP state
   uint32_t              mode;           // Current SSP mode
 } SSP_INFO;

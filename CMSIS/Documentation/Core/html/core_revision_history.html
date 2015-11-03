@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-CORE
-   &#160;<span id="projectnumber">Version 4.10</span>
+   &#160;<span id="projectnumber">Version 4.20</span>
    </div>
    <div id="projectbrief">CMSIS-CORE support for Cortex-M processor-based devices</div>
   </td>
@@ -115,6 +115,14 @@ $(document).ready(function(){initNavTree('core_revision_history.html','');});
 <tr>
 <th>Version </th><th>Description  </th></tr>
 <tr>
+<td>V4.20 </td><td>Corrected: MISRA-C:2004 violations. <br/>
+ Corrected: predefined macro for TI CCS Compiler. <br/>
+ Corrected: function <a class="el" href="group__intrinsic___s_i_m_d__gr.html#ga15d8899a173effb8ad8c7268da32b60e">__SHADD16</a> in arm_math.h. <br/>
+ Updated: cache functions for Cortex-M7. <br/>
+ Added: macros <a class="el" href="group__peripheral__gr.html#ga286e3b913dbd236c7f48ea70c8821f4e">_VAL2FLD</a>, <a class="el" href="group__peripheral__gr.html#ga139b6e261c981f014f386927ca4a8444">_FLD2VAL</a> to core_*.h. <br/>
+ Updated: functions <a class="el" href="group__intrinsic___s_i_m_d__gr.html#ga87618799672e1511e33964bc71467eb3">__QASX</a>, <a class="el" href="group__intrinsic___s_i_m_d__gr.html#gab41eb2b17512ab01d476fc9d5bd19520">__QSAX</a>, <a class="el" href="group__intrinsic___s_i_m_d__gr.html#gae0a649035f67627464fd80e7218c89d5">__SHASX</a>, <a class="el" href="group__intrinsic___s_i_m_d__gr.html#gafadbd89c36b5addcf1ca10dd392db3e9">__SHSAX</a>. <br/>
+ Corrected: potential bug in function <a class="el" href="group__intrinsic___s_i_m_d__gr.html#ga15d8899a173effb8ad8c7268da32b60e">__SHADD16</a>.   </td></tr>
+<tr>
 <td>V4.10 </td><td>Corrected: MISRA-C:2004 violations. <br/>
  Corrected: intrinsic functions <a class="el" href="group__intrinsic___c_p_u__gr.html#gacb2a8ca6eae1ba4b31161578b720c199">__DSB</a>, <a class="el" href="group__intrinsic___c_p_u__gr.html#gab1c9b393641dc2d397b3408fdbe72b96">__DMB</a>, <a class="el" href="group__intrinsic___c_p_u__gr.html#ga93c09b4709394d81977300d5f84950e5">__ISB</a>. <br/>
  Corrected: register definitions for ITCMCR register. <br/>
@@ -181,7 +189,7 @@ $(document).ready(function(){initNavTree('core_revision_history.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:40 for CMSIS-CORE by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:39:58 for CMSIS-CORE by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

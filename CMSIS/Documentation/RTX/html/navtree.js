@@ -6,16 +6,7 @@ var NAVTREE =
       [ "Define and Reference Object Definitions", "_using.html#DefRefObj", null ]
     ] ],
     [ "Configuration of CMSIS-RTOS RTX", "_configure.html", "_configure" ],
-    [ "CMSIS-RTOS RTX Tutorial", "_example_r_t_x__tutorial.html", [
-      [ "RTOS Blinky", "_example_r_t_x__tutorial.html#RTX_Tutorial_Start", null ],
-      [ "Idle Demon", "_example_r_t_x__tutorial.html#RTX_Tutorial_Idle", null ],
-      [ "Signals", "_example_r_t_x__tutorial.html#RTX_Tutorial_Signals", null ],
-      [ "Supervisor Calls (SVC)", "_example_r_t_x__tutorial.html#RTX_Tutorial_SVC", null ],
-      [ "Mutexes", "_example_r_t_x__tutorial.html#RTX_Tutorial_Mutexes", null ],
-      [ "Semaphores", "_example_r_t_x__tutorial.html#RTX_Tutorial_Semaphores", null ],
-      [ "Messages", "_example_r_t_x__tutorial.html#RTX_Tutorial_Messages", null ],
-      [ "Mailbox", "_example_r_t_x__tutorial.html#RTX_Tutorial_Mailboxes", null ]
-    ] ],
+    [ "CMSIS-RTOS RTX Tutorial", "_example_r_t_x__tutorial.html", null ],
     [ "Building the CMSIS-RTOS RTX Library", "_creating__r_t_x__l_i_b.html", null ],
     [ "Function Overview", "_function_overview.html", null ],
     [ "Revision History of CMSIS-RTOS RTX", "rtx_revision_history.html", null ],

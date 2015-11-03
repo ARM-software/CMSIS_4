@@ -19,7 +19,7 @@
  *
  *
  * $Date:        21. May 2014
- * $Revision:    V2.01
+ * $Revision:    V2.1
  *
  * Project:      I2C Driver Definitions for NXP LPC18xx
  * -------------------------------------------------------------------------- */

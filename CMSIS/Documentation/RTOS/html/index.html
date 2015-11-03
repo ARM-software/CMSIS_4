@@ -89,14 +89,14 @@ CMSIS-RTOS API Structure</div></div>
 <ul>
 <li>Function names, identifiers, and parameters are descriptive and easy to understand. The functions are powerful and flexible which reduces the number of functions exposed to the user.</li>
 <li><a class="el" href="group___c_m_s_i_s___r_t_o_s___thread_mgmt.html">Thread Management</a> allows you to define, create, and control threads.</li>
-<li>Interrupt Service Routines (ISR) can call many CMSIS-RTOS functions. When a CMSIS-RTOS function cannot be called from ISR context, it rejects the invocation.</li>
+<li>Interrupt Service Routines (ISR) can <a class="el" href="cmsis_os_h.html#isr_calls">call some CMSIS-RTOS functions</a>. When a CMSIS-RTOS function cannot be called from ISR context, it rejects the invocation.</li>
 <li>Three different thread event types support communication between multiple threads and/or ISR:<ul>
 <li><b>Signal:</b> is a flag that may be used to indicate specific conditions to a thread. Signals can be modified in an ISR or set from other threads.</li>
 <li><b>Message:</b> is a 32-bit value that can be sent to a thread or an ISR. Messages are buffered in a queue. The message type and queue size is defined in a descriptor.</li>
 <li><b>Mail:</b> is a fixed-size memory block that can be sent to a thread or an ISR. Mails are buffered in a queue and memory allocation is provided. The mail type and queue size is defined in a descriptor.</li>
 </ul>
 </li>
-<li><a class="el" href="group___c_m_s_i_s___r_t_o_s___mutex_mgmt.html">Mutex Management</a> and <a class="el" href="group___c_m_s_i_s___r_t_o_s___semaphore_mgmt.html">Semaphore Management</a> are incorporated.</li>
+<li><a class="el" href="group___c_m_s_i_s___r_t_o_s___mutex_mgmt.html">Mutexes</a> and <a class="el" href="group___c_m_s_i_s___r_t_o_s___semaphore_mgmt.html">Semaphores</a> are incorporated.</li>
 <li>CPU time can be schedule with the following functionalities:<ul>
 <li>A <em>timeout</em> parameter is incorporated in many CMSIS-RTOS functions to avoid system lockup. When a timeout is specified, the system waits until a resource is available or an event occurs. While waiting, other threads are scheduled.</li>
 <li>The <a class="el" href="group___c_m_s_i_s___r_t_o_s___wait.html#ga02e19d5e723bfb06ba9324d625162255">osDelay</a> function puts a thread into the state <b>WAITING</b> for a specified period of time.</li>
@@ -136,7 +136,7 @@ CMSIS-RTOS API Structure</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:59 for CMSIS-RTOS by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:27 for CMSIS-RTOS by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

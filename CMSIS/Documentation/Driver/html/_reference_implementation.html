@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -113,6 +113,7 @@ $(document).ready(function(){initNavTree('_reference_implementation.html','');})
 <div class="contents">
 <div class="textblock"><p>The API of the CMSIS-Drivers is published in the <a class="el" href="_reference_implementation.html#DriverHeaderFiles">Driver Header Files</a>.</p>
 <p>To simplify the development of a CMSIS-Driver both <a class="el" href="_reference_implementation.html#DriverTemplates">Driver Template Files</a> and <a class="el" href="_reference_implementation.html#DriverExamples">Driver Examples</a> are provided.</p>
+<p>ARM offers also a Software Pack for CMSIS-Driver Validation as described in <a class="el" href="_driver_validation.html">Driver Validation</a>.</p>
 <h1><a class="anchor" id="DriverHeaderFiles"></a>
 Driver Header Files</h1>
 <p>The API of each CMSIS-Driver is published in a header file. It is recommended to include the header file that is part of the CMSIS specification in the implementation file of the CMSIS-Driver.</p>
@@ -195,6 +196,8 @@ Driver Examples</h1>
 <tr>
 <td>USART_LPC18xx.c </td><td>USART_LPC18xx.h </td><td><a class="el" href="group__usart__interface__gr.html">USART Interface</a> </td></tr>
 <tr>
+<td>USBn_LPC18xx.c </td><td>USB_LPC18xx.h </td><td>common files for <a class="el" href="group__usbd__interface__gr.html">USB Device Interface</a> and <a class="el" href="group__usbh__interface__gr.html">USB Host Interface</a> </td></tr>
+<tr>
 <td>USBDn_LPC18xx.c </td><td><em>none</em> </td><td><a class="el" href="group__usbd__interface__gr.html">USB Device Interface</a> </td></tr>
 <tr>
 <td>USBHn_LPC18xx.c </td><td><em>none</em> </td><td><a class="el" href="group__usbh__interface__gr.html">USB Host Interface</a> </td></tr>
@@ -211,13 +214,13 @@ Driver Examples</h1>
 <td>SCU_LPC18xx.c </td><td>SCU_LPC18xx.h </td><td>SCU Interface for LPC1800 series </td></tr>
 </table>
 <p>The CMSIS-Drivers for the LPC1800 device have also many configuration options that are controls using #define statements in the file <b>.\CMSIS\Pack\Example\CMSIS_Driver\Config\RTE_Device.h</b>. Using this file, the I/O pin and DMA assignment can be set among other parameters such as USB speed and PHY interfaces.</p>
-<p>Further driver reference implementations are available in Device Family Packs (DFP) labelled with version 2.0.0 or higher. </p>
+<p>Further driver reference implementations are available in Device Family Packs (DFP) labeled with version 2.0.0 or higher. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:42 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:02 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.02</span>
+   &#160;<span id="projectnumber">Version 2.03</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -144,17 +144,17 @@ Macros</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Description</h2>
 <p>Defines Transmitter/Receiver protocol. </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="ga8b1669910f4db4bb3584543e7eb04d7a"></a>
+<a class="anchor" id="gacef87941052c21ebacd3dde6ce9d6925"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_SAI_PROTOCOL_AC97&#160;&#160;&#160;(6U &lt;&lt; ARM_SAI_PROTOCOL_Pos)</td>
+          <td class="memname">#define ARM_SAI_PROTOCOL_USER&#160;&#160;&#160;(0U &lt;&lt; ARM_SAI_PROTOCOL_Pos)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>AC'97. </p>
+<p>User defined (default) </p>
 
 </div>
 </div>
@@ -172,20 +172,6 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gab88b6f9b61a20927ac8f8d39e46c6349"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ARM_SAI_PROTOCOL_LSB_JUSTIFIED&#160;&#160;&#160;(3U &lt;&lt; ARM_SAI_PROTOCOL_Pos)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>LSB (right) justified. </p>
-
-</div>
-</div>
 <a class="anchor" id="gad931f9e8aedff4e6040d726d707862f0"></a>
 <div class="memitem">
 <div class="memproto">
@@ -200,17 +186,17 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gad43530c5b6ae1e89db587b20d71440b4"></a>
+<a class="anchor" id="gab88b6f9b61a20927ac8f8d39e46c6349"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_SAI_PROTOCOL_PCM_LONG&#160;&#160;&#160;(5U &lt;&lt; ARM_SAI_PROTOCOL_Pos)</td>
+          <td class="memname">#define ARM_SAI_PROTOCOL_LSB_JUSTIFIED&#160;&#160;&#160;(3U &lt;&lt; ARM_SAI_PROTOCOL_Pos)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>PCM with long frame. </p>
+<p>LSB (right) justified. </p>
 
 </div>
 </div>
@@ -228,17 +214,31 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gacef87941052c21ebacd3dde6ce9d6925"></a>
+<a class="anchor" id="gad43530c5b6ae1e89db587b20d71440b4"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ARM_SAI_PROTOCOL_USER&#160;&#160;&#160;(0U &lt;&lt; ARM_SAI_PROTOCOL_Pos)</td>
+          <td class="memname">#define ARM_SAI_PROTOCOL_PCM_LONG&#160;&#160;&#160;(5U &lt;&lt; ARM_SAI_PROTOCOL_Pos)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>User defined (default) </p>
+<p>PCM with long frame. </p>
+
+</div>
+</div>
+<a class="anchor" id="ga8b1669910f4db4bb3584543e7eb04d7a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARM_SAI_PROTOCOL_AC97&#160;&#160;&#160;(6U &lt;&lt; ARM_SAI_PROTOCOL_Pos)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>AC'97. </p>
 
 </div>
 </div>
@@ -247,7 +247,7 @@ Macros</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 20 2015 14:58:42 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Fri Sep 11 2015 14:40:03 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 
