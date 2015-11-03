@@ -140,11 +140,11 @@ Functions</h2></td></tr>
 <div class="line">  <a class="code" href="group___c_m_s_i_s___r_t_o_s___kernel_ctrl.html#ga53d078a801022e202e8115c083ece68e" title="Initialize the RTOS Kernel for creating objects.">osKernelInitialize</a> ();                    <span class="comment">// initialize CMSIS-RTOS</span></div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// initialize peripherals here</span></div>
-<div class="line">        </div>
+<div class="line"> </div>
 <div class="line">  <span class="comment">// create &#39;thread&#39; functions that start executing,</span></div>
 <div class="line">  <span class="comment">// example: tid_name = osThreadCreate (osThread(name), NULL);</span></div>
 <div class="line"> </div>
-<div class="line">        <a class="code" href="group___c_m_s_i_s___r_t_o_s___kernel_ctrl.html#gaab668ffd2ea76bb0a77ab0ab385eaef2" title="Start the RTOS Kernel.">osKernelStart</a> ();                       <span class="comment">// start thread execution </span></div>
+<div class="line">  <a class="code" href="group___c_m_s_i_s___r_t_o_s___kernel_ctrl.html#gaab668ffd2ea76bb0a77ab0ab385eaef2" title="Start the RTOS Kernel.">osKernelStart</a> ();                         <span class="comment">// start thread execution </span></div>
 <div class="line">}</div>
 </div><!-- fragment --> <h2 class="groupheader">Macro Definition Documentation</h2>
 <a class="anchor" id="ga702196bacccbb978620c736b209387f1"></a>
@@ -252,7 +252,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>allows you to scale a microsecond value to the frequency of the Kernel SysTick timer. This macro is typically used to check for short timeouts in polling loops.</p>
+<p>Allows you to scale a microsecond value to the frequency of the Kernel SysTick timer. This macro is typically used to check for short timeouts in polling loops.</p>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="group___c_m_s_i_s___r_t_o_s___kernel_ctrl.html#gad0262e4688e95d1e9038afd9bcc16001" title="Get the RTOS kernel system timer counter.">osKernelSysTick</a></dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -322,6 +322,7 @@ Functions</h2></td></tr>
 <dl class="section note"><dt>Note</dt><dd>MUST REMAIN UNCHANGED: <b>osKernelRunning</b> shall be consistent in every CMSIS-RTOS. </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>0 RTOS is not started, 1 RTOS is started.</dd></dl>
 <p>Identifies if the RTOS kernel is started. For systems with the option to start the <em>main</em> function as a thread this allows you to identify that the RTOS kernel is already running.</p>
+<dl class="section note"><dt>Note</dt><dd><a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a> can call this function.</dd></dl>
 <p><b>Code Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="cmsis__os_8h.html">cmsis_os.h</a>&quot;</span></div>
 <div class="line"> </div>
@@ -356,6 +357,7 @@ Functions</h2></td></tr>
 <li><em>osOK:</em> the RTOS kernel has been successfully started.</li>
 <li><em>osErrorISR:</em> <a class="el" href="group___c_m_s_i_s___r_t_o_s___kernel_ctrl.html#gaab668ffd2ea76bb0a77ab0ab385eaef2">osKernelStart</a> cannot be called from interrupt service routines.</li>
 </ul>
+<dl class="section note"><dt>Note</dt><dd>Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Code Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="cmsis__os_8h.html">cmsis_os.h</a>&quot;</span></div>
 <div class="line"> </div>
@@ -366,7 +368,7 @@ Functions</h2></td></tr>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">if</span> (!<a class="code" href="group___c_m_s_i_s___r_t_o_s___kernel_ctrl.html#ga3b571de44cd3094c643247a7397f86b5" title="Check if the RTOS kernel is already started.">osKernelRunning</a> ())  {                    <span class="comment">// is the kernel running ?</span></div>
 <div class="line">    <span class="keywordflow">if</span> (<a class="code" href="group___c_m_s_i_s___r_t_o_s___kernel_ctrl.html#gaab668ffd2ea76bb0a77ab0ab385eaef2" title="Start the RTOS Kernel.">osKernelStart</a> () != <a class="code" href="group___c_m_s_i_s___r_t_o_s___status.html#gae2e091fefc4c767117727bd5aba4d99ea9e1c9e2550bb4de8969a935acffc968f" title="function completed; no error or event occurred.">osOK</a>)  {             <span class="comment">// start the kernel</span></div>
-<div class="line">                                                     <span class="comment">// kernel could not be started</span></div>
+<div class="line">                                                 <span class="comment">// kernel could not be started</span></div>
 <div class="line">    }</div>
 <div class="line">  }</div>
 <div class="line">}</div>
@@ -390,6 +392,7 @@ Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>RTOS kernel system timer as 32-bit value</dd></dl>
 <p>Get the value of the Kernel SysTick timer for time comparison. The value is a rolling 32-bit counter that is typically composed of the kernel system interrupt timer value and an counter that counts these interrupts.</p>
 <p>This function allows the implementation of timeout checks. These are for example required when checking for a busy status in a device or peripheral initialization routine.</p>
+<dl class="section note"><dt>Note</dt><dd>Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Code Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="cmsis__os_8h.html">cmsis_os.h</a>&quot;</span></div>
 <div class="line"></div>
@@ -414,7 +417,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Sep 11 2015 14:40:27 for CMSIS-RTOS by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Tue Oct 27 2015 14:35:43 for CMSIS-RTOS by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

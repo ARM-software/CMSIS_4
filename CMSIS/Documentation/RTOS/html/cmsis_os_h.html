@@ -85,18 +85,6 @@ $(document).ready(function(){initNavTree('cmsis_os_h.html','');});
 <p>All definitions are prefixed with <b>os</b> to give an unique name space for CMSIS-RTOS functions. Definitions that are prefixed <b>os_</b> are not used in the application code but local to this header file. All definitions and functions that belong to a module are grouped and have a common prefix, i.e. <b>osThread</b>.</p>
 <p>Definitions that are marked with <b>CAN BE CHANGED</b> can be adapted towards the needs of the actual CMSIS-RTOS implementation. These definitions can be specific to the underlying RTOS kernel.</p>
 <p>Definitions that are marked with <b>MUST REMAIN UNCHANGED</b> cannot be altered. Otherwise the CMSIS-RTOS implementation is no longer compliant to the standard. Note that some functions are optional and need not to be provided by every CMSIS-RTOS implementation.</p>
-<p><a class="anchor" id="isr_calls"></a><b>Function calls from Interrupt Service Routines (ISR)</b></p>
-<p>The following CMSIS-RTOS functions can be called from threads and Interrupt Service Routines (ISR):</p>
-<ul>
-<li><a class="el" href="group___c_m_s_i_s___r_t_o_s___kernel_ctrl.html#ga3b571de44cd3094c643247a7397f86b5">osKernelRunning</a></li>
-<li><a class="el" href="group___c_m_s_i_s___r_t_o_s___signal_mgmt.html#ga3de2730654589d6c3559c4b9e2825553">osSignalSet</a></li>
-<li><a class="el" href="group___c_m_s_i_s___r_t_o_s___semaphore_mgmt.html#gab108914997c49e14d8ff1ae0d1988ca0">osSemaphoreRelease</a></li>
-<li><a class="el" href="group___c_m_s_i_s___r_t_o_s___pool_mgmt.html#gaa0b2994f1a866c19e0d11e6e0d44f543">osPoolAlloc</a>, <a class="el" href="group___c_m_s_i_s___r_t_o_s___pool_mgmt.html#ga9f129fcad4730fbd1048ad4fa262f36a">osPoolCAlloc</a>, <a class="el" href="group___c_m_s_i_s___r_t_o_s___pool_mgmt.html#ga4a861e9c469c9d0daf5721bf174f8e54">osPoolFree</a></li>
-<li><a class="el" href="group___c_m_s_i_s___r_t_o_s___message.html#gac0dcf462fc92de8ffaba6cc004514a6d">osMessagePut</a>, <a class="el" href="group___c_m_s_i_s___r_t_o_s___message.html#ga6c6892b8f2296cca6becd57ca2d7e1ae">osMessageGet</a></li>
-<li><a class="el" href="group___c_m_s_i_s___r_t_o_s___mail.html#gadf5ce811bd6a56e617e902a1db6c2194">osMailAlloc</a>, <a class="el" href="group___c_m_s_i_s___r_t_o_s___mail.html#ga8fde74f6fe5b9e88f75cc5eb8f2124fd">osMailCAlloc</a>, <a class="el" href="group___c_m_s_i_s___r_t_o_s___mail.html#gac6ad7e6e7d6c4a80e60da22c57a42ccd">osMailGet</a>, <a class="el" href="group___c_m_s_i_s___r_t_o_s___mail.html#ga485ef6f81854ebda8ffbce4832181e02">osMailPut</a>, <a class="el" href="group___c_m_s_i_s___r_t_o_s___mail.html#ga27c1060cf21393f96b4fd1ed1c0167cc">osMailFree</a></li>
-</ul>
-<p>Functions that cannot be called from an ISR are verifying the interrupt status and return in case that they are called from an ISR context the status code <b>osErrorISR</b>. In some implementations this condition might be caught using the HARD FAULT vector.</p>
-<p>Some CMSIS-RTOS implementations support CMSIS-RTOS function calls from multiple ISR at the same time. If this is impossible, the CMSIS-RTOS rejects calls by nested ISR functions with the status code <b>osErrorISRRecursive</b>.</p>
 <p><b>Define and reference object definitions</b></p>
 <p>With <b>#define osObjectsExternal</b> objects are defined as external symbols. This allows to create a consistent header file that is used throughout a project as shown below:</p>
 <p><em>Header File</em> </p>
@@ -452,14 +440,14 @@ $(document).ready(function(){initNavTree('cmsis_os_h.html','');});
 <div class="line"><span class="comment">//  ==== Generic Wait Functions ====</span></div>
 <div class="line"> <span class="comment"></span></div>
 <div class="line"><span class="comment">/// Wait for Timeout (Time Delay).</span></div>
-<div class="line"><span class="comment">/// \param[in]     millisec      time delay value</span></div>
+<div class="line"><span class="comment">/// \param[in]     millisec      \ref CMSIS_RTOS_TimeOutValue &quot;time delay&quot; value</span></div>
 <div class="line"><span class="comment">/// \return status code that indicates the execution status of the function.</span></div>
 <div class="line"><span class="comment"></span><a class="code" href="group___c_m_s_i_s___r_t_o_s___status.html#gae2e091fefc4c767117727bd5aba4d99e">osStatus</a> <a class="code" href="group___c_m_s_i_s___r_t_o_s___wait.html#ga02e19d5e723bfb06ba9324d625162255" title="Wait for Timeout (Time Delay).">osDelay</a> (uint32_t millisec);</div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#if (defined (osFeature_Wait)  &amp;&amp;  (osFeature_Wait != 0))     // Generic Wait available</span></div>
 <div class="line"><span class="preprocessor"></span> <span class="comment"></span></div>
 <div class="line"><span class="comment">/// Wait for Signal, Message, Mail, or Timeout.</span></div>
-<div class="line"><span class="comment">/// \param[in] millisec          timeout value or 0 in case of no time-out</span></div>
+<div class="line"><span class="comment">/// \param[in] millisec          \ref CMSIS_RTOS_TimeOutValue or 0 in case of no time-out</span></div>
 <div class="line"><span class="comment">/// \return event that contains signal, message, or mail information or error code.</span></div>
 <div class="line"><span class="comment">/// \note MUST REMAIN UNCHANGED: \b osWait shall be consistent in every CMSIS-RTOS.</span></div>
 <div class="line"><span class="comment"></span><a class="code" href="group___c_m_s_i_s___r_t_o_s___definitions.html#structos_event" title="Event structure contains detailed information about an event.">osEvent</a> <a class="code" href="group___c_m_s_i_s___r_t_o_s___wait.html#ga8470c8aaedfde524a44e22e5b2328285" title="Wait for Signal, Message, Mail, or Timeout.">osWait</a> (uint32_t millisec);</div>
@@ -499,7 +487,7 @@ $(document).ready(function(){initNavTree('cmsis_os_h.html','');});
 <div class="line"> <span class="comment"></span></div>
 <div class="line"><span class="comment">/// Start or restart a timer.</span></div>
 <div class="line"><span class="comment">/// \param[in]     timer_id      timer ID obtained by \ref osTimerCreate.</span></div>
-<div class="line"><span class="comment">/// \param[in]     millisec      time delay value of the timer.</span></div>
+<div class="line"><span class="comment">/// \param[in]     millisec      \ref CMSIS_RTOS_TimeOutValue &quot;time delay&quot; value of the timer.</span></div>
 <div class="line"><span class="comment">/// \return status code that indicates the execution status of the function.</span></div>
 <div class="line"><span class="comment">/// \note MUST REMAIN UNCHANGED: \b osTimerStart shall be consistent in every CMSIS-RTOS.</span></div>
 <div class="line"><span class="comment"></span><a class="code" href="group___c_m_s_i_s___r_t_o_s___status.html#gae2e091fefc4c767117727bd5aba4d99e">osStatus</a> <a class="code" href="group___c_m_s_i_s___r_t_o_s___timer_mgmt.html#ga27a797a401b068e2644d1125f22a07ca" title="Start or restart a timer.">osTimerStart</a> (osTimerId timer_id, uint32_t millisec);</div>
@@ -535,7 +523,7 @@ $(document).ready(function(){initNavTree('cmsis_os_h.html','');});
 <div class="line"> <span class="comment"></span></div>
 <div class="line"><span class="comment">/// Wait for one or more Signal Flags to become signaled for the current \b RUNNING thread.</span></div>
 <div class="line"><span class="comment">/// \param[in]     signals       wait until all specified signal flags set or 0 for any single signal flag.</span></div>
-<div class="line"><span class="comment">/// \param[in]     millisec      timeout value or 0 in case of no time-out.</span></div>
+<div class="line"><span class="comment">/// \param[in]     millisec      \ref CMSIS_RTOS_TimeOutValue or 0 in case of no time-out.</span></div>
 <div class="line"><span class="comment">/// \return event flag information or error code.</span></div>
 <div class="line"><span class="comment">/// \note MUST REMAIN UNCHANGED: \b osSignalWait shall be consistent in every CMSIS-RTOS.</span></div>
 <div class="line"><span class="comment"></span><a class="code" href="group___c_m_s_i_s___r_t_o_s___definitions.html#structos_event" title="Event structure contains detailed information about an event.">osEvent</a> <a class="code" href="group___c_m_s_i_s___r_t_o_s___signal_mgmt.html#ga38860acda96df47da6923348d96fc4c9" title="Wait for one or more Signal Flags to become signaled for the current RUNNING thread.">osSignalWait</a> (int32_t signals, uint32_t millisec);</div>
@@ -570,7 +558,7 @@ $(document).ready(function(){initNavTree('cmsis_os_h.html','');});
 <div class="line"> <span class="comment"></span></div>
 <div class="line"><span class="comment">/// Wait until a Mutex becomes available.</span></div>
 <div class="line"><span class="comment">/// \param[in]     mutex_id      mutex ID obtained by \ref osMutexCreate.</span></div>
-<div class="line"><span class="comment">/// \param[in]     millisec      timeout value or 0 in case of no time-out.</span></div>
+<div class="line"><span class="comment">/// \param[in]     millisec      \ref CMSIS_RTOS_TimeOutValue or 0 in case of no time-out.</span></div>
 <div class="line"><span class="comment">/// \return status code that indicates the execution status of the function.</span></div>
 <div class="line"><span class="comment">/// \note MUST REMAIN UNCHANGED: \b osMutexWait shall be consistent in every CMSIS-RTOS.</span></div>
 <div class="line"><span class="comment"></span><a class="code" href="group___c_m_s_i_s___r_t_o_s___status.html#gae2e091fefc4c767117727bd5aba4d99e">osStatus</a> <a class="code" href="group___c_m_s_i_s___r_t_o_s___mutex_mgmt.html#ga5e1752b73f573ee015dbd9ef1edaba13" title="Wait until a Mutex becomes available.">osMutexWait</a> (osMutexId mutex_id, uint32_t millisec);</div>
@@ -620,7 +608,7 @@ $(document).ready(function(){initNavTree('cmsis_os_h.html','');});
 <div class="line"> <span class="comment"></span></div>
 <div class="line"><span class="comment">/// Wait until a Semaphore token becomes available.</span></div>
 <div class="line"><span class="comment">/// \param[in]     semaphore_id  semaphore object referenced with \ref osSemaphoreCreate.</span></div>
-<div class="line"><span class="comment">/// \param[in]     millisec      timeout value or 0 in case of no time-out.</span></div>
+<div class="line"><span class="comment">/// \param[in]     millisec      \ref CMSIS_RTOS_TimeOutValue or 0 in case of no time-out.</span></div>
 <div class="line"><span class="comment">/// \return number of available tokens, or -1 in case of incorrect parameters.</span></div>
 <div class="line"><span class="comment">/// \note MUST REMAIN UNCHANGED: \b osSemaphoreWait shall be consistent in every CMSIS-RTOS.</span></div>
 <div class="line"><span class="comment"></span>int32_t <a class="code" href="group___c_m_s_i_s___r_t_o_s___semaphore_mgmt.html#gacc15b0fc8ce1167fe43da33042e62098" title="Wait until a Semaphore token becomes available.">osSemaphoreWait</a> (osSemaphoreId semaphore_id, uint32_t millisec);</div>
@@ -730,14 +718,14 @@ $(document).ready(function(){initNavTree('cmsis_os_h.html','');});
 <div class="line"><span class="comment">/// Put a Message to a Queue.</span></div>
 <div class="line"><span class="comment">/// \param[in]     queue_id      message queue ID obtained with \ref osMessageCreate.</span></div>
 <div class="line"><span class="comment">/// \param[in]     info          message information.</span></div>
-<div class="line"><span class="comment">/// \param[in]     millisec      timeout value or 0 in case of no time-out.</span></div>
+<div class="line"><span class="comment">/// \param[in]     millisec      \ref CMSIS_RTOS_TimeOutValue or 0 in case of no time-out.</span></div>
 <div class="line"><span class="comment">/// \return status code that indicates the execution status of the function.</span></div>
 <div class="line"><span class="comment">/// \note MUST REMAIN UNCHANGED: \b osMessagePut shall be consistent in every CMSIS-RTOS.</span></div>
 <div class="line"><span class="comment"></span><a class="code" href="group___c_m_s_i_s___r_t_o_s___status.html#gae2e091fefc4c767117727bd5aba4d99e">osStatus</a> <a class="code" href="group___c_m_s_i_s___r_t_o_s___message.html#gac0dcf462fc92de8ffaba6cc004514a6d" title="Put a Message to a Queue.">osMessagePut</a> (osMessageQId queue_id, uint32_t info, uint32_t millisec);</div>
 <div class="line"> <span class="comment"></span></div>
 <div class="line"><span class="comment">/// Get a Message or Wait for a Message from a Queue.</span></div>
 <div class="line"><span class="comment">/// \param[in]     queue_id      message queue ID obtained with \ref osMessageCreate.</span></div>
-<div class="line"><span class="comment">/// \param[in]     millisec      timeout value or 0 in case of no time-out.</span></div>
+<div class="line"><span class="comment">/// \param[in]     millisec      \ref CMSIS_RTOS_TimeOutValue or 0 in case of no time-out.</span></div>
 <div class="line"><span class="comment">/// \return event information that includes status code.</span></div>
 <div class="line"><span class="comment">/// \note MUST REMAIN UNCHANGED: \b osMessageGet shall be consistent in every CMSIS-RTOS.</span></div>
 <div class="line"><span class="comment"></span><a class="code" href="group___c_m_s_i_s___r_t_o_s___definitions.html#structos_event" title="Event structure contains detailed information about an event.">osEvent</a> <a class="code" href="group___c_m_s_i_s___r_t_o_s___message.html#ga6c6892b8f2296cca6becd57ca2d7e1ae" title="Get a Message or Wait for a Message from a Queue.">osMessageGet</a> (osMessageQId queue_id, uint32_t millisec);</div>
@@ -780,14 +768,14 @@ $(document).ready(function(){initNavTree('cmsis_os_h.html','');});
 <div class="line"> <span class="comment"></span></div>
 <div class="line"><span class="comment">/// Allocate a memory block from a mail.</span></div>
 <div class="line"><span class="comment">/// \param[in]     queue_id      mail queue ID obtained with \ref osMailCreate.</span></div>
-<div class="line"><span class="comment">/// \param[in]     millisec      timeout value or 0 in case of no time-out</span></div>
+<div class="line"><span class="comment">/// \param[in]     millisec      \ref CMSIS_RTOS_TimeOutValue or 0 in case of no time-out</span></div>
 <div class="line"><span class="comment">/// \return pointer to memory block that can be filled with mail or NULL in case of error.</span></div>
 <div class="line"><span class="comment">/// \note MUST REMAIN UNCHANGED: \b osMailAlloc shall be consistent in every CMSIS-RTOS.</span></div>
 <div class="line"><span class="comment"></span><span class="keywordtype">void</span> *<a class="code" href="group___c_m_s_i_s___r_t_o_s___mail.html#gadf5ce811bd6a56e617e902a1db6c2194" title="Allocate a memory block from a mail.">osMailAlloc</a> (osMailQId queue_id, uint32_t millisec);</div>
 <div class="line"> <span class="comment"></span></div>
 <div class="line"><span class="comment">/// Allocate a memory block from a mail and set memory block to zero.</span></div>
 <div class="line"><span class="comment">/// \param[in]     queue_id      mail queue ID obtained with \ref osMailCreate.</span></div>
-<div class="line"><span class="comment">/// \param[in]     millisec      timeout value or 0 in case of no time-out</span></div>
+<div class="line"><span class="comment">/// \param[in]     millisec      \ref CMSIS_RTOS_TimeOutValue or 0 in case of no time-out</span></div>
 <div class="line"><span class="comment">/// \return pointer to memory block that can be filled with mail or NULL in case of error.</span></div>
 <div class="line"><span class="comment">/// \note MUST REMAIN UNCHANGED: \b osMailCAlloc shall be consistent in every CMSIS-RTOS.</span></div>
 <div class="line"><span class="comment"></span><span class="keywordtype">void</span> *<a class="code" href="group___c_m_s_i_s___r_t_o_s___mail.html#ga8fde74f6fe5b9e88f75cc5eb8f2124fd" title="Allocate a memory block from a mail and set memory block to zero.">osMailCAlloc</a> (osMailQId queue_id, uint32_t millisec);</div>
@@ -801,7 +789,7 @@ $(document).ready(function(){initNavTree('cmsis_os_h.html','');});
 <div class="line"> <span class="comment"></span></div>
 <div class="line"><span class="comment">/// Get a mail from a queue.</span></div>
 <div class="line"><span class="comment">/// \param[in]     queue_id      mail queue ID obtained with \ref osMailCreate.</span></div>
-<div class="line"><span class="comment">/// \param[in]     millisec      timeout value or 0 in case of no time-out</span></div>
+<div class="line"><span class="comment">/// \param[in]     millisec      \ref CMSIS_RTOS_TimeOutValue or 0 in case of no time-out</span></div>
 <div class="line"><span class="comment">/// \return event that contains mail information or error code.</span></div>
 <div class="line"><span class="comment">/// \note MUST REMAIN UNCHANGED: \b osMailGet shall be consistent in every CMSIS-RTOS.</span></div>
 <div class="line"><span class="comment"></span><a class="code" href="group___c_m_s_i_s___r_t_o_s___definitions.html#structos_event" title="Event structure contains detailed information about an event.">osEvent</a> <a class="code" href="group___c_m_s_i_s___r_t_o_s___mail.html#gac6ad7e6e7d6c4a80e60da22c57a42ccd" title="Get a mail from a queue.">osMailGet</a> (osMailQId queue_id, uint32_t millisec);</div>
@@ -826,7 +814,7 @@ $(document).ready(function(){initNavTree('cmsis_os_h.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Sep 11 2015 14:40:27 for CMSIS-RTOS by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Tue Oct 27 2015 14:35:43 for CMSIS-RTOS by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

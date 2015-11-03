@@ -2,8 +2,8 @@
  * @file     ARMCM7_DP.h
  * @brief    CMSIS Core Peripheral Access Layer Header File for
  *           ARMCM7 Device Series (configured for CM7 with double precision FPU)
- * @version  V2.00
- * @date     18. August 2015
+ * @version  V3.00
+ * @date     16. October 2015
  ******************************************************************************/
 /* Copyright (c) 2011 - 2015 ARM LIMITED
 
@@ -93,7 +93,7 @@ typedef enum IRQn
   #pragma anon_unions
 #elif defined (__ICCARM__)
   #pragma language=extended
-#elif (__ARMCC_VERSION >= 6010050)
+#elif defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wc11-extensions"
   #pragma clang diagnostic ignored "-Wreserved-id-macro"
@@ -108,6 +108,7 @@ typedef enum IRQn
 #else
   #warning Not supported compiler type
 #endif
+
 
 /* --------  Configuration of the Cortex-M7 Processor and Core Peripherals  ------- */
 #define __CM7_REV                 0x0000U   /* Core revision r0p0 */

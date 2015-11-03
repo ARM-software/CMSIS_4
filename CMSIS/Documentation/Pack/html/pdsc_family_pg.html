@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.4.0</span>
+   &#160;<span id="projectnumber">Version 1.4.1</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -273,13 +273,13 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html','');});
 <div class="line">  ...</div>
 <div class="line">  &lt;device Dname=<span class="stringliteral">&quot;STM32F405OE&quot;</span>&gt;</div>
 <div class="line">    &lt;memory    name=<span class="stringliteral">&quot;Flash&quot;</span> access=<span class="stringliteral">&quot;rx&quot;</span> start=<span class="stringliteral">&quot;0x08000000&quot;</span> size=<span class="stringliteral">&quot;0x80000&quot;</span> startup=<span class="stringliteral">&quot;1&quot;</span> <span class="keywordflow">default</span>=<span class="stringliteral">&quot;1&quot;</span>/&gt;</div>
-<div class="line">    &lt;algorithm name=<span class="stringliteral">&quot;Flash\STM32F4xx_1024.flm&quot;</span> start=<span class="stringliteral">&quot;0x08000000&quot;</span> size=<span class="stringliteral">&quot;0x80000&quot;</span> <span class="keywordflow">default</span>=<span class="stringliteral">&quot;1&quot;</span> style=<span class="stringliteral">&quot;Keil&quot;</span>/&gt;</div>
+<div class="line">    &lt;algorithm name=<span class="stringliteral">&quot;Flash/STM32F4xx_1024.flm&quot;</span> start=<span class="stringliteral">&quot;0x08000000&quot;</span> size=<span class="stringliteral">&quot;0x80000&quot;</span> <span class="keywordflow">default</span>=<span class="stringliteral">&quot;1&quot;</span> style=<span class="stringliteral">&quot;Keil&quot;</span>/&gt;</div>
 <div class="line">    &lt;feature   type=<span class="stringliteral">&quot;IOs&quot;</span> n=<span class="stringliteral">&quot;72&quot;</span> name=<span class="stringliteral">&quot;Input and Output Ports&quot;</span>/&gt;</div>
 <div class="line">  &lt;/device&gt;</div>
 <div class="line"></div>
 <div class="line">  &lt;device Dname=<span class="stringliteral">&quot;STM32F405OG&quot;</span>&gt;</div>
 <div class="line">    &lt;memory    name=<span class="stringliteral">&quot;Flash&quot;</span> access=<span class="stringliteral">&quot;rx&quot;</span> start=<span class="stringliteral">&quot;0x08000000&quot;</span> size=<span class="stringliteral">&quot;0x100000&quot;</span> startup=<span class="stringliteral">&quot;1&quot;</span> <span class="keywordflow">default</span>=<span class="stringliteral">&quot;1&quot;</span>/&gt;</div>
-<div class="line">    &lt;algorithm name=<span class="stringliteral">&quot;Flash\STM32F4xx_1024.flm&quot;</span> start=<span class="stringliteral">&quot;0x08000000&quot;</span> size=<span class="stringliteral">&quot;0x100000&quot;</span> <span class="keywordflow">default</span>=<span class="stringliteral">&quot;1&quot;</span> style=<span class="stringliteral">&quot;Keil&quot;</span>/&gt;</div>
+<div class="line">    &lt;algorithm name=<span class="stringliteral">&quot;Flash/STM32F4xx_1024.flm&quot;</span> start=<span class="stringliteral">&quot;0x08000000&quot;</span> size=<span class="stringliteral">&quot;0x100000&quot;</span> <span class="keywordflow">default</span>=<span class="stringliteral">&quot;1&quot;</span> style=<span class="stringliteral">&quot;Keil&quot;</span>/&gt;</div>
 <div class="line">    &lt;feature   type=<span class="stringliteral">&quot;IOs&quot;</span> n=<span class="stringliteral">&quot;72&quot;</span> name=<span class="stringliteral">&quot;Input and Output Ports&quot;</span>/&gt;</div>
 <div class="line">  &lt;/device&gt;</div>
 <div class="line">  ...</div>
@@ -295,7 +295,7 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html','');});
 <tr>
 <th>Attributes </th><th>Description </th><th>Type </th><th>Use  </th></tr>
 <tr>
-<td>Dname </td><td>Specifies the name of the device. </td><td>xs:string </td><td>required  </td></tr>
+<td>Dname </td><td>Specifies the name of the device. Only alphabetical characters, decimal digits, '-' and '_' are allowed </td><td>RestrictedString </td><td>required  </td></tr>
 <tr>
 <th>Child Elements </th><th>Description </th><th>Type </th><th>Occurrence  </th></tr>
 <tr>
@@ -340,11 +340,11 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html','');});
 <div class="line"> </div>
 <div class="line">  &lt;subFamily DsubFamily=<span class="stringliteral">&quot;STM32F405&quot;</span>&gt;</div>
 <div class="line">    &lt;!-- use <span class="keywordflow">for</span> all devices of a subFamily --&gt;</div>
-<div class="line">    &lt;algorithm name=<span class="stringliteral">&quot;Flash\STM32F2xx_1024.flm&quot;</span> start=0x08000000 size=0x20000 <span class="keywordflow">default</span>=<span class="stringliteral">&quot;1&quot;</span> style=<span class="stringliteral">&quot;Keil&quot;</span>/&gt;       </div>
+<div class="line">    &lt;algorithm name=<span class="stringliteral">&quot;Flash/STM32F2xx_1024.flm&quot;</span> start=0x08000000 size=0x20000 <span class="keywordflow">default</span>=<span class="stringliteral">&quot;1&quot;</span> style=<span class="stringliteral">&quot;Keil&quot;</span>/&gt;       </div>
 <div class="line"></div>
 <div class="line">    &lt;device Dname=<span class="stringliteral">&quot;STM32F405OE&quot;</span>&gt;</div>
 <div class="line">          &lt;!-- <span class="keywordflow">finally</span>, <span class="keyword">this</span> is the <span class="keywordflow">default</span> <span class="keywordflow">for</span> the device --&gt;</div>
-<div class="line">      &lt;algorithm name=<span class="stringliteral">&quot;Flash\STM32F2xx_2048.flm&quot;</span> start=0x08000000 size=0x40000 <span class="keywordflow">default</span>=<span class="stringliteral">&quot;1&quot;</span>/&gt; style=<span class="stringliteral">&quot;Keil&quot;</span>/&gt;</div>
+<div class="line">      &lt;algorithm name=<span class="stringliteral">&quot;Flash/STM32F2xx_2048.flm&quot;</span> start=0x08000000 size=0x40000 <span class="keywordflow">default</span>=<span class="stringliteral">&quot;1&quot;</span>/&gt; style=<span class="stringliteral">&quot;Keil&quot;</span>/&gt;</div>
 <div class="line">    &lt;/device&gt;</div>
 <div class="line">    ...</div>
 <div class="line">&lt;/family&gt;</div>
@@ -361,7 +361,7 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html','');});
 <tr>
 <th>Attributes </th><th>Description </th><th>Type </th><th>Use  </th></tr>
 <tr>
-<td>Pname </td><td>Processor identifier. This attribute <b>is mandatory for devices that embed multiple processors that require different algorithms</b>. </td><td>xs:string </td><td>optional  </td></tr>
+<td>Pname </td><td>Processor identifier. This attribute <b>is mandatory for devices that embed multiple processors that require different algorithms</b>. Only alphabetical characters, decimal digits, '-' and '_' are allowed.  </td><td>RestrictedString </td><td>optional  </td></tr>
 <tr>
 <td>name </td><td>Flash Programming Algorithm file including the path, which is relative to the root folder of the <a class="el" href="_c_p__s_w_components.html">Software Pack</a>. </td><td>xs:string </td><td>required  </td></tr>
 <tr>
@@ -387,13 +387,13 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html','');});
 <p><b>Example</b> </p>
 <div class="fragment"><div class="line">&lt;family Dfamily=<span class="stringliteral">&quot;STM32F4&quot;</span> Dvendor=<span class="stringliteral">&quot;STMicroelectronics:13&quot;</span>&gt;</div>
 <div class="line">  ...</div>
-<div class="line">  &lt;book name=<span class="stringliteral">&quot;Documents\STM32F40x_DS.PDF&quot;</span> title=<span class="stringliteral">&quot;STM32F40x Data Sheet&quot;</span>/&gt;                 &lt;!-- valid <span class="keywordflow">for</span> all devices of the family  --&gt;</div>
+<div class="line">  &lt;book name=<span class="stringliteral">&quot;Documents/STM32F40x_DS.PDF&quot;</span> title=<span class="stringliteral">&quot;STM32F40x Data Sheet&quot;</span>/&gt;                 &lt;!-- valid <span class="keywordflow">for</span> all devices of the family  --&gt;</div>
 <div class="line"></div>
 <div class="line">  &lt;subFamily DsubFamily=<span class="stringliteral">&quot;STM32F405&quot;</span>&gt;</div>
-<div class="line">    &lt;book name=<span class="stringliteral">&quot;Documents\STM32F4xx_RM.pdf&quot;</span> title=<span class="stringliteral">&quot;STM32F4 Series Reference Manual&quot;</span>/&gt;    &lt;!-- valid <span class="keywordflow">for</span> all devices of a subFamily --&gt;</div>
+<div class="line">    &lt;book name=<span class="stringliteral">&quot;Documents/STM32F4xx_RM.pdf&quot;</span> title=<span class="stringliteral">&quot;STM32F4 Series Reference Manual&quot;</span>/&gt;    &lt;!-- valid <span class="keywordflow">for</span> all devices of a subFamily --&gt;</div>
 <div class="line"></div>
 <div class="line">    &lt;device Dname=<span class="stringliteral">&quot;STM32F405OE&quot;</span>&gt;</div>
-<div class="line">      &lt;book name=<span class="stringliteral">&quot;Documents\STM32F405OE_DS.PDF&quot;</span> title=<span class="stringliteral">&quot;STM32F405OE - Data Sheet&quot;</span>/&gt;       &lt;!-- valid <span class="keywordflow">for</span> <span class="keyword">this</span> device; Inherits all above --&gt;</div>
+<div class="line">      &lt;book name=<span class="stringliteral">&quot;Documents/STM32F405OE_DS.PDF&quot;</span> title=<span class="stringliteral">&quot;STM32F405OE - Data Sheet&quot;</span>/&gt;       &lt;!-- valid <span class="keywordflow">for</span> <span class="keyword">this</span> device; Inherits all above --&gt;</div>
 <div class="line">    &lt;/device&gt;</div>
 <div class="line">    ...</div>
 <div class="line">&lt;/family&gt;</div>
@@ -410,7 +410,7 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html','');});
 <tr>
 <th>Attributes </th><th>Description </th><th>Type </th><th>Use  </th></tr>
 <tr>
-<td>Pname </td><td>Processor identifier. This attribute <b>is mandatory for devices that embed multiple processors and where the book refers to a single processor only</b>. </td><td>xs:string </td><td>optional  </td></tr>
+<td>Pname </td><td>Processor identifier. This attribute <b>is mandatory for devices that embed multiple processors and where the book refers to a single processor only</b>. Only alphabetical characters, decimal digits, '-' and '_' are allowed.  </td><td>RestrictedString </td><td>optional  </td></tr>
 <tr>
 <td>name </td><td>File name of the document including the extension. The document path is relative to the package base folder. Directory/file names are case-sensitive. </td><td>xs:string </td><td>required  </td></tr>
 <tr>
@@ -429,14 +429,14 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html','');});
 <p><b>Example</b> </p>
 <div class="fragment"><div class="line">&lt;family Dfamily=<span class="stringliteral">&quot;STM32F4&quot;</span> Dvendor=<span class="stringliteral">&quot;STMicroelectronics:13&quot;</span>&gt;</div>
 <div class="line">  ...</div>
-<div class="line">  &lt;compile   header=<span class="stringliteral">&quot;Device\Include\stm32f4xx.h&quot;</span>/&gt;</div>
+<div class="line">  &lt;compile   header=<span class="stringliteral">&quot;Device/Include/stm32f4xx.h&quot;</span>/&gt;</div>
 <div class="line"></div>
 <div class="line">  &lt;subFamily DsubFamily=<span class="stringliteral">&quot;STM32F407&quot;</span>&gt;</div>
 <div class="line">    ...</div>
-<div class="line">    &lt;compile  header=<span class="stringliteral">&quot;Device\Include\stm32f4xx.h&quot;</span> define=<span class="stringliteral">&quot;STM32F40XX&quot;</span>/&gt;</div>
+<div class="line">    &lt;compile  header=<span class="stringliteral">&quot;Device/Include/stm32f4xx.h&quot;</span> define=<span class="stringliteral">&quot;STM32F40XX&quot;</span>/&gt;</div>
 <div class="line"></div>
 <div class="line">    &lt;device Dname=<span class="stringliteral">&quot;STM32F407IG&quot;</span>&gt;</div>
-<div class="line">      &lt;compile  header=<span class="stringliteral">&quot;Device\Include\stm32f4xx.h&quot;</span> define=<span class="stringliteral">&quot;STM32F407IG&quot;</span>/&gt;</div>
+<div class="line">      &lt;compile  header=<span class="stringliteral">&quot;Device/Include/stm32f4xx.h&quot;</span> define=<span class="stringliteral">&quot;STM32F407IG&quot;</span>/&gt;</div>
 <div class="line">    &lt;/device&gt;</div>
 <div class="line">  &lt;/subFamily&gt;</div>
 <div class="line">&lt;/family&gt;</div>
@@ -452,7 +452,7 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html','');});
 <tr>
 <th>Attributes </th><th>Description </th><th>Type </th><th>Use  </th></tr>
 <tr>
-<td>Pname </td><td>Processor identifier. This attribute <b>is mandatory for devices that embed multiple processors if the header and define is different for each processor</b>. </td><td>xs:string </td><td>optional  </td></tr>
+<td>Pname </td><td>Processor identifier. This attribute <b>is mandatory for devices that embed multiple processors if the header and define is different for each processor</b>. Only alphabetical characters, decimal digits, '-' and '_' are allowed.  </td><td>RestrictedString </td><td>optional  </td></tr>
 <tr>
 <td>header </td><td>C-header file with path relative to the installation. </td><td>xs:string </td><td>optional  </td></tr>
 <tr>
@@ -492,7 +492,7 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html','');});
 <tr>
 <th>Attributes </th><th>Description </th><th>Type </th><th>Use  </th></tr>
 <tr>
-<td>Pname </td><td>Processor Identifier. This attribute <b>is mandatory for devices that embed multiple processors and where the description is specific to a single processor</b>. </td><td>xs:string </td><td>optional  </td></tr>
+<td>Pname </td><td>Processor Identifier. This attribute <b>is mandatory for devices that embed multiple processors and where the description is specific to a single processor</b>. Only alphabetical characters, decimal digits, '-' and '_' are allowed.  </td><td>RestrictedString </td><td>optional  </td></tr>
 </table>
 <p>&#160;</p>
 <hr/>
@@ -542,7 +542,7 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html','');});
 <tr>
 <td>name </td><td>Name of the development tool (e.g. "uv" for uVision) </td><td>xs:string </td><td>required  </td></tr>
 <tr>
-<td>Pname </td><td>Identifies the processor the setting belongs to. </td><td>xs:string </td><td>optional  </td></tr>
+<td>Pname </td><td>Identifies the processor the setting belongs to. Only alphabetical characters, decimal digits, '-' and '_' are allowed.  </td><td>RestrictedString </td><td>optional  </td></tr>
 <tr>
 <th>Child Elements </th><th>Description </th><th>Type </th><th>Occurrence  </th></tr>
 <tr>
@@ -603,7 +603,7 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html','');});
 <tr>
 <th>Attributes </th><th>Description </th><th>Type </th><th>Use  </th></tr>
 <tr>
-<td>Pname </td><td>Processor Identifier. This attribute <b>is mandatory for devices that embed multiple processors</b>. </td><td>xs:string </td><td>optional  </td></tr>
+<td>Pname </td><td>Processor Identifier. This attribute <b>is mandatory for devices that embed multiple processors</b>. Only alphabetical characters, decimal digits, '-' and '_' are allowed.  </td><td>RestrictedString </td><td>optional  </td></tr>
 <tr>
 <td>type </td><td>A feature (peripheral), such as <span class="XML-Token">CAN</span>, <span class="XML-Token">DMA</span>, <span class="XML-Token">I/O</span>, <span class="XML-Token">LCD</span>, etc. Predefined values must be used as listed in the table <a class="el" href="pdsc_family_pg.html#DeviceFeatureTypeEnum">Device Feature Types</a>. </td><td>DeviceFeatureTypeEnum </td><td>required  </td></tr>
 <tr>
@@ -744,7 +744,7 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html','');});
 <div class="line">      &lt;memory name=<span class="stringliteral">&quot;SRAM&quot;</span> access=<span class="stringliteral">&quot;rwx&quot;</span> start=<span class="stringliteral">&quot;0x20000000&quot;</span> size=<span class="stringliteral">&quot;0x20000&quot;</span> <span class="keywordflow">default</span>=<span class="stringliteral">&quot;1&quot;</span>/&gt;</div>
 <div class="line"></div>
 <div class="line">      &lt;subFamily DsubFamily=<span class="stringliteral">&quot;STM32F407&quot;</span>&gt;</div>
-<div class="line">        &lt;debug  __dp=<span class="stringliteral">&quot;0&quot;</span> __ap=<span class="stringliteral">&quot;0&quot;</span> svd=<span class="stringliteral">&quot;SVD\STM32F40x.svd&quot;</span>/&gt;</div>
+<div class="line">        &lt;debug  __dp=<span class="stringliteral">&quot;0&quot;</span> __ap=<span class="stringliteral">&quot;0&quot;</span> svd=<span class="stringliteral">&quot;SVD/STM32F40x.svd&quot;</span>/&gt;</div>
 <div class="line">        &lt;memory name=<span class="stringliteral">&quot;SRAM1&quot;</span> access=<span class="stringliteral">&quot;rwx&quot;</span> start=<span class="stringliteral">&quot;0x20020000&quot;</span> size=<span class="stringliteral">&quot;0x20000&quot;</span> <span class="keywordflow">default</span>=<span class="stringliteral">&quot;1&quot;</span>/&gt;</div>
 <div class="line">        &lt;memory name=<span class="stringliteral">&quot;SRAM2&quot;</span> access=<span class="stringliteral">&quot;rwx&quot;</span> start=<span class="stringliteral">&quot;0x10000000&quot;</span> size=<span class="stringliteral">&quot;0x10000&quot;</span> <span class="keywordflow">default</span>=<span class="stringliteral">&quot;1&quot;</span>/&gt;</div>
 <div class="line">        </div>
@@ -770,7 +770,7 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html','');});
 <tr>
 <th>Attributes </th><th>Description </th><th>Type </th><th>Use  </th></tr>
 <tr>
-<td>Pname </td><td>Processor identifier. This attribute <b>is mandatory for devices that embed multiple processors</b>.  </td><td>xs:string </td><td>optional  </td></tr>
+<td>Pname </td><td>Processor identifier. This attribute <b>is mandatory for devices that embed multiple processors</b>. Only alphabetical characters, decimal digits, '-' and '_' are allowed.  </td><td>RestrictedString </td><td>optional  </td></tr>
 <tr>
 <td>id (deprecated in Version 1.4.0) </td><td>(deprecated Version 1.4.0) Identifier of the memory region consisting of a type indicator and an index (for example, <span class="XML-Token">IRAM1</span>). Predefind values can be selected as defined in <a class="el" href="pdsc_family_pg.html#MemoryIDTypeEnum">MemoryIDTypeEnum</a>. </td><td>MemoryIDTypeEnum </td><td>optional  </td></tr>
 <tr>
@@ -855,7 +855,7 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html','');});
 <tr>
 <th>Attributes </th><th>Description </th><th>Type </th><th>Use  </th></tr>
 <tr>
-<td>Pname </td><td>Processor identifier. This attribute <b>is mandatory for devices that embed multiple processors</b>. Each processor needs a unique identifier and must be used consistently in the <b>Pname</b> attribute of the elements within the scope of the current device family section.  </td><td>xs:string </td><td>optional  </td></tr>
+<td>Pname </td><td>Processor identifier. This attribute <b>is mandatory for devices that embed multiple processors</b>. Each processor needs a unique identifier and must be used consistently in the <b>Pname</b> attribute of the elements within the scope of the current device family section. Only alphabetical characters, decimal digits, '-' and '_' are allowed.  </td><td>RestrictedString </td><td>optional  </td></tr>
 <tr>
 <td>Dvendor </td><td>Specfies the device vendor using a predefined string. Use predefined values as listed in the table <a class="el" href="pdsc_family_pg.html#DeviceVendorEnum">Device Vendor</a>. </td><td>DeviceVendorEnum </td><td>optional  </td></tr>
 <tr>
@@ -1121,7 +1121,7 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html','');});
 <p><b>Example</b> </p>
 <div class="fragment"><div class="line">&lt;family Dfamily=<span class="stringliteral">&quot;EFM32WG Series&quot;</span> Dvendor=<span class="stringliteral">&quot;Energy Micro:97&quot;</span>&gt;</div>
 <div class="line">  ...</div>
-<div class="line">  &lt;debugvars configfile=<span class="stringliteral">&quot;Debug\EFM32WGxxx.dbgconf&quot;</span> version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div>
+<div class="line">  &lt;debugvars configfile=<span class="stringliteral">&quot;Debug/EFM32WGxxx.dbgconf&quot;</span> version=<span class="stringliteral">&quot;1.0&quot;</span>&gt;</div>
 <div class="line">  </div>
 <div class="line">    __var __TPIU_pinlocation = 0;  <span class="comment">// Select one of four possible TPIU pin locations</span></div>
 <div class="line">    </div>
@@ -1161,7 +1161,7 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html','');});
 <tr>
 <td><a class="el" href="pdsc_package_pg.html#VersionType">version</a> </td><td>Version refers to the file version of the configfile attribute. If a configfile is specified the version attribute becomes mandatory. The version shall be incremented if any changes have been made to the global debug access variable names or default values. Based on the version information the tool environment will load a configfile with the version required by the debug description. The end-user may be required to update the settings after updating to a new version.  </td><td><a class="el" href="pdsc_package_pg.html#VersionType">VersionType</a> </td><td>optional  </td></tr>
 <tr>
-<td>Pname </td><td>Reference to a processor identifier as specified for a <b>processor</b> element. If <b>Pname</b> is set for this <b>debugvars</b> element, the debug access variables and <b>configfile</b> of this element are only valid for a debug connection to the referenced processor. Otherwise, they are valid for all processors. <b>This attribute must be set if defining multiple <em>debugvars</em> sections for a device.</b>  </td><td>xs:string </td><td>optional  </td></tr>
+<td>Pname </td><td>Reference to a processor identifier as specified for a <b>processor</b> element. If <b>Pname</b> is set for this <b>debugvars</b> element, the debug access variables and <b>configfile</b> of this element are only valid for a debug connection to the referenced processor. Otherwise, they are valid for all processors. <b>This attribute must be set if defining multiple <em>debugvars</em> sections for a device.</b> Only alphabetical characters, decimal digits, '-' and '_' are allowed.  </td><td>RestrictedString </td><td>optional  </td></tr>
 </table>
 <p>&#160;</p>
 <p><b>Example:</b> Configuration File </p>
@@ -1524,7 +1524,7 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html','');});
 </ul>
 </td><td>xs:string </td><td>required  </td></tr>
 <tr>
-<td>Pname </td><td>Reference to a processor identifier as specified for a <b>processor</b> element. If <b>Pname</b> is set for this <b>sequence</b> element, a debugger executes the debug access sequence only for a debug connection to the referenced processor. Otherwise, it is executed for all processors. <b>This attribute must be set if defining multiple implementations of the same debug access sequence.</b>  </td><td>xs:string </td><td>optional  </td></tr>
+<td>Pname </td><td>Reference to a processor identifier as specified for a <b>processor</b> element. If <b>Pname</b> is set for this <b>sequence</b> element, a debugger executes the debug access sequence only for a debug connection to the referenced processor. Otherwise, it is executed for all processors. <b>This attribute must be set if defining multiple implementations of the same debug access sequence.</b> Only alphabetical characters, decimal digits, '-' and '_' are allowed.  </td><td>RestrictedString </td><td>optional  </td></tr>
 <tr>
 <td>disable </td><td>Disables execution of the <a class="el" href="pdsc__sequence_name_enum_pg.html#default_sequences">Default Debug Access Sequence</a>. </td><td>xs:boolean </td><td>optional  </td></tr>
 <tr>
@@ -2143,11 +2143,11 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html','');});
 <p><b>Example</b> </p>
 <div class="fragment"><div class="line">&lt;family Dfamily=<span class="stringliteral">&quot;LPC4300 Series&quot;</span> Dvendor=<span class="stringliteral">&quot;NXP:11&quot;</span>&gt;</div>
 <div class="line">  ...</div>
-<div class="line">  &lt;debug Pname=<span class="stringliteral">&quot;Cortex-M4&quot;</span> __dp=<span class="stringliteral">&quot;0&quot;</span> __ap=<span class="stringliteral">&quot;0&quot;</span> svd=<span class="stringliteral">&quot;SVD\LPC43xx.svd&quot;</span>&gt;</div>
+<div class="line">  &lt;debug Pname=<span class="stringliteral">&quot;Cortex-M4&quot;</span> __dp=<span class="stringliteral">&quot;0&quot;</span> __ap=<span class="stringliteral">&quot;0&quot;</span> svd=<span class="stringliteral">&quot;SVD/LPC43xx.svd&quot;</span>&gt;</div>
 <div class="line">    ...</div>
 <div class="line">  &lt;/debug&gt;</div>
 <div class="line">  ...</div>
-<div class="line">  &lt;debug Pname=<span class="stringliteral">&quot;Cortex-M0&quot;</span> __dp=<span class="stringliteral">&quot;1&quot;</span> __ap=<span class="stringliteral">&quot;0&quot;</span> svd=<span class="stringliteral">&quot;SVD\LPC43xx.svd&quot;</span>&gt;</div>
+<div class="line">  &lt;debug Pname=<span class="stringliteral">&quot;Cortex-M0&quot;</span> __dp=<span class="stringliteral">&quot;1&quot;</span> __ap=<span class="stringliteral">&quot;0&quot;</span> svd=<span class="stringliteral">&quot;SVD/LPC43xx.svd&quot;</span>&gt;</div>
 <div class="line">    ...</div>
 <div class="line">  &lt;/debug&gt;</div>
 <div class="line">  ...</div>
@@ -2165,7 +2165,7 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html','');});
 <tr>
 <th>Attributes </th><th>Description </th><th>Type </th><th>Use  </th></tr>
 <tr>
-<td>Pname </td><td>Reference to a processor identifier as specified for a <b>processor</b> element. If <b>Pname</b> is set this <b>debug</b> element's settings and data patches only apply for target connections to the referenced processor. Otherwise, they apply for all processors. <b>This attribute must be set if defining multiple <em>debug</em> elements within the same section.</b>  </td><td>xs:string </td><td>optional  </td></tr>
+<td>Pname </td><td>Reference to a processor identifier as specified for a <b>processor</b> element. If <b>Pname</b> is set this <b>debug</b> element's settings and data patches only apply for target connections to the referenced processor. Otherwise, they apply for all processors. <b>This attribute must be set if defining multiple <em>debug</em> elements within the same section.</b> Only alphabetical characters, decimal digits, '-' and '_' are allowed.  </td><td>RestrictedString </td><td>optional  </td></tr>
 <tr>
 <td>__dp </td><td>Default debug port ID to use for target accesses in this debug connection. The allowed values are defined in <b>debugport</b> elements for this device. If no <b>debugport</b> element exists, the only allowed value is <span class="XML-Token">0</span>.<br/>
  The debug access variable <b>__dp</b> is initialized to this value when entering a pre-defined debug access sequence because of a debug event.<br/>
@@ -2267,7 +2267,7 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html','');});
 <tr>
 <th>Attributes </th><th>Description </th><th>Type </th><th>Use  </th></tr>
 <tr>
-<td>Pname </td><td>Reference to a processor identifier as specified for a <b>processor</b> element. If <b>Pname</b> is set this <b>trace</b> section only applies for target connections to the referenced processor. Otherwise, it applies for all processors. <b>This attribute must be set if defining multiple <em>trace</em> elements within the same section.</b>  </td><td>xs:string </td><td>optional  </td></tr>
+<td>Pname </td><td>Reference to a processor identifier as specified for a <b>processor</b> element. If <b>Pname</b> is set this <b>trace</b> section only applies for target connections to the referenced processor. Otherwise, it applies for all processors. <b>This attribute must be set if defining multiple <em>trace</em> elements within the same section.</b> Only alphabetical characters, decimal digits, '-' and '_' are allowed.  </td><td>RestrictedString </td><td>optional  </td></tr>
 <tr>
 <th>Child&#160;Elements </th><th>Description </th><th>Type </th><th>Occurrence  </th></tr>
 <tr>
@@ -2391,7 +2391,7 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html','');});
 <tr>
 <th>Attributes </th><th>Description </th><th>Type </th><th>Use  </th></tr>
 <tr>
-<td>Dvariant </td><td>Name of the device variant </td><td>xs:string </td><td>required  </td></tr>
+<td>Dvariant </td><td>Name of the device variant. Only alphabetical characters, decimal digits, '-' and '_' are allowed </td><td>RestrictedString </td><td>required  </td></tr>
 <tr>
 <th>Child Elements </th><th>Description </th><th>Type </th><th>Occurrence  </th></tr>
 <tr>
@@ -2409,7 +2409,7 @@ $(document).ready(function(){initNavTree('pdsc_family_pg.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="_pack_format.html">Pack Description (*.PDSC) Format</a></li><li class="navelem"><a class="el" href="pdsc_devices_pg.html">/package/devices element</a></li>
-    <li class="footer">Generated on Fri Sep 11 2015 14:40:26 for CMSIS-Pack by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Tue Oct 27 2015 14:35:43 for CMSIS-Pack by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

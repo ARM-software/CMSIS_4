@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-DSP
-   &#160;<span id="projectnumber">Version 1.4.6</span>
+   &#160;<span id="projectnumber">Version 1.4.7</span>
    </div>
    <div id="projectbrief">CMSIS DSP Software Library</div>
   </td>
@@ -127,27 +127,17 @@ Functions</h2></td></tr>
 <tr class="separator:gad80f121949ef885a77d83ab36e002567"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description</h2>
-<p>Computes the trigonometric cosine function using a combination of table lookup and cubic interpolation. There are separate functions for Q15, Q31, and floating-point data types. The input to the floating-point version is in radians while the fixed-point Q15 and Q31 have a scaled input with the range [0 +0.9999] mapping to [0 2*pi). The fixed-point range is chosen so that a value of 2*pi wraps around to 0.</p>
-<p>The implementation is based on table lookup using 256 values together with cubic interpolation. The steps used are:</p>
+<p>Computes the trigonometric cosine function using a combination of table lookup and linear interpolation. There are separate functions for Q15, Q31, and floating-point data types. The input to the floating-point version is in radians while the fixed-point Q15 and Q31 have a scaled input with the range [0 +0.9999] mapping to [0 2*pi). The fixed-point range is chosen so that a value of 2*pi wraps around to 0.</p>
+<p>The implementation is based on table lookup using 256 values together with linear interpolation. The steps used are:</p>
 <ol type="1">
 <li>Calculation of the nearest integer table index</li>
-<li>Fetch the four table values a, b, c, and d</li>
 <li>Compute the fractional portion (fract) of the table index.</li>
-<li>Calculation of wa, wb, wc, wd</li>
-<li>The final result equals <code>a*wa + b*wb + c*wc + d*wd</code></li>
+<li>The final result equals <code>(1.0f-fract)*a + fract*b;</code></li>
 </ol>
 <p>where </p>
-<pre>    
-   a=Table[index-1];    
-   b=Table[index+0];    
-   c=Table[index+1];    
-   d=Table[index+2];    
-</pre><p> and </p>
-<pre>    
-   wa=-(1/6)*fract.^3 + (1/2)*fract.^2 - (1/3)*fract;    
-   wb=(1/2)*fract.^3 - fract.^2 - (1/2)*fract + 1;    
-   wc=-(1/2)*fract.^3+(1/2)*fract.^2+fract;    
-   wd=(1/6)*fract.^3 - (1/6)*fract;    
+<pre>
+   b=Table[index+0];
+   c=Table[index+1];
 </pre> <h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="gace15287f9c64b9b4084d1c797d4c49d8"></a>
 <div class="memitem">
@@ -234,7 +224,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Sep 11 2015 14:40:14 for CMSIS-DSP by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Tue Oct 27 2015 14:35:33 for CMSIS-DSP by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

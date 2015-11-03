@@ -241,6 +241,7 @@ Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>address of the allocated memory block or NULL in case of no memory available. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>MUST REMAIN UNCHANGED: <b>osPoolAlloc</b> shall be consistent in every CMSIS-RTOS.</dd></dl>
 <p>Allocate a memory block from the memory pool.</p>
+<dl class="section note"><dt>Note</dt><dd><a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a> can call this function.</dd></dl>
 <p><b>Code Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="cmsis__os_8h.html">cmsis_os.h</a>&quot;</span></div>
 <div class="line"> </div>
@@ -292,6 +293,7 @@ Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>address of the allocated memory block or NULL in case of no memory available. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>MUST REMAIN UNCHANGED: <b>osPoolCAlloc</b> shall be consistent in every CMSIS-RTOS.</dd></dl>
 <p>Allocate a memory block from the memory pool. The block is initialized to zero.</p>
+<dl class="section note"><dt>Note</dt><dd><a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a> can call this function.</dd></dl>
 <p><b>Code Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="cmsis__os_8h.html">cmsis_os.h</a>&quot;</span></div>
 <div class="line"> </div>
@@ -343,6 +345,7 @@ Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>memory pool ID for reference by other functions or NULL in case of error. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>MUST REMAIN UNCHANGED: <b>osPoolCreate</b> shall be consistent in every CMSIS-RTOS.</dd></dl>
 <p>Create and initialize a memory pool.</p>
+<dl class="section note"><dt>Note</dt><dd>Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Code Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="cmsis__os_8h.html">cmsis_os.h</a>&quot;</span></div>
 <div class="line"> </div>
@@ -404,6 +407,7 @@ Functions</h2></td></tr>
 <li><em>osErrorValue:</em> <em>block</em> does not belong to the memory pool.</li>
 <li><em>osErrorParameter:</em> a parameter is invalid or outside of a permitted range.</li>
 </ul>
+<dl class="section note"><dt>Note</dt><dd><a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a> can call this function.</dd></dl>
 <p><b>Code Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="cmsis__os_8h.html">cmsis_os.h</a>&quot;</span></div>
 <div class="line"> </div>
@@ -440,7 +444,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Sep 11 2015 14:40:27 for CMSIS-RTOS by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Tue Oct 27 2015 14:35:43 for CMSIS-RTOS by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

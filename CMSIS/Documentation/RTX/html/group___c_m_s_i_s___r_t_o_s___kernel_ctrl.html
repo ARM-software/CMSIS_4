@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-RTOS RTX
-   &#160;<span id="projectnumber">Version 4.79</span>
+   &#160;<span id="projectnumber">Version 4.80</span>
    </div>
    <div id="projectbrief">CMSIS-RTOS RTX: Real-Time Operating System for Cortex-M processor-based devices</div>
   </td>
@@ -129,10 +129,10 @@ Macros</h2></td></tr>
 <tr class="memitem:ga702196bacccbb978620c736b209387f1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___c_m_s_i_s___r_t_o_s___kernel_ctrl.html#ga702196bacccbb978620c736b209387f1">osCMSIS</a>&#160;&#160;&#160;0x10002U</td></tr>
 <tr class="memdesc:ga702196bacccbb978620c736b209387f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">CMSIS-RTOS API version (main [31:16] .sub [15:0])  <a href="#ga702196bacccbb978620c736b209387f1"></a><br/></td></tr>
 <tr class="separator:ga702196bacccbb978620c736b209387f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4f74ed918c795e909dc1cea0040fd3b7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___c_m_s_i_s___r_t_o_s___kernel_ctrl.html#ga4f74ed918c795e909dc1cea0040fd3b7">osCMSIS_RTX</a>&#160;&#160;&#160;((4&lt;&lt;16)|78)</td></tr>
+<tr class="memitem:ga4f74ed918c795e909dc1cea0040fd3b7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___c_m_s_i_s___r_t_o_s___kernel_ctrl.html#ga4f74ed918c795e909dc1cea0040fd3b7">osCMSIS_RTX</a>&#160;&#160;&#160;((4&lt;&lt;16)|80)</td></tr>
 <tr class="memdesc:ga4f74ed918c795e909dc1cea0040fd3b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">RTOS identification and version (main [31:16] .sub [15:0])  <a href="#ga4f74ed918c795e909dc1cea0040fd3b7"></a><br/></td></tr>
 <tr class="separator:ga4f74ed918c795e909dc1cea0040fd3b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga47cf03658f01cdffca688e9096b58289"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___c_m_s_i_s___r_t_o_s___kernel_ctrl.html#ga47cf03658f01cdffca688e9096b58289">osKernelSystemId</a>&#160;&#160;&#160;&quot;RTX V4.79&quot;</td></tr>
+<tr class="memitem:ga47cf03658f01cdffca688e9096b58289"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___c_m_s_i_s___r_t_o_s___kernel_ctrl.html#ga47cf03658f01cdffca688e9096b58289">osKernelSystemId</a>&#160;&#160;&#160;&quot;RTX V4.80&quot;</td></tr>
 <tr class="memdesc:ga47cf03658f01cdffca688e9096b58289"><td class="mdescLeft">&#160;</td><td class="mdescRight">RTOS identification string.  <a href="#ga47cf03658f01cdffca688e9096b58289"></a><br/></td></tr>
 <tr class="separator:ga47cf03658f01cdffca688e9096b58289"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9e0954d52722673e2031233a2ab99960"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___c_m_s_i_s___r_t_o_s___kernel_ctrl.html#ga9e0954d52722673e2031233a2ab99960">osKernelSysTickFrequency</a>&#160;&#160;&#160;os_tickfreq</td></tr>
@@ -172,7 +172,7 @@ Functions</h2></td></tr>
 <div class="line">                                                 <span class="comment">// fatal error: set system to a safe state</span></div>
 <div class="line">  <span class="keywordflow">while</span> (1);</div>
 <div class="line">}</div>
-<div class="line">                                                                                </div>
+<div class="line"></div>
 <div class="line"></div>
 <div class="line"><span class="keywordtype">int</span> main (<span class="keywordtype">void</span>) {                                <span class="comment">// program execution starts here</span></div>
 <div class="line">  <span class="keywordflow">if</span> (<a class="code" href="group___c_m_s_i_s___r_t_o_s___kernel_ctrl.html#ga53d078a801022e202e8115c083ece68e" title="Initialize the RTOS Kernel for creating objects.">osKernelInitialize</a> () != <a class="code" href="group___c_m_s_i_s___r_t_o_s___status.html#gae2e091fefc4c767117727bd5aba4d99ea9e1c9e2550bb4de8969a935acffc968f" title="function completed; no error or event occurred.">osOK</a>)  {          <span class="comment">// initialize RTOS kernel</span></div>
@@ -205,7 +205,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define osCMSIS_RTX&#160;&#160;&#160;((4&lt;&lt;16)|78)</td>
+          <td class="memname">#define osCMSIS_RTX&#160;&#160;&#160;((4&lt;&lt;16)|80)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -244,7 +244,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define osKernelSystemId&#160;&#160;&#160;&quot;RTX V4.79&quot;</td>
+          <td class="memname">#define osKernelSystemId&#160;&#160;&#160;&quot;RTX V4.80&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -318,6 +318,7 @@ Functions</h2></td></tr>
 <li><a class="el" href="group___c_m_s_i_s___r_t_o_s___mail.html#gaa177e7fe5820dd70d8c9e46ded131174">osMailCreate</a> : Define and initialize a mail queue with fix-size memory blocks.</li>
 </ul>
 <p>CMSIS-RTOS RTX Kernel starts thread execution with the function <em>main</em>. In this case, the function <b>osKernelInitialize</b> stops thread switching. This allows to setup the system to a defined state before thread switching is resumed with <a class="el" href="group___c_m_s_i_s___r_t_o_s___kernel_ctrl.html#gaab668ffd2ea76bb0a77ab0ab385eaef2">osKernelStart</a>.</p>
+<dl class="section note"><dt>Note</dt><dd>Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="cmsis__os_8h.html">cmsis_os.h</a>&quot;</span></div>
 <div class="line"> </div>
@@ -347,6 +348,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>0 RTOS is not started, 1 RTOS is started.</dd></dl>
 <p>Identifies if the RTOS kernel is started. For CMSIS-RTOS RTX, this allows to identify that the RTOS kernel is already running.</p>
+<dl class="section note"><dt>Note</dt><dd><a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a> can call this function.</dd></dl>
 <p><b>Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="cmsis__os_8h.html">cmsis_os.h</a>&quot;</span></div>
 <div class="line"> </div>
@@ -379,6 +381,7 @@ Functions</h2></td></tr>
 <li><em>osOK:</em> the RTOS kernel has been successfully started.</li>
 <li><em>osErrorISR:</em> <a class="el" href="group___c_m_s_i_s___r_t_o_s___kernel_ctrl.html#gaab668ffd2ea76bb0a77ab0ab385eaef2">osKernelStart</a> cannot be called from interrupt service routines.</li>
 </ul>
+<dl class="section note"><dt>Note</dt><dd>Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="cmsis__os_8h.html">cmsis_os.h</a>&quot;</span></div>
 <div class="line"> </div>
@@ -389,7 +392,7 @@ Functions</h2></td></tr>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">if</span> (!<a class="code" href="group___c_m_s_i_s___r_t_o_s___kernel_ctrl.html#ga3b571de44cd3094c643247a7397f86b5" title="Check if the RTOS kernel is already started.">osKernelRunning</a> ())  {                    <span class="comment">// is the kernel running ?</span></div>
 <div class="line">    <span class="keywordflow">if</span> (<a class="code" href="group___c_m_s_i_s___r_t_o_s___kernel_ctrl.html#gaab668ffd2ea76bb0a77ab0ab385eaef2" title="Start the RTOS Kernel.">osKernelStart</a> () != <a class="code" href="group___c_m_s_i_s___r_t_o_s___status.html#gae2e091fefc4c767117727bd5aba4d99ea9e1c9e2550bb4de8969a935acffc968f" title="function completed; no error or event occurred.">osOK</a>)  {             <span class="comment">// start the kernel</span></div>
-<div class="line">                                                     <span class="comment">// kernel could not be started</span></div>
+<div class="line">                                                 <span class="comment">// kernel could not be started</span></div>
 <div class="line">    }</div>
 <div class="line">  }</div>
 <div class="line">}</div>
@@ -412,6 +415,7 @@ Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>RTOS kernel system timer as 32-bit value</dd></dl>
 <p>Get the value of the Kernel SysTick timer for time comparison. The value is a rolling 32-bit counter that is typically composed of the kernel system interrupt timer value and an counter that counts these interrupts.</p>
 <p>This function allows the implementation of timeout checks. These are for example required when checking for a busy status in a device or peripheral initialization routine.</p>
+<dl class="section note"><dt>Note</dt><dd>Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="cmsis__os_8h.html">cmsis_os.h</a>&quot;</span></div>
 <div class="line"></div>
@@ -436,7 +440,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Sep 11 2015 14:40:28 for CMSIS-RTOS RTX by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Tue Oct 27 2015 14:35:45 for CMSIS-RTOS RTX by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

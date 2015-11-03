@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-DSP
-   &#160;<span id="projectnumber">Version 1.4.6</span>
+   &#160;<span id="projectnumber">Version 1.4.7</span>
    </div>
    <div id="projectbrief">CMSIS DSP Software Library</div>
   </td>
@@ -1011,7 +1011,7 @@ Functions</h2></td></tr>
 <tr class="memitem:ga98f5c1a097d4572ce4ff3b0c58ebcdbd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___f_i_r___sparse.html#ga98f5c1a097d4572ce4ff3b0c58ebcdbd">arm_fir_sparse_init_q7</a> (<a class="el" href="structarm__fir__sparse__instance__q7.html">arm_fir_sparse_instance_q7</a> *S, uint16_t numTaps, <a class="el" href="arm__math_8h.html#ae541b6f232c305361e9b416fc9eed263">q7_t</a> *pCoeffs, <a class="el" href="arm__math_8h.html#ae541b6f232c305361e9b416fc9eed263">q7_t</a> *pState, int32_t *pTapDelay, uint16_t maxDelay, uint32_t <a class="el" href="arm__variance__example__f32_8c.html#ab6558f40a619c2502fbc24c880fd4fb0">blockSize</a>)</td></tr>
 <tr class="memdesc:ga98f5c1a097d4572ce4ff3b0c58ebcdbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialization function for the Q7 sparse FIR filter.  <a href="group___f_i_r___sparse.html#ga98f5c1a097d4572ce4ff3b0c58ebcdbd"></a><br/></td></tr>
 <tr class="separator:ga98f5c1a097d4572ce4ff3b0c58ebcdbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4420d45c37d58c310ef9ae1b5fe58020"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sin_cos.html#ga4420d45c37d58c310ef9ae1b5fe58020">arm_sin_cos_f32</a> (<a class="el" href="arm__math_8h.html#a4611b605e45ab401f02cab15c5e38715">float32_t</a> theta, <a class="el" href="arm__math_8h.html#a4611b605e45ab401f02cab15c5e38715">float32_t</a> *pSinVal, <a class="el" href="arm__math_8h.html#a4611b605e45ab401f02cab15c5e38715">float32_t</a> *pCcosVal)</td></tr>
+<tr class="memitem:ga4420d45c37d58c310ef9ae1b5fe58020"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sin_cos.html#ga4420d45c37d58c310ef9ae1b5fe58020">arm_sin_cos_f32</a> (<a class="el" href="arm__math_8h.html#a4611b605e45ab401f02cab15c5e38715">float32_t</a> theta, <a class="el" href="arm__math_8h.html#a4611b605e45ab401f02cab15c5e38715">float32_t</a> *pSinVal, <a class="el" href="arm__math_8h.html#a4611b605e45ab401f02cab15c5e38715">float32_t</a> *pCosVal)</td></tr>
 <tr class="memdesc:ga4420d45c37d58c310ef9ae1b5fe58020"><td class="mdescLeft">&#160;</td><td class="mdescRight">Floating-point sin_cos function.  <a href="group___sin_cos.html#ga4420d45c37d58c310ef9ae1b5fe58020"></a><br/></td></tr>
 <tr class="separator:ga4420d45c37d58c310ef9ae1b5fe58020"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae9e4ddebff9d4eb5d0a093e28e0bc504"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sin_cos.html#gae9e4ddebff9d4eb5d0a093e28e0bc504">arm_sin_cos_q31</a> (<a class="el" href="arm__math_8h.html#adc89a3547f5324b7b3b95adec3806bc0">q31_t</a> theta, <a class="el" href="arm__math_8h.html#adc89a3547f5324b7b3b95adec3806bc0">q31_t</a> *pSinVal, <a class="el" href="arm__math_8h.html#adc89a3547f5324b7b3b95adec3806bc0">q31_t</a> *pCosVal)</td></tr>
@@ -2379,10 +2379,10 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*pSrcA</td><td>points to the first input matrix structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">*pSrcB</td><td>points to the second input matrix structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*pDst</td><td>points to output matrix structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">*pState</td><td>points to the array for storing intermediate results </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pSrcA</td><td>points to the first input matrix structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pSrcB</td><td>points to the second input matrix structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">pDst</td><td>points to output matrix structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pState</td><td>points to the array for storing intermediate results </td></tr>
   </table>
   </dd>
 </dl>
@@ -2618,7 +2618,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_856524284ebe840938865dc061f982fb.html">Include</a></li><li class="navelem"><a class="el" href="arm__math_8h.html">arm_math.h</a></li>
-    <li class="footer">Generated on Fri Sep 11 2015 14:40:13 for CMSIS-DSP by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Tue Oct 27 2015 14:35:31 for CMSIS-DSP by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

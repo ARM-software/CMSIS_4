@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-DSP
-   &#160;<span id="projectnumber">Version 1.4.6</span>
+   &#160;<span id="projectnumber">Version 1.4.7</span>
    </div>
    <div id="projectbrief">CMSIS DSP Software Library</div>
   </td>
@@ -112,6 +112,17 @@ $(document).ready(function(){initNavTree('_change_log_pg.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><hr/>
+ <b>Version 1.4.7 (no source code change [still labeled 1.4.5]) 2015/10/20</b></p>
+<p>Modified <a class="el" href="arm__math_8h.html">arm_math.h</a></p>
+<ul>
+<li>Added explicit type casts to remove compiler warnings.</li>
+<li>Supressed irrelevant warnings for toolchain GCC.</li>
+</ul>
+<p>Updated documentation</p>
+<ul>
+<li>functions <a class="el" href="group__cos.html#gace15287f9c64b9b4084d1c797d4c49d8">arm_cos_f32</a>, <a class="el" href="group__sin.html#gae164899c4a3fc0e946dc5d55555fe541">arm_sin_f32</a> use table lookup combined with linear interpolation (since V1.4.2). This is now documented.</li>
+</ul>
+<hr/>
  <b>Version 1.4.6 (no source code change [still labeled 1.4.5]) 2015/08/26</b></p>
 <p>Modified <a class="el" href="arm__math_8h.html">arm_math.h</a></p>
 <ul>
@@ -348,7 +359,7 @@ Documentation
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Sep 11 2015 14:40:14 for CMSIS-DSP by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Tue Oct 27 2015 14:35:32 for CMSIS-DSP by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

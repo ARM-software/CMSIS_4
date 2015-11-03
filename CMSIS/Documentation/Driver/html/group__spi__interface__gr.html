@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.03</span>
+   &#160;<span id="projectnumber">Version 2.04</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -246,19 +246,20 @@ SPI Master connected to 3 slaves</div></div>
 <div class="line">    <span class="keywordflow">switch</span> (event)</div>
 <div class="line">    {</div>
 <div class="line">    <span class="keywordflow">case</span> <a class="code" href="group___s_p_i__events.html#gaabdfc9e17641144cd50d36d15511a1b8" title="Data Transfer completed.">ARM_SPI_EVENT_TRANSFER_COMPLETE</a>:</div>
-<div class="line">                          <span class="comment">/* Success: Wakeup Thread */</span></div>
+<div class="line">        <span class="comment">/* Success: Wakeup Thread */</span></div>
 <div class="line">        osSignalSet(tid_mySPI_Thread, 0x01);</div>
 <div class="line">        <span class="keywordflow">break</span>;</div>
 <div class="line">    <span class="keywordflow">case</span> <a class="code" href="group___s_p_i__events.html#ga8e63d99c80ea56de596a8d0a51fd8244" title="Data lost: Receive overflow / Transmit underflow.">ARM_SPI_EVENT_DATA_LOST</a>:</div>
 <div class="line">        <span class="comment">/*  Occurs in slave mode when data is requested/sent by master</span></div>
 <div class="line"><span class="comment">            but send/receive/transfer operation has not been started</span></div>
-<div class="line"><span class="comment">            and indicates that data is lost. */</span></div>
-<div class="line">                    __breakpoint(0);  <span class="comment">/* Error: Call debugger or replace with custom error handling */</span></div>
+<div class="line"><span class="comment">            and indicates that data is lost. Occurs also in master mode</span></div>
+<div class="line"><span class="comment">            when driver cannot transfer data fast enough. */</span></div>
+<div class="line">        __breakpoint(0);  <span class="comment">/* Error: Call debugger or replace with custom error handling */</span></div>
 <div class="line">        <span class="keywordflow">break</span>;</div>
 <div class="line">    <span class="keywordflow">case</span> <a class="code" href="group___s_p_i__events.html#ga7eaa229003689aa18598273490b3e630" title="Master Mode Fault (SS deactivated when Master)">ARM_SPI_EVENT_MODE_FAULT</a>:</div>
 <div class="line">        <span class="comment">/*  Occurs in master mode when Slave Select is deactivated and</span></div>
 <div class="line"><span class="comment">            indicates Master Mode Fault. */</span></div>
-<div class="line">                    __breakpoint(0);  <span class="comment">/* Error: Call debugger or replace with custom error handling */</span></div>
+<div class="line">        __breakpoint(0);  <span class="comment">/* Error: Call debugger or replace with custom error handling */</span></div>
 <div class="line">        <span class="keywordflow">break</span>;</div>
 <div class="line">    }</div>
 <div class="line">}</div>
@@ -270,7 +271,7 @@ SPI Master connected to 3 slaves</div></div>
 <div class="line"><span class="keywordtype">void</span> mySPI_Thread(<span class="keywordtype">void</span> <span class="keyword">const</span>* arg)</div>
 <div class="line">{</div>
 <div class="line">    <a class="code" href="group__spi__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___s_p_i" title="Access structure of the SPI Driver.">ARM_DRIVER_SPI</a>* SPIdrv = &amp;Driver_SPI0;</div>
-<div class="line">          osEvent evt;</div>
+<div class="line">    osEvent evt;</div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#ifdef DEBUG</span></div>
 <div class="line"><span class="preprocessor"></span>    <a class="code" href="group__common__drv__gr.html#struct_a_r_m___d_r_i_v_e_r___v_e_r_s_i_o_n" title="Driver Version.">ARM_DRIVER_VERSION</a>   version;</div>
@@ -1146,7 +1147,7 @@ when Slave  </td><td>Set the Slave Select mode for the master to <b>Not used</b>
 <tr>
 <td><a class="el" href="group___s_p_i__events.html#gaabdfc9e17641144cd50d36d15511a1b8">ARM_SPI_EVENT_TRANSFER_COMPLETE</a> </td><td>0 </td><td>Occurs after call to <a class="el" href="group__spi__interface__gr.html#gab2a303d1071e926280d50682f4808479">ARM_SPI_Send</a>, <a class="el" href="group__spi__interface__gr.html#ga726aff54e782ed9b47f7ba1280a3d8f6">ARM_SPI_Receive</a>, or <a class="el" href="group__spi__interface__gr.html#gaa24026b3822c10272e301f1505136ec2">ARM_SPI_Transfer</a> to indicate that all the data has been transferred. The driver is ready for the next transfer operation.  </td><td><em>allways supported</em>   </td></tr>
 <tr>
-<td><a class="el" href="group___s_p_i__events.html#ga8e63d99c80ea56de596a8d0a51fd8244">ARM_SPI_EVENT_DATA_LOST</a> </td><td>1 </td><td>Occurs in slave mode when data is requested/sent by master but send/receive/transfer operation has not been started and indicates that data is lost.  </td><td><em>allways supported</em>   </td></tr>
+<td><a class="el" href="group___s_p_i__events.html#ga8e63d99c80ea56de596a8d0a51fd8244">ARM_SPI_EVENT_DATA_LOST</a> </td><td>1 </td><td>Occurs in slave mode when data is requested/sent by master but send/receive/transfer operation has not been started and indicates that data is lost. Occurs also in master mode when driver cannot transfer data fast enough.  </td><td><em>allways supported</em>   </td></tr>
 <tr>
 <td><a class="el" href="group___s_p_i__events.html#ga7eaa229003689aa18598273490b3e630">ARM_SPI_EVENT_MODE_FAULT</a> </td><td>2 </td><td>Occurs in master mode when Slave Select is deactivated and indicates Master Mode Fault. The driver is ready for the next transfer operation.  </td><td>data field <em>event_mode_fault</em> = <span class="XML-Token">1</span>   </td></tr>
 </table>
@@ -1158,7 +1159,7 @@ when Slave  </td><td>Set the Slave Select mode for the master to <b>Not used</b>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Sep 11 2015 14:40:03 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Tue Oct 27 2015 14:35:25 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

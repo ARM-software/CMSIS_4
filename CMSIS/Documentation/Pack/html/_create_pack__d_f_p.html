@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.4.0</span>
+   &#160;<span id="projectnumber">Version 1.4.1</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -254,16 +254,16 @@ Add a <code>&lt;conditions&gt;</code> section in your PDSC with the following (t
 Add a <code>&lt;components&gt;</code> section in your PDSC with the following (the <a class="el" href="_c_p__s_w_components.html#CP_Components">components</a> section provides more information on this step): <div class="fragment"><div class="line">&lt;component Cclass=<span class="stringliteral">&quot;Device&quot;</span> Cgroup=<span class="stringliteral">&quot;Startup&quot;</span> Cversion=<span class="stringliteral">&quot;1.0.0&quot;</span> condition=<span class="stringliteral">&quot;MVCM3 CMSIS-CORE&quot;</span>&gt;</div>
 <div class="line">  &lt;description&gt;System Startup <span class="keywordflow">for</span> MyVendor MVCM3 Series&lt;/description&gt;</div>
 <div class="line">  &lt;files&gt;</div>
-<div class="line">   &lt;!--  include folder --&gt;</div>
-<div class="line">   &lt;file category=<span class="stringliteral">&quot;include&quot;</span> name=<span class="stringliteral">&quot;Device\Include\&quot;/&gt;</span></div>
-<div class="line"><span class="stringliteral"></span></div>
-<div class="line"><span class="stringliteral">    &lt;file category=&quot;</span>source<span class="stringliteral">&quot;  name=&quot;</span>Device\Source\ARM\startup_MVCM3xxx.s<span class="stringliteral">&quot; attr=&quot;</span>config<span class="stringliteral">&quot; condition=&quot;</span>Startup ARM<span class="stringliteral">&quot; version=&quot;</span>1.0.0<span class="stringliteral">&quot;/&gt;</span></div>
-<div class="line"><span class="stringliteral">    &lt;file category=&quot;</span>source<span class="stringliteral">&quot;  name=&quot;</span>Device\Source\GCC\startup_MVCM3xxx.S<span class="stringliteral">&quot; attr=&quot;</span>config<span class="stringliteral">&quot; condition=&quot;</span>Startup GCC<span class="stringliteral">&quot; version=&quot;</span>1.0.0<span class="stringliteral">&quot;/&gt;</span></div>
-<div class="line"><span class="stringliteral">    &lt;file category=&quot;</span>source<span class="stringliteral">&quot;  name=&quot;</span>Device\Source\IAR\startup_MVCM3xxx.s<span class="stringliteral">&quot; attr=&quot;</span>config<span class="stringliteral">&quot; condition=&quot;</span>Startup IAR<span class="stringliteral">&quot; version=&quot;</span>1.0.0<span class="stringliteral">&quot;/&gt;</span></div>
-<div class="line"><span class="stringliteral"></span></div>
-<div class="line"><span class="stringliteral">    &lt;file category=&quot;</span>source<span class="stringliteral">&quot;  name=&quot;</span>Device\Source\system_MVCM3xxx.c<span class="stringliteral">&quot;  attr=&quot;</span>config<span class="stringliteral">&quot; version=&quot;</span>1.0.0<span class="stringliteral">&quot;/&gt;</span></div>
-<div class="line"><span class="stringliteral">  &lt;/files&gt;</span></div>
-<div class="line"><span class="stringliteral">&lt;/component&gt;</span></div>
+<div class="line">    &lt;!--  include folder --&gt;</div>
+<div class="line">    &lt;file category=<span class="stringliteral">&quot;include&quot;</span> name=<span class="stringliteral">&quot;Device/Include/&quot;</span>/&gt;</div>
+<div class="line"></div>
+<div class="line">    &lt;file category=<span class="stringliteral">&quot;source&quot;</span>  name=<span class="stringliteral">&quot;Device/Source/ARM/startup_MVCM3xxx.s&quot;</span> attr=<span class="stringliteral">&quot;config&quot;</span> condition=<span class="stringliteral">&quot;Startup ARM&quot;</span> version=<span class="stringliteral">&quot;1.0.0&quot;</span>/&gt;</div>
+<div class="line">    &lt;file category=<span class="stringliteral">&quot;source&quot;</span>  name=<span class="stringliteral">&quot;Device/Source/GCC/startup_MVCM3xxx.S&quot;</span> attr=<span class="stringliteral">&quot;config&quot;</span> condition=<span class="stringliteral">&quot;Startup GCC&quot;</span> version=<span class="stringliteral">&quot;1.0.0&quot;</span>/&gt;</div>
+<div class="line">    &lt;file category=<span class="stringliteral">&quot;source&quot;</span>  name=<span class="stringliteral">&quot;Device/Source/IAR/startup_MVCM3xxx.s&quot;</span> attr=<span class="stringliteral">&quot;config&quot;</span> condition=<span class="stringliteral">&quot;Startup IAR&quot;</span> version=<span class="stringliteral">&quot;1.0.0&quot;</span>/&gt;</div>
+<div class="line"></div>
+<div class="line">    &lt;file category=<span class="stringliteral">&quot;source&quot;</span>  name=<span class="stringliteral">&quot;Device/Source/system_MVCM3xxx.c&quot;</span>  attr=<span class="stringliteral">&quot;config&quot;</span> version=<span class="stringliteral">&quot;1.0.0&quot;</span>/&gt;</div>
+<div class="line">  &lt;/files&gt;</div>
+<div class="line">&lt;/component&gt;</div>
 </div><!-- fragment -->  </li>
 <li>
 Add a new version number: <div class="fragment"><div class="line">&lt;release version=<span class="stringliteral">&quot;1.0.1&quot;</span>&gt;</div>
@@ -315,8 +315,8 @@ Found 0 Errors and 0 Warnings
 Return Code: 0 (OK)
 </pre> Move the generated header file <b>MVCM3xxx.h</b> to the <b>Device\Include</b> directory.  </li>
 <li>
-Add the following two lines at the family level in the PDSC file: <div class="fragment"><div class="line">&lt;compile    header=<span class="stringliteral">&quot;Device\Include\MVCM3xxx.h&quot;</span>/&gt;</div>
-<div class="line">&lt;debug      svd=<span class="stringliteral">&quot;SVD\MVCM3xxx.svd&quot;</span>/&gt;</div>
+Add the following two lines at the family level in the PDSC file: <div class="fragment"><div class="line">&lt;compile    header=<span class="stringliteral">&quot;Device/Include/MVCM3xxx.h&quot;</span>/&gt;</div>
+<div class="line">&lt;debug      svd=<span class="stringliteral">&quot;SVD/MVCM3xxx.svd&quot;</span>/&gt;</div>
 </div><!-- fragment -->  </li>
 <li>
 Add a new version number: <div class="fragment"><div class="line">&lt;release version=<span class="stringliteral">&quot;1.0.2&quot;</span>&gt;</div>
@@ -372,12 +372,12 @@ In the real world, you would now start to adapt the programming algorithms in th
 <li>
 Use <b>Project - Build Target</b> to generate the new Flash programming algorithm. The algorithm will be created in the parent directory of the <b>_Template_Flash</b> directory.  </li>
 <li>
-Copy the output file <b>..\MVCM3XXX_16.FLM</b> to a new subdirectory called <b>Files\Flash</b>. Add these lines to the MVCM3110/250 device sections: <div class="fragment"><div class="line">algorithm name=<span class="stringliteral">&quot;Flash\MVCM3XXX_16.FLM&quot;</span> start=<span class="stringliteral">&quot;0x00000000&quot;</span> size=<span class="stringliteral">&quot;0x4000&quot;</span> <span class="keywordflow">default</span>=<span class="stringliteral">&quot;1&quot;</span>/&gt;</div>
+Copy the output file <b>..\MVCM3XXX_16.FLM</b> to a new subdirectory called <b>Files\Flash</b>. Add these lines to the MVCM3110/250 device sections: <div class="fragment"><div class="line">algorithm name=<span class="stringliteral">&quot;Flash/MVCM3XXX_16.FLM&quot;</span> start=<span class="stringliteral">&quot;0x00000000&quot;</span> size=<span class="stringliteral">&quot;0x4000&quot;</span> <span class="keywordflow">default</span>=<span class="stringliteral">&quot;1&quot;</span>/&gt;</div>
 </div><!-- fragment -->  </li>
 <li>
 Create a <b>MVCM3XXX_32.flm</b> for the MVCM3120/260 devices.  </li>
 <li>
-Add these lines to the MVCM3120/260 device sections: <div class="fragment"><div class="line">algorithm name=<span class="stringliteral">&quot;Flash\MVCM3XXX_32.FLM&quot;</span> start=<span class="stringliteral">&quot;0x00000000&quot;</span> size=<span class="stringliteral">&quot;0x8000&quot;</span> <span class="keywordflow">default</span>=<span class="stringliteral">&quot;1&quot;</span>/&gt;</div>
+Add these lines to the MVCM3120/260 device sections: <div class="fragment"><div class="line">algorithm name=<span class="stringliteral">&quot;Flash/MVCM3XXX_32.FLM&quot;</span> start=<span class="stringliteral">&quot;0x00000000&quot;</span> size=<span class="stringliteral">&quot;0x8000&quot;</span> <span class="keywordflow">default</span>=<span class="stringliteral">&quot;1&quot;</span>/&gt;</div>
 </div><!-- fragment -->  </li>
 <li>
 Add a new version number: <div class="fragment"><div class="line">&lt;release version=<span class="stringliteral">&quot;1.0.3&quot;</span>&gt;</div>
@@ -424,9 +424,9 @@ Device Properties</h1>
 <p>Copy the <em>content</em> of the <b>05_Device_Properties</b> directory of the <b>Pack_with_Device_Support.zip</b> file to the <b>Files</b> directory of your working environment: </p>
 <ol>
 <li>
-The <b>MVCM3 Series</b> family properties <a class="el" href="pdsc_family_pg.html#element_processor">processor</a>, <a class="el" href="pdsc_family_pg.html#element_compile">compile</a>, <a class="el" href="pdsc_family_pg.html#element_description">description</a>, and <a class="el" href="pdsc_family_pg.html#element_debug">debug</a> are already specified. There are additional common properties that can be specified on the family level: <a class="el" href="pdsc_family_pg.html#element_book">book</a> and <a class="el" href="pdsc_family_pg.html#element_feature">feature</a>. Add the following lines to the PDSC file in the <b>&lt;family&gt;</b> section: <div class="fragment"><div class="line">&lt;book      name=<span class="stringliteral">&quot;Docs\dui0552a_cortex_m3_dgug.pdf&quot;</span>   title=<span class="stringliteral">&quot;Cortex-M3 Generic User Guide&quot;</span>/&gt;</div>
-<div class="line">&lt;book      name=<span class="stringliteral">&quot;Docs\MVCM3XXX_Datasheet.pdf&quot;</span>        title=<span class="stringliteral">&quot;MVCM3 Series Datasheet&quot;</span>/&gt;</div>
-<div class="line">&lt;book      name=<span class="stringliteral">&quot;Docs\MVCM3XXX_Product_Brief.pdf&quot;</span>    title=<span class="stringliteral">&quot;MVCM3 Product Brief&quot;</span>/&gt;</div>
+The <b>MVCM3 Series</b> family properties <a class="el" href="pdsc_family_pg.html#element_processor">processor</a>, <a class="el" href="pdsc_family_pg.html#element_compile">compile</a>, <a class="el" href="pdsc_family_pg.html#element_description">description</a>, and <a class="el" href="pdsc_family_pg.html#element_debug">debug</a> are already specified. There are additional common properties that can be specified on the family level: <a class="el" href="pdsc_family_pg.html#element_book">book</a> and <a class="el" href="pdsc_family_pg.html#element_feature">feature</a>. Add the following lines to the PDSC file in the <b>&lt;family&gt;</b> section: <div class="fragment"><div class="line">&lt;book      name=<span class="stringliteral">&quot;Docs/dui0552a_cortex_m3_dgug.pdf&quot;</span>   title=<span class="stringliteral">&quot;Cortex-M3 Generic User Guide&quot;</span>/&gt;</div>
+<div class="line">&lt;book      name=<span class="stringliteral">&quot;Docs/MVCM3XXX_Datasheet.pdf&quot;</span>        title=<span class="stringliteral">&quot;MVCM3 Series Datasheet&quot;</span>/&gt;</div>
+<div class="line">&lt;book      name=<span class="stringliteral">&quot;Docs/MVCM3XXX_Product_Brief.pdf&quot;</span>    title=<span class="stringliteral">&quot;MVCM3 Product Brief&quot;</span>/&gt;</div>
 <div class="line">&lt;feature type=<span class="stringliteral">&quot;ExtInt&quot;</span>        n=<span class="stringliteral">&quot;16&quot;</span>/&gt;</div>
 <div class="line">&lt;feature type=<span class="stringliteral">&quot;Temp&quot;</span>          n=<span class="stringliteral">&quot;-40&quot;</span>     m=<span class="stringliteral">&quot;105&quot;</span>   name=<span class="stringliteral">&quot;Extended Temperature Range&quot;</span>/&gt;</div>
 <div class="line">&lt;feature type=<span class="stringliteral">&quot;VCC&quot;</span>           n=<span class="stringliteral">&quot;2.5&quot;</span>     m=<span class="stringliteral">&quot;3.6&quot;</span>/&gt;</div>
@@ -449,54 +449,54 @@ Device Specific Software Components</h2>
 <p>Finally, <a class="el" href="_c_p__s_w_components.html#CP_Components">software components</a> and <a class="el" href="_c_p__s_w_components.html#CP_Examples">example projects</a> need to be added to the DFP. </p>
 <ol>
 <li>
-Add the following lines to the PDSC file in the <b>&lt;components&gt;</b> section: <div class="fragment"><div class="line">    &lt;component Cclass=<span class="stringliteral">&quot;Device&quot;</span> Cgroup=<span class="stringliteral">&quot;HAL&quot;</span> Csub=<span class="stringliteral">&quot;GPIO&quot;</span> Cversion=<span class="stringliteral">&quot;1.0.0&quot;</span> condition=<span class="stringliteral">&quot;MVCM3 CMSIS-CORE&quot;</span>&gt;</div>
-<div class="line">      &lt;description&gt;GPIO HAL <span class="keywordflow">for</span> MyVendor MVCM3 Series&lt;/description&gt;</div>
-<div class="line">      &lt;files&gt;</div>
-<div class="line">        &lt;file category=<span class="stringliteral">&quot;header&quot;</span> name=<span class="stringliteral">&quot;Device\Include\GPIO.h&quot;</span>/&gt;</div>
-<div class="line">        &lt;file category=<span class="stringliteral">&quot;source&quot;</span> name=<span class="stringliteral">&quot;Device\Source\GPIO.c&quot;</span>/&gt;</div>
-<div class="line">      &lt;/files&gt;</div>
-<div class="line">    &lt;/component&gt;</div>
+Add the following lines to the PDSC file in the <b>&lt;components&gt;</b> section: <div class="fragment"><div class="line">&lt;component Cclass=<span class="stringliteral">&quot;Device&quot;</span> Cgroup=<span class="stringliteral">&quot;HAL&quot;</span> Csub=<span class="stringliteral">&quot;GPIO&quot;</span> Cversion=<span class="stringliteral">&quot;1.0.0&quot;</span> condition=<span class="stringliteral">&quot;MVCM3 CMSIS-CORE&quot;</span>&gt;</div>
+<div class="line">  &lt;description&gt;GPIO HAL <span class="keywordflow">for</span> MyVendor MVCM3 Series&lt;/description&gt;</div>
+<div class="line">  &lt;files&gt;</div>
+<div class="line">    &lt;file category=<span class="stringliteral">&quot;header&quot;</span> name=<span class="stringliteral">&quot;Device/Include/GPIO.h&quot;</span>/&gt;</div>
+<div class="line">    &lt;file category=<span class="stringliteral">&quot;source&quot;</span> name=<span class="stringliteral">&quot;Device/Source/GPIO.c&quot;</span>/&gt;</div>
+<div class="line">  &lt;/files&gt;</div>
+<div class="line">&lt;/component&gt;</div>
 <div class="line"></div>
-<div class="line">    &lt;component Cclass=<span class="stringliteral">&quot;Device&quot;</span> Cgroup=<span class="stringliteral">&quot;HAL&quot;</span> Csub=<span class="stringliteral">&quot;ADC&quot;</span> Cversion=<span class="stringliteral">&quot;1.0.0&quot;</span> condition=<span class="stringliteral">&quot;MVCM3 CMSIS-CORE&quot;</span>&gt;</div>
-<div class="line">      &lt;description&gt;ADC HAL <span class="keywordflow">for</span> MyVendor MVCM3 Series&lt;/description&gt;</div>
-<div class="line">      &lt;files&gt;</div>
-<div class="line">        &lt;file category=<span class="stringliteral">&quot;header&quot;</span> name=<span class="stringliteral">&quot;Device\Include\ADC.h&quot;</span>/&gt;</div>
-<div class="line">        &lt;file category=<span class="stringliteral">&quot;source&quot;</span> name=<span class="stringliteral">&quot;Device\Source\ADC.c&quot;</span>/&gt;</div>
-<div class="line">      &lt;/files&gt;</div>
-<div class="line">    &lt;/component&gt;</div>
+<div class="line">&lt;component Cclass=<span class="stringliteral">&quot;Device&quot;</span> Cgroup=<span class="stringliteral">&quot;HAL&quot;</span> Csub=<span class="stringliteral">&quot;ADC&quot;</span> Cversion=<span class="stringliteral">&quot;1.0.0&quot;</span> condition=<span class="stringliteral">&quot;MVCM3 CMSIS-CORE&quot;</span>&gt;</div>
+<div class="line">  &lt;description&gt;ADC HAL <span class="keywordflow">for</span> MyVendor MVCM3 Series&lt;/description&gt;</div>
+<div class="line">  &lt;files&gt;</div>
+<div class="line">    &lt;file category=<span class="stringliteral">&quot;header&quot;</span> name=<span class="stringliteral">&quot;Device/Include/ADC.h&quot;</span>/&gt;</div>
+<div class="line">    &lt;file category=<span class="stringliteral">&quot;source&quot;</span> name=<span class="stringliteral">&quot;Device/Source/ADC.c&quot;</span>/&gt;</div>
+<div class="line">  &lt;/files&gt;</div>
+<div class="line">&lt;/component&gt;</div>
 <div class="line"></div>
-<div class="line">    &lt;component Cclass=<span class="stringliteral">&quot;CMSIS Driver&quot;</span> Cgroup=<span class="stringliteral">&quot;I2C&quot;</span> Cversion=<span class="stringliteral">&quot;1.0.0&quot;</span> condition=<span class="stringliteral">&quot;MVCM3 CMSIS-CORE&quot;</span> maxInstances=<span class="stringliteral">&quot;3&quot;</span>&gt;</div>
-<div class="line">      &lt;description&gt;I2C Driver <span class="keywordflow">for</span> MVCM3 Series&lt;/description&gt;</div>
-<div class="line">      &lt;RTE_Components_h&gt;</div>
-<div class="line"><span class="preprocessor">        #define RTE_Drivers_I2C0                </span><span class="comment">/* Driver I2C0 */</span><span class="preprocessor"></span></div>
-<div class="line"><span class="preprocessor"></span><span class="preprocessor">#define RTE_Drivers_I2C1</span></div>
-<div class="line"><span class="preprocessor"></span><span class="preprocessor">#define RTE_Drivers_I2C2</span></div>
-<div class="line"><span class="preprocessor"></span>      &lt;/RTE_Components_h&gt;</div>
-<div class="line">      &lt;files&gt;</div>
-<div class="line">        &lt;file category=<span class="stringliteral">&quot;source&quot;</span> name=<span class="stringliteral">&quot;Drivers\I2C\I2C_MVCM3.c&quot;</span>/&gt;</div>
-<div class="line">        &lt;file category=<span class="stringliteral">&quot;header&quot;</span> name=<span class="stringliteral">&quot;Drivers\I2C\I2C_MVCM3.h&quot;</span>/&gt;</div>
-<div class="line">      &lt;/files&gt;</div>
-<div class="line">    &lt;/component&gt;</div>
+<div class="line">&lt;component Cclass=<span class="stringliteral">&quot;CMSIS Driver&quot;</span> Cgroup=<span class="stringliteral">&quot;I2C&quot;</span> Cversion=<span class="stringliteral">&quot;1.0.0&quot;</span> condition=<span class="stringliteral">&quot;MVCM3 CMSIS-CORE&quot;</span> maxInstances=<span class="stringliteral">&quot;3&quot;</span>&gt;</div>
+<div class="line">  &lt;description&gt;I2C Driver <span class="keywordflow">for</span> MVCM3 Series&lt;/description&gt;</div>
+<div class="line">  &lt;RTE_Components_h&gt;</div>
+<div class="line"><span class="preprocessor">    #define RTE_Drivers_I2C0                </span><span class="comment">/* Driver I2C0 */</span><span class="preprocessor"></span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">    #define RTE_Drivers_I2C1                </span><span class="comment">/* Driver I2C1 */</span><span class="preprocessor"></span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">    #define RTE_Drivers_I2C2                </span><span class="comment">/* Driver I2C2 */</span><span class="preprocessor"></span></div>
+<div class="line"><span class="preprocessor"></span>  &lt;/RTE_Components_h&gt;</div>
+<div class="line">  &lt;files&gt;</div>
+<div class="line">    &lt;file category=<span class="stringliteral">&quot;source&quot;</span> name=<span class="stringliteral">&quot;Drivers/I2C/I2C_MVCM3.c&quot;</span>/&gt;</div>
+<div class="line">    &lt;file category=<span class="stringliteral">&quot;header&quot;</span> name=<span class="stringliteral">&quot;Drivers/I2C/I2C_MVCM3.h&quot;</span>/&gt;</div>
+<div class="line">  &lt;/files&gt;</div>
+<div class="line">&lt;/component&gt;</div>
 <div class="line"></div>
-<div class="line">    &lt;component Cclass=<span class="stringliteral">&quot;CMSIS Driver&quot;</span> Cgroup=<span class="stringliteral">&quot;UART&quot;</span> Cversion=<span class="stringliteral">&quot;1.0.0&quot;</span> condition=<span class="stringliteral">&quot;MVCM3 CMSIS-CORE&quot;</span> maxInstances=<span class="stringliteral">&quot;5&quot;</span>&gt;</div>
-<div class="line">      &lt;description&gt;UART Driver <span class="keywordflow">for</span> MVCM3 Series&lt;/description&gt;</div>
-<div class="line">      &lt;RTE_Components_h&gt;</div>
-<div class="line"><span class="preprocessor">#define RTE_Drivers_UART0</span></div>
-<div class="line"><span class="preprocessor"></span><span class="preprocessor">#define RTE_Drivers_UART1</span></div>
-<div class="line"><span class="preprocessor"></span><span class="preprocessor">#define RTE_Drivers_UART2</span></div>
-<div class="line"><span class="preprocessor"></span><span class="preprocessor">#define RTE_Drivers_UART3</span></div>
-<div class="line"><span class="preprocessor"></span><span class="preprocessor">#define RTE_Drivers_UART4</span></div>
-<div class="line"><span class="preprocessor"></span>      &lt;/RTE_Components_h&gt;</div>
-<div class="line">      &lt;files&gt;</div>
-<div class="line">        &lt;file category=<span class="stringliteral">&quot;source&quot;</span> name=<span class="stringliteral">&quot;Drivers\UART\UART_MVCM3.c&quot;</span>/&gt;</div>
-<div class="line">        &lt;file category=<span class="stringliteral">&quot;header&quot;</span> name=<span class="stringliteral">&quot;Drivers\UART\UART_MVCM3.h&quot;</span>/&gt;</div>
-<div class="line">      &lt;/files&gt;</div>
-<div class="line">    &lt;/component&gt;</div>
+<div class="line">&lt;component Cclass=<span class="stringliteral">&quot;CMSIS Driver&quot;</span> Cgroup=<span class="stringliteral">&quot;UART&quot;</span> Cversion=<span class="stringliteral">&quot;1.0.0&quot;</span> condition=<span class="stringliteral">&quot;MVCM3 CMSIS-CORE&quot;</span> maxInstances=<span class="stringliteral">&quot;5&quot;</span>&gt;</div>
+<div class="line">  &lt;description&gt;UART Driver <span class="keywordflow">for</span> MVCM3 Series&lt;/description&gt;</div>
+<div class="line">  &lt;RTE_Components_h&gt;</div>
+<div class="line"><span class="preprocessor">    #define RTE_Drivers_UART0               </span><span class="comment">/* Driver UART0 */</span><span class="preprocessor"></span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">    #define RTE_Drivers_UART1               </span><span class="comment">/* Driver UART1 */</span><span class="preprocessor"></span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">    #define RTE_Drivers_UART2               </span><span class="comment">/* Driver UART2 */</span><span class="preprocessor"></span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">    #define RTE_Drivers_UART3               </span><span class="comment">/* Driver UART3 */</span><span class="preprocessor"></span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">    #define RTE_Drivers_UART4               </span><span class="comment">/* Driver UART4 */</span><span class="preprocessor"></span></div>
+<div class="line"><span class="preprocessor"></span>  &lt;/RTE_Components_h&gt;</div>
+<div class="line">  &lt;files&gt;</div>
+<div class="line">    &lt;file category=<span class="stringliteral">&quot;source&quot;</span> name=<span class="stringliteral">&quot;Drivers/UART/UART_MVCM3.c&quot;</span>/&gt;</div>
+<div class="line">    &lt;file category=<span class="stringliteral">&quot;header&quot;</span> name=<span class="stringliteral">&quot;Drivers/UART/UART_MVCM3.h&quot;</span>/&gt;</div>
+<div class="line">  &lt;/files&gt;</div>
+<div class="line">&lt;/component&gt;</div>
 </div><!-- fragment --> <dl class="section note"><dt>Note</dt><dd>The first two software components are added to <b>Device::HAL</b> because they are specific to the device family and are not using a published API. The drivers for I2C and UART are adhering to the <a href="http://www.keil.com/cmsis/driver" class="el" target="_blank">CMSIS-Driver</a> specification. Thus, they are added to the Cclass <b>CMSIS Driver</b>.  </dd></dl>
 </li>
 <li>
 An example project has also been created. Add an <b>&lt;examples&gt;</b> section with the following: <div class="fragment"><div class="line">&lt;examples&gt;</div>
-<div class="line">  &lt;example name=<span class="stringliteral">&quot;Dummy&quot;</span> doc=<span class="stringliteral">&quot;Abstract.txt&quot;</span> folder=<span class="stringliteral">&quot;Examples\dummy&quot;</span>&gt;</div>
+<div class="line">  &lt;example name=<span class="stringliteral">&quot;Dummy&quot;</span> doc=<span class="stringliteral">&quot;Abstract.txt&quot;</span> folder=<span class="stringliteral">&quot;Examples/dummy&quot;</span>&gt;</div>
 <div class="line">    &lt;description&gt;Dummy project&lt;/description&gt;</div>
 <div class="line">    &lt;board name=<span class="stringliteral">&quot;MVCM3 Starter Kit&quot;</span> vendor=<span class="stringliteral">&quot;MyVendor&quot;</span>/&gt;</div>
 <div class="line">    &lt;project&gt;</div>
@@ -521,7 +521,7 @@ Finally, save the PDSC file and regenerate the Pack file using the <a class="el"
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Sep 11 2015 14:40:26 for CMSIS-Pack by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Tue Oct 27 2015 14:35:42 for CMSIS-Pack by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

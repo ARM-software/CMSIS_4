@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-  <package schemaVersion="1.2" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <package schemaVersion="1.3" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
     <vendor>Keil</vendor>
     <url>http://www.keil.com/pack/</url>
     <name>LPC1800_DFP</name>
@@ -47,7 +47,7 @@
   <devices>
     <family Dfamily="LPC1800 Series" Dvendor="NXP:11">
       <processor Dcore="Cortex-M3" DcoreVersion="r2p1" Dfpu="0" Dmpu="1" Dendian="Little-endian"/>
-      <book    name="Documents\dui0552a_cortex_m3_dgug.pdf"           title="Cortex-M3 Generic User Guide"/>
+      <book    name="Documents/dui0552a_cortex_m3_dgug.pdf"           title="Cortex-M3 Generic User Guide"/>
       <description>NXP LPC1800 devices are high-speed and offer extensive communication peripherals. 
         Typical applications include Industrial, RFID readers, Consumer, e-Metering and White goods.
 
@@ -72,79 +72,79 @@
         <!-- *************************  Device 'LPC1810'  ***************************** -->
         <device Dname="LPC1810">
           <processor Dclock="180000000"/>
-          <compile header="Device\Include\LPC18xx.h"  define="LPC18xx"/>
-          <debug      svd="SVD\LPC18xx.svd"/>
+          <compile header="Device/Include/LPC18xx.h"  define="LPC18xx"/>
+          <debug      svd="SVD/LPC18xx.svd"/>
           <memory     id="IRAM1"                      start="0x10000000"  size="0x10000"    default="1"/>
           <memory     id="IRAM2"                      start="0x20000000"  size="0x4000"     default="0"/>
-          <book       name="Documents\UM10430.PDF"                          title="LPC1800 Series Reference Manual"/>
-          <book       name="Documents\LPC1850_30_20_10.PDF"                 title="LPC1800 Series Datasheet"/>
-          <book       name="Documents\ES_LPC18X0.PDF"                       title="LPC1800 Series Erratasheet"/>
+          <book       name="Documents/UM10430.PDF"                          title="LPC1800 Series Reference Manual"/>
+          <book       name="Documents/LPC1850_30_20_10.PDF"                 title="LPC1800 Series Datasheet"/>
+          <book       name="Documents/ES_LPC18X0.PDF"                       title="LPC1800 Series Erratasheet"/>
           <feature type="PWM"           n="6"/>
         </device>
       
         <!-- *************************  Device 'LPC1812'  ***************************** -->
         <device Dname="LPC1812">
           <processor Dclock="180000000"/>
-          <compile header="Device\Include\LPC18xx.h"  define="LPC18xx"/>
-          <debug      svd="SVD\LPC18xx.svd"/>
+          <compile header="Device/Include/LPC18xx.h"  define="LPC18xx"/>
+          <debug      svd="SVD/LPC18xx.svd"/>
           <memory     id="IROM1"                      start="0x1A000000"  size="0x80000"    startup="1"   default="1"/>
           <memory     id="IRAM1"                      start="0x10000000"  size="0x8000"     default="1"/>
           <memory     id="IRAM2"                      start="0x20000000"  size="0x4000"     default="0"/>
-          <algorithm  name="Flash\LPC18xx43xx_512_BA.flm" start="0x1A000000" size="0x80000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
-          <book       name="Documents\UM10430.PDF"                          title="LPC1800 Series Reference Manual"/>
-          <book       name="Documents\LPC1850_30_20_10.PDF"                 title="LPC1800 Series Datasheet"/>
-          <book       name="Documents\ES_LPC18X0.PDF"                       title="LPC1800 Series Erratasheet"/>
+          <algorithm  name="Flash/LPC18xx43xx_512_BA.flm" start="0x1A000000" size="0x80000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
+          <book       name="Documents/UM10430.PDF"                          title="LPC1800 Series Reference Manual"/>
+          <book       name="Documents/LPC1850_30_20_10.PDF"                 title="LPC1800 Series Datasheet"/>
+          <book       name="Documents/ES_LPC18X0.PDF"                       title="LPC1800 Series Erratasheet"/>
           <feature type="PWM"           n="6"/>
         </device>
         
         <!-- *************************  Device 'LPC1813'  ***************************** -->
         <device Dname="LPC1813">
           <processor Dclock="180000000"/>
-          <compile header="Device\Include\LPC18xx.h"  define="LPC18xx"/>
-          <debug      svd="SVD\LPC18xx.svd"/>
+          <compile header="Device/Include/LPC18xx.h"  define="LPC18xx"/>
+          <debug      svd="SVD/LPC18xx.svd"/>
           <memory     id="IROM1"                      start="0x1A000000"  size="0x40000"    startup="1"   default="1"/>
           <memory     id="IROM2"                      start="0x1B000000"  size="0x40000"    startup="0"   default="0"/>
           <memory     id="IRAM1"                      start="0x10000000"  size="0x8000"                   default="1"/>
           <memory     id="IRAM2"                      start="0x20000000"  size="0x4000"                   default="0"/>
-          <algorithm  name="Flash\LPC18xx43xx_256_BA.flm" start="0x1A000000" size="0x40000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
-          <algorithm  name="Flash\LPC18xx43xx_256_BB.flm" start="0x1B000000" size="0x40000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
-          <book       name="Documents\UM10430.PDF"                          title="LPC1800 Series Reference Manual"/>
-          <book       name="Documents\LPC1850_30_20_10.PDF"                 title="LPC1800 Series Datasheet"/>
-          <book       name="Documents\ES_LPC18X0.PDF"                       title="LPC1800 Series Erratasheet"/>
+          <algorithm  name="Flash/LPC18xx43xx_256_BA.flm" start="0x1A000000" size="0x40000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
+          <algorithm  name="Flash/LPC18xx43xx_256_BB.flm" start="0x1B000000" size="0x40000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
+          <book       name="Documents/UM10430.PDF"                          title="LPC1800 Series Reference Manual"/>
+          <book       name="Documents/LPC1850_30_20_10.PDF"                 title="LPC1800 Series Datasheet"/>
+          <book       name="Documents/ES_LPC18X0.PDF"                       title="LPC1800 Series Erratasheet"/>
           <feature type="PWM"           n="6"/>
         </device>
         
         <!-- *************************  Device 'LPC1815'  ***************************** -->
         <device Dname="LPC1815">
           <processor Dclock="180000000"/>
-          <compile header="Device\Include\LPC18xx.h"  define="LPC18xx"/>
-          <debug      svd="SVD\LPC18xx.svd"/>
+          <compile header="Device/Include/LPC18xx.h"  define="LPC18xx"/>
+          <debug      svd="SVD/LPC18xx.svd"/>
           <memory     id="IROM1"                      start="0x1A000000"  size="0x60000"    startup="1"   default="1"/>
           <memory     id="IROM2"                      start="0x1B000000"  size="0x60000"    startup="0"   default="0"/>
           <memory     id="IRAM1"                      start="0x10000000"  size="0x8000"                   default="1"/>
           <memory     id="IRAM2"                      start="0x20000000"  size="0x10000"                  default="0"/>
-          <algorithm  name="Flash\LPC18xx43xx_384_BA.flm" start="0x1A000000" size="0x60000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
-          <algorithm  name="Flash\LPC18xx43xx_384_BB.flm" start="0x1B000000" size="0x60000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
-          <book       name="Documents\UM10430.PDF"                          title="LPC1800 Series Reference Manual"/>
-          <book       name="Documents\LPC1850_30_20_10.PDF"                 title="LPC1800 Series Datasheet"/>
-          <book       name="Documents\ES_LPC18X0.PDF"                       title="LPC1800 Series Erratasheet"/>
+          <algorithm  name="Flash/LPC18xx43xx_384_BA.flm" start="0x1A000000" size="0x60000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
+          <algorithm  name="Flash/LPC18xx43xx_384_BB.flm" start="0x1B000000" size="0x60000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
+          <book       name="Documents/UM10430.PDF"                          title="LPC1800 Series Reference Manual"/>
+          <book       name="Documents/LPC1850_30_20_10.PDF"                 title="LPC1800 Series Datasheet"/>
+          <book       name="Documents/ES_LPC18X0.PDF"                       title="LPC1800 Series Erratasheet"/>
           <feature type="PWM"           n="6"/>
         </device>
         
         <!-- *************************  Device 'LPC1817'  ***************************** -->
         <device Dname="LPC1817">
           <processor Dclock="180000000"/>
-          <compile header="Device\Include\LPC18xx.h"  define="LPC18xx"/>
-          <debug      svd="SVD\LPC18xx.svd"/>
+          <compile header="Device/Include/LPC18xx.h"  define="LPC18xx"/>
+          <debug      svd="SVD/LPC18xx.svd"/>
           <memory     id="IROM1"                      start="0x1A000000"  size="0x80000"    startup="1"   default="1"/>
           <memory     id="IROM2"                      start="0x1B000000"  size="0x80000"    startup="0"   default="0"/>
           <memory     id="IRAM1"                      start="0x10000000"  size="0x8000"                   default="1"/>
           <memory     id="IRAM2"                      start="0x20000000"  size="0x10000"                  default="0"/>
-          <algorithm  name="Flash\LPC18xx43xx_512_BA.flm" start="0x1A000000" size="0x80000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
-          <algorithm  name="Flash\LPC18xx43xx_512_BB.flm" start="0x1B000000" size="0x80000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
-          <book       name="Documents\UM10430.PDF"                          title="LPC1800 Series Reference Manual"/>
-          <book       name="Documents\LPC1850_30_20_10.PDF"                 title="LPC1800 Series Datasheet"/>
-          <book       name="Documents\ES_LPC18X0.PDF"                       title="LPC1800 Series Erratasheet"/>
+          <algorithm  name="Flash/LPC18xx43xx_512_BA.flm" start="0x1A000000" size="0x80000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
+          <algorithm  name="Flash/LPC18xx43xx_512_BB.flm" start="0x1B000000" size="0x80000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
+          <book       name="Documents/UM10430.PDF"                          title="LPC1800 Series Reference Manual"/>
+          <book       name="Documents/LPC1850_30_20_10.PDF"                 title="LPC1800 Series Datasheet"/>
+          <book       name="Documents/ES_LPC18X0.PDF"                       title="LPC1800 Series Erratasheet"/>
         </device>
         </subFamily>
   
@@ -156,75 +156,75 @@
         <!-- *************************  Device 'LPC1820'  ***************************** -->
         <device Dname="LPC1820">
           <processor Dclock="180000000"/>
-          <compile header="Device\Include\LPC18xx.h"  define="LPC18xx"/>
-          <debug      svd="SVD\LPC18xx.svd"/>
+          <compile header="Device/Include/LPC18xx.h"  define="LPC18xx"/>
+          <debug      svd="SVD/LPC18xx.svd"/>
           <memory     id="IRAM1"                      start="0x10000000"  size="0x18000"      default="1"/>
           <memory     id="IRAM2"                      start="0x20000000"  size="0x4000"       default="0"/>
-          <book       name="Documents\UM10430.PDF"                          title="LPC1800 Series Reference Manual"/>
-          <book       name="Documents\LPC1850_30_20_10.PDF"                 title="LPC1800 Series Datasheet"/>
-          <book       name="Documents\ES_LPC18X0.PDF"                       title="LPC1800 Series Erratasheet"/>
+          <book       name="Documents/UM10430.PDF"                          title="LPC1800 Series Reference Manual"/>
+          <book       name="Documents/LPC1850_30_20_10.PDF"                 title="LPC1800 Series Datasheet"/>
+          <book       name="Documents/ES_LPC18X0.PDF"                       title="LPC1800 Series Erratasheet"/>
         </device>
         
         <!-- *************************  Device 'LPC1822'  ***************************** -->
         <device Dname="LPC1822">
           <processor Dclock="180000000"/>
-          <compile header="Device\Include\LPC18xx.h"  define="LPC18xx"/>
-          <debug      svd="SVD\LPC18xx.svd"/>
+          <compile header="Device/Include/LPC18xx.h"  define="LPC18xx"/>
+          <debug      svd="SVD/LPC18xx.svd"/>
           <memory     id="IROM1"                      start="0x1A000000"  size="0x80000"    startup="1"   default="1"/>
           <memory     id="IRAM1"                      start="0x10000000"  size="0x8000"                   default="1"/>
           <memory     id="IRAM2"                      start="0x20000000"  size="0x4000"                   default="0"/>
-          <algorithm  name="Flash\LPC18xx43xx_512_BA.flm" start="0x1A000000" size="0x80000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
-          <book       name="Documents\UM10430.PDF"                          title="LPC1800 Series Reference Manual"/>
-          <book       name="Documents\LPC1850_30_20_10.PDF"                 title="LPC1800 Series Datasheet"/>
-          <book       name="Documents\ES_LPC18X0.PDF"                       title="LPC1800 Series Erratasheet"/>
+          <algorithm  name="Flash/LPC18xx43xx_512_BA.flm" start="0x1A000000" size="0x80000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
+          <book       name="Documents/UM10430.PDF"                          title="LPC1800 Series Reference Manual"/>
+          <book       name="Documents/LPC1850_30_20_10.PDF"                 title="LPC1800 Series Datasheet"/>
+          <book       name="Documents/ES_LPC18X0.PDF"                       title="LPC1800 Series Erratasheet"/>
         </device>
         
         <!-- *************************  Device 'LPC1823'  ***************************** -->
         <device Dname="LPC1823">
           <processor Dclock="180000000"/>
-          <compile header="Device\Include\LPC18xx.h"  define="LPC18xx"/>
-          <debug      svd="SVD\LPC18xx.svd"/>
+          <compile header="Device/Include/LPC18xx.h"  define="LPC18xx"/>
+          <debug      svd="SVD/LPC18xx.svd"/>
           <memory     id="IROM1"                      start="0x1A000000"  size="0x40000"    startup="1"   default="1"/>
           <memory     id="IROM2"                      start="0x1B000000"  size="0x40000"    startup="0"   default="0"/>
           <memory     id="IRAM1"                      start="0x10000000"  size="0x8000"                   default="1"/>
           <memory     id="IRAM2"                      start="0x20000000"  size="0x4000"                   default="0"/>
-          <algorithm  name="Flash\LPC18xx43xx_256_BA.flm" start="0x1A000000" size="0x40000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
-          <algorithm  name="Flash\LPC18xx43xx_256_BB.flm" start="0x1B000000" size="0x40000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
-          <book       name="Documents\UM10430.PDF"                          title="LPC1800 Series Reference Manual"/>
-          <book       name="Documents\LPC1850_30_20_10.PDF"                 title="LPC1800 Series Datasheet"/>
-          <book       name="Documents\ES_LPC18X0.PDF"                       title="LPC1800 Series Erratasheet"/>
+          <algorithm  name="Flash/LPC18xx43xx_256_BA.flm" start="0x1A000000" size="0x40000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
+          <algorithm  name="Flash/LPC18xx43xx_256_BB.flm" start="0x1B000000" size="0x40000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
+          <book       name="Documents/UM10430.PDF"                          title="LPC1800 Series Reference Manual"/>
+          <book       name="Documents/LPC1850_30_20_10.PDF"                 title="LPC1800 Series Datasheet"/>
+          <book       name="Documents/ES_LPC18X0.PDF"                       title="LPC1800 Series Erratasheet"/>
         </device>
         
         <!-- *************************  Device 'LPC1825'  ***************************** -->
         <device Dname="LPC1825">
           <processor Dclock="180000000"/>
-          <compile header="Device\Include\LPC18xx.h"  define="LPC18xx"/>
-          <debug      svd="SVD\LPC18xx.svd"/>
+          <compile header="Device/Include/LPC18xx.h"  define="LPC18xx"/>
+          <debug      svd="SVD/LPC18xx.svd"/>
           <memory     id="IROM1"                      start="0x1A000000"  size="0x60000"    startup="1"   default="1"/>
           <memory     id="IROM2"                      start="0x1B000000"  size="0x60000"    startup="0"   default="0"/>
           <memory     id="IRAM1"                      start="0x10000000"  size="0x8000"                   default="1"/>
           <memory     id="IRAM2"                      start="0x20000000"  size="0x10000"                  default="0"/>
-          <algorithm  name="Flash\LPC18xx43xx_384_BA.flm" start="0x1A000000" size="0x60000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
-          <algorithm  name="Flash\LPC18xx43xx_384_BB.flm" start="0x1B000000" size="0x60000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
-          <book       name="Documents\UM10430.PDF"                          title="LPC1800 Series Reference Manual"/>
-          <book       name="Documents\LPC1850_30_20_10.PDF"                 title="LPC1800 Series Datasheet"/>
-          <book       name="Documents\ES_LPC18X0.PDF"                       title="LPC1800 Series Erratasheet"/>
+          <algorithm  name="Flash/LPC18xx43xx_384_BA.flm" start="0x1A000000" size="0x60000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
+          <algorithm  name="Flash/LPC18xx43xx_384_BB.flm" start="0x1B000000" size="0x60000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
+          <book       name="Documents/UM10430.PDF"                          title="LPC1800 Series Reference Manual"/>
+          <book       name="Documents/LPC1850_30_20_10.PDF"                 title="LPC1800 Series Datasheet"/>
+          <book       name="Documents/ES_LPC18X0.PDF"                       title="LPC1800 Series Erratasheet"/>
         </device>
         
         <!-- *************************  Device 'LPC1827'  ***************************** -->
         <device Dname="LPC1827">
           <processor Dclock="180000000"/>
-          <compile header="Device\Include\LPC18xx.h"  define="LPC18xx"/>
-          <debug      svd="SVD\LPC18xx.svd"/>
+          <compile header="Device/Include/LPC18xx.h"  define="LPC18xx"/>
+          <debug      svd="SVD/LPC18xx.svd"/>
           <memory     id="IROM1"                      start="0x1A000000"  size="0x80000"    startup="1"   default="1"/>
           <memory     id="IROM2"                      start="0x1B000000"  size="0x80000"    startup="0"   default="0"/>
           <memory     id="IRAM1"                      start="0x10000000"  size="0x8000"                   default="1"/>
           <memory     id="IRAM2"                      start="0x20000000"  size="0x10000"                  default="0"/>
-          <algorithm  name="Flash\LPC18xx43xx_512_BA.flm" start="0x1A000000" size="0x80000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
-          <algorithm  name="Flash\LPC18xx43xx_512_BB.flm" start="0x1B000000" size="0x80000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
-          <book       name="Documents\UM10430.PDF"                          title="LPC1800 Series Reference Manual"/>
-          <book       name="Documents\LPC1850_30_20_10.PDF"                 title="LPC1800 Series Datasheet"/>
-          <book       name="Documents\ES_LPC18X0.PDF"                       title="LPC1800 Series Erratasheet"/>
+          <algorithm  name="Flash/LPC18xx43xx_512_BA.flm" start="0x1A000000" size="0x80000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
+          <algorithm  name="Flash/LPC18xx43xx_512_BB.flm" start="0x1B000000" size="0x80000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
+          <book       name="Documents/UM10430.PDF"                          title="LPC1800 Series Reference Manual"/>
+          <book       name="Documents/LPC1850_30_20_10.PDF"                 title="LPC1800 Series Datasheet"/>
+          <book       name="Documents/ES_LPC18X0.PDF"                       title="LPC1800 Series Erratasheet"/>
         </device>
         </subFamily>
   
@@ -237,45 +237,45 @@
         <!-- *************************  Device 'LPC1830'  ***************************** -->
         <device Dname="LPC1830">
           <processor Dclock="180000000"/>
-          <compile header="Device\Include\LPC18xx.h"  define="LPC18xx"/>
-          <debug      svd="SVD\LPC18xx.svd"/>
+          <compile header="Device/Include/LPC18xx.h"  define="LPC18xx"/>
+          <debug      svd="SVD/LPC18xx.svd"/>
           <memory     id="IRAM1"                      start="0x10000000"  size="0x18000"    default="1"/>
           <memory     id="IRAM2"                      start="0x20000000"  size="0x10000"    default="0"/>
-          <book       name="Documents\UM10430.PDF"                          title="LPC1800 Series Reference Manual"/>
-          <book       name="Documents\LPC1850_30_20_10.PDF"                 title="LPC1800 Series Datasheet"/>
-          <book       name="Documents\ES_LPC18X0.PDF"                       title="LPC1800 Series Erratasheet"/>
+          <book       name="Documents/UM10430.PDF"                          title="LPC1800 Series Reference Manual"/>
+          <book       name="Documents/LPC1850_30_20_10.PDF"                 title="LPC1800 Series Datasheet"/>
+          <book       name="Documents/ES_LPC18X0.PDF"                       title="LPC1800 Series Erratasheet"/>
         </device>
         
         <!-- *************************  Device 'LPC1833'  ***************************** -->
         <device Dname="LPC1833">
           <processor Dclock="180000000"/>
-          <compile header="Device\Include\LPC18xx.h"  define="LPC18xx"/>
-          <debug      svd="SVD\LPC18xx.svd"/>
+          <compile header="Device/Include/LPC18xx.h"  define="LPC18xx"/>
+          <debug      svd="SVD/LPC18xx.svd"/>
           <memory     id="IROM1"                      start="0x1A000000"  size="0x40000"    startup="1"   default="1"/>
           <memory     id="IROM2"                      start="0x1B000000"  size="0x40000"    startup="0"   default="0"/>
           <memory     id="IRAM1"                      start="0x10000000"  size="0x8000"                   default="1"/>
           <memory     id="IRAM2"                      start="0x20000000"  size="0x10000"                  default="0"/>
-          <algorithm  name="Flash\LPC18xx43xx_256_BA.flm" start="0x1A000000" size="0x40000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
-          <algorithm  name="Flash\LPC18xx43xx_256_BB.flm" start="0x1B000000" size="0x40000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
-          <book       name="Documents\UM10430.PDF"                          title="LPC1800 Series Reference Manual"/>
-          <book       name="Documents\LPC1850_30_20_10.PDF"                 title="LPC1800 Series Datasheet"/>
-          <book       name="Documents\ES_LPC18X0.PDF"                       title="LPC1800 Series Erratasheet"/>
+          <algorithm  name="Flash/LPC18xx43xx_256_BA.flm" start="0x1A000000" size="0x40000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
+          <algorithm  name="Flash/LPC18xx43xx_256_BB.flm" start="0x1B000000" size="0x40000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
+          <book       name="Documents/UM10430.PDF"                          title="LPC1800 Series Reference Manual"/>
+          <book       name="Documents/LPC1850_30_20_10.PDF"                 title="LPC1800 Series Datasheet"/>
+          <book       name="Documents/ES_LPC18X0.PDF"                       title="LPC1800 Series Erratasheet"/>
         </device>
         
         <!-- *************************  Device 'LPC1837'  ***************************** -->
         <device Dname="LPC1837">
           <processor Dclock="180000000"/>
-          <compile header="Device\Include\LPC18xx.h"  define="LPC18xx"/>
-          <debug      svd="SVD\LPC18xx.svd"/>
+          <compile header="Device/Include/LPC18xx.h"  define="LPC18xx"/>
+          <debug      svd="SVD/LPC18xx.svd"/>
           <memory     id="IROM1"                      start="0x1A000000"  size="0x80000"    startup="1"   default="1"/>
           <memory     id="IROM2"                      start="0x1B000000"  size="0x80000"    startup="0"   default="0"/>
           <memory     id="IRAM1"                      start="0x10000000"  size="0x8000"                   default="1"/>
           <memory     id="IRAM2"                      start="0x20000000"  size="0x10000"                  default="0"/>
-          <algorithm  name="Flash\LPC18xx43xx_512_BA.flm" start="0x1A000000" size="0x80000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
-          <algorithm  name="Flash\LPC18xx43xx_512_BB.flm" start="0x1B000000" size="0x80000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
-          <book       name="Documents\UM10430.PDF"                          title="LPC1800 Series Reference Manual"/>
-          <book       name="Documents\LPC1850_30_20_10.PDF"                 title="LPC1800 Series Datasheet"/>
-          <book       name="Documents\ES_LPC18X0.PDF"                       title="LPC1800 Series Erratasheet"/>
+          <algorithm  name="Flash/LPC18xx43xx_512_BA.flm" start="0x1A000000" size="0x80000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
+          <algorithm  name="Flash/LPC18xx43xx_512_BB.flm" start="0x1B000000" size="0x80000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
+          <book       name="Documents/UM10430.PDF"                          title="LPC1800 Series Reference Manual"/>
+          <book       name="Documents/LPC1850_30_20_10.PDF"                 title="LPC1800 Series Datasheet"/>
+          <book       name="Documents/ES_LPC18X0.PDF"                       title="LPC1800 Series Erratasheet"/>
         </device>
         </subFamily>
   
@@ -289,47 +289,47 @@
         <!-- *************************  Device 'LPC1850'  ***************************** -->
         <device Dname="LPC1850">
           <processor Dclock="180000000"/>
-          <compile header="Device\Include\LPC18xx.h"  define="LPC18xx"/>
-          <debug      svd="SVD\LPC18xx.svd"/>
+          <compile header="Device/Include/LPC18xx.h"  define="LPC18xx"/>
+          <debug      svd="SVD/LPC18xx.svd"/>
           <memory     id="IRAM1"                      start="0x10000000"  size="0x18000"                  default="1"/>
           <memory     id="IRAM2"                      start="0x20000000"  size="0x10000"                  default="0"/>
-          <book       name="Documents\UM10430.PDF"                          title="LPC1800 Series Reference Manual"/>
-          <book       name="Documents\LPC1850_30_20_10.PDF"                 title="LPC1800 Series Datasheet"/>
-          <book       name="Documents\ES_LPC18X0.PDF"                       title="LPC1800 Series Erratasheet"/>
-          <book       name="Documents\mcb1800.chm"                          title="MCB1800 User's Guide"/>
+          <book       name="Documents/UM10430.PDF"                          title="LPC1800 Series Reference Manual"/>
+          <book       name="Documents/LPC1850_30_20_10.PDF"                 title="LPC1800 Series Datasheet"/>
+          <book       name="Documents/ES_LPC18X0.PDF"                       title="LPC1800 Series Erratasheet"/>
+          <book       name="Documents/mcb1800.chm"                          title="MCB1800 User's Guide"/>
         </device>
         
         <!-- *************************  Device 'LPC1853'  ***************************** -->
         <device Dname="LPC1853">
           <processor Dclock="180000000"/>
-          <compile header="Device\Include\LPC18xx.h"  define="LPC18xx"/>
-          <debug      svd="SVD\LPC18xx.svd"/>
+          <compile header="Device/Include/LPC18xx.h"  define="LPC18xx"/>
+          <debug      svd="SVD/LPC18xx.svd"/>
           <memory     id="IROM1"                      start="0x1A000000"  size="0x40000"    startup="1"   default="1"/>
           <memory     id="IROM2"                      start="0x1B000000"  size="0x40000"    startup="0"   default="0"/>
           <memory     id="IRAM1"                      start="0x10000000"  size="0x8000"                   default="1"/>
           <memory     id="IRAM2"                      start="0x20000000"  size="0x10000"                  default="0"/>
-          <algorithm  name="Flash\LPC18xx43xx_256_BA.flm" start="0x1A000000" size="0x40000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
-          <algorithm  name="Flash\LPC18xx43xx_256_BB.flm" start="0x1B000000" size="0x40000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
-          <book       name="Documents\UM10430.PDF"                          title="LPC1800 Series Reference Manual"/>
-          <book       name="Documents\LPC1850_30_20_10.PDF"                 title="LPC1800 Series Datasheet"/>
-          <book       name="Documents\ES_LPC18X0.PDF"                       title="LPC1800 Series Erratasheet"/>
+          <algorithm  name="Flash/LPC18xx43xx_256_BA.flm" start="0x1A000000" size="0x40000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
+          <algorithm  name="Flash/LPC18xx43xx_256_BB.flm" start="0x1B000000" size="0x40000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
+          <book       name="Documents/UM10430.PDF"                          title="LPC1800 Series Reference Manual"/>
+          <book       name="Documents/LPC1850_30_20_10.PDF"                 title="LPC1800 Series Datasheet"/>
+          <book       name="Documents/ES_LPC18X0.PDF"                       title="LPC1800 Series Erratasheet"/>
         </device>
         
         <!-- *************************  Device 'LPC1857'  ***************************** -->
         <device Dname="LPC1857">
           <processor Dclock="180000000"/>
-          <compile header="Device\Include\LPC18xx.h"  define="LPC18xx"/>
-          <debug      svd="SVD\LPC18xx.svd"/>
+          <compile header="Device/Include/LPC18xx.h"  define="LPC18xx"/>
+          <debug      svd="SVD/LPC18xx.svd"/>
           <memory     id="IROM1"                      start="0x1A000000"  size="0x80000"    startup="1"   default="1"/>
           <memory     id="IROM2"                      start="0x1B000000"  size="0x80000"    startup="0"   default="0"/>
           <memory     id="IRAM1"                      start="0x10000000"  size="0x8000"                   default="1"/>
           <memory     id="IRAM2"                      start="0x20000000"  size="0x10000"                  default="0"/>
-          <algorithm  name="Flash\LPC18xx43xx_512_BA.flm" start="0x1A000000" size="0x80000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
-          <algorithm  name="Flash\LPC18xx43xx_512_BB.flm" start="0x1B000000" size="0x80000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
-          <book       name="Documents\UM10430.PDF"                          title="LPC1800 Series Reference Manual"/>
-          <book       name="Documents\LPC1850_30_20_10.PDF"                 title="LPC1800 Series Datasheet"/>
-          <book       name="Documents\ES_LPC18X0.PDF"                       title="LPC1800 Series Erratasheet"/>
-          <book       name="Documents\mcb1800.chm"                          title="MCB1800 User's Guide"/>
+          <algorithm  name="Flash/LPC18xx43xx_512_BA.flm" start="0x1A000000" size="0x80000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
+          <algorithm  name="Flash/LPC18xx43xx_512_BB.flm" start="0x1B000000" size="0x80000"  RAMstart="0x10000000"  RAMsize="0x0FE0"  default="1"/>
+          <book       name="Documents/UM10430.PDF"                          title="LPC1800 Series Reference Manual"/>
+          <book       name="Documents/LPC1850_30_20_10.PDF"                 title="LPC1800 Series Datasheet"/>
+          <book       name="Documents/ES_LPC18X0.PDF"                       title="LPC1800 Series Erratasheet"/>
+          <book       name="Documents/mcb1800.chm"                          title="MCB1800 User's Guide"/>
         </device>
       </subFamily>
     </family>
@@ -338,10 +338,10 @@
   <boards>
     <board vendor="Keil" name="MCB1800" revision="Ver 1.3" salesContact="sales.intl@keil.com" orderForm="http://www.keil.com/product/prices.asp?MCB1800=ON">
       <description>Keil MCB1800 Development Board</description>
-      <image small="Images\mcb1800_small.jpg" large="Images\mcb1800_large.jpg"/>
+      <image small="Images/mcb1800_small.jpg" large="Images/mcb1800_large.jpg"/>
       <book category="overview"  name="http://www.keil.com/mcb1800/" title="MCB1800 Evaluation Board Web Page"/>
-      <book category="schematic" name="Documents\MCB1800v1-3-schematics.pdf" title="MCB1800 Schematics"/>
-      <book category="manual"    name="Documents\mcb1800.chm" title="User Manual"/>
+      <book category="schematic" name="Documents/MCB1800v1-3-schematics.pdf" title="MCB1800 Schematics"/>
+      <book category="manual"    name="Documents/mcb1800.chm" title="User Manual"/>
       <mountedDevice    deviceIndex="0" Dvendor="NXP:11" Dname="LPC1850"/>
       <mountedDevice    deviceIndex="0" Dvendor="NXP:11" Dname="LPC1857"/>
       <compatibleDevice deviceIndex="0" Dvendor="NXP:11" DsubFamily="LPC185x"/>
@@ -436,7 +436,7 @@
 
   <examples>
     <!-- MCB1800 Development Board -->
-    <example name="CMSIS-RTOS Blinky" doc="Abstract.txt" folder="Boards\Keil\MCB1800\RTX_Blinky">
+    <example name="CMSIS-RTOS Blinky" doc="Abstract.txt" folder="Boards/Keil/MCB1800/RTX_Blinky">
       <description>CMSIS-RTOS based Blinky example</description>
       <board name="MCB1800" vendor="Keil"/>
       <project>
@@ -464,38 +464,38 @@
 
       <files>
         <!-- include folder -->
-        <file category="include" name="Device\Include\"/>
-        <file category="header" name="Device\Include\LPC18xx.h"/>
+        <file category="include" name="Device/Include/"/>
+        <file category="header" name="Device/Include/LPC18xx.h"/>
         <!-- startup files -->
-        <file category="source" name="Device\Source\ARM\startup_LPC18xx.s" attr="config"/>
+        <file category="source" name="Device/Source/ARM/startup_LPC18xx.s" attr="config"/>
         <!-- system file -->
-        <file category="source" name="Device\Source\system_LPC18xx.c" attr="config"/>
+        <file category="source" name="Device/Source/system_LPC18xx.c" attr="config"/>
         <!-- device configuration required by drivers at the moment -->
-        <file category="header" name="CMSIS_Driver\Config\RTE_Device.h" attr="config" version="2.00"/>
+        <file category="header" name="CMSIS_Driver/Config/RTE_Device.h" attr="config" version="2.00"/>
       </files>
     </component>
 
     <component Cclass="Device" Cgroup="SCU" Cversion="1.00" condition="LPC1800 CMSIS">
       <description>SCU driver used by RTE Drivers for LPC1800 Series</description>
       <files>
-        <file category="header" name="CMSIS_Driver\SCU_LPC18xx.h"/>
-        <file category="source" name="CMSIS_Driver\SCU_LPC18xx.c"/>
+        <file category="header" name="CMSIS_Driver/SCU_LPC18xx.h"/>
+        <file category="source" name="CMSIS_Driver/SCU_LPC18xx.c"/>
       </files>
     </component>
 
     <component Cclass="Device" Cgroup="GPIO" Cversion="1.00" condition="LPC1800 CMSIS">
       <description>GPIO driver used by RTE Drivers for LPC1800 Series</description>
       <files>
-        <file category="header" name="CMSIS_Driver\GPIO_LPC18xx.h"/>
-        <file category="source" name="CMSIS_Driver\GPIO_LPC18xx.c"/>
+        <file category="header" name="CMSIS_Driver/GPIO_LPC18xx.h"/>
+        <file category="source" name="CMSIS_Driver/GPIO_LPC18xx.c"/>
       </files>
     </component>
 
     <component Cclass="Device" Cgroup="GPDMA" Cversion="1.00" condition="LPC1800 CMSIS">
       <description>GPDMA driver used by RTE Drivers for LPC1800 Series</description>
       <files>
-        <file category="header" name="CMSIS_Driver\GPDMA_LPC18xx.h"/>
-        <file category="source" name="CMSIS_Driver\GPDMA_LPC18xx.c"/>
+        <file category="header" name="CMSIS_Driver/GPDMA_LPC18xx.h"/>
+        <file category="source" name="CMSIS_Driver/GPDMA_LPC18xx.c"/>
       </files>
     </component>
 
@@ -505,7 +505,7 @@
         #define CMSIS_Drivers_USBD0               /* Driver USBD0 */
       </RTE_Components_h>
       <files>
-        <file category="source" name="CMSIS_Driver\USBD_LPC18xx_USB0.c"/>
+        <file category="source" name="CMSIS_Driver/USBD_LPC18xx_USB0.c"/>
       </files>
     </component>
 
@@ -515,7 +515,7 @@
         #define CMSIS_Drivers_USBD1               /* Driver USBD1 */
       </RTE_Components_h>
       <files>
-        <file category="source" name="CMSIS_Driver\USBD_LPC18xx_USB1.c"/>
+        <file category="source" name="CMSIS_Driver/USBD_LPC18xx_USB1.c"/>
       </files>
     </component>
 
@@ -525,7 +525,7 @@
         #define CMSIS_Drivers_USBH0               /* Driver USBH0 */
       </RTE_Components_h>
       <files>
-        <file category="source" name="CMSIS_Driver\USBH_LPC18xx_USB0.c"/>
+        <file category="source" name="CMSIS_Driver/USBH_LPC18xx_USB0.c"/>
       </files>
     </component>
 
@@ -535,7 +535,7 @@
         #define CMSIS_Drivers_USBH1               /* Driver USBH1 */
       </RTE_Components_h>
       <files>
-        <file category="source" name="CMSIS_Driver\USBH_LPC18xx_USB1.c"/>
+        <file category="source" name="CMSIS_Driver/USBH_LPC18xx_USB1.c"/>
       </files>
     </component>
 
@@ -545,8 +545,8 @@
         #define CMSIS_Drivers_ETH_MAC0            /* Driver ETH_MAC0 */
       </RTE_Components_h>
       <files>
-        <file category="header" name="CMSIS_Driver\EMAC_LPC18xx.h"/>
-        <file category="source" name="CMSIS_Driver\EMAC_LPC18xx.c"/>
+        <file category="header" name="CMSIS_Driver/EMAC_LPC18xx.h"/>
+        <file category="source" name="CMSIS_Driver/EMAC_LPC18xx.c"/>
       </files>
     </component>
 
@@ -556,8 +556,8 @@
         #define CMSIS_Drivers_MCI0                /* Driver MCI0 */
       </RTE_Components_h>
       <files>
-        <file category="header" name="CMSIS_Driver\MCI_LPC18xx.h"/>
-        <file category="source" name="CMSIS_Driver\MCI_LPC18xx.c"/>
+        <file category="header" name="CMSIS_Driver/MCI_LPC18xx.h"/>
+        <file category="source" name="CMSIS_Driver/MCI_LPC18xx.c"/>
       </files>
     </component>
 
@@ -568,7 +568,7 @@
         #define CMSIS_Drivers_I2C1                /* Driver I2C1 */
       </RTE_Components_h>
       <files>
-        <file category="source" name="CMSIS_Driver\I2C_LPC18xx.c"/>
+        <file category="source" name="CMSIS_Driver/I2C_LPC18xx.c"/>
       </files>
     </component>
 
@@ -579,8 +579,8 @@
         #define CMSIS_Drivers_SPI1                /* Driver SPI1 */
       </RTE_Components_h>
       <files>
-        <file category="header" name="CMSIS_Driver\SSP_LPC18xx.h"/>
-        <file category="source" name="CMSIS_Driver\SSP_LPC18xx.c"/>
+        <file category="header" name="CMSIS_Driver/SSP_LPC18xx.h"/>
+        <file category="source" name="CMSIS_Driver/SSP_LPC18xx.c"/>
       </files>
     </component>
 
@@ -593,8 +593,8 @@
         #define CMSIS_Drivers_USART3              /* Driver USART3 */
       </RTE_Components_h>
       <files>
-        <file category="header" name="CMSIS_Driver\USART_LPC18xx.h"/>
-        <file category="source" name="CMSIS_Driver\USART_LPC18xx.c"/>
+        <file category="header" name="CMSIS_Driver/USART_LPC18xx.h"/>
+        <file category="source" name="CMSIS_Driver/USART_LPC18xx.c"/>
       </files>
     </component>
 

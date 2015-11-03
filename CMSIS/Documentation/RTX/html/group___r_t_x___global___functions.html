@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-RTOS RTX
-   &#160;<span id="projectnumber">Version 4.79</span>
+   &#160;<span id="projectnumber">Version 4.80</span>
    </div>
    <div id="projectbrief">CMSIS-RTOS RTX: Real-Time Operating System for Cortex-M processor-based devices</div>
   </td>
@@ -190,27 +190,28 @@ Functions</h2></td></tr>
 <td>OS_ERROR_TIMER_OVF</td><td>The User Timer Callback Queue overflow is detected. </td></tr>
 </table>
 <p>The function <b>os_error</b> must contain an infinite loop to prevent further program execution. You can use an emulator to step over infinite loop and trace into the code introducing a runtime error. For the overflow errors this means you need to increase the size of the object causing an overflow.</p>
+<dl class="section note"><dt>Note</dt><dd>Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Code</b> <b>Example</b> </p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code" href="group___r_t_x___global___functions.html#ga651ae76b3acf45f80bf0e0487b51d6e6" title="Called when a runtime error is detected.">os_error</a> (uint32_t error_code) {</div>
 <div class="line"> </div>
-<div class="line">  <span class="comment">/* HERE: include optional code to be executed on runtime error. */</span></div>
+<div class="line">  <span class="comment">// HERE: include optional code to be executed on runtime error. </span></div>
 <div class="line">  <span class="keywordflow">switch</span> (error_code) {</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">case</span> <a class="code" href="_r_t_x___conf___c_m_8c.html#abf8311a7a239ec56c6d725f926ba766d">OS_ERROR_STACK_OVF</a>:</div>
-<div class="line">      <span class="comment">/* Stack overflow detected for the currently running task. */</span></div>
-<div class="line">      <span class="comment">/* Thread can be identified by calling svcThreadGetId().   */</span></div>
+<div class="line">      <span class="comment">// Stack overflow detected for the currently running task. </span></div>
+<div class="line">      <span class="comment">// Thread can be identified by calling svcThreadGetId().   </span></div>
 <div class="line">      <span class="keywordflow">break</span>;</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">case</span> <a class="code" href="_r_t_x___conf___c_m_8c.html#a075d54df14c85a6afe32b7f5c99c9c29">OS_ERROR_FIFO_OVF</a>:</div>
-<div class="line">      <span class="comment">/* ISR FIFO Queue buffer overflow detected. */</span></div>
+<div class="line">      <span class="comment">// ISR FIFO Queue buffer overflow detected. </span></div>
 <div class="line">      <span class="keywordflow">break</span>;</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">case</span> <a class="code" href="_r_t_x___conf___c_m_8c.html#ab715d7d66c341c067ef0a97b55db8a10">OS_ERROR_MBX_OVF</a>:</div>
-<div class="line">      <span class="comment">/* Mailbox overflow detected. */</span></div>
+<div class="line">      <span class="comment">// Mailbox overflow detected. </span></div>
 <div class="line">      <span class="keywordflow">break</span>;</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">case</span> <a class="code" href="_r_t_x___conf___c_m_8c.html#a79d7e388d951f11bd0dabd13f722cea8">OS_ERROR_TIMER_OVF</a>:</div>
-<div class="line">      <span class="comment">/* User Timer Callback Queue overflow detected. */</span></div>
+<div class="line">      <span class="comment">// User Timer Callback Queue overflow detected. </span></div>
 <div class="line">      <span class="keywordflow">break</span>;</div>
 <div class="line">  }</div>
 <div class="line">  <span class="keywordflow">for</span> (;;);</div>
@@ -232,6 +233,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>The function <b>os_idle_demon</b> is executed by the RTX kernel, when no other threads are ready to run. By default, this task is an empty end-less loop that does nothing. It only waits until another task becomes ready to run. You may change the code of the <b>os_idle_demon</b> function to put the CPU into a power-saving or idle mode.</p>
+<dl class="section note"><dt>Note</dt><dd>Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Code</b> <b>Example</b> </p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code" href="group___r_t_x___global___functions.html#gafb4dc4d3dff8343a393726d2860282e4" title="The idle demon is running when no other thread is ready to run.">os_idle_demon</a> (<span class="keywordtype">void</span>) {</div>
 <div class="line"> </div>
@@ -266,6 +268,7 @@ Functions</h2></td></tr>
 <dl class="section note"><dt>Note</dt><dd><ul>
 <li>You can call this function from the idle task only.</li>
 <li>When the system is in power-down, the system tick timer is not running.</li>
+<li>Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</li>
 </ul>
 </dd></dl>
 <p>See <a class="el" href="group___r_t_x___global___functions.html#ga3e9c57746ccbdfe90464ad50513c569e">os_suspend</a> for a <b>Code</b> <b>Example</b>. </p>
@@ -290,6 +293,7 @@ Functions</h2></td></tr>
 <dl class="section note"><dt>Note</dt><dd><ul>
 <li>You can call this function from the idle task only.</li>
 <li>When the system is in power-down, the system tick timer is not running.</li>
+<li>Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</li>
 </ul>
 </dd></dl>
 <p><b>Code</b> <b>Example</b> </p>
@@ -298,13 +302,13 @@ Functions</h2></td></tr>
 <div class="line">sleep = <a class="code" href="group___r_t_x___global___functions.html#ga3e9c57746ccbdfe90464ad50513c569e" title="Suspend the RTX task scheduler.">os_suspend</a>();</div>
 </div><!-- fragment --><p>The user sets-up a peripheral timer to sleep timeout and starts the timer. The timeout is measured in system ticks.</p>
 <div class="fragment"><div class="line"><span class="keywordflow">if</span> (sleep) {</div>
-<div class="line">  <span class="comment">/* Setup the wake-up timer ... */</span></div>
+<div class="line">  <span class="comment">// Setup the wake-up timer ... </span></div>
 </div><!-- fragment --><p>When the wake-up timer is set-up and running, the user puts the system in power-down mode. The wake-up timer must run also in power-down mode. All other peripherals and the CPU may power-down to reduce power.</p>
-<div class="fragment"><div class="line"><span class="comment">/* Power-down the system ... */</span></div>
+<div class="fragment"><div class="line"><span class="comment">// Power-down the system ... </span></div>
 <div class="line">SCB-&gt;SCR |= SCB_SCR_SLEEPDEEP_Msk;</div>
 <div class="line">__WFE();</div>
 </div><!-- fragment --><p>The wake-up timer, when expired, generates the interrupt and wakes-up the system. Hence, it must run also in power-down mode. The system resumes operation and needs to call the function <a class="el" href="group___r_t_x___global___functions.html#ga1b85a217d43e6b971ffcf24f8aae1c33">os_resume</a>. This function restores the RTX and re-enables the scheduler.</p>
-<div class="fragment"><div class="line">  <span class="comment">/* After Wake-up */</span></div>
+<div class="fragment"><div class="line">  <span class="comment">// After Wake-up </span></div>
 <div class="line">  sleep = (tc - LPC_WWDT-&gt;TV) / 250;</div>
 <div class="line">}</div>
 <div class="line"><a class="code" href="group___r_t_x___global___functions.html#ga1b85a217d43e6b971ffcf24f8aae1c33" title="Resume the RTX task scheduler.">os_resume</a>(sleep);</div>
@@ -327,12 +331,14 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>IRQ number of the alternative hardware timer</dd></dl>
 <p>The function <b>os_tick_init</b> initializes an alternate hardware timer as the system tick timer and starts it. If you setup OS_SYSTICK to 0, this function will be available for adding the alternate timer. It returns the interrupt number of the alternative hardware timer.</p>
-<dl class="section note"><dt>Note</dt><dd>When using an alternate timer, you must enter the <a class="el" href="_timer_tick.html#OS_Tick_Handler">OS_Tick_Handler</a> in the interrupt vector table in the startup file.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>- When using an alternate timer, you must enter the <a class="el" href="_timer_tick.html#OS_Tick_Handler">OS_Tick_Handler</a> in the interrupt vector table in the startup file.</dd>
+<dd>
+- Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Code</b> <b>Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;LPC43xx.h&quot;</span>                    <span class="comment">// Device header</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> <a class="code" href="group___r_t_x___global___functions.html#ga145e7eafdd042bb522020cbb3b469d9c" title="Initializes an alternative hardware timer as RTX kernel timer.">os_tick_init</a> (<span class="keywordtype">void</span>) {</div>
-<div class="line">  <span class="comment">/* Initialize hardware timer as system tick timer. */</span></div>
+<div class="line">  <span class="comment">// Initialize hardware timer as system tick timer. </span></div>
 <div class="line"> </div>
 <div class="line">  LPC_CCU1-&gt;CLK_M4_RITIMER_CFG = (1UL &lt;&lt; 0);</div>
 <div class="line"> </div>
@@ -343,7 +349,7 @@ Functions</h2></td></tr>
 <div class="line">                         (1UL &lt;&lt; 1) |    <span class="comment">// Timer enable clear on match</span></div>
 <div class="line">                         (1UL &lt;&lt; 0);     <span class="comment">// Clear interrupt flag</span></div>
 <div class="line">  </div>
-<div class="line">  <span class="keywordflow">return</span> (M0_RITIMER_OR_WWDT_IRQn);  <span class="comment">/* Return IRQ number of timer (0..239) */</span></div>
+<div class="line">  <span class="keywordflow">return</span> (M0_RITIMER_OR_WWDT_IRQn);  <span class="comment">// Return IRQ number of timer (0..239) </span></div>
 <div class="line">}</div>
 </div><!-- fragment --> 
 </div>
@@ -362,7 +368,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>The function <b>os_tick_irqack</b> acknowledges the peripheral timer interrupt.</p>
-<dl class="section note"><dt>Note</dt><dd>When using an alternate timer, you must enter the <a class="el" href="_timer_tick.html#OS_Tick_Handler">OS_Tick_Handler</a> in the interrupt vector table in the startup file.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>- When using an alternate timer, you must enter the <a class="el" href="_timer_tick.html#OS_Tick_Handler">OS_Tick_Handler</a> in the interrupt vector table in the startup file. </dd>
+<dd>
+- Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Code</b> <b>Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;LPC43xx.h&quot;</span>                    <span class="comment">// Device header</span></div>
 <div class="line"> </div>
@@ -393,7 +401,9 @@ Functions</h2></td></tr>
 </ul>
 </dd></dl>
 <p>The function <b>os_tick_ovf</b> returns the overflow flag of the alternate hardware timer specified by os_tick_init.</p>
-<dl class="section note"><dt>Note</dt><dd>When using an alternate timer, you must enter the <a class="el" href="_timer_tick.html#OS_Tick_Handler">OS_Tick_Handler</a> in the interrupt vector table in the startup file.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>- When using an alternate timer, you must enter the <a class="el" href="_timer_tick.html#OS_Tick_Handler">OS_Tick_Handler</a> in the interrupt vector table in the startup file. </dd>
+<dd>
+- Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Code</b> <b>Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;LPC43xx.h&quot;</span>                    <span class="comment">// Device header</span></div>
 <div class="line"> </div>
@@ -419,7 +429,9 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>Current value of the alternative hardware timer</dd></dl>
 <p>The function <b>os_tick_val</b> returns the current value of the alternate hardware timer specified by os_tick_init.</p>
-<dl class="section note"><dt>Note</dt><dd>When using an alternate timer, you must enter the <a class="el" href="_timer_tick.html#OS_Tick_Handler">OS_Tick_Handler</a> in the interrupt vector table in the startup file.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>- When using an alternate timer, you must enter the <a class="el" href="_timer_tick.html#OS_Tick_Handler">OS_Tick_Handler</a> in the interrupt vector table in the startup file. </dd>
+<dd>
+- Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Code</b> <b>Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;LPC43xx.h&quot;</span>                    <span class="comment">// Device header</span></div>
 <div class="line"> </div>
@@ -435,7 +447,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Sep 11 2015 14:40:29 for CMSIS-RTOS RTX by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Tue Oct 27 2015 14:35:45 for CMSIS-RTOS RTX by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

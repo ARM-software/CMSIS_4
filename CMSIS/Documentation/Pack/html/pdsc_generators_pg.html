@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.4.0</span>
+   &#160;<span id="projectnumber">Version 1.4.1</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -114,74 +114,72 @@ $(document).ready(function(){initNavTree('pdsc_generators_pg.html','');});
 <p>A generator can be associated with a component by it's name. Selecting the component will automatically include the files provided by the generator in the project. If the specified GPDSC file is not present, the generator command is executed by the environment to generate the files and GPDSC. In this way project specific configurations can be made, files being generated and included and maintained as part of the project.</p>
 <p><a class="anchor" id="pdsc_generators_gen_sec"></a><b>Example</b> Generator Section </p>
 <div class="fragment"><div class="line">&lt;generators&gt;</div>
-<div class="line">  &lt;generator <span class="keywordtype">id</span>=<span class="stringliteral">&quot;DAVE3&quot;</span>&gt;</div>
-<div class="line">    &lt;description&gt;DAVE3 Infineon XMC1000/XMC4000 Environment&lt;/description&gt;</div>
-<div class="line">    &lt;select Dvendor=<span class="stringliteral">&quot;Infineon:7&quot;</span> Dname=<span class="stringliteral">&quot;XMC1100-64&quot;</span>/&gt;</div>
-<div class="line">    &lt;command&gt;%DAVE3%\eclipse\DAVE-3.1.6.exe&lt;/command&gt;</div>
-<div class="line">    &lt;arguments&gt;</div>
-<div class="line">      &lt;argument <span class="keywordflow">switch</span>=<span class="stringliteral">&quot;-f&quot;</span>&gt;$S&lt;/argument&gt; &lt;!-- $S points to the active Device Family PACK --&gt;</div>
-<div class="line">    &lt;/arguments&gt;</div>
+<div class="line">  &lt;generator <span class="keywordtype">id</span>=<span class="stringliteral">&quot;STM32CubeMX&quot;</span> Gvendor=<span class="stringliteral">&quot;STMicroelectronics&quot;</span> Gtool=<span class="stringliteral">&quot;STM32CubeMX&quot;</span> Gversion=<span class="stringliteral">&quot;4.10.0&quot;</span>&gt;</div>
+<div class="line">    &lt;description&gt;STM32CubeMX Environment&lt;/description&gt;</div>
+<div class="line">    &lt;select Dname=<span class="stringliteral">&quot;STM32F746NGHx&quot;</span> Dvendor=<span class="stringliteral">&quot;STMicroelectronics:13&quot;</span>/&gt;</div>
+<div class="line">    &lt;command&gt;$SMDK/CubeMX/STM32CubeMXLauncher&lt;/command&gt;</div>
+<div class="line">    &lt;workingDir&gt;$PRTE/Device/STM32F746NGHx&lt;/workingDir&gt;</div>
 <div class="line">    &lt;project_files&gt;</div>
-<div class="line">      &lt;file category=<span class="stringliteral">&quot;source&quot;</span> name=<span class="stringliteral">&quot;Main.c&quot;</span>/&gt;</div>
-<div class="line">      &lt;!-- add any other user application modules and header files --&gt;</div>
+<div class="line">      &lt;file category=<span class="stringliteral">&quot;source&quot;</span> name=<span class="stringliteral">&quot;STCubeGenerated/Src/main.c&quot;</span> /&gt;</div>
+<div class="line">      &lt;file category=<span class="stringliteral">&quot;header&quot;</span> name=<span class="stringliteral">&quot;STCubeGenerated/Inc/stm32f7xx_it.h&quot;</span>/&gt;</div>
+<div class="line">      &lt;file category=<span class="stringliteral">&quot;source&quot;</span> name=<span class="stringliteral">&quot;STCubeGenerated/Src/stm32f7xx_it.c&quot;</span>/&gt;</div>
 <div class="line">    &lt;/project_files&gt;</div>
-<div class="line">    &lt;files&gt;</div>
-<div class="line">      &lt;file category=<span class="stringliteral">&quot;source&quot;</span> name=<span class="stringliteral">&quot;output_gen.log&quot;</span>/&gt;</div>
-<div class="line">      &lt;!-- add any other generator files --&gt;</div>
-<div class="line">    &lt;/files&gt;</div>
 <div class="line">  &lt;/generator&gt;</div>
 <div class="line">&lt;/generators&gt;</div>
 </div><!-- fragment --><p><a class="anchor" id="pdsc_generators_gpdsc"></a><b>Example</b> Generator Package Description File (gpdsc) </p>
 <div class="fragment"><div class="line">&lt;?xml version=<span class="stringliteral">&quot;1.0&quot;</span> encoding=<span class="stringliteral">&quot;UTF-8&quot;</span> standalone=<span class="stringliteral">&quot;no&quot;</span>?&gt;</div>
-<div class="line">&lt;<span class="keyword">package </span>xmlns:xs=&quot;http:<span class="comment">//www.w3.org/2001/XMLSchema-instance&quot; schemaVersion=&quot;1.0&quot; xs:noNamespaceSchemaLocation=&quot;PACK.xsd&quot;&gt;</span></div>
-<div class="line">  &lt;vendor&gt;Infineon&lt;/vendor&gt;</div>
-<div class="line">  &lt;name&gt;Test&lt;/name&gt;</div>
-<div class="line">  &lt;description&gt;Generated Configuration Files for CE Project Test&lt;/description&gt;</div>
-<div class="line">  &lt;url&gt;C:\DAvE_Bench\Workspace\DAVE-3.1.10\Test&lt;/url&gt;</div>
-<div class="line">  &lt;releases&gt;</div>
-<div class="line">    &lt;release version=&quot;1.0.0&quot;&gt;- Initial setup for Test&lt;/release&gt;</div>
-<div class="line">  &lt;/releases&gt;</div>
+<div class="line">&lt;!-- ******************************************************************************</div>
+<div class="line">   File Name   : FrameworkCubeMX.gpdsc</div>
+<div class="line">   Date        : 02/09/2015 14:27:06</div>
+<div class="line">   Description : Generator PDSC File generated by STM32CubeMX (DO NOT EDIT!)</div>
+<div class="line">                                                                                --&gt;</div>
 <div class="line"></div>
+<div class="line">&lt;<span class="keyword">package </span>xmlns:xs=&quot;http:<span class="comment">//www.w3.org/2001/XMLSchema-instance&quot; schemaVersion=&quot;1.0&quot; xs:noNamespaceSchemaLocation=&quot;PACK.xsd&quot;&gt;</span></div>
+<div class="line">  &lt;vendor&gt;Keil&lt;/vendor&gt;</div>
+<div class="line">  &lt;name&gt;FrameworkCubeMX&lt;/name&gt;</div>
+<div class="line">  &lt;description&gt;STM32CubeMX generated pack description&lt;/description&gt;</div>
+<div class="line">  &lt;url&gt;project-path&lt;/url&gt;</div>
+<div class="line">  &lt;releases&gt;</div>
+<div class="line">    &lt;release version=&quot;1.0.0&quot;&gt;</div>
+<div class="line">     - Generated: 02/09/2015 14:27:06</div>
+<div class="line">    &lt;/release&gt;</div>
+<div class="line">  &lt;/releases&gt;</div>
 <div class="line">  &lt;generators&gt;</div>
-<div class="line">    &lt;generator id=&quot;DAVE3&quot;&gt;</div>
-<div class="line">      &lt;description&gt;DAVE3 Infineon XMC1000/XMC4000 Environment&lt;/description&gt;</div>
-<div class="line">      &lt;select Dname=&quot;XMC4500-F144x1024&quot; Dvendor=&quot;Infineon:7&quot;/&gt;</div>
-<div class="line">      &lt;command&gt;C:\DAVE-3.1.10\eclipse\DAVE-3.1.10.exe&lt;/command&gt;</div>
-<div class="line">      &lt;arguments&gt;</div>
-<div class="line">        &lt;argument switch=&quot;-data&quot;&gt;C:\DAvE_Bench\Workspace\DAVE-3.1.10&lt;/argument&gt;</div>
-<div class="line">      &lt;/arguments&gt;</div>
+<div class="line">    &lt;generator id=&quot;STM32CubeMX&quot; Gvendor=&quot;STMicroelectronics&quot; Gtool=&quot;STM32CubeMX&quot; Gversion=&quot;4.10.0&quot;&gt;</div>
+<div class="line">      &lt;description&gt;STM32CubeMX Environment&lt;/description&gt;</div>
+<div class="line">      &lt;select Dname=&quot;STM32F746NGHx&quot; Dvendor=&quot;STMicroelectronics:13&quot;/&gt;</div>
+<div class="line">      &lt;command&gt;$SMDK/CubeMX/STM32CubeMXLauncher&lt;/command&gt;</div>
+<div class="line">      &lt;workingDir&gt;$PRTE/Device/STM32F746NGHx&lt;/workingDir&gt;</div>
+<div class="line">      &lt;project_files&gt;</div>
+<div class="line">        &lt;file category=&quot;source&quot; name=&quot;STCubeGenerated/Src/main.c&quot; /&gt;</div>
+<div class="line">        &lt;file category=&quot;header&quot; name=&quot;STCubeGenerated/Inc/stm32f7xx_it.h&quot;/&gt;</div>
+<div class="line">        &lt;file category=&quot;source&quot; name=&quot;STCubeGenerated/Src/stm32f7xx_it.c&quot;/&gt;</div>
+<div class="line">      &lt;/project_files&gt;</div>
 <div class="line">    &lt;/generator&gt;</div>
 <div class="line">  &lt;/generators&gt;</div>
-<div class="line"></div>
 <div class="line">  &lt;taxonomy&gt;</div>
-<div class="line">    &lt;description Cclass=&quot;DAVE3&quot; generator=&quot;DAVE3&quot;&gt;Configuration Files generated by DAVE3&lt;/description&gt;</div>
+<div class="line">    &lt;description Cclass=&quot;Device&quot; Cgroup=&quot;STM32Cube Framework&quot; generator=&quot;STM32CubeMX&quot;&gt;STM32Cube Framework&lt;/description&gt;</div>
 <div class="line">  &lt;/taxonomy&gt;</div>
-<div class="line"></div>
 <div class="line">  &lt;conditions&gt;</div>
-<div class="line">    &lt;condition id=&quot;CMSIS Device Startup&quot;&gt;</div>
+<div class="line">    &lt;condition id=&quot;STCubeMX&quot;&gt;</div>
 <div class="line">      &lt;description&gt;Condition to include CMSIS core and Device Startup components&lt;/description&gt;</div>
-<div class="line">      &lt;require Cclass=&quot;CMSIS&quot; Cgroup=&quot;CORE&quot; Csub=&quot;&quot;/&gt;</div>
+<div class="line">      &lt;require Dvendor=&quot;STMicroelectronics:13&quot; Dname=&quot;STM32F7*&quot;/&gt;</div>
+<div class="line">      &lt;require Cclass=&quot;CMSIS&quot;  Cgroup=&quot;CORE&quot;          Csub=&quot;&quot;/&gt;</div>
 <div class="line">      &lt;require Cclass=&quot;Device&quot; Cgroup=&quot;Startup&quot;/&gt;</div>
+<div class="line">      &lt;require Cclass=&quot;Device&quot; Cgroup=&quot;STM32Cube HAL&quot; Csub=&quot;Common&quot;/&gt;</div>
+<div class="line">      &lt;require Cclass=&quot;Device&quot; Cgroup=&quot;STM32Cube HAL&quot; Csub=&quot;GPIO&quot;/&gt;</div>
 <div class="line">    &lt;/condition&gt;</div>
 <div class="line">  &lt;/conditions&gt;</div>
-<div class="line"></div>
-<div class="line">  &lt;components generator=&quot;DAVE3&quot;&gt;</div>
-<div class="line">    &lt;component Cclass=&quot;DAVE3&quot; Cgroup=&quot;Framework&quot; Cversion=&quot;1.0.38&quot; condition=&quot;CMSIS Device Startup&quot;&gt;</div>
-<div class="line">      &lt;description&gt;DAVE3 Framework&lt;/description&gt;</div>
+<div class="line">  &lt;components&gt;</div>
+<div class="line">    &lt;component generator=&quot;STM32CubeMX&quot; Cvendor=&quot;Keil&quot; Cclass=&quot;Device&quot; Cgroup=&quot;STM32Cube Framework&quot; Csub=&quot;STM32CubeMX&quot; Cversion=&quot;1.0.0&quot; condition=&quot;STCubeMX&quot;&gt;</div>
+<div class="line">      &lt;description&gt;Configuration via STM32CubeMX&lt;/description&gt;</div>
 <div class="line">      &lt;RTE_Components_h&gt;</div>
-<div class="line">        #define DAVE_CE</div>
+<div class="line">        #define RTE_DEVICE_FRAMEWORK_CUBE_MX</div>
 <div class="line">      &lt;/RTE_Components_h&gt;</div>
 <div class="line">      &lt;files&gt;</div>
-<div class="line">        &lt;file category=&quot;header&quot; name=&quot;Dave\Generated\inc\DAVESUPPORT\DAVE3.h&quot;/&gt;</div>
-<div class="line">        &lt;file category=&quot;source&quot; name=&quot;Dave\Generated\src\DAVESUPPORT\DAVE3.c&quot;/&gt;</div>
-<div class="line">      &lt;/files&gt;</div>
-<div class="line">    &lt;/component&gt;</div>
-<div class="line">    &lt;component Cclass=&quot;DAVE3&quot; Cgroup=&quot;RESET001&quot; Cversion=&quot;1.0.10&quot;&gt;</div>
-<div class="line">      &lt;description&gt;App which provides APIs to assert/deassert peripheral modules.&lt;/description&gt;</div>
-<div class="line">      &lt;files&gt;</div>
-<div class="line">        &lt;file category=&quot;doc&quot; name=&quot;http:<span class="comment">//dave.infineon.com/Libraries/DAVEApps/DAVEAppsDocuArchive/www.infineon.com/1.0.10/app/reset001/0/doc/html/group___r_e_s_e_t001_app.html&quot;/&gt;</span></div>
-<div class="line">        &lt;file category=&quot;header&quot; name=&quot;Dave\Generated\inc\RESET001\RESET001.h&quot;/&gt;</div>
-<div class="line">        &lt;file category=&quot;source&quot; name=&quot;Dave\Generated\src\RESET001\RESET001.c&quot;/&gt;</div>
+<div class="line">        &lt;file category=&quot;header&quot; name=&quot;MX_Device.h&quot;/&gt;</div>
+<div class="line">        &lt;file category=&quot;header&quot; name=&quot;STCubeGenerated/Inc/stm32f7xx_hal_conf.h&quot;/&gt;</div>
+<div class="line">        &lt;file category=&quot;source&quot; name=&quot;STCubeGenerated/Src/stm32f7xx_hal_msp.c&quot;/&gt;</div>
 <div class="line">      &lt;/files&gt;</div>
 <div class="line">    &lt;/component&gt;</div>
 <div class="line">  &lt;/components&gt;</div>
@@ -262,9 +260,9 @@ $(document).ready(function(){initNavTree('pdsc_generators_pg.html','');});
 <p>This element contains information about the vendor and device the GPDSC file has been generated for. Only one such element can exist in <code>&lt;generators&gt;</code>.</p>
 <p><b>Example:</b> </p>
 <div class="fragment"><div class="line">&lt;generators&gt;</div>
-<div class="line">  &lt;generator <span class="keywordtype">id</span>=<span class="stringliteral">&quot;DAVE3&quot;</span>&gt;</div>
-<div class="line">    &lt;select Dvendor=<span class="stringliteral">&quot;Infineon:7&quot;</span> Dname=<span class="stringliteral">&quot;XMC1100-64&quot;</span>/&gt;</div>
-<div class="line">   &lt;/generator&gt;</div>
+<div class="line">  &lt;generator <span class="keywordtype">id</span>=<span class="stringliteral">&quot;STM32CubeMX&quot;</span> Gvendor=<span class="stringliteral">&quot;STMicroelectronics&quot;</span> Gtool=<span class="stringliteral">&quot;STM32CubeMX&quot;</span> Gversion=<span class="stringliteral">&quot;4.10.0&quot;</span>&gt;</div>
+<div class="line">    &lt;select Dname=<span class="stringliteral">&quot;STM32F746NGHx&quot;</span> Dvendor=<span class="stringliteral">&quot;STMicroelectronics:13&quot;</span>/&gt;</div>
+<div class="line">  &lt;/generator&gt;</div>
 <div class="line">&lt;/generators&gt;</div>
 </div><!-- fragment --> <p>&#160;</p>
 <table  class="cmtable" summary="Element: Generator Select">
@@ -292,7 +290,7 @@ $(document).ready(function(){initNavTree('pdsc_generators_pg.html','');});
 <div class="fragment"><div class="line">&lt;generators&gt;</div>
 <div class="line">  &lt;generator <span class="keywordtype">id</span>=<span class="stringliteral">&quot;DAVE3&quot;</span>&gt;</div>
 <div class="line">    ...</div>
-<div class="line">    &lt;command&gt;%DAVE3%\eclipse\DAVE-3.1.6.exe&lt;/command&gt;</div>
+<div class="line">    &lt;command&gt;%DAVE3%/eclipse/DAVE-3.1.6.exe&lt;/command&gt;</div>
 <div class="line">    &lt;arguments&gt;</div>
 <div class="line">      ...</div>
 <div class="line">    &lt;/arguments&gt;</div>
@@ -316,9 +314,9 @@ $(document).ready(function(){initNavTree('pdsc_generators_pg.html','');});
 <p>This element describes a single command line argument passed along with <code>&lt;command&gt;</code> for launching the generator. The argument is split up in a switch value pair. The switch is passed as an attribute and the value as the element value. Both <code>switch</code> and <code>element</code> values are of type xs:string.</p>
 <p><b>Example</b> </p>
 <div class="fragment"><div class="line">&lt;generators&gt;</div>
-<div class="line">  &lt;generator <span class="keywordtype">id</span>=<span class="stringliteral">&quot;DAVE3&quot;</span>&gt;</div>
+<div class="line">  &lt;generator <span class="keywordtype">id</span>=<span class="stringliteral">&quot;STM32CubeMX&quot;</span>&gt;</div>
 <div class="line">    &lt;arguments&gt;</div>
-<div class="line">      &lt;argument <span class="keywordflow">switch</span>=<span class="stringliteral">&quot;-data&quot;</span>&gt;C:\DAvE_Bench\Workspace\DAVE-3.1.10&lt;/argument&gt;</div>
+<div class="line">      &lt;argument <span class="keywordflow">switch</span>=<span class="stringliteral">&quot;-data&quot;</span>&gt;$PRTE/Device/STM32F746NGHx&lt;/argument&gt;</div>
 <div class="line">      ...</div>
 <div class="line">    &lt;/arguments&gt;</div>
 <div class="line">    ...</div>
@@ -346,16 +344,15 @@ $(document).ready(function(){initNavTree('pdsc_generators_pg.html','');});
 <p>The group <b>project_files</b> specifies all files that are required for the project setup. Only one such group can exist.</p>
 <p><b>Example</b> </p>
 <div class="fragment"><div class="line">&lt;generators&gt;</div>
-<div class="line">  &lt;generator <span class="keywordtype">id</span>=<span class="stringliteral">&quot;DAVE3&quot;</span>&gt;</div>
-<div class="line">    &lt;description&gt;DAVE3 Infineon XMC1000/XMC4000 Environment&lt;/description&gt;</div>
-<div class="line">    &lt;select Dvendor=<span class="stringliteral">&quot;Infineon:7&quot;</span> Dname=<span class="stringliteral">&quot;XMC1100-64&quot;</span>/&gt;</div>
-<div class="line">    &lt;command&gt;%DAVE3%\eclipse\DAVE-3.1.6.exe&lt;/command&gt;</div>
-<div class="line">    &lt;arguments&gt;</div>
-<div class="line">      &lt;argument <span class="keywordflow">switch</span>=<span class="stringliteral">&quot;-f&quot;</span>&gt;$S&lt;/argument&gt; &lt;!-- $S points to the active Device Family PACK --&gt;</div>
-<div class="line">    &lt;/arguments&gt;</div>
+<div class="line">  &lt;generator <span class="keywordtype">id</span>=<span class="stringliteral">&quot;STM32CubeMX&quot;</span> Gvendor=<span class="stringliteral">&quot;STMicroelectronics&quot;</span> Gtool=<span class="stringliteral">&quot;STM32CubeMX&quot;</span> Gversion=<span class="stringliteral">&quot;4.10.0&quot;</span>&gt;</div>
+<div class="line">    &lt;description&gt;STM32CubeMX Environment&lt;/description&gt;</div>
+<div class="line">    &lt;select Dname=<span class="stringliteral">&quot;STM32F746NGHx&quot;</span> Dvendor=<span class="stringliteral">&quot;STMicroelectronics:13&quot;</span>/&gt;</div>
+<div class="line">    &lt;command&gt;$SMDK/CubeMX/STM32CubeMXLauncher&lt;/command&gt;</div>
+<div class="line">    &lt;workingDir&gt;$PRTE/Device/STM32F746NGHx&lt;/workingDir&gt;</div>
 <div class="line">    &lt;project_files&gt;</div>
-<div class="line">      &lt;file category=<span class="stringliteral">&quot;source&quot;</span> name=<span class="stringliteral">&quot;Main.c&quot;</span>/&gt;</div>
-<div class="line">      ...</div>
+<div class="line">      &lt;file category=<span class="stringliteral">&quot;source&quot;</span> name=<span class="stringliteral">&quot;STCubeGenerated/Src/main.c&quot;</span> /&gt;</div>
+<div class="line">      &lt;file category=<span class="stringliteral">&quot;header&quot;</span> name=<span class="stringliteral">&quot;STCubeGenerated/Inc/stm32f7xx_it.h&quot;</span>/&gt;</div>
+<div class="line">      &lt;file category=<span class="stringliteral">&quot;source&quot;</span> name=<span class="stringliteral">&quot;STCubeGenerated/Src/stm32f7xx_it.c&quot;</span>/&gt;</div>
 <div class="line">    &lt;/project_files&gt;</div>
 <div class="line">  &lt;/generator&gt;</div>
 <div class="line">&lt;/generators&gt;</div>
@@ -377,7 +374,7 @@ $(document).ready(function(){initNavTree('pdsc_generators_pg.html','');});
 <p>The group <b>files</b> specifies files that are required by the generator tool. Only one such group can exist.</p>
 <p><b>Example</b> </p>
 <div class="fragment"><div class="line">&lt;generators&gt;</div>
-<div class="line">  &lt;generator <span class="keywordtype">id</span>=<span class="stringliteral">&quot;DAVE3&quot;</span>&gt;</div>
+<div class="line">  &lt;generator <span class="keywordtype">id</span>=<span class="stringliteral">&quot;MyGenerator&quot;</span>&gt;</div>
 <div class="line">    &lt;files&gt;</div>
 <div class="line">      ...</div>
 <div class="line">    &lt;files&gt;</div>
@@ -401,7 +398,7 @@ $(document).ready(function(){initNavTree('pdsc_generators_pg.html','');});
 <p>This element contains information about files used by a generator.</p>
 <p><b>Example</b> </p>
 <div class="fragment"><div class="line">&lt;generators&gt;</div>
-<div class="line">  &lt;generator <span class="keywordtype">id</span>=<span class="stringliteral">&quot;DAVE3&quot;</span>&gt;</div>
+<div class="line">  &lt;generator <span class="keywordtype">id</span>=<span class="stringliteral">&quot;MyGenerator&quot;</span>&gt;</div>
 <div class="line">    &lt;files&gt;</div>
 <div class="line">      &lt;file category=<span class="stringliteral">&quot;generator&quot;</span> name=<span class="stringliteral">&quot;Main.c&quot;</span>/&gt;</div>
 <div class="line">      &lt;file category=<span class="stringliteral">&quot;you_name_it&quot;</span> name=<span class="stringliteral">&quot;database/connection.odbc&quot;</span> version=<span class="stringliteral">&quot;1.2.3&quot;</span>/&gt;</div>
@@ -433,7 +430,7 @@ $(document).ready(function(){initNavTree('pdsc_generators_pg.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="_pack_format.html">Pack Description (*.PDSC) Format</a></li>
-    <li class="footer">Generated on Fri Sep 11 2015 14:40:26 for CMSIS-Pack by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Tue Oct 27 2015 14:35:43 for CMSIS-Pack by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

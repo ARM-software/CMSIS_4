@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.03</span>
+   &#160;<span id="projectnumber">Version 2.04</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -403,7 +403,7 @@ CAN Message Filtering</h1>
 <div class="line">status = ptrCAN-&gt;ObjectSetFilter (2, <a class="code" href="_driver___c_a_n_8h.html#gacb04d0f8b3969ee69362ff2b62941d75aa734058b50573de3b0cc49311997806b" title="Add exact id filter.">ARM_CAN_FILTER_ID_EXACT_ADD</a>, <a class="code" href="group__can__identifer__ctrls.html#gae7d4efb6fb49e1ec47c2b12e22f37cae" title="CAN identifier in extended format (29-bits)">ARM_CAN_EXTENDED_ID</a>(0x42123), 0);</div>
 <div class="line"><span class="keywordflow">if</span> (status != <a class="code" href="group__execution__status.html#ga85752c5de59e8adeb001e35ff5be6be7" title="Operation succeeded.">ARM_DRIVER_OK</a>) ... <span class="comment">// error handling</span></div>
 </div><!-- fragment --><p><b>CAN message filtering using a range ID</b></p>
-<p>Example: accept in message object #3 only frames with extended ID &gt;= 0x1567 and extended ID &lt; 0x1577. </p>
+<p>Example: accept in message object #3 only frames with extended ID &gt;= 0x1567 and extended ID &lt;= 0x1577. </p>
 <div class="fragment"><div class="line">status = ptrCAN-&gt;ObjectSetFilter (3, <a class="code" href="_driver___c_a_n_8h.html#gacb04d0f8b3969ee69362ff2b62941d75a22123bef8e773844fce604c553bf2ed5" title="Add range id filter.">ARM_CAN_FILTER_ID_RANGE_ADD</a>, <a class="code" href="group__can__identifer__ctrls.html#gae7d4efb6fb49e1ec47c2b12e22f37cae" title="CAN identifier in extended format (29-bits)">ARM_CAN_EXTENDED_ID</a>(0x1567), <a class="code" href="group__can__identifer__ctrls.html#gae7d4efb6fb49e1ec47c2b12e22f37cae" title="CAN identifier in extended format (29-bits)">ARM_CAN_EXTENDED_ID</a>(0x1577));</div>
 <div class="line"><span class="keywordflow">if</span> (status != <a class="code" href="group__execution__status.html#ga85752c5de59e8adeb001e35ff5be6be7" title="Operation succeeded.">ARM_DRIVER_OK</a>) ... <span class="comment">// error handling</span></div>
 </div><!-- fragment --><p><b>CAN message filtering using a mask ID</b></p>
@@ -446,18 +446,10 @@ Remote Frame</h1>
 <p>For automatic data message reception on an RTR, the object is configured with the function <a class="el" href="group__can__interface__gr.html#ga00ec0715f6755a49dae5b60dca182630">ARM_CAN_ObjectConfigure</a> <em>obj_cfg</em> = <a class="el" href="_driver___c_a_n_8h.html#gaa9488554de0575bc821c9f65213c4cd0a396d7a6cd2353e1a2936405ace6417f5">ARM_CAN_OBJ_TX_RTR_RX_DATA</a>.</p>
 <p>The receiver or consumer requests data with transmission of an RTR with the <a class="el" href="group__can__interface__gr.html#ga0dcffd362b4093043442a030eaebbcfe">ARM_CAN_MessageSend</a>. This RTR requests from the transmitter or producer to send the data message. Once the data message is received, the driver calls a callback function <a class="el" href="group__can__interface__gr.html#gabfcaeac9e2ca25936ba5a29f2d594e7e">ARM_CAN_SignalObjectEvent</a> with <em>event</em> = <a class="el" href="group___c_a_n__events.html#ga2c1082561eeae3b2b8132e81fc241e47">ARM_CAN_EVENT_RECEIVE</a> and the related <em>obj_idx</em>. The received data message can then be read with the function <a class="el" href="group__can__interface__gr.html#gafc37084df5eab32f593c2744d35cf647">ARM_CAN_MessageRead</a>.</p>
 <p><b>Example:</b> </p>
-<div class="fragment"><div class="line"><span class="keywordflow">if</span> (ptrCAN-&gt;ObjectSetFilter(0, <a class="code" href="_driver___c_a_n_8h.html#gacb04d0f8b3969ee69362ff2b62941d75aa734058b50573de3b0cc49311997806b" title="Add exact id filter.">ARM_CAN_FILTER_ID_EXACT_ADD</a>, <a class="code" href="group__can__identifer__ctrls.html#gae7d4efb6fb49e1ec47c2b12e22f37cae" title="CAN identifier in extended format (29-bits)">ARM_CAN_EXTENDED_ID</a>(0x12345678U), 0U) != <a class="code" href="group__execution__status.html#ga85752c5de59e8adeb001e35ff5be6be7" title="Operation succeeded.">ARM_DRIVER_OK</a>) {</div>
-<div class="line">  <span class="comment">// Handle error if filter was not set successfully</span></div>
-<div class="line">  <span class="keywordflow">while</span> (1) {</div>
-<div class="line">    __nop();</div>
-<div class="line">  }</div>
-<div class="line">}</div>
-<div class="line"><span class="keywordflow">if</span> (ptrCAN-&gt;ObjectConfigure(0, <a class="code" href="_driver___c_a_n_8h.html#gaa9488554de0575bc821c9f65213c4cd0a396d7a6cd2353e1a2936405ace6417f5" title="CAN object that transmits RTR and automatically receives Data Frame.">ARM_CAN_OBJ_TX_RTR_RX_DATA</a>) != <a class="code" href="group__execution__status.html#ga85752c5de59e8adeb001e35ff5be6be7" title="Operation succeeded.">ARM_DRIVER_OK</a>) {</div>
-<div class="line">  <span class="comment">// Handle error if object failed to configure</span></div>
-<div class="line">  <span class="keywordflow">while</span> (1) {</div>
-<div class="line">    __nop();</div>
-<div class="line">  }</div>
-<div class="line">}</div>
+<div class="fragment"><div class="line">status = ptrCAN-&gt;ObjectSetFilter(0, <a class="code" href="_driver___c_a_n_8h.html#gacb04d0f8b3969ee69362ff2b62941d75aa734058b50573de3b0cc49311997806b" title="Add exact id filter.">ARM_CAN_FILTER_ID_EXACT_ADD</a>, <a class="code" href="group__can__identifer__ctrls.html#gae7d4efb6fb49e1ec47c2b12e22f37cae" title="CAN identifier in extended format (29-bits)">ARM_CAN_EXTENDED_ID</a>(0x12345678U), 0U);</div>
+<div class="line"><span class="keywordflow">if</span> (status != <a class="code" href="group__execution__status.html#ga85752c5de59e8adeb001e35ff5be6be7" title="Operation succeeded.">ARM_DRIVER_OK</a>) ... <span class="comment">// error handling</span></div>
+<div class="line">status = ptrCAN-&gt;ObjectConfigure(0, <a class="code" href="_driver___c_a_n_8h.html#gaa9488554de0575bc821c9f65213c4cd0a396d7a6cd2353e1a2936405ace6417f5" title="CAN object that transmits RTR and automatically receives Data Frame.">ARM_CAN_OBJ_TX_RTR_RX_DATA</a>);</div>
+<div class="line"><span class="keywordflow">if</span> (status != <a class="code" href="group__execution__status.html#ga85752c5de59e8adeb001e35ff5be6be7" title="Operation succeeded.">ARM_DRIVER_OK</a>) ... <span class="comment">// error handling</span></div>
 <div class="line">memset(&amp;tx_msg_info, 0, <span class="keyword">sizeof</span>(<a class="code" href="group__can__interface__gr.html#struct_a_r_m___c_a_n___m_s_g___i_n_f_o" title="CAN Message Information.">ARM_CAN_MSG_INFO</a>));            <span class="comment">// Clear transmit message structure</span></div>
 <div class="line">tx_msg_info.<a class="code" href="group__can__interface__gr.html#abaabdc509cdaba7df9f56c6c76f3ae19" title="CAN identifier with frame format specifier (bit 31)">id</a>  = <a class="code" href="group__can__identifer__ctrls.html#gae7d4efb6fb49e1ec47c2b12e22f37cae" title="CAN identifier in extended format (29-bits)">ARM_CAN_EXTENDED_ID</a>(0x12345678U);           <span class="comment">// Set ID of message</span></div>
 <div class="line">tx_msg_info.<a class="code" href="group__can__interface__gr.html#a1f32fc9e5d3b33babf5905140e7a53af" title="Remote transmission request frame.">rtr</a> = 1;                                          <span class="comment">// Set RTR flag of message to send RTR</span></div>
@@ -1323,7 +1315,7 @@ Number of messages buffers (FIFO) for that object. </td></tr>
 <tr>
 <td colspan="3">The maximum allowed value is <span class="XML-Token">x = MIN (MIN (PHASE_SEG1, PHASE_SEG2), 4)</span>. SJW is not allowed to be greater than either PHASE segment.   </td></tr>
 </table>
-<p>The picture shows a Nominal Bit Time with 10 time quantas. </p>
+<p>The picture shows a Nominal Bit Time with 10 time quanta. </p>
 <div class="image">
 <img src="CAN_Bit_Timing.png" alt="CAN_Bit_Timing.png"/>
 <div class="caption">
@@ -1383,7 +1375,7 @@ CAN Bit Timing</div></div>
 <tr>
 <td><a class="el" href="_driver___c_a_n_8h.html#gabbca99c46d478bcf822eee71cdf75dcdaa3190344bdf3452462e5c0518ac3cdc4">ARM_CAN_MODE_NORMAL</a> </td><td>Normal operation mode. Used when peripheral is in active mode to receive, transmit, and acknowledge messages on the bus. Depending on the current unit state, it can generate error or overload messages. Verify the unit state with <a class="el" href="group__can__interface__gr.html#ga676d6b567fc4ab3d44f5d7a50ec9419c">ARM_CAN_GetStatus</a>. </td><td><em>always supported</em>  </td></tr>
 <tr>
-<td><a class="el" href="_driver___c_a_n_8h.html#gabbca99c46d478bcf822eee71cdf75dcda22a9bb26e68c2a04f641d466040d755d">ARM_CAN_MODE_RESTRICTED</a> </td><td>Restricted operation mode. Use for monitoring the bus communication non-intrusively without transmitting. </td><td><em>restricted_mode</em> = <span class="XML-Token">1</span>  </td></tr>
+<td><a class="el" href="_driver___c_a_n_8h.html#gabbca99c46d478bcf822eee71cdf75dcda22a9bb26e68c2a04f641d466040d755d">ARM_CAN_MODE_RESTRICTED</a> </td><td>Restricted operation mode. Used for monitoring the bus communication non-intrusively without transmitting. </td><td><em>restricted_mode</em> = <span class="XML-Token">1</span>  </td></tr>
 <tr>
 <td><a class="el" href="_driver___c_a_n_8h.html#gabbca99c46d478bcf822eee71cdf75dcda904f68f08c84c4b85c763f5d98c574ab">ARM_CAN_MODE_MONITOR</a> </td><td>Bus monitoring mode. </td><td><em>monitor_mode</em> = <span class="XML-Token">1</span>  </td></tr>
 <tr>
@@ -1553,9 +1545,9 @@ CAN Bit Timing</div></div>
 <tr>
 <td><a class="el" href="_driver___c_a_n_8h.html#gaa9488554de0575bc821c9f65213c4cd0aebbd0da59658805af30203be66d80249">ARM_CAN_OBJ_INACTIVE</a> </td><td>Deactivate object (default after <a class="el" href="group__can__interface__gr.html#gaa72ceb25ba67e279d7432404632deb44">ARM_CAN_Initialize</a>)  </td><td><em>always supported</em>  </td></tr>
 <tr>
-<td><a class="el" href="_driver___c_a_n_8h.html#gaa9488554de0575bc821c9f65213c4cd0a14780ac7274831ee94f427cbbf67c003">ARM_CAN_OBJ_RX</a> </td><td>Receive object; read received message with <a class="el" href="group__can__interface__gr.html#gafc37084df5eab32f593c2744d35cf647">ARM_CAN_MessageRead</a>.  </td><td><em>rx</em> = <span class="XML-Token">0</span>  </td></tr>
+<td><a class="el" href="_driver___c_a_n_8h.html#gaa9488554de0575bc821c9f65213c4cd0a14780ac7274831ee94f427cbbf67c003">ARM_CAN_OBJ_RX</a> </td><td>Receive object; read received message with <a class="el" href="group__can__interface__gr.html#gafc37084df5eab32f593c2744d35cf647">ARM_CAN_MessageRead</a>.  </td><td><em>rx</em> = <span class="XML-Token">1</span>  </td></tr>
 <tr>
-<td><a class="el" href="_driver___c_a_n_8h.html#gaa9488554de0575bc821c9f65213c4cd0a3e20952f92855298cd0a39a7f47b3f3c">ARM_CAN_OBJ_TX</a>  </td><td>Transmit object; send message with <a class="el" href="group__can__interface__gr.html#ga0dcffd362b4093043442a030eaebbcfe">ARM_CAN_MessageSend</a>.  </td><td><em>tx</em> = <span class="XML-Token">0</span>  </td></tr>
+<td><a class="el" href="_driver___c_a_n_8h.html#gaa9488554de0575bc821c9f65213c4cd0a3e20952f92855298cd0a39a7f47b3f3c">ARM_CAN_OBJ_TX</a>  </td><td>Transmit object; send message with <a class="el" href="group__can__interface__gr.html#ga0dcffd362b4093043442a030eaebbcfe">ARM_CAN_MessageSend</a>.  </td><td><em>tx</em> = <span class="XML-Token">1</span>  </td></tr>
 <tr>
 <td><a class="el" href="_driver___c_a_n_8h.html#gaa9488554de0575bc821c9f65213c4cd0ac5d28d180ea9e4328974ffcb8b928a0c">ARM_CAN_OBJ_RX_RTR_TX_DATA</a> </td><td><a class="el" href="group__can__interface__gr.html#Remote_Frame">Remote Frame</a> Receive; when <b>RTR</b> is received data message is transmitted; set data message with <a class="el" href="group__can__interface__gr.html#ga0dcffd362b4093043442a030eaebbcfe">ARM_CAN_MessageSend</a>.  </td><td><em>rx_rtr_tx_data</em> = <span class="XML-Token">1</span>  </td></tr>
 <tr>
@@ -1627,9 +1619,9 @@ value &lt; 0 <a class="el" href="group__execution__status.html">Status Error Cod
 <li><em>dlc:</em> Data Length Code of requested data bytes when sending Remote Transmission Request.</li>
 </ul>
 <p>The parameter <em>data</em> is a pointer to the data buffer.<br/>
- The parameter <em>size</em> is the number of bytes to send.<br/>
+ The parameter <em>size</em> is the number of data bytes to send.<br/>
 </p>
-<p>The function returns the number of bytes accepted to be sent or <em>ARM_DRIVER_ERROR_BUSY</em> if the hardware is not ready to accept a new message for transmission.</p>
+<p>The function returns the number of bytes accepted to be sent or <a class="el" href="group__execution__status.html#ga13c1123319c7b9a4735d63447f35116b">ARM_DRIVER_ERROR_BUSY</a> if the hardware is not ready to accept a new message for transmission.</p>
 <p>When the message is sent, the callback function <a class="el" href="group__can__interface__gr.html#gabfcaeac9e2ca25936ba5a29f2d594e7e">ARM_CAN_SignalObjectEvent</a> is called signalling <a class="el" href="group___c_a_n__events.html#ga486f0f35ebc7e3b5931ee68b56703503">ARM_CAN_EVENT_SEND_COMPLETE</a> on specified object.</p>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="group__can__interface__gr.html#can_filtering">CAN Message Filtering</a></dd></dl>
 <p><b>Example:</b></p>
@@ -1710,7 +1702,7 @@ value &lt; 0 <a class="el" href="group__execution__status.html">Status Error Cod
 <li>edl: <span class="XML-Token">1</span> = CAN FD Extended Data Length message was received. <span class="XML-Token">0</span> = not Extended Data Length message.</li>
 <li>brs: <span class="XML-Token">1</span> = CAN FD Bit Rate Switching was used for message transfer. <span class="XML-Token">0</span> = no Bit Rate Switching was used.</li>
 <li>esi: <span class="XML-Token">1</span> = CAN FD Error State Indicator is active for received message. <span class="XML-Token">0</span> = Error State Indicator is not active.</li>
-<li>dlc: Data Length Code is the number of data bytes in the received message.</li>
+<li>dlc: Data Length Code is the number of data bytes in the received message or number of data bytes requested by RTR.</li>
 </ul>
 <p>Message reception can be disabled by de-configuring the receive object with the function <a class="el" href="group__can__interface__gr.html#ga00ec0715f6755a49dae5b60dca182630">ARM_CAN_ObjectConfigure</a>. </p>
 
@@ -1923,7 +1915,7 @@ value &lt; 0 <a class="el" href="group__execution__status.html">Status Error Cod
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Sep 11 2015 14:40:02 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Tue Oct 27 2015 14:35:24 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

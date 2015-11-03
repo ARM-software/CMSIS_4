@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-RTOS RTX
-   &#160;<span id="projectnumber">Version 4.79</span>
+   &#160;<span id="projectnumber">Version 4.80</span>
    </div>
    <div id="projectbrief">CMSIS-RTOS RTX: Real-Time Operating System for Cortex-M processor-based devices</div>
   </td>
@@ -185,6 +185,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>previous signal flags of the specified thread or 0x80000000 in case of incorrect parameters or call from ISR.</dd></dl>
 <p>Clear the signal flags of an active thread. This function cannot be called from interrupt service routines.</p>
+<dl class="section note"><dt>Note</dt><dd>Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Example</b> </p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> Thread_2 (<span class="keywordtype">void</span> <span class="keyword">const</span> *arg);</div>
 <div class="line"></div>
@@ -237,7 +238,8 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>previous signal flags of the specified thread or 0x80000000 in case of incorrect parameters.</dd></dl>
-<p>Set the signal flags of an active thread. This function may be used also within interrupt service routines.</p>
+<p>Set the signal flags of an active thread.</p>
+<dl class="section note"><dt>Note</dt><dd><a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a> can call this function.</dd></dl>
 <p><b>Example</b> </p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> Thread_2 (<span class="keywordtype">void</span> <span class="keyword">const</span> *arg);</div>
 <div class="line"> </div>
@@ -285,7 +287,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">signals</td><td>wait until all specified signal flags set or 0 for any single signal flag. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">millisec</td><td>timeout value or 0 in case of no time-out. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">millisec</td><td><a class="el" href="_function_overview.html#CMSIS_RTOS_TimeOutValue">Timout Value</a> or 0 in case of no time-out. </td></tr>
   </table>
   </dd>
 </dl>
@@ -306,6 +308,7 @@ Functions</h2></td></tr>
 <li><em>osErrorValue:</em> the value <em>signals</em> is outside of the permitted range.</li>
 <li><em>osErrorISR:</em> <a class="el" href="group___c_m_s_i_s___r_t_o_s___signal_mgmt.html#ga38860acda96df47da6923348d96fc4c9">osSignalWait</a> cannot be called from interrupt service routines.</li>
 </ul>
+<dl class="section note"><dt>Note</dt><dd>Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Example</b> </p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> Thread_2 (<span class="keywordtype">void</span> <span class="keyword">const</span> *arg);</div>
 <div class="line">  </div>
@@ -336,7 +339,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Sep 11 2015 14:40:28 for CMSIS-RTOS RTX by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Tue Oct 27 2015 14:35:45 for CMSIS-RTOS RTX by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

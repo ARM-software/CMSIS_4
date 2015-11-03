@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-RTOS RTX
-   &#160;<span id="projectnumber">Version 4.79</span>
+   &#160;<span id="projectnumber">Version 4.80</span>
    </div>
    <div id="projectbrief">CMSIS-RTOS RTX: Real-Time Operating System for Cortex-M processor-based devices</div>
   </td>
@@ -251,6 +251,7 @@ Thread State and State Transitions</div></div>
       </table>
 </div><div class="memdoc">
 <p>Define the attributes of a thread functions that can be created by the function <a class="el" href="group___c_m_s_i_s___r_t_o_s___thread_mgmt.html#gac59b5713cb083702dce759c73fd90dff">osThreadCreate</a> using <a class="el" href="group___c_m_s_i_s___r_t_o_s___thread_mgmt.html#gaf0c7c6b5e09f8be198312144b5c9e453">osThread</a>.</p>
+<dl class="section note"><dt>Note</dt><dd>The parameter <em>instances</em> is intended to reserve stack resources but is currently not used by the CMSIS-RTOS RTX implementation. There is not limit check at time of creating threads using <a class="el" href="group___c_m_s_i_s___r_t_o_s___thread_mgmt.html#gac59b5713cb083702dce759c73fd90dff">osThreadCreate</a> (other then the general check for available stack resources).</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">name</td><td>name of the thread function. </td></tr>
@@ -339,6 +340,7 @@ Thread State and State Transitions</div></div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>thread ID for reference by other functions or NULL in case of error.</dd></dl>
 <p>Start a thread function by adding it to the Active Threads list and set it to state <b>READY</b>. The thread function receives the <em>argument</em> pointer as function argument when the function is started. When the priority of the created thread function is higher than the current <b>RUNNING</b> thread, the created thread function starts instantly and becomes the new <b>RUNNING</b> thread.</p>
+<dl class="section note"><dt>Note</dt><dd>Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="cmsis__os_8h.html">cmsis_os.h</a>&quot;</span></div>
 <div class="line"> </div>
@@ -373,6 +375,7 @@ Thread State and State Transitions</div></div>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>thread ID for reference by other functions or NULL in case of error.</dd></dl>
 <p>Get the thread ID of the current running thread.</p>
+<dl class="section note"><dt>Note</dt><dd>Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Example</b> </p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> ThreadGetId_example (<span class="keywordtype">void</span>)  {</div>
 <div class="line">  <a class="code" href="cmsis__os_8h.html#adfeb153a84a81309e2d958268197617f" title="Thread ID identifies the thread (pointer to a thread control block).">osThreadId</a> id;                                           <span class="comment">// id for the currently running thread</span></div>
@@ -406,6 +409,7 @@ Thread State and State Transitions</div></div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>current priority value of the thread function.</dd></dl>
 <p>Get the priority of an active thread. In case of a failure the value <b>osPriorityError</b> is returned.</p>
+<dl class="section note"><dt>Note</dt><dd>Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="cmsis__os_8h.html">cmsis_os.h</a>&quot;</span></div>
 <div class="line"> </div>
@@ -466,6 +470,7 @@ Thread State and State Transitions</div></div>
 <li><em>osErrorResource:</em> thread_id refers to a thread that is not an active thread.</li>
 <li><em>osErrorISR:</em> <a class="el" href="group___c_m_s_i_s___r_t_o_s___thread_mgmt.html#ga0dfb90ccf1f6e4b54b9251b12d1cbc8b">osThreadSetPriority</a> cannot be called from interrupt service routines.</li>
 </ul>
+<dl class="section note"><dt>Note</dt><dd>Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="cmsis__os_8h.html">cmsis_os.h</a>&quot;</span></div>
 <div class="line"> </div>
@@ -524,6 +529,7 @@ Thread State and State Transitions</div></div>
 <li><em>osErrorResource:</em> thread_id refers to a thread that is not an active thread.</li>
 <li><em>osErrorISR:</em> <a class="el" href="group___c_m_s_i_s___r_t_o_s___thread_mgmt.html#gaea135bb90eb853eff39e0800b91bbeab">osThreadTerminate</a> cannot be called from interrupt service routines.</li>
 </ul>
+<dl class="section note"><dt>Note</dt><dd>Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="cmsis__os_8h.html">cmsis_os.h</a>&quot;</span></div>
 <div class="line"> </div>
@@ -568,6 +574,7 @@ Thread State and State Transitions</div></div>
 <li><em>osOK:</em> the function has been correctly executed.</li>
 <li><em>osErrorISR:</em> <a class="el" href="group___c_m_s_i_s___r_t_o_s___thread_mgmt.html#gaf13a667493c5d629a90c13e113b99233">osThreadYield</a> cannot be called from interrupt service routines.</li>
 </ul>
+<dl class="section note"><dt>Note</dt><dd>Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="cmsis__os_8h.html">cmsis_os.h</a>&quot;</span></div>
 <div class="line"> </div>
@@ -589,7 +596,7 @@ Thread State and State Transitions</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Sep 11 2015 14:40:28 for CMSIS-RTOS RTX by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Tue Oct 27 2015 14:35:45 for CMSIS-RTOS RTX by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

@@ -237,7 +237,9 @@ Thread State and State Transitions</div></div>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section note"><dt>Note</dt><dd>MUST REMAIN UNCHANGED: <b>osPriority</b> shall be consistent in every CMSIS-RTOS.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>MUST REMAIN UNCHANGED: <b>osPriority</b> shall be consistent in every CMSIS-RTOS. </dd>
+<dd>
+Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p>The <a class="el" href="cmsis__os_8h.html#a7f2b42f1983b9107775ec2a1c69a849a">osPriority</a> value specifies the priority for a thread. The default thread priority should be <em>osPriorityNormal</em>. If a Thread is active that has a higher priority than the currently executing thread, then a thread switch occurs immediately to execute the new task.</p>
 <p>To prevent from a priority inversion, a CMSIS-RTOS complained OS may optionally implement a <b>priority inheritance</b> method. A priority inversion occurs when a high priority thread is waiting for a resource or event that is controlled by a thread with a lower priority. </p>
 <dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
@@ -305,6 +307,7 @@ Thread State and State Transitions</div></div>
 <dl class="section return"><dt>Returns</dt><dd>thread ID for reference by other functions or NULL in case of error. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>MUST REMAIN UNCHANGED: <b>osThreadCreate</b> shall be consistent in every CMSIS-RTOS.</dd></dl>
 <p>Start a thread function by adding it to the Active Threads list and set it to state <b>READY</b>. The thread function receives the <em>argument</em> pointer as function argument when the function is started. When the priority of the created thread function is higher than the current <b>RUNNING</b> thread, the created thread function starts instantly and becomes the new <b>RUNNING</b> thread.</p>
+<dl class="section note"><dt>Note</dt><dd>Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Code Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="cmsis__os_8h.html">cmsis_os.h</a>&quot;</span></div>
 <div class="line"> </div>
@@ -340,6 +343,7 @@ Thread State and State Transitions</div></div>
 <dl class="section return"><dt>Returns</dt><dd>thread ID for reference by other functions or NULL in case of error. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>MUST REMAIN UNCHANGED: <b>osThreadGetId</b> shall be consistent in every CMSIS-RTOS.</dd></dl>
 <p>Get the thread ID of the current running thread.</p>
+<dl class="section note"><dt>Note</dt><dd>Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Code Example</b> </p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> ThreadGetId_example (<span class="keywordtype">void</span>)  {</div>
 <div class="line">  <a class="code" href="cmsis__os_8h.html#adfeb153a84a81309e2d958268197617f" title="Thread ID identifies the thread (pointer to a thread control block).">osThreadId</a> id;                                           <span class="comment">// id for the currently running thread</span></div>
@@ -374,6 +378,7 @@ Thread State and State Transitions</div></div>
 <dl class="section return"><dt>Returns</dt><dd>current priority value of the thread function. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>MUST REMAIN UNCHANGED: <b>osThreadGetPriority</b> shall be consistent in every CMSIS-RTOS.</dd></dl>
 <p>Get the priority of an active thread. In case of a failure the value <b>osPriorityError</b> is returned.</p>
+<dl class="section note"><dt>Note</dt><dd>Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Code Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="cmsis__os_8h.html">cmsis_os.h</a>&quot;</span></div>
 <div class="line"> </div>
@@ -435,6 +440,7 @@ Thread State and State Transitions</div></div>
 <li><em>osErrorResource:</em> thread_id refers to a thread that is not an active thread.</li>
 <li><em>osErrorISR:</em> <a class="el" href="group___c_m_s_i_s___r_t_o_s___thread_mgmt.html#ga0dfb90ccf1f6e4b54b9251b12d1cbc8b">osThreadSetPriority</a> cannot be called from interrupt service routines.</li>
 </ul>
+<dl class="section note"><dt>Note</dt><dd>Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Code Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="cmsis__os_8h.html">cmsis_os.h</a>&quot;</span></div>
 <div class="line"> </div>
@@ -494,6 +500,7 @@ Thread State and State Transitions</div></div>
 <li><em>osErrorResource:</em> thread_id refers to a thread that is not an active thread.</li>
 <li><em>osErrorISR:</em> <a class="el" href="group___c_m_s_i_s___r_t_o_s___thread_mgmt.html#gaea135bb90eb853eff39e0800b91bbeab">osThreadTerminate</a> cannot be called from interrupt service routines.</li>
 </ul>
+<dl class="section note"><dt>Note</dt><dd>Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Code Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="cmsis__os_8h.html">cmsis_os.h</a>&quot;</span></div>
 <div class="line"> </div>
@@ -539,6 +546,7 @@ Thread State and State Transitions</div></div>
 <li><em>osOK:</em> the function has been correctly executed.</li>
 <li><em>osErrorISR:</em> <a class="el" href="group___c_m_s_i_s___r_t_o_s___thread_mgmt.html#gaf13a667493c5d629a90c13e113b99233">osThreadYield</a> cannot be called from interrupt service routines.</li>
 </ul>
+<dl class="section note"><dt>Note</dt><dd>Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Code Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="cmsis__os_8h.html">cmsis_os.h</a>&quot;</span></div>
 <div class="line"> </div>
@@ -560,7 +568,7 @@ Thread State and State Transitions</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Sep 11 2015 14:40:27 for CMSIS-RTOS by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Tue Oct 27 2015 14:35:43 for CMSIS-RTOS by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

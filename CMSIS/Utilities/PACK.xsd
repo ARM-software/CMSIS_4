@@ -18,15 +18,18 @@
   
   3. This notice may not be removed or altered from any source distribution.
  
-  $Date:        28. Aug. 2015
-  $Revision:    1.4.0
+  $Date:        16. Oct. 2015
+  $Revision:    1.4.2
 
   $Project: Schema File for Package Description File Format Specification
 
   Package file name convention <vendor>_<name>_<version>.pack
   SchemaVersion=1.4
 
-  28. Aug 2015
+  16. Oct 2015: 1.4.1
+  - pName, Dname, Dvariant type changed from xs:string to RestrictedString
+
+ 28. Aug 2015: 1.4.0
   - deprecate devices memory tag attribute id and use
     introduced name and access attributes instead
   - added devices memory tag attribute: alias
@@ -52,20 +55,6 @@
     </xs:restriction>
   </xs:simpleType>
 
-  <!-- MemoryAccessTypeString -->
-  <xs:simpleType name="MemoryAccessTypeString">
-    <xs:restriction base="xs:string">
-      <!-- r = Readable                    -->
-      <!-- w = Writable                    -->
-      <!-- x = eXecutable                  -->
-      <!-- p = Peripheral - details in SVD -->
-      <!-- s = Secure                      -->
-      <!-- n = Non-secure                  -->
-      <!-- c = non-secure Callable         -->
-      <xs:pattern value="[rwxp]*(s|n|c)?"/>
-    </xs:restriction>
-  </xs:simpleType>
-  
   <!-- Registered Device Vendors -->
   <xs:simpleType name="DeviceVendorEnum">
     <xs:restriction base="xs:token">
@@ -164,7 +153,7 @@
   <!-- Processor Type -->
   <xs:complexType name="ProcessorType">
     <!-- Pname defines an identifier for a specific processor in a multi-processor devices -->
-    <xs:attribute name="Pname"        type="xs:string"/>
+    <xs:attribute name="Pname"        type="RestrictedString"/>
     <!-- Dcore specifies the processor from a list of supported processors -->
     <xs:attribute name="Dcore"        type="DcoreEnum"/>
     <!-- Dfpu specifies the hardware floating point unit -->
@@ -182,7 +171,7 @@
   <!-- Compile Type: -->
   <xs:complexType name="CompileType">
     <!-- Pname identifies the processor this setting belongs to -->
-    <xs:attribute name="Pname"  type="xs:string" use="optional"/>
+    <xs:attribute name="Pname"  type="RestrictedString" use="optional"/>
     <!-- CMSIS-CORE device header file (sets compiler include path) -->
     <xs:attribute name="header" type="xs:string"/>
     <!-- Device specific preprocessor define (sets preprocessor define  -->
@@ -206,7 +195,6 @@
     <xs:restriction base="xs:token">
       <xs:enumeration value="jtag"/>
       <xs:enumeration value="swd"/>
-      <xs:enumeration value="cjtag"/>
     </xs:restriction>
   </xs:simpleType>
   
@@ -227,15 +215,6 @@
     <xs:anyAttribute processContents="lax"/>
   </xs:complexType>
 
-  <!-- CJtagType -->
-  <xs:complexType name="CjtagType">
-    <xs:attribute name="tapindex"     type="NonNegativeInteger" use="optional"/>
-    <xs:attribute name="idcode"       type="NonNegativeInteger" use="optional"/>
-    <xs:attribute name="targetsel"    type="NonNegativeInteger" use="optional"/>
-    <xs:attribute name="irlen"        type="xs:unsignedInt"     use="optional"/>
-    <xs:anyAttribute processContents="lax"/>
-  </xs:complexType>
-  
   <!-- SwdType -->
   <xs:complexType name="SwdType">
     <xs:attribute name="idcode"       type="NonNegativeInteger" use="optional"/>
@@ -248,7 +227,6 @@
     <xs:sequence>
       <xs:element name="jtag"     type="JtagType"     minOccurs="0" maxOccurs="1"/>
       <xs:element name="swd"      type="SwdType"      minOccurs="0" maxOccurs="1"/>
-      <xs:element name="cjtag"    type="CjtagType"    minOccurs="0" maxOccurs="1"/>
     </xs:sequence>
     <xs:attribute name="__dp" type="xs:unsignedInt" use="optional"/>
     <xs:anyAttribute processContents="lax"/>
@@ -318,7 +296,7 @@
       <xs:group ref="SequenceElementGroup" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
     <xs:attribute name="name"    type="xs:string"  use="required"/>
-    <xs:attribute name="Pname"   type="xs:string"  use="optional"/>
+    <xs:attribute name="Pname"   type="RestrictedString"  use="optional"/>
     <xs:attribute name="disable" type="xs:boolean" use="optional"/>
     <xs:attribute name="info"    type="xs:string"  use="optional"/>
     <xs:anyAttribute processContents="lax"/>
@@ -340,7 +318,7 @@
     <xs:attribute name="__dp"  type="xs:unsignedInt" use="optional"/>
     <xs:attribute name="__ap"  type="xs:unsignedInt" use="optional"/> <!-- access port index -->
     <xs:attribute name="svd"   type="xs:string"      use="optional"/>
-    <xs:attribute name="Pname" type="xs:string"      use="optional"/>
+    <xs:attribute name="Pname" type="RestrictedString"      use="optional"/>
     <xs:anyAttribute processContents="lax"/>
   </xs:complexType>
 
@@ -369,23 +347,16 @@
       <xs:element name="traceport"   type="TracePortType"   minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="tracebuffer" type="TraceBufferType" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
-    <xs:attribute name="Pname" type="xs:string" use="optional"/>
+    <xs:attribute name="Pname" type="RestrictedString" use="optional"/>
     <xs:anyAttribute processContents="lax"/>
   </xs:complexType>
 
   <!-- Memory Type-->
   <xs:complexType name="MemoryType">
     <!-- Pname identifies the processor this setting belongs to -->
-    <xs:attribute name="Pname"   type="xs:string"/>
-    <!-- id specifies the enumerated ID of memory [deprecated in Version 1.4.0] -->
-    <xs:attribute name="id"      type="MemoryIDTypeEnum"    use="optional"/>
-    <!-- use name and access instead of id [Version 1.4.0] -->
-    <!-- unique name of memory -->
-    <xs:attribute name="name"    type="xs:string" use="optional"/>
-    <!-- access permissions attributes of the memory -->
-    <xs:attribute name="access"  type="MemoryAccessTypeString" use="optional"/>
-    <!-- memory is alternative access to the same physical memory referenced by name [Version 1.4.0] -->
-    <xs:attribute name="alias"   type="xs:string" use="optional"/>
+    <xs:attribute name="Pname"   type="RestrictedString"/>
+    <!-- id specifies the enumerated ID of memory -->
+    <xs:attribute name="id"      type="MemoryIDTypeEnum"    use="required"/>
     <!-- start specifies the base address of the memory -->
     <xs:attribute name="start"   type="NonNegativeInteger"  use="required"/>
     <!-- size specifies the size of the memory -->
@@ -398,18 +369,10 @@
     <xs:attribute name="startup" type="xs:boolean"          use="optional" default="0"/>
   </xs:complexType>
 
-  <xs:simpleType name="AlgorithmStyleEnum">
-    <xs:restriction base="xs:token">
-      <xs:enumeration value="CMSIS"/>
-      <xs:enumeration value="IAR"/>
-      <xs:enumeration value="Keil"/>
-    </xs:restriction>
-  </xs:simpleType>
-
   <!-- Algorithm Type -->
   <xs:complexType name="AlgorithmType">
     <!-- Pname identifies the processor this setting belongs to -->
-    <xs:attribute name="Pname"    type="xs:string"          use="optional"/>
+    <xs:attribute name="Pname"    type="RestrictedString"          use="optional"/>
     <!-- name specifies the path and filename of the Flash Programming Algorithm -->
     <xs:attribute name="name"     type="xs:string"          use="required"/>
     <!-- start specifies the base address of the memory range that gets programmed -->
@@ -422,14 +385,12 @@
     <xs:attribute name="RAMsize"  type="NonNegativeInteger" use="optional"/>
     <!-- if default is set the algorithm will be configured for any new project -->
     <xs:attribute name="default"  type="xs:boolean"         use="optional" default="0"/>
-    <!-- flash algorithm style [Version 1.4.0] -->
-    <xs:attribute name="style"    type="AlgorithmStyleEnum" use="optional" default="Keil"/>
   </xs:complexType>
 
   <!-- Book Type -->
   <xs:complexType name="BookType">
     <!-- Pname identifies the processor this setting belongs to -->
-    <xs:attribute name="Pname"   type="xs:string"/>
+    <xs:attribute name="Pname"   type="RestrictedString"/>
     <!-- name specifies the path and filename of the document -->
     <xs:attribute name="name"    type="xs:string" use="required"/>
     <!-- title specifies the string displayed for this document -->
@@ -441,14 +402,14 @@
     <xs:simpleContent>
       <xs:extension base="xs:string">
         <!-- Pname identifies the processor this setting belongs to -->
-        <xs:attribute name="Pname" type="xs:string"/>
+        <xs:attribute name="Pname" type="RestrictedString"/>
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
 
   <!-- Device Feature Type -->
   <xs:complexType name="DeviceFeatureType">
-    <xs:attribute name="Pname" type="xs:string"       use="optional"/>
+    <xs:attribute name="Pname" type="RestrictedString"       use="optional"/>
     <!-- <xs:attribute name="type"  type="DeviceFeatureTypeEnum" use="required"/> -->
     <xs:attribute name="type"  type="xs:string"       use="required"/>
     <xs:attribute name="n"     type="xs:decimal"      use="optional"/>
@@ -475,7 +436,7 @@
     <!-- name identifies the environment (e.g. "uv" for uVision ) this setting belongs to -->
     <xs:attribute name="name" type="xs:string" use="required"/>
     <!-- Pname identifies the processor this setting belongs to -->
-    <xs:attribute name="Pname"  type="xs:string" use="optional"/>
+    <xs:attribute name="Pname"  type="RestrictedString" use="optional"/>
     <xs:anyAttribute></xs:anyAttribute>
   </xs:complexType>
 
@@ -517,7 +478,7 @@
           <xs:sequence>
             <xs:group ref="DevicePropertiesGroup"/>
           </xs:sequence>
-          <xs:attribute name="Dvariant" type="xs:string" use="required"/>
+          <xs:attribute name="Dvariant" type="RestrictedString" use="required"/>
         </xs:complexType>
       </xs:element>
       <!-- Variant Level end -->
@@ -540,10 +501,15 @@
       <xs:enumeration value="Cortex-R4"/>
       <xs:enumeration value="Cortex-R5"/>
       <xs:enumeration value="Cortex-A5"/>
+      <xs:enumeration value="Cortex-A7"/>
       <xs:enumeration value="Cortex-A8"/>
       <xs:enumeration value="Cortex-A9"/>
       <xs:enumeration value="Cortex-A15"/>
-      <xs:enumeration value="*"/>
+      <xs:enumeration value="Cortex-A17"/>
+      <xs:enumeration value="Cortex-A53"/>
+      <xs:enumeration value="Cortex-A57"/>
+      <xs:enumeration value="Cortex-A72"/>
+      <xs:enumeration value="other"/>
     </xs:restriction>
   </xs:simpleType>
 
@@ -804,12 +770,12 @@
     <xs:attribute name="DsubFamily"  type="xs:string"/>
     <xs:attribute name="Dvariant"    type="xs:string"/>
     <xs:attribute name="Dvendor"     type="DeviceVendorEnum"/>
-    <xs:attribute name="Dname"       type="xs:string"/>
+    <xs:attribute name="Dname"       type="RestrictedString"/>
     <xs:attribute name="Dcore"       type="DcoreEnum"/>
     <xs:attribute name="Dfpu"        type="DfpuEnum"/>
     <xs:attribute name="Dmpu"        type="DmpuEnum"/>
     <xs:attribute name="Dendian"     type="DendianEnum"/>
-    <xs:attribute name="Pname"       type="xs:string"/>
+    <xs:attribute name="Pname"       type="RestrictedString"/>
     <xs:attribute name="Cvendor"     type="xs:string"/>
     <xs:attribute name="Cbundle"     type="xs:string"/>
     <xs:attribute name="Cclass"      type="CclassType"/>
@@ -937,7 +903,6 @@
       <xs:enumeration value="schematic"/>
       <xs:enumeration value="overview"/>
       <xs:enumeration value="manual"/>
-      <xs:enumeration value="layout"/>
       <xs:enumeration value="other"/>
     </xs:restriction>
   </xs:simpleType>
@@ -1115,7 +1080,7 @@
     <xs:attribute name="Dvendor"     type="DeviceVendorEnum" use="required"/>
     <xs:attribute name="Dname"       type="xs:string"        use="optional"/>
     <xs:attribute name="Dvariant"    type="xs:string"        use="optional"/>
-    <xs:attribute name="Pname"       type="xs:string"        use="optional"/>
+    <xs:attribute name="Pname"       type="RestrictedString"        use="optional"/>
   </xs:complexType>
 
   <xs:complexType name="GeneratorCommandArgumentType">
@@ -1283,8 +1248,6 @@
                         <xs:attribute name="Cgroup"   type="CgroupType"   use="required"/>
                         <xs:attribute name="Csub"     type="CsubType"     use="optional"/>
                         <xs:attribute name="Cvariant" type="CvariantType" use="optional"/>
-                        <!-- identifies this component variant to be the preferred variant [Version 1.4.0] -->
-                        <xs:attribute name="isDefaultVariant" type="xs:boolean" use="optional"/>
                         <!-- api version for this component -->
                         <xs:attribute name="Capiversion"  type="VersionType" use="optional"/>
                         <!-- component attribute for referencing a condition specified in conditions section above -->

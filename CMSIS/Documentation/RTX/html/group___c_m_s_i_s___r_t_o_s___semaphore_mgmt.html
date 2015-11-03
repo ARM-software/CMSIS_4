@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-RTOS RTX
-   &#160;<span id="projectnumber">Version 4.79</span>
+   &#160;<span id="projectnumber">Version 4.80</span>
    </div>
    <div id="projectbrief">CMSIS-RTOS RTX: Real-Time Operating System for Cortex-M processor-based devices</div>
   </td>
@@ -245,6 +245,12 @@ CMSIS-RTOS Semaphore</div></div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>semaphore ID for reference by other functions or NULL in case of error.</dd></dl>
 <p>Create and initialize a Semaphore object that is used to manage access to shared resources. The parameter <em>count</em> specifies the number of available resources. The <em>count</em> value 1 creates a binary semaphore.</p>
+<dl class="section note"><dt>Note</dt><dd><ul>
+<li>The value <em>count</em> is only used to set the initial token count. The initial token count is not stored in memory (to save RAM as the RTX implementation tries to use as little resource as possible). Therefore no error is generated when <a class="el" href="group___c_m_s_i_s___r_t_o_s___semaphore_mgmt.html#gab108914997c49e14d8ff1ae0d1988ca0">osSemaphoreRelease</a> is used to release more tokens than specified with the initial token count.</li>
+</ul>
+</dd>
+<dd>
+- Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="cmsis__os_8h.html">cmsis_os.h</a>&quot;</span></div>
 <div class="line">   </div>
@@ -254,9 +260,9 @@ CMSIS-RTOS Semaphore</div></div>
 <div class="line"><a class="code" href="cmsis__os_8h.html#aa8968896c84094aa973683c84fa06f84" title="Semaphore ID identifies the semaphore (pointer to a semaphore control block).">osSemaphoreId</a> semaphore;                         <span class="comment">// Semaphore ID</span></div>
 <div class="line"><a class="code" href="group___c_m_s_i_s___r_t_o_s___semaphore_mgmt.html#ga9e66fe361749071e5ab87826c43c2f1b" title="Define a Semaphore object.">osSemaphoreDef</a>(semaphore);                       <span class="comment">// Semaphore definition</span></div>
 <div class="line">   </div>
-<div class="line"><span class="comment">/*</span></div>
-<div class="line"><span class="comment">     Thread 1 - High Priority - Active every 3ms</span></div>
-<div class="line"><span class="comment"> */</span></div>
+<div class="line"><span class="comment">//</span></div>
+<div class="line"><span class="comment">//   Thread 1 - High Priority - Active every 3ms</span></div>
+<div class="line"><span class="comment">//</span></div>
 <div class="line"><span class="keywordtype">void</span> thread1 (<span class="keywordtype">void</span> <span class="keyword">const</span> *argument) {</div>
 <div class="line">  int32_t value;</div>
 <div class="line"></div>
@@ -271,10 +277,10 @@ CMSIS-RTOS Semaphore</div></div>
 <div class="line">  }</div>
 <div class="line">}</div>
 <div class="line">  </div>
-<div class="line"><span class="comment">/*</span></div>
-<div class="line"><span class="comment">     Thread 2 - Normal Priority - looks for a free semaphore and uses</span></div>
-<div class="line"><span class="comment">                                  the resource whenever it is available</span></div>
-<div class="line"><span class="comment"> */</span></div>
+<div class="line"><span class="comment">//</span></div>
+<div class="line"><span class="comment">//   Thread 2 - Normal Priority - looks for a free semaphore and uses</span></div>
+<div class="line"><span class="comment">//                                the resource whenever it is available</span></div>
+<div class="line"><span class="comment">//</span></div>
 <div class="line"><span class="keywordtype">void</span> thread2 (<span class="keywordtype">void</span> <span class="keyword">const</span> *argument) {</div>
 <div class="line">  <span class="keywordflow">while</span> (1) {</div>
 <div class="line">    <a class="code" href="group___c_m_s_i_s___r_t_o_s___semaphore_mgmt.html#gacc15b0fc8ce1167fe43da33042e62098" title="Wait until a Semaphore token becomes available.">osSemaphoreWait</a> (semaphore, <a class="code" href="cmsis__os_8h.html#a9eb9a7a797a42e4b55eb171ecc609ddb" title="Timeout value.">osWaitForever</a>);  <span class="comment">// Wait indefinitely for a free semaphore</span></div>
@@ -284,7 +290,7 @@ CMSIS-RTOS Semaphore</div></div>
 <div class="line">  }</div>
 <div class="line">}</div>
 <div class="line">  </div>
-<div class="line"><span class="comment">/* Thread definitions */</span></div>
+<div class="line"><span class="comment">// Thread definitions </span></div>
 <div class="line"><a class="code" href="group___c_m_s_i_s___r_t_o_s___thread_mgmt.html#gaee93d929beb350f16e5cc7fa602e229f" title="Create a Thread Definition with function, priority, and stack requirements.">osThreadDef</a>(thread1, <a class="code" href="group___c_m_s_i_s___r_t_o_s___thread_mgmt.html#ga7f2b42f1983b9107775ec2a1c69a849aa914433934143a9ba767e59577c56e6c2" title="priority: high">osPriorityHigh</a>,   1, 0);</div>
 <div class="line"><a class="code" href="group___c_m_s_i_s___r_t_o_s___thread_mgmt.html#gaee93d929beb350f16e5cc7fa602e229f" title="Create a Thread Definition with function, priority, and stack requirements.">osThreadDef</a>(thread2, <a class="code" href="group___c_m_s_i_s___r_t_o_s___thread_mgmt.html#ga7f2b42f1983b9107775ec2a1c69a849aa45a2895ad30c79fb97de18cac7cc19f1" title="priority: normal (default)">osPriorityNormal</a>, 1, 0);</div>
 <div class="line">   </div>
@@ -325,8 +331,9 @@ CMSIS-RTOS Semaphore</div></div>
 <li><em>osOK:</em> the semaphore object has been deleted.</li>
 <li><em>osErrorISR:</em> <a class="el" href="group___c_m_s_i_s___r_t_o_s___semaphore_mgmt.html#gabae2801ac2c096f6e8c69a264908f595">osSemaphoreDelete</a> cannot be called from interrupt service routines.</li>
 <li><em>osErrorResource:</em> the semaphore object could not be deleted.</li>
-<li><em>osErrorParameter:</em> the parameter <em>semaphore_id</em> is incorrect. </li>
+<li><em>osErrorParameter:</em> the parameter <em>semaphore_id</em> is incorrect.</li>
 </ul>
+<dl class="section note"><dt>Note</dt><dd>Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>. </dd></dl>
 
 </div>
 </div>
@@ -351,7 +358,7 @@ CMSIS-RTOS Semaphore</div></div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code that indicates the execution status of the function.</dd></dl>
 <p>Release a Semaphore token. This increments the count of available semaphore tokens.</p>
-<dl class="section note"><dt>Note</dt><dd>osSemaphoreRelease can be called also from interrupt service routines.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd><a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a> can call this function.</dd></dl>
 <p><b><a class="el" href="group___c_m_s_i_s___r_t_o_s___status.html">Status and Error Codes</a></b><br/>
 </p>
 <ul>
@@ -388,7 +395,7 @@ CMSIS-RTOS Semaphore</div></div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">semaphore_id</td><td>semaphore object referenced with <a class="el" href="group___c_m_s_i_s___r_t_o_s___semaphore_mgmt.html#ga97381e8e55cd47cec390bf57c96d6edb">osSemaphoreCreate</a>. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">millisec</td><td>timeout value or 0 in case of no time-out. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">millisec</td><td><a class="el" href="_function_overview.html#CMSIS_RTOS_TimeOutValue">Timout Value</a> or 0 in case of no time-out. </td></tr>
   </table>
   </dd>
 </dl>
@@ -400,7 +407,8 @@ CMSIS-RTOS Semaphore</div></div>
 <li>when <em>millisec</em> is set to <b>osWaitForever</b> the function will wait for an infinite time until the Semaphore token becomes available.</li>
 <li>all other values specify a time in millisecond for a timeout.</li>
 </ul>
-<p>The return value indicates the number of available tokens (the semaphore count value). If 0 is returned, then no semaphore was available. </p>
+<p>The return value indicates the number of available tokens (the semaphore count value). If 0 is returned, then no semaphore was available.</p>
+<dl class="section note"><dt>Note</dt><dd>Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>. </dd></dl>
 
 </div>
 </div>
@@ -409,7 +417,7 @@ CMSIS-RTOS Semaphore</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Sep 11 2015 14:40:28 for CMSIS-RTOS RTX by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Tue Oct 27 2015 14:35:45 for CMSIS-RTOS RTX by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

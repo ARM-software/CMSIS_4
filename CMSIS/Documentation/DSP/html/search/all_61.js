@@ -704,7 +704,7 @@ var searchData=
   ['arm_5fsignal_5fconverge_5fdata_2ec',['arm_signal_converge_data.c',['../arm__signal__converge__data_8c.html',1,'']]],
   ['arm_5fsignal_5fconverge_5fexample_5ff32_2ec',['arm_signal_converge_example_f32.c',['../arm__signal__converge__example__f32_8c.html',1,'']]],
   ['arm_5fsin_5fcos_5fexample_5ff32_2ec',['arm_sin_cos_example_f32.c',['../arm__sin__cos__example__f32_8c.html',1,'']]],
-  ['arm_5fsin_5fcos_5ff32',['arm_sin_cos_f32',['../group___sin_cos.html#ga4420d45c37d58c310ef9ae1b5fe58020',1,'arm_sin_cos_f32(float32_t theta, float32_t *pSinVal, float32_t *pCosVal):&#160;arm_sin_cos_f32.c'],['../group___sin_cos.html#ga4420d45c37d58c310ef9ae1b5fe58020',1,'arm_sin_cos_f32(float32_t theta, float32_t *pSinVal, float32_t *pCcosVal):&#160;arm_sin_cos_f32.c']]],
+  ['arm_5fsin_5fcos_5ff32',['arm_sin_cos_f32',['../group___sin_cos.html#ga4420d45c37d58c310ef9ae1b5fe58020',1,'arm_sin_cos_f32(float32_t theta, float32_t *pSinVal, float32_t *pCosVal):&#160;arm_sin_cos_f32.c'],['../group___sin_cos.html#ga4420d45c37d58c310ef9ae1b5fe58020',1,'arm_sin_cos_f32(float32_t theta, float32_t *pSinVal, float32_t *pCosVal):&#160;arm_sin_cos_f32.c']]],
   ['arm_5fsin_5fcos_5ff32_2ec',['arm_sin_cos_f32.c',['../arm__sin__cos__f32_8c.html',1,'']]],
   ['arm_5fsin_5fcos_5fq31',['arm_sin_cos_q31',['../group___sin_cos.html#gae9e4ddebff9d4eb5d0a093e28e0bc504',1,'arm_sin_cos_q31(q31_t theta, q31_t *pSinVal, q31_t *pCosVal):&#160;arm_sin_cos_q31.c'],['../group___sin_cos.html#gae9e4ddebff9d4eb5d0a093e28e0bc504',1,'arm_sin_cos_q31(q31_t theta, q31_t *pSinVal, q31_t *pCosVal):&#160;arm_sin_cos_q31.c']]],
   ['arm_5fsin_5fcos_5fq31_2ec',['arm_sin_cos_q31.c',['../arm__sin__cos__q31_8c.html',1,'']]],

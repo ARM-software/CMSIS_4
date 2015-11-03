@@ -18,8 +18,8 @@
  * 3. This notice may not be removed or altered from any source distribution.
  *
  *
- * $Date:        02. June 2015
- * $Revision:    V2.4
+ * $Date:        02. October 2015
+ * $Revision:    V2.5
  *
  * Driver:       Driver_ETH_MAC0
  * Configured:   via RTE_Device.h configuration file
@@ -34,6 +34,8 @@
  * -------------------------------------------------------------------------- */
 
 /* History:
+ *  Version 2.5
+ *    Corrected return value of the ReadFrame function
  *  Version 2.4
  *    - Updated initialization, uninitialization and power procedures
  *  Version 2.3
@@ -60,7 +62,7 @@
 
 #include "EMAC_LPC18xx.h"
 
-#define ARM_ETH_MAC_DRV_VERSION ARM_DRIVER_VERSION_MAJOR_MINOR(2,4) /* driver version */
+#define ARM_ETH_MAC_DRV_VERSION ARM_DRIVER_VERSION_MAJOR_MINOR(2,5) /* driver version */
 
 /* Timeouts */
 #define PHY_TIMEOUT         200         /* PHY Register access timeout in us  */
@@ -616,6 +618,7 @@ static int32_t SendFrame (const uint8_t *frame, uint32_t len, uint32_t flags) {
 */
 static int32_t ReadFrame (uint8_t *frame, uint32_t len) {
   uint8_t const *src;
+  int32_t cnt = (int32_t)len;
 
   if (!frame && len) {
     /* Invalid parameters */
@@ -649,7 +652,7 @@ static int32_t ReadFrame (uint8_t *frame, uint32_t len) {
     ENET->DMA_STAT = EMAC_DSR_RU;
     ENET->DMA_REC_POLL_DEMAND = 0;
   }
-  return (len);
+  return (cnt);
 }
 
 /**

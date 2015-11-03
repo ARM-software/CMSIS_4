@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Pack
-   &#160;<span id="projectnumber">Version 1.4.0</span>
+   &#160;<span id="projectnumber">Version 1.4.1</span>
    </div>
    <div id="projectbrief">Delivery Mechanism for Software Packs</div>
   </td>
@@ -112,13 +112,13 @@ $(document).ready(function(){initNavTree('pdsc_package_pg.html','');});
 <div class="contents">
 <div class="textblock"><p>The basic package information captures the package vendor, the package name, a brief description of the package, and the schema version. Additional elements support the logistics of handling packages. The url specifies the origin of the description. It may be left empty if the pack will not be uploaded onto a web server. A license file might point to license agreements. A list of keywords assists searching for packages.</p>
 <p><b>Example:</b> </p>
-<div class="fragment"><div class="line">&lt;<span class="keyword">package </span>schemaVersion=&quot;1.2&quot; xmlns:xs=&quot;http:<span class="comment">//www.w3.org/2001/XMLSchema-instance&quot; xs:noNamespaceSchemaLocation=&quot;PACK.xsd&quot;&gt;</span></div>
+<div class="fragment"><div class="line">&lt;<span class="keyword">package </span>schemaVersion=&quot;1.4&quot; xmlns:xs=&quot;http:<span class="comment">//www.w3.org/2001/XMLSchema-instance&quot; xs:noNamespaceSchemaLocation=&quot;PACK.xsd&quot;&gt;</span></div>
 <div class="line">  &lt;vendor&gt;ExampleVendor&lt;/vendor&gt;</div>
 <div class="line">  &lt;name&gt;STM32F2xx_DFP&lt;/name&gt;                                                       &lt;!-- name of package --&gt;</div>
 <div class="line">  &lt;description&gt;Device Family Package for STMicroelectronics STM32F2 Family of ARM Cortex-M3 based Microcontroller&lt;/description&gt;</div>
 <div class="line">  &lt;url&gt;&lt;/url&gt;</div>
 <div class="line">  &lt;supportContact&gt;http:<span class="comment">//www.arm.com/support&lt;/supportContact&gt;</span></div>
-<div class="line">  &lt;license&gt;.\END_USER_LICENCE_AGREEMENT.rtf&lt;/license&gt;</div>
+<div class="line">  &lt;license&gt;./END_USER_LICENCE_AGREEMENT.rtf&lt;/license&gt;</div>
 <div class="line">  &lt;releases&gt;</div>
 <div class="line">    &lt;release version=&quot;1.0.0&quot; date=&quot;2014-12-14&quot;&gt;</div>
 <div class="line">      First Release version of STM32F2 Device Family Pack.</div>
@@ -251,7 +251,7 @@ $(document).ready(function(){initNavTree('pdsc_package_pg.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="_pack_format.html">Pack Description (*.PDSC) Format</a></li>
-    <li class="footer">Generated on Fri Sep 11 2015 14:40:26 for CMSIS-Pack by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Tue Oct 27 2015 14:35:43 for CMSIS-Pack by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-RTOS RTX
-   &#160;<span id="projectnumber">Version 4.79</span>
+   &#160;<span id="projectnumber">Version 4.80</span>
    </div>
    <div id="projectbrief">CMSIS-RTOS RTX: Real-Time Operating System for Cortex-M processor-based devices</div>
   </td>
@@ -260,6 +260,7 @@ CMSIS-RTOS Message Queue</div></div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>message queue ID for reference by other functions or NULL in case of error.</dd></dl>
 <p>Create and initialize a message queue.</p>
+<dl class="section note"><dt>Note</dt><dd>Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="cmsis__os_8h.html">cmsis_os.h</a>&quot;</span></div>
 <div class="line"> </div>
@@ -283,9 +284,9 @@ CMSIS-RTOS Message Queue</div></div>
 <div class="line"><a class="code" href="group___c_m_s_i_s___r_t_o_s___thread_mgmt.html#gaee93d929beb350f16e5cc7fa602e229f" title="Create a Thread Definition with function, priority, and stack requirements.">osThreadDef</a>(send_thread, <a class="code" href="group___c_m_s_i_s___r_t_o_s___thread_mgmt.html#ga7f2b42f1983b9107775ec2a1c69a849aa45a2895ad30c79fb97de18cac7cc19f1" title="priority: normal (default)">osPriorityNormal</a>, 1, 0);</div>
 <div class="line"><a class="code" href="group___c_m_s_i_s___r_t_o_s___thread_mgmt.html#gaee93d929beb350f16e5cc7fa602e229f" title="Create a Thread Definition with function, priority, and stack requirements.">osThreadDef</a>(recv_thread, <a class="code" href="group___c_m_s_i_s___r_t_o_s___thread_mgmt.html#ga7f2b42f1983b9107775ec2a1c69a849aa45a2895ad30c79fb97de18cac7cc19f1" title="priority: normal (default)">osPriorityNormal</a>, 1, 2000);</div>
 <div class="line"> </div>
-<div class="line"><span class="comment">/*</span></div>
-<div class="line"><span class="comment">    Thread 1: Send thread</span></div>
-<div class="line"><span class="comment"> */</span></div>
+<div class="line"><span class="comment">//</span></div>
+<div class="line"><span class="comment">//  Thread 1: Send thread</span></div>
+<div class="line"><span class="comment">//</span></div>
 <div class="line"><span class="keywordtype">void</span> send_thread (<span class="keywordtype">void</span> <span class="keyword">const</span> *argument) {</div>
 <div class="line">  T_MEAS    *mptr;</div>
 <div class="line"> </div>
@@ -305,9 +306,9 @@ CMSIS-RTOS Message Queue</div></div>
 <div class="line">                                                 <span class="comment">// We are done here, exit this thread</span></div>
 <div class="line">}</div>
 <div class="line"> </div>
-<div class="line"><span class="comment">/*</span></div>
-<div class="line"><span class="comment">    Thread 2: Receive thread</span></div>
-<div class="line"><span class="comment"> */</span></div>
+<div class="line"><span class="comment">//</span></div>
+<div class="line"><span class="comment">//  Thread 2: Receive thread</span></div>
+<div class="line"><span class="comment">//</span></div>
 <div class="line"><span class="keywordtype">void</span> recv_thread (<span class="keywordtype">void</span> <span class="keyword">const</span> *argument) {</div>
 <div class="line">  T_MEAS  *rptr;</div>
 <div class="line">  <a class="code" href="group___c_m_s_i_s___r_t_o_s___definitions.html#structos_event" title="Event structure contains detailed information about an event.">osEvent</a>  evt;</div>
@@ -361,7 +362,7 @@ CMSIS-RTOS Message Queue</div></div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">queue_id</td><td>message queue ID obtained with <a class="el" href="group___c_m_s_i_s___r_t_o_s___message.html#gaf3b9345cf426304d46565152bc26fb78">osMessageCreate</a>. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">millisec</td><td>timeout value or 0 in case of no time-out. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">millisec</td><td><a class="el" href="_function_overview.html#CMSIS_RTOS_TimeOutValue">Timout Value</a> or 0 in case of no time-out. </td></tr>
   </table>
   </dd>
 </dl>
@@ -380,8 +381,9 @@ CMSIS-RTOS Message Queue</div></div>
 <li><em>osOK:</em> no message is available in the queue and no timeout was specified.</li>
 <li><em>osEventTimeout:</em> no message has arrived during the given timeout period.</li>
 <li><em>osEventMessage:</em> message received, <em>value.p</em> contains the pointer to message.</li>
-<li><em>osErrorParameter:</em> a parameter is invalid or outside of a permitted range. </li>
+<li><em>osErrorParameter:</em> a parameter is invalid or outside of a permitted range.</li>
 </ul>
+<dl class="section note"><dt>Note</dt><dd><a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a> can call this function. </dd></dl>
 
 </div>
 </div>
@@ -418,7 +420,7 @@ CMSIS-RTOS Message Queue</div></div>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">queue_id</td><td>message queue ID obtained with <a class="el" href="group___c_m_s_i_s___r_t_o_s___message.html#gaf3b9345cf426304d46565152bc26fb78">osMessageCreate</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">info</td><td>message information. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">millisec</td><td>timeout value or 0 in case of no time-out. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">millisec</td><td><a class="el" href="_function_overview.html#CMSIS_RTOS_TimeOutValue">Timout Value</a> or 0 in case of no time-out. </td></tr>
   </table>
   </dd>
 </dl>
@@ -437,8 +439,9 @@ CMSIS-RTOS Message Queue</div></div>
 <li><em>osOK:</em> the message is put into the queue.</li>
 <li><em>osErrorResource:</em> no memory in the queue was available.</li>
 <li><em>osErrorTimeoutResource:</em> no memory in the queue was available during the given time limit.</li>
-<li><em>osErrorParameter:</em> a parameter is invalid or outside of a permitted range. </li>
+<li><em>osErrorParameter:</em> a parameter is invalid or outside of a permitted range.</li>
 </ul>
+<dl class="section note"><dt>Note</dt><dd><a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a> can call this function. </dd></dl>
 
 </div>
 </div>
@@ -447,7 +450,7 @@ CMSIS-RTOS Message Queue</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Sep 11 2015 14:40:28 for CMSIS-RTOS RTX by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Tue Oct 27 2015 14:35:45 for CMSIS-RTOS RTX by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

@@ -20,15 +20,24 @@
   </taxonomy>
 
   <releases>
+    <release version="4.5.0" date="2015-10-28">
+      - CMSIS-Core     4.30.0  (see revision history for details)
+      - CMSIS-DAP      1.1.0   (unchanged)
+      - CMSIS-Driver   2.04.0  (see revision history for details)
+      - CMSIS-DSP      1.4.7   (no source code change [still labeled 1.4.5], see revision history for details)
+      - CMSIS-PACK     1.4.1   (see revision history for details)
+      - CMSIS-RTOS     4.80.0  Restored time delay parameter 'millisec' old behavior (prior V4.79) for software compatibility. (see revision history for details)
+      - CMSIS-SVD      1.3.1   (see revision history for details)
+    </release>
     <release version="4.4.0" date="2015-09-11">
       - CMSIS-Core     4.20   (see revision history for details)
       - CMSIS-DSP      1.4.6  (no source code change [still labeled 1.4.5], see revision history for details)
       - CMSIS-PACK     1.4.0  (adding memory attributes, algorithm style)
-      - CMSIS-Driver   2.03   (adding CAN [Controller Area Network] API)
+      - CMSIS-Driver   2.03.0 (adding CAN [Controller Area Network] API)
       - CMSIS-RTOS 
         -- API         1.02   (unchanged)
         -- RTX         4.79   (see revision history for details)
-      - CMSIS-SVD      1.2    (unchanged)
+      - CMSIS-SVD      1.3.0  (see revision history for details)
       - CMSIS-DAP      1.1.0  (extended with SWO support)
     </release>
     <release version="4.3.0" date="2015-03-20">
@@ -891,7 +900,7 @@ The ARM SC300 processor is an entry-level 32-bit ARM Cortex processor designed f
   
   <components>
     <!-- CMSIS-Core component -->
-    <component Cclass="CMSIS" Cgroup="CORE" Cversion="4.2.0" condition="Cortex-M Device">
+    <component Cclass="CMSIS" Cgroup="CORE" Cversion="4.3.0" condition="Cortex-M Device">
       <description>CMSIS-CORE for Cortex-M, SC000, and SC300</description>
       <files>
         <!-- CPU independent -->
@@ -1119,7 +1128,7 @@ The ARM SC300 processor is an entry-level 32-bit ARM Cortex processor designed f
     </component>
 
     <!-- CMSIS-RTOS Keil RTX component -->
-    <component Cclass="CMSIS" Cgroup="RTOS" Csub="Keil RTX" Cversion="4.79.0" condition="Cortex-M Device Startup">
+    <component Cclass="CMSIS" Cgroup="RTOS" Csub="Keil RTX" Cversion="4.80.0" condition="Cortex-M Device Startup">
       <description>CMSIS-RTOS RTX implementation for Cortex-M, SC000, and SC300</description>
       <RTE_Components_h>
         <!-- the following content goes into file 'RTE_Components.h' -->

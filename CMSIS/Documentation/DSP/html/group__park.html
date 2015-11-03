@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-DSP
-   &#160;<span id="projectnumber">Version 1.4.6</span>
+   &#160;<span id="projectnumber">Version 1.4.7</span>
    </div>
    <div id="projectbrief">CMSIS DSP Software Library</div>
   </td>
@@ -195,14 +195,13 @@ Stator current space vector and its component in (a,b) and in the d,q rotating r
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">Ialpha</td><td>input two-phase vector coordinate alpha </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">Ibeta</td><td>input two-phase vector coordinate beta </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*pId</td><td>points to output rotor reference frame d </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*pIq</td><td>points to output rotor reference frame q </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">pId</td><td>points to output rotor reference frame d </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">pIq</td><td>points to output rotor reference frame q </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">sinVal</td><td>sine value of rotation angle theta </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">cosVal</td><td>cosine value of rotation angle theta </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">cosVal</td><td>cosine value of rotation angle theta</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>none.</dd></dl>
 <p>The function implements the forward Park transform. </p>
 
 </div>
@@ -266,14 +265,13 @@ Stator current space vector and its component in (a,b) and in the d,q rotating r
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">Ialpha</td><td>input two-phase vector coordinate alpha </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">Ibeta</td><td>input two-phase vector coordinate beta </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*pId</td><td>points to output rotor reference frame d </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*pIq</td><td>points to output rotor reference frame q </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">pId</td><td>points to output rotor reference frame d </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">pIq</td><td>points to output rotor reference frame q </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">sinVal</td><td>sine value of rotation angle theta </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">cosVal</td><td>cosine value of rotation angle theta </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">cosVal</td><td>cosine value of rotation angle theta</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>none.</dd></dl>
 <p><b>Scaling and Overflow Behavior:</b> </p>
 <dl class="section user"><dt></dt><dd>The function is implemented using an internal 32-bit accumulator. The accumulator maintains 1.31 format by truncating lower 31 bits of the intermediate multiplication in 2.62 format. There is saturation on the addition and subtraction, hence there is no risk of overflow. </dd></dl>
 
@@ -284,7 +282,7 @@ Stator current space vector and its component in (a,b) and in the d,q rotating r
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Sep 11 2015 14:40:15 for CMSIS-DSP by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Tue Oct 27 2015 14:35:33 for CMSIS-DSP by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

@@ -136,7 +136,7 @@ void arm_abs_q7(
   /* Run the below code for Cortex-M0 */
   blkCnt = blockSize;
 
-#endif //      #define ARM_MATH_CM0_FAMILY
+#endif /* #define ARM_MATH_CM0_FAMILY */
 
   while(blkCnt > 0u)
   {

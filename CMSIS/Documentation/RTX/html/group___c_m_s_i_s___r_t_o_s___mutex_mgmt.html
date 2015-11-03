@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-RTOS RTX
-   &#160;<span id="projectnumber">Version 4.79</span>
+   &#160;<span id="projectnumber">Version 4.80</span>
    </div>
    <div id="projectbrief">CMSIS-RTOS RTX: Real-Time Operating System for Cortex-M processor-based devices</div>
   </td>
@@ -218,6 +218,7 @@ CMSIS-RTOS Mutex</div></div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>mutex ID for reference by other functions or NULL in case of error.</dd></dl>
 <p>Create and initialize a Mutex object.</p>
+<dl class="section note"><dt>Note</dt><dd>Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="cmsis__os_8h.html">cmsis_os.h</a>&quot;</span></div>
 <div class="line">  </div>
@@ -263,11 +264,12 @@ CMSIS-RTOS Mutex</div></div>
 <li><em>osErrorResource:</em> all tokens have already been released.</li>
 <li><em>osErrorParameter:</em> the parameter <em>mutex_id</em> is incorrect.</li>
 </ul>
+<dl class="section note"><dt>Note</dt><dd>Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="cmsis__os_8h.html">cmsis_os.h</a>&quot;</span></div>
 <div class="line">  </div>
 <div class="line"><a class="code" href="group___c_m_s_i_s___r_t_o_s___mutex_mgmt.html#ga9b522438489d7c402c95332b58bc94f3" title="Define a Mutex.">osMutexDef</a> (MutexIsr);                                     <span class="comment">// Mutex name definition </span></div>
-<div class="line"><a class="code" href="cmsis__os_8h.html#a3263c1ad9fd79b84f908d65e8da44ac2" title="Mutex ID identifies the mutex (pointer to a mutex control block).">osMutexId</a> mutex_id;                                                                                <span class="comment">// Mutex id populated by the function CreateMutex()</span></div>
+<div class="line"><a class="code" href="cmsis__os_8h.html#a3263c1ad9fd79b84f908d65e8da44ac2" title="Mutex ID identifies the mutex (pointer to a mutex control block).">osMutexId</a> mutex_id;                                        <span class="comment">// Mutex id populated by the function CreateMutex()</span></div>
 <div class="line"><a class="code" href="cmsis__os_8h.html#a3263c1ad9fd79b84f908d65e8da44ac2" title="Mutex ID identifies the mutex (pointer to a mutex control block).">osMutexId</a> CreateMutex (<span class="keywordtype">void</span>);                              <span class="comment">// function prototype that creates the Mutex</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> DeleteMutex (<a class="code" href="cmsis__os_8h.html#a3263c1ad9fd79b84f908d65e8da44ac2" title="Mutex ID identifies the mutex (pointer to a mutex control block).">osMutexId</a> mutex_id)  {</div>
@@ -276,8 +278,8 @@ CMSIS-RTOS Mutex</div></div>
 <div class="line">  <span class="keywordflow">if</span> (mutex_id != NULL)  {</div>
 <div class="line">    status = <a class="code" href="group___c_m_s_i_s___r_t_o_s___mutex_mgmt.html#gac27e24135185d51d18f3dabc20910219" title="Delete a Mutex that was created by osMutexCreate.">osMutexDelete</a>(mutex_id);</div>
 <div class="line">    <span class="keywordflow">if</span> (status != <a class="code" href="group___c_m_s_i_s___r_t_o_s___status.html#gae2e091fefc4c767117727bd5aba4d99ea9e1c9e2550bb4de8969a935acffc968f" title="function completed; no error or event occurred.">osOK</a>)  {</div>
-<div class="line">          <span class="comment">// handle failure code</span></div>
-<div class="line">        }</div>
+<div class="line">      <span class="comment">// handle failure code</span></div>
+<div class="line">    }</div>
 <div class="line">  }</div>
 <div class="line">}</div>
 </div><!-- fragment --> 
@@ -312,11 +314,12 @@ CMSIS-RTOS Mutex</div></div>
 <li><em>osErrorParameter:</em> the parameter <em>mutex_id</em> is incorrect.</li>
 <li><em>osErrorISR:</em> <a class="el" href="group___c_m_s_i_s___r_t_o_s___mutex_mgmt.html#ga006e4744d741e8e132c3d5bbc295afe1">osMutexRelease</a> cannot be called from interrupt service routines.</li>
 </ul>
+<dl class="section note"><dt>Note</dt><dd>Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="cmsis__os_8h.html">cmsis_os.h</a>&quot;</span></div>
 <div class="line">  </div>
 <div class="line"><a class="code" href="group___c_m_s_i_s___r_t_o_s___mutex_mgmt.html#ga9b522438489d7c402c95332b58bc94f3" title="Define a Mutex.">osMutexDef</a> (MutexIsr);                                     <span class="comment">// Mutex name definition </span></div>
-<div class="line"><a class="code" href="cmsis__os_8h.html#a3263c1ad9fd79b84f908d65e8da44ac2" title="Mutex ID identifies the mutex (pointer to a mutex control block).">osMutexId</a> mutex_id;                                                                                <span class="comment">// Mutex id populated by the function CreateMutex()</span></div>
+<div class="line"><a class="code" href="cmsis__os_8h.html#a3263c1ad9fd79b84f908d65e8da44ac2" title="Mutex ID identifies the mutex (pointer to a mutex control block).">osMutexId</a> mutex_id;                                        <span class="comment">// Mutex id populated by the function CreateMutex()</span></div>
 <div class="line"><a class="code" href="cmsis__os_8h.html#a3263c1ad9fd79b84f908d65e8da44ac2" title="Mutex ID identifies the mutex (pointer to a mutex control block).">osMutexId</a> CreateMutex (<span class="keywordtype">void</span>);                              <span class="comment">// function prototype that creates the Mutex</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> ReleaseMutex (<a class="code" href="cmsis__os_8h.html#a3263c1ad9fd79b84f908d65e8da44ac2" title="Mutex ID identifies the mutex (pointer to a mutex control block).">osMutexId</a> mutex_id)  {</div>
@@ -325,8 +328,8 @@ CMSIS-RTOS Mutex</div></div>
 <div class="line">  <span class="keywordflow">if</span> (mutex_id != NULL)  {</div>
 <div class="line">    status = <a class="code" href="group___c_m_s_i_s___r_t_o_s___mutex_mgmt.html#ga006e4744d741e8e132c3d5bbc295afe1" title="Release a Mutex that was obtained by osMutexWait.">osMutexRelease</a>(mutex_id);</div>
 <div class="line">    <span class="keywordflow">if</span> (status != <a class="code" href="group___c_m_s_i_s___r_t_o_s___status.html#gae2e091fefc4c767117727bd5aba4d99ea9e1c9e2550bb4de8969a935acffc968f" title="function completed; no error or event occurred.">osOK</a>)  {</div>
-<div class="line">          <span class="comment">// handle failure code</span></div>
-<div class="line">        }</div>
+<div class="line">      <span class="comment">// handle failure code</span></div>
+<div class="line">    }</div>
 <div class="line">  }</div>
 <div class="line">}</div>
 </div><!-- fragment --> 
@@ -358,7 +361,7 @@ CMSIS-RTOS Mutex</div></div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">mutex_id</td><td>mutex ID obtained by <a class="el" href="group___c_m_s_i_s___r_t_o_s___mutex_mgmt.html#ga5c9de56e717016e39e788064e9a291cc">osMutexCreate</a>. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">millisec</td><td>timeout value or 0 in case of no time-out. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">millisec</td><td><a class="el" href="_function_overview.html#CMSIS_RTOS_TimeOutValue">Timout Value</a> or 0 in case of no time-out. </td></tr>
   </table>
   </dd>
 </dl>
@@ -379,6 +382,7 @@ CMSIS-RTOS Mutex</div></div>
 <li><em>osErrorParameter:</em> the parameter <em>mutex_id</em> is incorrect.</li>
 <li><em>osErrorISR:</em> <a class="el" href="group___c_m_s_i_s___r_t_o_s___mutex_mgmt.html#ga5e1752b73f573ee015dbd9ef1edaba13">osMutexWait</a> cannot be called from interrupt service routines.</li>
 </ul>
+<dl class="section note"><dt>Note</dt><dd>Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="cmsis__os_8h.html">cmsis_os.h</a>&quot;</span></div>
 <div class="line">  </div>
@@ -392,8 +396,8 @@ CMSIS-RTOS Mutex</div></div>
 <div class="line">  <span class="keywordflow">if</span> (mutex_id != NULL)  {</div>
 <div class="line">    status  = <a class="code" href="group___c_m_s_i_s___r_t_o_s___mutex_mgmt.html#ga5e1752b73f573ee015dbd9ef1edaba13" title="Wait until a Mutex becomes available.">osMutexWait</a>    (mutex_id, 0);</div>
 <div class="line">    <span class="keywordflow">if</span> (status != <a class="code" href="group___c_m_s_i_s___r_t_o_s___status.html#gae2e091fefc4c767117727bd5aba4d99ea9e1c9e2550bb4de8969a935acffc968f" title="function completed; no error or event occurred.">osOK</a>)  {</div>
-<div class="line">          <span class="comment">// handle failure code</span></div>
-<div class="line">        }</div>
+<div class="line">      <span class="comment">// handle failure code</span></div>
+<div class="line">    }</div>
 <div class="line">  }</div>
 <div class="line">}</div>
 </div><!-- fragment --> 
@@ -404,7 +408,7 @@ CMSIS-RTOS Mutex</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Sep 11 2015 14:40:28 for CMSIS-RTOS RTX by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Tue Oct 27 2015 14:35:45 for CMSIS-RTOS RTX by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

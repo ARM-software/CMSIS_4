@@ -131,18 +131,21 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">millisec</td><td>time delay value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">millisec</td><td><a class="el" href="_function_overview.html#CMSIS_RTOS_TimeOutValue">time delay</a> value </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code that indicates the execution status of the function.</dd></dl>
 <p>Wait for a specified time period in <em>millisec</em>.</p>
+<p>The <a class="el" href="_function_overview.html#CMSIS_RTOS_TimeOutValue">millisec</a> value specifies the number of timer ticks and is therefore an upper bound. The exact time delay depends on the actual time elapsed since the last timer tick.</p>
+<p>For a value of <b>1</b>, the system waits until the next timer tick occurs. That means that the actual time delay may be up to one timer tick less.</p>
 <p><b><a class="el" href="group___c_m_s_i_s___r_t_o_s___status.html">Status and Error Codes</a></b><br/>
 </p>
 <ul>
 <li><em>osEventTimeout:</em> the time delay is executed.</li>
 <li><em>osErrorISR:</em> <a class="el" href="group___c_m_s_i_s___r_t_o_s___wait.html#ga02e19d5e723bfb06ba9324d625162255">osDelay</a> cannot be called from interrupt service routines.</li>
 </ul>
+<dl class="section note"><dt>Note</dt><dd>Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Code Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="cmsis__os_8h.html">cmsis_os.h</a>&quot;</span></div>
 <div class="line"> </div>
@@ -174,7 +177,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">millisec</td><td>timeout value or 0 in case of no time-out </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">millisec</td><td><a class="el" href="_function_overview.html#CMSIS_RTOS_TimeOutValue">Timout Value</a> or 0 in case of no time-out </td></tr>
   </table>
   </dd>
 </dl>
@@ -187,7 +190,7 @@ Functions</h2></td></tr>
 <li>A <b>message</b> from a message object that is registered to that thread</li>
 <li>A <b>mail</b> from a mail object that is registered to that thread</li>
 </ul>
-<dl class="section note"><dt>Note</dt><dd>this function is optionally and may not be provided by all CMSIS-RTOS implementations.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This function is optional and may not be provided by all CMSIS-RTOS implementations.</dd></dl>
 <p><b><a class="el" href="group___c_m_s_i_s___r_t_o_s___status.html">Status and Error Codes</a></b><br/>
 </p>
 <ul>
@@ -197,6 +200,7 @@ Functions</h2></td></tr>
 <li><em>osEventTimeout:</em> the time delay is executed.</li>
 <li><em>osErrorISR:</em> <a class="el" href="group___c_m_s_i_s___r_t_o_s___wait.html#ga02e19d5e723bfb06ba9324d625162255">osDelay</a> cannot be called from interrupt service routines.</li>
 </ul>
+<dl class="section note"><dt>Note</dt><dd>Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Code Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="cmsis__os_8h.html">cmsis_os.h</a>&quot;</span></div>
 <div class="line"> </div>
@@ -209,24 +213,24 @@ Functions</h2></td></tr>
 <div class="line">  Event = <a class="code" href="group___c_m_s_i_s___r_t_o_s___wait.html#ga8470c8aaedfde524a44e22e5b2328285" title="Wait for Signal, Message, Mail, or Timeout.">osWait</a> (waitTime);                     <span class="comment">// wait forever and until an event occurred</span></div>
 <div class="line">  <span class="keywordflow">switch</span> (Event.<a class="code" href="group___c_m_s_i_s___r_t_o_s___definitions.html#ad477a289f1f03ac45407b64268d707d3" title="status code: event or error information">status</a>)  {</div>
 <div class="line">    <span class="keywordflow">case</span> <a class="code" href="group___c_m_s_i_s___r_t_o_s___status.html#gae2e091fefc4c767117727bd5aba4d99ea5df7e9643aa8a2f5f3a6f6ec59758518" title="function completed; signal event occurred.">osEventSignal</a>:                          <span class="comment">// Signal arrived</span></div>
-<div class="line">            :                                        <span class="comment">// Event.value.signals contains the signal flags</span></div>
-<div class="line">          <span class="keywordflow">break</span>;</div>
+<div class="line">        :                                        <span class="comment">// Event.value.signals contains the signal flags</span></div>
+<div class="line">      <span class="keywordflow">break</span>;</div>
 <div class="line"> </div>
-<div class="line">        <span class="keywordflow">case</span> <a class="code" href="group___c_m_s_i_s___r_t_o_s___status.html#gae2e091fefc4c767117727bd5aba4d99ead604f3673359dd4ac643b16dc5a2c342" title="function completed; message event occurred.">osEventMessage</a>:                         <span class="comment">// Message arrived</span></div>
-<div class="line">            :                                        <span class="comment">// Event.value.p contains the message pointer</span></div>
-<div class="line">            :                                        <span class="comment">// Event.def.message_id contains the message Id</span></div>
-<div class="line">          <span class="keywordflow">break</span>;</div>
+<div class="line">    <span class="keywordflow">case</span> <a class="code" href="group___c_m_s_i_s___r_t_o_s___status.html#gae2e091fefc4c767117727bd5aba4d99ead604f3673359dd4ac643b16dc5a2c342" title="function completed; message event occurred.">osEventMessage</a>:                         <span class="comment">// Message arrived</span></div>
+<div class="line">        :                                        <span class="comment">// Event.value.p contains the message pointer</span></div>
+<div class="line">        :                                        <span class="comment">// Event.def.message_id contains the message Id</span></div>
+<div class="line">      <span class="keywordflow">break</span>;</div>
 <div class="line"> </div>
-<div class="line">        <span class="keywordflow">case</span> <a class="code" href="group___c_m_s_i_s___r_t_o_s___status.html#gae2e091fefc4c767117727bd5aba4d99ea15b12e42b42b53f35fb8a2724ad02926" title="function completed; mail event occurred.">osEventMail</a>:                            <span class="comment">// Mail arrived</span></div>
-<div class="line">            :                                        <span class="comment">// Event.value.p contains the mail pointer</span></div>
-<div class="line">            :                                        <span class="comment">// Event.def.mail_id contains the mail Id</span></div>
-<div class="line">          <span class="keywordflow">break</span>;</div>
+<div class="line">    <span class="keywordflow">case</span> <a class="code" href="group___c_m_s_i_s___r_t_o_s___status.html#gae2e091fefc4c767117727bd5aba4d99ea15b12e42b42b53f35fb8a2724ad02926" title="function completed; mail event occurred.">osEventMail</a>:                            <span class="comment">// Mail arrived</span></div>
+<div class="line">        :                                        <span class="comment">// Event.value.p contains the mail pointer</span></div>
+<div class="line">        :                                        <span class="comment">// Event.def.mail_id contains the mail Id</span></div>
+<div class="line">      <span class="keywordflow">break</span>;</div>
 <div class="line"> </div>
-<div class="line">        <span class="keywordflow">case</span> <a class="code" href="group___c_m_s_i_s___r_t_o_s___status.html#gae2e091fefc4c767117727bd5aba4d99ea78f477732375c0e1fca814e369618177" title="function completed; timeout occurred.">osEventTimeout</a>:                         <span class="comment">// Timeout occurred</span></div>
-<div class="line">          <span class="keywordflow">break</span>;</div>
+<div class="line">    <span class="keywordflow">case</span> <a class="code" href="group___c_m_s_i_s___r_t_o_s___status.html#gae2e091fefc4c767117727bd5aba4d99ea78f477732375c0e1fca814e369618177" title="function completed; timeout occurred.">osEventTimeout</a>:                         <span class="comment">// Timeout occurred</span></div>
+<div class="line">      <span class="keywordflow">break</span>;</div>
 <div class="line"> </div>
-<div class="line">        <span class="keywordflow">default</span>:                                     <span class="comment">// Error occurred</span></div>
-<div class="line">          <span class="keywordflow">break</span>;</div>
+<div class="line">    <span class="keywordflow">default</span>:                                     <span class="comment">// Error occurred</span></div>
+<div class="line">      <span class="keywordflow">break</span>;</div>
 <div class="line">  }</div>
 <div class="line">  :</div>
 <div class="line">}</div>
@@ -238,7 +242,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Sep 11 2015 14:40:27 for CMSIS-RTOS by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Tue Oct 27 2015 14:35:43 for CMSIS-RTOS by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

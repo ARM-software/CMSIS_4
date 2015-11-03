@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
-  date: 28.08.2015
+  date: 22.10.2015
 
   Copyright (C) 2011 - 2015 ARM Limited. All rights reserved.
 
@@ -28,6 +28,11 @@
   POSSIBILITY OF SUCH DAMAGE.
 
   This is CMSIS-SVD
+  
+  Version 1.3.1:
+  fixed peripheral name element type to identifierType to support %s for peripheral arrays
+  added optional protection element to addressBlockType and added p=privileged 
+
   Version 1.3:
   added dim to peripherals to describe an array of peripherals.
   added nesting of clusters to support hierarchical register structures.
@@ -61,11 +66,21 @@
       <xs:enumeration value="CM0"/>
       <xs:enumeration value="CM0PLUS"/>
       <xs:enumeration value="CM0+"/>
+      <xs:enumeration value="CM1"/>
       <xs:enumeration value="SC000"/>
       <xs:enumeration value="CM3"/>
       <xs:enumeration value="SC300"/>
       <xs:enumeration value="CM4"/>
       <xs:enumeration value="CM7"/>
+      <xs:enumeration value="CA5"/>
+      <xs:enumeration value="CA7"/>
+      <xs:enumeration value="CA8"/>
+      <xs:enumeration value="CA9"/>
+      <xs:enumeration value="CA15"/>
+      <xs:enumeration value="CA17"/>
+      <xs:enumeration value="CA53"/>
+      <xs:enumeration value="CA57"/>
+      <xs:enumeration value="CA72"/>
       <xs:enumeration value="other"/>
     </xs:restriction>
   </xs:simpleType>
@@ -131,7 +146,8 @@
     <xs:restriction base="xs:string">
       <!-- s = Secure                      -->
       <!-- n = Non-secure                  -->
-      <xs:pattern value="[sn]"/>
+      <!-- p = Privileged                  -->
+      <xs:pattern value="[snp]"/>
     </xs:restriction>
   </xs:simpleType>
   <!-- V1.3: SAU Access Type -->
@@ -237,6 +253,8 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:element>
+      <!-- Version 1.3.2: optional access protection for an address block s=secure n=non-secure p=privileged -->
+      <xs:element name="protection" type="protectionStringType" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
   <!-- interruptType specifies how to describe an interrupt associated with a peripheral -->
@@ -493,7 +511,7 @@
       <!-- 1.3: specify uni-dimensional array of peripheral - requires name="<name>[%s]" -->
       <xs:group    ref="dimElementGroup" minOccurs="0"/>
       <!-- name specifies the name of a peripheral. This name is used for the System View and device header file -->
-      <xs:element name="name" type="xs:Name"/>
+      <xs:element name="name" type="identifierType"/>
       <!-- version specifies the version of the peripheral descriptions -->
       <xs:element name="version" type="stringType" minOccurs="0"/>
       <!-- description provides a high level functional description of the peripheral -->

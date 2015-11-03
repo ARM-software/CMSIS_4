@@ -33,7 +33,7 @@
   POSSIBILITY OF SUCH DAMAGE.
  -->
  
-<device schemaVersion="1.1" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd" >
+<device schemaVersion="1.2" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="CMSIS-SVD.xsd" >
   <vendor>ARM Ltd.</vendor>                                       <!-- device vendor name -->
   <vendorID>ARM</vendorID>                                        <!-- device vendor short name -->
   <name>ARMCM0</name>                                             <!-- name of part-->

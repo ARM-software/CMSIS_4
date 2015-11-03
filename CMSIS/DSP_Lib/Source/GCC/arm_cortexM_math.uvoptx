@@ -1922,7 +1922,6 @@
       <FileNumber>1</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\BasicMathFunctions\arm_abs_f32.c</PathWithFileName>
@@ -1935,7 +1934,6 @@
       <FileNumber>2</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\BasicMathFunctions\arm_abs_q7.c</PathWithFileName>
@@ -1948,7 +1946,6 @@
       <FileNumber>3</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\BasicMathFunctions\arm_abs_q15.c</PathWithFileName>
@@ -1961,7 +1958,6 @@
       <FileNumber>4</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\BasicMathFunctions\arm_abs_q31.c</PathWithFileName>
@@ -1974,7 +1970,6 @@
       <FileNumber>5</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\BasicMathFunctions\arm_add_f32.c</PathWithFileName>
@@ -1987,7 +1982,6 @@
       <FileNumber>6</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\BasicMathFunctions\arm_add_q7.c</PathWithFileName>
@@ -2000,7 +1994,6 @@
       <FileNumber>7</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\BasicMathFunctions\arm_add_q15.c</PathWithFileName>
@@ -2013,7 +2006,6 @@
       <FileNumber>8</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\BasicMathFunctions\arm_add_q31.c</PathWithFileName>
@@ -2026,7 +2018,6 @@
       <FileNumber>9</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\BasicMathFunctions\arm_dot_prod_f32.c</PathWithFileName>
@@ -2039,7 +2030,6 @@
       <FileNumber>10</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\BasicMathFunctions\arm_dot_prod_q7.c</PathWithFileName>
@@ -2052,7 +2042,6 @@
       <FileNumber>11</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\BasicMathFunctions\arm_dot_prod_q15.c</PathWithFileName>
@@ -2065,7 +2054,6 @@
       <FileNumber>12</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\BasicMathFunctions\arm_dot_prod_q31.c</PathWithFileName>
@@ -2078,7 +2066,6 @@
       <FileNumber>13</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\BasicMathFunctions\arm_mult_f32.c</PathWithFileName>
@@ -2091,7 +2078,6 @@
       <FileNumber>14</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\BasicMathFunctions\arm_mult_q7.c</PathWithFileName>
@@ -2104,7 +2090,6 @@
       <FileNumber>15</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\BasicMathFunctions\arm_mult_q15.c</PathWithFileName>
@@ -2117,7 +2102,6 @@
       <FileNumber>16</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\BasicMathFunctions\arm_mult_q31.c</PathWithFileName>
@@ -2130,7 +2114,6 @@
       <FileNumber>17</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\BasicMathFunctions\arm_negate_f32.c</PathWithFileName>
@@ -2143,7 +2126,6 @@
       <FileNumber>18</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\BasicMathFunctions\arm_negate_q7.c</PathWithFileName>
@@ -2156,7 +2138,6 @@
       <FileNumber>19</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\BasicMathFunctions\arm_negate_q15.c</PathWithFileName>
@@ -2169,7 +2150,6 @@
       <FileNumber>20</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\BasicMathFunctions\arm_negate_q31.c</PathWithFileName>
@@ -2182,7 +2162,6 @@
       <FileNumber>21</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\BasicMathFunctions\arm_offset_f32.c</PathWithFileName>
@@ -2195,7 +2174,6 @@
       <FileNumber>22</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\BasicMathFunctions\arm_offset_q7.c</PathWithFileName>
@@ -2208,7 +2186,6 @@
       <FileNumber>23</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\BasicMathFunctions\arm_offset_q15.c</PathWithFileName>
@@ -2221,7 +2198,6 @@
       <FileNumber>24</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\BasicMathFunctions\arm_offset_q31.c</PathWithFileName>
@@ -2234,7 +2210,6 @@
       <FileNumber>25</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\BasicMathFunctions\arm_scale_f32.c</PathWithFileName>
@@ -2247,7 +2222,6 @@
       <FileNumber>26</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\BasicMathFunctions\arm_scale_q7.c</PathWithFileName>
@@ -2260,7 +2234,6 @@
       <FileNumber>27</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\BasicMathFunctions\arm_scale_q15.c</PathWithFileName>
@@ -2273,7 +2246,6 @@
       <FileNumber>28</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\BasicMathFunctions\arm_scale_q31.c</PathWithFileName>
@@ -2286,7 +2258,6 @@
       <FileNumber>29</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\BasicMathFunctions\arm_shift_q7.c</PathWithFileName>
@@ -2299,7 +2270,6 @@
       <FileNumber>30</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\BasicMathFunctions\arm_shift_q15.c</PathWithFileName>
@@ -2312,7 +2282,6 @@
       <FileNumber>31</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\BasicMathFunctions\arm_shift_q31.c</PathWithFileName>
@@ -2325,7 +2294,6 @@
       <FileNumber>32</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\BasicMathFunctions\arm_sub_f32.c</PathWithFileName>
@@ -2338,7 +2306,6 @@
       <FileNumber>33</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\BasicMathFunctions\arm_sub_q7.c</PathWithFileName>
@@ -2351,7 +2318,6 @@
       <FileNumber>34</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\BasicMathFunctions\arm_sub_q15.c</PathWithFileName>
@@ -2364,7 +2330,6 @@
       <FileNumber>35</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\BasicMathFunctions\arm_sub_q31.c</PathWithFileName>
@@ -2385,7 +2350,6 @@
       <FileNumber>36</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FastMathFunctions\arm_cos_f32.c</PathWithFileName>
@@ -2398,7 +2362,6 @@
       <FileNumber>37</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FastMathFunctions\arm_cos_q15.c</PathWithFileName>
@@ -2411,7 +2374,6 @@
       <FileNumber>38</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FastMathFunctions\arm_cos_q31.c</PathWithFileName>
@@ -2424,7 +2386,6 @@
       <FileNumber>39</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FastMathFunctions\arm_sin_f32.c</PathWithFileName>
@@ -2437,7 +2398,6 @@
       <FileNumber>40</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FastMathFunctions\arm_sin_q15.c</PathWithFileName>
@@ -2450,7 +2410,6 @@
       <FileNumber>41</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FastMathFunctions\arm_sin_q31.c</PathWithFileName>
@@ -2463,7 +2422,6 @@
       <FileNumber>42</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FastMathFunctions\arm_sqrt_q15.c</PathWithFileName>
@@ -2476,7 +2434,6 @@
       <FileNumber>43</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FastMathFunctions\arm_sqrt_q31.c</PathWithFileName>
@@ -2497,7 +2454,6 @@
       <FileNumber>44</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\ComplexMathFunctions\arm_cmplx_conj_f32.c</PathWithFileName>
@@ -2510,7 +2466,6 @@
       <FileNumber>45</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\ComplexMathFunctions\arm_cmplx_conj_q15.c</PathWithFileName>
@@ -2523,7 +2478,6 @@
       <FileNumber>46</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\ComplexMathFunctions\arm_cmplx_conj_q31.c</PathWithFileName>
@@ -2536,7 +2490,6 @@
       <FileNumber>47</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\ComplexMathFunctions\arm_cmplx_dot_prod_f32.c</PathWithFileName>
@@ -2549,7 +2502,6 @@
       <FileNumber>48</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\ComplexMathFunctions\arm_cmplx_dot_prod_q15.c</PathWithFileName>
@@ -2562,7 +2514,6 @@
       <FileNumber>49</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\ComplexMathFunctions\arm_cmplx_dot_prod_q31.c</PathWithFileName>
@@ -2575,7 +2526,6 @@
       <FileNumber>50</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\ComplexMathFunctions\arm_cmplx_mag_f32.c</PathWithFileName>
@@ -2588,7 +2538,6 @@
       <FileNumber>51</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\ComplexMathFunctions\arm_cmplx_mag_q15.c</PathWithFileName>
@@ -2601,7 +2550,6 @@
       <FileNumber>52</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\ComplexMathFunctions\arm_cmplx_mag_q31.c</PathWithFileName>
@@ -2614,7 +2562,6 @@
       <FileNumber>53</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\ComplexMathFunctions\arm_cmplx_mag_squared_f32.c</PathWithFileName>
@@ -2627,7 +2574,6 @@
       <FileNumber>54</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\ComplexMathFunctions\arm_cmplx_mag_squared_q15.c</PathWithFileName>
@@ -2640,7 +2586,6 @@
       <FileNumber>55</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\ComplexMathFunctions\arm_cmplx_mag_squared_q31.c</PathWithFileName>
@@ -2653,7 +2598,6 @@
       <FileNumber>56</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\ComplexMathFunctions\arm_cmplx_mult_cmplx_f32.c</PathWithFileName>
@@ -2666,7 +2610,6 @@
       <FileNumber>57</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\ComplexMathFunctions\arm_cmplx_mult_cmplx_q15.c</PathWithFileName>
@@ -2679,7 +2622,6 @@
       <FileNumber>58</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\ComplexMathFunctions\arm_cmplx_mult_cmplx_q31.c</PathWithFileName>
@@ -2692,7 +2634,6 @@
       <FileNumber>59</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\ComplexMathFunctions\arm_cmplx_mult_real_f32.c</PathWithFileName>
@@ -2705,7 +2646,6 @@
       <FileNumber>60</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\ComplexMathFunctions\arm_cmplx_mult_real_q15.c</PathWithFileName>
@@ -2718,7 +2658,6 @@
       <FileNumber>61</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\ComplexMathFunctions\arm_cmplx_mult_real_q31.c</PathWithFileName>
@@ -2739,7 +2678,6 @@
       <FileNumber>62</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_biquad_cascade_df1_32x64_init_q31.c</PathWithFileName>
@@ -2752,7 +2690,6 @@
       <FileNumber>63</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_biquad_cascade_df1_32x64_q31.c</PathWithFileName>
@@ -2765,7 +2702,6 @@
       <FileNumber>64</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_biquad_cascade_df1_f32.c</PathWithFileName>
@@ -2778,7 +2714,6 @@
       <FileNumber>65</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_biquad_cascade_df1_fast_q15.c</PathWithFileName>
@@ -2791,7 +2726,6 @@
       <FileNumber>66</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_biquad_cascade_df1_fast_q31.c</PathWithFileName>
@@ -2804,7 +2738,6 @@
       <FileNumber>67</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_biquad_cascade_df1_init_f32.c</PathWithFileName>
@@ -2817,7 +2750,6 @@
       <FileNumber>68</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_biquad_cascade_df1_init_q15.c</PathWithFileName>
@@ -2830,7 +2762,6 @@
       <FileNumber>69</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_biquad_cascade_df1_init_q31.c</PathWithFileName>
@@ -2843,7 +2774,6 @@
       <FileNumber>70</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_biquad_cascade_df1_q15.c</PathWithFileName>
@@ -2856,7 +2786,6 @@
       <FileNumber>71</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_biquad_cascade_df1_q31.c</PathWithFileName>
@@ -2869,7 +2798,6 @@
       <FileNumber>72</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_biquad_cascade_df2T_init_f32.c</PathWithFileName>
@@ -2882,7 +2810,6 @@
       <FileNumber>73</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_conv_f32.c</PathWithFileName>
@@ -2895,7 +2822,6 @@
       <FileNumber>74</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_conv_fast_q15.c</PathWithFileName>
@@ -2908,7 +2834,6 @@
       <FileNumber>75</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_conv_fast_q31.c</PathWithFileName>
@@ -2921,7 +2846,6 @@
       <FileNumber>76</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_conv_partial_f32.c</PathWithFileName>
@@ -2934,7 +2858,6 @@
       <FileNumber>77</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_conv_partial_fast_q15.c</PathWithFileName>
@@ -2947,7 +2870,6 @@
       <FileNumber>78</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_conv_partial_fast_q31.c</PathWithFileName>
@@ -2960,7 +2882,6 @@
       <FileNumber>79</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_conv_partial_q7.c</PathWithFileName>
@@ -2973,7 +2894,6 @@
       <FileNumber>80</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_conv_partial_q15.c</PathWithFileName>
@@ -2986,7 +2906,6 @@
       <FileNumber>81</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_conv_partial_q31.c</PathWithFileName>
@@ -2999,7 +2918,6 @@
       <FileNumber>82</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_conv_q7.c</PathWithFileName>
@@ -3012,7 +2930,6 @@
       <FileNumber>83</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_conv_q15.c</PathWithFileName>
@@ -3025,7 +2942,6 @@
       <FileNumber>84</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_conv_q31.c</PathWithFileName>
@@ -3038,7 +2954,6 @@
       <FileNumber>85</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_correlate_f32.c</PathWithFileName>
@@ -3051,7 +2966,6 @@
       <FileNumber>86</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_correlate_fast_q15.c</PathWithFileName>
@@ -3064,7 +2978,6 @@
       <FileNumber>87</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_correlate_fast_q31.c</PathWithFileName>
@@ -3077,7 +2990,6 @@
       <FileNumber>88</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_correlate_q7.c</PathWithFileName>
@@ -3090,7 +3002,6 @@
       <FileNumber>89</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_correlate_q15.c</PathWithFileName>
@@ -3103,7 +3014,6 @@
       <FileNumber>90</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_correlate_q31.c</PathWithFileName>
@@ -3116,7 +3026,6 @@
       <FileNumber>91</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_decimate_f32.c</PathWithFileName>
@@ -3129,7 +3038,6 @@
       <FileNumber>92</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_decimate_fast_q15.c</PathWithFileName>
@@ -3142,7 +3050,6 @@
       <FileNumber>93</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_decimate_fast_q31.c</PathWithFileName>
@@ -3155,7 +3062,6 @@
       <FileNumber>94</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_decimate_init_f32.c</PathWithFileName>
@@ -3168,7 +3074,6 @@
       <FileNumber>95</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_decimate_init_q15.c</PathWithFileName>
@@ -3181,7 +3086,6 @@
       <FileNumber>96</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_decimate_init_q31.c</PathWithFileName>
@@ -3194,7 +3098,6 @@
       <FileNumber>97</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_decimate_q15.c</PathWithFileName>
@@ -3207,7 +3110,6 @@
       <FileNumber>98</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_decimate_q31.c</PathWithFileName>
@@ -3220,7 +3122,6 @@
       <FileNumber>99</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_f32.c</PathWithFileName>
@@ -3233,7 +3134,6 @@
       <FileNumber>100</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_fast_q15.c</PathWithFileName>
@@ -3246,7 +3146,6 @@
       <FileNumber>101</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_fast_q31.c</PathWithFileName>
@@ -3259,7 +3158,6 @@
       <FileNumber>102</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_init_f32.c</PathWithFileName>
@@ -3272,7 +3170,6 @@
       <FileNumber>103</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_init_q7.c</PathWithFileName>
@@ -3285,7 +3182,6 @@
       <FileNumber>104</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_init_q15.c</PathWithFileName>
@@ -3298,7 +3194,6 @@
       <FileNumber>105</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_init_q31.c</PathWithFileName>
@@ -3311,7 +3206,6 @@
       <FileNumber>106</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_interpolate_f32.c</PathWithFileName>
@@ -3324,7 +3218,6 @@
       <FileNumber>107</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_interpolate_init_f32.c</PathWithFileName>
@@ -3337,7 +3230,6 @@
       <FileNumber>108</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_interpolate_init_q15.c</PathWithFileName>
@@ -3350,7 +3242,6 @@
       <FileNumber>109</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_interpolate_init_q31.c</PathWithFileName>
@@ -3363,7 +3254,6 @@
       <FileNumber>110</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_interpolate_q15.c</PathWithFileName>
@@ -3376,7 +3266,6 @@
       <FileNumber>111</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_interpolate_q31.c</PathWithFileName>
@@ -3389,7 +3278,6 @@
       <FileNumber>112</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_lattice_f32.c</PathWithFileName>
@@ -3402,7 +3290,6 @@
       <FileNumber>113</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_lattice_init_f32.c</PathWithFileName>
@@ -3415,7 +3302,6 @@
       <FileNumber>114</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_lattice_init_q15.c</PathWithFileName>
@@ -3428,7 +3314,6 @@
       <FileNumber>115</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_lattice_init_q31.c</PathWithFileName>
@@ -3441,7 +3326,6 @@
       <FileNumber>116</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_lattice_q15.c</PathWithFileName>
@@ -3454,7 +3338,6 @@
       <FileNumber>117</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_lattice_q31.c</PathWithFileName>
@@ -3467,7 +3350,6 @@
       <FileNumber>118</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_q7.c</PathWithFileName>
@@ -3480,7 +3362,6 @@
       <FileNumber>119</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_q15.c</PathWithFileName>
@@ -3493,7 +3374,6 @@
       <FileNumber>120</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_q31.c</PathWithFileName>
@@ -3506,7 +3386,6 @@
       <FileNumber>121</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_sparse_f32.c</PathWithFileName>
@@ -3519,7 +3398,6 @@
       <FileNumber>122</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_sparse_init_f32.c</PathWithFileName>
@@ -3532,7 +3410,6 @@
       <FileNumber>123</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_sparse_init_q7.c</PathWithFileName>
@@ -3545,7 +3422,6 @@
       <FileNumber>124</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_sparse_init_q15.c</PathWithFileName>
@@ -3558,7 +3434,6 @@
       <FileNumber>125</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_sparse_init_q31.c</PathWithFileName>
@@ -3571,7 +3446,6 @@
       <FileNumber>126</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_sparse_q7.c</PathWithFileName>
@@ -3584,7 +3458,6 @@
       <FileNumber>127</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_sparse_q15.c</PathWithFileName>
@@ -3597,7 +3470,6 @@
       <FileNumber>128</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_fir_sparse_q31.c</PathWithFileName>
@@ -3610,7 +3482,6 @@
       <FileNumber>129</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_iir_lattice_f32.c</PathWithFileName>
@@ -3623,7 +3494,6 @@
       <FileNumber>130</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_iir_lattice_init_f32.c</PathWithFileName>
@@ -3636,7 +3506,6 @@
       <FileNumber>131</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_iir_lattice_init_q15.c</PathWithFileName>
@@ -3649,7 +3518,6 @@
       <FileNumber>132</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_iir_lattice_init_q31.c</PathWithFileName>
@@ -3662,7 +3530,6 @@
       <FileNumber>133</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_iir_lattice_q15.c</PathWithFileName>
@@ -3675,7 +3542,6 @@
       <FileNumber>134</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_iir_lattice_q31.c</PathWithFileName>
@@ -3688,7 +3554,6 @@
       <FileNumber>135</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_lms_f32.c</PathWithFileName>
@@ -3701,7 +3566,6 @@
       <FileNumber>136</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_lms_init_f32.c</PathWithFileName>
@@ -3714,7 +3578,6 @@
       <FileNumber>137</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_lms_init_q15.c</PathWithFileName>
@@ -3727,7 +3590,6 @@
       <FileNumber>138</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_lms_init_q31.c</PathWithFileName>
@@ -3740,7 +3602,6 @@
       <FileNumber>139</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_lms_norm_f32.c</PathWithFileName>
@@ -3753,7 +3614,6 @@
       <FileNumber>140</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_lms_norm_init_f32.c</PathWithFileName>
@@ -3766,7 +3626,6 @@
       <FileNumber>141</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_lms_norm_init_q15.c</PathWithFileName>
@@ -3779,7 +3638,6 @@
       <FileNumber>142</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_lms_norm_init_q31.c</PathWithFileName>
@@ -3792,7 +3650,6 @@
       <FileNumber>143</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_lms_norm_q15.c</PathWithFileName>
@@ -3805,7 +3662,6 @@
       <FileNumber>144</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_lms_norm_q31.c</PathWithFileName>
@@ -3818,7 +3674,6 @@
       <FileNumber>145</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_lms_q15.c</PathWithFileName>
@@ -3831,7 +3686,6 @@
       <FileNumber>146</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_lms_q31.c</PathWithFileName>
@@ -3844,7 +3698,6 @@
       <FileNumber>147</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_correlate_opt_q15.c</PathWithFileName>
@@ -3857,7 +3710,6 @@
       <FileNumber>148</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_conv_opt_q7.c</PathWithFileName>
@@ -3870,7 +3722,6 @@
       <FileNumber>149</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_conv_opt_q15.c</PathWithFileName>
@@ -3883,7 +3734,6 @@
       <FileNumber>150</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_conv_partial_opt_q7.c</PathWithFileName>
@@ -3896,7 +3746,6 @@
       <FileNumber>151</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_conv_partial_opt_q15.c</PathWithFileName>
@@ -3909,7 +3758,6 @@
       <FileNumber>152</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_correlate_opt_q7.c</PathWithFileName>
@@ -3922,7 +3770,6 @@
       <FileNumber>153</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_correlate_fast_opt_q15.c</PathWithFileName>
@@ -3935,7 +3782,6 @@
       <FileNumber>154</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_conv_fast_opt_q15.c</PathWithFileName>
@@ -3948,7 +3794,6 @@
       <FileNumber>155</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_conv_partial_fast_opt_q15.c</PathWithFileName>
@@ -3961,7 +3806,6 @@
       <FileNumber>156</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_biquad_cascade_df2T_f32.c</PathWithFileName>
@@ -3974,7 +3818,6 @@
       <FileNumber>157</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_biquad_cascade_df2T_f64.c</PathWithFileName>
@@ -3987,7 +3830,6 @@
       <FileNumber>158</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_biquad_cascade_df2T_init_f64.c</PathWithFileName>
@@ -4000,7 +3842,6 @@
       <FileNumber>159</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_biquad_cascade_stereo_df2T_f32.c</PathWithFileName>
@@ -4013,7 +3854,6 @@
       <FileNumber>160</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\FilteringFunctions\arm_biquad_cascade_stereo_df2T_init_f32.c</PathWithFileName>
@@ -4034,7 +3874,6 @@
       <FileNumber>161</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\MatrixFunctions\arm_mat_add_f32.c</PathWithFileName>
@@ -4047,7 +3886,6 @@
       <FileNumber>162</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\MatrixFunctions\arm_mat_add_q15.c</PathWithFileName>
@@ -4060,7 +3898,6 @@
       <FileNumber>163</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\MatrixFunctions\arm_mat_add_q31.c</PathWithFileName>
@@ -4073,7 +3910,6 @@
       <FileNumber>164</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\MatrixFunctions\arm_mat_init_f32.c</PathWithFileName>
@@ -4086,7 +3922,6 @@
       <FileNumber>165</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\MatrixFunctions\arm_mat_init_q15.c</PathWithFileName>
@@ -4099,7 +3934,6 @@
       <FileNumber>166</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\MatrixFunctions\arm_mat_init_q31.c</PathWithFileName>
@@ -4112,7 +3946,6 @@
       <FileNumber>167</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\MatrixFunctions\arm_mat_inverse_f32.c</PathWithFileName>
@@ -4125,7 +3958,6 @@
       <FileNumber>168</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\MatrixFunctions\arm_mat_mult_f32.c</PathWithFileName>
@@ -4138,7 +3970,6 @@
       <FileNumber>169</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\MatrixFunctions\arm_mat_mult_fast_q15.c</PathWithFileName>
@@ -4151,7 +3982,6 @@
       <FileNumber>170</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\MatrixFunctions\arm_mat_mult_fast_q31.c</PathWithFileName>
@@ -4164,7 +3994,6 @@
       <FileNumber>171</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\MatrixFunctions\arm_mat_mult_q15.c</PathWithFileName>
@@ -4177,7 +4006,6 @@
       <FileNumber>172</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\MatrixFunctions\arm_mat_mult_q31.c</PathWithFileName>
@@ -4190,7 +4018,6 @@
       <FileNumber>173</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\MatrixFunctions\arm_mat_scale_f32.c</PathWithFileName>
@@ -4203,7 +4030,6 @@
       <FileNumber>174</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\MatrixFunctions\arm_mat_scale_q15.c</PathWithFileName>
@@ -4216,7 +4042,6 @@
       <FileNumber>175</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\MatrixFunctions\arm_mat_scale_q31.c</PathWithFileName>
@@ -4229,7 +4054,6 @@
       <FileNumber>176</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\MatrixFunctions\arm_mat_sub_f32.c</PathWithFileName>
@@ -4242,7 +4066,6 @@
       <FileNumber>177</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\MatrixFunctions\arm_mat_sub_q15.c</PathWithFileName>
@@ -4255,7 +4078,6 @@
       <FileNumber>178</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\MatrixFunctions\arm_mat_sub_q31.c</PathWithFileName>
@@ -4268,7 +4090,6 @@
       <FileNumber>179</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\MatrixFunctions\arm_mat_trans_f32.c</PathWithFileName>
@@ -4281,7 +4102,6 @@
       <FileNumber>180</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\MatrixFunctions\arm_mat_trans_q15.c</PathWithFileName>
@@ -4294,7 +4114,6 @@
       <FileNumber>181</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\MatrixFunctions\arm_mat_trans_q31.c</PathWithFileName>
@@ -4307,7 +4126,6 @@
       <FileNumber>182</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\MatrixFunctions\arm_mat_cmplx_mult_f32.c</PathWithFileName>
@@ -4320,7 +4138,6 @@
       <FileNumber>183</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\MatrixFunctions\arm_mat_cmplx_mult_q15.c</PathWithFileName>
@@ -4333,7 +4150,6 @@
       <FileNumber>184</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\MatrixFunctions\arm_mat_cmplx_mult_q31.c</PathWithFileName>
@@ -4346,7 +4162,6 @@
       <FileNumber>185</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\MatrixFunctions\arm_mat_inverse_f64.c</PathWithFileName>
@@ -4367,7 +4182,6 @@
       <FileNumber>186</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\TransformFunctions\arm_cfft_radix4_f32.c</PathWithFileName>
@@ -4380,7 +4194,6 @@
       <FileNumber>187</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\TransformFunctions\arm_cfft_radix4_init_f32.c</PathWithFileName>
@@ -4393,7 +4206,6 @@
       <FileNumber>188</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\TransformFunctions\arm_cfft_radix4_init_q15.c</PathWithFileName>
@@ -4406,7 +4218,6 @@
       <FileNumber>189</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\TransformFunctions\arm_cfft_radix4_init_q31.c</PathWithFileName>
@@ -4419,7 +4230,6 @@
       <FileNumber>190</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\TransformFunctions\arm_cfft_radix4_q15.c</PathWithFileName>
@@ -4432,7 +4242,6 @@
       <FileNumber>191</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\TransformFunctions\arm_cfft_radix4_q31.c</PathWithFileName>
@@ -4445,7 +4254,6 @@
       <FileNumber>192</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\TransformFunctions\arm_dct4_f32.c</PathWithFileName>
@@ -4458,7 +4266,6 @@
       <FileNumber>193</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\TransformFunctions\arm_dct4_init_f32.c</PathWithFileName>
@@ -4471,7 +4278,6 @@
       <FileNumber>194</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\TransformFunctions\arm_dct4_init_q15.c</PathWithFileName>
@@ -4484,7 +4290,6 @@
       <FileNumber>195</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\TransformFunctions\arm_dct4_init_q31.c</PathWithFileName>
@@ -4497,7 +4302,6 @@
       <FileNumber>196</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\TransformFunctions\arm_dct4_q15.c</PathWithFileName>
@@ -4510,7 +4314,6 @@
       <FileNumber>197</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\TransformFunctions\arm_dct4_q31.c</PathWithFileName>
@@ -4523,7 +4326,6 @@
       <FileNumber>198</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\TransformFunctions\arm_rfft_f32.c</PathWithFileName>
@@ -4536,7 +4338,6 @@
       <FileNumber>199</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\TransformFunctions\arm_rfft_init_f32.c</PathWithFileName>
@@ -4549,7 +4350,6 @@
       <FileNumber>200</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\TransformFunctions\arm_rfft_init_q15.c</PathWithFileName>
@@ -4562,7 +4362,6 @@
       <FileNumber>201</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\TransformFunctions\arm_rfft_init_q31.c</PathWithFileName>
@@ -4575,7 +4374,6 @@
       <FileNumber>202</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\TransformFunctions\arm_rfft_q15.c</PathWithFileName>
@@ -4588,7 +4386,6 @@
       <FileNumber>203</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\TransformFunctions\arm_rfft_q31.c</PathWithFileName>
@@ -4601,7 +4398,6 @@
       <FileNumber>204</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\TransformFunctions\arm_bitreversal.c</PathWithFileName>
@@ -4614,7 +4410,6 @@
       <FileNumber>205</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\TransformFunctions\arm_cfft_radix2_f32.c</PathWithFileName>
@@ -4627,7 +4422,6 @@
       <FileNumber>206</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\TransformFunctions\arm_cfft_radix2_init_f32.c</PathWithFileName>
@@ -4640,7 +4434,6 @@
       <FileNumber>207</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\TransformFunctions\arm_cfft_radix2_init_q15.c</PathWithFileName>
@@ -4653,7 +4446,6 @@
       <FileNumber>208</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\TransformFunctions\arm_cfft_radix2_init_q31.c</PathWithFileName>
@@ -4666,7 +4458,6 @@
       <FileNumber>209</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\TransformFunctions\arm_cfft_radix2_q15.c</PathWithFileName>
@@ -4679,7 +4470,6 @@
       <FileNumber>210</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\TransformFunctions\arm_cfft_radix2_q31.c</PathWithFileName>
@@ -4692,7 +4482,6 @@
       <FileNumber>211</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\TransformFunctions\arm_cfft_f32.c</PathWithFileName>
@@ -4705,7 +4494,6 @@
       <FileNumber>212</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\TransformFunctions\arm_cfft_radix8_f32.c</PathWithFileName>
@@ -4718,7 +4506,6 @@
       <FileNumber>213</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\TransformFunctions\arm_bitreversal2.S</PathWithFileName>
@@ -4731,7 +4518,6 @@
       <FileNumber>214</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\TransformFunctions\arm_rfft_fast_f32.c</PathWithFileName>
@@ -4744,7 +4530,6 @@
       <FileNumber>215</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\TransformFunctions\arm_rfft_fast_init_f32.c</PathWithFileName>
@@ -4757,7 +4542,6 @@
       <FileNumber>216</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\TransformFunctions\arm_cfft_q31.c</PathWithFileName>
@@ -4770,7 +4554,6 @@
       <FileNumber>217</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\TransformFunctions\arm_cfft_q15.c</PathWithFileName>
@@ -4791,7 +4574,6 @@
       <FileNumber>218</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\ControllerFunctions\arm_pid_init_f32.c</PathWithFileName>
@@ -4804,7 +4586,6 @@
       <FileNumber>219</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\ControllerFunctions\arm_pid_init_q15.c</PathWithFileName>
@@ -4817,7 +4598,6 @@
       <FileNumber>220</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\ControllerFunctions\arm_pid_init_q31.c</PathWithFileName>
@@ -4830,7 +4610,6 @@
       <FileNumber>221</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\ControllerFunctions\arm_pid_reset_f32.c</PathWithFileName>
@@ -4843,7 +4622,6 @@
       <FileNumber>222</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\ControllerFunctions\arm_pid_reset_q15.c</PathWithFileName>
@@ -4856,7 +4634,6 @@
       <FileNumber>223</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\ControllerFunctions\arm_pid_reset_q31.c</PathWithFileName>
@@ -4869,7 +4646,6 @@
       <FileNumber>224</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\ControllerFunctions\arm_sin_cos_f32.c</PathWithFileName>
@@ -4882,7 +4658,6 @@
       <FileNumber>225</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\ControllerFunctions\arm_sin_cos_q31.c</PathWithFileName>
@@ -4903,7 +4678,6 @@
       <FileNumber>226</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\StatisticsFunctions\arm_max_f32.c</PathWithFileName>
@@ -4916,7 +4690,6 @@
       <FileNumber>227</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\StatisticsFunctions\arm_max_q7.c</PathWithFileName>
@@ -4929,7 +4702,6 @@
       <FileNumber>228</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\StatisticsFunctions\arm_max_q15.c</PathWithFileName>
@@ -4942,7 +4714,6 @@
       <FileNumber>229</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\StatisticsFunctions\arm_max_q31.c</PathWithFileName>
@@ -4955,7 +4726,6 @@
       <FileNumber>230</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\StatisticsFunctions\arm_mean_f32.c</PathWithFileName>
@@ -4968,7 +4738,6 @@
       <FileNumber>231</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\StatisticsFunctions\arm_mean_q7.c</PathWithFileName>
@@ -4981,7 +4750,6 @@
       <FileNumber>232</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\StatisticsFunctions\arm_mean_q15.c</PathWithFileName>
@@ -4994,7 +4762,6 @@
       <FileNumber>233</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\StatisticsFunctions\arm_mean_q31.c</PathWithFileName>
@@ -5007,7 +4774,6 @@
       <FileNumber>234</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\StatisticsFunctions\arm_min_f32.c</PathWithFileName>
@@ -5020,7 +4786,6 @@
       <FileNumber>235</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\StatisticsFunctions\arm_min_q7.c</PathWithFileName>
@@ -5033,7 +4798,6 @@
       <FileNumber>236</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\StatisticsFunctions\arm_min_q15.c</PathWithFileName>
@@ -5046,7 +4810,6 @@
       <FileNumber>237</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\StatisticsFunctions\arm_min_q31.c</PathWithFileName>
@@ -5059,7 +4822,6 @@
       <FileNumber>238</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\StatisticsFunctions\arm_power_f32.c</PathWithFileName>
@@ -5072,7 +4834,6 @@
       <FileNumber>239</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\StatisticsFunctions\arm_power_q7.c</PathWithFileName>
@@ -5085,7 +4846,6 @@
       <FileNumber>240</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\StatisticsFunctions\arm_power_q15.c</PathWithFileName>
@@ -5098,7 +4858,6 @@
       <FileNumber>241</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\StatisticsFunctions\arm_power_q31.c</PathWithFileName>
@@ -5111,7 +4870,6 @@
       <FileNumber>242</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\StatisticsFunctions\arm_rms_f32.c</PathWithFileName>
@@ -5124,7 +4882,6 @@
       <FileNumber>243</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\StatisticsFunctions\arm_rms_q15.c</PathWithFileName>
@@ -5137,7 +4894,6 @@
       <FileNumber>244</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\StatisticsFunctions\arm_rms_q31.c</PathWithFileName>
@@ -5150,7 +4906,6 @@
       <FileNumber>245</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\StatisticsFunctions\arm_std_f32.c</PathWithFileName>
@@ -5163,7 +4918,6 @@
       <FileNumber>246</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\StatisticsFunctions\arm_std_q15.c</PathWithFileName>
@@ -5176,7 +4930,6 @@
       <FileNumber>247</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\StatisticsFunctions\arm_std_q31.c</PathWithFileName>
@@ -5189,7 +4942,6 @@
       <FileNumber>248</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\StatisticsFunctions\arm_var_f32.c</PathWithFileName>
@@ -5202,7 +4954,6 @@
       <FileNumber>249</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\StatisticsFunctions\arm_var_q15.c</PathWithFileName>
@@ -5215,7 +4966,6 @@
       <FileNumber>250</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\StatisticsFunctions\arm_var_q31.c</PathWithFileName>
@@ -5236,7 +4986,6 @@
       <FileNumber>251</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\SupportFunctions\arm_copy_f32.c</PathWithFileName>
@@ -5249,7 +4998,6 @@
       <FileNumber>252</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\SupportFunctions\arm_copy_q7.c</PathWithFileName>
@@ -5262,7 +5010,6 @@
       <FileNumber>253</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\SupportFunctions\arm_copy_q15.c</PathWithFileName>
@@ -5275,7 +5022,6 @@
       <FileNumber>254</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\SupportFunctions\arm_copy_q31.c</PathWithFileName>
@@ -5288,7 +5034,6 @@
       <FileNumber>255</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\SupportFunctions\arm_fill_f32.c</PathWithFileName>
@@ -5301,7 +5046,6 @@
       <FileNumber>256</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\SupportFunctions\arm_fill_q7.c</PathWithFileName>
@@ -5314,7 +5058,6 @@
       <FileNumber>257</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\SupportFunctions\arm_fill_q15.c</PathWithFileName>
@@ -5327,7 +5070,6 @@
       <FileNumber>258</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\SupportFunctions\arm_fill_q31.c</PathWithFileName>
@@ -5340,7 +5082,6 @@
       <FileNumber>259</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\SupportFunctions\arm_float_to_q7.c</PathWithFileName>
@@ -5353,7 +5094,6 @@
       <FileNumber>260</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\SupportFunctions\arm_float_to_q15.c</PathWithFileName>
@@ -5366,7 +5106,6 @@
       <FileNumber>261</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\SupportFunctions\arm_float_to_q31.c</PathWithFileName>
@@ -5379,7 +5118,6 @@
       <FileNumber>262</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\SupportFunctions\arm_q7_to_float.c</PathWithFileName>
@@ -5392,7 +5130,6 @@
       <FileNumber>263</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\SupportFunctions\arm_q7_to_q15.c</PathWithFileName>
@@ -5405,7 +5142,6 @@
       <FileNumber>264</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\SupportFunctions\arm_q7_to_q31.c</PathWithFileName>
@@ -5418,7 +5154,6 @@
       <FileNumber>265</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\SupportFunctions\arm_q15_to_float.c</PathWithFileName>
@@ -5431,7 +5166,6 @@
       <FileNumber>266</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\SupportFunctions\arm_q15_to_q7.c</PathWithFileName>
@@ -5444,7 +5178,6 @@
       <FileNumber>267</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\SupportFunctions\arm_q15_to_q31.c</PathWithFileName>
@@ -5457,7 +5190,6 @@
       <FileNumber>268</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\SupportFunctions\arm_q31_to_float.c</PathWithFileName>
@@ -5470,7 +5202,6 @@
       <FileNumber>269</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\SupportFunctions\arm_q31_to_q7.c</PathWithFileName>
@@ -5483,7 +5214,6 @@
       <FileNumber>270</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\SupportFunctions\arm_q31_to_q15.c</PathWithFileName>
@@ -5504,7 +5234,6 @@
       <FileNumber>271</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\CommonTables\arm_common_tables.c</PathWithFileName>
@@ -5517,7 +5246,6 @@
       <FileNumber>272</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\CommonTables\arm_const_structs.c</PathWithFileName>

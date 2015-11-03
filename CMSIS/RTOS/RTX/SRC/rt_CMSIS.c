@@ -3,7 +3,7 @@
  *----------------------------------------------------------------------------
  *      Name:    rt_CMSIS.c
  *      Purpose: CMSIS RTOS API
- *      Rev.:    V4.79
+ *      Rev.:    V4.80
  *----------------------------------------------------------------------------
  *
  * Copyright (c) 1999-2009 KEIL, 2009-2015 ARM Germany GmbH
@@ -431,7 +431,7 @@ static uint16_t rt_ms2tick (uint32_t millisec) {
   if (millisec == osWaitForever) { return 0xFFFFU; }    // Indefinite timeout
   if (millisec > 4000000U) { return 0xFFFEU; }          // Max ticks supported
 
-  tick = (((1000U * millisec) + os_clockrate - 1U)  / os_clockrate) + 1;
+  tick = ((1000U * millisec) + os_clockrate - 1U)  / os_clockrate;
   if (tick > 0xFFFEU) { return 0xFFFEU; }
   
   return (uint16_t)tick;

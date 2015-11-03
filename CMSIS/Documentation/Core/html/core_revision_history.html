@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-CORE
-   &#160;<span id="projectnumber">Version 4.20</span>
+   &#160;<span id="projectnumber">Version 4.30</span>
    </div>
    <div id="projectbrief">CMSIS-CORE support for Cortex-M processor-based devices</div>
   </td>
@@ -115,6 +115,11 @@ $(document).ready(function(){initNavTree('core_revision_history.html','');});
 <tr>
 <th>Version </th><th>Description  </th></tr>
 <tr>
+<td>V4.30 </td><td>Corrected: DoxyGen function parameter comments.<br/>
+ Corrected: IAR toolchain: removed for <a class="el" href="group___n_v_i_c__gr.html#ga1b47d17e90b6a03e7bd1ec6a0d549b46">NVIC_SystemReset</a> the attribute(noreturn).<br/>
+ Corrected: GCC toolchain: supressed irrelevant compiler warnings.<br/>
+ Added: Support files for ARM Compiler v6 (cmsis_armcc_v6.h).   </td></tr>
+<tr>
 <td>V4.20 </td><td>Corrected: MISRA-C:2004 violations. <br/>
  Corrected: predefined macro for TI CCS Compiler. <br/>
  Corrected: function <a class="el" href="group__intrinsic___s_i_m_d__gr.html#ga15d8899a173effb8ad8c7268da32b60e">__SHADD16</a> in arm_math.h. <br/>
@@ -189,7 +194,7 @@ $(document).ready(function(){initNavTree('core_revision_history.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Sep 11 2015 14:39:58 for CMSIS-CORE by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Tue Oct 27 2015 14:35:21 for CMSIS-CORE by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

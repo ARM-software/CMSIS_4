@@ -2,10 +2,16 @@ var NAVTREE =
 [
   [ "CMSIS-RTOS", "index.html", [
     [ "Overview", "index.html", null ],
-    [ "Revision History of CMSIS-RTOS API", "rtos_revision_history.html", null ],
+    [ "Revision History", "rtos_revision_history.html", null ],
     [ "Using a CMSIS-RTOS Implementation", "_using_o_s.html", null ],
-    [ "Function Overview", "_function_overview.html", null ],
+    [ "Function Overview", "_function_overview.html", [
+      [ "Timout Value", "_function_overview.html#CMSIS_RTOS_TimeOutValue", null ],
+      [ "Calls from Interrupt Service Routines", "_function_overview.html#CMSIS_RTOS_ISR_Calls", null ]
+    ] ],
     [ "Header File Template: cmsis_os.h", "cmsis_os_h.html", null ],
+    [ "RTOS Validation", "_rtos_validation.html", [
+      [ "Sample Test Output", "_rtos_validation.html#test_output", null ]
+    ] ],
     [ "Reference", "modules.html", "modules" ],
     [ "Data Structures", "annotated.html", "annotated" ],
     [ "Data Structure Index", "classes.html", null ],

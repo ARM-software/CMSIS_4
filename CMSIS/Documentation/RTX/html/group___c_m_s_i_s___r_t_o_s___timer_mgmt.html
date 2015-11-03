@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-RTOS RTX
-   &#160;<span id="projectnumber">Version 4.79</span>
+   &#160;<span id="projectnumber">Version 4.80</span>
    </div>
    <div id="projectbrief">CMSIS-RTOS RTX: Real-Time Operating System for Cortex-M processor-based devices</div>
   </td>
@@ -283,7 +283,9 @@ Behavior of a Periodic Timer</div></div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>timer ID for reference by other functions or NULL in case of error.</dd></dl>
 <p>Create a one-shot or periodic timer and associate it with a callback function argument. The timer is in stopped until it is started with <a class="el" href="group___c_m_s_i_s___r_t_o_s___timer_mgmt.html#ga27a797a401b068e2644d1125f22a07ca">osTimerStart</a>.</p>
-<dl class="section note"><dt>Note</dt><dd>In RTX, this function is only available if you have set <code>OS_TIMERS</code> to '1' in the <b>RTX_Conf_CM.c</b> configuration file (User Timers enabled).</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>- In RTX, this function is only available if you have set <code>OS_TIMERS</code> to <b>1</b> in the <b>RTX_Conf_CM.c</b> configuration file (User Timers enabled).</dd>
+<dd>
+- Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="cmsis__os_8h.html">cmsis_os.h</a>&quot;</span></div>
 <div class="line"> </div>
@@ -291,12 +293,12 @@ Behavior of a Periodic Timer</div></div>
 <div class="line"><span class="keywordtype">void</span> Timer2_Callback  (<span class="keywordtype">void</span> <span class="keyword">const</span> *arg);                   </div>
 <div class="line"> </div>
 <div class="line"><a class="code" href="group___c_m_s_i_s___r_t_o_s___timer_mgmt.html#ga1c720627e08d1cc1afcad44e799ed492" title="Define a Timer object.">osTimerDef</a> (Timer1, Timer1_Callback);                      <span class="comment">// define timers</span></div>
-<div class="line"><a class="code" href="group___c_m_s_i_s___r_t_o_s___timer_mgmt.html#ga1c720627e08d1cc1afcad44e799ed492" title="Define a Timer object.">osTimerDef</a> (Timer2, Timer2_Callback);                                      </div>
+<div class="line"><a class="code" href="group___c_m_s_i_s___r_t_o_s___timer_mgmt.html#ga1c720627e08d1cc1afcad44e799ed492" title="Define a Timer object.">osTimerDef</a> (Timer2, Timer2_Callback);</div>
 <div class="line"> </div>
 <div class="line">uint32_t  exec1;                                           <span class="comment">// argument for the timer call back function</span></div>
 <div class="line">uint32_t  exec2;                                           <span class="comment">// argument for the timer call back function</span></div>
 <div class="line"></div>
-<div class="line"><span class="keywordtype">void</span> TimerCreate_example (<span class="keywordtype">void</span>)  {                                                         </div>
+<div class="line"><span class="keywordtype">void</span> TimerCreate_example (<span class="keywordtype">void</span>)  {</div>
 <div class="line">  <a class="code" href="cmsis__os_8h.html#ab8530dd4273f1f5382187732e14fcaa7" title="Timer ID identifies the timer (pointer to a timer control block).">osTimerId</a> id1;                                           <span class="comment">// timer id</span></div>
 <div class="line">  <a class="code" href="cmsis__os_8h.html#ab8530dd4273f1f5382187732e14fcaa7" title="Timer ID identifies the timer (pointer to a timer control block).">osTimerId</a> id2;                                           <span class="comment">// timer id</span></div>
 <div class="line"> </div>
@@ -346,13 +348,14 @@ Behavior of a Periodic Timer</div></div>
 <li><em>osErrorISR:</em> <a class="el" href="group___c_m_s_i_s___r_t_o_s___timer_mgmt.html#ga746b8043d906849bd65e3900fcb483cf">osTimerDelete</a> cannot be called from interrupt service routines.</li>
 <li><em>osErrorParameter:</em> <em>timer_id</em> is incorrect.</li>
 </ul>
+<dl class="section note"><dt>Note</dt><dd>Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="cmsis__os_8h.html">cmsis_os.h</a>&quot;</span></div>
 <div class="line"></div>
 <div class="line"><span class="keywordtype">void</span> Timer_Callback  (<span class="keywordtype">void</span> <span class="keyword">const</span> *arg);                    <span class="comment">// prototype for timer callback function</span></div>
 <div class="line"><a class="code" href="group___c_m_s_i_s___r_t_o_s___timer_mgmt.html#ga1c720627e08d1cc1afcad44e799ed492" title="Define a Timer object.">osTimerDef</a> (Timer, Timer_Callback);                        <span class="comment">// define timer</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> TimerDelete_example (<span class="keywordtype">void</span>)  {                                                         </div>
+<div class="line"><span class="keywordtype">void</span> TimerDelete_example (<span class="keywordtype">void</span>)  {</div>
 <div class="line">  <a class="code" href="cmsis__os_8h.html#ab8530dd4273f1f5382187732e14fcaa7" title="Timer ID identifies the timer (pointer to a timer control block).">osTimerId</a> id;                                            <span class="comment">// timer id</span></div>
 <div class="line">  <a class="code" href="group___c_m_s_i_s___r_t_o_s___status.html#gae2e091fefc4c767117727bd5aba4d99e">osStatus</a> status;                                         <span class="comment">// function return status  </span></div>
 <div class="line"> </div>
@@ -396,7 +399,7 @@ Behavior of a Periodic Timer</div></div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">timer_id</td><td>timer ID obtained by <a class="el" href="group___c_m_s_i_s___r_t_o_s___timer_mgmt.html#gaedd312bfdca04e0b8162b666e09a1ae6">osTimerCreate</a>. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">millisec</td><td>time delay value of the timer. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">millisec</td><td><a class="el" href="_function_overview.html#CMSIS_RTOS_TimeOutValue">Time delay</a> value of the timer. </td></tr>
   </table>
   </dd>
 </dl>
@@ -409,6 +412,7 @@ Behavior of a Periodic Timer</div></div>
 <li><em>osErrorISR:</em> <a class="el" href="group___c_m_s_i_s___r_t_o_s___timer_mgmt.html#ga27a797a401b068e2644d1125f22a07ca">osTimerStart</a> cannot be called from interrupt service routines.</li>
 <li><em>osErrorParameter:</em> <em>timer_id</em> is incorrect.</li>
 </ul>
+<dl class="section note"><dt>Note</dt><dd>Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="cmsis__os_8h.html">cmsis_os.h</a>&quot;</span></div>
 <div class="line"> </div>
@@ -420,7 +424,7 @@ Behavior of a Periodic Timer</div></div>
 <div class="line"><a class="code" href="group___c_m_s_i_s___r_t_o_s___timer_mgmt.html#ga1c720627e08d1cc1afcad44e799ed492" title="Define a Timer object.">osTimerDef</a> (Timer, Timer_Callback);                        <span class="comment">// define timer</span></div>
 <div class="line">uint32_t  exec;                                            <span class="comment">// argument for the timer call back function</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> TimerStart_example (<span class="keywordtype">void</span>)  {                                                          </div>
+<div class="line"><span class="keywordtype">void</span> TimerStart_example (<span class="keywordtype">void</span>)  {</div>
 <div class="line">  <a class="code" href="cmsis__os_8h.html#ab8530dd4273f1f5382187732e14fcaa7" title="Timer ID identifies the timer (pointer to a timer control block).">osTimerId</a> id;                                            <span class="comment">// timer id</span></div>
 <div class="line">  uint32_t  timerDelay;                                    <span class="comment">// timer value</span></div>
 <div class="line">  <a class="code" href="group___c_m_s_i_s___r_t_o_s___status.html#gae2e091fefc4c767117727bd5aba4d99e">osStatus</a>  status;                                        <span class="comment">// function return status</span></div>
@@ -429,7 +433,7 @@ Behavior of a Periodic Timer</div></div>
 <div class="line">  exec = 1;</div>
 <div class="line">  <span class="keywordtype">id</span> = <a class="code" href="group___c_m_s_i_s___r_t_o_s___timer_mgmt.html#gaedd312bfdca04e0b8162b666e09a1ae6" title="Create a timer.">osTimerCreate</a> (<a class="code" href="group___c_m_s_i_s___r_t_o_s___timer_mgmt.html#ga1b8d670eaf964b2910fa06885e650678" title="Access a Timer definition.">osTimer</a>(Timer), <a class="code" href="group___c_m_s_i_s___r_t_o_s___timer_mgmt.html#gadac860eb9e1b4b0619271e6595ed83d9ab9c91f9699162edb09bb7c90c11c8788" title="repeating timer">osTimerPeriodic</a>, &amp;exec);</div>
 <div class="line">  <span class="keywordflow">if</span> (<span class="keywordtype">id</span>)  {</div>
-<div class="line">    timerDelay = 1000;  </div>
+<div class="line">    timerDelay = 1000;</div>
 <div class="line">    status = <a class="code" href="group___c_m_s_i_s___r_t_o_s___timer_mgmt.html#ga27a797a401b068e2644d1125f22a07ca" title="Start or restart a timer.">osTimerStart</a> (<span class="keywordtype">id</span>, timerDelay);                <span class="comment">// start timer</span></div>
 <div class="line">    <span class="keywordflow">if</span> (status != <a class="code" href="group___c_m_s_i_s___r_t_o_s___status.html#gae2e091fefc4c767117727bd5aba4d99ea9e1c9e2550bb4de8969a935acffc968f" title="function completed; no error or event occurred.">osOK</a>)  {</div>
 <div class="line">      <span class="comment">// Timer could not be started</span></div>
@@ -469,13 +473,14 @@ Behavior of a Periodic Timer</div></div>
 <li><em>osErrorParameter:</em> <em>timer_id</em> is incorrect.</li>
 <li><em>osErrorResource:</em> the timer is not started.</li>
 </ul>
+<dl class="section note"><dt>Note</dt><dd>Cannot be called from <a class="el" href="_function_overview.html#CMSIS_RTOS_ISR_Calls">Interrupt Service Routines</a>.</dd></dl>
 <p><b>Example</b> </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="cmsis__os_8h.html">cmsis_os.h</a>&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> Timer_Callback  (<span class="keywordtype">void</span> <span class="keyword">const</span> *arg);                    <span class="comment">// prototype for timer callback function</span></div>
 <div class="line"><a class="code" href="group___c_m_s_i_s___r_t_o_s___timer_mgmt.html#ga1c720627e08d1cc1afcad44e799ed492" title="Define a Timer object.">osTimerDef</a> (Timer, Timer_Callback);                        <span class="comment">// define timer</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> TimerStop_example (<span class="keywordtype">void</span>)  {                                                           </div>
+<div class="line"><span class="keywordtype">void</span> TimerStop_example (<span class="keywordtype">void</span>)  {</div>
 <div class="line">  <a class="code" href="cmsis__os_8h.html#ab8530dd4273f1f5382187732e14fcaa7" title="Timer ID identifies the timer (pointer to a timer control block).">osTimerId</a> id;                                            <span class="comment">// timer id</span></div>
 <div class="line">  <a class="code" href="group___c_m_s_i_s___r_t_o_s___status.html#gae2e091fefc4c767117727bd5aba4d99e">osStatus</a> status;                                         <span class="comment">// function return status</span></div>
 <div class="line"> </div>
@@ -500,7 +505,7 @@ Behavior of a Periodic Timer</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Sep 11 2015 14:40:28 for CMSIS-RTOS RTX by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Tue Oct 27 2015 14:35:45 for CMSIS-RTOS RTX by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

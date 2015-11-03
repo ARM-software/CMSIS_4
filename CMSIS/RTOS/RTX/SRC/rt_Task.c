@@ -3,7 +3,7 @@
  *----------------------------------------------------------------------------
  *      Name:    RT_TASK.C
  *      Purpose: Task functions and system start up.
- *      Rev.:    V4.79
+ *      Rev.:    V4.80
  *----------------------------------------------------------------------------
  *
  * Copyright (c) 1999-2009 KEIL, 2009-2015 ARM Germany GmbH
@@ -280,15 +280,19 @@ OS_RESULT rt_tsk_delete (OS_TID task_id) {
         p_TCB->state = READY;
         rt_put_prio (&os_rdy, p_TCB);
         /* A waiting task becomes the owner of this mutex. */
-        p_MCB0 = p_MCB;
+        p_MCB0 = p_MCB->p_mlnk;
         p_MCB->level  = 1U;
         p_MCB->owner  = p_TCB;
         p_MCB->p_mlnk = p_TCB->p_mlnk;
         p_TCB->p_mlnk = p_MCB; 
-        p_MCB = p_MCB0->p_mlnk;
+        p_MCB = p_MCB0;
       }
       else {
-        p_MCB = p_MCB->p_mlnk;
+        p_MCB0 = p_MCB->p_mlnk;
+        p_MCB->level  = 0U;
+        p_MCB->owner  = NULL;
+        p_MCB->p_mlnk = NULL;
+        p_MCB = p_MCB0;
       }
     }
     os_active_TCB[os_tsk.run->task_id-1U] = NULL;
@@ -324,15 +328,19 @@ OS_RESULT rt_tsk_delete (OS_TID task_id) {
         p_TCB->state = READY;
         rt_put_prio (&os_rdy, p_TCB);
         /* A waiting task becomes the owner of this mutex. */
-        p_MCB0 = p_MCB;
+        p_MCB0 = p_MCB->p_mlnk;
         p_MCB->level  = 1U;
         p_MCB->owner  = p_TCB;
         p_MCB->p_mlnk = p_TCB->p_mlnk;
         p_TCB->p_mlnk = p_MCB; 
-        p_MCB = p_MCB0->p_mlnk;
+        p_MCB = p_MCB0;
       }
       else {
-        p_MCB = p_MCB->p_mlnk;
+        p_MCB0 = p_MCB->p_mlnk;
+        p_MCB->level  = 0U;
+        p_MCB->owner  = NULL;
+        p_MCB->p_mlnk = NULL;
+        p_MCB = p_MCB0;
       }
     }
     os_active_TCB[task_id-1U] = NULL;

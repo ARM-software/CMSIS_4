@@ -27,7 +27,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-SVD
-   &#160;<span id="projectnumber">Version 1.3</span>
+   &#160;<span id="projectnumber">Version 1.3.1</span>
    </div>
    <div id="projectbrief">CMSIS System View Description</div>
   </td>
@@ -105,12 +105,14 @@ $(document).ready(function(){initNavTree('group__svd__xml__peripherals__gr.html'
             &lt;offset&gt;<em>scaledNonNegativeInteger</em>&lt;/offset&gt;
             &lt;size&gt;<em>scaledNonNegativeInteger</em>&lt;/size&gt;
             &lt;usage&gt;<em>usageType</em>&lt;/usage&gt;
+            &lt;protection&gt;<em>protectionStringType</em>&lt;/protection&gt;
         &lt;/addressBlock&gt;<span class="opt">
         ...
         &lt;addressBlock&gt;<span class="mand">
             &lt;offset&gt;<em>scaledNonNegativeInteger</em>&lt;/offset&gt;
             &lt;size&gt;<em>scaledNonNegativeInteger</em>&lt;/size&gt;
             &lt;usage&gt;<em>usageType</em>&lt;/usage&gt;</span><span class="opt">
+            &lt;protection&gt;<em>protectionStringType</em>&lt;/protection&gt;
         &lt;/addressBlock&gt;</span>
     <span class="opt">
         &lt;interrupt&gt;</span><span class="mand">
@@ -193,6 +195,7 @@ Example:</h1>
 <div class="line">    &lt;offset&gt;0x0&lt;/offset&gt;</div>
 <div class="line">    &lt;size&gt;0x400&lt;/size&gt;</div>
 <div class="line">    &lt;usage&gt;registers&lt;/usage&gt;</div>
+<div class="line">    &lt;protection&gt;s&lt;/protection&gt;</div>
 <div class="line">  &lt;/addressBlock&gt;</div>
 <div class="line">  &lt;interrupt&gt;&lt;name&gt;TIM0_INT&lt;/name&gt;&lt;value&gt;34&lt;/value&gt;&lt;/interrupt&gt;</div>
 <div class="line">  &lt;registers&gt;</div>
@@ -210,7 +213,7 @@ Example:</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Sep 11 2015 14:40:30 for CMSIS-SVD by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Tue Oct 27 2015 14:35:46 for CMSIS-SVD by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

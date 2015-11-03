@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">CMSIS-Driver
-   &#160;<span id="projectnumber">Version 2.03</span>
+   &#160;<span id="projectnumber">Version 2.04</span>
    </div>
    <div id="projectbrief">Peripheral Interface for Middleware and Application Code</div>
   </td>
@@ -1057,7 +1057,7 @@ Seconds. </td></tr>
 <li>value &lt; 0: error occurred, value is execution status as defined with <a class="el" href="group__execution__status.html">Status Error Codes</a></li>
 </ul>
 </dd></dl>
-<p>The function <b>ARM_ETH_MAC_ReadFrame</b> reads an <a href="http://en.wikipedia.org/wiki/Ethernet_address" target="_blank"><b>Ethernet frame</b></a> from the Ethernet MAC receive buffer.</p>
+<p>The function <b>ARM_ETH_MAC_ReadFrame</b> reads an <a href="http://en.wikipedia.org/wiki/Ethernet_frame" target="_blank"><b>Ethernet frame</b></a> from the Ethernet MAC receive buffer.</p>
 <p>The Ethernet MAC receive engine must be enabled using the function <a class="el" href="group__eth__mac__interface__gr.html#gac3e90c66058d20077f04ac8e8b8d0536">ARM_ETH_MAC_Control</a> (ARM_ETH_MAC_CONTROL_RX , 1) before a call to this function. The <em>len</em> of the Ethernet frame can be checked using the function <a class="el" href="group__eth__mac__interface__gr.html#ga5ee86d6b0efab5329b9bc191c23a466d">ARM_ETH_MAC_GetRxFrameSize</a>.</p>
 <p>The frame data addressed by <em>buf</em> starts with MAC destination and ends with the last Payload data byte. The frame data is read from the receive buffer of the Ethernet MAC interface and the number of bytes written into the memory addressed by <em>buf</em> is returned. A negative return value indicates an error whereby the status code is defined with driver common return codes.</p>
 <p>The function <a class="el" href="group__eth__mac__interface__gr.html#ga4b79f57d8624bb4410ee12c73a483993">ARM_ETH_MAC_ReadFrame</a> may be called with <em>buf</em> = NULL and <em>len</em> = 0 to discard or release an frame. This is useful when an incorrect frame has been received or no memory is available to hold the Ethernet frame.</p>
@@ -1089,8 +1089,8 @@ Seconds. </td></tr>
 
 <p>Get size of received Ethernet frame. </p>
 <dl class="section return"><dt>Returns</dt><dd>number of bytes in received frame</dd></dl>
-<p>The function <b>ARM_ETH_MAC_GetRxFrameSize</b> returns the size of a received <a href="http://en.wikipedia.org/wiki/Ethernet_address" target="_blank"><b>Ethernet frame</b></a>. This function is called before <a class="el" href="group__eth__mac__interface__gr.html#ga4b79f57d8624bb4410ee12c73a483993">ARM_ETH_MAC_ReadFrame</a> and supplies the value <em>len</em>.</p>
-<p>The frame size includes MAC destination and ends with the last Payload data byte.</p>
+<p>The function <b>ARM_ETH_MAC_GetRxFrameSize</b> returns the size of a received <a href="http://en.wikipedia.org/wiki/Ethernet_frame" target="_blank"><b>Ethernet frame</b></a>. This function is called before <a class="el" href="group__eth__mac__interface__gr.html#ga4b79f57d8624bb4410ee12c73a483993">ARM_ETH_MAC_ReadFrame</a> and supplies the value <em>len</em>.</p>
+<p>The frame size includes MAC destination and ends with the last Payload data byte. Value <em>0</em> indicates that no Ethernet frame is available in the receive buffer. Values smaller than minimum size of Ethernet frame or larger than maximum size of Ethernet frame indicate an invalid frame which needs to be discarded by calling <a class="el" href="group__eth__mac__interface__gr.html#ga4b79f57d8624bb4410ee12c73a483993">ARM_ETH_MAC_ReadFrame</a>.</p>
 <p><b>Example:</b> </p>
 <ul>
 <li>see <a class="el" href="group__eth__mac__interface__gr.html#ga4b79f57d8624bb4410ee12c73a483993">ARM_ETH_MAC_ReadFrame</a> </li>
@@ -1120,7 +1120,7 @@ Seconds. </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>Retrieve time stamp of a received <a href="http://en.wikipedia.org/wiki/Ethernet_address" target="_blank"><b>Ethernet frame</b></a>. This function must be called before the frame is read using <a class="el" href="group__eth__mac__interface__gr.html#ga4b79f57d8624bb4410ee12c73a483993">ARM_ETH_MAC_ReadFrame</a>. </p>
+<p>Retrieve time stamp of a received <a href="http://en.wikipedia.org/wiki/Ethernet_frame" target="_blank"><b>Ethernet frame</b></a>. This function must be called before the frame is read using <a class="el" href="group__eth__mac__interface__gr.html#ga4b79f57d8624bb4410ee12c73a483993">ARM_ETH_MAC_ReadFrame</a>. </p>
 
 </div>
 </div>
@@ -1146,7 +1146,7 @@ Seconds. </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__execution__status.html">Status Error Codes</a></dd></dl>
-<p>The function <b>returns</b> the time stamp of a transmitted <a href="http://en.wikipedia.org/wiki/Ethernet_address" target="_blank"><b>Ethernet frame</b></a>. </p>
+<p>The function <b>returns</b> the time stamp of a transmitted <a href="http://en.wikipedia.org/wiki/Ethernet_frame" target="_blank"><b>Ethernet frame</b></a>. </p>
 
 </div>
 </div>
@@ -1475,7 +1475,7 @@ Seconds. </td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Sep 11 2015 14:40:02 for CMSIS-Driver by ARM Ltd. All rights reserved.
+    <li class="footer">Generated on Tue Oct 27 2015 14:35:24 for CMSIS-Driver by ARM Ltd. All rights reserved.
 	<!--
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.2 

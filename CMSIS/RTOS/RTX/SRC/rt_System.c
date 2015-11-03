@@ -3,7 +3,7 @@
  *----------------------------------------------------------------------------
  *      Name:    RT_SYSTEM.C
  *      Purpose: System Task Manager
- *      Rev.:    V4.79
+ *      Rev.:    V4.80
  *----------------------------------------------------------------------------
  *
  * Copyright (c) 1999-2009 KEIL, 2009-2015 ARM Germany GmbH
@@ -63,7 +63,7 @@ static          U8  pend_flags;
  *      Global Functions
  *---------------------------------------------------------------------------*/
 
-#define RL_RTX_VER      0x479
+#define RL_RTX_VER      0x480
 
 #if defined (__CC_ARM)
 __asm void $$RTX$$version (void) {
