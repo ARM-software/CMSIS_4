@@ -130,6 +130,7 @@ typedef struct OS_SCB {
   U8     mask;                    /* Semaphore token mask                    */
   U16    tokens;                  /* Semaphore tokens                        */
   struct OS_TCB *p_lnk;           /* Chain of tasks waiting for tokens       */
+  U16    max_tokens;              /* Maximum number of Semaphore tokens      */
 } *P_SCB;
 
 typedef struct OS_MUCB {
