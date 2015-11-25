@@ -385,7 +385,7 @@ int32_t osSignalSet (osThreadId thread_id, int32_t signals);
 /// \return previous signal flags of the specified thread or 0x80000000 in case of incorrect parameters or call from ISR.
 int32_t osSignalClear (osThreadId thread_id, int32_t signals);
 
-/// Wait for one or more Signal Flags to become signaled for the current \b RUNNING thread.
+/// Wait and clear one or more Signal Flags to become signaled for the current \b RUNNING thread.
 /// \param[in]     signals       wait until all specified signal flags set or 0 for any single signal flag.
 /// \param[in]     millisec      \ref CMSIS_RTOS_TimeOutValue or 0 in case of no time-out.
 /// \return event flag information or error code.
