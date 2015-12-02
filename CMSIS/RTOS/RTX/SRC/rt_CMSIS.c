@@ -1616,6 +1616,27 @@ osStatus svcSemaphoreDelete (osSemaphoreId semaphore_id) {
 
 // Semaphore ISR Calls
 
+/// Wait until a Semaphore becomes available
+int32_t isrSemaphoreWait (osSemaphoreId semaphore_id, uint32_t millisec) {
+  OS_ID sem;
+  OS_RESULT res;
+
+  sem = rt_id2obj(semaphore_id);
+  if ((sem == NULL) || (millisec != 0U)) {
+    return -1;
+  }
+
+  if (((P_SCB)sem)->cb_type != SCB) {
+    return -1;
+  }
+
+  res = isr_sem_wait(sem);                      // Wait for Semaphore
+
+  if (res == OS_R_TMO) { return 0; }            // Timeout
+
+  return (int32_t)(((P_SCB)sem)->tokens + 1U);
+}
+
 /// Release a Semaphore
 osStatus isrSemaphoreRelease (osSemaphoreId semaphore_id) {
   OS_ID sem;
@@ -1656,10 +1677,11 @@ osSemaphoreId osSemaphoreCreate (const osSemaphoreDef_t *semaphore_def, int32_t 
 
 /// Wait until a Semaphore becomes available
 int32_t osSemaphoreWait (osSemaphoreId semaphore_id, uint32_t millisec) {
-  if (__get_IPSR() != 0U) {
-    return -1;                                  // Not allowed in ISR
+  if (__get_IPSR() != 0U) {                     // in ISR
+    return   isrSemaphoreWait(semaphore_id, millisec);
+  } else {                                      // in Thread
+    return __svcSemaphoreWait(semaphore_id, millisec);
   }
-  return __svcSemaphoreWait(semaphore_id, millisec);
 }
 
 /// Release a Semaphore

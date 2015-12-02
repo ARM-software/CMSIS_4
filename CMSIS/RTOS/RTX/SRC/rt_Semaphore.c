@@ -153,6 +153,26 @@ void isr_sem_send (OS_ID semaphore) {
 }
 
 
+/*--------------------------- isr_sem_wait ----------------------------------*/
+
+OS_RESULT isr_sem_wait (OS_ID semaphore) {
+  /* Same function as "os_sem_wait", but to be called by ISRs. The function */
+  /* returns immediately, if the semaphore has no token since it would      */
+  /* block the rtx os otherwise.                                            */
+  P_SCB p_SCB = semaphore;
+
+  if (p_SCB->tokens) {
+    /* A token is available in the semaphore. */
+    rt_dec (&p_SCB->tokens);
+    return (OS_R_OK);
+  }
+  else {
+    /* The semaphore is empty. */
+    return (OS_R_TMO);
+  }
+}
+
+
 /*--------------------------- rt_sem_psh ------------------------------------*/
 
 void rt_sem_psh (P_SCB p_CB) {
@@ -180,3 +200,4 @@ void rt_sem_psh (P_SCB p_CB) {
 /*----------------------------------------------------------------------------
  * end of file
  *---------------------------------------------------------------------------*/
+
