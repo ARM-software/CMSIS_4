@@ -33,7 +33,7 @@
  *---------------------------------------------------------------------------*/
 
 /* Functions */
-extern void      rt_mut_init    (OS_ID mutex);
+extern void      rt_mut_init    (OS_ID mutex, U8 recursive);
 extern OS_RESULT rt_mut_delete  (OS_ID mutex);
 extern OS_RESULT rt_mut_release (OS_ID mutex);
 extern OS_RESULT rt_mut_wait    (OS_ID mutex, U16 timeout);

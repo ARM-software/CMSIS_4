@@ -410,10 +410,33 @@ const osMutexDef_t os_mutex_def_##name = { (os_mutex_cb_##name) }
 #define osMutex(name)  \
 &os_mutex_def_##name
 
-/// Create and Initialize a Mutex object.
+/// Create and Initialize a Recursive Mutex object.
 /// \param[in]     mutex_def     mutex definition referenced with \ref osMutex.
 /// \return mutex ID for reference by other functions or NULL in case of error.
 osMutexId osMutexCreate (const osMutexDef_t *mutex_def);
+
+/// Create and Initialize a Plain Mutex object.
+/// \param[in]     mutex_def     mutex definition referenced with \ref osMutex.
+/// \return mutex ID for reference by other functions or NULL in case of error.
+osMutexId osPlainMutexCreate (const osMutexDef_t *mutex_def);
+
+#if 0
+// Alternatively, we could have only one osMutexCreate() function, which takes
+// the type of the mutex as parameter. This is probably the more elegant
+// solution but breaks the existing API.
+
+/// An enumeration of Mutex types.
+typedef enum  {
+  osMutexPlain            =     0,       ///< plain mutex
+  osMutexRecursive        =     1        ///< recursive mutex
+} os_mutex_type;
+
+/// Create and Initialize a Mutex object.
+/// \param[in]     mutex_def     mutex definition referenced with \ref osMutex.
+/// \param[in]     type          osMutexPlain for a non-recursive mutex or osMutexRecursive for a recursive mutex.
+/// \return mutex ID for reference by other functions or NULL in case of error.
+osMutexId osMutexCreate (const osMutexDef_t *mutex_def, os_mutex_type type);
+#endif
 
 /// Wait until a Mutex becomes available.
 /// \param[in]     mutex_id      mutex ID obtained by \ref osMutexCreate.

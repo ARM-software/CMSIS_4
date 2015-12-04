@@ -1375,7 +1375,7 @@ os_InRegs osEvent osSignalWait (int32_t signals, uint32_t millisec) {
 // ==== Mutex Management ====
 
 // Mutex Service Calls declarations
-SVC_1_1(svcMutexCreate,  osMutexId, const osMutexDef_t *,           RET_pointer)
+SVC_2_1(svcMutexCreate,  osMutexId, const osMutexDef_t *, uint32_t, RET_pointer)
 SVC_2_1(svcMutexWait,    osStatus,        osMutexId,      uint32_t, RET_osStatus)
 SVC_1_1(svcMutexRelease, osStatus,        osMutexId,                RET_osStatus)
 SVC_1_1(svcMutexDelete,  osStatus,        osMutexId,                RET_osStatus)
@@ -1383,7 +1383,7 @@ SVC_1_1(svcMutexDelete,  osStatus,        osMutexId,                RET_osStatus
 // Mutex Service Calls
 
 /// Create and Initialize a Mutex object
-osMutexId svcMutexCreate (const osMutexDef_t *mutex_def) {
+osMutexId svcMutexCreate (const osMutexDef_t *mutex_def, uint32_t recursive) {
   OS_ID mut;
 
   if (mutex_def == NULL) {
@@ -1402,7 +1402,7 @@ osMutexId svcMutexCreate (const osMutexDef_t *mutex_def) {
     return NULL;
   }
 
-  rt_mut_init(mut);                             // Initialize Mutex
+  rt_mut_init(mut, recursive);                  // Initialize Mutex
 
   return mut;
 }
@@ -1425,6 +1425,9 @@ osStatus svcMutexWait (osMutexId mutex_id, uint32_t millisec) {
 
   if (res == OS_R_TMO) {
     return ((millisec != 0U) ? osErrorTimeoutResource : osErrorResource);
+  }
+  if (res == OS_R_NOK) {
+    return osErrorResource;                     // Tried to re-lock a non-recursive Mutex
   }
 
   return osOK;
@@ -1481,9 +1484,22 @@ osMutexId osMutexCreate (const osMutexDef_t *mutex_def) {
   }
   if (((__get_CONTROL() & 1U) == 0U) && (os_running == 0U)) {
     // Privileged and not running
-    return    svcMutexCreate(mutex_def);
+    return    svcMutexCreate(mutex_def, 1U);
   } else {
-    return __svcMutexCreate(mutex_def);
+    return __svcMutexCreate(mutex_def, 1U);
+  }
+}
+
+/// Create and Initialize a Plain Mutex object
+osMutexId osPlainMutexCreate (const osMutexDef_t *mutex_def) {
+  if (__get_IPSR() != 0U) {
+    return NULL;                                // Not allowed in ISR
+  }
+  if (((__get_CONTROL() & 1U) == 0U) && (os_running == 0U)) {
+    // Privileged and not running
+    return    svcMutexCreate(mutex_def, 0U);
+  } else {
+    return __svcMutexCreate(mutex_def, 0U);
   }
 }
 
