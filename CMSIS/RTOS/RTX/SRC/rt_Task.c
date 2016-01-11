@@ -96,9 +96,15 @@ static void rt_init_context (P_TCB p_TCB, U8 priority, FUNCP task_body) {
 
 
 /*--------------------------- rt_switch_req ---------------------------------*/
+__weak void rt_switch_prehook(unsigned p_cur, unsigned p_new) {
+  /* empty default function */
+}
 
 void rt_switch_req (P_TCB p_new) {
   /* Switch to next task (identified by "p_new"). */
+  unsigned oldTsk = os_tsk.run == &os_idle_TCB ? 0 : (unsigned) os_tsk.run;
+  unsigned newTsk = p_new      == &os_idle_TCB ? 0 : (unsigned) p_new;
+  rt_switch_prehook(oldTsk, newTsk);
   os_tsk.new   = p_new;
   p_new->state = RUNNING;
   DBG_TASK_SWITCH(p_new->task_id);
