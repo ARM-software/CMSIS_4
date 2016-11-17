@@ -134,6 +134,7 @@ typedef struct OS_SCB {
 
 typedef struct OS_MUCB {
   U8     cb_type;                 /* Control Block Type                      */
+  U8     recursive;               /* If set, the mutex is recursive          */
   U16    level;                   /* Call nesting level                      */
   struct OS_TCB *p_lnk;           /* Chain of tasks waiting for mutex        */
   struct OS_TCB *owner;           /* Mutex owner task                        */

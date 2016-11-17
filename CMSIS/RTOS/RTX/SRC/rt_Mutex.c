@@ -47,15 +47,16 @@
 
 /*--------------------------- rt_mut_init -----------------------------------*/
 
-void rt_mut_init (OS_ID mutex) {
+void rt_mut_init (OS_ID mutex, U8 recursive) {
   /* Initialize a mutex object */
   P_MUCB p_MCB = mutex;
 
-  p_MCB->cb_type = MUCB;
-  p_MCB->level   = 0U;
-  p_MCB->p_lnk   = NULL;
-  p_MCB->owner   = NULL;
-  p_MCB->p_mlnk  = NULL;
+  p_MCB->cb_type   = MUCB;
+  p_MCB->recursive = recursive;
+  p_MCB->level     = 0U;
+  p_MCB->p_lnk     = NULL;
+  p_MCB->owner     = NULL;
+  p_MCB->p_mlnk    = NULL;
 }
 
 
@@ -227,6 +228,10 @@ OS_RESULT rt_mut_wait (OS_ID mutex, U16 timeout) {
   }
   if (p_MCB->owner == os_tsk.run) {
     /* OK, running task is the owner of this mutex. */
+    if (!p_MCB->recursive) {
+      /* The mutex is not recursive but the task tries to lock it again. */
+      return (OS_R_NOK);
+    }
 inc:p_MCB->level++;
     return (OS_R_OK);
   }
