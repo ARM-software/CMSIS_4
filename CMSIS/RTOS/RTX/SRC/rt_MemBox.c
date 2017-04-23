@@ -138,6 +138,7 @@ void *_calloc_box (void *box_mem)  {
 /*--------------------------- rt_free_box -----------------------------------*/
 
 U32 rt_free_box (void *box_mem, void *box) {
+  void *prev;
   /* Free a memory block, returns 0 if OK, 1 if box does not belong to box_mem */
 #ifndef __USE_EXCLUSIVE_ACCESS
   U32 irq_mask;
@@ -145,6 +146,15 @@ U32 rt_free_box (void *box_mem, void *box) {
 
   if ((box < box_mem) || (box >= ((P_BM) box_mem)->end)) {
     return (1U);
+  }
+
+  /* Check if the box is not already in the free list */
+  prev = ((P_BM) box_mem)->free;
+  while (prev != NULL) {
+    if (prev == box) {
+      return (1U);
+    }
+    prev = *((void **)prev);
   }
 
 #ifndef __USE_EXCLUSIVE_ACCESS
