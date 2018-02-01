@@ -1,4 +1,7 @@
-# CMSIS Version 4
+# CMSIS Version 4 (legacy version)
+
+## IMPORTANT: CMSIS Version 5 is available via https://github.com/ARM-software/CMSIS_5
+
 Cortex Microcontroller Software Interface Standard. Refer to www.arm.com/cmsis for more information.
 
 This GIT repository contains the CMSIS Version 4 release images starting from V4.3.0.
