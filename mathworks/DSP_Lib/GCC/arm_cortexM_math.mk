@@ -137,8 +137,8 @@ endif
 ifeq ($(OS),Windows_NT)
 MAKEDIR := mkdir
 MAKEDIRFLAGS := 
-RM := rm
-RMFLAGS := -rf
+RM := del
+RMFLAGS := /q /f
 OUTPUT_O_DIR_T := $(subst /,\,$(OUTPUT_O_DIR))
 PRODUCT_DIR_T := $(subst /,\,$(PRODUCT_DIR))
 else
@@ -170,16 +170,16 @@ endif
 directories: $(OUTPUT_O_DIR_T) $(PRODUCT_DIR_T)
 
 $(PRODUCT_DIR_T) :
-	@echo 	### Creating $(PRODUCT_DIR) directory"
+	@echo 	"### Creating $(PRODUCT_DIR) directory"
 	$(MAKEDIR) $(MAKEDIRFLAGS) $(PRODUCT_DIR_T)
 
 $(OUTPUT_O_DIR_T):
-	@echo 	### Creating $(OUTPUT_O_DIR_T) directory"
+	@echo 	"### Creating $(OUTPUT_O_DIR_T) directory"
 	$(MAKEDIR) $(MAKEDIRFLAGS) $(OUTPUT_O_DIR_T)
 
 
 $(PRODUCT_DIR)/$(PRODUCT) : directories $(ALL_OBJS) 
-	@echo Building $(PRODUCT)
+	@echo 	"### Building $(PRODUCT)"
 	$(AR) $(ARFLAGS) $(PRODUCT_DIR)/$(PRODUCT) $(ALL_OBJS)
 
 build : $(PRODUCT_DIR)/$(PRODUCT)
@@ -187,8 +187,8 @@ build : $(PRODUCT_DIR)/$(PRODUCT)
 all : build
 
 clean :
-	$(RM) $(RMFLAGS) $(OUTPUT_O_DIR)
-	$(RM) $(RMFLAGS) $(PRODUCT_DIR)/$(PRODUCT)
+	$(RM) $(RMFLAGS) $(OUTPUT_O_DIR_T)
+	$(RM) $(RMFLAGS) $(subst /,\,$(PRODUCT_DIR_T)/$(PRODUCT))
  
 info : 
 	@echo "### Compiling for target = $(TARGET_ARCH)"
