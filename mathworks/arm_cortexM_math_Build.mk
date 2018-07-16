@@ -5,7 +5,7 @@ MAKEDIRFLAGS :=
 RM := del
 RMFLAGS := /q /f
 CP := xcopy
-CPFLAGS := /e /f /r /y /q
+CPFLAGS := /e /r /y /q /i
 CPWILDCARD := 
 else
 MAKEDIR := mkdir
@@ -52,10 +52,10 @@ endif
 .PHONY : all build clean info
 
 $(CMSISPKGEULAPDF) : 
-	$(CP) $(CMSISEULAPDF) $(CMSISPKGEULAPDF)
+	$(CP) $(CMSISEULAPDF) $(CMSISPKG)
 
 $(CMSISPKGEULARTF) : 
-	$(CP) $(CMSISEULARTF) $(CMSISPKGEULARTF)
+	$(CP) $(CMSISEULARTF) $(CMSISPKG)
 
 $(CMSISPKG) : 
 	@echo Creating CMSIS package
@@ -71,7 +71,7 @@ $(CMSISPKGLIB) :
 	@echo	Copying DSP library compiled with Soft ABI FPU
 	$(CP) $(CPFLAGS) $(CMSISMWLIB) $(CMSISPKGLIB)
 
-$(CMSISPKGRTOS) :
+$(CMSISPKGRTOS) : 
 	@echo	Copying RTOS
 	$(CP) $(CPFLAGS) $(CMSISRTOS) $(CMSISPKGRTOS)
 	
