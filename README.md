@@ -1,5 +1,8 @@
 # CMSIS Version 4 (legacy repository)
 
+This is not the current version of CMSIS and just provided to allow access to the legacy CMSIS Version 4.
+Raised any issues on https://github.com/ARM-software/CMSIS_5/issues
+
 **IMPORTANT:**
 ## CMSIS Version 5 is available via https://github.com/ARM-software/CMSIS_5
 
