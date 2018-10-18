@@ -5859,12 +5859,13 @@ void arm_rfft_fast_f32(
   uint32_t blockSize)
   {
     uint32_t i = 0u;
-    int32_t rOffset, dst_end;
+    int32_t rOffset;
+    int32_t* dst_end;
 
     /* Copy the value of Index pointer that points
      * to the current location from where the input samples to be read */
     rOffset = *readOffset;
-    dst_end = (int32_t) (dst_base + dst_length);
+    dst_end = dst_base + dst_length;
 
     /* Loop over the blockSize */
     i = blockSize;
@@ -5877,7 +5878,7 @@ void arm_rfft_fast_f32(
       /* Update the input pointer */
       dst += dstInc;
 
-      if(dst == (int32_t *) dst_end)
+      if(dst == dst_end)
       {
         dst = dst_base;
       }
@@ -5958,13 +5959,14 @@ void arm_rfft_fast_f32(
   uint32_t blockSize)
   {
     uint32_t i = 0;
-    int32_t rOffset, dst_end;
+    int32_t rOffset;
+    q15_t* dst_end;
 
     /* Copy the value of Index pointer that points
      * to the current location from where the input samples to be read */
     rOffset = *readOffset;
 
-    dst_end = (int32_t) (dst_base + dst_length);
+    dst_end = dst_base + dst_length;
 
     /* Loop over the blockSize */
     i = blockSize;
@@ -6058,13 +6060,14 @@ void arm_rfft_fast_f32(
   uint32_t blockSize)
   {
     uint32_t i = 0;
-    int32_t rOffset, dst_end;
+    int32_t rOffset;
+    q7_t* dst_end;
 
     /* Copy the value of Index pointer that points
      * to the current location from where the input samples to be read */
     rOffset = *readOffset;
 
-    dst_end = (int32_t) (dst_base + dst_length);
+    dst_end = dst_base + dst_length;
 
     /* Loop over the blockSize */
     i = blockSize;
