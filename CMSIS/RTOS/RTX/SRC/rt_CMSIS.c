@@ -2141,12 +2141,20 @@ osStatus osMailFree (osMailQId queue_id, void *mail) {
 
 /// Put a mail to a queue
 osStatus osMailPut (osMailQId queue_id, void *mail) {
+  void *pool;
+
   if (queue_id == NULL) {
     return osErrorParameter;
   }
   if (mail == NULL) {
     return osErrorValue;
   }
+
+  pool = *(((void **)queue_id) + 1);
+  if (rt_check_box (pool, mail) == 0) {
+    return osErrorValue;
+  }
+
   return osMessagePut(*((void **)queue_id), (uint32_t)mail, 0U);
 }
 
