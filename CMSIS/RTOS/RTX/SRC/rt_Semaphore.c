@@ -52,9 +52,10 @@ void rt_sem_init (OS_ID semaphore, U16 token_count) {
   /* Initialize a semaphore */
   P_SCB p_SCB = semaphore;
 
-  p_SCB->cb_type = SCB;
-  p_SCB->p_lnk  = NULL;
-  p_SCB->tokens = token_count;
+  p_SCB->cb_type    = SCB;
+  p_SCB->p_lnk      = NULL;
+  p_SCB->tokens     = token_count;
+  p_SCB->max_tokens = token_count;
 }
 
 
@@ -95,6 +96,10 @@ OS_RESULT rt_sem_send (OS_ID semaphore) {
   /* Return a token to semaphore */
   P_SCB p_SCB = semaphore;
   P_TCB p_TCB;
+
+  if (p_SCB->tokens == p_SCB->max_tokens) {
+    return OS_R_NOK;
+  }
 
   if (p_SCB->p_lnk != NULL) {
     /* A task is waiting for token */

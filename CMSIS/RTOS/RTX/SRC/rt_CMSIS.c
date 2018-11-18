@@ -1590,9 +1590,12 @@ osStatus svcSemaphoreRelease (osSemaphoreId semaphore_id) {
     return osErrorResource;
   }
   
-  rt_sem_send(sem);                             // Release Semaphore
-
-  return osOK;
+  // Release Semaphore
+  if (rt_sem_send(sem) == OS_R_OK) {
+    return osOK;
+  } else {
+    return osErrorResource;
+  }
 }
 
 /// Delete a Semaphore that was created by osSemaphoreCreate
